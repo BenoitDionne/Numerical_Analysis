@@ -1,0 +1,69 @@
+\nonumsection{Chapter~\ref{chaptApproxB} : Uniform Approximation}
+
+\solution{\SOL}{\ref{approxBQ1}}{
+The Taylor polynomial of $f$ of degree $2n+1$ about the origin is
+\[
+p(x) = x - \sum_{j=0}^n \frac{(-1)^j}{(2j+1)!}\, x^{2j+1} \ ,
+\]
+where
+\[
+f(x) - p(x) = - \frac{1}{(2n+2)!} \, f^{(2n+2)}(\xi) x^{2n+2}
+\]
+for some $\xi$ between $0$ and $x$.
+
+Since $f^{(2n+2)}(\xi)$ is either $\cos(\xi)$ or $\sin(\xi)$, we have
+$|f^{(2n+2)}(\xi)|\leq 1$.  We need to find $n$ such that
+\[
+\bigg| \frac{1}{(2n+2)!} \; f^{(2n+2)}(\xi) x^{2n+2} \bigg|
+\leq \frac{1}{(2n+2)!} < 10^{-9}
+\]
+for $|x|<1$.  We have $1/(2n+2)! = 1/14! < 10^{-9}$ for $n=6$ and
+$1/(2n+2)! = 1/12! > 10^{-9}$ for $n=5$.  Thus
+\[
+f(x) \approx x - \sum_{_j=0}^6 \frac{(-1)^j}{(2j+1)!}\; x^{2j+1}
+= \sum_{_j=1}^6 \frac{(-1)^{j+1}}{(2j+1)!}\; x^{2j+1}
+\]
+with an accuracy of at least $10^{-9}$ for $|x|<1$.
+}
+
+\solution{\SOL}{\ref{approxBQ3}}{
+We note that $f'(x) = (\cos(x) -\sin(x))e^x$,
+$f''(x) = -2\sin(x) e^x$ and $f^{(3)}(x) = -2(\sin(x) + \cos(x))e^x$.  
+
+The Taylor polynomial of $f$ of degree two about the origin is
+\[
+p_2(x) = f(0) + f'(0)\, x + \frac{f''(0)}{2}\,x^2 = 1 + x
+\]
+because $f''(0)=0$.  So, there is no term in $x^2$.
+The truncation error is given by
+\[
+  f(x) - p_2(x) = \frac{f^{(3)}(\xi)}{3!}\, x^3
+\]
+for $\xi \in [0,x]$.
+
+Hence, $f(1/2) \approx p_2(1/2) = 3/2$.  Moreover, we have
+\[
+|f(1/2) - p_2(1/2)| = \frac{|f^{(3)}(\xi)|}{3!} \left(\frac{1}{2}\right)^3
+\]
+for $\xi \in [0, 1/2]$.  Since $f^{(4)}(x) = -4 \cos(x) e^x < 0$ for
+$0 \leq x \leq 1/2$, we have that $f^{(3)}$ is decreasing on $[0,1/2]$.
+Thus, $|f^{(3)}(x)|$ reaches its maximum value at one of the endpoints
+$0$ or $1/2$.  Since $|f^{(3)}(0)| = 2$ and $|f^{(3)}(1/2)| \approx 
+4.47465624$ (rounded up after $8$ digits), we have that
+$|f^{(3)}(\xi)| \leq |f^{(3)}(1/2)| \leq 4.47465624$. 
+Hence
+\[
+  |f(1/2) - p_2(1/2)| \leq \frac{4.47465624}{3!} \left(\frac{1}{2}\right)^3
+\approx 0.093222 \ .
+\]
+This is an overestimate of the error which is
+\[
+  |f(1/2) - p_2(1/2)| = \left|\cos(1/2) e^{1/2} - \frac{3}{2}\right|
+  \approx 0.05311096 \ .
+\]
+}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End: 

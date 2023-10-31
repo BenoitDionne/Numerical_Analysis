@@ -1,0 +1,613 @@
+\nonumsection{Chapter~\ref{chaptSeqB} : Iterative Methods for Systems of Linear Equations}
+
+\solution{\SOL}{\ref{solvBQ1}}{
+We have four conditions to verify.
+\begin{enumerate}
+\item We obviously have that
+$\displaystyle \|\VEC{x}\| = \sum_{i=1}^n 2^{-i}|x_i| \geq 0$
+for all $\VEC{x}$.  The sum of non-negative terms is non-negative.
+\item If $\|\VEC{x}\|=0$ then $\displaystyle \sum_{i=1}^n 2^{-i}|x_i| =0$.
+Since a sum of non-negative terms is null if and only if each term is
+null, $2^{-i}|x_i| = 0$ for all $i$ and therefore $x_i = 0$ for all $i$.
+\item For $\lambda \in \RR$, we have
+\[
+\|\lambda \VEC{x}\|
+= \|
+\begin{pmatrix}
+\lambda x_1 & \lambda x_2 & \ldots & \lambda x_n \end{pmatrix}^\top\|
+= \sum_{i=1}^n 2^{-i}|\lambda x_i|
+= \sum_{i=1}^n 2^{-i}|\lambda|\, |x_i|
+= |\lambda|\,\sum_{i=1}^n 2^{-i} |x_i| = |\lambda|\, \|\VEC{x}\| \ .
+\]
+\item For any $\VEC{x}$ and $\VEC{y}$ in $\RR^n$, we have
+\begin{align*}
+\|\VEC{x}+\VEC{y}\|
+& = \| \begin{pmatrix} x_1+y_1 & x_2+y_2 & \ldots \ x_n+y_n
+\end{pmatrix}^\top\| = \sum_{i=1}^n 2^{-i}|x_i+y_i| \\
+&\leq \sum_{i=1}^n 2^{-i}\left(|x_i|+|y_i|\right)
+= \sum_{i=1}^n 2^{-i}|x_i| + \sum_{i=1}^n 2^{-i}|y_i|
+= \|\VEC{x}\| + \|\VEC{y}\| \ .
+\end{align*}
+\end{enumerate}
+}
+
+\solution{\SOL}{\ref{solvBQ2}}{
+Since $\VEC{x} = \VEC{x}-\VEC{y}+\VEC{y}$, we get
+$\|\VEC{x}\| = \|\VEC{x}-\VEC{y}+\VEC{y}\|
+\leq \|\VEC{x}-\VEC{y}\|+\|\VEC{y}\|$ from the triangle inequality.
+Thus,
+\begin{equation}\label{triminusA}
+\|\VEC{x}\|- \|\VEC{y}\| \leq \|\VEC{x}-\VEC{y}\| \ .
+\end{equation}
+Similarly, since $\VEC{y} = \VEC{y}-\VEC{x}+\VEC{x}$, we get
+$\|\VEC{y}\| = \|\VEC{y}-\VEC{x}+\VEC{x}\|
+\leq \|\VEC{y}-\VEC{x}\|+\|\VEC{x}\|$ from the triangle inequality.
+Thus,
+\begin{equation}\label{triminusB}
+\|\VEC{x}\| - \|\VEC{y}\| \geq -\|\VEC{y}-\VEC{x}\| \ .
+\end{equation}
+We get (\ref{triminus}) from (\ref{triminusA}) and (\ref{triminusB}).
+}
+
+\solution{\SOL}{\ref{solvBQ3}}{
+Since
+$\{ \VEC{x} : \|\VEC{x}\|=1 \} \subset \{ \VEC{x} : \VEC{x} \neq \VEC{0} \}$,
+we have
+\[
+\|A\| = \max_{\|\VEC{x}\|=1} \|A\VEC{x}\|
+= \max_{\|\VEC{x}\|=1} \frac{\|A\VEC{x}\|}{\|\VEC{x}\|}
+\leq \max_{\VEC{x}\neq\VEC{0}} \frac{\|A\VEC{x}\|}{\|\VEC{x}\|} \ .
+\]
+
+To prove the converse inequality, let $\VEC{x}$ be any non-zero
+vector.  Since
+$\displaystyle \VEC{y} = \|\VEC{x}\|^{-1}\,\VEC{x}$
+is a vector of norm $1$, we have
+$\displaystyle \|A\VEC{y}\| \leq \max_{\|\VEC{x}\|=1} \|A\VEC{x}\| = \|A\|$.
+Thus
+\[
+\|A\| \geq \| A \VEC{y}\|
+= \left\|A\left(\frac{1}{\|\VEC{x}\|}\,\VEC{x}\right) \right\|
+= \frac{\|A\VEC{x} \|}{\|\VEC{x}\|}
+\]
+for all $\VEC{x} \neq \VEC{0}$.  Hence,
+\[
+\| A \| \geq 
+\sup_{\VEC{x}\neq\VEC{0}} \frac{\|A\VEC{x}\|}{\|\VEC{x}\|} \ .
+\]
+}
+
+\solution{\SOL}{\ref{solvBQ4}}{
+Let $\VEC{x}$ be a vector of $\ell^1$-norm $1$; namely,
+$\displaystyle \|\VEC{x}\|_1 = \sum_{i=1}^n |x_i| = 1$.  Then,
+\begin{align*}
+\|A \VEC{x}\|_1 &= \sum_{i=1}^n \left| \sum_{j=1}^n a_{i,j} x_j \right|
+\leq \sum_{i=1}^n \left( \sum_{j=1}^n |a_{i,j}| |x_j| \right)
+= \sum_{j=1}^n \left( \sum_{i=1}^n |a_{i,j}| \right) |x_j| \\
+&\leq \sum_{j=1}^n
+\left( \max_{0\leq j \leq n} \left\{ \sum_{i=0}^n |a_{i,j}|\right\}\right) |x_j|
+= \max_{0\leq j \leq n} \left\{\sum_{i=0}^n |a_{i,j}|\right\}
+\sum_{j=1}^n |x_j|
+= \max_{0\leq j \leq n} \left\{\sum_{i=0}^n |a_{i,j}|\right\} \ .
+\end{align*}
+Since this is true for any vector $\VEC{x}$ such that
+$\|\VEC{x}\|_1=1$, we have
+\[
+\|A\|_1 = \max_{\|\VEC{x}\|_1=1} \|A\VEC{x}\|_1
+\leq \max_{0\leq j \leq n} \left\{\sum_{i=0}^n |a_{i,j}|\right\} \ .
+\]
+
+To prove that
+\begin{equation}\label{otherdir}
+\|A\|_1 \geq \max_{0\leq j \leq n} \left\{\sum_{i=0}^n |a_{i,j}|\right\} \ ,
+\end{equation}
+we prove that there exists $\VEC{x} \in \RR^n$ of $\ell^1$-norm $1$
+such that $\displaystyle
+\|A\VEC{x}\|_1 = \max_{0\leq j \leq n} \left\{\sum_{i=0}^n |a_{i,j}|\right\}$.
+Let $k$ be the index of the column of $A$ such that
+\[
+\sum_{i=0}^n |a_{i,k}|
+= \max_{0\leq j \leq n} \left\{\sum_{i=0}^n |a_{i,j}|\right\}
+\]
+and let $\VEC{x}$ be the vector defined by
+\[
+x_i = \begin{cases}
+1 & \quad \text{if} \quad i=k \\
+0 & \quad \text{if} \quad i\neq k
+\end{cases}
+\]
+Then $\|\VEC{x}\|_1 = 1$ and 
+\[
+\|A\VEC{x}\|_1 =
+\sum_{i=1}^n | \sum_{j=1}^n a_{i,j} x_j |
+= \sum_{i=1}^n | a_{i,k} |
+= \max_{0\leq j \leq n} \left\{\sum_{i=0}^n |a_{i,j}|\right\}
+\]
+Thus, (\ref{otherdir}) is true.
+}
+
+\solution{\SOL}{\ref{solvBQ5}}{
+We have that
+\[
+\|A\|_\infty = \max\left\{ |4|+|-3|+|2|, |-1|+|0|+|5|, |2|+|6|+|-2|
+\right\} = 10
+\]
+Hence, it follows from Theorem~\ref{normAinfty} that $\|A\|_\infty$,
+the maximum value of $\|A\VEC{x}\|_\infty$ for $\|\VEC{x}\|_\infty = 1$,
+is $10$.  Moreover, in the proof of Theorem~\ref{normAinfty}, we have
+seen that the maximum is reached for the vector $\VEC{x}$ defined by
+\[
+x_j =
+\begin{cases}
+1 & \text{ if } a_{k,j} \geq 0 \\
+-1 & \text{ if } a_{k,j} < 0 \\
+\end{cases}
+\]
+where $k=3$ because the third row of $A$ gives the value of
+$\displaystyle \max_{0\leq i \leq n} \left\{\sum_{j=0}^n |a_{i,j}|\right\}$.
+Hence,
+$\displaystyle \VEC{x} = \begin{pmatrix} 1 & 1 & -1 \end{pmatrix}^\top$
+gives $\|A\VEC{x}\|_\infty = \|A\|_\infty$.
+}
+
+\solution{\SOL}{\ref{solvBQ6}}{
+Let
+$\displaystyle A = \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix}$
+and
+$\displaystyle B = \begin{pmatrix} 1 & 0 \\ -1 & 3 \end{pmatrix}$.
+Since
+$\displaystyle
+AB = \begin{pmatrix} 2 & -3 \\ 0 & 3 \end{pmatrix}$
+and
+$\displaystyle BA = \begin{pmatrix} 1 & -1 \\ 2 & 4 \end{pmatrix}$,
+we get $\|AB\|_\infty = 5$ but $\|BA\|_\infty = 6$.
+So, it is not true that $\|AB\|_\infty = \|BA\|_\infty$ for all
+matrices $A$ and $B$.  There is nothing special about the $\ell^\infty$-norm.
+}
+
+\solution{\SOL}{\ref{solvBQ7}}{
+Given $\VEC{x} \neq \VEC{0}$, let $\VEC{y} = \|\VEC{x}\|^{-1} \VEC{x}$.
+By definition of the norm of $A$, we have that
+$\|A\VEC{y} \| \leq \|A\|$ since $\|\VEC{y}\|=1$.  Thus,
+\[
+\|\VEC{x}\|^{-1} \left\|A \VEC{x}\right\|
+= \left\|A\left(\|\VEC{x}\|^{-1} \VEC{x}\right)\right\|
+= \|A\VEC{y} \| \leq \|A\|
+\Rightarrow \left\|A \VEC{x}\right\| \leq \|A\|\,\|\VEC{x}\| \ .
+\]
+$\left\|A \VEC{x}\right\| \leq \|A\|\,\|\VEC{x}\|$ is obviously true
+for $\VEC{x} = \VEC{0}$.
+
+Suppose that there exists $C < \|A\|$ such that
+$\|A\VEC{x} \| \leq C \, \|\VEC{x}\|$ for all
+$\VEC{x} \in \RR^n$.  Since
+$\|A\VEC{x} \| \leq C$ for all $\VEC{x} \in \RR^n$ such that
+$\|\VEC{x}\|=1$, we get that
+$\displaystyle \max_{\|\VEC{x}\|=1} \|A\VEC{x} \| \leq C < \|A\|$.
+This is a contradiction of the definition of $\|A\|$. 
+}
+
+\solution{\SOL}{\ref{solvBQ8}}{
+\subQ{a} We first interchange the second and third row of the
+system of linear equations.   This will give us a linear equation
+$A\VEC{x} = \VEC{b}$, where $A$ is strictly diagonally dominant.  We
+have
+\begin{align*}
+3 x_1 - x_2 + x_3 &= 1 \\
+x_1 + 3 x_2 - x_3 &= 1 \\
+2 x_1 + x_2 - 4 x_3 &= 0
+\end{align*}
+This is equivalent to $A\VEC{x} = \VEC{b}$, where
+$\displaystyle
+A = \begin{pmatrix} 3 & -1 & 1 \\ 1 & 3 & -1 \\ 2 & 1 & -4 \end{pmatrix}$
+and $\displaystyle
+\VEC{b} = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$.
+Since $A$ is strictly diagonally dominant, the Gauss-Seigel Iterative
+Method will converge.
+
+\subQ{b}  The Gauss-Seidel Iterative Method is given by the iterative
+system
+\begin{align*}
+x_{n+1,1} &= \frac{x_{n,2} - x_{n,3} + 1}{3} \\
+x_{n+1,2} &= \frac{-x_{n+1,1} + x_{n,3}  +1}{3} \\
+x_{n+1,3} &= \frac{2 x_{n,1} + x_{n,2}}{4}
+\end{align*}
+for $n=0$, $1$, $2$, \ldots\  If we start with $\VEC{x}_0 = \VEC{0}$,
+the first time that we have $\|\VEC{x}_n-\VEC{x}_{n-1}\| < 10^{-5}$ is
+for $n=10$.  We get
+$\displaystyle
+\VEC{x}_{10} \approx \begin{pmatrix} 0.35000 \\ 0.30000 \\ 0.25000
+\end{pmatrix}$, where the values have been rounded to $5$ significant
+digits.  This is in fact the exact answer.
+}
+
+\solution{\SOL}{\ref{solvBQ9}}{
+Let
+\[
+A = \begin{pmatrix}
+1 & 0 & 0 & \sqrt{2}/2 & 1 & 0 & 0 & 0 \\            % equ 1
+0 & 1 & 0 & \sqrt{2}/2 & 0 & 0 & 0 & 0 \\            % equ 5
+0 & 0 & 1 & 0 & 0 & 0 & -1/2 & 0 \\                  % equ 8
+0 & 0 & 0 & -\sqrt{2}/2 & 0 & -1 & 1/2 & 0 \\        % equ 6
+0 & 0 & 0 & 0 & -1 & 0 & 0 & 1 \\                    % equ 3
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\                     % equ 7
+0 & 0 & 0 & -\sqrt{2}/2 & 0 & 0 & \sqrt{3}/2 & 0 \\  % equ 2
+0 & 0 & 0 & 0 & 0 & 0 & -\sqrt{3}/2 & -1             % equ 4
+\end{pmatrix}
+\ , \ 
+\VEC{b} = \begin{pmatrix}
+0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 10000 \\ 0 \\ 0
+\end{pmatrix}
+\ \text{ and } \ 
+\VEC{F} = \begin{pmatrix}
+F_1 \\ F_2 \\ F_3 \\ f_1 \\ f_2 \\ f_3 \\ f_4 \\ f_5
+\end{pmatrix} \ .
+\]
+Note that we have reordered the equations to get non-null elements on
+the diagonal.  However, it was impossible to get a diagonally dominant
+matrix.  Nevertheless, if we consider the form 
+$\VEC{x}_{n+1} = T\VEC{x}_n + \VEC{c}$
+for each of the respective iterative methods, we can use
+Theorem~\ref{convth} to show that these three methods converge.
+\begin{enumerate}
+\item For the Jacobi iterative method, $T=D^{-1}(L+U)$ and the
+  eigenvalues of $T$ are $0$ (with multiplicity 6) and
+  $\pm 0.75983568565\ldots$\  Hence, the spectral radius of $T$
+  is $r_J = \rho(T)= 0.7598356856\ldots < 1$.
+\item For the Gauss-Seidel iterative method, $T=(D-L)^{-1}U$ and the
+  eigenvalues of $T$ are $0$ (with multiplicity 7) and
+  $0.5773502691\ldots$\  Hence, the spectral radius of $T$ is 
+  $r_{GS} = \rho(T) = 0.5773502691\ldots < 1$.
+\item For the relaxation iterative method with $\omega=1.2$,
+  $T = (D-\omega L)^{-1} ((1-\omega)D+\omega U)$ and the eignevalues
+  of $T$ are $-0.2$ (with multiplicity 6), $0.2964580434\ldots$ and
+  $0.134926344\ldots$\  The spectral radius of $T$ is 
+  $r_R = \rho(T) = 0.2964580434\ldots < 1$.
+\end{enumerate}
+Since $r_R < r_{GS} < r_J$, we expect that the relaxation method will
+be the method that converges the fastest to the equilibrium, followed
+by the Gauss-Seidel iterative method.  The slowest method should be
+the Jacobi Iterative Method.
+
+We start all three iterations with the vector
+$\VEC{x}_0 = (1 \ 1 \ 1 \ 1 \ 1 \ 1 \ 1 \ 1)^\top$.
+
+\subQ{a} The solution (rounded to seven significant digits) found with
+the Jacobi Iterative Method is
+\[
+\VEC{F} \approx \begin{pmatrix}
+10000 & -13660.25 & 13660.25 & 19318.52 &  -23660.25 & 0 &
+27320.51 & -23660.25 \end{pmatrix}^\top
+\]
+after $64$ iterations.
+
+\subQ{b} The solution (rounded to seven significant digits) found with
+the Gauss-Seidel Iterative Method is
+\[
+\VEC{F} \approx \begin{pmatrix}
+10000 & -13660.25 & 13660.25 & 19318.52 & -23660.25 & 0 &
+27320.51 & -23660.25
+\end{pmatrix}^\top
+\]
+after $33$ iterations.
+
+\subQ{c} For the relaxation iterative method, we use $\omega = 1.2$
+which is between $0$ and $2$ as required.  The solution (rounded to
+seven significant digits) found with the relaxation iterative method
+is
+\[
+\VEC{F} \approx \begin{pmatrix}
+10000 & -13660.25 & 13660.25 & 19318.52 & -23660.25 & 0 &
+27320.50 & -23660.25
+\end{pmatrix}^\top
+\]
+after $17$ iterations.
+}
+
+\solution{\SOL}{\ref{solvBQ10}}{
+\subQ{a} Since $A$ is strictly diagonally dominant, it follows from
+Theorem~\ref{convcond} that both iterative methods converge.
+
+For (b), (c) and (d), we use
+$\VEC{x}_0 = \begin{pmatrix} 1 & 1 & 1 & 1 \end{pmatrix}^\top$.
+
+\subQ{b} The iterative system associated to the Jacobi iterative
+method is
+\begin{align*}
+x_{n+1,1} &= \frac{1}{4} \left(5-x_{n,2} + x_{n,3} - x_{n,4}\right)\\
+x_{n+1,2} &= \frac{1}{5} \left(2-x_{n,1} - x_{n,3} + x_{n,4}\right)\\
+x_{n+1,3} &= \frac{1}{6} \left(-14-2x_{n,1} + x_{n,2} - 2x_{n,4}\right)\\
+x_{n+1,4} &= \frac{1}{5} \left(25+x_{n,1} - x_{n,2} +2 x_{n,3}\right)
+\end{align*}
+After $25$ iterations, the Jacobi Iterative Method yields the
+following approximation of the solution of
+$A\VEC{x} = \VEC{b}$ with an accuracy of $10^{-5}$.
+\[
+\VEC{x} \approx \begin{pmatrix} -0.755414 & 1.796178 &
+-2.892990 & 3.332482
+\end{pmatrix}^\top \ .
+\]
+
+\subQ{c} The iterative system associated to the Gauss-Seidel iterative
+method is
+\begin{align*}
+x_{n+1,1} &= \frac{1}{4} \left(5-x_{n,2} + x_{n,3} - x_{n,4}\right)\\
+x_{n+1,2} &= \frac{1}{5} \left(2-x_{n+1,1} - x_{n,3} + x_{n,4}\right)\\
+x_{n+1,3} &= \frac{1}{6} \left(-14-2x_{n+1,1} + x_{n+1,2} - 2x_{n,4}\right)\\
+x_{n+1,4} &= \frac{1}{5} \left(25+x_{n+1,1} - x_{n+1,2} +2 x_{n+1,3}\right)
+\end{align*}
+After $10$ iterations, the Gauss-Seidel iterative method
+yields the following approximation of the solution of
+$A\VEC{x} = \VEC{b}$ with an accuracy of $10^{-5}$.
+\[
+\VEC{x} \approx \begin{pmatrix}
+-0.755414 & 1.796178 & -2.892994 & 3.332484
+\end{pmatrix} \ .
+\]
+
+\subQ{d} The iterative system associated to the relaxation method is
+\begin{align*}
+x_{n+1,1} &= x_{n,1} + \frac{\omega}{4}
+\left(5- 4 x_{n,1} - x_{n,2} + x_{n,3} - x_{n,4}\right)\\
+x_{n+1,2} &= x_{n,2} + \frac{\omega}{5}
+\left(2-x_{n+1,1} -5x_{n,2}- x_{n,3} + x_{n,4}\right)\\
+x_{n+1,3} &= x_{n,3} + \frac{\omega}{6}
+\left(-14-2x_{n+1,1} + x_{n+1,2} -6x_{n,3}- 2x_{n,4}\right)\\
+x_{n+1,4} &= x_{n,1} + \frac{\omega}{5}
+\left(25+x_{n+1,1} - x_{n+1,2} + 2 x_{n+1,3} -5x_{n,4}\right)
+\end{align*}
+
+To prove that this iterative method converge for $0 < \omega < 2$, we
+use the form $\VEC{x}_{n+1} = T\VEC{x}_n + \VEC{c}$, where
+$T = (D-\omega L)^{-1}((1-\omega)D + \omega U)$ and 
+$\VEC{c} = \omega (D-\omega L)^{-1}\VEC{b}$ with
+\[
+U = \begin{pmatrix} 0 & -1 & 1 & -1 \\ 0 & 0 & -1 & 1 \\
+0 & 0 & 0 & -2 \\ 0 & 0 & 0 & 0 \end{pmatrix} \quad ,
+\quad L = \begin{pmatrix} 0 & 0 & 0 & 0 \\ -1 & 0 & 0 & 0 \\
+-2 & 1 & 0 & 0 \\ 1 & -1 & 2 & 0 \end{pmatrix}  \quad \text{and}
+\quad D = \begin{pmatrix} 4 & 0 & 0 & 0 \\ 0 & 5 & 0 & 0 \\
+  0 & 0 & 6 & 0 \\ 0 & 0 & 0 & 5 \end{pmatrix} \ .
+\]
+If $\omega = 9.6$, we have
+\[
+  T = \begin{pmatrix}
+0.04 & -0.24 &  0.24 & -0.24 \\
+-0.00768 &  0.08608 & -0.23808 & 0.23808 \\
+-0.0140288 &  0.0905728 & -0.0748928 & -0.2051072 \\
+0.0037675008 & -0.0278274048 &  0.0630325248 & -0.1305525248
+\end{pmatrix} \ .
+\]
+The eigenvalues of $T$ (rounded to five significant digits) are 
+$-0.022692 \pm 0.16947\,i$, $-0.031173$ and $-0.0028092$.  Since
+they are all smaller than $1$ in absolute value, it follows from
+Theorem~\ref{convth} that the relaxation iterative method with
+$\omega = 9.6$ converges because $\rho(T) < 1$.  The general case for
+$0 < \omega < 2$ is left to the reader interested in very long
+algebraic computations.
+
+The value of $\omega$ for which the convergence of the Relaxation
+Method seems to be the fastest is $\omega$ between $0.96$ and $0.97$
+approximately.  With $\omega=9.6$, only $9$ iterations are necessary
+to get the following approximation of the solution of
+$A\VEC{x} = \VEC{b}$ with an accuracy of $10^{-5}$.
+\[
+\VEC{x} \approx \begin{pmatrix}
+-0.755412 & 1.796177 & -2.892995 & 3.332484
+\end{pmatrix} \ .
+\]
+}
+
+\solution{\SOL}{\ref{solvBQ11}}{
+Suppose that $\VEC{p}$ is a solution of $\VEC{x} = T\VEC{x} - \VEC{c}$.
+Since $\rho(T) \geq 1$, there is at least one eigenvalue, say
+$\lambda$, such that $|\lambda|\geq 1$.  Let $\VEC{u}$ be an
+eigenvector associated to $\lambda$, and let
+$\VEC{x}_0 =  \VEC{u} + \VEC{p}$.  We prove by induction that
+\begin{equation}\label{fxptdiverge}
+ \VEC{x}_k - \VEC{p} =  \lambda^k \VEC{u}
+\end{equation}
+for $k\geq 0$.  It is obvious that (\ref{fxptdiverge}) is true for
+$k=0$.  Let's suppose that (\ref{fxptdiverge}) is true for $k$, then
+\begin{align*}
+\VEC{x}_{k+1} - \VEC{p} &=
+( T\VEC{x}_k + \VEC{c} ) - ( T\VEC{p} + \VEC{c} )
+= T( \VEC{x}_k - \VEC{p} ) = T( \lambda^k \VEC{u} )
+= \lambda^k T \VEC{u} = \lambda^{k+1} \VEC{u} \ .
+\end{align*}
+Thus (\ref{fxptdiverge}) is true for $k$ replaced by $k+1$.
+
+However, $\{ \lambda^k \VEC{u} \}_{k=0}^\infty$ does not
+converge to $\VEC{0}$.  If $|\lambda| > 1$, we have
+that $\|\lambda^k \VEC{u}\| = |\lambda|^k \|\VEC{u}\| \to \infty$
+as $k \to \infty$.  If $|\lambda| = 1$, we have
+that $\|\lambda^k \VEC{u}\| = \|\VEC{u}\| > 0$ for all $k$.  Again,
+$\|\lambda^k \VEC{u}\| \not\to 0$ as $k\to \infty$.  If follows from
+(\ref{fxptdiverge}) that $\{\VEC{x}_k\}_{k=0}^\infty$
+does not converge to $\VEC{p}$ for $\VEC{x}_0 =  \VEC{u} + \VEC{p}$.
+That such a vector $\VEC{x}_0$ exists was predicted by
+Theorem~\ref{convth}.
+
+It is interesting to note that if there is no $\VEC{p}$ such that
+$\VEC{p} = T\VEC{p} - \VEC{c}$, then $\{\VEC{x}_k\}_{k=0}^\infty$
+defined by $\VEC{x}_{k+1} = T \VEC{x}_k + \VEC{c}$ does not converge
+at all for all choices of $\VEC{x}_0$.  If $\{\VEC{x}_k\}_{k=0}^\infty$
+was to converge to a vector $\VEC{q}$, then we would get
+\[
+\VEC{q} = \lim_{k\to \infty}\VEC{x}_{k+1}
+= \lim_{k\to \infty}\big(T \VEC{x}_k + \VEC{c}\big)
+= T\big(\lim_{k\to \infty}\VEC{x}_k\big) + \VEC{c}
+= T\VEC{q} + \VEC{c}
+\]
+by continuity.  This would be a contradiction of our assumption that
+there is no $\VEC{p}$ such that $\VEC{p} = T\VEC{p} - \VEC{c}$.   Thus,
+$\{\VEC{x}_k\}_{k=0}^\infty$ doesn't converge for all $\VEC{x}_0$.
+}
+
+\solution{\SOL}{\ref{solvBQ12}}{
+\subQ{a} Jacobi Iterative Method is of the form
+$\VEC{x}_{k+1} = T \VEC{x_k} + \VEC{c}$,
+where $\VEC{c}=D^{-1}\VEC{b}$ and $T=D^{-1}(L+U)=D^{-1}U$ is
+a strictly upper-triangular matrix (only $0$ on the diagonal).  Since
+the only eigenvalues of $T$ is $0$, the spectral radius of $T$ is
+$\rho(T)=0<1$.  Hence, the iterative method converges according to
+Theorem~\ref{convth}.
+
+\subQ{b} For this particular choice of $A$, we have
+$D = \Id_3$, $L = 0$ and
+$\displaystyle U = \begin{pmatrix} 0 & -3 & -5 \\ 0 & 0 & -5 \\ 0 & 0
+& 0 \end{pmatrix}$.
+Thus $T = U$.  With
+$\displaystyle \VEC{x}_0 = \begin{pmatrix} 1 & 0 & 0 \end{pmatrix}^\top$,
+we get
+\begin{align*}
+\VEC{x}_1 &=
+\begin{pmatrix} 0 & -3 & -5 \\ 0 & 0 & -5 \\ 0 & 0 & 0 \end{pmatrix}
+\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} +
+\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} =
+\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \ , \quad
+\VEC{x}_2 =
+\begin{pmatrix} 0 & -3 & -5 \\ 0 & 0 & -5 \\ 0 & 0 & 0 \end{pmatrix}
+\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} +
+\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} =
+\begin{pmatrix} -7 \\ -4 \\ 1 \end{pmatrix} \ , \\ 
+\VEC{x}_3 &=
+\begin{pmatrix} 0 & -3 & -5 \\ 0 & 0 & -5 \\ 0 & 0 & 0 \end{pmatrix}
+\begin{pmatrix} -7 \\ -4 \\ 1 \end{pmatrix} +
+\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} =
+\begin{pmatrix} 8 \\ -4 \\ 1 \end{pmatrix} \ , \quad
+\VEC{x}_4 =
+\begin{pmatrix} 0 & -3 & -5 \\ 0 & 0 & -5 \\ 0 & 0 & 0 \end{pmatrix}
+\begin{pmatrix} 8 \\ -4 \\ 1 \end{pmatrix} +
+\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} =
+\begin{pmatrix} 8 \\ -4 \\ 1 \end{pmatrix} \ .
+\end{align*}
+The solution is
+$\displaystyle \begin{pmatrix} 8 & -4 & 1 \end{pmatrix}^\top$.
+
+\subQ{c} We have seen, in the context of the proof of
+Theorem~\ref{convth}, that
+\[
+  \VEC{x}_k = T^k \VEC{x}_0 + \sum_{i=0}^{k-1} T^i \VEC{c}
+\]
+for $k>0$.  However, it is easy to show that any \nn strictly
+upper-triangular matrix satisfies $T^n = 0$.  Thus
+\[
+  \VEC{x}_k = \sum_{i=0}^{n-1} T^i \VEC{c}
+\]
+for $k\geq n$.  Thus, the Jacobi iterative method converges in 
+$n$ iterations to its limit.
+}
+
+\solution{\SOL}{\ref{solvBQ13}}{
+Since $A$ is upper-triangular, the Gauss-Seidel iterative method is of
+the form $\VEC{x}_{k+1} = T \VEC{x_k} + \VEC{c}$,
+where $\VEC{c}=(D-L)^{-1}\VEC{b}= D^{-1}\VEC{b}$ and
+$T=(D-L)^{-1}U=D^{-1}U$ is a strictly upper-triangular matrix (only
+$0$ on the diagonal).  Since the
+only eigenvalues of $T$ is $0$, the spectral radius of $T$ is
+$\rho(T)=0<1$.  Hence, the Gauss-Seidel iterative method converges
+according to Theorem~\ref{convth}.
+
+We have seen, in the context of the proof of Theorem~\ref{convth}, that
+\[
+  \VEC{x}_k = T^k \VEC{x}_0 + \sum_{i=0}^{k-1} T^i \VEC{c}
+\]
+for $k>0$.  However, it is easy to show that any \nn strictly
+upper-triangular matrix satisfies $T^n = 0$.  Thus
+\[
+  \VEC{x}_k = \sum_{i=0}^{n-1} T^i \VEC{c}
+\]
+for $k\geq n$.  Thus, the Gauss-Seidel iterative method converges in 
+$n$ iterations to its limit.
+}
+
+\solution{\SOL}{\ref{solvBQ14}}{
+\subQ{a} The relaxation method to approximate the solution $\VEC{p}$
+of $A\VEC{x} = \VEC{b}$ is of the form
+$\VEC{x}_{k+1} = T \VEC{x}_k + \VEC{c}$, where
+$T=(D-\omega\,L)^{-1}\left((1-\omega)D + \omega U\right)$ and
+$\VEC{c} = \omega(D-\omega\, L)^{-1} \VEC{b}$.  Since
+\begin{align*}
+T &= (D-\omega\,L)^{-1}\left((1-\omega)D + \omega U\right)
+= \begin{pmatrix} 1 & 0 \\ -2\omega & 3 \end{pmatrix}^{-1}
+\, \begin{pmatrix} 1-\omega & 0 \\ 0 & 3(1-\omega) \end{pmatrix} \\
+& = \begin{pmatrix} 1 & 0 \\ 2\omega/3 & 1/3 \end{pmatrix}
+\, \begin{pmatrix} 1-\omega & 0 \\ 0 & 3(1-\omega) \end{pmatrix}
+= \begin{pmatrix} 1-\omega & 0 \\ 2\omega(1-\omega)/3 
+& 1-\omega \end{pmatrix}
+\end{align*}
+$1-\omega$ is an eigenvalue of $T$ of algebraic multiplicity two.
+
+It follows from Theorem~\ref{convth} that the sequence
+$\{\VEC{x}_k\}_{k=0}^\infty$ generated by the relaxation method will
+converge for any $\VEC{x}_0$ to the fixed point $\VEC{p}$ of
+$F(\VEC{x}) = T\VEC{x}+\VEC{c}$ (and so the solution of
+$A\VEC{x}=\VEC{b}$) if and only if $\rho(T)$, the spectral radius of
+$T$, is smaller than $1$.  Therefore, the relaxation method will
+converge to the fixed point $\VEC{p}$ if and only if $\omega \in ]0,2[$.
+
+\subQ{b} The optimal value of $\omega$ is the value for which
+$\rho(T)$ is the smallest.  This happen for $\omega=1$ when we get
+$\rho(T)=0$.  The relaxation method is then the Gauss-Seidel Iterative
+Method. 
+
+\subQ{c} It is shown in the answer to Question~\ref{solvBQ11} that
+the sequence $\{\VEC{x}_k\}_{k=0}^\infty$ does not converge for all
+$\VEC{x}_0$ if there is no solution to $\VEC{x} = T \VEC{x} + \VEC{c}$.
+Moreover, if there is a solution $\VEC{p}$ to $\VEC{x} = T \VEC{x} + \VEC{c}$,
+then the sequence $\{\VEC{x}_k\}_{k=0}^\infty$ does not converge to $\VEC{p}$
+if $\VEC{x}_0 = \VEC{p} + \VEC{u}$ for $\VEC{u}$ an eigenvector
+associated to the eigenvalue $1-\omega$.
+}
+
+\solution{\SOL}{\ref{solvBQ15}}{
+\subQ{a}  The gradient of $g$ is
+\[
+  \graD g(\VEC{x}) = (A+A^\top)\VEC{x} - 2 \VEC{b} \ .
+\]
+Since $A$ is symmetric,
+\[
+  \graD g(\VEC{x}_k) = 2 A\VEC{x}_k - 2 \VEC{b} = - 2 \VEC{u}_k
+\]
+by definition of $\VEC{u}_k$ for this version of the steepest descent
+method.
+
+\subQ{b}  Since $\VEC{u}_k = \VEC{b} - A\VEC{x}_k$ and
+$\VEC{x}_{k+1} = \VEC{x} + t_k \VEC{u}_k$, we get
+\[
+t_k = \frac{\ps{\VEC{u}_k}{\VEC{b} - A\VEC{x}_k}}{\ps{\VEC{u}_k}{A\VEC{u}_k}}
+= \frac{\ps{\VEC{u}_k}{\VEC{u}_k}}{\ps{\VEC{u}_k}{A\VEC{u}_k}}
+\]
+and
+\[
+  \ps{\VEC{u}_{k+1}}{\VEC{u}_k}
+  = \ps{\VEC{b} - A\VEC{x}_{k+1}}{\VEC{u}_k}
+  = \ps{\VEC{b} - A\VEC{x}_k - t_k A \VEC{u}_k}{\VEC{u}_k}
+ = \ps{\VEC{u}_k}{\VEC{u}_k} - t_k \ps{A\VEC{u}_k}{\VEC{u}_k}
+ = 0 \ .
+\]
+
+\subQ{c} The following figure contains some level curves of $g$ and
+illustrates this version of the steepest descent method.
+
+\pdfbox{solve_equ_B/steepest_desc_v2}
+}
+
+\solution{\SOL}{\ref{solvBQ17}}{
+Since $A$ is strictly positive definite, We have that
+\[
+\ps{\VEC{r}}{\VEC{e}}
+= \ps{\VEC{b} - A \VEC{x}}{A^{-1}\VEC{b} - \VEC{x}}
+= \ps{A(A^{-1}\VEC{b} - \VEC{x})}{A^{-1}\VEC{b} - \VEC{x}}
+> 0
+\]
+as long as $A^{-1}\VEC{b} - \VEC{x} \neq \VEC{0}$; namely, as long as,
+$\VEC{b} - A\VEC{x} \neq \VEC{0}$.
+}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End: 

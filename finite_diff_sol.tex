@@ -1,0 +1,188 @@
+\nonumsection{Chapter~\ref{FiniteDiffMeth} : Finite Difference Methods}
+
+\solution{\SOL}{\ref{fdmQ1}}{
+Consider a function $v:R_\Delta \to \RR$.  Let $v_{i,j} = v(x_i,t_j)$
+for all $(x_i,t_j) \in R_\Delta$ and let\\
+$\displaystyle \frac{1}{2}\left( f(x_i,y_j) + f(x_i,y_{j+1})\right)
+= P_\Delta(v_{i,j},v_{i,j+1},v_{i+1,j},\ldots)$.
+
+We have
+\[
+\frac{v_{i,j+1}- v_{i,j}}{\dtx{t}} - \frac{c^2}{2} \,
+\left( \frac{v_{i+1,j} - 2v_{i,j} + v_{i-1,j}}{(\dtx{x})^2}
++ \frac{v_{i+1,j+1} - 2v_{i,j+1} + v_{i-1,j+1}}{(\dtx{x})^2} \right)
+= \frac{1}{2}\left( f(x_i,y_j) + f(x_i,y_{j+1})\right)
+\]
+for $0<i<N$ and $0\leq j < M$.  Thus
+\[
+(1 + \alpha) v_{i,j+1} = (1-\alpha) v_{i,j}
++ \frac{\alpha}{2} \left( v_{i+1,j} + v_{i-1,j} \right)
++ \frac{\alpha}{2} \left( v_{i+1,j+1} + v_{i-1,j+1} \right)
++ \frac{1}{2}\left( f(x_i,y_j) + f(x_i,y_{j+1})\right) \dtx{t}
+\]
+for $0<i<N$ and $0\leq j < M$, where
+$\displaystyle \alpha = \frac{c^2\dtx{t}}{(\dtx{x})^2}$.
+
+Let $\displaystyle v_j = \max_{0<i<N} |v_{i,j}|$ and
+$\displaystyle F = \max_{\substack{0<i<N\\0\leq j<N}} \frac{1}{2}
+  |f(x_i,y_j) + f(x_i,y_{j+1})|$.
+If $\alpha \leq 1$, we get
+\begin{align*}
+(1 + \alpha) |v_{i,j+1}| &\leq (1-\alpha) |v_{i,j}|
++ \frac{\alpha}{2} \left( |v_{i+1,j}| + |v_{i-1,j}| \right)
++ \frac{\alpha}{2} \left( |v_{i+1,j+1}| + |v_{i-1,j+1}| \right) \\
+& \qquad\quad + \frac{1}{2}\left| f(x_i,y_j) + f(x_i,y_{j+1})\right| \dtx{t} \\
+& \leq (1-\alpha) v_j + v_j + v_{j+1} + F \dtx{t}
+\leq v_j + v_{j+1} + F \dtx{t}
+\end{align*}
+for $0<i<N$ and $0\leq j < M$.  Thus
+\[
+(1 + \alpha) |v_{j+1}| \leq v_j + v_{j+1}  + F \dtx{t}
+\Rightarrow
+v_{j+1} \leq v_j + F \dtx{t}
+\]
+for $0\leq j < M$.  By induction, we get
+\[
+  v_j \leq v_0 + (j \dtx{t}) F \leq v_0 + T F 
+\]
+for $0\leq j \leq M$.  Hence,
+\[
+  |v_{i,j}| \leq v_j \leq v_0 + T F
+\]
+for $0\leq j \leq M$ and $0<i<N$.  Since
+$\displaystyle \frac{1}{2}\left( f(x_i,y_j) + f(x_i,y_{j+1})\right)
+= P_\Delta(v_{i,j},v_{i,j+1},v_{i+1,j},\ldots)$
+for $(i,j)$ such that $(x_i,t_j) \in R_\Delta^o$
+and $B_\Delta(v_{i,j},v_{i,j+1},v_{i+1,j},\ldots) = v_{i,j}$
+for $(i,j)$ such that $(x_i,t_j) \in \partial R_\Delta$.  We can
+rewrite the previous inequality as
+\begin{align*}
+|v_{i,j}| &\leq \max_{0<i<N}|B_\Delta(v_{i,0},v_{i,1},v_{i+1,0},\ldots)|
++ T \max_{\substack{0<i<N\\0<j\leq M}}|P_\Delta(v_{i,j},v_{i,j+1},v_{i+1,j},\ldots)|
+\\
+&\leq \max_{\substack{(i,j)\ \text{such that}\\(x_i,t_j) \in \partial R_\Delta}}
+|B_\Delta(v_{i,0},v_{i,1},v_{i+1,0},\ldots)|
++ T \max_{\substack{(i,j)\ \text{such that}\\(x_i,t_j) \in R_\Delta^o}}
+|P_\Delta(v_{i,j},v_{i,j+1},v_{i+1,j},\ldots)|
+\end{align*}
+for $0\leq j \leq M$ and $0<i<N$.  Since
+$B_\Delta(v_{i,j},v_{i,j+1},v_{i+1,j},\ldots) = v_{i,j}$ for $(i,j)$
+such that $(x_i,t_j) \in \partial R_\Delta$, we get 
+(\ref{stabCondFDM}) with $C = \max \{1, T\}$.
+}
+
+\solution{\SOL}{\ref{fdmQ2}}{
+\subQ{a} Since $P P^\ast = P^\ast P$, we have that
+\[
+\ps{P^2 x}{P^2x} = \ps{Px}{P^\ast P P x} = \ps{Px}{P P^\ast Px}
+= \ps{P^\ast P x}{P^\ast P x} \ .
+\]
+Thus
+\[
+\|P^2\| = \sup_{\|x|=1} \left\|P^2 x\right\|
+= \sup_{\|x|=1} \sqrt{\ps{P^2 x}{P^2x}}  
+= \sup_{\|x|=1} \sqrt{\ps{P^\ast P x}{P^\ast P x}}  
+= \sup_{\|x|=1} \left\| P^\ast P x \right\| = \left\|P^\ast P\right\| \ .
+\]
+
+\subQ{b}  We first prove that
+\begin{equation} \label{fdmQ2eq1}
+  \left\|P^\ast P \right\| = \sup_{\|x|=\|y\|=1}\ps{x}{P^\ast P y} \ .
+\end{equation}
+Using Schwartz's inequality, we have
+\[
+\ps{x}{P^\ast P y} \leq \|x\|\, \left\|P^\ast P y \right\|
+\leq \|x\| \, \left\|P^\ast P \right\| \, \|y\| = \left\|P^\ast P \right\|
+\]
+for all $x$ and $y$ such that $\|x|=\|y\|=1$.  Thus
+\begin{equation} \label{fdmQ2eq2}
+\sup_{\|x|=\|y\|=1}\ps{x}{P^\ast P y} \leq \left\| P^\ast P \right\| \ .
+\end{equation}
+Moreover
+\begin{equation} \label{fdmQ2eq3}
+\sup_{\|x|=\|y\|=1}\ps{x}{P^\ast P y}
+\geq \sup_{\substack{\|y\|=1\\x = \left\|P^\ast P y \right\|^{-1} P^\ast P y}}
+\ps{x}{P^\ast P y} = 
+= \sup_{\|y\|=1} \left\|P^\ast P y \right\| = \left\|P^\ast P\right\| \ .
+\end{equation}
+because $\|x\|=1$ for
+$x = \left\|P^\ast P y \right\|^{-1} P^\ast P y$.  Thus
+(\ref{fdmQ2eq1}) follows from (\ref{fdmQ2eq2}) and (\ref{fdmQ2eq3}).
+
+We have that
+\[
+  \left\|P^\ast P \right\| = \sup_{\|x|=\|y\|=1}\ps{x}{P^\ast P y}
+= \sup_{\|x|=\|y\|=1}\ps{P x}{P y} \geq \sup_{\|y\|=1}\ps{P y}{P y}
+= \|P\|^2 \ .
+\]
+We get from (a) that $\displaystyle \left\|P^2\right\| \geq \|P\|^2$.
+But we already know that $\displaystyle \left\|P^2\right\| \leq \|P\|^2$
+by a property of bounded linear operators.  Thus
+$\displaystyle \left\|P^2\right\| = \|P\|^2$.
+}
+
+\solution{\SOL}{\ref{fdmQ3}}{
+We use Proposition~\ref{MatrixStabProp} to answer this question.
+
+As we have seen in Example~\ref{Moreell2StabEgg}, the finite difference
+scheme given by Algorithm~\ref{fdm_sch1S} can be expressed as
+$\VEC{w}_{j+1} = Q\VEC{w}_j + \VEC{B}_j$ for $j\geq 0$, where
+$Q = -K$ for $K$ given in (\ref{fdm_K}) and
+\[
+\VEC{B}_j = \begin{pmatrix}
+\alpha w_{0,j} + f(x_1,t_j) \dtx{t} \\
+f(x_2,t_j) \dtx{t} \\
+\vdots \\
+f(x_{N-2},t_j) \dtx{t} \\
+\alpha w_{N,j} + f(x_{N-1},t_j) \dtx{t}
+\end{pmatrix} \ .
+\]
+The matrix $Q$ can be written as $Q = \Id + \alpha A$, where
+\[
+A = \begin{pmatrix}
+-2 & 1 & 0 & 0 & 0 & \ldots & 0 & 0 \\
+1 & -2 & 1 & 0 & 0 & \ldots & 0 & 0  \\
+0 & 1 & -2 & 1 & 0 & \ldots & 0 & 0 \\
+0 & 0 & 1 & -2 & 1 & \ldots & 0 & 0 \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & 0 & 0 & \cdots & 1 & -2
+\end{pmatrix}
+\]
+is a \nm{(N-1)}{(N-1)} matrix.  It follows from
+Proposition~\ref{fdm_eigR} that the eigenvalues of $A$ are
+\[
+\lambda_i = -2 + 2 \cos\left(k\,\pi/N\right)
+= -4 \sin^2\left(k \,\pi/(2N)\right) \quad , \quad
+0 < k < N \ .
+\]
+Thus, the eigenvalues of $Q$ are $1+\alpha \lambda_k$ for $0 < k < N$.
+To get eigenvalues that are smaller or equal to $1$ in absolute value,
+we need to have $\left|1+\alpha \lambda_k \right| \leq 1$ for
+$0 < k < N$; namely, we need to have
+\[
+-1 \leq 1 - 4 \alpha \sin^2\left(k\,\pi/(2N)\right) \leq 1
+\quad , \quad 0 < k < N \ .
+\]
+The second inequality is always satisfied, so $\alpha$ must satisfy
+\[
+-1 \leq 1 - 4 \alpha \sin^2\left(k\,\pi/(2N)\right) \quad ,
+\quad  0 < k < N  \ .
+\]
+This is equivalent to
+\[
+0 < \alpha \leq \frac{1}{2 \sin^2\left(k\,\pi/(2N)\right)}
+\quad , \quad  0 < k < N  \ .
+\]
+However, 
+\[
+  \frac{1}{2 \sin^2\left(k\,\pi/(2N)\right)} > \frac{1}{2}
+\]
+for $0 < k < N$ and converges to $1/2$ for $k=N-1$ and $N \to \infty$.
+
+Thus, the finite difference scheme is $\ell^2$-stable if $0 < \alpha \leq 1/2$.
+}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End:

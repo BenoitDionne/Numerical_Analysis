@@ -1,0 +1,741 @@
+\section{Appendix}
+
+This section is to illustrate how complex a simple
+{\bfseries discrete dynamical system}\label{Discrete Dynamical System}
+of the form
+\[
+x_{i+1} = f(x_i)  \; ,
+\]
+where $f:\RR\rightarrow \RR$ is a continuous function, can be.  The
+complexity is even greater if $f:\RR^k \rightarrow \RR^k$ with $k>1$.
+Discrete dynamical systems show up in many numerical algorithms.
+For instance, the Newton's Method to find zeros of functions yields
+discrete dynamical systems, some numerical methods to solve ordinary
+differential equations or partial differential equations are
+discrete dynamical systems, etc.  It is therefore important to
+understand the behaviour of discrete dynamical systems, or at least to
+be aware of the complex behaviour of these systems. 
+
+A good introduction to the subject of this appendix is \cite{D}.  It
+is also a good reference for the proofs of most of results stated in this
+appendix.
+
+\subsection{Elementary Concepts of Discrete Dynamical Systems}
+
+\begin{defn}
+Consider a continuous function $f:\RR \rightarrow \RR$ and $x \in \RR$.
+The {\bfseries forward orbit}\index{Orbit!Forward} of $x$ is the set
+\[
+\OO_x^+ = \left\{ x, f(x), f^2(x) = f(f(x)), f^3(x)= f(f(f(x))), \ldots
+\right\} \  .
+\]
+If $f$ has an inverse $f^{-1}:\RR\rightarrow \RR$, the
+{\bfseries backward orbit}\index{Orbit!Backward} of $x$ is the set
+\[
+\OO_x^- = \left\{ x, f^{-1}(x), f^{-2}(x) = f^{-1}(f^{-1}(x)),
+f^{-3}(x)= f^{-1}(f^{-1}(f^{-1}(x))), \ldots \right\}
+\]
+and the {\bfseries orbit}\index{Orbit} of $x$ is
+$\OO_x = \OO_x^+ \cup \OO_x^-$.
+\end{defn}
+
+\begin{defn}
+Consider a continuous function $f:\RR \rightarrow \RR$.  The point
+$p \in \RR$ is a {\bfseries periodic point}\index{Periodic Point} of
+$f$ if there exists a positive integer $n$ such that $f^n(p) = p$.  If
+$n$ is the smallest positive integer such that $f^n(p)=p$, we say that
+$p$ is of {\bfseries period}\index{Period} $n$.  When $n=1$, $p$ is a
+{\bfseries fixed point}\index{Fixed Point}.
+We denote by $\Per_n(f)$ the set of all periodic point of $f$ of
+period $n$.  In particular, $\Fix(f) = \Per_1(f)$ is the set of fixed
+points of $f$.  If $p$ is a periodic point of $f$, $\OO_p$ is a
+{\bfseries periodic orbit}\index{Periodic Orbit}.
+\end{defn}
+
+\begin{egg}
+Consider the {\bfseries logistic map}\index{Logistic Map}
+\[
+f_\mu(x) = \mu x(1-x)
+\]
+for $0\leq x \leq 1$.  For $0 \leq \mu \leq 4$, we have
+$f_\mu:[0,1]\rightarrow [0,1]$.  Moreover, $f_\mu$ has two fixed
+points: $p_0 = 0$ and
+$\displaystyle p_{\mu} = \frac{\mu-1}{\mu}$ for $\mu > 0$.
+
+For $\mu=3.4$, $p_{3.4} = 0.45195878844045\ldots$ is a periodic point of
+$f_\mu$ of period $2$.  The orbit of period two is
+\[
+\left\{ 0.45195878844045, 0.84215476876273, 0.45195878844045,
+0.84215476876273, \ldots \right\} \; ,
+\]
+where the values have been chopped
+to $14$ digits after the decimal point.  This can be easily seen from the
+{\bfseries staircase diagram}\index{Staircase Diagram} or
+{\bfseries cobweb}\index{Cobweb} of $f_\mu$ shown in Figure~\ref{figCW}.
+
+\mathF{discrete_dyn/logistic1}{7cm}{Cobweb}{Cobweb}{figCW}
+
+Another way to illustrate the behaviour of $f_\mu$ is with the
+{\bfseries phase portrait}\index{Phase Portrait} of $f_\mu$ shown in
+Figure~\ref{figPP}.
+
+\pdfF{discrete_dyn/phase_portrait}{Phase Portrait}{Phase Portrait}{figPP}
+
+Finally, one can plot the histogram of $f_\mu$.  Namely, we divide
+the interval $[0,1]$ into a large number of subintervals of equal
+lengths and we compute the percentage of iterations that enter each
+subinterval.  For $\mu=3.4$, the histogram with $200$ subintervals of
+$[0,1]$ and $10,000$ iterations is given in Figure~\ref{figHG}.
+
+\mathF{discrete_dyn/histogram1}{7cm}{Histogram for $f_{3.4}$}
+{Histogram for $f_{3.4}$}{figHG}
+
+For $\mu=3.5$, $p_{3.5} = 0.87499726360246\ldots$ is a periodic point of
+$f_\mu$ of period $4$.  The orbit of period four is
+\[
+\left\{0.87499726360246, 0.38281968301732, 0.82694070659144,
+0.50088421030722, \ldots \right\} \; ,
+\]
+where the values have been chopped
+to $14$ digits after the decimal point (see Figure~\ref{figPF}).
+
+\mathF{discrete_dyn/logistic2}{7cm}{Period Four}{Period Four}{figPF}
+\label{EggLogMap1}
+\end{egg}
+
+\begin{defn}
+Consider a continuous function $f:\RR \rightarrow \RR$.  The points
+$p$ and $q$ in $\RR$ are
+{\bfseries forward asymptotic}\index{Forward Asymptotic} if
+\[
+\lim_{j\rightarrow \infty} \left| f^j(p) - f^j(q) \right| = 0 \ .
+\]
+In particular, if $p \in \RR$ is a periodic point of period $n$, then a
+point $q$ is
+{\bfseries forward asymptotic to $p$}\index{Forward Asymptotic to a Point} if
+\[
+p = \lim_{j\rightarrow \infty} f^{jn}(q) \  .
+\]
+The set of all points forward asymptotic to $p$ is denoted by $W^s(p)$.
+There are similar definitions for
+{\bfseries backward asymptotic}\index{Backward Asymptotic}.
+\end{defn}
+
+\begin{defn}
+Consider a continuous function $f:\RR \rightarrow \RR$.
+A fixed point $p$ of $f$ is {\bfseries stable}\index{Stable} if, for any open
+neighbourhood $U$ of $p$, there exists an open neighbourhood $V$ of $p$
+such that $f^i(V) \subset U$ for all $i > 0$.  Fixed points that are
+not stable are called {\bfseries unstable}\index{Unstable}.   A fixed
+point $p$ of
+$f$ is {\bfseries asymptotically stable}\index{Asymptotically Stable} if it is
+stable and there exists an open neighbourhood $W$ of $p$ such
+$\displaystyle \lim_{i\rightarrow \infty} f^{i}(x) = p$ for all
+$x\in W$.
+
+If $p$ is a period point of period $n$ for $f$, we say that the
+periodic orbit $\OO_p$ is {\bfseries stable}\index{Stable} if $p$ is a stable
+fixed point of $f^n$.  We say that the periodic orbit is
+{\bfseries asymptotically stable}\index{Asymptotically Stable} if $p$
+is an asymptotically stable fixed point of $f^n$.
+\end{defn}
+
+\begin{rmk}
+The previous definition of stability and asymptotic stability for a
+period orbit is independent of the point $p$ of the orbit used to
+determine the stability or the asymptotic stability.
+
+Suppose that $p$ is a periodic point of period $n>1$ for a continuously
+invertible function $f:\RR\to \RR$.  Suppose that $p$ is stable
+for $f^n$ and let $q=f^k(p)$ be another point on the orbit $\OO_p$.
+If $U_q$ is an open neighbourhood of $q$, then $f^{-k}(U_q)$ is an
+open neighbourhood of $p$.  Since $p$ is a stable fixed point for
+$f^n$, there exists an open neighbourhood $V_p$ of $p$ such that
+$f^{ni}(V_q) \subset f^{-k}(U_q)$ for all $i>0$. 
+Hence $f^{ni}(f^k(V_p)) = f^{ni+k}(V_q) \subset U_q$ for all $i>0$,
+where $f^k(V_p)$ is an open neighbourhood of $q$.  This proves that
+$q$ is a stable fixed point of $f^n$.
+
+Suppose furthermore that $p$ is an asymptotically stable fixed point
+of $f^n$.  Then there exists an open neighbourhood $W_p$ of $p$ such
+that $\displaystyle \lim_{i\to \infty}f^{ni}(x) = p$ for all $x \in W_p$.
+Thus $\displaystyle \lim_{i\to \infty}f^{ni}(f^k(x)) = f^{k}(p) = q$
+for all $x \in W_p$; namely,
+$\displaystyle \lim_{i\to \infty}f^{ni}(y) = q$ for all
+$y$ in the open neighbourhood $f^k(W_p)$ of $q$.  This proves that
+$q$ is an asymptotically stable fixed point of $f^n$.
+\end{rmk}
+
+\subsection{Qualitative Study}
+
+Consider the discrete dynamical system
+\begin{equation} \label{DDS}
+x_{i+1} = f(x_i) \; .
+\end{equation}
+For a qualitative study of this system, we would like to find all the
+fixed points, periodic orbits, \ldots.  We would also like to find the
+sets of points forward asymptotic to these objects.
+
+We first study the fixed points of (\ref{DDS}).
+
+\begin{defn}
+A fixed point $p$ of $f$ is
+{\bfseries hyperbolic}\index{Hyperbolic Fixed Point} if
+$\left|f'(p)\right| \neq 1$.
+\end{defn}
+
+A proof similar to the proof of the Fixed Point Theorem yields the next
+theorem.
+
+\begin{prop}
+Let $p$ be an hyperbolic fixed point of $f$.  If
+$\left|f'(p)\right|<1$, then $p$ is asymptotically stable
+However, if $\left|f'(p)\right|>1$, then there exists an open
+interval $I$ containing $p$ such that for each $x$ in $I$,
+$x \neq p$, one can find $j \in \NN$ such that $f^j(x) \not\in I$.
+This implies that $f^j(x) \not\in I$ for infinitely many values of $j$.
+\label{fp_stability}
+\end{prop}
+
+\begin{defn}
+If $p$ is an hyperbolic fixed point of $f$ such that
+$\left|f'(p)\right|<1$, then $p$ is called an
+{\bfseries attracting}\index{Attracting} fixed point or a
+{\bfseries sink}\index{Sink}.
+If $p$ is an hyperbolic fixed point of $f$ such that
+$\left|f'(p)\right|>1$, then $p$ is called a
+{\bfseries repelling}\index{Repelling} fixed point or a
+{\bfseries source}\index{source}.
+\end{defn}
+
+\begin{egg}
+For the logistic map $f_\mu(x) = \mu x(1-x)$, the origin is a source
+if $\mu>1$, and $\displaystyle p_\mu  = \frac{\mu-1}{\mu}$ is a sink
+if $1<\mu<3$.  This follows from
+$\displaystyle \pdfdx{f_\mu(x)}{x}\bigg|_{x=0} = \mu$ and
+$\displaystyle \pdfdx{f_\mu(x)}{x}\bigg|_{x=p_\mu} = 2-\mu$.
+\label{EggLogMap2}
+\end{egg}
+
+We can expand the notion of hyperbolicity to periodic points.
+
+\begin{defn}
+A periodic point $p$ of period $n$ for $f$ is
+{\bfseries hyperbolic}\index{Hyperbolic Period Point}
+if $\displaystyle \left| \dydx{f^n}{x}(p) \right| \neq 1$.
+\end{defn}
+
+A periodic point $p$ of $f$ of period $n$ is a fixed point of $f^n$.
+The stability of the periodic point $p$ of $f$ is determined by the
+stability of the fixed point $p$ of $f^n$.  Proposition
+\ref{fp_stability} holds for a periodic point $p$ of period $n$ if
+$f$ is replaced by $f^n$.
+
+\begin{egg}
+To study the stability of the periodic points of period $2$ for the
+logistic map $f_\mu$ with $\mu = 3.4$, we consider the iterative system
+$x_{i+1} = f_\mu^2(x_i) = f_\mu(f_\mu(x_i))$ for $i=0$, $1$, $2$, \ldots
+
+\mathF{discrete_dyn/logistic3}{7cm}{Period Two}{Period Two}{figPT}
+
+From the graph of $f_\mu^2$ given in Figure~\ref{figPT}, we see that
+the periodic point\\ $0.45195878844045\ldots$ of period $2$ is a sink.
+\label{EggLogMap3}
+\end{egg}
+
+\subsection{Bifurcation}
+
+Consider a nice function $f:\RR^2 \rightarrow \RR$.  It defines a
+one-parameter family of functions $f_\mu(x) = f(x,\mu)$.
+
+We say that $\mu = \mu_0$ is a
+{\bfseries bifurcation point}\index{Bifurcation Point} of the
+discrete dynamical system
+\[
+x_{i+1} = f_\mu(x_i)
+\]
+if the qualitative behaviour of the phase portrait changes as $\mu$
+goes through $\mu_0$.  For instance, the number of fixed points
+change, new periodic solutions appear, etc.
+
+There are three major results related to bifurcation.  The first
+result is a simple consequence of the Implicit Function Theorem
+applied to the function $g(x,\mu) = f(x,\mu) - x$.
+
+\begin{theorem}
+Let $f:\RR^2 \rightarrow \RR$ be a smooth function and let
+$f_\mu(x)= f(x,\mu)$.  Suppose that $f_{\mu_0}(x_0) = x_0$ and
+\[
+\pdfdx{f_{\mu}(x)}{x} \bigg|_{\mu=\mu_0,x=x_0}
+= \pdydx{f}{x}(x,\mu) \bigg|_{\mu=\mu_0,x=x_0} \neq 1  \ ,
+\]
+then there exist an open interval $I$ about $x_0$, an open interval
+$J$ about $\mu_0$, and a mapping $p:J\rightarrow I$ such that
+$p(\mu_0)=x_0$ and $f_\mu(p(\mu))=p(\mu)$ for all $\mu \in U$.
+Moreover, $f_\mu$ has no other fixed point in $I$ (Figure~\ref{figIFT}).
+\label{IFTforDS}
+\end{theorem}
+
+\pdfF{discrete_dyn/impl_funct_th}{The Implicit Function Theorem}{The Implicit
+Function Theorem}{figIFT}
+
+The next theorems describe two ``generic'' types of bifurcation.  We
+have bifurcation only when
+$\displaystyle \left| \pdfdx{f_{\mu}(x)}{x}\right| = 1$.  We use the
+word generic because the other conditions to classify these types of
+bifurcation require only that some derivatives be non-null.
+
+\begin{theorem}[Saddle-node, tangent or fold bifurcation]
+Let $f:\RR^2 \rightarrow \RR$ be a smooth function and let
+$f_\mu(x)= f(x,\mu)$.  Suppose that
+\begin{enumerate}
+\item $\displaystyle f_{\mu_0}(0)=0$\ ,
+\item $\displaystyle \pdfdx{f_{\mu}(x)}{x}\bigg|_{\mu=\mu_0,x=0} = 1$ \ ,
+\item $\displaystyle \pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=0} \neq 0$
+\quad and
+\item $\displaystyle \pdfdx{f_\mu(x)}{\mu}\bigg|_{\mu=\mu_0,x=0} \neq 0$ \ .
+\end{enumerate}
+Then, there exist an interval $I$ about $0$ and a mapping
+$q:I\rightarrow \RR$ such that $q(0) = \mu_0$ and $f_{q(x)}(x) = x$.  Moreover,
+$q'(0) = 0$ and $q''(0) \neq 0$.
+\end{theorem}
+
+Figure~\ref{figSNBDM} illustrates a typical fold bifurcation.  The fixed
+points represented by a dashed curve are sources while those
+represented by a continuous curve are sinks.  The conditions in the
+statement of the theorem above do not determine which branch of the
+curve is associated to sources and which branch is associated to
+sinks.  Moreover,
+\[
+q''(0) = \frac{\displaystyle -\pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=0}}
+{\displaystyle \pdfdx{f_{\mu}(x)}{\mu}\bigg|_{\mu=\mu_0,x=0}}
+\]
+can be used to determine if the curve $\mu=p(x)$ is
+{\bfseries supercritical}\label{Supercritical} (namely, $q''(x)>0$ as in
+Figure~\ref{figSNBDM}) or {\bfseries subcritical}\index{Subcritical}
+(namely, $q''(x)<0$).
+
+\pdfF{discrete_dyn/saddle_node}{Fold bifurcation of discrete maps}
+{A typical fold bifurcation diagram for a discrete map}{figSNBDM}
+
+\begin{theorem}[Period doubling or flip bifurcation]
+Let $f:\RR^2 \rightarrow \RR$ be a smooth function and let
+$f_\mu(x)= f(x,\mu)$.  Suppose that
+\begin{enumerate}
+\item $f_{\mu}(0)=0$ for all $\mu$ near $\mu_0$,
+\item $\displaystyle \pdfdx{f_{\mu}(x)}{x}\bigg|_{\mu=\mu_0,x=0} = -1$,
+\item
+$\displaystyle \frac{1}{2}
+\left(\pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=0}\right)^2
++\frac{1}{3} \pdfdxn{f_{\mu}(x)}{x}{3}\bigg|_{\mu=\mu_0,x=0} \neq 0$
+and
+\item $\displaystyle \pdfdxnm{f_{\mu}^2(x)}{\mu}{x}{2}{}{}
+\bigg|_{\mu=\mu_0,x=0} \not=0$,
+\end{enumerate}
+where $f^2_\mu(x) \equiv f(f(x,\mu),\mu)$.  Then, there exist
+an interval $I$ about $0$ and a mapping $q:I\rightarrow \RR$ such that
+$q(0) = \mu_0$ and $f_{q(x)}(x) \neq x$ but $f^2_{q(x)}(x) = x$.
+\label{ThePDTforM}
+\end{theorem}
+
+Figure~\ref{figPDB} illustrates a typical period doubling bifurcation.
+The fixed points are represented by the straight line $x=0$ and the periodic
+points of period two are represented by the curve.   For $\mu$ fixed,
+a periodic orbit of period two alternates between the lower and the
+upper curve. The fixed points represented by a dashed curve are
+sources while those represented by a continuous curve are sinks.   The
+periodic points of period two represented by a dashed curve are
+unstable while those represented by a continuous curve are
+asymptotically stable.    Moreover,
+\[
+  q''(0) = \frac{\displaystyle
+\left(\pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=0}\right)^2
++\frac{2}{3} \pdfdxn{f_{\mu}(x)}{x}{3}\bigg|_{\mu=\mu_0,x=0}}
+{\displaystyle \pdfdxnm{f^2_{\mu}(x)}{x}{\mu}{2}{}{}\bigg|_{\mu=\mu_0,x=0}}
+\]
+can be used to determine if the curve $\mu=q(x)$ is
+{\bfseries supercritical}\index{Supercritical} (namely, $q''(x)>0$ as in
+Figure~\ref{figPDB}) or {\bfseries subcritical}\index{Subcritical}
+(namely, $q''(x)<0$).
+
+\pdfF{discrete_dyn/period_doubling}{Period doubling bifurcation for
+discrete maps}{A typical period doubling bifurcation diagram for a
+discrete map}{figPDB}
+
+\begin{rmk}
+In the previous theorem, the condition $f_{\mu}(0)=0$ for all $\mu$
+near $\mu_0$ is not necessary.  Suppose that
+\begin{enumerate}
+\item $\displaystyle f_{\mu_0}(x_0) = x_0$\ ,
+\item $\displaystyle \pdfdx{f_{\mu}(x)}{x}\bigg|_{\mu=\mu_0,x=x_0} = -1$\ ,
+\item $\displaystyle \frac{1}{2}
+\left(\pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=x_0}\right)^2
++\frac{1}{3} \pdfdxn{f_{\mu}(x)}{x}{3}\bigg|_{\mu=\mu_0,x=x_0} \neq 0$ \ 
+and
+\item $\displaystyle \pdfdxnm{f_{\mu}^2(x)}{\mu}{x}{2}{}{}
+\bigg|_{\mu=\mu_0,x=x_0} \neq 0$ \ .
+\end{enumerate}
+From Theorem~\ref{IFTforDS}, there exists a function
+$p$ defined in an open interval $J$ of $\nu_0$ such that
+$p(\mu_0)=x_0$ and $p(\mu)$ is a fixed point of $f_\mu$ for all $\mu \in J$.
+Let $\hat{f}(x,\mu) \equiv f(x+p(\mu),\mu)-p(\mu)$.  We show that
+$\hat{f}$ satisfies the hypotheses of Theorem~\ref{ThePDTforM}.
+
+We have $\hat{f}_\mu(0)=0$ for all $\mu$ near $\mu_0$.  Since
+\[
+  \pdydxn{\hat{f}}{x}{n}(x,\mu) = \pdydxn{f}{x}{n}(x+p(\mu),\mu)
+\]
+for $n=1$, $2$, \ldots, we have
+\[
+\pdfdx{\hat{f}_{\mu}(x)}{x}\bigg|_{\mu=\mu_0,x=0}
+= \pdydx{\hat{f}}{x}(0,\mu_0)
+= \pdydx{f}{x}(0+p(\mu_0),\mu_0)
+= \pdydx{f}{x}(x_0,\mu_0)
+= \pdfdx{f_{\mu}(x)}{x} \bigg|_{\mu=\mu_0,x=x_0} = -1 \ .
+\]
+Moreover,
+\begin{align*}
+&\frac{1}{2}
+\left(\pdfdxn{\hat{f}_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=0}\right)^2
++\frac{1}{3} \pdfdxn{\hat{f}_{\mu}(x)}{x}{3}\bigg|_{\mu=\mu_0,x=0}
+= 
+\frac{1}{2} \left(\pdydxn{\hat{f}}{x}{2}(0,\mu_0) \right)^2
++\frac{1}{3} \pdydxn{\hat{f}}{x}{3}(0,\mu_0) \\
+&\qquad = \frac{1}{2} \left(\pdydxn{f}{x}{2}(0+p(\mu_0),\mu_0) \right)^2
++\frac{1}{3} \pdydxn{f}{x}{3}(0+p(\mu_0),\mu_0)
+= \frac{1}{2} \left(\pdydxn{f}{x}{2}(x_0,\mu_0) \right)^2
++\frac{1}{3} \pdydxn{f}{x}{3}(x_0,\mu_0) \\
+&\qquad =\frac{1}{2}
+\left(\pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=x_0}\right)^2
++\frac{1}{3} \pdfdxn{f_{\mu}(x)}{x}{3}\bigg|_{\mu=\mu_0,x=x_0} \neq 0 \ .
+\end{align*}
+Finally,
+\begin{equation}\label{per_db_sc}
+\pdfdxnm{\hat{f}_{\mu}^2(x)}{\mu}{x}{2}{}{}\bigg|_{\mu=\mu_0,x=0}
+= \pdfdxnm{f_{\mu}^2(x)}{\mu}{x}{2}{}{}\bigg|_{\mu=\mu_0,x=x_0} \neq 1 \ .
+\end{equation}
+To prove the first equality requires a little bit of work.  From
+\[
+\hat{f}_{\mu}^2(x) = f(f(x+p(\mu),\mu),\mu)-p(\mu) \  ,
+\]
+we get
+\[
+\pdfdx{\hat{f}_{\mu}^2(x)}{x} = \pdfdx{f(f(x+p(\mu),\mu),\mu)}{x} 
+= \pdydx{f}{x}(f(x+p(\mu),\mu),\mu) \pdydx{f}{x}(x+p(\mu),\mu)
+\]
+and
+\begin{align*}
+&\pdfdxnm{\hat{f}_{\mu}^2(x)}{\mu}{x}{2}{}{} =
+\pdfdxnm{f(f(x+p(\mu),\mu),\mu)-p(\mu)}{\mu}{x}{2}{}{} \\
+&\quad = \pdfdx{\left( \pdydx{f}{x}(f(x+p(\mu),\mu),\mu)
+\pdydx{f}{x}(x+p(\mu),\mu) \right)}{\mu}  \\
+&\quad = \pdydxn{f}{x}{2}(f(x+p(\mu),\mu),\mu)
+\left( \pdydx{f}{x}(x+p(\mu),\mu) \dydx{p}{\mu} (\mu) \right. \\
+&\qquad \left. + \pdydx{f}{\mu}(x+p(\mu),\mu) \right)
+\pdydx{f}{x}(x+p(\mu),\mu)
++ \pdydxnm{f}{x}{\mu}{2}{}{}(f(x+p(\mu),\mu),\mu)
+\pdydx{f}{x}(x+p(\mu),\mu)\\
+&\qquad +\pdydx{f}{x}(f(x+p(\mu),\mu),\mu)
+\left( \pdydxn{f}{x}{2}(x+p(\mu),\mu) \dydx{p}{\mu}(\mu)
++ \pdydxnm{f}{x}{\mu}{2}{}{}(x+p(\mu),\mu) \right) \ .
+\end{align*}
+Hence, using $p(\mu_0) = x_0$, $f(x_0,\mu_0)=x_0$ and
+$\displaystyle \pdydx{f}{x}(x_0,\mu_0) =
+\pdfdx{f_{\mu}(x)}{x}\bigg|_{\mu=\mu_0,x=x_0} = -1$, we get
+\begin{align*}
+&\pdfdxnm{\hat{f}_{\mu}^2(x)}{\mu}{x}{2}{}{} \bigg|_{\mu=\mu_0,x=0}
+= \pdydxn{f}{x}{2}(f(x_0,\mu_0),\mu_0)
+\left( \pdydx{f}{x}(x_0,\mu_0) \dydx{p}{\mu}(\mu_0)
++ \pdydx{f}{\mu}(x_0,\mu_0) \right)
+\pdydx{f}{x}(x_0,\mu_0) \\
+&\quad + \pdydxnm{f}{x}{\mu}{2}{}{}(f(x_0,\mu_0),\mu_0) \pdydx{f}{x}(x_0,\mu_0)
+ \\
+&\quad +\pdydx{f}{x}(f(x_0,\mu_0),\mu_0)
+\left( \pdydxn{f}{x}{2}(x_0,\mu_0) \dydx{p}{\mu}(\mu_0)
++ \pdydxnm{f}{x}{\mu}{2}{}{}(x_0,\mu_0) \right) \\
+&= -\pdydxn{f}{x}{2}(x_0,\mu_0) \left( - \dydx{p}{\mu}(\mu_0)
++ \pdydx{f}{\mu}(x_0,\mu_0) \right) - \pdydxnm{f}{x}{\mu}{2}{}{}(x_0,\mu_0) \\
+&\quad - \left( \pdydxn{f}{x}{2}(x_0,\mu_0) \dydx{p}{\mu}(\mu_0) 
++ \pdydxnm{f}{x}{\mu}{2}{}{}(x_0,\mu_0) \right)
+= - 2 \pdydxnm{f}{x}{\mu}{2}{}{}(x_0,\mu_0)
+ - \pdydxn{f}{x}{2}(x_0,\mu_0)\pdydx{f}{\mu}(x_0,\mu_0) \ .
+\end{align*}
+
+Moreover,
+\begin{align*}
+\pdfdxnm{f_{\mu}^2(x)}{\mu}{x}{2}{}{}
+&= \pdfdx{\left(\pdydx{f}{x}(f(x,\mu),\mu)
+\pdydx{f}{x}(x,\mu) \right)}{\mu} \\
+&= \pdydxn{f}{x}{2}(f(x,\mu),\mu) \pdydx{f}{\mu}(x,\mu)
+\pdydx{f}{x}(x,\mu) + \pdydxnm{f}{x}{\mu}{2}{}{}(f(x,\mu),\mu)
+\pdydx{f}{x}(x,\mu) \\
+&\quad + \pdydx{f}{x}(f(x,\mu),\mu) \pdydxnm{f}{x}{\mu}{2}{}{}(x,\mu) \ .
+\end{align*}
+Hence, using $f(x_0,\mu_0)=x_0$ and
+$\displaystyle \pdydx{f}{x}(x_0,\mu_0) =
+\pdfdx{f_{\mu}(x)}{x} \bigg|_{\mu=\mu_0,x=x_0} = -1$, we get
+\begin{align*}
+\pdfdxnm{f_{\mu}^2(x) }{\mu}{x}{2}{}{} \bigg|_{\mu=\mu_0,x=x_0} &= 
+\pdydxn{f}{x}{2}(f(x_0,\mu_0),\mu_0) \pdydx{f}{\mu}(x_0,\mu_0)
+\pdydx{f}{x}(x_0,\mu_0) \\
+& + \pdydxnm{f}{x}{\mu}{2}{}{}(f(x_0,\mu_0),\mu_0) \pdydx{f}{x}(x_0,\mu_0)
++\pdydx{f}{x}(f(x_0,\mu_0),\mu_0)
+\pdydxnm{f}{x}{\mu}{2}{}{}(x_0,\mu_0) \\
+&= -\pdydxn{f}{x}{2}(x_0,\mu_0) \pdydx{f}{\mu}(x_0,\mu_0)
+- 2 \pdydxnm{f}{x}{\mu}{2}{}{}(x_0,\mu_0)
+\end{align*}
+and this proves the first equality of (\ref{per_db_sc}).
+\end{rmk}
+
+\subsection{Logistic Map}
+
+This section is mainly about the logistic equation
+\[
+x_{i+1} = f_\mu(x_i) = \mu x_i (1-x_i) \; .
+\]
+We have already found the fixed points of $f_\mu$ with their stability
+in Examples~\ref{EggLogMap1} and \ref{EggLogMap2}.  We have also
+looked at period points of period $2$ for $f_\mu$ in
+Example~\ref{EggLogMap3}.  To illustrate the complex behaviour that
+discrete dynamical systems may have, we now present some results
+about the logistic map $f_\mu$ without giving the proofs.  A good
+reference is \cite{D}.  Most of the results about the logistic map
+$f_\mu$ that we present in this section are true for mappings having a
+graph ``similar'' to the graph of $f_\mu$ on $I=[0,1]$.
+
+Figure~\ref{figBDLM} is the
+{\bfseries bifurcation diagram}\index{Bifurcation Diagram} of
+$f_\mu$.  Namely, for ``each'' value of $\mu$ we plot the fixed
+points, periodic points, \ldots of $f_\mu$.
+
+\mathF{discrete_dyn/route_to_chaos}{9cm}
+{Bifurcation diagram for the logistic map}
+{Bifurcation diagram for the logistic map}{figBDLM}
+
+To produce this figure, we have chosen a large number
+of equally spaced values of $\mu$.  For each of these values of $\mu$,
+we have computed the first $200$ iterations of the orbit of $0.5$
+under $f_\mu$ and plotted only the last $80$ or so iterations.  By
+increasing the number of iterations to compute and plot, we could have
+generated a more precise bifurcation diagram.
+
+For $\mu<3$, all iterations converge to $p_\mu$.   When
+$\mu$ crosses above $3$, the fixed point $p_\mu$ becomes a
+source and there appears an attracting  periodic orbit of period $2$;
+all orbits eventually ``bounce back and for'' between the two
+points of the orbit.  We have period doubling at $\mu=3$.  This claim
+can be rigorously prove by showing that all hypothesis of
+Theorem~\ref{ThePDTforM} are satisfied.  Effectively, we have
+\begin{enumerate}
+\item $f_\mu(p_\mu) = p_\mu$ for all $\mu$ near $\mu=3$.
+\item $\displaystyle \pdfdx{f_\mu(x)}{x} \bigg|_{\mu=3,x=p_3} = -1$.
+\item
+$\displaystyle \frac{1}{2}
+\left(\pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=3,x=p_3}\right)^2
++\frac{1}{3} \pdfdxn{f_{\mu}(x)}{x}{3}\bigg|_{\mu=3,x=p_3}
+= 2\mu^2 \bigg|_{\mu=3} = 18 \neq 0$
+\item $\displaystyle \pdfdxnm{f_\mu^2(x) }{\mu}{x}{2}{}{}\big|_{\mu=3,x=p_3} =
+\left( 2\mu - 6\mu^2 x+18\mu^2 x^2 - 4\mu x -
+12\mu^2 x^3\right)\big|_{\mu=3,x=p_3}
+= 2 \not=0$.
+\end{enumerate}
+
+When $\mu$ crosses above $3.236\ldots$, the periodic orbit of period $2$
+becomes unstable and there appears an attracting periodic orbit of
+period $4$.  For $\mu$ slightly larger, the periodic orbit of period
+$4$ becomes unstable and there is a bifurcation from the attracting
+periodic orbit of period $4$ to an attracting periodic orbit of period
+$8$, And so on.  This is the best known example of a
+{\bfseries period doubling cascade}\index{Period Doubling Cascade}.
+
+For a constant value of $\mu$, if the attracting periodic orbit
+$\OO \subset [0,1]$ of $f_\mu$ is of period $n$ with $n$ very large,
+it is reasonable to expect that $\OO$ will ``almost cover'' some
+segments of the interval $[0,1]$.  This explains the shaded area.
+Figure~\ref{figLPO} illustrates the attracting periodic orbit for
+$\mu=3.6$.  The corresponding histogram with 300 subintervals and 10
+millions iterations is given in Figure~\ref{figHLPO}.
+
+\mathF{discrete_dyn/logistic8}{7cm}{Cobweb of a periodic orbit with a large
+period}{Cobweb of a periodic orbit of the logistic map for $\mu = 3.6$.
+The period of this stable periodic orbit is very large.}{figLPO}
+
+\mathF{discrete_dyn/histogram2}{7cm}{Histogram of a periodic orbit with a
+large period}{Histogram of a periodic orbit of the logistic map for
+$\mu = 3.6$.  The period of this stable periodic orbit is very large.}{figHLPO}
+
+Period doubling accumulates to $\mu = 3.5699456\ldots$.  This number
+is known as the {\bfseries Feigenbaum point}\index{Feigenbaum Point}.  Moreover, let $\mu_0=3$,
+$\mu_1=3.236\ldots$, $\mu_2$, $\mu_3$, \ldots be the values of $\mu$
+for which the logistic mapping undergoes period doubling and let
+$d_j = \mu_{j+1}-\mu_j$.  It has been showed that
+$\displaystyle \lim_{j\rightarrow \infty} \frac{d_j}{d_{j+1}} =
+4.6692016091029\ldots$.  This number is called the
+{\bfseries Feigenbaum constant}\index{Feigenbaum Constant}.
+Feigenbaum discovered this number in
+1975.  This constant is universal in the sense that it is the same
+for a whole class of dynamical systems of the form
+$x_{n+1} = g_\mu(x_n)$ where the graph of $g_\mu(x)$ looks like the
+graph of $f_\mu(x)$.
+
+Period doubling is far from being the must complex type of
+bifurcation. To understand the complex behaviour of the orbits of
+$f_\mu$, we need the following theorem.
+
+\begin{theorem}[Sarkovskii]
+Consider the order on the positive integers defined by
+\begin{multline*}
+3 \gg 5 \gg 7 \gg \ldots
+\gg 3\times 2 \gg 5\times 2 \gg \ldots \\
+\gg 3\times 2^2 \gg 5\times 2^2 \gg \ldots
+\gg 3\times 2^3 \gg 5\times 2^3 \gg \ldots
+2^4 \gg 2^3 \gg 2^2 \gg 2 \gg 1 \; .
+\end{multline*}
+Let $f:\RR \rightarrow \RR$ be a continuous function and $k$ be a
+prime number.  If $f$ has a periodic point of period $k$, then $f$ has
+a periodic point of period $m$ for all $m \ll k$.
+\end{theorem}
+
+\begin{egg}
+For $\mu = 3.839\ldots$,
+$\left\{0.14988539433432, 0.48917380192271, 0.95930024021836 \right\}$
+is an attracting periodic orbit of period $3$ of $f_\mu$, where all
+value have been chopped to $14$ digits after the decimal point
+(Figure~\ref{figPTLC}).
+
+\mathF{discrete_dyn/logistic5}{7cm}{Period Three}{Period Three}{figPTLC}
+
+Hence, $f_{3.839\ldots}$ has periodic orbits of all possible periods.
+All the periodic orbits, except the one of period $3$, are unstable
+(in fact repelling).  So, unless the iteration starts with a point on
+a repelling periodic orbit, the iterations will converge toward the
+periodic orbit of period $3$.
+\end{egg}
+
+This is not the end of the story.  We now consider $f_\mu$ for
+$\mu>4$.
+
+Let
+\[
+A_n = \left\{ x \in [0,1] : f_\mu^j(x) \in [0,1] \text{ for }
+0 \leq j \leq n \text{ and } f_\mu^j(x) \not\in [0,1] \text{ for }
+j > n \right\} \; .
+\]
+It can be shown that $A_n$ consists of $2^n$ distinct open subintervals
+of $[0,1]$.  We have that any iteration that starts with $x_0 \in A_0$
+(i.e.\ such that $f_\mu(x_0)>1$) eventually converges to $-\infty$
+(Figure~\ref{figA0}).  We also have that any iteration that starts
+with $x_0 \in A_1$ (i.e. such that $f_\mu(x_0) \in A_0$) eventually
+converges to $-\infty$ (Figure~\ref{figA1}).  And so on.
+
+\mathF{discrete_dyn/logistic6}{7cm}{$A_0$ for $f_{4.3}$}{$0.5 \in A_0$ for
+$f_{4.3}$}{figA0}
+
+\mathF{discrete_dyn/logistic7}{7cm}{$A_0$ for $f_{4.3}$}{$0.1 \in A_1$ for
+$f_{4.3}$}{figA1}
+
+Consider
+\[
+\Delta_\mu = [0,1] \setminus \bigcup_{n=0}^\infty \,A_n \; .
+\]
+$\Delta_\mu$ contains all the points $x$ such that $f_\mu^j(x)$ stay
+in $[0,1]$ for all $j\geq 0$.  In particular, $\Delta_\mu$ contains all
+the periodic points.
+
+Recall that a {\bfseries Cantor set}\index{Cantor Set} is a set that
+is closed (contains
+all its limit points), totally disconnected (does not contain any open
+interval), and perfect (every point of the set is the limit of other
+points of the set).
+
+\begin{egg}
+The best known example of a Cantor set is the Cantor Middle-Thirds
+set.  It is also an example of a
+{\bfseries Fractal}\index{Fractal} set because of its
+self-similarity under zooming.
+\end{egg}
+
+\begin{theorem}
+For $\mu > 4$, $\Delta_\mu$ is a cantor set.
+\end{theorem}
+
+\subsection{Chaos}
+
+The next two definitions are the bases for the definition of chaos.
+
+\begin{defn}
+Let $I$ be an interval of $\RR$ and $f:I\rightarrow I$ be a
+continuous function.  $f$ is
+{\bfseries topologically transitive}\index{Topologically Transitive} if
+for any open sets $V$ and $W$ in $I$ there exist $k>0$ such that
+$f^k(V) \cap W \neq \emptyset$.
+\end{defn}
+
+\begin{defn}
+Let $I$ be an interval of $\RR$ and $f:I\rightarrow I$ be a
+continuous function.  $f$ has
+{\bfseries sensitive dependence on initial conditions}\index{Sensitive
+Dependence on Initial Conditions} if there exists
+$\delta>0$ such that, for any $x \in I$ and neighbourhood $N \subset I$
+of $x$, there exist $y\in N$ and $k>0$ satisfying
+$\left| f^k(x) - f^k(y) \right| > \delta$.
+\end{defn}
+
+\begin{defn}[Chaos]
+Let $I$ be an interval of $\RR$ and $f:I\rightarrow I$ be a
+continuous function.  $f$ is said to be
+{\bfseries chaotic}\index{Chaotic} on $I$ if
+\begin{enumerate}
+\item $f$ has sensitive dependence on initial conditions.
+\item $f$ is topologically transitive.
+\item The set of all periodic points of $f$ is dense in $I$ (every
+  non-periodic point of $I$ is the limit of some periodic points).
+\end{enumerate}
+\label{chaos}
+\end{defn}
+
+\begin{rmk}
+It has been proved in \cite{BBCDS} that 2 and 3 implies 1.
+Nevertheless, we keep the tradition of using Definition~\ref{chaos} as
+the definition of chaos because it lists three of the must important
+properties of a chaotic function.  Moreover, it has been proved in
+\cite{AG} that 1 and 3 do not imply 2, and 1 and 2 do not imply 3.
+\end{rmk}
+
+\begin{egg}
+The logistic map $f_4:I \to I$, where $I=[0,1]$, is chaotic. 
+\end{egg}
+
+We may expand our definition of attracting and repelling periodic
+orbits to more general sets.
+
+\begin{defn}
+Let $V$ be a subset of $\RR$ and $f:\RR\rightarrow \RR$ be a
+continuous function.  $V$ is an
+{\bfseries attracting}\index{Hyperbolic Set!Attracting}
+(respectively {\bfseries repelling}\index{Hyperbolic Set!Repelling})
+{\bfseries hyperbolic set} if
+\begin{enumerate}
+\item $V$ is closed and bounded.
+\item $V$ is {\bfseries invariant}\index{Invariant Set} under $f$
+(i.e.\ $f(V) \subset V$).
+\item There exists $N>0$ such that
+$\displaystyle \left| \dydx{f^n}{x}(x)  \right| < 1$
+(respectively $>1$) for all $n \geq N$ and $x \in V$.
+\end{enumerate}
+\end{defn}
+
+\begin{egg}
+It can be proved that for $\mu>2+\sqrt{5}$, $\Delta_\mu$ is a repelling
+hyperbolic set for the logistic map $f_\mu$.  The behaviour of
+$f_\mu:\Delta_\mu \to \Delta_\mu$ is a lot more complex than we may
+imagine.  $f_\mu$ has a dense orbit in $\Delta_\mu$.  Moreover,
+$f_\mu:\Delta_\mu \to \Delta_\mu$ is choatic\footnote{The definition
+of choatic map can be extended to any topological space $I$, not just
+intervals.}.
+\end{egg}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End: 

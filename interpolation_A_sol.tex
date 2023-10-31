@@ -1,0 +1,556 @@
+\nonumsection{Chapter~\ref{chaptInterA} : Polynomial Interpolation}
+
+\solution{\SOL}{\ref{intAQ1}}{
+Let
+\[
+q(x) = \sum_{j=0}^n \ell_j(x)
+\]
+for all $x$.  We first show that $q(x) = 1$ for all $x$.  The
+polynomial $q(x)-1$ is of degree at most $n$ and has
+$n+1$ distinct roots at $x_0$, $x_1$, \ldots, $x_n$ because
+\[
+\ell_j(x_i) = \begin{cases} 1 & \text{ if } i=j \\
+0 & \text{ if } i\neq j
+\end{cases}
+\]
+Since polynomial of degree $n$ cannot have more than $n$ roots,
+$q(x)-1 =0$ for all $x$.
+
+Hence
+\[
+\sum_{j=0}^n \left(f(x)-p(x_j)\right) \ell_j(x)
+= f(x)\,\sum_{j=0}^n \ell_j(x) - \sum_{j=0}^n p(x_j)\, \ell_j(x)
+= f(x) - p(x)
+\]
+because $\displaystyle p(x) = \sum_{j=0}^n p(x_j)\, \ell_j(x)$.
+}
+
+\solution{\SOL}{\ref{intAQ2}}{
+Our theory of interpolation does not apply here because $p(\xi)$ is not
+fixed.  We have to find the coefficients of the polynomial
+$p(x)=a + b\,x+c\,x^2$ such that
+$p(0) = a = \alpha$, $p(1) = a+b+c = \beta$ and
+$p'(\xi) = b + 2c\,\xi = \gamma$.
+The first equation gives the value for $a$ which is substituted into
+the other equations to give
+$b+c = \beta - \alpha$ and $b + 2c\,\xi = \gamma$.
+If we subtract the first equation from the second equation, we get the system
+$b+c = \beta - \alpha$ and $(2\xi-1)\,c = \gamma - \beta + \alpha$.
+
+If $\xi \neq 1/2$, then this system has a unique solution
+\[
+c = \frac{\gamma-\beta+\alpha}{2\xi-1} \ , \quad
+b = (\beta-\alpha) - \frac{\gamma-\beta+\alpha}{2\xi-1}
+= \frac{-\gamma +2\xi\,\beta -2\xi\,\alpha}{2\xi -1} \quad \text{and} \quad
+a = \alpha \ .
+\]
+
+If $\xi= 1/2$ and $\gamma = \beta - \alpha$, then $c$ is free,
+$b= \beta -\alpha - c$ and $a = \alpha$.  There is an
+infinite number of solutions, and thus an infinite number of
+interpolating polynomial of degree at most $2$.  Note that
+$p'(1/2) = b+c = \beta - \alpha = \gamma$.  Several interpolating
+polynomial are drawn in the following figure.
+\pdfbox{interpolation_A/interpol_quest3}
+If $\xi = 1/2 $ and $\gamma \neq \beta - \alpha$, there is no
+solution and thus no interpolating polynomial of degree at most
+$2$.
+}
+
+\solution{\SOL}{\ref{intAQ3}}{
+The polynomial $r$ is of degree at most $n$ because $p$ and $q$ are
+polynomial of degree at most $n-1$.  Moreover,
+$r(x_0) = p(x_0) = f(x_0)$, $r(x_n) = q(x_n) = f(x_n)$ and
+\begin{align*}
+  r(x_j) &= \frac{x_j-x_n}{x_0-x_n} \, p(x_j) +
+\frac{x_j-x_0}{x_n-x_0}\, q(x_j)
+= \frac{x_j-x_n}{x_0-x_n} \, f(x_j) +
+\frac{x_j-x_0}{x_n-x_0}\, f(x_j) \\
+&= \left( \frac{x_j-x_n}{x_0-x_n} + \frac{x_j-x_0}{x_n-x_0}\right)
+f(x_j) = f(x_j)
+\end{align*}
+for $0<j<n$.  Hence, $r$ is the interpolating polynomial of degree at
+most $n$ at $x_0$, $x_1$, \ldots, $x_n$ since this polynomial is
+unique.
+}
+
+\solution{\SOL}{\ref{intAQ4}}{
+The Lagrange's form of the polynomial $p$ is
+\[
+p(x) = \sum_{i=0}^n f(x_i) \prod_{\substack{j=0\\i\neq j}}^n \left(
+\frac{x-x_j}{x_i-x_j} \right) \ .
+\]
+The coefficient of $x^n$ in
+$\displaystyle f(x_i) \prod_{\substack{j=0\\i\neq j}}^n \left(
+\frac{x-x_j}{x_i-x_j} \right)$ is
+$\displaystyle f(x_i) \prod_{\substack{j=0\\i\neq j}}^n \left(
+\frac{1}{x_i-x_j} \right) = f(x_i) \ell_i$.  The sum of these
+coefficients gives the coefficient of $x^n$ in $p$.
+
+If $f$ is a polynomial of degree less than $n$, the interpolating
+polynomial $p$ of $f$ of degree at most $n$ at $x_0$, $x_1$, \ldots,
+$x_n$ is $f$ itself by uniqueness.  The coefficient of $x^n$ in
+$p = f$ is therefore $0$.  Since the coefficient of $x^n$ is
+$\displaystyle \sum_{i=0}^n f(x_i) \ell_i$, we have that
+$\displaystyle \sum_{i=0}^n f(x_i) \ell_i=0$.
+}
+
+\solution{\SOL}{\ref{intAQ5}}{
+\subQ{a} For $k\in\{0,1,2,\ldots,n\}$,
+\[
+\prod_{\substack{j=0\\i\neq j}}^n (x_k-x_j) =
+\underbrace{(x_k-x_0)(x_k-x_1)\ldots(x_k-x_{k-1})}_{k \text{ positive factors}}
+\ \underbrace{(x_k-x_{k+1}) \ldots (x_k-x_n)}_{n-k \text{ negative factors}}
+\ .
+\]
+Hence $\sgn(\ell_k) = (-1)^{n-k}$.
+
+\subQ{b} To prove (\ref{sgnEQ1}), we consider $f(x) = x^n$.  Since the
+interpolating polynomial $p$ of $f(x) = x^n$ of degree at most $n$ at
+the points $x_0$, $x_1$, \ldots, $x_n$ is $f$ itself by uniqueness,
+the coefficient of $x^n$ in $f(x) = p(x) = x^n$ is
+$\displaystyle f[x_0,x_1,\ldots, x_n] = \sum_{j=0}^n x_i^n \ell_j = 1$
+according to (\ref{sgnEQ0}).
+
+To prove (\ref{sgnEQ2}), we consider $f(x) = 1$ for all $x$.  The
+interpolating polynomial $p$ of $f$ of degree at most $n$ at the
+points $x_0$, $x_1$, \ldots, $x_n$ is $p(x)=f(x)=1$ for all $x$ by
+uniqueness. Hence, the coefficient of $x^n$ in $f(x) = p(x) = 1$ is
+\[
+f[x_0,x_1,\ldots, x_n] = \sum_{j=0}^n \ell_j
+= \begin{cases} 1 & \quad \text{if} \quad n=0 \\
+0 & \quad \text{if}\quad n>0 \end{cases}
+\]
+according to (\ref{sgnEQ0}).
+}
+
+\solution{\SOL}{\ref{intAQ6}}{
+The proof is by induction.  (\ref{binewt}) is true when $m=0$ because
+$\displaystyle
+\frac{1}{0!} \sum_{j=0}^0 (-1)^{0-j} \binom{0}{j} f(j) = f(0)$ and
+$f[0] = f(0)$.
+
+We assume that (\ref{binewt}) is true for $m=k$ and show that it is
+then true for $m=k+1$.
+ 
+Let $g(n) = f(n+1)$ for all $n$.  We claim that
+$f[n,n+1,\ldots,n+r]=g[n-1,n,\ldots,n+r-1]$ for all $n$ and $r \geq 0$.
+The proof of this claim is by induction on $r$.  For $r=0$, we have
+$f[n] = f(n)$ and $g[n-1]= g(n-1) = f(n)$ for all $n$.  Thus
+$f[n]=g[n-1]$ for all $n$.
+Suppose that $f[n,n+1,\ldots,n+r]=g[n-1,n,\ldots,n+r-1]$ is true for
+all $n$ and some $r \geq 0$.  Then
+\begin{align*}
+f[n,n+1, \ldots, n+r+1] &=
+\frac{f[n+1,n+2,\ldots,n+r+1] - f[n,n+1,\ldots,n+r]}{(n+r+1)-n} \\
+&= \frac{g[n,n+1,\ldots,n+r] - g[n-1,n,\ldots,n+r-1]}{(n+r)-(n-1)} \\
+&= g[n-1,n,\ldots,n+r]
+\end{align*}
+for all $n$, where the hypothesis of induction has been used for the second
+equality.  Hence, $f[n,n+1,\ldots,n+r]=g[n-1,n,\ldots,n+r-1]$ is true
+for all $n$ and $r$ replaced by $r+1$.
+
+We now go back to our main proof by induction.   We have
+\begin{align*}
+f[0,1,2,\ldots,k+1] &= \frac{f[1,2,\ldots,k+1]-f[0,1,\ldots,k]}{k+1}
+= \frac{g[0,1,\ldots,k]-f[0,1,\ldots,k]}{k+1} \\
+&= \frac{1}{k+1} \left(
+\frac{1}{k!}\sum_{j=0}^k (-1)^{k-j} \binom{k}{j} g(j)
+- \frac{1}{k!}\sum_{j=0}^k (-1)^{k-j} \binom{k}{j} f(j) \right) \\
+&= \frac{1}{k+1} \left(
+\frac{1}{k!}\sum_{j=0}^k (-1)^{k-j} \binom{k}{j} f(j+1)
+- \frac{1}{k!}\sum_{j=0}^k (-1)^{k-j} \binom{k}{j} f(j) \right)
+\end{align*}
+The third equality is a consequence of the hypothesis of induction;
+namely, (\ref{binewt}) with $m=k$ for both $f$ and $g$.
+
+If we replace $j$ by $j-1$ in the first sum, we get
+\begin{align*}
+f[0,1,2,\ldots,k+1] &= \frac{1}{k+1} \left(
+\frac{1}{k!}\sum_{j=1}^{k+1} (-1)^{k-j+1} \binom{k}{j-1} f(j)
+- \frac{1}{k!}\sum_{j=0}^k (-1)^{k-j} \binom{k}{j} f(j) \right) \\
+&= \frac{1}{(k+1)!} \sum_{j=0}^{k+1} (-1)^{k-j+1} \left(
+  \binom{k}{j-1} + \binom{k}{j}\right) f(j)
+\end{align*}
+where we have made used of the fact that
+$\displaystyle \binom{k}{-1}=0$ and $\displaystyle \binom{k}{k+1} =0$.
+Using the hint, we get
+\[
+f[0,1,2,\ldots,k+1] =
+\frac{1}{(k+1)!} \sum_{j=0}^{k+1} (-1)^{k-j+1} \binom{k+1}{j} f(j)
+\]
+which is (\ref{binewt}) with $m=k+1$.  This prove that (\ref{binewt})
+is true for all $m$ by induction.
+}
+
+\solution{\SOL}{\ref{intAQ7}}{
+The table of divided differences is
+{\small
+\[
+\begin{array}{cccc}
+x_i & f[\cdot] & f[\cdot,\cdot] & f[\cdot,\cdot,\cdot] \\
+\hline
+1 & \multicolumn{1}{|c}{1} & \multicolumn{1}{|c}{-0.951625820} &
+\multicolumn{1}{|c|}{0.438432783} \\ 
+\cline{2-4}
+1.1 & 0.904837418 & -0.820095985 & 0.383714117 \\
+1.3 & 0.740818221 & -0.704981750 & 0.324799000 \\
+1.4 & 0.670320046 & -0.607542050 & 0.275321725 \\
+1.6 & 0.548811636 & -0.497413360 &  \\
+1.8 & 0.449328964 &  &  \\
+& & & \\
+f[\cdot,\cdot,\cdot,\cdot] & f[\cdot,\cdot,\cdot,\cdot,\cdot] &
+f[\cdot,\cdot,\cdot,\cdot,\cdot,\cdot,\cdot] \\
+\cline{1-3}
+\multicolumn{1}{|c}{-0.136796667} &
+\multicolumn{1}{|c}{0.0316107222} &
+\multicolumn{1}{|c|}{-0.00580682540} & \\
+\cline{1-3}
+-0.1178302333 & 0.0269652619 & & \\
+-0.0989545500 & & &
+\end{array}
+\]
+}
+The interpolating polynomial is
+\begin{align*}
+p(x) &\approx 1 -0.951625820\,(x-1) + 0.438432783\,(x-1)(x-1.1) \\
+&\quad -0.136796667\,(x-1)(x-1.1)(x-1.3) \\
+&\quad +0.0316107222\,(x-1)(x-1.1)(x-1.3)(x-1.4) \\
+&\quad -0.00580682540\,(x-1)(x-1.1)(x-1.3)(x-1.4)(x-1.6) \ ,
+\end{align*}
+where we have rounded the coefficients to $9$ digits.
+The nested form of this polynomial is
+\begin{align*}
+p(x) &\approx 1 + (x-1)\big( -0.951625820 + (x-1.1) \big( 0.438432783
++(x-1.3) \big(-0.136796667 \\
+& \quad +(x-1.4) \big(0.0316107222 -0.00580682540\,(x-1.6) \big)\big)\big)\big)
+\ .
+\end{align*}
+Hence,
+\begin{align*}
+f(1.35) & \approx p(1.35)
+\approx
+1 + 0.35 \big( -0.951625820 + 0.25 \big( 0.438432783
++ 0.05 \big(-0.136796667 \\
+& \quad -0.05 \big(0.0316107222 - 0.00580682540\times (-0.25)
+\big)\big)\big)\big) \approx 0.704688114 \ .
+\end{align*}
+}
+
+\solution{\SOL}{\ref{intAQ8}}{
+\subQ{a} We have $f(x) = e^{x/2}$, $f'(x) = e^{x/2}/2$ and
+$f''(x)=e^{x/2}/4$.  The table of divided differences is
+{
+\small
+\[
+\begin{array}{ccccc}
+x & \quad f[\cdot] \quad & f[\cdot, \cdot] & f[\cdot,\cdot,\cdot] &
+f[\cdot,\cdot,\cdot,\cdot] \\
+\hline
+0 & \multicolumn{1}{|c}{1} & \multicolumn{1}{|c}{(e-1)/2} &
+\multicolumn{1}{|c}{1/4} & \multicolumn{1}{|c|}{(e-2)/16} \\
+\cline{2-5}
+2 & e & e/2 & e/8 & \\
+2 & e & e/2 & & \\
+2 & e & & & \\
+\end{array}
+\]
+}
+The interpolating polynomial is
+\begin{align*}
+p(x) &= 1 + \left(\frac{e-1}{2}\right)x + \frac{1}{4}\,x(x-2) +
+\left(\frac{e-2}{16}\right)x(x-2)^2 \\
+&= 1 + x\left( \frac{e-1}{2} + (x-2) \left(\frac{1}{4}
++ \left(\frac{e-2}{16}\right)(x-2) \right)\right) \\
+&\approx 1 + x\left(0.8591409142 + (x-2) \left(0.25
++ 0.04489261428\,(x-2) \right)\right) \ .
+\end{align*}
+
+\subQ{b}
+\[
+f(1) \approx p(1) = 1 + \left(0.8591409142 - \left(0.25
+- 0.04489261428 \right)\right) \approx 1.65403352848 \ .
+\]
+
+\subQ{c}
+It follows from Theorems~\ref{InterpTh} and \ref{InterpProp} that, for
+each $x\in[0,2]$, there exists $\xi = \xi(x) \in [0,2]$ such that
+\[
+| f(x) - p(x) | = \left| \frac{1}{4!} f^{(4)}(\xi)\, x (x-2)^3\right| \ .
+\]
+Moreover
+\[
+|f^{(4)}(x)| = \left| \frac{e^{x/2}}{2^4} \right|
+\leq \frac{e}{2^4}
+\]
+for all $x\in[0,2]$.  Hence,
+\[
+| f(x) - p(x) | \leq \frac{e}{2^4\,4!} \left| x (x-2)^3 \right|
+\leq \frac{e}{4!}
+\approx 0.113261743 \ .
+\]
+
+We have use the upper bound $2^4$ for $|x(x-2)^3|$.  A better
+(i.e.\ smaller) bound could be found by maximizing
+$g(x) = |x(x-2)^3| = x(2-x)^3$ on the interval $[0,2]$.
+Since $g'(x) = (2-x)^2(2-4x)=0$, the critical points of $g$ on $[0,2]$
+are $x=1/2$ and $x=2$.  It follows from the Extremum Theorem,
+Theorem~\ref{Th2}, that the maximum of $g$ on $[0,2]$ is the maximum
+of $g(0) = 0$, $g(2)=0$ and $g(1/2) = 3^3/2^4$. 
+Hence,
+\[
+| f(x) - p(x) | \leq \frac{e}{2^4\,4!} \left| x (x-2)^3 \right|
+\leq \frac{3^3\,e}{2^8\,4!}
+\approx 0.01194557444 \ .
+\]
+It is a better upper bound than the previous one.  However, we do not
+usually maximize the polynomial part of the truncation error as we
+have just done because the roots of its derivative may be too
+difficult to find if the degree of this polynomial is high.
+}
+
+\solution{\SOL}{\ref{intAQ9}}{
+\subQ{a}
+The table of divided differences is
+{
+\small
+\[
+\begin{array}{cccccc}
+x_i & f[\cdot] & f[\cdot,\cdot] & f[\cdot,\cdot,\cdot] &
+f[\cdot,\cdot,\cdot,\cdot] & f[\cdot,\cdot,\cdot,\cdot,\cdot] \\
+\hline
+\rule{0em}{1.1em} 0 & \multicolumn{1}{|c}{e} & \multicolumn{1}{|c}{1-e} &
+\multicolumn{1}{|c}{e-2} & \multicolumn{1}{|c}{5/2 - e} &
+\multicolumn{1}{|c|}{(e+e^{-1}-3)/2} \\
+\cline{2-6}
+\rule{0em}{1.1em} 1 & 1 & -1 & 1/2 & e^{-1} -1/2  & \\
+1 & 1 & -1 & e^{-1} & & \\
+1 & 1 & e^{-1}-1 & & & \\
+2 & e^{-1} & & & &
+\end{array}
+\]
+}
+The interpolating polynomial is
+\begin{align*}
+&p(x) = e + (1-e) x + (e-2) x(x-1) + \left(\frac{5}{2}-e\right) x(x-1)^2
++ \left( \frac{e+e^{-1}-3}{2} \right) x(x-1)^3 \\
+&\quad = e + x\bigg( (1-e) + (x-1) \bigg( (e-2) + (x-1)\bigg(
+\left(\frac{5}{2}-e\right)  + \left( \frac{e+1/e -3}{2} \right) (x-1)
+\bigg)\bigg)\bigg) \ .
+\end{align*}
+
+\subQ{b}
+\[
+f(1.1) \approx
+e + 1.1 \bigg( (1-e) + 0.1 \bigg( (e-2) + 0.1 \bigg(
+\left(\frac{5}{2}-e\right)  + 0.1 \left( \frac{e+1/e -3}{2} \right)
+\bigg)\bigg)\bigg)
+\approx 0.9048291 \ .
+\]
+
+\subQ{c} It follows from Theorems~\ref{InterpTh} and \ref{InterpProp}
+that, for each $x \in [0,2]$, there exists $\xi = \xi(x) \in [0,2]$
+such that
+\[
+| f(x) - p(x) | = \left| \frac{f^{(5)}(\xi)}{5!}\,  x(x-1)^3 (x-2) \right| \ .
+\]
+Hence
+\[
+| f(x) - p(x) | \leq \frac{e}{5!}\, |x(x-1)^3 (x-2)|
+\leq \frac{e}{30}
+\]
+for $0\leq x \leq 2$.  We have use the conservative upper bound
+$|x(x-1)^3 (x-2)| \leq 4$ for $0\leq x \leq 2$ provided by
+$|x|\leq 2$, $|(x-1)^3|\leq 1$ and $|x-2|\leq 2$ for
+$0 \leq x \leq 2$.
+}
+
+\solution{\SOL}{\ref{intAQ10}}{
+The table of divided differences is
+{
+\small
+\[
+\begin{array}{cccc}
+x_i & f[\cdot] & f[\cdot,\cdot] & f[\cdot,\cdot,\cdot] \\
+\hline
+1 & \multicolumn{1}{|c}{1.7165256995} &
+\multicolumn{1}{|c}{-1.4444065708} &
+\multicolumn{1}{|c|}{0.14399171305} \\
+\cline{2-4}
+1 & 1.7165256995 & -1.4444065708 & 0.36837390975 \\
+1 & 1.7165256995 & -1.1497074430 & 0.44217113417 \\
+1.8 & 0.79675974510 & -0.53066785517 & 0.34592323664 \\
+2.4 & 0.47835903200 & -0.32311391318 &  \\
+2.4 & 0.47835903200 &  &  \\
+& & & \\
+f[\cdot,\cdot,\cdot,\cdot] &
+f[\cdot,\cdot,\cdot,\cdot,\cdot] &
+f[\cdot,\cdot,\cdot,\cdot,\cdot,\cdot,\cdot] \\
+\cline{1-3}
+\multicolumn{1}{|c}{0.28047774588} &
+\multicolumn{1}{|c}{-0.16268960195} &
+\multicolumn{1}{|c|}{0.054237061909} & \\
+\cline{1-3}
+0.052712303155 & -0.086757715275 & & \\
+-0.06874849823 & & & \\
+\end{array}
+\]
+}
+The interpolating polynomial is
+\begin{align*}
+p(x) &\approx 1.7165256995 -1.4444065708\,(x-1) +
+0.14399171305\,(x-1)^2 \\
+&\quad +0.28047774588\,(x-1)^3  - 0.16268960195\,(x-1)^3(x-1.8) \\
+&\quad +0.054237061909\,(x-1)^3(x-1.8)(x-2.4) \ ,
+\end{align*}
+where we have rounded the coefficients to $11$ digits.  The nested
+form of this polynomial is
+\begin{align*}
+p(x) &\approx 1.7165256995 +(x-1)\big( -1.4444065708 + (x-1)
+\big( 14399171305 \\
+& + (x-1)\big(0.28047774588 +
+(x-1.8)\big(-0.16268960195 + 0.054237061909\,(x-2.4) \big)\big)\big)\big) \ .
+\end{align*}
+Hence,
+\begin{align*}
+f(1.75) & \approx p(1.75)
+\approx
+1.7165256995 + 0.75 \big( -1.4444065708 + 0.75
+\big( 0.14399171305 \\
+&\quad + 0.75 \big(0.28047774588 -0.05\big(-0.16268960195
++0.054237061909\,(-0.65) \big)\big)\big)\big) \\
+&\approx 0.83671803379 \ .
+\end{align*}
+
+The absolute error is
+\[
+|f(1.75)-p(1.75)| \approx |0.83673651441075 - 0.83671803379|
+\approx 0.0000184806 \ .
+\]
+The relative error is
+\[
+\frac{|f(1.75)-p(1.75)|}{|f(1.75)|}
+\approx \frac{|0.83673651441075 - 0.8367180338|}{0.83673651441075}
+\approx 0.0000220865 \ .
+\]
+Since $k=5$ is the largest positive integer such that
+$0.0000220865 < 5 \times 10^{-k}$, there are $5$ significant digits.
+}
+
+\solution{\SOL}{\ref{intAQ12}}{
+If the divided differences of order three are always egal to $1$, then
+the divided differences of order fourth and higher are $0$.  Thus $p$
+is a polynomial of degree $3$.
+
+A table of divided differences of $p$ at $0$, $1$, $2$ and $3$ (any
+other value greater than $2$ would have been fine) will have the
+following table.
+{
+\small
+\[
+\begin{array}{ccccc}
+x_i & p[x_i] & p[x_i,x_j] & p[x_i,x_j,x_k]& p[x_i,x_j,x_k,x_l] \\
+\hline
+0 & \multicolumn{1}{|c}{2} & \multicolumn{1}{|c}{-1} &
+\multicolumn{1}{|c}{2} & \multicolumn{1}{|c|}{1} \\ 
+\cline{2-5}
+1 & 1 & 3 & c_1 & \\
+2 & 4 & c_2 & & \\
+3 & c_3 & & &
+\end{array}
+\]
+}
+where $c_1$, $c_2$, and $c_3$ are constants.  Since $p$ is a
+polynomial of degree $3$, we have
+\[
+p(x) = 2 - x + 2x(x-1) + x(x-1)(x-2) = 2 -x -x^2 + x^3 \ .
+\]
+}
+
+\solution{\SOL}{\ref{intAQ13}}{
+\subQ{a} 
+We have
+$\displaystyle f(x) = \cos\left(\frac{\pi}{2}-x\right)$,
+$\displaystyle f'(x) = \sin\left(\frac{\pi}{2}-x\right)$ and
+$\displaystyle f''(x) = -\cos\left(\frac{\pi}{2}-x\right)$.
+
+The table of divided differences is
+{
+\small
+\[
+\begin{array}{cccccc}
+x_i & f[\cdot] & f[\cdot,\cdot] & f[\cdot,\cdot,\cdot] &
+f[\cdot,\cdot,\cdot,\cdot] & f[\cdot,\cdot,\cdot,\cdot,\cdot] \\ 
+\hline
+0 & \multicolumn{1}{|r}{0} & \multicolumn{1}{|r}{0.90031632} & \multicolumn{1}{|r}{-0.24600202} & \multicolumn{1}{|r}{-0.13693866} & \multicolumn{1}{|r|}{0.02886361} \\
+\cline{2-6}
+0.78539816 & 0.70710678 & 0.70710678 & -0.35355339 & -0.09159981 &  \\ 
+0.78539816 & 0.70710678 & 0.70710678 & -0.42549571 &  &  \\ 
+0.78539816 & 0.70710678 & 0.37292323 &  &  &  \\ 
+1.57079633 & 1.00000000 &  &  &  &
+\end{array}
+\]
+}
+To save some space, we have only printed the numbers to $8$ decimal
+places in the table above.  However, computations were done with full
+Matlab accuracy.
+
+The interpolating polynomial is
+\begin{align*}
+p(x) &\approx 0.900316316157 \,x  -0.2460020203444\,x(x-\pi/4) \\
+&\qquad  -0.136938657691 \,x(x-\pi/4)^2 + 0.0288636058864\,x(x-\pi/4)^3 \ ,
+\end{align*}
+where we have rounded the coefficients to $12$ digits.
+
+\subQ{b} The nested form of this polynomial is
+\begin{align*}
+p(x) &\approx \bigg( 0.900316316157 + \bigg(-0.2460020203444 + \\
+& \qquad \bigg(-0.136938657691 + 0.0288636058864\,
+\left(x-\frac{\pi}{4}\right)\bigg)
+\left(x-\frac{\pi}{4}\right)\bigg)\left(x-\frac{\pi}{4}\right)\bigg) x \ .
+\end{align*}
+Hence,
+\begin{align*}
+f(\pi/8) & \approx p(1.75) \approx
+\bigg( 0.900316316157 + \bigg(-0.2460020203444 + \\
+& \qquad \bigg(-0.136938657691 + 0.0288636058864
+\,\left(\frac{-\pi}{8}\right)\bigg)
+\left(\frac{-\pi}{8}\right)\bigg)\left(\frac{-\pi}{8}\right)\bigg)
+\left(\frac{\pi}{8}\right) \\
+&\approx 0.382510687216 \ .
+\end{align*}
+
+\subQ{c}
+It follows from Theorems~\ref{InterpTh} and \ref{InterpProp}
+that, for each $x \in [0,\pi/2]$, there exists $\xi = \xi(x) \in [0,\pi/2]$
+such that
+\[
+| f(x) - p(x) | = \left| \frac{1}{5!} f^{(5)}(\xi)
+\, x \left(x-\frac{\pi}{4}\right)^3\left(x-\frac{\pi}{2}\right)\right| \ .
+\]
+However
+\[
+|f^{(5)}(x)| = \left| \sin\left( \frac{\pi}{2} - x\right)\right| \leq 1
+\]
+for all $x$.  Hence,
+\[
+| f(x) - p(x) | \leq \frac{1}{5!}\, \left|x \left(x-\frac{\pi}{4}\right)^3
+\left(x-\frac{\pi}{2}\right) \right|
+\leq \frac{1}{5!} \left(\frac{\pi}{4}\right)^5
+\approx 0.0025
+\]
+because $\displaystyle \left|x (x-\pi/2) \right| \leq (\pi/4)^2$
+(the maximum is reached at $x = \pi/4$) and
+$\left|x-\pi/4\right|\leq \pi/4$ for $x \in [0,\pi/2]$.
+
+\subQ{d} The following figure contains the graph of $p$ in blue and
+the graph of $f$ in red.  The graph of $p$ was drawn first and is
+almost completely covered by the graph of $f$.  The two graphs are
+basically indistinguishable at the level of the graph accuracy.
+\figbox{interpolation_A/interpol_quest4}{7cm}
+}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End:

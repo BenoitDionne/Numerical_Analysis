@@ -1,0 +1,991 @@
+\chapter{Computer Arithmetic}\label{chaptArith}
+
+Before studying algorithms to perform computations with computers, we
+need to understand how computers perform basic arithmetic operations.
+It is the goal of this chapter.
+
+\section{Rounding}
+
+\begin{defn}
+The {\bfseries normalized scientific notation}\index{Normalized
+Scientific Notation} for a real number is
+$\pm 0.d_1d_2d_3\ldots \times 10^m$, where $m$ is an
+integer, $d_i \in \{0,1,2,3,\ldots,9\}$ and $d_1 \neq 0$.
+\end{defn}
+
+Before performing any arithmetic operation with real numbers, we will
+always assume that they have been expressed in the normalized
+scientific notation.
+
+When performing arithmetic operations by hand, we often have to
+consider only the first few decimals (digits after the period) of the
+numbers used in the operations and ignore the others.  This is called
+{\bfseries rounding}\index{Rounding}.
+
+There are different ways to perform rounding.  We will mention only
+two.
+
+\begin{defn}
+Let $\pm 0.d_1 d_2 \dots \times 10^N$ be the normalized scientific
+representation of a real number $a$, thus $d_1 \neq 0$.  For $k$ a
+positive integer, we define the\\
+{\bfseries k-digit chopping representation}\index{k-digit Chopping
+  Representation} of $a$ to be
+$\pm 0.d_1 d_2 \dots d_k \times 10^N$, and the\\
+{\bfseries k-digit rounding representation}\index{k-digit Rounding
+  Representation} of $a$ to be
+$\pm 0.d_1 d_2 \dots d_k \times 10^N + \epsilon \; 10^{-k} \times 10^N$,
+where $\epsilon = 1$ for $d_{k+1}\geq 5$ and $\epsilon = 0$ for
+$d_{k+1} < 5$.
+\end{defn}
+
+If $\tilde{a}$ is the k-digit chopping representation of $a$, then
+$|a-\tilde{a}| < 10^{-k}\times 10^N$.  If $\tilde{a}$ is 
+k-digit rounding representation of $a$, then
+$|a-\tilde{a}| \leq 0.5 \times 10^{-k}\times 10^N$.
+
+\begin{egg}
+Here are some examples of $3$-digit rounding representations.
+\[
+\begin{array}{l|@{\hspace{1em}}l}
+\text{exact value} & \text{$3$-digit rounding}\\
+ & \text{approximation}\\
+\hline
+0.19234542 \times 10^6 & 0.192 \times 10^6 \\
+0.25952100 \times 10^{-5} & 0.260 \times 10^{-5} \\
+0.99950000 \times 10^2 & 0.100 \times 10^3
+\end{array}
+\]
+\end{egg}
+
+\begin{egg}
+If $0.481\times 10$ is a $3$-digit rounding approximation of $x$ and
+$0.12752 \times 10^2$ is a $5$-digit rounding approximation of $y$, find
+the interval that will contain the exact value of $x-y$.
+
+Since $4.805 \leq x <4.815$ and $12.7515 \leq y < 12.7525$, then
+$4.805-12.7525 <x-y < 4.815-12.7515$.  Thus $-7.9475 < x-y < -7.9365$.
+\end{egg}
+
+\section{Binary Number}
+
+Computers only manipulate binary numbers (i.e.\ numbers in base $2$),
+
+Recall that a number in base $2$ is a number of the form
+\[
+(b_k b_{k-1} \ldots b_1 b_0. b_{-1} b_{-2} \ldots )_2
+= b_k 2^k + b_{k-1} 2^{k-1} + \ldots + b_1 2 + b_0 + b_{-1} 2^{-1}
++ b_{-2} 2^{-2} + \ldots
+\]
+where $b_i \in \{0,1\}$ for all $i$.
+
+\begin{defn}
+The {\bfseries normalized binary numbers}\index{Normalized Binary Numbers}
+are numbers of the form
+$\pm(0.b_1 b_2 b_3 \ldots )_2 \times 2^m$, where $b_i \in \{0,1\}$,
+$b_1 = 1$ and $m$ is an integer often represented in binary form. 
+Binary numbers in normalized binary form are also said to be in
+{\bfseries normalized floating point form}\index{Normalized Floating
+Point Form}.
+\end{defn}
+
+To find the binary representation of a positive number $x$ in base
+$10$, one begins by writing $x$ as $x=m+d$, where $m$ is an integer
+and $d<1$.
+
+If
+\begin{align*}
+m &= m_j\times 10^j + m_{j-1}\times 10^{j-1} + \ldots + m_1 \times 10 +
+m_0 \; ,
+\intertext{then}
+(m)_2 &= (m_j)_2 \times (10)_2^j + (m_{j-1})_2\times (10)_2^{j-1} +
+\ldots + (m_1)_2 \times (10)_2 + (m_0)_2 \; .
+\end{align*}
+The easiest way to evaluate this expression is recursively.
+\begin{align*}
+\alpha_0 &= (m_j)_2 \\
+\alpha_1 &= \alpha_0 \times (10)_2+(m_{j-1})_2 \\
+\alpha_2 &= \alpha_1 \times (10)_2+(m_{j-2})_2 \\
+\vdots & \qquad \vdots \\
+\alpha_{j-2} &= \alpha_{j-3} \times(10)_2 + (m_2)_2 \\
+\alpha_{j-1} &= \alpha_{j-2} \times(10)_2 + (m_1)_2 \\
+\alpha_j &= \alpha_{j-1} \times(10)_2 + (m_0)_2
+\end{align*}
+and $(m)_2 = \alpha_j$.
+
+Let
+\[
+  d = d_1 \times 2^{-1} + d_2 \times 2^{-2} + d_3 \times 2^{-3} +
+  \ldots + d_k \times 2^{-k} \ .
+\]
+The first digit $d_1$ is the integer part of
+\begin{align*}
+r_1 &= 2 d = 2 \times \left(d_1 \times 2^{-1} + d_2\times 2^{-2} +
+\ldots + d_{1-k} \times 2^{1-k} + d_k\times 2^{-k} \right) \\
+&= d_1 + d_2\times 2^{-1} +
+\ldots + d_{k-1} \times 2^{2-k} + d_k\times 2^{1-k} \ .
+\end{align*}
+The second digit $d_2$ is the integer part of
+\begin{align}
+r_2 &= 2^2 (d - d_1\times 2^{-1})
+= 2^2 \times \left(d_2 \times 2^{-2} + d_3\times 2^{-3} +
+\ldots + d_{k-1} \times 2^{1-k} + d_k\times 2^{-k} \right) \nonumber \\
+&= d_2 + d_3\times 2^{-1} +
+\ldots + d_{k-1} \times 2^{3-k} + d_k\times 2^{2-k} \ . \label{C1L1}
+\end{align}
+The third digit $d_3$ is the integer part of
+\begin{align}
+r_3 &= 2^3 (d - d_1\times 2^{-1} - d_2 \times 2^{-2}) \nonumber \\
+&= 2^3 \times \left(d_3 \times 2^{-3} + d_4\times 2^{-4} +
+\ldots + d_{k-1} \times 2^{1-k} + d_k\times 2^{-k} \right) \nonumber \\
+&= d_3 + d_4\times 2^{-1} +
+\ldots + d_{k-1} \times 2^{4-k} + d_k\times 2^{3-k} \ . \label{C1L2}
+\end{align}
+In general, we get that the $i^{th}$ digit $d_i$ is the integer part
+of
+\begin{equation} \label{C1L3}
+r_ i = 2^i \left(d - d_1\times 2^{-1} - d_2 \times 2^{-2} - \ldots -
+d_{i-1} \times 2^{1-i} \right)
+\end{equation}
+for $i=2$, $3$, $4$, \ldots. $k$.
+
+We however need a more efficient way to find the digits $d_i$.  We
+have from (\ref{C1L1}) that
+\begin{equation} \label{C1L4}
+  r_2 = 2 (2d - d_1) = 2(r_1 - d_1)\ .
+\end{equation}
+We have from (\ref{C1L2}) that
+\[
+r_3 = 2 (\, 2 (2 d - d_1) - d_2 ) = 2 ( r_2 - d_2) \  .
+\]
+
+We prove by induction that
+\begin{equation} \label{C1L5}
+  r_{i+1} = 2 (r_i - d_i )
+\end{equation}
+for $i=1$, $2$, \ldots, $k-1$.  It follows from (\ref{C1L4}) that
+(\ref{C1L5}) is true for $i=1$.  Let's suppose that
+(\ref{C1L5}) is true for $i=j<k-1$.  We have from (\ref{C1L3})
+with $i=j+2$ that
+\begin{align*}
+r_{j+2} &= 2^{j+2}\left( d - d_1 2^{-1} - d_2 2^{-2} - \ldots
+- d_j 2^{-j} - d_{j+1} 2^{-j-1}\right) \\
+&= 2 \bigg( \underbrace{ 2^{j-1} \left( d - d_1 2^{-1} - d_2 2^{-2} - \ldots
+d_j 2^{-j}\right)}_{=r_{j+1}\text{ from (\ref{C1L3}) with } i=j+1}
+  + d_{j+1} \bigg) \\
+&= 2 \left( r_{j+1} - d_{j+1}\right) \ .
+\end{align*}
+This is (\ref{C1L5}) with $i=j+1$.  This complete the proof by
+induction.
+
+\begin{egg}
+The binary representation of $1/10$ is $(0.0\overline{0011})_2$.
+
+Let $(1/10)_2 = (0.d_1 d_2 d_3 \ldots)_2$.  We summarize in the
+table below the computation using $r_1 = 2 d$ and
+$r_{i+1} = 2 (r_i - d_i )$ for $i=1$, $2$, \ldots
+\[
+\begin{array}{l|l|l}
+\hline
+i & r_ i & d_i \\
+ & & \text{(the integer part of $r_i$)} \\
+\hline
+1 & 2 \times 1/10 = 1/5 & 0 \\
+2 & 2 (r_1 - 0) = 2/5 & 0 \\
+3 & 2 (r_2 - 0) = 4/5 & 0 \\
+4 & 2 (r_3 - 0) = 8/5 = 1.6 & 1 \\
+5 & 2 (r_4 - 1) = 6/5 = 1.2 & 1 \\
+6 & 2 (r_5 - 1) = 2/5 & 0 \\
+\vdots & \qquad \vdots & \vdots \\
+\hline
+\end{array}
+\]
+Since $r_6 = r_2$ and $d_6 = d_2$, we get that $d_7 = d_3$,
+$d_8=d_4$, $d_9 = d_5$ and, in general, $d_i= d_{i-4}$ for $i=6$, $7$,
+\ldots.
+\end{egg}
+
+\section{Computer Numbers}
+
+To illustrate the properties of computer arithmetic, we assume that
+each real number is stored in a 32-bit word.  The typical computer
+representation of a normalized binary number
+$x = \pm(0.b_1 b_2 b_3 \ldots )_2 \times 2^m$ is given by
+\[
+\begin{array}{|c|c|c|}
+\hline
+s & e_8 e_7 e_6 \ldots e_1 & b_2 b_3 \ldots b_{24} \\
+\hline
+\end{array} \ ,
+\]
+where $s$ indicates the sign of $x$,
+$(e_8 e_7 \ldots e_1)_2 = (m)_2 + (1111111)_2$, and
+$b_1$, $b_2$, $b_3$, \ldots $b_{24}$ are the
+first $24$ binary digits of the normalized representation of $x$.
+The part $(b_1 b_3 \ldots b_{24})_2$ is called the
+{\bfseries normalized mantissa}\index{Normalized Mantissa}.
+
+\begin{rmkList}
+\begin{enumerate}
+\item We did not store the value of $b_1$ because we always assume
+that the binary numbers are normalized and so $b_1$ is always $1$.
+\item Let $e$ be the decimal representation of the number
+$(e_8 e_7 \ldots e_1)_2$.  Then $0 \leq e < 2^8 = 256$ but, in
+practice, only $1 \leq e \leq 254$ is used because the values $0$ and
+$255$ are often reserved to indicate really small or large numbers,
+and {\bfseries NaN}\index{NaN} (not a number).  We get NaN following an illegal
+operation like a division by zero.
+
+To represent negative exponents, we assume that $e = m + 127$.  Thus,
+$-126 \leq m \leq 127$.  In binary notation
+$(m)_2 = (e_8 e_7 \ldots e_1)_2 - (1111111)_2$.
+\item $0$ has its unique computer representation (associated to $e=0$
+or $255$).
+\end{enumerate}
+\end{rmkList}
+
+The computer representation of a real number $x$ is called the
+{\bfseries floating point representation}\index{Floating Point
+  Representation} of $x$ and is denoted by
+$\fl(x)$.  The difference between a real number and its computer
+representation is called the {\bfseries rounding error}\index{Rounding Error}.
+
+There are major differences between the standard arithmetic and the
+computer arithmetic.  We mention some below.
+
+\begin{itemize}
+\item Not all real numbers can be represented as computer numbers.
+There are ``holes'' in the computer representation of the real line.
+For instance, the binary representation of $1/10$ is
+$(0.\overline{1100})_2 \times 2^{-(11)_2}$.  Hence, the machine
+representation of this number is
+\[
+\begin{array}{|c|c|c|}
+\hline
+0 & 1111100 & 10011001100110011001100 \\
+\hline
+\end{array} \ .
+\]
+This machine number represents in fact the number
+\begin{align*}
+&\big( 2^{-1} + 2^{-2} + 2^{-5} + 2^{-6} + 2^{-9} + 2^{-10} +
+2^{-13} + 2^{-14} + 2^{-17} + 2^{-18} \\
+&\qquad + 2^{-21} + 2^{-22}\big) 2^{-3} = 0.09999999403954\ldots
+\end{align*}
+\item Not all real numbers can be represented as computer numbers.
+There are upper and lower bounds to the real numbers that can be
+represented on a computer. The largest real number that can be
+represented as computer number is
+\[
+R_M =(0.\underbrace{1111\ldots1}_{\text{24 times}})_2 \times 2^{127} =
+( 1 - 2^{-24})\times 2^{127} \approx 0.17014117\ldots \times 10^{38}
+\]
+and the smallest positive number is
+\[
+R_m =(0.1\underbrace{000\ldots0}_{\text{23 times}})_2 \times 2^{-126}
+= 2^{-127} \approx 0.587747\ldots \times 10^{-38}  \ .
+\]
+If the result of a computation is a number bigger than $R_M$, then we
+say that we have {\bfseries overflow}\index{Overflow}.  If the result
+of a computation is a number smaller than $R_m$, than we have
+{\bfseries underflow}\index{Underflow}.
+
+\item The fundamental algebraic properties of the real number system
+(commutativity, associativity, \ldots) are not preserved. 
+
+Suppose that the basic computer operations ($+$, $-$, $\times$,
+$\div$) are defined as follows. 
+\[
+\begin{array}{l|l}
+\text{exact operation} & \text{computer operation} \\
+\hline
+x \pm y & \fl(\fl(x) \pm \fl(y)) \\
+x \times y & \fl(\fl(x) \times \fl(y))\\
+x \div y & \fl(\fl(x) \div \fl(y))
+\end{array}
+\]
+We also define the computer operation $\fl(\sqrt{\fl(x)})$ to
+represent the exact operation $\sqrt{x}$.  This is not exactly how
+computers work with computer numbers but it is an acceptable
+definition to understand why the fundamental algebraic
+properties of the real number system are not preserved.
+
+If we work in base $10$ using $4$-digit rounding representations, the
+computer evaluation of $\pi + (1/3) \times \pi$ is given by
+\begin{align*}
+\fl(\fl(\pi)+\fl(\fl(1/3) \times \fl(\pi)))
+&= \fl( (0.3142\times 10) + \fl( 0.3333 \times (0.3142 \times 10) )) \\
+&= \fl( (0.3142\times 10) + \fl( 1.0472286000000  )) \\
+&= \fl( (0.3142\times 10) + (0.1047 \times 10) ) \\
+&= \fl( 4.189 ) = 0.4189 \times 10
+\end{align*}
+The computer evaluation of
+$\pi \times (1 + (1/3))= \pi + (1/3)\times \pi$ is given by 
+\begin{align*}
+\fl( \fl(\pi) \times \fl( \fl(1) + \fl(1/3)))
+&= \fl( (0.3142\times 10) \times \fl( (0.1\times 10) + (0.3333) )) \\
+&= \fl( (0.3142\times 10) \times \fl(1.3333) ) \\
+&= \fl( (0.3142\times 10) \times (0.1333\times 10) ) \\
+&= \fl( 4.188286 ) = 0.4188 \times 10
+\end{align*}
+Thus, we do not get the same $4$-digit rounding representation for
+$\pi + (1/3)\times \pi$ and $\pi \times (1 + (1/3))$.  The
+distributive law is not preserved.
+\end{itemize}
+
+Suppose that $p$ is the exact result of a computation and $\tilde{p}$
+is the computer result of this computation.  The number
+$\epsilon = |p-\tilde{p}|$ is the
+{\bfseries absolute error}\index{Absolute Error}.
+If $p\neq 0$, the number
+$\epsilon_r= |p-\tilde{p}|/|p|= \epsilon/|p|$
+is the {\bfseries relative error}\index{Relative Error}.
+
+If the absolute error is $0.1$, where the numbers $p$ and $\tilde{p}$
+are smaller than $1$ in absolute value, then the error is enormous.
+However, when the numbers $p$ and $\tilde{p}$ are larger than $10^6$
+in absolute value, the same absolute error is very small.  The
+absolute error by itself does not say anything about the accuracy of
+the computation.  The relative error is the useful information about
+the size of the error.
+
+\begin{egg}
+$22/7$ and $315/113$ are two frequently used approximations of $\pi$.
+We find the absolute and relative errors of these two approximations
+of $\pi$.  The absolute and relative error of the approximation $22/7$ of
+$\pi = 3.14159265358979\ldots$ are
+\[
+|3.14159265358979\ldots- 22/7| = 0.126442\ldots \times 10^{-2}
+\]
+and
+\[
+|3.14159265358979\ldots
+- 22/7|/3.14159265358979\ldots = 0.4024994\ldots\times 10^{-3}
+\]
+respectively.  A relative error of about $0.04$ \%.  The absolute and
+relative error of the approximation $355/113$ of $\pi$ are
+\[
+|3.14159265358979\ldots- 355/113| =
+0.2668\ldots\times 10^{-6}
+\]
+and
+\[
+|3.14159265358979\ldots - 355/113|/3.14159265358979\ldots
+= 0.84914\ldots\times10^{-7}
+\]
+respectively.  A relative error of about $0.0000085$ \%.
+\end{egg}
+
+\begin{rmk}
+For our 32-bit computer, if $x=(0.b_1 b_2 b_3\ldots)_2 \times 2^m$, we 
+have that $\displaystyle \frac{|x-\fl(x)|}{|x|} \leq 2^{-24}$ if rounding
+is used and $\displaystyle \frac{|x-\fl(x)|}{|x|} \leq 2^{-23}$ if
+chopping is used.
+
+\stage{i} We prove that $\displaystyle \frac{|x-\fl(x)|}{|x|}
+\leq 2^{-24}$ if rounding is used.  The number $x$ is between the
+computer numbers $x_1 = (0.b_1b_2b_3\ldots b_{24})_2 \times 2^m$ and
+$x_2 = ((0.b_1b_2b_3\ldots b_{24})_2 + 2^{-24}) \times 2^m$.
+Hence $\fl(x) = x_1$ if $b_{25} =0$ and $\fl(x) = x_2$ if $b_{25}=1$.
+
+If $b_{25}=0$, then
+\[
+|x-\fl(x)| = | x- x_1 | = (0.b_{26} b_{27} \ldots)_2 \times 2^{m-25}
+\leq 2^{m-25}
+\]
+and
+\[
+\frac{|x-\fl(x)|}{|x|} \leq
+\frac{2^{m-25}}{(0.b_1 b_2 b_3\ldots)_2 \times 2^m}
+= \frac{1}{(0.b_1 b_2 b_3\ldots)_2} 2^{-25} \leq 2^{-24}
+\]
+because $(0.b_1 b_2 b_3\ldots)_2 \geq (0.b_1)_2 = (0.1)_2 = 2^{-1}$.
+
+If $b_{25}=1$, then
+\[
+|x-\fl(x)| = | x- x_2 | = ((1)_2 - (0.b_{25} b_{26} \ldots)_2) \times 2^{m-24}
+\leq 2^{m-25}
+\]
+because $(1)_2-(0.b_{25}b_{26} \ldots)_2 \leq 2^{-1}$.  Thus
+\[
+\frac{|x-\fl(x)|}{|x|} \leq
+\frac{2^{m-25}}{(0.b_1 b_2 b_3\ldots)_2 \times 2^m}
+= \frac{1}{(0.b_1 b_2 b_3\ldots)_2} 2^{-25}
+< 2^{-24}
+\]
+because $(0.b_1b_2b_3\ldots)_2 \geq (0.b_1)_2 =
+(0.1)_2 = 2^{-1}$.
+
+\stage{ii} To prove that
+$\displaystyle \frac{|x-\fl(x)|}{|x|} \leq 2^{-23}$ if
+chopping is used.  We note that
+\[
+\fl(x) = (0.b_1b_2b_3\ldots b_{24})_2 \times 2^m
+\]
+and
+\[
+|x-\fl(x)| =  (0.b_{25}b_{26} b_{27} \ldots)_2 \times 2^{m-24}
+< 2^{m-24} \ .
+\]
+We do not exclude the possibility that some or all of $b_{25}$,
+$b_{26}$, \ldots\ be zero. Thus
+\[
+\frac{|x-\fl(x)|}{|x|} \leq
+\frac{2^{m-24}}{(0.b_1 b_2 b_3\ldots)_2 \times 2^m}
+= \frac{1}{(0.b_1 b_2 b_3\ldots)_2} 2^{-24}
+< 2^{-23}
+\]
+because $(0.b_1b_2b_3\ldots)_2 \geq (0.b_1)_1 = (0.1)_2 = 2^{-1}$.
+\end{rmk}
+
+\begin{defn}
+Let $r$ be a positive integer.  We say that $\tilde{p}$
+approximates $p$ to $r$
+{\bfseries significant digits}\index{Significant Digits} if
+\[
+|p - \tilde{p}| \leq \frac{1}{2} \beta^{s-r+1} \ ,
+\]
+where $\beta$ is the basis used to represent the numbers and $s$
+is the largest integer such that $\beta^s \leq |p|$.
+\end{defn}
+
+For instance, if the basis is $\beta = 10$, then $\tilde{p}$
+approximate $p$ to $r$ significant digits if
+\[
+|p - \tilde{p}| \leq \frac{1}{2} \left( 10^{s-r+1} \right) = 5 \times 10^{s-r}
+\ ,
+\]
+where $s$ is the largest integer such that $10^s \leq |p|$.  Thus
+\[
+\frac{|p - \tilde{p}|}{|p|} \leq \frac{|p - \tilde{p}|}{10^s}
+\leq 5 \times 10^{-r} \ .
+\]
+The largest positive integer $r$ such that the previous inequality is
+satisfied is the classical definition of $r$ significant digits. 
+
+\begin{egg}
+Both $10.001$ and $9.999$ approximate $10$ to $4$ significant
+digits because the relative error
+\[
+\epsilon_r = \frac{|10.001 - 10|}{10} = \frac{|10-9.999|}{10}
+= 10^{-4} < 5 \times 10^{-4}
+\]
+and $4$ is the largest integer $r$ such that $\epsilon_r < 5 \times
+10^{-r}$.
+\end{egg}
+
+\section{Controlling Errors}
+
+From now on and until the end of this chapter, our presentation will
+be more intuitive.  We will not always be mathematically rigorous.
+Our goal is to help the readers develop their intuition on how to
+improve the accuracy of numerical computations.  This is often
+referred as the Art of numerical computation.
+
+There are many causes for the loss of accuracy in computations.
+
+\begin{enumerate}
+\item Loss of accuracy often comes from the cancellation of significant
+digits due to subtraction of nearly equal numbers.
+
+Let $x= 5/7 = 0.\overline{714285}$ and $y=0.714251$.  Using $5$-digit
+chopping arithmetic, we get
+\[
+\begin{array}{l|c|c|c|c|c}
+& \text{Exact} & \text{$5$-digit} & \text{absolute} & \text{relative} &
+\text{number of} \\
+& \text{values} & \text{chopping} & \text{error} & \text{error} &
+\text{significant} \\
+& & \text{arithmetic} & \text{(approx.)} & \text{(approx.)} & \text{digits} \\
+\hline
+x & \rule{0em}{1em} 0.\overline{714285} & 0.71428 & 0.6 \times 10^{-5} &
+0.8 \times 10^{-5} & 5 \\
+y & 0.714251 & 0.71425 & 0.1 \times 10^{-5} & 0.14\times 10^{-5} & 6 \\
+x-y & 0.34\overline{714285}\times 10^{-4} & 0.3 \times 10^{-4} &
+0.47\times 10^{-5} & 0.136 & 1
+\end{array}
+\]
+We have lost a lot of significant digits in the subtraction $x-y$.
+\item The rounding error of a computer number is amplified when this number
+is multiply by a number of large absolute value or divide by a number of
+small absolute value.
+\item A really small number should not be added to a very large number.
+Let $x= 0.1234 \times 10^5$ and $y=0.4321$.  Using $4$-digit rounding
+arithmetic to add this two numbers, we get $x+y=x$ because
+$y=0.000004321$ and so $x+y$ is $0.123404321 \times 10^5$.  Rounding
+this number to $4$-digits gives $x = 0.1234 \times 10^5$.
+\end{enumerate}
+
+When possible, rearranging the order of the arithmetic operations may
+increase the accuracy of the computation.  The following three examples
+illustrate this technique.
+
+\begin{egg}
+Use $6$-digit rounding arithmetic to compute the roots of the
+polynomial $x^2-20\,x+1=0$.
+
+The standard formulae to compute the
+roots of the polynomial of degree two $a x^2+b x+c=0$ are
+\begin{equation}
+x_{+} =\frac{-b+\sqrt{b^2-4\,a\,c}}{2\,a}
+\quad \text{and} \quad
+x_{-} =\frac{-b-\sqrt{b^2-4\,a\,c}}{2\,a}  \ . \label{C1L6}
+\end{equation}
+We get
+\[
+x_{+}=\frac{20+\sqrt{396}}{2} \approx \frac{20+19.8997}{2}
+\approx 19.9499 \; .
+\]
+Since the exact value of this root is
+$\alpha = 19.9498743710661995\ldots$, the relative error is
+\[
+\frac{19.9499 - \alpha}{\alpha} \approx 0.128 \times 10^{-5} \ .
+\]
+The second root is
+\[
+x_{-}=\frac{20-\sqrt{396}}{2} \approx
+\frac{20-19.8997}{2} = \frac{0.1003}{2} = 0.05015 \ .
+\]
+Since the exact value of this root is $\beta =
+0.050125628933800\ldots$, the relative error is
+\[
+\frac{0.05015 - \beta}{\beta} =\approx 0.486 \times 10^{-3} \ .
+\]
+This is not really good for $6$-digit rounding.
+
+If $c\neq 0$, the roots of the polynomial $a x^2+b x+c=0$ are also
+given by the formulae
+\begin{equation}
+x_{+} = \frac{-2c}{b+\sqrt{b^2-4\,a\,c}} \quad \text{and} \quad
+x_{-} = \frac{2c}{-b+\sqrt{b^2-4\,a\,c}} \ .  \label{C1L7}
+\end{equation}
+Multiply the formula for $x_{+}$ in (\ref{C1L6}) by
+$\displaystyle \frac{-b-\sqrt{b^2-4ac}}{-b-\sqrt{b^2-4ac}}$ and the
+formula for $x_{-}$ in (\ref{C1L6}) by
+$\displaystyle \frac{-b+\sqrt{b^2-4ac}}{-b+\sqrt{b^2-4ac}}$ to get the
+formulae in (\ref{C1L7}).
+
+We get
+\[
+x_{-} = \frac{2}{20+\sqrt{396}} \approx \frac{2}{20+19.8997}
+= \frac{2}{39.8997} \approx 0.0501257 \ .
+\]
+The relative error is now
+\[
+\frac{0.0501257 - \beta}{\beta} = 0.142 \times 10^{-5} \ .
+\]
+This is good.  This is a significant improvement on the previous
+computation of $x_{-}$.
+
+The idea is to avoid the subtraction of almost equal numbers.  In
+the formula for $x_{-}$ in (\ref{C1L6}), we had to
+compute $20-19.8997$ which is the difference of two very close numbers.
+In the formula for $x_{-}$ in (\ref{C1L7}), we did not have to
+subtract two very close numbers.  This is the reason why, for the polynomial
+$x^2-20\,x+1=0$, the second formula to compute $x_-$ is better than
+the first one.
+\end{egg}
+
+\begin{egg}
+Compute
+\begin{equation} \label{C1L8}
+f(x) = x^3 -6x^2+3x-0.149
+\end{equation}
+at $x=4.71$ using $3$-digit rounding arithmetic.
+
+A direct computation using (\ref{C1L8}) and $3$-digit rounding
+arithmetic gives $f(x) = -0.140 \times 10^2$.  Using the fact that
+$f(x) = -14.636489$, we find that the absolute error is
+$0.636489$, the relative error is about $0.04$, and the
+approximation is to $2$ significant digits. 
+
+A better way to write $f(x)$ is to use the nested form
+\begin{equation} \label{C1L9}
+f(x) = -0.149 +x(3 + x(x-6)) \ .
+\end{equation}
+Using (\ref{C1L9}) and $3$-digit rounding arithmetic, we get
+$f(x) = -0.146 \times 10^2$.  The absolute error is
+$0.36489 \times 10^{-1}$, the relative error is about
+$0.25 \times 10^{-2}$, and the approximation is to $3$ significant
+digits.
+
+The nested form must always be used to evaluate a polynomial because
+less arithmetic operations are generally involved.  For instance, 5
+multiplications and 3 additions / subtractions are involved in
+(\ref{C1L8}) while only 2 multiplications and 3
+additions / subtractions are involved in (\ref{C1L9}).
+\end{egg}
+
+\begin{egg}
+Using $4$-digit chopping arithmetic, add the following numbers in
+increasing order (from the smallest to the largest) and in decreasing
+order (from the largest to the smallest).
+\begin{align*}
+&x_1 = 0.1580 \ , \ x_2 = 0.2653 \ , \
+x_3 = 0.2581 \times 10 \ , \ x_4 = 0.4288 \times 10 \ , \
+x_5 = 0.6266 \times 10^2 \ , \\
+&x_6 = 0.7555 \times 10^2 \ , \ x_7 = 0.7767 \times 10^3 \ ,
+\ x_8 = 0.7889 \times 10^3 \ \text{and} \ x_9 = 0.8999 \times 10^4 \ .
+\end{align*}
+The exact value of the sum is $0.107101023 \times 10^5$.
+\[
+\begin{array}{l|c|c|c|c}
+& \text{$4$-digit} & \text{absolute} & \text{relative} & \text{number of} \\
+& \text{chopping} & \text{error} & \text{error} & \text{significant} \\
+& \text{arithmetic} & \text{(approx.)} & \text{(approx.)} & \text{digits} \\
+\hline
+\text{increasing} & \rule{0em}{1em} 0.1071\times 10^5 & 0.1023 &
+0.96 \times 10^{-5} & 5 \\
+\text{decreasing} & 0.1069\times 10^5 & 20.1 &
+0.19 \times 10^{-2} & 3
+\end{array}
+\]
+The numbers $x_1$, $x_2$, $x_3$ and $x_4$ are ignored when the summation is
+performed in decreasing order.  This is another example where adding a really
+small number to a very large number produces a loss of accuracy.
+\end{egg}
+
+\section{Stability}
+
+The numerical solution of many problems is approximated by the
+solution of a difference equation.  For instance, the Euler's method,
+that is taught in calculus and that we will study again later, states
+that the solution of the difference equation
+\begin{align*}
+w_{j+1} &= w_j + h f(x_j,w_j) \qquad \text{for} \quad j=0, 1, 2, \ldots \\
+w_0 &= y_0
+\end{align*}
+provides an approximation to the solution of the differential equation 
+$y'=f(x,y)$ with $y(0)=y_0$.  Namely, $y(x_j) \approx w_i$ for $j=0$,
+$1$, $2$, \ldots\  The $x_j$'s are the
+{\bfseries mesh points}\index{Initial Value Problem!Mesh Points} defined
+by $x_j = x_0 + j h$ for $j\geq 0$, where $h$ is the chosen
+{\bfseries step size}\index{Initial Value Problem!Step Size}.
+
+Suppose that the solution of a problem is approximated by the solution
+of the difference equation
+\begin{equation} \label{C1L10}
+x_{n+1} = \frac{10}{21} x_n - \frac{1}{21}x_{n-1}
+\end{equation}
+with the initial conditions $x_0 = 1$ and $x_1 = 1/3$.  Using
+(\ref{C1L10}) recursively, we find
+
+\[
+\begin{array}{l|l}
+\hline
+n & x_n \\
+\hline
+x_2 & 0.11111111111111\ldots \\
+x_3 & 0.03703703703703\ldots \\
+\vdots & \qquad \vdots \\
+x_{10} & 0.000016935087808430\ldots \\
+\vdots & \qquad \vdots \\
+x_{21} & 0.95599066359747\ldots \times 10^{-10} \\
+\vdots & \qquad \vdots \\
+\hline
+\end{array}
+\]
+
+The exact solution of (\ref{C1L10}) is $x_j = (1/3)^j$ for
+$j=0$, $1$, $2$, \ldots\  The previous values computed recursively are
+exact to all written digits.
+
+However, the solution of another problem may be approximated by the
+solution of the difference equation
+\begin{equation} \label{C1L11}
+x_{n+1} = \frac{16}{3} x_n - \frac{5}{3}x_{n-1}
+\end{equation}
+with the initial conditions $x_0 = 1$ and $x_1 = 1/3$.
+Using (\ref{C1L11}) recursively, we find
+
+\begin{longtable}{l|l}
+\hline
+$n$ & $x_n$ \\
+\hline
+$x_2$ & $0.11111111111111\ldots$ \\
+$x_3$ & $0.03703703703703\ldots$ \\
+$x_4$ & $0.01234567901234\ldots$ \\
+$x_5$ & $0.00411522633742\ldots$ \\
+\vdots & \qquad \vdots \\
+$x_{10}$ & $0.00001693501310\ldots$ \\
+\vdots & \qquad \vdots \\
+$x_{20}$ & $-0.00072952204841\ldots$ \\
+\vdots & \qquad \vdots \\
+$x_{40}$ & $-0.69572671433304\ldots \times 10^{11}$ \\
+\vdots & \qquad \vdots \\
+\hline
+\end{longtable}
+
+% \[
+% \begin{array}{l|l}
+% \hline
+% n & x_n \\
+% \hline
+% x_2 & 0.11111111111111\ldots \\
+% x_3 & 0.03703703703703\ldots \\
+% x_4 & 0.01234567901234\ldots \\
+% x_5 & 0.00411522633742\ldots \\
+% \vdots & \qquad \vdots \\
+% x_{10} & 0.00001693501310\ldots \\
+% \vdots & \qquad \vdots \\
+% x_{20} & -0.00072952204841\ldots \\
+% \vdots & \qquad \vdots \\
+% x_{40} & -0.69572671433304\ldots \times 10^{11} \\
+% \vdots & \qquad \vdots \\
+% \hline
+% \end{array}
+% \]
+
+The exact solution of (\ref{C1L10}) is $x_j = (1/3)^j$ for
+$j=0$, $1$, $2$, \ldots\  For $j=2$ and $3$, the $x_j$'s are exact to
+all written digits.  However, starting with $j=14$, there is a growing
+difference between the exact solution and the computed solution.  In
+fact, the computed solution seems to converge to $-\infty$.
+
+Why can we compute the solution for (\ref{C1L10}) but not
+the solution for (\ref{C1L11})?  The general solution of
+(\ref{C1L10}) is of the form
+\[
+x_j = A \left(\frac{1}{3}\right)^j + B \left(\frac{1}{7}\right)^j \ .
+\]
+The particular solution with $x_0=1$ and $x_1 = 1/3$ is given
+by $A=1$ and $B=0$.  Numerical rounding has an effect similar to
+slightly changing (a little perturbation of) the values of $A$ and
+$B$. Since $(1/7)^j$ converge to $0$ faster than $(1/3)^j$ as
+$j\rightarrow \infty$, the second term of the general solution has
+little or no significant effect on the compute value of $x_j$.
+
+However, the general solution of
+(\ref{C1L10}) is of the form
+\[
+x_j = A \left(\frac{1}{3}\right)^j + B 4^j \ .
+\]
+The particular solution for $x_0=1$ and $x_1 = 1/3$ is given
+by $A=1$ and $B=0$.  Again, numerical rounding has an effect similar
+to slightly changing (a little perturbation of) the values of $A$ and
+$B$.  Since $4^j$ converges to $\infty$ while $(1/3)^j$ converges to
+$0$ as $j\rightarrow \infty$, the term $B 4^j$ of the general
+solution will dominate the computation of $x_j$ as $j\rightarrow
+\infty$ even if $B$ is really small.
+
+We say that a numerical method behaving like (\ref{C1L10})
+is {\bfseries stable}\index{Finite Difference!Stable} and a numerical
+method behaving like (\ref{C1L11}) is
+{\bfseries unstable}\index{Finite Difference!Unstable}.
+We will come back on these concepts several times in the next
+chapters; in particular in Chapters~\ref{chaptInitVal} and
+\ref{chapBoundValProbl}.
+
+\section{Conditioning}
+
+Will a small perturbation in the data of a numerical process produce
+a small change or a large change in the result of this
+numerical process?  This type of questions is part of what is called
+{\bfseries conditioning}\index{Conditioning}.
+
+We say that a numerical process is
+{\bfseries well conditioned}\index{Well Conditioned} if a
+small perturbation in the data of this numerical process produces a
+small change in the result of this numerical process.  We say that a
+numerical process is
+{\bfseries ill conditioned}\index{Ill Conditioned} if a small
+perturbation in the data of this numerical process produces a large
+change in the result of this numerical process.
+
+A simple example of conditioning is provided by the numerical
+evaluation of a function.  Due to rounding errors (in particular to the
+rounding error associated to the argument), the numerical evaluation
+of a function $f$ at $x$ is equal to the exact value of $f$ evaluated
+at $x+h$, where the perturbation $h$ is small.  If, for $h$ small, the
+exact value $f(x+h)$ is close to the exact value $f(x)$, then we say
+that the numerical evaluation of $f$ at $x$ is
+{\bfseries well conditioned}\index{Well Conditioned}.  Otherwise, we
+say that the numerical evaluation of $f$ at $x$ is
+{\bfseries ill conditioned}\index{Ill Conditioned}.
+
+To give a mathematical meaning to well conditioned and
+ill conditioned in the context of the evaluation of $f$ at $x$,
+we use the Taylor expansion\footnote{See Theorem~\ref{TaylorTheo} in
+the next chapter.} of $f$ at $x$,
+\[
+f(x+h) = f(x) + f'(x)h + \frac{f''(\zeta)}{2}h^2 \ ,
+\]
+where $x < \zeta < x+h$.  Hence
+\[
+\frac{f(x+h)-f(x)}{f(x)} = \frac{f'(x)}{f(x)}\; h +
+\frac{f''(\zeta)}{2f(x)}\; h^2
+= \left( \frac{xf'(x)}{f(x)}\right)\; \left( \frac{h}{x} \right)
++ \frac{f''(\zeta)}{2f(x)}\; h^2 \ .
+\]
+If $h$ is small enough, we may ignore the term
+$(f''(\zeta)h^2)/(2f(x))$ because $h^2$ goes to $0$ faster than $h$.
+Hence,
+\[
+\frac{f(x+h)-f(x)}{f(x)} \approx
+\left( \frac{xf'(x)}{f(x)}\right)\; \left( \frac{h}{x} \right)
+\]
+for $h$ small enough.  The relative error of $f(x+h)$ (i.e.\ the numerical
+evaluation of a function $f$ at $x$) is asymptotically proportional to
+the relative size of the perturbation $h$ with the constant of
+proportionality
+\[
+\frac{xf'(x)}{f(x)} \ .
+\]
+This constant is called the
+{\bfseries condition number}\index{Condition Number} for the
+evaluation of the function $f$ at $x$.  This condition number will
+depend on the function $f$ chosen and the argument $x$ used.  If the
+condition number is large in absolute value, then we say that the
+evaluation of $f$ at $x$ is ill conditioned.  If the condition number
+is small in absolute value, then we say that the evaluation of $f$ at
+$x$ is well conditioned.
+
+\begin{egg}
+Is evaluating $f(x)= \tan(x)$ near $x=\pi/2$ well or ill conditioned?
+
+The condition number is
+\[
+\frac{xf'(x)}{f(x)} = \frac{x\sec^2(x)}{\tan(x)} =
+\frac{x}{\sin(x)\cos(x)} \ .
+\]
+Since
+\[
+\lim_{x\rightarrow \pi/2} \frac{x}{\sin(x)\cos(x)} = +\infty \ ,
+\]
+the conditional number is very large for $x$ near $\pi/2$ and the
+evaluation of $f$ at $x$ near $\pi/2$ is ill conditioned.
+\end{egg}
+
+There is also a condition number associated to the numerical process of
+solving linear systems of equation.  This condition number will be
+defined in the chapter on the algorithms to numerically solve linear
+systems of equations.
+
+\section{Exercises}
+
+\begin{question}
+Compute $\displaystyle \left(\frac{1}{3}-\frac{3}{11}\right) + \frac{3}{20}$
+using $3$-digit chopping arithmetic and $3$-digit rounding arithmetic.
+Compare the relative error of both computations.
+\label{arithQ1}
+\end{question}
+
+\begin{question}
+Using $3$-digit chopping arithmetic, compute
+$\displaystyle \sum_{i=1}^{10} \frac{1}{i^2}$ in ascending and
+decreasing order.  Compute the relative error for each method.  Which
+method is more accurate and why it is so?
+\label{arithQ2}
+\end{question}
+
+\begin{question}
+We know that $\displaystyle e = \sum_{n=0}^\infty \frac{1}{n!}$.
+Using $4$-digit rounding arithmetic, compute the approximation
+$\displaystyle \sum_{n=0}^5 \frac{1}{n!}$ of $e$ using the best method
+to compute the sum.  Compute the absolute error, the relative error
+and the number of significant digits.
+\label{arithQ3}
+\end{question}
+
+\begin{question}
+Assuming that $10$-digit rounding arithmetic is used, how many digits
+of accuracy are lost in the subtraction $1 - \cos(0.25)$?
+\label{arithQ4}
+\end{question}
+
+\begin{question}
+If $0.2235$ is a $4$-digit rounding approximation of $x$ and $0.32145$
+is a $5$-digit rounding approximation of $y$, find a small interval that
+will contain $x/y$.
+\label{arithQ5}
+\end{question}
+
+\begin{question}
+If $x$ is an approximation of $\pi$ with four significant digits,
+find a small interval that will contain $x$.
+\label{arithQ6}
+\end{question}
+
+\begin{question}
+\subQ{a} Give the best algebraic formula (the formula with the lowest
+risk to lose significant digits) to approximate the smallest root
+$x_-$ of the polynomial $p(x) = x^2 - 235 x + 3$\ .  Justify your
+choice of formula.\\
+\subQ{b} Using $4$-digit rounding arithmetic and the formula that you
+have given in (a), compute an approximation of $x_-$.  Show all the
+steps of your computation.\\
+\subQ{c} The exact value of $x_-$ is $0.012766651010\ldots$.  Compute
+the absolute error, the relative error and the number of significant
+digits for your approximation in (b).
+\label{arithQ7}
+\end{question}
+
+\begin{question}
+What can go wrong with the operation $\sqrt{x^2+y^2}$ for very large
+values of $x$ and $y$.  How can you avoid such problem?
+\label{arithQ8}
+\end{question}
+
+\begin{question}
+Why is there a loss of significant digits when computing
+$\ln(1+x) - \ln(x)$ for $x$ large?  How can we rewrite
+$\ln(1+x) - \ln(x)$ to avoid this loss of significant digits?
+\label{arithQ9}
+\end{question}
+
+\begin{question}
+Transform the expression $1-\cos(x)$ to an equivalent expression which
+can be computed ``accurately'' for small values of $x$.
+\label{arithQ10}
+\end{question}
+
+\begin{question}
+Find a way to compute $f(x) = \sqrt{x^4+4}-2$ for $x$ small that will
+minimize the loss of significant digits.
+\label{arithQ11}
+\end{question}
+
+\begin{question}
+In 1994, a flaw was found on the Intel Pentium computer chip related
+to the division of large integers.  The following results were
+obtained.
+\[
+\begin{array}{c|c|c}
+\hline
+\text{division} & \tilde{x} : \text{ the value obtained with} &
+x : \text{ the exact value} \\
+& \text{the Intel computer chip} & \\
+\hline
+\rule[1em]{0em}{1em}
+\displaystyle \frac{5505001}{294911} & 18.66600092909 &
+18.6666519729681\ldots \\[1em]
+\displaystyle \frac{4.999999}{14.999999} & 0.333329 & 0.3333332888888\ldots
+\\[1em]
+\displaystyle \frac{41.95835}{31.45727} & 1.33382 &
+1.33382044913624\ldots \\[1em]
+\hline
+\end{array}
+\]
+Find the absolute error, relative error and number of significant
+digits for the values obtained with the Intel computer chip.
+\label{arithQ12}
+\end{question}
+
+\begin{question}
+Show that the recurrence relation (i.e.\ the difference equation)
+\begin{equation}\label{finite_diff}
+x_n = 2 x_{n-1} + x_{n-2}
+\end{equation}
+has a general solution of the form
+\[
+x_n = \alpha_1 \lambda_1^n + \alpha_2 \lambda_2^n
+\]
+for $n=0$, $1$, $2$, \ldots\  Can we safely use the recurrence relation
+to compute the values of $x_n$ given initial values $x_0$ and $x_1$?
+\label{arithQ13}
+\end{question}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End: 

@@ -1,0 +1,281 @@
+\nonumsection{Chapter~\ref{chaptArith} : Computer Arithmetic}
+
+\solution{\SOL}{\ref{arithQ1}}{
+The exact value is $139/660$.
+
+Three-digit chopping arithmetic:
+\[
+\left(\frac{1}{3}-\frac{3}{11}\right) + \frac{3}{20}
+= \left(0.333 - 0.272 \right) + 0.150
+= 0.0610 + 0.150 = 0.211 \ .
+\]
+The relative error is
+$\displaystyle \frac{|0.211- 139/660|}{139/660} 
+\approx 0.00187$.
+
+Three-digit rounding arithmetic:
+\[
+\left(\frac{1}{3}-\frac{3}{11}\right) + \frac{3}{20}
+= \left(0.333 - 0.273 \right) + 0.150
+= 0.0600 + 0.150 = 0.210 \ .
+\]
+The relative error is
+$\displaystyle \frac{|0.210- 139/660|}{139/660} 
+\approx 0.00288$. 
+}
+
+\solution{\SOL}{\ref{arithQ2}}{
+The exact answer for the sum is $1.549767731166541\ldots$
+
+If we sum for $i=1$ to $i=10$, we have
+\begin{align*}
+&\sum_{i=1}^{10} \frac{1}{i^2}
+= \left( \left( \left( \left( \left( \left( \left( \left(
+1 + \frac{1}{4} \right) + \frac{1}{9} \right) +\frac{1}{16} \right) 
++ \frac{1}{25} \right) + \frac{1}{36} \right) + \frac{1}{49} \right)
++ \frac{1}{64} \right) + \frac{1}{81} \right) + \frac{1}{100} \\
+&\quad = ( ( ( ( ( ( (
+( 1 + 0.25 ) + 0.111 ) + 0.0625 ) + 0.04) +
+0.0277 ) + 0.0204 ) + 0.0156 ) \\
+&\qquad \quad + 0.0123 ) + 0.01 \\
+&\quad = ( ( ( ( ( ( (
+1.25 + 0.111 ) + 0.0625 ) + 0.04)
++ 0.0277 ) + 0.0204 ) + 0.0156 ) + 0.0123 )
+ + 0.01  \\
+&\quad = ( ( ( ( ( ( 
+1.36 + 0.0625 ) + 0.04) + 0.0277 ) + 0.0204 ) + 0.0156
+) + 0.0123 ) + 0.01 \\
+&\quad = ( ( ( ( ( 1.42  + 0.04) +
+0.0277 ) + 0.0204 ) + 0.0156 )
++ 0.0123 ) + 0.01 \\
+&\quad = ( ( ( ( 1.46 +  0.0277 )
++ 0.0204 ) + 0.0156 ) + 0.0123 ) + 0.01 \\
+&\quad = ( ( ( 1.48 + 0.0204 ) + 0.0156
+) + 0.0123 ) + 0.01 \\
+&\quad = ( ( 1.50  + 0.0156
+ ) + 0.0123 ) + 0.01
+= ( 1.51 + 0.0123 ) + 0.01 
+= 1.52  + 0.01 = 1.53 \ .
+\end{align*}
+The relative error is about
+$\displaystyle \frac{|1.53-1.549767731166541|}{1.549767731166541}
+\approx 0.012755$\ .
+
+If we sum for $i=10$ to $i=1$, we have
+\begin{align*}
+&\sum_{i=1}^{10} \frac{1}{i^2}
+= 1 + \left(\frac{1}{4} + \left(\frac{1}{9} + \left(\frac{1}{16} +
+\left(\frac{1}{25} + \left(\frac{1}{36} +
+\left(\frac{1}{49} + \left(\frac{1}{64} +
+\left(\frac{1}{81} + \frac{1}{100} \right) \right) \right) 
+\right) \right) \right) \right) \right) \\
+&\quad = 1 + (0.25 + (0.111 + (0.0625 + (0.04 + (0.0277 + (0.0204 + ( 0.0156 \\
+&\quad\qquad +( 0.0123 + 0.01 )))))))) \\
+&\quad = 1 + (0.25 + (0.111 + (0.0625 + (0.04 + (0.0277 + (0.0204 + ( 0.0156
++ 0.0223 ))))))) \\
+&\quad = 1 + (0.25 + (0.111 + (0.0625 + (0.04 + (0.0277 + (0.0204 + 0.0379
+)))))) \\
+&\quad = 1 + (0.25 + (0.111 + (0.0625 + (0.04 + (0.0277 + 0.0583 ))))) \\
+&\quad = 1 + (0.25 + (0.111 + (0.0625 + (0.04 + 0.0860 )))) \\
+&\quad = 1 + (0.25 + (0.111 + (0.0625 + 0.126))) \\
+&\quad = 1 + (0.25 + (0.111 + 0.188))
+= 1 + (0.25 + 0.299)
+= 1 + 0.549 = 1.54 \ .
+\end{align*}
+The relative error is about
+$\displaystyle \frac{|1.54-1.549767731166541|}{1.549767731166541}
+\approx 0.0063027$\ .
+
+It is more accurate to compute the sum by starting with the smallest
+terms to avoid as much as possible the lost of significant digits
+associated to the addition of a (very) large number with a (very)
+small number.
+}
+
+\solution{\SOL}{\ref{arithQ3}}{
+The numbers should be summed from the smallest to the largest.  We do
+not want to add a large number to a small number.  So we compute
+\begin{align*}
+& \left(\left(\left(\left(\frac{1}{5!} + \frac{1}{4!}\right)
++ \frac{1}{3!} \right) + \frac{1}{2!} \right) + \frac{1}{1!} \right)
++ \frac{1}{0!}
+= \left(\left(\left(\left(\frac{1}{120} + \frac{1}{24}\right)
++ \frac{1}{6} \right) + \frac{1}{2} \right) + 1 \right) +1 \\
+&= \left(\left(\left(\left(0.008333 + 0.04167 \right)
++ 0.1667 \right) + 0.5 \right) + 1 \right) +1
+= \left(\left(\left(0.05000 + 0.1667 \right) + 0.5 \right) + 1 \right) +1 \\
+&= \left(\left( 0.2167 + 0.5 \right) + 1 \right) +1
+= \left(0.7167 + 1 \right) +1 = 1.717  +1 = 2.717 \ .
+\end{align*}
+The absolute error is $|e- 2.717| \approx 0.128183 \times 10^{-2}$ and
+the relative error is
+$\displaystyle \frac{|e-2.717|}{e} \approx
+0.4715583 \times 10^{-3}$.  Since $4$ is the largest value of $r$
+such that the relative error is smaller than
+$5 \times 10^{-r}$, there are $4$ significant digits.
+}
+
+\solution{\SOL}{\ref{arithQ4}}{
+Suppose that the mantissa of the normalized representation of the
+numbers has ten digits.  Then, the ten-digit representation of
+$\cos(0.25)$ is $0.9689124217$.  Using $10$-digit rounding arithmetic,
+we have that $1-\cos(0.25) \approx 0.310875783 \times 10^{-1}$.  The
+mantissa of the result has only nine digits, a lost of one digit.
+
+This illustrates the importance of not subtracting two numbers that are
+almost equal.
+}
+
+\solution{\SOL}{\ref{arithQ5}}{
+We have that $0.22345 \leq x < 0.22355$ and
+$0.321445 \leq y < 0.321455$.  Hence,
+\[
+0.695120623415408 \approx
+\frac{0.22345}{0.321455} < \frac{x}{y} < \frac{0.22355}{0.321445}
+\approx 0.695453343495777 \ .
+\]
+}
+
+\solution{\SOL}{\ref{arithQ6}}{
+We have that
+\[
+\frac{|x-\pi|}{|\pi|} < 5 \times 10^{-4}
+\Rightarrow
+|x-\pi| < 5\pi \times 10^{-4}
+\Rightarrow
+-5\pi \times 10^{-4} < x - \pi < 5\pi \times 10^{-4} \ .
+\]
+The interval is
+\[
+3.140021857262998 \approx
+\pi + -5\pi \times 10^{-4} < x < \pi + 5\pi \times 10^{-4}
+\approx 3.143163449916588\ .
+\]
+}
+
+\solution{\SOL}{\ref{arithQ7}}{
+\subQ{a} There are two possible formulae to compute the smallest root
+of the polynomial $ax^2 + b x + c$, either
+$\displaystyle x_- = \frac{-b - \sqrt{b^2-4ac}}{2a}$ or
+$\displaystyle x_- = \frac{2c}{-b + \sqrt{b^2-4ac}}$.  For the
+polynomial given in the question, since $b<0$ 
+and $\sqrt{b^2 -4ac} \approx b$, the operation $-b -\sqrt{b^2-4ac}$ is
+not suggested because we will subtract two numbers which are almost
+equal.  We risk to lose a lot of significant digits.  Therefore, to
+avoid this problem, we should choose
+$\displaystyle x_- = \frac{2c}{-b + \sqrt{b^2-4ac}}$.
+
+\subQ{b} Using $4$-digit rounding arithmetic, we have 
+$b^2 = 55230$, $4ac = 12$, $b^2-4ac = 55220$, $\sqrt{b^2-4ac} = 235$,
+$-b+\sqrt{b^2-4ac} = 470$, $2c=6$ and finally
+\[
+\tilde{x}_- = \frac{2c}{-b+\sqrt{b^2-4ac}} = \frac{6}{470} = 0.01277 \ .
+\]
+
+\subQ{c} Using $x_- = 0.012766651010\ldots$, we get the absolute error
+$\epsilon = |\tilde{x}_- - x_-| = 0.334899 \times 10^{-5}$ and the relative
+error $\displaystyle \epsilon_r = \frac{\epsilon}{|x_-|}
+= 0.262323 \times 10^{-3}$.  The number of significant digits is
+$4$ because it is the largest value of $r$ such that
+$\epsilon_r < 5 \times 10^{-r}$.
+}
+
+\solution{\SOL}{\ref{arithQ8}}{
+If $x$ and $y$ are very large, $x^2+y^2$ can produce an overflow.
+To avoid overflow, we use one of the following equivalent expressions
+for $\sqrt{x^2+y^2}$.
+\[
+\sqrt{x^2+y^2} = x \sqrt{1+\left(\frac{y}{x}\right)^2}
+\quad \text{or} \quad
+\sqrt{x^2+y^2} = y \sqrt{\left(\frac{x}{y}\right)^2+1} \ .
+\]
+Hopefully, one of $x/y$ or $y/x$ will be small.
+}
+
+\solution{\SOL}{\ref{arithQ9}}{
+There is a loss of significant digits because we subtract two almost
+equal numbers.  We should use the relation
+\[
+\ln(1+x) - \ln(x) = \ln\left(\frac{1+x}{x}\right)
+\]
+when $x$ is large.
+}
+
+\solution{\SOL}{\ref{arithQ10}}{
+The problem with $1-\cos(x)$ for $x$ near $0$ is the subtraction of
+almost equal numbers.  One way to eliminate this subtraction of almost
+equal numbers is with the formula
+\[
+1-\cos(x) = (1-\cos(x))\left(\frac{1+\cos(x)}{1+\cos(x)}\right)
+= \frac{1-\cos^2(x)}{1+\cos(x)} = \frac{\sin^2(x)}{1+\cos(x)} \ .
+\]
+Note that we have not introduce any division by a really small number
+because $1+\cos(x) \approx 2$ for $x$ near $0$.
+}
+
+\solution{\SOL}{\ref{arithQ11}}{
+The problem with $\sqrt{x^4+4}-2$ for $x$ near $0$ is the subtraction
+of almost equal numbers.    If $x$ is closed to $0$, then $x^4$ is
+closer to $0$ and $\sqrt{x^4+4} \approx \sqrt{4} = 2$.  One way to
+eliminate this subtraction of almost equal numbers is with the formula
+\[
+\sqrt{x^4+4}-2 = 
+(\sqrt{x^4+4}-2)\left(\frac{\sqrt{x^4+4}+2}{\sqrt{x^4+4}+2}\right)
+= \frac{x^4}{\sqrt{x^4+4}+2} \ .
+\]
+Note that $\sqrt{x^4+4}+2\approx 4$ for $x$ near $0$ and so there is
+no risk of division by a really small number.
+}
+
+\solution{\SOL}{\ref{arithQ12}}{
+{
+\small
+\[
+\begin{array}{c|c|c|c|c}
+\hline
+\tilde{x} & x & \text{absolute error} & \text{relative error} &
+\text{significant} \\
+& & |\tilde{x}-x| & |\tilde{x}-x|/|x| & \text{digits} \\
+\hline
+18.66600092909 & 18.6666519729\ldots & 0.65104387\ldots \times 10^{-3}
+& 0.34877378\ldots \times 10^{-4} & 5 \\
+0.333329 & 0.3333332888\ldots & 0.42888888\ldots \times 10^{-5} &
+0.12866668\times 10^{-4} & 5 \\
+1.33382 & 1.33382044913\ldots & 0.44913624\times 10^{-6} &
+0.33672916\times 10^{-6} & 7
+\\
+\hline
+\end{array}
+\]
+}
+}
+
+\solution{\SOL}{\ref{arithQ13}}{
+We seek a solution of the form $x_n = \lambda^n$.  If we substitute
+this value of $x_n$ into (\ref{finite_diff}), we get
+\[
+\lambda^n = 2 \lambda^{n-1} + \lambda^{n-2} \ .
+\]
+If $\lambda \neq 0$, we can divide by $\lambda^{n-2}$ on both sides of
+the equality to get $\lambda^2 = 2 \lambda +1$; namely,
+$\lambda^2 -2\lambda -1 = 0$.  The roots of this polynomial are
+$\lambda_{\pm} = 1\pm \sqrt{2}$.
+
+The general solution of (\ref{finite_diff}) is
+\[
+x_n = \alpha_1 \; (1+\sqrt{2})^n + \alpha_2\; (1-\sqrt{2})^n
+\]
+
+Since $1+\sqrt{2} > 1 > |1 - \sqrt{2}|$, the term
+$(1+\sqrt{2})^n$ will dominate as $n$ increase.  Thus, because of
+rounding errors, the formula for the solution of (\ref{finite_diff})
+will always eventually produce a sequence $\{x_n\}_{n=0}^\infty$ that
+will converge to $\infty$ in absolute value as $n$ increase, even if
+the initials conditions are $x_0 = c$ and $x_1= c(1-\sqrt{2})$ for
+some constant $c$.
+}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End: 

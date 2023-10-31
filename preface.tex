@@ -1,0 +1,199 @@
+\nonumchapter{Preface}
+
+This book cover the material normally presented in a two-term course on
+numerical analysis.  It starts with the basic concept normally presented
+in a first course on numerical analysis.  It ends with topics that are
+more appropriated for a first course in numerical analysis for
+differential equations.
+
+This book can be used by two different groups of students.  If the
+focus is on the algorithms and the theory is ignored, then the book
+can be used for an introduction to numerical analysis for engineering
+and applied science students.  The book can also be used as an
+introduction to numerical analysis for students in mathematics, or
+students who plan to study more advanced topics in numerical analysis, if
+the theory is covered.  We do not think that there is a need to
+emphasize the importance of the theory in numerical analysis.  No
+serious progress in numerical analysis is possible without it.
+Most of the numerical methods presented in this book is accompanied by
+a code in MATLAB.
+
+The background for this book is a two-term course in linear algebra,
+a course in real analysis (often called advanced calculus to make
+the subject less scary), and a course in ordinary differential
+equation for the last part of the book.
+
+This book is divided into several parts.
+
+After a brief introduction to the arithmetic on computers, the
+{\em first part} on {\bfseries solving equations} is composed of
+Chapter~\ref{chaptSeqA} on iterative methods to solve nonlinear
+equations of one unknown variable, Chapter~\ref{chaptSeqB} on
+iterative methods to solve systems of linear equations,
+Chapter~\ref{chaptSeqC} on algebraic methods to solve systems of
+linear equations, and Chapter~\ref{chaptSeqD} on iterative methods to
+solve system of nonlinear equations.
+
+The {\em second part} of the book on {\bfseries polynomial interpolation}
+is composed of Chapter~\ref{chaptInterA} on polynomial interpolation of
+real valued functions and Chapter~\ref{chaptInterB} on spline
+interpolation; in particular, cubic splines and Bézier curves.
+
+The {\em third part} on the {\bfseries approximation of functions} is
+composed of three short chapters: Chapter~\ref{chaptApproxA} on
+continuous least square approximation (i.e.\ in $L^2$), 
+Chapter~\ref{chaptApproxB} on uniform approximation of real
+valued functions and Chapter~\ref{ChaptApproxC} on discrete least square
+approximation (i.e.\ in $\ell^2$).
+
+The {\em fourth part} on finding {\bfseries eigenvalues} of matrices
+is composed of only one chapter, Chapter~\ref{chapEigVal}, on
+numerical methods to compute eigenvalues of \nn matrices.
+
+The {\em last part} on {\bfseries differential equations} is
+composed of Chapter~\ref{chaptDiffInt} on the numerical
+differentiation and integration of real valued functions,
+Chapter~\ref{chaptInitVal} on the numerical methods to solve initial
+value problems for ordinary differential equations,
+Chapter~\ref{chapBoundValProbl} on the numerical methods to solve
+boundary value problems for ordinary differential equations, and
+Chapter~\ref{FiniteDiffMeth} on finite difference methods to solve
+partial differential equations.
+
+There is no chapter on finite element methods to solve partial
+differential equations.  This topic requires some knowledge of
+functional analysis to be properly covered.  To keep the book
+accessible the undergraduate students (as much as possible), no
+knowledge of functional analysis is assumed. 
+
+The second and third part of the book are related and even
+intertwine in some cases.  There are many ways to approximate a
+function $f:[a,b] \rightarrow \RR$ by polynomials.  The major
+approaches are:
+
+\begin{enumerate}
+\item Given any small $\epsilon$, we could find a polynomial
+$p_\epsilon$ such that
+\[
+\max_{a\leq x \leq b} \,|f(x) - p_\epsilon(x)| < \epsilon \ .
+\]
+Stone-Weierstrass Theorem, Theorem~\ref{SWtheorem}, states that
+$p_\epsilon$ can always be found if $f$ is a continuous function on
+$[a,b]$.  The function $f$ is
+{\bfseries uniformly approximate}\index{Functions!Uniformly Approximate}
+by the polynomial $p_\epsilon$.  This will
+be studied in Chapter~\ref{chaptApproxB}.  This very short
+chapter is more theoretical.  Nevertheless, it is important to
+understand the limitations of polynomial interpolation and splines
+presented in Chapters~\ref{chaptInterA} and
+\ref{chaptInterB}.
+\item Given any small $\epsilon$, we could find a polynomial
+$p_\epsilon$ such that
+\[
+\int_a^b \,|f(x) - p_\epsilon(x)|^2 \dx{x} < \epsilon \ .
+\]
+The polynomial $p_\epsilon$ is a
+{\bfseries quadratic approximation}\index{Functions!Quadratic Approximation}
+of the function $f$.  This will be studied in Chapter~\ref{chaptApproxB}.
+Again, this chapter is more theoretical but essential to understand
+discrete least square approximation in Chapter~\ref{ChaptApproxC}.
+This material is also fundamental in the study of numerical analysis;
+in particular, to develop methods to solve partial differential
+equations.
+\item Given any small $\epsilon$ and
+$a \leq x_0 < x_1 < x_2 < \ldots < x_n \leq b$, we could find a polynomial
+$p_\epsilon$ such that
+\[
+\sum_{i=0}^n \,|f(x_i) - p_\epsilon(x_i)|^2 < \epsilon \ .
+\]
+This is a {\bfseries discrete least square
+approximation}\index{Functions!Discrete Least Square Approximation}
+of the data set
+\[
+\{(x_i,f(x_i)) : i=0,1,2,\ldots, n\}
+\]
+by a polynomial.  This will be the subject of Chapter~\ref{ChaptApproxC}.
+\item We could also find a polynomial $p$ of degree at most
+$n$ such that $p(x_i) = f(x_i)$ for $0 \leq i \leq n$.  This is the
+subject of Chapter~\ref{chaptInterA}.
+\item Instead of looking for a polynomial of degree $n$, where $n$ may
+be large, we could find polynomials $p_i$ of small degrees (usually of
+degree $3$) such that $p_i$ is an approximation of $f$ on the small
+interval $[x_i,x_{i+1}]$.  The polynomials $p_i$ are determined from
+conditions at the endpoints $x_i$ that provide some degree of
+smoothness for the piecewise polynomial $p$ defined by $p(x) = p_i(x)$
+for $x\in [x_i, x_{i+1}]$.  The polynomial $p$ is called a
+{\bfseries spline}\index{Spline}.   We will present the
+{\bfseries cubic splines}\index{Functions!Cubic Spline
+Interpolation}, {\bfseries B\'ezier curves}\index{B\'ezier Curves} and
+{\bfseries B-Splines}\index{Functions!B-Spline Interpolation}
+in Sections~\ref{CSI}, \ref{BEZIER} and \ref{BSI} of
+Chapter~\ref{chaptInterB}.  These piecewise polynomial approximations
+are superior to the simple polynomial interpolation mentioned in the
+previous item.  Cubic splines, B\'ezier curves, ... are used in some
+of the major software for drawing.
+\end{enumerate}
+
+There is a strong emphasis in this book on differential equations.
+This is only a reflect of the principal interest of the author.
+Contrary to must introductory textbooks in numerical analysis, 
+there is an extensive chapter, Chapter~\ref{chaptInitVal}, on the
+numerical methods to solve initial value problems for ordinary
+differential equations.  There is also a full chapter,
+Chapter~\ref{chapBoundValProbl}, on the numerical methods to solve
+boundary value problems for ordinary differential equations, and 
+a full chapter, Chapter~\ref{FiniteDiffMeth}, on finite difference
+methods.
+
+There are many solved exercises at the end of several chapters.  Most
+of the exercises are to reinforce the concepts presented in the text.
+We have kept the number of theoretical questions to the minimum.
+This was mainly motivated by the groups of students who took the
+numerical analysis courses.  They were more interested in the
+applications of numerical analysis than in the theory.  Sadly, there
+are not real life applications of numerical analysis in this book.  It
+would be nice (in the future) to add some realistic projects to
+illustrate each topics.
+
+The examples should be treated as problems to be solved by the reader.
+The reader should try to answer each problem before looking at its
+solution (if it is available).
+
+In this book, we use the following notation for some standard
+sets of numbers.
+
+\begin{defn*}
+The following well known sets are frequently used in this document.
+\begin{itemize}
+\item $\NN = \{0,1,2,3,\ldots \}$ is the set of natural numbers.
+\item $\NNp = \{1,2,3,\ldots \}$ is the set of positive natural numbers.
+\item $\ZZ = \{0,1,-1,2,-2,3,-3, \ldots \}$ is the set of integers.
+\item $\QQ$ is the set of rational numbers.
+\item $\RR$ is the set of real numbers.
+\item $\CC$ is the set of complex numbers.
+\end{itemize}
+\end{defn*}
+
+We will also often use the following definition when approximating
+functions.
+
+\begin{defn*} Let $f:\RR^n \rightarrow \RR$ and
+$g:\RR^n \rightarrow \RR$ be two functions.  We write
+$f\left(\VEC{x}\right) = O\left(g\left(\VEC{x}\right)\right)$ near
+the origin if there exists a positive constant $K$ such that
+\[
+\left| f\left(\VEC{x}\right) \right| < K \left| g\left(\VEC{x}\right) \right|
+\]
+for $\VEC{x}$ in a neighbourhood of the origin.  We write
+$f\left(\VEC{x}\right) = o\left(g\left(\VEC{x}\right)\right)$ near
+the origin if
+\[
+\lim_{\VEC{x}\rightarrow \VEC{0}} \frac{f\left(\VEC{x}\right)}
+{g\left(\VEC{x}\right)} = 0 \ .
+\]
+\end{defn*}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End: 

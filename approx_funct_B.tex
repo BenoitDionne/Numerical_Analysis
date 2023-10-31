@@ -1,0 +1,350 @@
+\chapter{Uniform Approximation} \label{chaptApproxB}
+
+Suppose that $f:\RR \to \RR$ is a sufficiently differential function.
+The Taylor expansion of the function $f$ at a point $c \in \RR$ is
+given by
+\[
+  f(x) = p_n(x) + r_n(x) \ ,
+\]
+where
+\begin{align*}
+p_n(x) &= f(c) + f'(c)(x-c) + \frac{f'(c)}{2!}(x-c)^2 + \ldots
++ \frac{f^{(n)}(c)}{n!} \, (x-c)^n\\
+\intertext{and}
+r_n(x) &= \frac{f^{(n+1)}(\xi(x,c))}{(n+1)!}(x-c)^{n+1}
+\end{align*}
+for some $\xi(x,c)$ between $x$ and $c$.  If $c \in [a,b]$ and
+$\displaystyle \left|f^{(n+1)}(x)\right| < M$ for $[a\leq x \leq b$,
+then we get that
+\[
+  \sup_{a\leq x \leq b} |f(x) - p_n(x)| \leq \frac{M}{(n-1)!}(b-a)^{n+1} \ .
+\]
+This is an uniform approximation of $f$ by a polynomial $p_n$.  If $M$
+is small and $b-a \leq 1$, then $p$ can be a good uniform
+approximation of $f$.  So, instead of evaluating $f(x)$, it may be
+simpler and sufficiently accurate to evaluate $p_n(x)$.
+Unfortunately, in practice, it may be very hard to compute the
+derivatives of $f$ and to find an upper bound on $|f^{n+1}|$.
+Moreover, the interval $[a,b]$ may be of length greater than $1$ and
+so $(b-a)^{n+1} \to \infty$ as $n \to \infty$.
+
+Therefore, it is still preferable to use interpolation polynomials
+as presented in Chapter~\ref{chaptInterA} to approximate $f$.
+However, among all the possible interpolating polynomials, it is
+possible to choose the points of interpolation to minimize the degree
+of the interpolating polynomial and the error.
+This is the major result of this chapter that we present in
+Section~\ref{bestInterPol} below.
+
+\section{Stone-Weierstrass Theorem}
+
+The fundamental theorem in this chapter is the following.
+
+\begin{theorem}[Stone-Weierstrass]
+Given a continuous function $f:[a,b] \to \CC$, there exists a sequence
+of polynomials $\{p_n\}_{n=0}^\infty$ over $\CC$ such that
+\[
+  \max_{a\leq x \leq b} |f(x)-p_n(x)| \to 0 \quad \text{as}
+  \quad n \to \infty \ .
+\]
+If $f:[a,b]\to \RR$, the polynomials can be assumed to be over $\RR$.
+\label{SWtheorem}
+\end{theorem}
+
+Basically, the theorem states that for any continuous function
+$f:[a,b]\to \CC$, we can find a sequence of polynomials converging to
+$f$ uniformly on $[a,b]$.  We will not prove this theorem.  There
+exist many proofs of it.  The reader can find one of them in any good
+analysis textbook.
+
+\section{Chebyshev Polynomials} \label{appr_Cheb_sect}
+
+We have seen in Example~\ref{appr_cheb_egg} that the Chebyshev polynomials
+were defined by
+\[
+T_{n+1}(x) = 2x T_n(x) - T_{n-1}(x)
+\]
+for $n = 1$, $2$, $3$, \ldots\ with $T_0(x) = 1$ and $T_1(x) = x$.
+The tradition is to denote the Chebyshev polynomials with the letter
+$T$ instead of $P$ because the translation from Russian to French of
+Chebyshev is Tchébyshev.
+
+There is an equivalent way to define the Chebyshev polynomials from which it
+is easier to deduce some of the properties of the Chebyshev polynomials.
+
+The Chebyshev polynomial $T_n$ is also defined by
+\begin{equation} \label{appr_Cheb_defn}
+T_n(x) = \cos( n \arccos(x)) \quad , \quad -1 \leq x \leq 1 \ .
+\end{equation}
+To verify that this is true, we note that $T_0(x) = \cos(0) = 1$ and
+$T_1(x)=\cos(\arccos(x)) = x$ for $x\in[-1,1]$.  Moreoevr, it follows
+from the addition formulae for the cosine function that
+\begin{align*}
+\cos((n+1)\theta) &= \cos(n\theta+\theta) = \cos(n\theta) \cos(\theta)
+- \sin(n\theta)\sin(\theta)
+\intertext{and}
+\cos((n-1)\theta) &= \cos(n\theta-\theta) = \cos(n\theta) \cos(\theta)
++\sin(n\theta)\sin(\theta) \ .
+\end{align*}
+Hence
+\[
+\cos((n+1)\theta) + \cos((n-1)\theta) = 2 \cos(n\theta) \cos(\theta) \ .
+\]
+If we substitute $\theta = \arccos(x)$ in this last equation, we get the
+recurrence relation
+\begin{equation} \label{appr_cheb_rec}
+T_{n+1}(x) = 2x T_n(x) - T_{n-1}(x)
+\end{equation}
+for $n = 1$, $2$, $3$, \ldots used to defined the Chebyshev
+polynomials.  Thus (\ref{appr_Cheb_defn}) is another way to define the
+Chebyshev polynomials.
+
+We know from Theorem~\ref{orthpoly} that the Chebyshev polynomials are
+orthogonal on $L^2[-1,1]$, where the weight function is
+$\displaystyle w(x) = \frac{1}{\sqrt{1-x^2}}$.  This can be directly proved
+from (\ref{appr_Cheb_defn}).  Using the substitution
+$\theta= \arccos(x)$ for $-1<x<1$ and
+$\displaystyle \dx{\theta} = \frac{-1}{\sqrt{1-x^2}}\dx{x}$, we get
+\begin{align*}
+\int_{-1}^1 \frac{T_i(x)T_j(x)}{\sqrt{1-x^2}} \dx{x} &
+= \int_{-1}^1 \frac{\cos(i\arccos(x))\cos(j\arccos(x))}{\sqrt{1-x^2}} \dx{x}
+= - \int_{\pi}^0 \cos(i\theta)\cos(j\theta) \dx{\theta} \\
+&= \int_0^\pi \left(\frac{1}{2}\cos((i+j)\theta) +
+  \frac{1}{2}\cos((i-j)\theta) \right)\dx{\theta} \\
+&= \left(\frac{\sin((i+j)\theta)}{2(i+j)} +
+  \frac{\sin((i-j)\theta)}{2(i-j)}\right) \bigg|_{\theta=0}^\pi
+= 0
+\end{align*}
+for $i\neq j$.  The Chebyshev polynomials are not of norm one
+because, using the substitution for the previous integral, we have
+\begin{align*}
+\int_{-1}^1 \frac{T_i^2(x)}{\sqrt{1-x^2}} \dx{x}
+&= \int_{-1}^1 \frac{\cos^2(i\arccos(x))}{\sqrt{1-x^2}} \dx{x}
+= - \int_{\pi}^0 \cos^2(i\theta) \dx{\theta} \\
+&= \int_0^\pi \frac{1}{2}\left(1+ \cos(2i\theta) \right)\dx{\theta}
+= \frac{1}{2} \left(\theta - \frac{1}{2i}\sin(2i\theta)
+\right)\bigg|_{\theta=0}^\pi = \frac{\pi}{2}
+\end{align*}
+for  $i\neq 0$, and
+\[
+\int_{-1}^1 \frac{T_0^2(x)}{\sqrt{1-x^2}} \dx{x}
+= \int_{-1}^1 \frac{1}{\sqrt{1-x^2}} \dx{x} = - \int_\pi^0 \dx{x}
+= \int_0^\pi \dx{x} = \pi \  .
+\]
+
+\begin{prop}
+For $n\geq 1$, $T_n$ has $n$ distinct roots and they are in the interval
+$[-1,1]$.  These roots are
+\[
+r_i = \cos\left( \frac{(2i-1)\pi}{2n}\right) \quad , \quad
+i=1,2,3,\ldots,n \ .
+\]
+\end{prop}
+
+\begin{proof}
+It is easy to verify by substituting in (\ref{appr_Cheb_defn}) that the
+$r_i$'s are $n$ distinct roots of $T_n$.  The $r_i$'s are in the interval
+$[-1,1]$ since $-1<\cos(\theta)<1$ for all $\theta \neq n\pi$.  Since $T_n$
+is a polynomial of degree $n$, it has no more roots according to the
+fundamental theorem of algebra.
+\end{proof}
+
+\begin{prop}
+For $n>0$, $T_n$ reaches its absolute extrema in the interval $[-1,1]$ at the
+points
+\[
+s_i = \cos\left(\frac{i\pi}{n}\right) \quad , \quad i=0,1,2,\ldots, n \ .
+\]
+Moreover, $T_n(s_i) = (-1)^i$.
+\end{prop}
+
+\begin{proof}
+We have $\displaystyle T_n'(x) = \frac{n\sin(n\arccos(x))}{\sqrt{1-x^2}}$.
+Since $T_n'(s_i) = 0$ for $0<i<n$, the $s_i$'s for $0<i<n$ are critical
+points of $T_n$.  Since $T_n'$ is a polynomial of degree $n-1$, it has at
+most $n-1$ roots.  Thus $T_n$ has exactly $n-1$ critical points in $]-1,1[$
+given by $s_i$ for $0<i<n$.  These critical points are the only points in the
+interval $]-1,1[$ where $T_n$ reaches its extrema.  A direct computation
+shows that $T_n(s_i) = \cos(i\pi) = (-1)^i$.
+
+The other two possible points where $T_n$ may reach its extrema are at the
+endpoints $-1$ and $1$.  Since $T_n(-1) = \cos(n\pi) = (-1)^n$ and
+$T_n(1) = \cos(0) = 1$, the endpoints are also two points where $T_n$
+reaches its extrema.
+\end{proof}
+
+\begin{defn}
+The {\bfseries monic Chebyshev polynomials}\index{Monic Chebyshev
+Polynomials} $\tilde{T}_n$ for $n\geq 0$ are 
+defined by $\displaystyle \tilde{T}_0(x) = 1$ and
+$\displaystyle \tilde{T}_n(x) = \frac{1}{2^{n-1}} T_n(x)$ for $n >0$.
+\end{defn}
+
+\begin{rmk}
+The recurrence relation (\ref{appr_cheb_rec}) becomes
+$\displaystyle \tilde{T}_2(x) = x \tilde{T}_1(x) - \frac{1}{2} \tilde{T}_0(x)$
+and
+$\displaystyle \tilde{T}_{n+1}(x) = x \tilde{T}_n(x) - \frac{1}{4}
+\tilde{T}_{n-1}(x)$ for $n>1$.  Using these relations, it follows by
+induction on the degree of the polynomials that the coefficient of
+$x^n$ in $\tilde{T}_n(x)$ is $1$, hence the name monic given to the
+polynomials $\tilde{T}_n$.
+
+The roots of $\tilde{T}_n$ are the roots $r_i$ of $T_n$.
+$\tilde{T}_n$ and $T_n$ reach their extrema at the same points;
+namely, at $s_i$ for $0\leq i \leq n$.  However,
+$\displaystyle \tilde{T}_n(s_i) = \frac{(-1)^i}{2^{n-1}}$ for
+$0\leq i \leq n$ and $n>0$.
+\end{rmk}
+
+\begin{prop}
+Let $\tilde{\Pi}_n$ be the set of all monic polynomials of degree exactly
+$n$.  We have
+\[
+\frac{1}{2^{n-1}} = \max_{-1\leq x \leq 1} \left| \tilde{T}_n(x)\right| \leq
+\max_{-1\leq x \leq 1} \left| p(x) \right| \quad , \quad p \in \tilde{\Pi}_n
+\ .
+\]
+We have equality for $p = \tilde{T}_n$.
+\label{appr_nCheb_max}
+\end{prop}
+
+\begin{proof}
+Suppose that $p\in \tilde{\Pi}_n$ satisfies
+\begin{equation} \label{appr_cheb_min}
+\max_{-1\leq x \leq 1} \left|p(x)\right| \leq \frac{1}{2^{n-1}} \  .
+\end{equation}
+Since $p$ and $\tilde{T}_n$ are both monic of degree $n$, we have that
+$q = \tilde{T}_n-p$ is a polynomial of degree at most $n-1$.  Moreover,
+for $0 \leq i \leq n$, we have
+\[
+  q(s_i) = \frac{(-1)^i}{2^{n-1}} - p(s_i) \leq 0
+\]
+if $i$ is odd and
+\[
+  q(s_i) = \frac{(-1)^i}{2^{n-1}} - p(s_i) \geq 0
+\]
+if $i$ is even because of (\ref{appr_cheb_min}).  By the Intermediate
+Value Theorem, $q$ has 
+at least one root between $s_i$ and $s_{i+1}$ for $0\leq i < n$.  Hence, $q$
+is a polynomial of degree $n-1$ with at least $n$ roots.  The only
+possibility is if $q(x) = 0$ for all $x \in [-1,1]$.
+\end{proof}
+
+In Item~\ref{appr_interp_rmk_lbl} of Remark~\ref{appr_interp_rmk}, we said
+that Chebyshev points adjusted to the interval $[a,b]$ were the ``best''
+choice of interpolatory points for Lagrange interpolation on the interval
+$[a,b]$.  We now justify this statement.
+
+Without loss of generality, we may assume that $[a,b]=[-1,1]$.
+If $q$ is the Lagrange interpolating polynomial of a sufficiently
+differentiable function $f$ on the interval $[-1,1]$ and
+$0\leq x_0 < x_1 < \ldots < x_n\leq 1$ are the interpolatory points, then the
+error is given by
+\[
+\left| f(x) - q(x) \right| = \frac{1}{(n+1)!}\  f^{(n+1)}(\xi(x))
+\prod_{i=0}^n (x-x_i)
+\]
+for $-1 \leq x \leq 1$, where $\xi:[-1,1]\rightarrow [-1,1]$.  If we
+assume that $f^{(n+1)}$ is (almost) constant on the interval $[-1,1]$,
+then we have to minimize
+$\displaystyle p(x) = \prod_{i=0}^n (x-x_i)$ for $-1 \leq x \leq 1$
+to minimize the error.  Note that $p$ is a monic polynomial of degree
+$n+1$, hence
+\[
+\frac{1}{2^n} = \max_{-1\leq x \leq 1} \left| \tilde{T}_{n+1}(x)\right| \leq
+\max_{-1\leq x \leq 1} \left| p(x) \right| \quad , \quad p \in
+\tilde{\Pi}_{n+1} \  ,
+\]
+according to the previous proposition.  We have equality when
+$p=\tilde{T}_{n+1}$; namely, when
+$\displaystyle x_i = \cos\left(\frac{(2i-1)\pi}{2(n+1)}\right)$
+for $1\leq i \leq n+1$.  These are the roots of $T_{n+1}$ which were
+called Chebychev points in Remark~\ref{appr_interp_rmk}.
+
+\begin{prop}
+Let $f$ be a sufficiently differentiable function $f$ defined on the interval
+$[-1,1]$.  If $q$ is the Lagrange interpolating polynomial of $f$ at the
+Chebyshev points
+$\displaystyle x_i = \cos\left(\frac{(2i-1)\pi}{2(n+1)}\right)$
+for $1\leq i \leq n+1$, then
+\[
+\max_{-1\leq x \leq 1} \left| f(x) - q(x) \right| \leq
+\frac{1}{2^n (n+1)!}\max_{-1\leq x \leq 1} \left| f^{(n+1)}(x) \right| \  .
+\]
+\label{ChebyshevTrancMax}
+\end{prop}
+
+\begin{proof}
+We have
+\[
+f(x) - q(x) = \frac{1}{(n+1)!}\, f^{(n+1)}(\xi(x)) \,
+\prod_{i=0}^n (x-x_i) = \frac{1}{(n+1)!}\, f^{(n+1)}(\xi(x))
+\tilde{T}_{n+1}(x) \  .
+\]
+Hence,
+\begin{align*}
+\max_{-1\leq x \leq 1} \left| f(x) - q(x) \right| &= \frac{1}{(n+1)!}\, 
+\max_{-1\leq x \leq 1} \left| f^{(n+1)}(\xi(x)) \tilde{T}_{n+1}(x) \right| \\
+&\leq \frac{1}{(n+1)!}\, \max_{-1\leq x \leq 1} \left| f^{(n+1)}(\xi(x))\right|
+\max_{-1\leq x \leq 1} \left| \tilde{T}_{n+1}(x) \right| \\
+&= \frac{1}{2^n(n+1)!} \max_{-1\leq x \leq 1} \left| f^{(n+1)}(\xi(x))\right|
+\ ,
+\end{align*}
+where the last equality comes from Proposition~\ref{appr_nCheb_max}.
+\end{proof}
+
+\subsection{How to reduce the Degree of an Interpolating
+Polynomial with a  Minimal Loss of Accuracy} \label{bestInterPol}
+
+Suppose that $\displaystyle q(x) = \sum_{j=0}^n a_j x^j$, where
+$a_n \neq 0$, is an interpolating polynomial of a fonction $f$ on the
+interval $[-1,1]$.  The goal is to find a polynomial $p$ of degree less than
+$n$ such that
+$\displaystyle \max_{-1\leq x \leq 1} \left| p(x) - q(x) \right|$ is as small
+as possible.  If $p$ is of degree less than $n$, then
+$\displaystyle (q-p)/a_n$ is a monic polynomial of degree $n$.  Hence,
+\[
+\max_{-1\leq x \leq 1} \left| q(x)-p(x)\right| =
+|a_n| \max_{-1\leq x \leq 1} \left| \frac{q(x)-p(x)}{a_n} \right|
+\geq |a_n| \max_{-1\leq x \leq 1} \left| \tilde{T}_n(x) \right|
+= \frac{|a_n|}{2^{n-1}} \ .
+\]
+We have equality when
+$\displaystyle \frac{q(x)-p(x)}{a_n} = \tilde{T}_n(x)$.  We should
+therefore take $p = q - a_n \tilde{T}_n$.  For this choice,
+\[
+\max_{-1\leq x \leq 1} \left| q(x)-p(x)\right| = \frac{|a_n|}{2^{n-1}} \ .
+\]
+
+\section{Exercises}
+
+\begin{question}
+Consider $f(x) = x -\sin(x)$.  Find a small value of $n$ such that the
+truncation error of the Taylor polynomial $p_n(x)$ of degree $n$ of
+$f$ about the origin for does not exceeding $10^{-9}$ for $|x|<1$.
+\label{approxBQ1}
+\end{question}
+
+\begin{question}
+Consider $\displaystyle f(x) = \frac{1}{1-x}$.  Give the Taylor
+polynomial $p_n$ of degree $n$ of $f$ about the origin as well as the
+truncation formula for this polynomial.  Find a small value of $n$
+such that $p_n$ uniformly approximates $f$ to within $10^{-6}$ on the
+interval $[0,1/4]$.
+\label{approxBQ2}
+\end{question}
+
+\begin{question}
+Find the Taylor polynomial $p_2(x)$ of degree two about the origin for
+the function $f(x)=e^x\cos(x)$.  Approximate $f(0.5)$ using
+$p_2(x)$.  Find an upper bound on the error $|f(0,5)-p_2(0.5)|$ using
+the truncation formula for the Taylor polynomial of degree two.
+Compare this bound with the real error.
+\label{approxBQ3}
+\end{question}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End:

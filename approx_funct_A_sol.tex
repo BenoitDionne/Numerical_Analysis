@@ -1,0 +1,67 @@
+\nonumsection{Chapter~\ref{chaptApproxA} : Least Square Approximation
+(in $L^2$)}
+
+\solution{\SOL}{\ref{apprAQ1}}{
+Suppose that $\{ P_k^{[i]} \}_{k=0}^\infty$ for $i=1$ and
+$2$ are two orthogonal families of monic polynomials such that
+$\ps{p}{P_k^{[i]}}=0$ for all polynomial $p$ of degree less than $k$.
+Given $k > 0$, we have that $P_k^{[1]} - P_k^{[2]}$ is a polynomial
+of degree $k-1$ because both polynomials are monic, such that
+\[
+  \ps{p}{P_k^{[1]} - P_k^{[2]}}
+  = \ps{p}{P_k^{[1]}} - \ps{p}{P_k^{[2]}} = 0
+\]
+for all polynomial $p$ of degree less than $k$.  In particular,
+\[
+  \ps{P_k^{[1]} - P_k^{[2]}}{P_k^{[1]} - P_k^{[2]}}
+  = \int_a^b (P_k^{[1]} - P_k^{[2]})^2 w(x) \dx{x} = 0 \ .
+\]
+Since $P_k^{[1]} - P_k^{[2]}$ is continuous on $[a,b]$, we get that
+$P_k^{[1]}(x) = P_k^{[2]}(x)$ for all $x \in [a,b]$.
+}
+
+\solution{\SOL}{\ref{apprAQ2}}{
+We have from Theorem~\ref{orthpoly} that (\ref{apprAQ2equ1}) is true
+for some constants $A_k$, $B_k$ and $C_k$.  We only have to prove that
+they have the form suggested in the question.  We also have from this
+theorem that $\displaystyle A_k = \frac{a_{k+1,k+1}}{a_{k,k}}$ for
+$k\geq 0$ and $\displaystyle C_k = \frac{A_k}{A_{k-1}}
+= \frac{a_{k+1,k+1}a_{k-1,k-1}}{a_{k,k}^2}$ for $k >0$.  Because of
+our choice for $a_{-1,-1}$, we also have $C_0 = 0$ as required.
+Note that $\displaystyle A_k = \frac{a_{k+1,k+1}}{a_{k,k}}$ can
+be easily proved by comparing the coefficient of
+$x^{k+1}$ on both sides of (\ref{apprAQ2equ1}).
+
+It remains only to prove that
+\[
+  B_k = \int_a^b xP_k^2(x)w(x) \dx{x} = \frac{a_{k,k-1}}{a_{k,k}}
+- \frac{a_{k+1,k}}{a_{k+1,k+1}} \ .
+\]
+Since
+\begin{align*}
+x P_k(x) &= \frac{a_{k,k}}{a_{k+1,k+1}} P_{k+1}(x) +
+\frac{1}{a_{k,k}}
+\left( a_{k,k-1} - \frac{a_{k,k}a_{k+1,k}}{a_{k+1,k+1}} \right) P_k(x) + q(x) \\
+&= \frac{a_{k,k}}{a_{k+1,k+1}} P_{k+1}(x) +
+\left( \frac{a_{k,k-1}}{a_{k,k}} - \frac{a_{k+1,k}}{a_{k+1,k+1}} \right) P_k(x)
++ q(x) \ ,
+\end{align*}
+where $q$ is a polynomial of degree at most $k-1$, we have
+\begin{align*}
+B_k &= \int_a^b xP_k^2(x)w(x) \dx{x} \\
+&= \int_a^b \left( \frac{a_{k,k}}{a_{k+1,k+1}} P_{k+1}(x) +
+\left( \frac{a_{k,k-1}}{a_{k,k}} - \frac{a_{k+1,k}}{a_{k+1,k+1}} \right) P_k(x)
++ q(x)\right) P_k(x)w(x) \dx{x} \\
+&= \frac{a_{k,k}}{a_{k+1,k+1}}
+\underbrace{\int_a^b  P_{k+1}(x) P_k(x)w(x) \dx{x}}_{=0}
++ \left( \frac{a_{k,k-1}}{a_{k,k}} - \frac{a_{k+1,k}}{a_{k+1,k+1}} \right)
+\underbrace{\int_a^b  P_k^2(x) w(x) \dx{x}}_{=1} \\
+& \qquad  + \underbrace{\int_a^b q(x) P_k(x)w(x) \dx{x}}_{=0}
+= \left( \frac{a_{k,k-1}}{a_{k,k}} - \frac{a_{k+1,k}}{a_{k+1,k+1}} \right) \ .
+\end{align*}
+}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End:

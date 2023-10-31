@@ -1,0 +1,106 @@
+\input{preamble}
+
+\setSOL
+
+\begin{document}
+
+\titlePage
+
+\opensource
+
+\pagenumbering{roman}
+
+\UOtableofcontents
+% \UOfigureslist
+% \UOtableslist
+
+\pagenumbering{arabic}
+
+\input{preface}
+\cleardoublepage
+
+\input{arithmetic}
+\cleardoublepage
+
+% Solving Equations
+\input{solve_equ_A}
+\cleardoublepage
+\input{solve_equ_B}
+\cleardoublepage
+\input{solve_equ_C}
+\cleardoublepage
+\input{solve_equ_D}
+\cleardoublepage
+
+% Interpolation
+\input{interpolation_A}
+\cleardoublepage
+\input{interpolation_B}
+\cleardoublepage
+
+% Approximation of Functions
+\input{approx_funct_A}
+\cleardoublepage
+\input{approx_funct_B}
+\cleardoublepage
+\input{approx_funct_C}
+\cleardoublepage
+
+% Eigenvalues
+\input{eigenvalues_A}
+\cleardoublepage
+
+% Differential Equations
+\input{diff_int}
+\cleardoublepage
+\input{init_value_probl}
+\cleardoublepage
+\input{bound_value_probl}
+\cleardoublepage
+\input{finite_diff}
+\cleardoublepage
+
+
+% Solutions
+
+\chapter{Solutions to Selected Exercises}
+
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+
+\input{arithmetic_sol}
+
+% Solving Equations
+\input{solve_equ_A_sol}
+\input{solve_equ_B_sol}
+\input{solve_equ_C_sol}
+\input{solve_equ_D_sol}
+
+% Interpolation
+\input{interpolation_A_sol}
+\input{interpolation_B_sol}
+
+% {Approximation of Functions
+\input{approx_funct_A_sol}
+\input{approx_funct_B_sol}
+% \input{approx_funct_C}
+
+% Differential Equations
+\input{diff_int_sol}
+\input{init_value_probl_sol}
+% \input{bound_value_probl}
+\input{finite_diff_sol}
+
+% Eigenvalues
+% \input{eigenvalues_A}
+
+\cleardoublepage
+
+\UObibliography{references}
+\UOindex
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

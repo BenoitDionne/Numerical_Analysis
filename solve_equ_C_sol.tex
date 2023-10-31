@@ -1,0 +1,103 @@
+\nonumsection{Chapter~\ref{chaptSeqC} : Algebraic Methods for Systems of Linear Equations}
+
+\solution{\SOL}{\ref{solvCQ4}}{
+From $\Id = A\,A^{-1}$, we get
+$\displaystyle 1 = \|\Id\| = \|A\,A^{-1}\| \leq \|A\|\,\|A^{-1}\| = K(A)$.
+}
+
+\solution{\SOL}{\ref{solvCQ5}}{
+To system of equations $A\VEC{x} = \VEC{b}_p$ gives the equations
+\begin{align*}
+x_1 + 2 x_2 & = 3.00001 \\
+1.00001 x_1 + 2 x_2 &= 3.00003
+\end{align*}
+If we subtract $1.00001$ times the first equation from the second
+equation, we get $-0.00002 x_2 = -0.00001$.  Hence $x_2= 0.5$.
+If we substitute this value of $x_2$ in the first equation, we get
+$x_1 = 2.00001.$.  The solution of the perturbed system is
+$\VEC{x}_p = \begin{pmatrix} 2.00001 & 0.5 \end{pmatrix}^\top$.
+
+The relative error is
+\[
+\frac{\|\VEC{x}_s - \VEC{x}_p\|_\infty}{\|\VEC{x}_s\|_\infty} = 1.00001 \ .
+\]
+This is very large (an error of about $100$\%).
+
+Since
+\[
+A^{-1} = \begin{pmatrix}
+-10^5 & 10^5 \\
+50,000.5 & -50,000
+\end{pmatrix} \ .
+\]
+We find that the condition number is
+$K(A) = \|A\|_\infty\,\|A^{-1}\|_\infty = 3.00001 \times 2 \times 10^5
+= 6.00002\times 10^5$.  The matrix $A$ is ill-conditioned.
+}
+
+\solution{\SOL}{\ref{solvCQ6}}{
+The norm $\|A\|_\infty$ is given by the sum in absolute value of all
+the elements of the last row of $A$.  Thus $\|A\|_\infty = n$.
+
+The inverse of $A$ is given by the matrix $B$ defined by
+\[
+b_{i,j} = \begin{cases}
+0 & \text{ if } j>i \\
+1 & \text{ if } j=i \\
+2^{i-j-1} & \text{ if } j<i \\
+\end{cases}
+\]
+because $A B = \Id_n$ yields $b_{1,j} = \delta_{1,j}$ for
+$1\leq j \leq n$, and
+$\displaystyle - \sum_{i=1}^{k-1} b_{i,j} + b_{k,j} = \delta_{k,j}$
+for $1 \leq j \leq n$ and $2 \leq k \leq n$; namely,
+$\displaystyle b_{k,j} = \delta_{k,j} + \sum_{i=1}^{k-1} b_{i,j}$
+for $1 \leq j \leq n$ and $2 \leq k \leq n$.  In plain English, the
+first row of $B$ is the first row of the identity matrix $\Id_n$ and
+the $k^{th}$ row of $B$ is the sum of the $k^{th}$ row of $\Id_n$ with
+the previous $k-1$ rows of $B$ for $2 \leq k \leq n$.
+
+Again, the norm $\|B\|_\infty$ is given by the sum in absolute value
+of all the elements of the last row of $B$.  Thus
+\[
+\|B\|_\infty = 1 + \sum_{i=0}^{n-2} 2^i = 1 + \frac{1-2^{n-1}}{1-2}
+= 2^{n-1} \ .
+\]
+The sum in the previous expression is given by the formula
+$\displaystyle \sum_{i=1}^k r^i = \frac{1-r^{k+1}}{1-r}$ with $r=2$
+and $k=n-2$. 
+
+Hence, $K(A) = n 2^{n-1}$.  For large matrices $A$ (i.e.\ $n$ large),
+the matrix is not well conditioned.
+}
+
+\solution{\SOL}{\ref{solvCQ7}}{
+We use the relation
+$\displaystyle \| \VEC{q} - \VEC{p} \|_1 \leq K(A) \,
+\frac{\|\VEC{b}-A\VEC{q}\|_1}{\|A\|_1}$
+to get
+$\displaystyle \| \VEC{q} - \VEC{p} \|_1
+\frac{\|A\|_1}{\|\VEC{b}-A\VEC{q}\|_1} \leq K(A)$.
+
+Since
+$\displaystyle \|A\|_1 = \sum_{i=1}^3 |a_{i,3}| = 4.21$, 
+$\displaystyle \| \VEC{q} - \VEC{p} \|_1
+= \| \begin{pmatrix} 0.03 & 0.02 & 0.07 \end{pmatrix}^\top \|_1 = 0.12$
+and
+$\displaystyle \|\VEC{b}-A\VEC{q}\|_1 =
+\| \begin{pmatrix} 0.0007 & 0.002 & 0.35 \end{pmatrix}^\top \|_1 = 0.3527$,
+we get
+$\displaystyle 
+K(A) \geq 0.12 \times 4.21 / 0.3527 \approx 1.43237879$.
+This is an indication that the system may be well conditioned.  It
+does not prove that the system is well conditioned because the
+inequality is in the wrong direction.
+
+The real condition number is about $169.3678$.  So, the matrix is ill
+conditioned.
+}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End:

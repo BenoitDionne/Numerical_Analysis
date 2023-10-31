@@ -1,0 +1,938 @@
+\nonumsection{Chapter~\ref{chaptInitVal} : Initial Value Problems for Ordinary Differential Equations}
+
+\solution{\SOL}{\ref{initQ1}}{
+\subQ{a}
+Let $f(t,y) = t^2 \sin(y) + y$.  The function $f$ is obviously continuous.
+
+According to the Mean Value Theorem, given any $y_1,y_2 \in \RR$, 
+there exists $\xi$ between $y_1$ and $y_2$ such that
+\[
+  f(t,y_1)-f(t,y_2) = \pdydx{f}{y}(t,\xi)\, (y_1 - y_2)
+  = (t^2 \cos(\xi) + 1)\,(y_1-y_2) \ .
+\]
+Since $|t^2 \cos(y) + 1| \leq 2$ for all
+$(t,y)\in D = \{ (t,y) : 0\leq t \leq 1 \ \text{and} \ y \in \RR\}$, we get
+\[
+|f(t,y_1)-f(t,y_2)| \leq 2 |y_1-y_2|
+\]
+for all $(t,y) \in D$.  Thus, $f$ satisfies a Lipschitz condition
+with respect to $y$ on $D$ with Lipschitz constant $L=2$.
+
+It follows from Theorem~\ref{WellPossedTh} that the initial value
+problem is well posed.
+}
+
+\solution{\SOL}{\ref{initQ3}}{
+\subQ{a}
+Let $f(t,y) = (y+t)/t = 1 + y/t$.  The function $f$ is obviously a
+continuous function for
+$(t,y)\in D = \{ (t,y) : 1\leq t \leq 2 \ \text{and} \ y \in \RR\}$.
+Moreover, $f$ satisfies a Lipschitz condition
+with respect to $y$ on $D$ with Lipschitz constant $L=1$ because
+\[
+ | f(t,y_1)-f(t,y_2) | = \left| \frac{y_1-y_2}{t} \right|
+ \leq |y_1 - y_2|
+\]
+for $(t,y)\in D$.  It follows from Theorem~\ref{WellPossedTh} that the
+initial value problem is well posed.
+
+\subQ{b} Let $u_i$ be the computed value for $w_i$, where $w_i$ is the
+approximation of $y(t_i)$ given by the Euler Method
+(Definition~\ref{EulerMethod}).  Let $e_i = y(t_i) - u_i$.  It follows
+from (\ref{abserrEuler}) that
+\[
+|e_i| \leq \frac{1}{L}\left(\frac{Mh}{2} + \frac{\delta}{h} \right)\left(
+e^{L(t_i-t_0)} - 1 \right) + |\delta_0|\,e^{L(t_i-t_0)}
+\leq \left(\frac{Mh}{2} + \frac{10^{-8}}{h} \right)\left(
+e^{t_i-t_0} - 1 \right) + 10^{-8}\,e^{t_i-t_0} \ ,
+\]
+where $M \geq |y''(t)|$ for $1\leq t \leq 2$.  To minimize the right
+side of this inequality with respect to $h$, we have to minimize
+$\displaystyle g(h) = \frac{Mh}{2} + \frac{10^{-8}}{h}$.
+
+In general, it is not easy to find a possible value for $M$.
+Fortunately, for the present problem, we can.
+$y' = 1 + y/t$ is a linear ordinary differential equation of the form
+$y' + p(t)y = q(t)$ with $p(t) = -1/t$ and $q(t) = 1$.  Its general
+solution is
+\begin{align*}
+y(t)& = e^{-\int p(t)\dx{t}}\left(\int q(t) \, e^{\int p(t)\dx{t}}
+    \dx{t} + C \right)
+=  e^{-\int (-1/t)\dx{t}}\left(\int e^{\int (-1/t)\dx{t}}
+    \dx{t} + C \right) \\
+&=  t\,\left( \int \frac{1}{t} \dx{t} + C \right)
+=  t\,\left( \ln(t) + C \right) \ .
+\end{align*}
+The initial condition $y(1)=0$ implies that $C=0$.  We get
+$y(t) = t \ln(t)$.  For $1 \leq t \leq 2$, we have
+$|y''(t)| = |1/t| \leq 1$.  Thus, we may take $M=1$.
+
+We have to minimize
+$\displaystyle g(h) = \frac{h}{2} + \frac{10^{-8}}{h}$
+for $h>0$.  We deduce from the following information about $g$ that it
+has a global minimum for $h>0$ at $h=\sqrt{2}/10^4$.
+\[
+\begin{array}{c|c|c|c}
+h & 0<h< \sqrt{2}/10^4 & \sqrt{2}/10^4 & \sqrt{2}/10^4 < h \\    
+\hline
+g'(h) & - & 0 & + \\
+ & \text{decreases} & \text{global min.} & \text{increases}
+\end{array}
+\]
+Thus, $h = \sqrt{2}/10^4$ minimizes the error bound for the Euler
+Method.
+
+\subQ{c} We use the Euler Method with $t_0=1$, $t_f= 2$,
+$y_0 = 0$ and $f(t,y) = 1 + y/t$.  Since
+$(t_f-t_0)/h = 10^4/\sqrt{2} \approx 7071.0678$
+is an irrational number, we round up to the next integer to get
+$N = 7072$.   Hence, $h = 1/7072$ and $t_i = t_0 + ih$ for
+$0\leq i \leq 7072$.  The approximation $w_i$ of $y_i = y(t_i)$ is
+given by
+\begin{align*}
+w_0 & = 0 \\
+w_{i+1} & = w_i + h(1 + w_i/t_i)
+\end{align*}
+for $i=0$, $1$, \ldots, $7071$.   The graph of the computed solution
+is basically indistinguishable from the graph of the solution.
+\figbox{init_value_probl/euler_error_quest1}{7cm}
+The graph of the computed solution is in blue and the graph of the
+exact solution (drawn after the graph of the computed solution) is in
+red.  The graph of the exact solution basically covers the graph of the
+computed solution.
+
+\subQ{d}  The predicted error bound at $t=2$ is given by
+\[
+|e_i| \leq \left(\frac{h}{2} + \frac{10^{-8}}{h} \right)\left(
+  e^{t_i-t_0} - 1 \right) + 10^{-8}\,e^{t_i-t_0}
+\]
+with $i=7072$ and $h=1/7072$.  Hence $t_i = t_{7072} = 2$, $t_0=1$ and
+\[
+|e_{7072}| \leq \left(\frac{1}{14144} + \frac{7072}{10^8} \right)
+( e- 1) + \frac{e}{10^8} \approx 2.4303 \times 10^{-4} \ .
+\]
+
+Since $u_{7072} \approx 1.3862237$ and
+$y_{7072} = y(2) \approx 1.3862944$, the actual error is
+$|e_{7072}| = |u_{7072} - y_{7072}| \approx 0.707 \times 10^{-4}$.
+Our predicted error bound is fairly conservative.
+}
+
+\solution{\SOL}{\ref{initQ4}}{
+Here is a need trick to solve (\ref{rgktquest1}).  If $u = t - y$,
+the initial value problem (\ref{rgktquest1}) becomes
+\begin{align*}
+u' &= - u^2    \quad , \quad  2 \leq t \leq 3 \\
+u(2) &= 1
+\end{align*}
+This is a separable equation whose solution is
+$\displaystyle u(t) = \frac{1}{t-1}$ for $t\neq 1$.  Thus, the
+solution of (\ref{rgktquest1}) is
+$\displaystyle y(t) = t - \frac{1}{t-1}$ for $t\neq 1$.
+
+We have $t_0=2$, $t_f= t_{10} =3$, $y_0=1$ and $f(t,y) = 1 +(t-y)^2$.
+Since $h = (t_f-t_0)/N = 1/N = 0.1$, we get $N=10$.
+Thus $t_j = t_0 + h i =1 + 0.1 i$ for $0\leq i \leq 10$.  The
+approximations $w_i$ of $y_i = y(t_i)$ are given by
+$\displaystyle
+w_{i+1} = w_i + \frac{h}{6}(K_1 + 2\,K_2+2\,K_3 + K_4)$ for
+$i\geq 0$ with  $w_0  = 1$,
+where
+$K_1 = 1 +(t_i-w_i)^2$,
+$K_2 = 1 +\big((t_i+0.05) - (w_i +0.05 K_1)\big)^2$,
+$K_3 = 1 +\big((t_i + 0.05) - (w_i+ 0.05 K_2)\big)^2$ and
+$K_4 = 1 +\big(t_{i+1}- (w_i + 0.1 K_3) \big)^2$.
+
+The results are listed in the table below.
+{
+\small
+\[
+\begin{array}{clllll}
+i & t_i & w_i & y_i & \text{absolute} & \text{relative} \\
+& & & & \text{error} & \text{error} \\
+\hline
+0 & 2 & 1 & 1 & 0 & 0 \\
+1 & 2.1 & 1.1909088 & 1.1909091 & 0.27724131\times 10^{-6} &
+0.23279805 \times 10^{-6} \\
+2 & 2.2 & 1.3666663 & 1.3666667 & 0.39550974\times 10^{-6} &
+0.28939737 \times 10^{-6} \\
+3 & 2.3 & 1.5307688 & 1.5307692 & 0.43652252\times 10^{-6} &
+0.28516546\times 10^{-6} \\
+4 & 2.4 & 1.6857138 & 1.6857143 & 0.43960705\times 10^{-6} &
+0.26078384\times 10^{-6} \\
+5 & 2.5 & 1.8333329 & 1.8333333 & 0.42439920\times 10^{-6} &
+0.23149047\times 10^{-6} \\
+6 & 2.6 & 1.9749996 & 1.9750000 & 0.40094917\times 10^{-6} &
+0.20301224\times 10^{-6} \\
+7 & 2.7 & 2.1117643 & 2.1117647 & 0.37446319\times 10^{-6} &
+0.17732240\times 10^{-6} \\
+8 & 2.8 & 2.2444441 & 2.2444444 & 0.34762766\times 10^{-6} &
+0.15488361\times 10^{-6} \\
+9 & 2.9 & 2.3736839 & 2.3736842 & 0.32179057\times 10^{-6} &
+0.13556587\times 10^{-6} \\
+10 & 3 & 2.4999997 & 2.5 & 0.29758023\times 10^{-6} &
+0.11903209\times 10^{-6} \\
+\hline
+\end{array}
+\]
+}}
+
+\solution{\SOL}{\ref{initQ6}}{
+\subQ{a} The Butcher array is
+\[
+\begin{array}{c|cc}
+\alpha_1 = \beta & \beta_{1,1} = \beta & \beta_{1,2} = 0 \\
+\alpha_2 = 1+ \beta & \beta_{2,1} = 1 & \beta_{2,2} = \beta \\
+\hline
+ & \gamma_1 = \beta + 1/2 & \gamma_2 = -\beta + 1/2
+\end{array}
+\]
+
+\subQ{b} We answer this question using Tables~\ref{OSDA} and \ref{compPsi}.
+{
+\renewcommand{\labelenumi}{\roman{enumi})}
+\begin{enumerate}
+\item Tree of order one: $\tau =$
+\begin{picture}(2,0)
+\put(1,0){\circle*{0.1}}
+\end{picture}
+
+$\gamma(\tau) = 1$ and
+$\displaystyle \Psi(\tau) = \sum_{j=1}^2 \gamma_j = 1$.  So
+$\Psi(\tau) = 1/\gamma(\tau)$.
+
+\item Tree of order two: $\tau =$
+\begin{picture}(2,1)
+\put(1,0){\circle*{0.1}}
+\put(1,0){\line(0,1){1}}
+\put(1,1){\circle*{0.1}}
+\end{picture}
+
+$\gamma(\tau) = 2$ and
+$\displaystyle \Psi(\tau) = \sum_{j=1}^2 \gamma_j \alpha_j =
+\left(\beta + \frac{1}{2}\right)\beta + \left(-\beta +\frac{1}{2}\right)
+(1+\beta) = \frac{1}{2}$.
+So $\Psi(\tau) = 1/\gamma(\tau)$.
+
+\item Trees of order three:
+$\tau_1=$
+\begin{picture}(2,1)
+\put(1,0){\circle*{0.1}}
+\put(0.5,1){\circle*{0.1}}
+\put(1.5,1){\circle*{0.1}}
+\put(1,0){\line(-1,2){0.52}}
+\put(1,0){\line(1,2){0.52}}
+\end{picture}
+
+$\gamma(\tau_1) = 3$ and
+$\displaystyle \Psi(\tau_1) = \sum_{j=1}^2 \gamma_j \alpha_j^2 =
+\left(\beta + \frac{1}{2}\right)\beta^2 + \left(-\beta +\frac{1}{2}\right)
+(1+\beta)^2 = \frac{1}{2} - \beta^2$.
+So $\Psi(\tau_1) = 1/\gamma(\tau_1)$ only if
+$\displaystyle \frac{1}{2} - \beta^2 = \frac{1}{3}$; namely, only if
+$\displaystyle \beta = \pm \frac{1}{\sqrt{6}}$.
+
+$\tau_2 = $
+\begin{picture}(2,2)
+\put(1,0){\circle*{0.1}}
+\put(0.5,1){\circle*{0.1}}
+\put(1,2){\circle*{0.1}}
+\put(1,0){\line(-1,2){0.52}}
+\put(0.5,1){\line(1,2){0.52}}
+\end{picture}
+
+$\gamma(\tau_2) = 6$ and
+$\displaystyle 
+\Psi(\tau_2) = \sum_{j_1=1}^2 \left( \gamma_{j_1}
+ \left( \sum_{j_2=1}^2 \beta_{j_1,j_2} \alpha_{j_2}\right)\right)
+= \left(\beta + \frac{1}{2}\right)\beta^2
++ \left(-\beta + \frac{1}{2}\right)\left( \beta +\beta (1+\beta) \right)
+= \beta - \beta^2$.
+So $\Psi(\tau_2) = 1/\gamma(\tau_2)$ only if
+$\displaystyle \beta - \beta^2 = \frac{1}{6}$; namely, only if
+$\displaystyle \beta = \frac{1}{2} \left(1 \pm \frac{1}{\sqrt{3}}\right)$.
+\end{enumerate}
+}
+
+Since no value of $\beta$ can simultaneously satisfy
+$\Psi(\tau_j) = 1/\gamma(\tau_j)$ for $j=1$ and $j=2$, it follows from
+Theorem~\ref{OrdRel} that the method is of order two.   We note that
+the condition $\Psi(\tau) = 1/\gamma(\tau)$ for the trees of order one
+and two does not depend on $\beta$.
+
+\subQ{c} According to (\ref{TreeTruncErr}), the local truncation error
+is
+\begin{align*}
+\tau_{i+1}(h) &= \frac{h^2}{3!}\,\sum_{r(\tau)=3}\,\alpha(\tau) \left( 1
+  -\gamma(\tau)\,\Psi(\tau) \right)F(\tau) + O(h^3) \\
+& = \frac{h^2}{6} \left( \left( 1 - 3 \left(\frac{1}{2} - \beta^2\right)\right)
+\{ f\ f\} + \left(1  - 6 (\beta - \beta^2)\right)\{\{f\}\}\right) +O(h^3) \ ,
+\end{align*}
+where the derivatives of $f$ are evaluated at $\VEC{y}(t_i)$.
+
+\subQ{d} For the initial value problem (\ref{GradLSODE}), we have that
+$f(\VEC{y}) = A\VEC{y}$ is a linear mapping.  Thus $\{f \ f\} = 0$ and
+the local truncation error is now
+\[
+  \tau_{i+1}(h) = \frac{h^2}{6}
+  \left(1  - 6 (\beta - \beta^2)\right)\{\{f\}\} +O(h^3) \ .
+\]
+It suffices to take one of the two possibles value for
+$\displaystyle \beta = \frac{1}{2} \left(1 \pm \frac{1}{\sqrt{3}}\right)$
+to get a method of order (at least) three for this initial value problem.
+
+\subQ{e} We have
+\[
+K_1 = A(\VEC{w}_i + \beta h K_1) = A\VEC{w}_i + \beta h A K_1
+\Rightarrow  (\Id - \beta h A)K_1 = A \VEC{w}_i
+\Rightarrow  K_1 = (\Id - \beta h A)^{-1} A \VEC{w}_i
+\]
+and
+\begin{align*}
+&K_2 = A(\VEC{w}_i + h K_1 + \beta h K_2) = A\VEC{w}_i + h A K_1
+  + \beta h A K_2 \Rightarrow  (\Id - \beta h A)K_2
+= A \VEC{w}_i + h A K_1 \\
+&\qquad \Rightarrow  K_2 = (\Id - \beta h A)^{-1}
+\left( A \VEC{w}_i+ + h A K_1\right)
+= (\Id - \beta h A)^{-1} \left( A \VEC{w}_i
++ h A (\Id - \beta h A)^{-1} A \VEC{w}_i \right) \\
+& \qquad \qquad = (\Id - \beta h A)^{-1} \left( A
++ h A^2 (\Id - \beta h A)^{-1}\right) \VEC{w}_i
+\end{align*}
+because
+$ (\Id - \beta h A)^{-1} A = A (\Id - \beta h A)^{-1}$.
+Thus
+\begin{align*}
+\VEC{w}_{i+1} &= \VEC{w}_i + h\left(\frac{1}{2} + \beta\right)
+(\Id - \beta h A)^{-1} A \VEC{w}_i
++ h\left(\frac{1}{2} - \beta\right)
+(\Id - \beta h A)^{-1} \left( A
++ h A^2 (\Id - \beta h A)^{-1} \right) \VEC{w}_i \\
+& = R(hA, \beta) \VEC{w}_i \ ,
+\end{align*}
+where
+\[
+  R(Z,\beta) =  1 + \left(\frac{1}{2} + \beta\right)
+(\Id - \beta Z)^{-1} Z + \left(\frac{1}{2} - \beta\right)
+(\Id - \beta Z)^{-1} \left( Z + Z^2(\Id - \beta Z)^{-1}\right) \ .
+\]
+}
+
+\solution{\SOL}{\ref{initQ7}}{
+We assume that $f(t,y)$ is twice continuously differentiable.  So
+$y'''(t)$ is continuous.  The local truncation error is given by 
+\[
+\tau_{i+1}(h) = \frac{y(t_{i+1}) - y(t_i)}{h} - \frac{1}{2}
+\left( f(t_i,y(t_i)) + f(t_{i+1},y(t_{i+1})) \right) \ .
+\]
+Since
+$\displaystyle y(t_{i+1}) = y(t_i) + y'(t_i)\,h + y''(t_i)\,\frac{h^2}{2} +
+y'''(\xi_i) \, \frac{h^3}{3!}$, $f(t_i,y(t_i)) = y'(t_i)$
+and
+$\displaystyle f(t_{i+1},y(t_{i+1})) = y'(t_{i+1})
+= y'(t_i) + y''(t_i) h + y'''(\eta_i)\,\frac{h^2}{2}$
+for some $\xi_i$ and $\eta_i$, we get
+\begin{align*}
+\tau_{i+1}(h) &= \frac{1}{h}
+\left(y(t_i) + y'(t_i)\,h + y''(t_i)\,\frac{h^2}{2} +
+y'''(\xi_i)\,\frac{h^3}{3!}  - y(t_i) \right) \\
+&\qquad - \frac{1}{2}
+\left(y'(t_i) + y'(t_i) + y''(t_i)\,h +y'''(\eta_i)\,\frac{h^2}{2}\right)
+= y'''(\xi_i)\,\frac{h^2}{3!} - y'''(\eta_i)\,\frac{h^2}{4} \ .
+\end{align*}
+If $\displaystyle M= \max_{t_0 \leq t \leq t_f} | y'''(t) |$, we get
+\[
+| \tau_{i+1}(h) | \leq
+|y'''(\xi_i)| \frac{h^2}{3!}  + |y'''(\eta_i)| \frac{h^2}{4}
+\leq \frac{5}{12} M h^2
+\]
+for $0 \leq i \leq N = (t_f-t_0)/h$.  The method is of order $2$ because
+$\tau_{i+1}(h) = O(h^2)$.  The method is consistent because
+\[
+\max_{0\leq i \leq N} | \tau_{i+1}(h) | \leq \frac{5}{12} M h^2
+\rightarrow 0
+\]
+as $h\rightarrow 0$.
+}
+
+\solution{\SOL}{\ref{initQ8}}{
+We have
+\begin{align*}
+w_{2i+2} &= w_{2i+1} + \frac{h}{2} \big( f(t_{2i+1}, w_{2i+1})  
++ f(t_{2i+2} ,w_{2i+2}) \big) \\
+& = \left( w_{2i} + \frac{h}{2}\left( f(t_{2i},w_{2i})
++ f(t_{2i+1},w_{2i+1}) \right) \right)
++ \frac{h}{2} \big( f(t_{2i+1}, w_{2i+1})  
++ f(t_{2i+2} ,w_{2i+2})\big) \\
+& =  w_{2i} + \frac{h}{2}\big( f(t_{2i},w_{2i}) + 2 f(t_{2i+1},w_{2i+1})  
++ f(t_{2i+ 2} ,w_{2i+2})\big) \ .
+\end{align*}
+Let $\tilde{h} = 2h$, $\tilde{t}_i = t_{2i}$ and $\tilde{w}_i = w_{2i}$.
+We get
+\begin{equation} \label{traptrapRK}
+\tilde{w}_{i+1} =  \tilde{w}_i
++ \frac{\tilde{h}}{4}\left( K_1 + 2K_2 + K_3\right) \ ,
+\end{equation}
+where
+\begin{align*}
+K_1 &= f(\tilde{t}_i,\tilde{w}_i) \ , \quad 
+K_2 = f(t_{2i+1},w_{2i+1})
+= f\left(\tilde{t}_i+ \frac{\tilde{h}}{2}, \tilde{w}_i + \frac{\tilde{h}}{4}
+( K_1 + K_2) \right)
+\intertext{and}
+K_3 &= f(\tilde{t}_{i+1},\tilde{w}_{i+1})
+= f\left( \tilde{t}_i + \tilde{h} , \tilde{w}_i + \frac{\tilde{h}}{4}
+(K_1 + 2 K_2 + K_3)\right) \ .
+\end{align*}
+Note that
+\[
+w_{2i+1} = w_{2i} + \frac{h}{2} \left(f(t_{2i},w_{2i}) +
+f(t_{2i+1},w_{2i+1}) \right)
+= \tilde{w}_i + \frac{\tilde{h}}{4} (K_1 + K_2)
+\]
+and $w_{2i+2} = \tilde{w}_{i+1}$.
+
+The Butcher array of this Runge-Kutta Method is
+\[
+\begin{array}{c|ccc}
+0 & 0 & & \\
+1/2 & 1/4 & 1/4 & \\
+1 & 1/4 & 1/2 & 1/4 \\
+\hline
+ & 1/4 & 1/2 & 1/4
+\end{array}
+\]
+
+Since the trapezoidal method is of order two, we have
+\[
+\frac{y_{2i+1} - y_{2i}}{h}
+- \frac{1}{2}\left( f(t_{2i},y_{2i}) + f(t_{2i+1},y_{2i+1}) \right) = O(h^2)
+\]
+and
+\[
+\frac{y_{2i+2} - y_{2i+1}}{h}
+- \frac{1}{2}\left( f(t_{2i+1},y_{2i+1}) + f(t_{2i+2},y_{2i+2}) \right)
+= O(h^2)\ .
+\]
+The sum of these two equations yields
+\[
+\frac{y_{2i+2} - y_{2i}}{h}
+- \frac{1}{2}\left( f(t_{2i},y_{2i}) + 2f(t_{2i+1},y_{2i+1})  +
+f(t_{2i+2},y_{2i+2}) \right) = O(h^2)\ . 
+\]
+With $\tilde{y}_i = y(\tilde{t}_i) = y(t_{2i}) = y_{2i}$, the previous
+equation becomes
+\[
+\frac{\tilde{y}_{i+2} - \tilde{y}_i}{\tilde{h}}
+- \frac{1}{4}\left( \tilde{K}_1 + 2 \tilde{K}_2 + \tilde{K}_3\right)
+= O(h^2) \ ,
+\]
+where
+$\displaystyle \tilde{K}_1 = f(\tilde{t}_i,\tilde{y}_i)$,
+$\displaystyle \tilde{K}_2 = f(t_{2i+1},y_{2i+1})
+= f\left(\tilde{t}_i+ \frac{\tilde{h}}{2}, \tilde{y}_1
++ \frac{\tilde{h}}{4} ( \tilde{K}_1 + \tilde{K}_2) \right)$ and \\
+$\displaystyle \tilde{K}_3 = f(t_{2i+2},y_{2i+2})
+= f\left( \tilde{t}_i + \tilde{h} , \tilde{y}_i + \frac{\tilde{h}}{4}
+(\tilde{K}_1 + 2 \tilde{K}_2 + \tilde{K}_3)\right)$.  This is
+(\ref{traptrapRK}) where $\tilde{w}_i$ has been replaced by
+$\tilde{y}_i$.  Hence, the Runge-Kutta Method
+(\ref{traptrapRK}) is of order at least two.
+
+Using the Taylor polynomial expansion (Theorem~\ref{TaylorTheo}) of
+$y(t_{i+2})$, $y'(t_{i+1}) = f(t_{i+1},y_{i+1})$ and 
+$y'(t_{i+2}) = f(t_{i+2},y_{i+2})$ about $t_i$, we can show that
+the order is in fact two.
+}
+
+\solution{\SOL}{\ref{initQ9}}{
+We use Theorem~\ref{entries_Butcher} to find the elements of the
+Butcher array of this $2$-stage Runge-Kutta Method.
+\begin{align*}
+\beta_{1,1} &= \int_0^{1/3} \frac{t -2/3}{1/3-2/3} \dx{t}  
+= -3 \int_0^{1/3} \left(t - \frac{2}{3} \right) \dx{t} = \frac{1}{2} \ , \\
+\beta_{1,2} &= \int_0^{1/3} \frac{t -1/3}{2/3-1/3} \dx{t}
+= 3 \int_0^{1/3} \left(t - \frac{1}{3} \right) \dx{t} = -\frac{1}{6} \ , \\
+\beta_{2,1} &= \int_0^{2/3} \frac{t -2/3}{1/3-2/3} \dx{t}
+= -3 \int_0^{2/3} \left(t - \frac{2}{3} \right) \dx{t} = \frac{2}{3} \ , \\
+\beta_{2,2} &= \int_0^{2/3} \frac{t -1/3}{2/3-1/3} \dx{t}
+= 3 \int_0^{2/3} \left(t - \frac{1}{3} \right) \dx{t} = 0  \ , \\
+\gamma_1 &= \int_0^1 \frac{t -2/3}{1/3-2/3} \dx{t}
+= -3 \int_0^1 \left(t - \frac{2}{3} \right) \dx{t} = \frac{1}{2}
+\intertext{and}
+\gamma_2 &= \int_0^1 \frac{t -1/3}{2/3-1/3} \dx{t}  
+= 3 \int_0^1 \left(t - \frac{1}{3} \right) \dx{t} = \frac{1}{2} \ .
+\end{align*}
+Hence, the Butcher array is
+\[
+\begin{array}{c|cc}
+1/3 & 1/2 & -1/6 \\
+2/3 & 2/3 & 0 \\
+\hline
+ & 1/2 & 1/2
+\end{array}
+\]
+
+Let
+\[
+q(t) = \left( t - \frac{1}{3}\right)\left(t - \frac{2}{3}\right) \ .
+\]
+Since
+\[
+\int_0^1 q(t) \dx{t}
+= \left( \frac{t^3}{3} - \frac{t^2}{2} + \frac{2t}{9} \right)\bigg|_{t=0}^1
+= \frac{1}{18} \neq 0 \ ,
+\]
+it follows from Theorem~\ref{RKcollOrder} that the Runge-Kutta Method
+given by the Butcher array above is of order two.
+
+If $\alpha_1$ and $\alpha_2$ are the roots of the Legendre polynomial
+$t^2 - t + 1/6$, then the $2$-stage Runge-Kutta Method given by the
+collocation method is of order $4$.  More details are given in
+Examples~\ref{Gauss_Leg_RK} and \ref{Gauss_Leg_RKcontinued}.
+}
+
+\solution{\SOL}{\ref{initQ10}}{
+\stage{i} Let's suppose that the method is given by a collocation
+method.  It follows from Remark~\ref{RKcolInterpol} that
+\begin{equation}\label{GradQ7A}
+\int_0^{\alpha_i} q(t) \dx{t} = \sum_{j=1}^k \beta_{i,j}\, q(a_j)
+\quad \text{and} \quad
+\int_0^1 q(t) \dx{t} = \sum_{j=1}^k \gamma_j\, q(a_j)
+\end{equation}
+for all polynomial of degree less than $k$ and $1\leq i \leq k$.
+If $q(t) = t^{n-1}$ with $1 \leq n \leq k$, then (\ref{GradQ7A}) yields
+\[
+\sum_{j=1}^k \beta_{i,j}\, a_j^{n-1} = \int_0^{\alpha_i} t^{n-1} \dx{t} = 
+\frac{\alpha_i^n}{n}
+\quad \text{and} \quad
+\sum_{j=1}^k \gamma_j\, a_j^{n-1} = \int_0^1 t^{n-1} \dx{t} =
+\frac{1}{n}
+\]
+for $1\leq i \leq k$.  Thus, we get (\ref{GradQ7}).
+
+\stage{ii} Let's suppose that (\ref{GradQ7}) is satisfied.  If
+$\displaystyle q(t) = \sum_{m=0}^{k-1} a_m t^m$, then
+\begin{align*}
+\int_0^{\alpha_i} q(t) \dx{t} &= \sum_{m=0}^{k-1} a_m \int_0^{\alpha_i}
+t^m \dx{t}
+= \sum_{m=0}^{k-1} a_m \left( \frac{\alpha_i^{m+1}}{m+1}\right)
+= \sum_{m=0}^{k-1} a_m \left( \sum_{j=1}^k \, \beta_{i,j} \alpha_j^m\right) \\
+&= \sum_{j=1}^k \, \beta_{i,j} \left( \sum_{m=0}^{k-1} a_m \alpha_j^m\right)
+= \sum_{j=1}^k \, \beta_{i,j} q(\alpha_j)
+\end{align*}
+for $1\leq i \leq k$ and
+\begin{align*}
+\int_0^1 q(t) \dx{t} &= \sum_{m=0}^{k-1} a_m \int_0^1 t^m \dx{t}
+= \sum_{m=0}^{k-1} a_m \left( \frac{1}{m+1}\right)
+= \sum_{m=0}^{k-1} a_m \left( \sum_{j=1}^k \, \gamma_j \alpha_j^m\right) \\
+&= \sum_{j=1}^k \, \gamma_j \left( \sum_{m=0}^{k-1} a_m \alpha_j^m\right)
+= \sum_{j=1}^k \, \gamma_j q(\alpha_j) \ .
+\end{align*}
+Thus, (\ref{GradQ7A}) is satisfied.
+
+Since $\alpha_i \neq \alpha_j$ for $i \neq j$, any polynomial $q$ of
+degree less than $k$ has a unique representation of the form
+$\displaystyle q(t) = \sum_{j=1}^k q(\alpha_j)\, \ell_j(t)$, where
+$\ell_j(t)$ is defined in Theorem~\ref{entries_Butcher}.
+Hence,
+\begin{equation} \label{GradQ7B}
+\int_0^{\alpha_i} q(t) \dx{t} = \sum_{j=1}^k
+q(\alpha_j) \int_0^{\alpha_i} \ell_j(t) \dx{t}
+\quad \text{and} \quad
+\int_0^1 q(t) \dx{t} = \sum_{j=1}^k
+q(\alpha_j) \int_0^1 \ell_j(t) \dx{t}
+\end{equation}
+for all polynomial of degree less than $k$ and $1\leq i \leq k$.
+
+Combining (\ref{GradQ7A}) and (\ref{GradQ7B}), we get
+\begin{align}
+\sum_{j=1}^k q(\alpha_j) \left( \beta_{i,j}
+- \int_0^{\alpha_i} \ell_j(t) \dx{t} \right) &= 0
+\quad , \quad 1\leq i \leq k \ ,  \label{GradQ7C}
+\intertext{and}                                               
+\sum_{j=1}^k q(\alpha_j) \left( \gamma_j
+- \int_0^1 \ell_j(t) \dx{t} \right) &= 0 \label{GradQ7D}
+\end{align}
+for all polynomial of degree less than $k$.
+
+Let $A$ be the \nm{k}{k} matrix with the components
+$\displaystyle a_{n+1,j} = \alpha_j^n$ for $0 \leq n < k$ and
+$1 \leq j \leq k$.  Since the $\alpha_j$ are distinct, $A$ is a
+non-singular matrix.  In fact, $A$ is a invertible Vandermonde matrix.
+For $1 \leq i \leq k$, Let $\VEC{w}^{[i]}$ be
+the vector with components
+$\displaystyle w^{[i]}_j = \beta_{i,j} - \int_0^{\alpha_i} \ell_j(t) \dx{t}$
+for $1 \leq j \leq k$.  Moreover, let $\VEC{w}^{[k+1]}$ be the vector
+with the components 
+$\displaystyle w^{[k+1]}_j = \gamma_j - \int_0^1 \ell_j(t) \dx{t}$
+for $1 \leq j \leq k$.
+
+We have that (\ref{GradQ7C}) with $q(t) = t^n$ for $0 \leq n < k$
+yields the linear equations $A \VEC{w}^{[i]}  = \VEC{0}$ for
+$0 \leq i \leq k$.  Similarly, (\ref{GradQ7D}) with $q(t) = t^n$ for
+$0 \leq n < k$ yields the
+linear equations $A \VEC{w}^{[k+1]}  = \VEC{0}$.  Since $A$ is
+non-singular, the only solution of $A \VEC{w} = \VEC{0}$ is
+$\VEC{w} = \VEC{0}$.  Thus, we get
+\[
+\beta_{i,j} = \int_0^{\alpha_i} \ell_j(t) \dx{t}
+\quad \text{and} \quad
+\gamma_j = \int_0^1 \ell_j(t) \dx{t}
+\]
+for $1\leq i,j\leq k$.
+}
+
+\solution{\SOL}{\ref{initQ11}}{
+In the proof of Lemma~\ref{rat_funct}, we showed that
+\[
+r(z) = 1 + z\VEC{c}^\top (\Id - zB)^{-1} \VEC{u} \ ,
+\]
+where
+\[
+B = \begin{pmatrix} \beta_{1,1} & \beta_{1,2} & \ldots & \beta_{1,s} \\
+\beta_{2,1} & \beta_{2,2} & \ldots & \beta_{2,s} \\
+\vdots & \vdots & \ddots & \vdots \\
+\beta_{s,1} & \beta_{s,2} & \ldots & \beta_{s,s}
+\end{pmatrix}
+\ , \quad
+\VEC{c} = \begin{pmatrix} \gamma_1 \\ \gamma_2 \\ \vdots \\ \gamma_s
+\end{pmatrix}
+\quad \text{and} \quad
+\VEC{u} = \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix} \ .
+\]
+Since
+\[
+(\Id-zB)^{-1} = \frac{1}{\det(\Id-zB)}\,\text{adj}(\Id-zB) \ ,
+\]
+we have that $\VEC{c}^\top(\Id-zA)^{-1}\VEC{u}$ is the quotient
+of two polynomials.  The numerator is a polynomial of degree $k-1$ given
+by a linear combination of the components of $\text{adj}(\Id-zB)$.
+The denominator is $\det(\Id-zB)$, a polynomial of degree $k$.  Since $B$
+is lower-triangular, we have that
+$\displaystyle \det(\Id-zB) = \prod_{j=1}^k (1- z \beta_{j,j})$.
+}
+
+\solution{\SOL}{\ref{initQ12}}{
+The Runge-Kutta method of this question is given by the collocation
+method associated to the nodes $\alpha_1 = (3- \sqrt{3})/6$ and
+$\alpha_2 = (3 + \sqrt{3})/6$ which are the roots of the Legendre
+polynomial $q(t) = t^2 -t + 1/6$.  See Example~\ref{Gauss_Leg_RK}.  It
+follows from Theorem~\ref{RKcolAstable} that the method is A-stable.
+
+However, the question states that we cannot use this approach.  According
+to Corollary~\ref{RKstabReg}, we have to prove that
+\[
+  \{ z \in \CC : |r(z)| <1 \} \supset \{ z \in \CC : \IM z < 0 \} \ ,
+\]
+where $r(z) = 1 + z\VEC{c}^\top (\Id - zB)^{-1} \VEC{u}$ with
+\[
+B = \begin{pmatrix} 1/4 & (3-2\sqrt{3})/12 \\
+(3+2\sqrt{3})/12 & 1/4  
+\end{pmatrix}
+\ , \quad
+\VEC{c} = \begin{pmatrix} 1/2 \\ 1/2 \end{pmatrix}
+\quad \text{and} \quad
+\VEC{u} = \begin{pmatrix} 1 \\ 1 \end{pmatrix} \ .
+\]
+We have
+\[
+\Id - z B = \begin{pmatrix} 1 - z/4 & -z(3-2\sqrt{3})/12 \\
+-z(3+2\sqrt{3})/12 & 1 - z/4  
+\end{pmatrix}
+\]
+and so
+\[
+(\Id - z B)^{-1} = \frac{1}{1-z/2 + z^2/12}
+\begin{pmatrix} 1 - z/4 & z(3-2\sqrt{3})/12 \\
+z(3+2\sqrt{3})/12 & 1 - z/4
+\end{pmatrix} \ .
+\]
+Thus
+\begin{align*}
+r(z) &= 1 + \frac{z}{1-z/2 + z^2/12} \begin{pmatrix} 1/2 & 1/2 \end{pmatrix}
+\begin{pmatrix} 1 - z/4 & z(3-2\sqrt{3})/12 \\
+z(3+2\sqrt{3})/12 & 1 - z/4
+\end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \\
+&= 1 + \frac{z}{1-z/2 + z^2/12}  = \frac{12 + 6z + z^2}{12 - 6z + z^2} \ .
+\end{align*}
+
+The poles of $r(z)$ are the roots of the denominator
+$12 - 6z + z^2$; namely, $z_{\pm} = 3 \pm \sqrt{3} \, i$.  Thus, there is
+no pole in the region $\{ z \in \CC : \RE z \leq 0 \}$.  Moreover,
+if $z = s i$, we get
+\[
+  |r(s i)| = \left| \frac{12 + 6s i - s^2}{12 -6s i - s^2} \right|
+= \left| \frac{12 + 6s i - s^2}{\overline{12 + 6s i - s^2}} \right|
+= 1
+\]
+for all $s \in \RR$.  Thus, $|r(z)| = 1 \leq 1$ on the imaginary axis.
+It follows from Lemma~\ref{RKAstabPole} that the Runge-Kutta Method is
+A-stable.
+}
+
+\solution{\SOL}{\ref{initQ16}}{
+\subQ{a} The difference equation is
+\[
+  w_{i+1} = w_i + \frac{h^2}{12}\left( 4 (i+1) + 9i - (i-1)\right)
+    = w_i + \frac{h^2}{12}\left( 12 i + 5\right)
+\]
+for $i \in \NN$.
+
+\subQ{b} First, we find the general solution of the linear difference
+equation $w_{i+1} = w_i$ for $i \in \NN$.  If we substitute
+$w_i = r^i$, we get $r^{i+1} = r^i$.  The nontrivial solution is $r = 1$.
+Thus, the general solution of the linear difference equation is
+$w_i = C$, a constant, for all $i$.
+
+We now seek a particular solution of the form $w_i = Ai^2 + Bi$ for
+the difference equation in (a).  We get
+\[
+A(i+1)^2 + B(i+1) = Ai^2 + Bi + \frac{h^2}{12}\left( 12 i + 5\right)
+\Rightarrow (2A - h^2)i + \left( A + B - \frac{5h^2}{12}\right) = 0
+\]
+for all $i$.  Thus, $2A-h^2 = 0$ and
+$\displaystyle A + B - 5h^2/12 = 0$.  Solving for $A$ and $B$,
+we find $A = h^2/2$ and $B = -h^2/12$.  Hence,
+$\displaystyle w_i = \frac{h^2 i^2}{2} - \frac{h^2i}{12}$ for all $i$.
+
+The general solution of (a) is
+$\displaystyle w_i = \frac{h^2 i^2}{2} - \frac{h^2i}{12} + C$ for all $i$.
+
+\subQ{c} With $w_0=0$, we get $\displaystyle C = 0$.
+Thus, $\displaystyle w_i = \frac{h^2 i^2}{2} - \frac{h^2i}{12}$ for
+all $i$.
+
+\subQ{d} Since $t_i = hi$, we find
+$\displaystyle w_i = \frac{t_i^2}{2} - \frac{h t_i}{12}$.
+
+The solution of the initial value problem (\ref{GradQ2}) is
+$y(t) = t^2/2$.  Hence,
+\[
+\lim_{h\to 0}\, \max_{0\leq i \leq N} |y_i - w_i|
+= \lim_{h\to 0}\, \max_{0\leq i \leq N} |y(t_)) - w_i |
+= \lim_{h\to 0}\, \max_{0\leq i \leq N} \left| \frac{h t_i}{12} \right|
+\leq \lim_{h\to 0} \left| \frac{5 h}{12} \right| = 0 \ .
+\]
+This is not quite the definition of convergence as stated in
+Definition~\ref{methodConv} since we have considered
+$w_i$ instead of $u_i$, but it is the definition of convergence
+as given in Remark~\ref{ConvAltern}.  See also (f) below.
+
+\subQ{e} The characteristic polynomial is
+$p(w) = \lambda^2 - \lambda$.  It has two roots, $\lambda = 0$ and
+$\lambda =1$ with the root $\lambda =1$ being simple.  So, the root
+condition is satisfied.
+  
+\subQ{f} The local truncation error is given by 
+\[
+\tau_{i+1}(h) = \frac{y(t_{i+1}) - y(t_i)}{h} - \frac{1}{12}
+\left( 4 f(t_{i+1},y(t_{i+1})) + 9f(t_i,y(t_i)) -f(t_{i-1},y(t_{i-1}))
+\right) \ .
+\]
+Since
+$y(t_{i+1}) = y(t_i) + y'(t_i)\,h + y''(\xi_i)\,h^2/2$,
+$f(t_i,y(t_i)) = y'(t_i)$,
+$f(t_{i+1},y(t_{i+1})) = y'(t_{i+1}) = y'(t_i) + y''(\eta_i) h$ and
+$f(t_{i-1},y(t_{i-1})) = y'(t_{i-1}) = y'(t_i) - y''(\nu_i) h$
+for some $\xi_i$, $\eta_i$ and $\nu_i$, we get
+\begin{align*}
+\tau_{i+1}(h) &= \frac{1}{h}
+\left(y(t_i) + y'(t_i)\,h + y''(\xi_i)\,\frac{h^2}{2} - y(t_i) \right) \\
+&- \frac{1}{12}
+\left(4y'(t_i) + 4y''(\eta_i)\,h + 9 y'(t_i) - y'(t_i) + y''(\nu_i)\,h \right)
+= \left( \frac{y''(\xi_i)}{2}
+- \frac{y''(\eta_i)}{3} - \frac{y''(\nu_i)}{12}\right)h \ .
+\end{align*}
+If $\displaystyle M= \max_{0 \leq t \leq 5} | y''(t) |$, we get
+\[
+| \tau_{i+1}(h) | \leq \frac{1}{12} M h \ .
+\]
+The method is of order $1$ because $\tau_{i+1}(h) = O(h)$.
+The method is consistent because
+\[
+\max_{0\leq i \leq n} | \tau_{i+1}(h) | \leq \frac{5}{12} M h
+\rightarrow 0
+\]
+as $h\rightarrow 0$.
+
+Since the multistep method (\ref{GradQ1}) is consistent and satisfies
+the root condition, we may affirm that it is convergent according to
+Theorem~\ref{Dahl_conv}.  See Remark~\ref{DahlquistWOdelta}.
+}
+
+\solution{\SOL}{\ref{initQ17}}{
+We use the method presented in Section~\ref{AAMM} to answer
+this question.
+
+\subQ{a} We consider $p(w) = w^3-1$ and set $m=3$.  Using the
+substitution $w=v+1$, we get
+\begin{align*}
+\frac{p(w)}{\ln(w)} &= \frac{w^3-1}{\ln(w)}
+= \frac{(v+1)^3-1}{\ln(v+1)}
+= (v^2 + 3v + 3)\,\frac{v}{\ln(1+v)} \\
+&= (v^2 + 3v + 3)\,\left( 1 + \frac{v}{2} - \frac{v^2}{12} + O(v^3)\right)
+= 3 + \frac{9v}{2} + \frac{9v^2}{4} + O(v^3)
+= \frac{3}{4} + \frac{9w^2}{4} + O((w-1)^3) \ .
+\end{align*}
+Thus $\displaystyle q(w) = \frac{3}{4} + \frac{9w^2}{4}$.  The
+multistep method is
+\begin{align*}
+w_{i+1} &= w_{i-2} + h\left(\frac{3}{4}\, f(t_{i-2},w_{i-2}) +
+          \frac{9}{4}\,f(t_i,w_i) \right)
+\quad \text{for} \quad i = 2, 3, \ldots, N-1 \\
+w_i &= y_i \quad \text{for} \quad i=0,1,2
+\end{align*}
+
+\subQ{b} We consider $p(w) = w^3-1$ and set $m=3$.  Using the
+substitution $w=v+1$, we get
+\begin{align*}
+\frac{p(w)}{\ln(w)} &= \frac{w^3-1}{\ln(w)}
+= \frac{(v+1)^3-1}{\ln(v+1)}
+= (v^2 + 3v + 3)\,\frac{v}{\ln(1+v)} \\
+&= (v^2 + 3v + 3)\,\left( 1 + \frac{v}{2} - \frac{v^2}{12}
++ \frac{v^3}{24} + O(v^4)\right)
+= 3 + \frac{9v}{2} + \frac{9v^2}{4} + \frac{3v^3}{8} + O(v^4) \\
+&= \frac{3}{8} + \frac{9w}{8} + \frac{9w^2}{8} + \frac{3w^3}{8} + O((w-1)^3)
+\ .
+\end{align*}
+Thus $\displaystyle q(w) = \frac{3}{8} + \frac{9w}{8} + \frac{9w^2}{8}
++ \frac{3w^3}{8}$.  The multistep method is
+\begin{align*}
+w_{i+1} &= w_{i-2} + h\left(\frac{3}{8}\, f(t_{i-2},w_{i-2}) +
+\frac{9}{8}\,f(t_{i-1},w_{i-1}) + \frac{9}{8}\,f(t_i,w_i)
++ \frac{3}{8}\, f(t_{i+1},w_{i+1}) \right) \\
+&\qquad \text{for} \quad i = 3, 4, \ldots, N-1 \\
+w_i &= y_i \quad \text{for} \quad i=0,1,2,3
+\end{align*}
+}
+
+\solution{\SOL}{\ref{initQ18}}{
+We first prove by induction that
+\begin{equation}\label{GradQ3}
+p_k(w) = 1 - (-1)^{k-1}\sum_{j=0}^m j^{k-1} a_j w^j
+\end{equation}
+for all $k>0$.  This result is obviously true for $k=1$.  We assume that
+(\ref{GradQ3}) is true for $k$.  Then
+\[
+p_{k+1}(w) = 1 -w p_k'(w) = 1 - w
+\left( -(-1)^{k-1} \sum_{j=0}^m j^k a_j w^{j-1} \right)
+= 1 - (-1)^k \sum_{j=0}^m j^k a_j w^j \ .
+\]
+This is (\ref{GradQ3}) with $k$ replaced by $k+1$.
+
+Similarly, we have by induction that
+\begin{equation}\label{GradQ4}
+q_k(w) = (-1)^{k-1}\sum_{j=-1}^m j^{k-1} b_j w^j
+\end{equation}
+for all $k>0$.  This result is obviously true for $k=1$.  We assume that
+(\ref{GradQ4}) is true for $k$.  Then
+\[
+q_{k+1}(w) = -w q_k'(w) = - w
+\left( (-1)^{k-1} \sum_{j=-1}^m j^k b_j w^{j-1} \right)
+= (-1)^k \sum_{j=-1}^m j^k b_j w^j \ .
+\]
+This is (\ref{GradQ4}) with $k$ replaced by $k+1$.
+
+It follows from (\ref{GradQ3}) that
+\[
+  p_k(1) = 1 - (-1)^{k-1} \sum_{j=0}^m j^{k-1} a_j
+\]
+for all $k>0$. It also follows from (\ref{GradQ4}) that
+\[
+  q_k(1) = (-1)^{k-1} \sum_{j=-1}^m j^{k-1} b_j
+\]
+for all $k$.  Hence, it follows from (\ref{cond_order_p1}) and
+(\ref{cond_order_p2}) that the multistep method is of order $r$ if and
+only if $p_1(1) = 0$, $p_{k+1}(1) - k q_k(1) =0$ for $1\leq k \leq r$,
+and $p_{r+2}(1) - (r+1) q_{r+1}(1) \neq 0$.
+}
+
+\solution{\SOL}{\ref{initQ19}}{
+\subQ{a} The local truncation error is given by 
+\[
+\tau_{i+1}(h) = \frac{y(t_{i+1}) - a_0 y(t_i) -a_1y(t_{i-1})}{h} -
+\big( b_0 f(t_i,y(t_i)) + b_1 f(t_{i-1},y(t_{i-1})) \big) \ .
+\]
+Since there exist $\xi_i$, $\eta_i$ and $\nu_i$ such that
+$\displaystyle y(t_{i+1}) = \sum_{k=0}^5 \frac{1}{k!}\, y^{(k)}(t_i)\,h^k
++ \frac{1}{6!}\,y^{(6)}(\xi_i)\,h^6$,\\
+$\displaystyle y(t_{i-1}) = \sum_{k=0}^5 \frac{(-1)^k}{k!}\, y^{(k)}(t_i)\,h^k
++ \frac{1}{6!}\,y^{(6)}(\eta_i)\, h^6$,
+$f(t_i,y(t_i)) = y'(t_i)$ and\\
+$\displaystyle f(t_{i-1},y(t_{i-1})) = y'(t_{i-1})
+= \sum_{k=0}^4 \frac{(-1)^k}{k!}\, y^{(k+1)}(t_i)\,h^k
+- \frac{1}{5!}\,y^{(6)}(\mu_i)\,h^5$, we get
+\begin{align*}
+\tau_{i+1}(h) &= \frac{1}{h}
+\Bigg( \sum_{k=0}^5 \frac{1}{k!}\, y^{(k)}(t_i)\,h^k
+  + \frac{1}{6!}\,y^{(6)}(\xi_i)\,h^6 -a_0y(t_i) \\
+&\qquad - a_1\left(\sum_{k=0}^5 \frac{(-1)^k}{k!}\, y^{(k)}(t_i)\,h^k
++ \frac{1}{6!}\, y^{(6)}(\eta_i)\,h^6 \right)\Bigg) \\
+&\qquad - \left(b_0 y'(t_i) + b_1 \left( \sum_{k=0}^4 \frac{(-1)^k}{k!}\,
+y^{(k+1)}(t_i)\,h^k - \frac{1}{5!}\,y^{(6)}(\mu_i)\,h^5 \right) \right) \\
+&= (1 - a_0-a_1)y(t_i) h^{-1} + (1 + a_1 - b_0 - b_1) y'(t_i) \\
+&\qquad + \sum_{k=2}^5 \left(\frac{1}{k!} - \frac{(-1)^ka_1}{k!}
+- \frac{(-1)^{k-1}b_1}{(k-1)!} \right) y^{(k)}(t_i) h^{k-1} + O(h^5)
+\end{align*}
+if we assume that the derivatives of $y(t)$ are bounded on the
+interval $[t_0,t_N]$.
+
+We get $a_0 = 1 - a_1$ from $1 - a_0-a_1 = 0$ (we set the coefficient of
+$y(t_i) h^{-1}$ to $0$).  We get $b_0 = 1 + a_1 - b_1$ from
+$1 + a_1 - b_0 - b_1=0$ (we set the coefficient of $y(t_i)$ to $0$).  We get
+$\displaystyle b_1 = \frac{a_1}{2} - \frac{1}{2}$ from
+$\displaystyle \frac{1}{2} - \frac{a_1}{2} + b_1 = 0$
+(we set the coefficient of $y''(t_i)h$ to $0$).
+If we substitute this expression for $b_1$ in
+$\displaystyle \frac{1}{6} + \frac{a_1}{6} - \frac{b_1}{2} = 0$
+(we set the coefficient of ($y^{(3)}(t_i) h^2$ to $0$), we
+get $\displaystyle a_1 = 5$.
+
+We have found that all the terms in $h^{k}$ for $k<3$ vanish if
+$a_0 = -4$, $a_1 = 5$. $b_0 = 4$ and $b_1 = 2$.   
+With these values of $a_1$ and $b_1$, we have that
+$\displaystyle \frac{1}{24} - \frac{a_1}{24} + \frac{b_1}{6}
+= \frac{1}{6} \neq 0$ (the coefficient of $y^{(4)}h^3$).  Hence,
+\begin{equation}\label{TroncQuest21}
+  \tau_{i+1}(h) = \frac{1}{6}\, y^{(4)}(t_i)\, h^3 + O(h^4) \ .
+\end{equation}
+The method of highest order is
+\[
+w_{i+1} = -4 w_i + 5 w_{i-1} + h \left(
+  4 f(t_i,w_i) + 2 f(t_{i-1},w_{i-1}) \right) \ .
+\]
+
+\subQ{b} We have from (\ref{TroncQuest21}) that
+$\displaystyle \tau_{i+1}(h) = O(h^3)$.  So, the method is of order $3$.
+
+\subQ{c} It follows from Dahlquist Second Barrier,
+Theorem~\ref{Dahl2ndB}, that this method cannot be A-stable.
+}
+
+\solution{\SOL}{\ref{initQ20}}{
+The stability polynomial for this multistep method is
+$p(\lambda) - z\, q(\lambda)$, where
+$\displaystyle p(\lambda) =  -\lambda^{m+1} + \sum_{j=0}^m\,a_j\,\lambda^{m-j}$
+is the characteristic polynomial
+and $\displaystyle q(\lambda) = \sum_{j=-1}^m\,b_j\,\lambda^{m-j}$.
+
+Since the method is convergent, it satisfies the root condition
+according to Proposition~\ref{SimpliesRC}; namely, all the roots of
+its characteristic polynomial have absolute values less than or
+equal to one and those equal to one are simple roots. 
+
+So, for $z=0$, all the roots of the stability polynomial have absolute
+values less than or equal to one and those equal to one are simple
+roots since they are the roots of the characteristic polynomial.
+Thus, $z=0$ is in the region of absolute stability or on its boundary.
+
+It follows from Proposition~\ref{cond_consistency} that $p(1)=0$.  So
+$\lambda =1$ is a root of the stability polynomial when $z=0$.  Hence,
+$z=0$ is on the boundary of the region of absolute stability.
+}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End: 

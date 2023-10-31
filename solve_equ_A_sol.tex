@@ -1,0 +1,1173 @@
+\nonumsection{Chapter~\ref{chaptSeqA} : Iterative Methods for Nonlinear Equations of One Variable}
+
+\solution{\SOL}{\ref{solvAQ1}}{
+We will roughly sketch the graph of $f(x) = 4x^2 - e^x$.  This is not
+easy because even the critical points are hard to find.  However, it
+is easier to determine the intervals of concavity of the function.
+Since $f''(x) = 8 -e^x$, a potential point of inflection is
+$x=\ln(8)$.  Since $f''(x) > 0$ for $x < \ln(8)$ and $f''(x)<0$ for
+$x>\ln(8)$, we have that $\ln(8)$ is a point of inflection, $f$ is
+concave up for $x<\ln(8)$ and concave down for $x>\ln(8)$.  To sketch
+the graph of $f$ below, we have computed the sign of $f$ at $-1$,
+$0$, $1$, $4$ and $5$.
+
+\pdfbox{solve_equ_A/root_quest1}
+
+There is a unique root in each of the intervals $[-1,0]$, $[0,1]$
+and $[4,5]$.  There is no other root. 
+}
+
+\solution{\SOL}{\ref{solvAQ2}}{
+$\sqrt[3]{25}$ is the unique root of $f(x) = x^3 -25$.
+
+Since $f$ is a continuous function and
+$f(2) = -17 < 0 < 2 = f(3)$, it follows from the Intermediate Value
+Theorem that $\sqrt[3]{25}$, the only root of $f$, is between $2$ and
+$3$.
+
+According to Corollary~\ref{bisectCor}, to get an approximation of
+$\sqrt[3]{25}$ with an accuracy of $10^{-4}$, we need to select the
+number of iterations $n$ such that
+\[
+\frac{3-2}{2^n} < 10^{-4}
+\Rightarrow 10^4 < 2^n
+\Rightarrow 4\ln(10) < n \ln(2)
+\Rightarrow \frac{4\ln(10)}{\ln(2)} = 13.28771237\ldots < n \ .
+\]
+Since $n$ is an integer, we may take $n=14$.
+
+We get the following results from the Bisection Method
+{\small
+\[
+\begin{array}{c|rrrcc}
+n & x_n & a_n & b_n & \text{sign of } f(x_n) & \text{sign of } f(a_{n-1}) \\
+\hline
+0 & & 2 & 3 & & \\
+1 & 2.5 & 2.5 & 3 & - & - \\
+2 & 2.75 & 2.75 & 3 & - & - \\
+3 & 2.875 & 2.875 & 3 & - & - \\
+4 & 2.9375 & 2.875 & 2.9375 &  + & - \\
+5 & 2.90625 & 2.90625 & 2.9375 & - & - \\
+6 & 2.921875 & 2.921875 & 2.9375 & - & - \\
+7 & 2.9296875 & 2.921875 & 2.9296875 &  + & - \\
+8 & 2.9257812 & 2.921875 & 2.9257812 &  + & - \\
+9 & 2.9238281 & 2.9238281 & 2.9257812 & - & - \\
+10 & 2.9248047 & 2.9238281 & 2.9248047 &  + & - \\
+11 & 2.9243164 & 2.9238281 & 2.9243164 &  + & - \\
+12 & 2.9240723 & 2.9238281 & 2.9240723 &  + & - \\
+13 & 2.9239502 & 2.9239502 & 2.9240723 & - & - \\
+14 & 2.9240112 & 2.9240112 & 2.9240723 & - & -
+\end{array}
+\]
+}
+After 14 iterations, we find $\sqrt[3]{25} \approx 2.9240112$\ .
+}
+
+\solution{\SOL}{\ref{solvAQ3}}{
+We have seen in Corollary~\ref{bisectCor} that
+\[
+  |x_n - r| < |b_n - a_n| = \frac{b_0-a_0}{2^n} \ .
+\]
+Hence, the relative error satisfies
+\begin{equation}\label{second}
+\frac{|x_n-r|}{|r|} < \frac{(b_0-a_0)}{2^n\,|r|}
+\end{equation}
+If $n$ satisfies (\ref{first}), we have that
+\[
+\ln(2^n) = n \ln(2) \geq \ln(b_0-a_0)-\ln(\epsilon)-\ln(a_0)
+= \ln\left(\frac{b_0-a_0}{\epsilon \, a_0}\right)
+\Rightarrow 
+2^n \geq \frac{b_0-a_0}{\epsilon \, a_0}
+\Rightarrow
+\epsilon\, a_0 \geq \frac{b_0-a_0}{ 2^n} \ .
+\]
+Hence, from (\ref{second}), we get
+\[
+\frac{|x_n-r|}{|r|} < \frac{\epsilon\,a_0}{|r|} \leq \epsilon
+\]
+for $n$ satisfying (\ref{first}) because $r>a_0>0$ implies that
+$a_0/r < 1$.
+}
+
+\solution{\SOL}{\ref{solvAQ4}}{
+Since $x_{n+1}$ is the middle point of the interval
+$[a_n,b_n]$, where one of the endpoints is $x_n$, we get
+\[
+|x_{n+1}-x_n| = \frac{1}{2}\, (b_n-a_n)
+= \frac{1}{2} \left(\frac{b_0-a_0}{2^n}\right) = \frac{b_0-a_0}{2^{n+1}} \ ,
+\]
+where we have used the property that the length of the interval
+$[a_n,b_n]$ is $(b_0-a_0)/2^n$.
+}
+
+\solution{\SOL}{\ref{solvAQ5}}{
+As it is given, the bisection algorithm can never have a sequence
+$a_0 <a_1 < a_2 < \ldots$.
+
+Let $r$ be the root in $[a_0,b_0]$ approximated by the bisection
+algorithm.  We suppose that $a_0 <a_1 < a_2 < \ldots$ and
+prove by contradiction that this is not possible.
+
+Since we have an infinite sequence of distinct values
+$\displaystyle \{a_n\}_{n=0}^\infty$, none of $a_n$ or $b_n$ for
+$n \geq 0$ can be a root of $f$ because of (\ref{BisectAlgo2}) and
+(\ref{BisectAlgo4}) in Algorithm~\ref{BisectAlgo}.
+Moreover, since only $a_n$ varies, we must have $b_n = b_0$ and
+$a_n < r$ for all $n$.  But then $b_n - a_n \geq b_0-r$ for all $n$.  So
+$\displaystyle \{b_n - a_n \|_{n=0}^\infty$ cannot converge to $0$.
+This is our contradiction.
+}
+
+\solution{\SOL}{\ref{solvAQ8}}{
+We first find all points $r>0$ such that
+\[
+-r = r - \frac{f(r)}{f'(r)} = r - (1+r^2)\arctan(r) \ ;
+\]
+namely, such that
+\[
+\arctan(r) = \frac{2r}{1+r^2} \ .
+\]
+In the figure below, we draw the curves $y=\arctan(x)$ (in black) and
+$y=2x/(1+x^2)$ (in blue) on the same coordinate system.  Note that the
+two functions are odd.  There is only one intersection for $x>0$
+between these two curves.  The $x$-coordinate of this point is the
+value of interest.
+\pdfbox{solve_equ_A/arctanNewton}
+For $0<x_0<r$, we have $-r < x_0-f(x_0)/f'(x_0) <0$ and the
+Newton's method will converge to the root $0$ of $\arctan(x)$.
+
+For $x_0>r$, we have $x_0-f(x_0)/f'(x_0) < -r$ and the Newton's method
+will not converge to the root $0$ of $\arctan(x)$.
+
+For $x_0=r$, we have $x_1 = x_0-f(x_0)/f'(x_0) = -r$,
+$x_2 = x_1-f(x_1)/f'(x_1) = r = x_0$, and so on.
+
+We may use Newton's method to approximate $r$.  Let
+\[
+g(x) = \arctan(x) - \frac{2x}{1+x^2} \ .
+\]
+Then
+\[
+g'(x) = \frac{1}{1+x^2} - \frac{2}{1+x^2} + \frac{4x^2}{(1+x^2)^2}
+= \frac{-1+3x^2}{(1+x^2)^2} \ .
+\]
+With $x_0=1$, the formula
+\[
+x_{n+1} = x_n - \frac{g(x_n)}{g'(x_n)}
+\]
+yields $r \approx 1.3917452002707$ after $5$ iterations with an
+accuracy of at least $10^{-12}$.
+}
+
+\solution{\SOL}{\ref{solvAQ9}}{
+We seek a function $f$ such that
+\[
+2x_n - C x_n^2 = x_n - \frac{f(x_n)}{f'(x_n)} \ .
+\]
+Thus,
+\[
+\frac{f(x)}{f'(x)} = -x + C x^2 \ .
+\]
+This is the separable differential equation
+\[
+\frac{f'(x)}{f(x)} = \frac{1}{-x+ C x^2 } \ .
+\]
+If we integrate both sides with respect to $x$, we get
+\begin{align*}
+\ln|f(x)| & = \int \frac{f'(x)}{f(x)} \dx{x}
+= \int \frac{1}{-x+ C x^2} \dx{x} = \int \frac{1}{x(C x - 1)} \dx{x} \\
+&= \int \left( -\frac{1}{x} + \frac{C}{C x - 1}\right) \dx{x}
+= - \ln|x| + \ln|Cx-1| + D = \ln\left(\frac{|Cx-1|}{|x|}\right) + D \ .
+\end{align*}
+Taking the exponential on both sides yields
+\[
+|f(x)| =  e^D \, \frac{|Cx-1|}{|x|}
+\Rightarrow f(x) = E\, \frac{Cx-1}{x}
+\]
+for $E \neq 0$ in $\RR$.
+}
+
+\solution{\SOL}{\ref{solvAQ10}}{
+This is the formula for the Newton's method applied to
+$f(x) = \tan(x) -1$.  Since $x_0=0$, the limit of the sequence above is
+a root of $f$ between $-\pi/2$ and $\pi/2$.  The easiest way to
+convince us that this is true is to use the graphical interpretation
+of the Newton's method as the intersection of the tangent line to the
+graph of $f$ at $(x_n,f(x_n))$ with the $x$-axis to get $x_{n+1}$.
+
+All tangents to the graph of $f$ at $(x,f(x))$ for
+$-\pi/2 < x < \pi/2$ intersect the $x$-axis between $-\pi/2$ and $\pi/2$
+because:
+\begin{enumerate}
+\item $f'(x) = \sec^2(x) > 1$ for $-\pi/2 < x < \pi/2$ with $x\neq 0$,
+and $f'(0) = 1$:
+\item $f''(x) = 2\sec^2(x)\tan(x) \geq 0$ for $0 \leq x < \pi/2$,
+  and $f''(x) \leq 0$ for $-\pi/2<x\leq 0$;
+\item $\displaystyle \lim_{x\to -pi/2^-} f(x) = -\infty$
+and $\displaystyle \lim_{x\to pi/2^+} f(x) = \infty$.
+\end{enumerate}
+Using curve sketching as seen in calculus, we get the following graph.
+\pdfbox{solve_equ_A/tanmone}
+The solution of $f(x)=0$ between $-\pi/2$ and $\pi/2$ is the value $x$
+between $-\pi/2$ and $\pi/2$ such that $\tan(x) =1$; namely,
+$x = \pi/4$.  The limit of the sequence above is therefore $\pi/4$.
+}
+
+\solution{\SOL}{\ref{solvAQ11}}{
+The formula for the Newton's method is
+\[
+x_{n+1} = x_n - \frac{\tan(x_n)}{\sec^2(x_n)}
+= x_n - \sin(x_n)\cos(x_n)
+\]
+for $n=0$, $1$, $2$, \ldots\ We get
+{
+\small
+\[
+\begin{array}{c|c|c|c}
+\hline
+n & x_{n-1} & x_n & |x_n - x_{n-1}| \\
+\hline
+1 & 5.000000000000 & 5.272010555445 & 0.272010555445 \not< 10^{-8} \\
+2 & 5.272010555445 & 5.721895774546 & 0.449885219101 \not< 10^{-8} \\
+3 & 5.721895774546 & 6.172506324972 & 0.450610550427 \not< 10^{-8} \\
+4 & 6.172506324972 & 6.282283652706 & 0.109777327733 \not< 10^{-8} \\
+5 & 6.282283652706 & 6.283185306691 & 0.000901653985 \not< 10^{-8} \\
+6 & 6.283185306691 & 6.283185307180 & 0.000000000489 < 10^{-8} \\
+\hline
+\end{array}
+\]
+}
+Starting with $x_0 = 5$, it took $6$ iterations to get the
+approximation $x_6 = 6.283185307180$ of the root of $f$ with the
+requested accuracy.
+}
+
+\solution{\SOL}{\ref{solvAQ12}}{
+The formula for the secant method is
+\[
+x_{n+1} = x_n - \frac{e^{x_n}-\tan(x_n)}
+{\big((e^{x_n}-\tan(x_n))-(e^{x_{n-1}}-\tan(x_{n-1}))\big)/(x_n-x_{n-1})}
+\]
+for $n=1$, $2$, $3$, \ldots\ We have
+{
+\small
+\[
+\begin{array}{c|c|c|c}
+\hline
+n & x_n & x_{n+1} & |x_{n+1} - x_n| \\
+\hline
+0 & 1.300000000000 & 1.350000000000 & 0.050000000000 \not< 10^{-8} \\
+1 & 1.350000000000 & 1.305052269533 & 0.044947730467 \not< 10^{-8} \\
+2 & 1.305052269533 & 1.306071050733 & 0.001018781201 \not< 10^{-8} \\
+3 & 1.306071050733 & 1.306328498317 & 0.000257447584 \not< 10^{-8} \\
+4 & 1.306328498317 & 1.306326938521 & 0.000001559796 \not< 10^{-8} \\
+5 & 1.306326938521 & 1.306326940423 & 0.000000001902 < 10^{-8} \\
+\hline
+\end{array}
+\]
+}
+The secant algorithm must be started with $x_0$ and $x_1$ really close
+to the first positive root of $f$, the root that we want to approximate,
+otherwise the secant algorithm will likely converge to a totally
+different root of $f$.   The first positive root of $f$ is the first
+intersection of $\tan(x)$ (in black) and $e^x$ (in blue) in the
+following figure.
+\figbox{solve_equ_A/exptanSecant}{8cm}
+Starting with $x_0 = 1.3$ and $x_1=1.35$, it took $5$ iterations to
+get the approximation $x_6 = 1.306326940423$ of the root of $f$ with the
+requested accuracy.
+
+To illustrate how unpredictable Newton's method can be, if we start
+with $x_0 = 4$ and $x_1=5$, it takes $13$ iterations
+to get the approximation $x_{14} = -3.096412304914$ of the first
+negative root of $f$ instead of the first positive root.
+}
+
+\solution{\SOL}{\ref{solvAQ13}}{
+\subQ{a} The Taylor polynomial of $f$ of degree one about $x_n$ is
+$p(x) = f(x_n) + f'(x_n)(x-x_n)$.  We have that
+$\displaystyle f(x) = p(x) + \frac{1}{2}\,f''(\xi_n)(x-x_n)^2$
+for some $\xi_n$ between $x_n$ and $x$.  If $x=r$, the root of $f$ in
+the interval $[0,1]$, we get
+\begin{align*}
+&0 = f(x_n) + f'(x_n)(r-x_n) + \frac{1}{2}\, f''(\xi_n)(r-x_n)^2 \\
+&\Rightarrow -f(x_n) = f'(x_n)(r-x_n) + \frac{1}{2}\, f''(\xi_n)(r-x_n)^2
+\Rightarrow -\frac{f(x_n)}{f'(x_n)} = r-x_n +
+\frac{f''(\xi_n)}{2f'(x_n)}(r-x_n)^2 \\
+&\Rightarrow \underbrace{x_n -\frac{f(x_n)}{f'(x_n)}}_{=x_{n+1}}
+= r + \frac{f''(\xi_n)}{2f'(x_n)}(r-x_n)^2
+\Rightarrow \underbrace{x_{n+1} - r}_{=e_{n+1}} =
+\frac{f''(\xi_n)}{2f'(x_n)}\underbrace{(r-x_n)^2}_{=e_n^2} \ .
+\end{align*}
+Thus,
+\begin{equation}\label{NMerrorQuest}
+e_{n+1} = \frac{f''(\xi_n)}{2f'(x_n)} \, e^2_n
+\end{equation}
+for some $\xi_n$ between $x_n$ and $x$.
+
+\subQ{b} You may assume that $x_n\geq 0$ for all $n$ if $x_0\geq 0$,
+because
+\[
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+= x_n - \frac{x_n-e^{-x_n}}{1+e^{x_n}}
+= \frac{(x_n+1)e^{x_n}}{1+e^{x_n}} > 0
+\]
+for $n=1$, $2$, $3$, \ldots\ by induction.  Moreover, we have
+$f'(x) = 1 + e^{-x}$ and $f''(x) = -e^{-x}$.  Hence,
+\[
+\left| \frac{f''(\xi_n)}{f'(x_n)} \right|
+ = \frac{e^{-\xi_n}}{1+e^{-x_n}} \leq 1
+\]
+for all non-negative numbers $\xi_n$ and $x_n$.
+
+We use induction to prove (\ref{NMconvQuest}).
+From (\ref{NMerrorQuest}) with $n=0$, we get
+\[
+|e_1| = \left|\frac{f''(\xi_0)}{2f'(x_0)}\right|
+e_0^2 \leq \frac{e_0^2}{2} \ .
+\]
+This is (\ref{NMconvQuest}) for $n=1$.  Suppose that
+(\ref{NMconvQuest}) is true for $n=k$.  Then,
+\[
+|e_{k+1}| = \left|\frac{f''(\xi_k)}{2f'(k_n)}\right|\, e_k^2
+\leq \frac{e_k^2}{2} \leq \frac{1}{2} \left(2
+\left(\frac{x_0}{2}\right)^{2^k} \right)^2
+= 2 \left(\frac{x_0}{2}\right)^{2^{k+1}} \ .
+\]
+The first equality comes from (\ref{NMerrorQuest}) with $n=k$ and the
+second inequality comes from the hypothesis of induction.  We get
+that (\ref{NMconvQuest}) is true for $n=k+1$.  This complete the proof
+by induction.
+
+\subQ{c} According to (b), we need to find $n$ such that
+\[
+|e_n| \leq 2\left(\frac{1-r}{2}\right)^{2^n} < 10^{-5} \ .
+\]
+We do not know $r$ but we know that $r$ is between $0$ and $1$, so
+$|1-r|<1$.  It is therefore enough to find $n$ such that
+$\displaystyle 2\left(1/2\right)^{2^n} < 10^{-5}$.
+Thus, $n$ satisfies
+\[
+2^{2^n-1} > 10^5
+\Rightarrow (2^n-1)\ln(2) > 5 \ln(10)  
+\Rightarrow
+n > \frac{1}{\ln(2)}\ln\left(\frac{5\,\ln(10)}{\ln(2)}+1\right)
+\approx 4.1383 \ .
+\]
+We choose $n=5$.
+}
+
+\solution{\SOL}{\ref{solvAQ16}}{
+\subQ{a} Let $f(x) = g(x) -x$.  A fixed point of $g$ is a root of $f$
+and vice-versa.  Since $f$ is continuous and
+$f(0) = 1 > 0 > -1/2 = f(1)$, it follows from the Mean Value Theorem 
+that $f(x) = 0$ for some $x \in ]0,1[$.  Since
+$\displaystyle f'(x) = g'(x) - 1 = -2x/(1+x^2)^2 -1 < 0$
+for $x \geq 0$, the function $f$ is strictly decreasing on
+$[0,1]$.  Thus, $f(x) = 0$ for a unique value of $x \in [0,1]$ and,
+therefore, $g(x) = x$ for a unique value of $x \in [0,1]$.
+
+\subQ{b} We show that the hypotheses of the Fixed Point Theorem are
+satisfied; namely, we show that $g([0,1]) \subset [0,1]$ and
+$|g(x) - g(y)| \leq K |x-y|$ for some $K<1$ and all $x,y \in [0,1]$.
+
+Since $\displaystyle g'(x) = -2x/(1+x^2)^2 < 0$ for $x>0$, 
+the function $g$ is strictly decreasing on $]0,\infty[$.  Hence,
+$1 = g(0) \geq g(x) \geq g(1) = 1/2$ for all $x \in [0,1]$.  Thus,
+$g:[0,1] \rightarrow [0, 1/2] \subset [0,1]$..
+
+To prove that there exists a positive constant $K<1$ such that
+$|g(x)-g(y)| \leq K |x-y|$ for $x,y \in [0,1]$, we show that the
+maximum of $G(x) = |g'(x)| = 2x/(1+x^2)^2$ on $[0,1]$ is less than $1$
+and use this maximum as our constant $K$ as explained in
+Remark~\ref{FxPtThDer}.
+
+We use the maximum principle to find the maximum of $G$ on $[0,1]$.
+Namely, since $G$ is differentiable on $[0,1]$, the maximum of $G$ is
+either at the endpoints of the interval or at one of the critical
+points of $G$ in $[0,1]$ if there is one.  The critical
+points of $G$ are given by
+$\displaystyle G'(x) = 2(1-3x^2)/(1+x^2)^3 = 0$.
+There is only one critical point in $[0,1]$.  It is $x= 1/\sqrt{3}$.
+Since $G(0) = 0$, $G(1) = 1/2$ and
+$G(1/\sqrt{3}) = 3\sqrt{3}/8 <1$, we have that
+$G(x) = |g'(x)| \leq K = 3\sqrt{3}/8 <1$ for all $x\in [0,1]$.
+
+\subQ{c} Let $p$ be the fixed point of $g$ in $[0,1]$.  Since $p >0$
+and $g'(x) \neq 0$ for $x>0$, we get that 
+$g'(p) \neq 0$.  Hence, we have only linear convergence according to
+Theorem~\ref{FPorder}.
+}
+
+\solution{\SOL}{\ref{solvAQ17}}{
+\subQ{a} We show that $g$ satisfies all the hypothesis of the Fixed
+Point Theorem on the interval $[1/3,1]$.  Hence, from the Fixed Point
+Theorem, we will have that the sequence $\{x_n\}_{n=0}^\infty$
+generated by $x_{n+1} = g(x_n)$ for $n\geq 0$ and $x_0\in [1/3,1]$
+converges to the unique fixed point $p$ of $g$ in the interval $[1/3,1]$.
+\begin{enumerate}
+\item Since $g'(x) = -2^{-x}\ln(2)<0$ for all $x$, the function $g$ is
+strictly decreasing on $[1/3,1]$.  Thus,
+\[
+1 > 2^{-1/3} = g(1/3) \geq g(x) \geq g(1) = 0.5 
+\]
+for all $x \in [1/3,1]$.  Hence, $g:[1/3,1]\rightarrow [1/3,1]$.
+\item Since $|g'(x)| = 2^{-x}\ln(2) < 2^{-1/3}\ln(2)$ for
+$x \in [1/3,1]$.  We have that 
+$|g(x)-g(y)| \leq K |x-y|$ for all $x,y\in [1/3,1]$ with
+$K= 2^{-1/3}\ln(2) < 1$ according to Remark~\ref{FxPtThDer}.
+\end{enumerate}
+
+\subQ{b} Since $\displaystyle |x_n - p | \leq \frac{K^n}{1-K} |x_1-x_0|$,
+we need to find $n$ such that
+\[
+  \frac{K^n}{1-K} |x_1-x_0| < 10^{-4} \ ;
+\]
+namely,
+\[
+\frac{1}{-\ln(K)}\,\ln\left( \frac{10^4|x_1-x_0|}{1-K}\right) < n \ .
+\]
+If $x_0=0.5$, we have $x_1 = 1/\sqrt{2}$.  Thus, $n$ must satisfy
+\[
+n > \frac{1}{-\ln(2^{-1/3}\ln(2))}\,
+\ln\left( \frac{10^4|1/2 - 1/\sqrt{2}|}{1-2^{-1/3}\ln(2)}\right)
+\approx 14.115 \ .
+\]
+Hence, $n=15$ iterations is enough to reach the accuracy requested. 
+
+\subQ{c} Starting with $x_0 = 0.5$, we compute $x_{n+1} = g(x_n)$
+until $|x_{n+1} - x_n| < 10^{-4}$.  The first time that this happen is
+for $n=10$.  We get $x_{11} \approx 0.64120525$ as an
+approximation of the fixed point of $g$ in the interval $[1/3,1]$.
+}
+
+\solution{\SOL}{\ref{solvAQ18}}{
+\subQ{a} For $x\neq 0$, we have
+\[
+g(x) = 12 - \frac{20}{x} = x \iff
+x^2 -12 x +20 = (x-10)(x-2) = 0 \iff x=2 \quad \text{or} \quad x=10 \ .
+\]
+
+\subQ{b} We show that $g$ satisfies all the hypothesis of the Fixed
+Point Theorem on the interval $[9.5,11.5]$.  Hence, from the Fixed
+Point Theorem, we will have that the sequence $\{x_n\}_{n=0}^\infty$
+generated by $x_{n+1} = g(x_n)$ for $n\geq 0$ and $x_0\in [9.5,11.5]$
+converges to the unique fixed point of $g$ in the interval $[9.5,11.5]$.
+\begin{enumerate}
+\item Since $g'(x) = 20/x^2>0$ for all $x\in[9.5,11.5]$, the function $g$ is
+strictly increasing.  Thus,
+\[
+9.5 < \frac{188}{19} = g(9.5) \leq g(x) \leq g(11.5) =
+\frac{236}{23} < 10.5
+\]
+for all $x \in [9.5,10.5]$.  Hence, $g:[9.5,11.5]\rightarrow [9.5,11.5]$.
+\item Since $|g'(x)| = 20/x^2 < 20/9.5^2 = 80/361$ for
+$x\in[9.5,11.5]$.  We have that 
+$|g(x)-g(y)| \leq K |x-y|$ for all $x,y\in [9.5,11.5]$ with $K=80/361 < 1$
+according to Remark~\ref{FxPtThDer}.
+\end{enumerate}
+
+\subQ{c} Since $\displaystyle |x_n - p | \leq \frac{K^n}{1-K} |x_1-x_0|$,
+we need to find $n$ such that
+\[
+  \frac{K^n}{1-K} |x_1-x_0| < 10^{-7} \ ;
+\]
+namely,
+\[
+\frac{1}{-\ln(K)}\,\ln\left( \frac{10^7|x_1-x_0|}{1-K}\right) < n \ .
+\]
+If $x_0=9.5$, we have $x_1 = 188/19$.  Thus, $n$ must satisfy
+\[
+n > \frac{1}{-\ln(80/361)}\,
+\ln\left( \frac{10^7|9.5 - 188/19|}{1-80/361}\right)
+\approx 10.2459 \ .
+\]
+Hence, $n=11$ iterations is enough to reach the accuracy requested. 
+
+\subQ{d} Since $g'(x) = 20/x^2 > 0$ for $x\in [9.5,11.5]$, we
+have that $g'(p)\neq 0$ at the fixed point $p \in [9.5,11.5]$.  Thus,
+the method is of order one; the order of the first non-null derivative
+of $g$ at $p$.
+
+\subQ{e} We use the Steffensen's algorithm given in
+Algorithm~\ref{SteffAlgo}.   Let $\hat{x}_{-1} = x_0 = 9.5$ and
+\[
+\hat{x}_{n+1} = \hat{x}_n - \frac{(g(\hat{x}_n) -
+  \hat{x}_n)^2}{g(g(\hat{x}_n)) -2 g(\hat{x}_n) + \hat{x}_n}
+\]
+for $n=-1$, $0$, $1$, \ldots until $|\hat{x}_{n+1} - \hat{x}_n|< 10^{-7}$.
+We get $|\hat{x}_{n+1} - \hat{x}_n|<10^{-7}$ for the first time with
+$n=1$.  We have $\hat{x}_2 = 10$ to 16 significant digits.
+
+The Steffensen's Algorithm converge faster than the simple Fixed Point
+Method applied to $g$ because it is of order two.
+}
+
+\solution{\SOL}{\ref{solvAQ19}}{
+\subQ{a} Since $f$ is a continuous function and
+$f(1) = e - 3 < 0 < f(2) = e^2-5$, it follows from the Intermediate Value
+Theorem that $f$ has at least one root in the interval $[1,2]$.  To
+prove that it is unique, we note that $f'(x) = e^x-2>0$ for all
+$x\in[1,2]$.  So the function is strictly increasing and can therefore cross
+the $x$-axis only once.
+
+\subQ{b} We have
+\[
+f(x) = 0 \iff e^x-2x-1=0 \iff e^x = 2x+1 \iff x = \ln(2x+1) = g(x)
+\]
+for $x>-1/2$.
+
+\subQ{c} We show that $g$ satisfies all the hypothesis of the Fixed
+Point Theorem on the interval $[1,2]$.  Hence, from the Fixed Point
+Theorem, we will have that the sequence $\{x_n\}_{n=0}^\infty$
+generated by $x_{n+1} = g(x_n)$ for $n\geq 0$ and $x_0\in [1,2]$
+converges to the unique fixed point of $g$ in the interval $[1,2]$.
+\begin{enumerate}
+\item Since $g'(x) = 2/(1+2x)>0$ for all $x\in[1,2]$, the function $g$ is
+strictly increasing.  Thus,
+\[
+1 < \ln(3) = g(1) \leq g(x) \leq g(2) = \ln(5) <2
+\]
+for all $x\in [1,2]$.  Hence, $g:[1,2]\rightarrow [1,2]$.
+\item Since $|g'(x)| = 2/(2x+1) < 2/3$ for $x\in[1,2]$.  We have that
+$|g(x)-g(y)| \leq K |x-y|$ for all $x,y\in [1,2]$ with $K=2/3 < 1$
+according to Remark~\ref{FxPtThDer}.
+\end{enumerate}
+
+\subQ{d} Since $g'(x) \geq g'(2) = 2/5$ for $x\in [1,2]$, we certainly have
+that $g'(p)\neq 0$ at the fixed point $p$.  So the method is of order
+one; the order of the first non-null derivative of $g$ at $p$.
+}
+
+\solution{\SOL}{\ref{solvAQ20}}{
+\subQ{a} $\sqrt[3]{25}$ is obviously the unique root of $f(x) = x^3 -25$
+because
+\[
+  x^3 - 25 = 0 \iff x^3 = 25 \iff x = \sqrt[3]{25} \ .
+\]
+
+\subQ{b} If $p>0$, we have
+\[
+  f(p) = p^3 - 25 = 0 \iff p^3 = 25 \iff p^2 = \frac{25}{p} 
+  \iff p = \frac{5}{\sqrt{p}} = g(p) \ .
+\]
+Since $\sqrt[3]{25}$ is the only (positive) root of $f$, it is the
+fixed point $p>0$ of $g$.
+
+\subQ{c} The graph of $g$ (in blue) between $1$ and $4$ is sketched
+in the figure below.  We have also included the line $y=x$ (in red).
+\figbox{solve_equ_A/fixedpoint_quest1}{7cm}
+The fixed point of $g$ is given by the point of intersection of the
+graph of $g$ with the line $y=x$.  The fixed point
+$p = \sqrt[3]{25}$ is closed to $3$.
+
+We consider the interval $[2,4]$ that contains $p$.  We show that $g$
+satisfies all the hypothesis of the Fixed Point Theorem on the
+interval $[2,4]$.  Hence, from the Fixed Point Theorem, we will have
+that the sequence $\{x_n\}_{n=0}^\infty$ generated by
+$x_{n+1} = g(x_n)$ for $n\geq 0$ and $x_0\in [2,4]$ converges to the
+unique fixed point $p=\sqrt[3]{25}$ of $g$ in the interval $[2,4]$. 
+\begin{enumerate}
+\item Since $\sqrt{x}$ is strictly increasing and positive for $x>0$,
+we have that $g$ is strictly decreasing for $x>0$.  Thus, 
+\[
+4 > 5/\sqrt{2} = g(2) \geq g(x) \geq g(4) = 5/2 > 2
+\]
+for $x \in [2,4]$.  Hence, $g:[2,4]\rightarrow [2,4]$.
+\item Since $\displaystyle |g'(x)| = \frac{5}{2x^{3/2}} \leq \frac{5}{2^{5/2}}$
+for $x\in[2,4]$.  We have that $|g(x)-g(y)| \leq K |x-y|$ for all
+$x,y\in [1,2]$ with $\displaystyle K= \frac{5}{2^{5/2}} < 1$
+according to Remark~\ref{FxPtThDer}.
+\end{enumerate}
+
+\subQ{d} Since $\displaystyle |x_n - p | \leq \frac{K^n}{1-K} |x_1-x_0|$,
+we need to find $n$ such that
+\[
+\frac{K^n}{1-K} |x_1-x_0| < 10^{-5} \ ;
+\]
+namely,
+\[
+\frac{1}{-\ln(K)}\,\ln\left( \frac{10^5|x_1-x_0|}{1-K}\right) < n \ .
+\]
+If $x_0=3$, we have $x_1 = 5/\sqrt{3} \approx 2.8867513$.
+Thus, $n$ must satisfy
+\[
+n > \frac{1}{-\ln(5/2^{5/2})}\,
+\ln\left( \frac{10^5|3 - 5/\sqrt{3}|}{1-5/2^{5/2}}\right)
+\approx 105.6598 \ .
+\]
+Hence, $n=106$ iterations is enough to reach the accuracy requested. 
+
+\subQ{e} Starting with $x_0 = 3$, we compute $x_n = g(x_{n-1})$
+until $|x_n - x_{n-1}| < 10^{-5}$.  The first time that this happen is
+for $n=15$.  We get $x_{15} \approx 2.924015$ as an
+approximation of the fixed point of $g$ in the interval $[2,4]$.
+
+As we can see, the value of $n$ estimated in (d) is a very large
+overestimation of the number of iterations needed to reach an accuracy
+of $10^{-5}$ if we start with $x_0 = 3$.  The formula used in (d) to
+estimate $n$ will generally give a large overestimation.  However, we
+have to keep in mind that the value $n$ obtained in (d) is valid for
+all $x_0$, not just for $x_0 = 3$.
+}
+
+\solution{\SOL}{\ref{solvAQ22}}{
+\subQ{a} The figure below shows the graph of $\tan(x)$ and $g$ (red
+curve in the graph on the right).
+
+\pdfbox{solve_equ_A/arctan_quest1a}
+
+\subQ{b} We have $g'(x) = 1/(1+x^2)$.  Hence $g$ is strictly
+increasing on $[\pi,3\pi/2]$ and
+$|g'(x)| \leq g'(\pi) = 1/(1+\pi^2) < 1$ on
+$[\pi,3\pi/2]$.  We can then say that:
+
+\begin{enumerate}
+\item $g:[\pi,3\pi/2] \rightarrow [\pi,3\pi/2]$ because
+\[
+\pi < \pi + \arctan(\pi) = g(\pi) \leq g(x) \leq
+g(3\pi/2) = \pi + \arctan(3\pi/2) < 3\pi/2
+\]
+for all $x\in[\pi,3\pi/2]$ since $g$ is increasing.  We have used the fact that
+$0<\arctan(x)<\pi/2$ for all $x>0$.
+\item With $K=1/(1+\pi^2)$, we have
+\[
+|g'(x)| \leq K <1
+\]
+for all $x \in [\pi.3\pi/2]$.  Thus,
+$|g(x)-g(y)| \leq K |x-y|$ for all $x,y \in [\pi,3\pi/2]$
+according to Remark~\ref{FxPtThDer}.
+\end{enumerate}
+
+\subQ{c} From the Fixed Point Theorem, we have that the sequence
+$\{x_i\}_{i=0}^\infty$ defined by $x_0\in [\pi,3\pi/2]$ and
+$x_{i+1} = g(x_i)$ converges to $p$.  Since
+\[
+|x_n - p | \leq \frac{K^n}{1-K} |x_1-x_0|
+= \frac{1}{\pi^2(1+\pi^2)^{n-1}} |x_1-x_0| \ ,
+\]
+we need to find $n$ such that
+\[
+\frac{1}{\pi^2(1+\pi^2)^{n-1}} |x_1-x_0| < 10^{-5} \ ;
+\]
+namely,
+\[
+\frac{\ln\left(10^5|x_1-x_0|/\pi^2\right)}{\ln(1+\pi^2)}  < n - 1 \ .
+\]
+If $x_0=4$, we have $x_1 = g(x_0) = \pi + \arctan(4)$. 
+Thus, $n$ must satisfy
+\[
+n > \frac{\ln\left(10^5|\pi+\arctan(4)-4|/\pi^2\right)}{\ln(1+\pi^2)} + 1
+\approx 4.54695 \ .
+\]
+Hence, $n=5$ iterations is enough to reach the accuracy requested.
+}
+
+\solution{\SOL}{\ref{solvAQ23}}{
+\subQ{a} If $p>0$ is the fixed point of $g$, then
+\[
+p = \frac{p}{2} + \frac{a}{2p} \ .
+\]
+If we multiply both sides of the equality by $2$ and subtract $p$ from
+both sides, we get $p = a/p$.  Thus $p^2=a$ or $p=\sqrt{a}$ since we
+assume that $a>0$.
+
+\subQ{b} Suppose that $x>0$.  Since $(x-\sqrt{a})^2 >0$, we get
+$x^2 -2\sqrt{a} x + a >0$.  Thus $x^2 + a > 2\sqrt{a} x$ and,
+after division by $2x$ on both side of the inequality, we have
+\[
+g(x) = \frac{x}{2} + \frac{a}{2x} > \sqrt{a} \ .
+\]
+Therefore, $x_i = g(x_0) \geq \sqrt{a}$ if $x_0>0$.  We may assume
+that $x_0 \geq \sqrt{a}$.
+
+Since
+\[
+g'(x) = \frac{1}{2} - \frac{a}{2x^2} > 0
+\]
+for $x>\sqrt{a}$, we have that $g$ is strictly increasing on
+$]\sqrt{a},\infty[$.
+
+We now show that $g$ satisfies all the hypothesis of the Fixed Point
+Theorem on $[\sqrt{a},m]$ for $m >\sqrt{a}$ arbitrary.
+
+\begin{enumerate}
+\item We have $g:[\sqrt{a},m]\rightarrow [\sqrt{a},m]$.  Since $g$
+is strictly increasing and $m > \sqrt{a}$, we have that
+\[
+\sqrt{a} = g(\sqrt{a}) \leq g(x) \leq g(m) = 
+\frac{m}{2} + \frac{a}{2m^2} \leq \frac{m}{2} + \frac{m}{2} = m
+\]
+for all $x\in [\sqrt{a},m]$.
+\item For all $x\in [\sqrt{a},m]$, we have that
+\[
+|g'(x)| = \left| \frac{1}{2} - \frac{a}{2x^2} \right|
+= \frac{1}{2} - \frac{a}{2x^2} \leq \frac{1}{2}
+\]
+because $x^2 \geq a$.  Hence,
+$|f(x) - f(y) \leq K |x-y|$ for all $x,y \in [\sqrt{a},m]$ with
+$K = 1/2 <1$ according to Remark~\ref{FxPtThDer}.
+\end{enumerate}
+
+For any $m>\sqrt{a}$, we have from the Fixed Point Theorem that the
+function $g$ has an unique fixed point in $[\sqrt{a},m]$ and the
+sequence $\displaystyle \{x_n\}_{n=0}^{\infty}$ converge to this fixed
+point for any $x_0 \in [\sqrt{a},m]$.   Thus, since $\sqrt{a}$ is a
+unique fixed point for $x>0$, the sequence
+$\displaystyle \{x_n\}_{n=0}^{\infty}$
+converges to the fixed point $\sqrt{a}$ whatever $x_0\geq \sqrt{a}$.
+
+Since $x_1 = g(x_0) \geq \sqrt{a}$ for all $x_0>0$,
+the sequence $\displaystyle \{x_n\}_{n=0}^{\infty}$
+converges to the fixed point $\sqrt{a}$ whatever $x_0>0$
+because the sequences
+$\displaystyle \{x_n\}_{n=0}^{\infty}$ and
+$\displaystyle \{x_n\}_{n=1}^{\infty}$ have the same limit.
+}
+
+\solution{\SOL}{\ref{solvAQ24}}{
+\subQ{a} The function $f$ is continuous on $[a,b]$ because it is
+differentiable on $[a,b]$.  Moreover, $f$ has opposite signs at $a$ and 
+$b$ because $f(a)f(b)<0$.  It follows from the Intermediate Value
+Theorem that $f$ must be null at a point in the interval $[a,b]$.
+
+Since $f'(x) >0$ for all $x \in [a,b]$, we have that $f$ is a
+strictly increasing function on $[a,b]$.  Thus, $f(a) < 0 < f(b)$ and
+$f$ cannot intersect the $x$ axis more than once.
+
+\subQ{b} Since $f'$ is continuous on the closed interval $[a,b]$, it
+reaches its absolute maximum and absolute minimum at some points of
+the interval $[a,b]$.  Let $x_M$ and $x_m$ in $[a,b]$ be such that
+\[
+M = f(x_M) = \max\{ f'(x) : a\leq x \leq b \} \quad
+\text{and} \quad
+m = f(x_m) = \min\{ f'(x) : a\leq x \leq b \} \ .
+\]
+We have that $0 < m < M$ since $f'(x)>0$ for all $x\in [a,b]$.
+
+We claim that the function $F(x) = x+\lambda f(x)$ with
+$\lambda = -1/M$ satisfies the Fixed Point Theorem on $[a,b]$.
+
+\begin{enumerate}
+\item Since
+\[
+  F'(x) = 1 + \lambda f'(x) = 1 - \frac{f'(x)}{M} \geq 0
+\]
+for all $x\in[a,b]$, we have that $F$ is never decreasing on $[a,b]$.
+Thus
+\[
+a < a - f(a)/M = F(a) \leq F(x) \leq F(b) = b - f(b)/M < b
+\]
+for all $x\in[a,b]$.  Hence, $F:[a,b]\rightarrow [a,b]$.  Recall that
+$f(a)<0<f(b)$.
+\item Since
+\[
+0 \leq F'(x) = 1 + \lambda f'(x) = 1 - \frac{f'(x)}{M}
+\leq 1 - \frac{m}{M}
+\]
+for all $x \in [a,b]$, we have that $|F'(x)| \leq K = 1- m/M < 1$
+for all $x \in [a,b]$.  It follows that
+$|F(x)-F(y)| \leq K|x-y|$ for all $x \in [a,b]$ with $K<1$
+according to Remark~\ref{FxPtThDer}.
+\end{enumerate}
+
+The hypotheses of the Fixed Point Theorem are satisfied by $F$ on
+$[a,b]$.  Obviously, if $F(p) = p$, then $p + \lambda f(p) = p$.
+Hence, $f(p) = 0$.
+}
+
+\solution{\SOL}{\ref{solvAQ25}}{
+We prove that $g$ satisfies the hypothesis of the Fixed Point
+Theorem on $[a,b]$.
+
+\begin{enumerate}
+\item Choose any $x\in [a,b]$.  From the Mean Value Theorem, there
+exists $\xi$ between $x$ and $m$ (and so in $[a,b]$) such that 
+$g(x)-g(m) = g'(\xi)(x-m)$.  Since $|g'(\xi)|<1$, we have
+\[
+|g(x)-m| = |g(x)-g(m)| = |g'(\xi)(x-m)| = |g'(\xi)|\,|x-m| <|x-m|
+\]
+for all $x\in[a,b]$.  From $|x-m| \leq (b-a)/2$, we get
+$|g(x)-m| \leq (b-a)/2$ for all $x\in[a,b]$.  This proves that
+$g(x) \in [a,b]$ for all $x \in [a,b]$. 
+\item Since $|g'|$ is a continuous function on the closed set $[a,b]$,
+$|g'|$ reaches its absolute maximum at a point $\nu \in [a,b]$.  Hence
+$K = |g'(\nu)| < 1$ will satisfies $|g'(x)|\leq K < 1$ for all
+$x \in [a,b]$.  Therefore,
+$|g(x)-g(y)| \leq K |x-y|$ for all $x,y \in [a,b]$ with $K<1$
+according to Remark~\ref{FxPtThDer}.
+\end{enumerate}
+}
+
+\solution{\SOL}{\ref{solvAQ26}}{
+It is clear that if $\{x_n\}_{n=0}^\infty$ is a sequence
+defined by $x_{n+1} = g(x_n)$ for $n \geq 0$ such that
+$x_N = p$ for some $N$, then $x_n = p$ for all $n \geq N$ because
+$g(p) =p$.  Thus, $\{x_n\}_{n=0}^\infty$ converges to $p$ in a finite
+number of iterations.
+
+Are there other sequences $\{x_n\}_{n=0}^\infty$ that converge to $p$?
+To show that there are no other sequence converging to $p$ requires a
+little bit of work.
+
+Choose $K$ between $1$ and $|g'(p)|$.  Since $|g'|$ is continuous and
+$|g'(p)|>K$, there exists $\delta >0$ such that
+$1< K \leq |g'(x)|$ for all $x \in [p-\delta, p+\delta]$.
+
+Since $g$ is a continuous function and $|g'(x)|>1$ for
+$x \in [p-\delta, p+\delta]$, then $p$ is the unique fixed point of
+$g$ in $[p-\delta, p+\delta]$
+
+Given any $x\in [p-\delta,p[ \cup ]p,p+\delta]$, it follows from the
+Mean Value Theorem that there exists $\xi$ between $p$ and $x$, and so in
+$[p-\delta, p+\delta]$, such that
+\[
+|g(x) - p| = |g(x)-g(p)| = |g'(\xi)(x-p)| = |g'(\xi)|\,|x-p|
+\geq K|x-p| > |x-p| \ .
+\]
+
+Suppose that $\{x_n\}_{n=0}^\infty$ is a sequence defined by
+$x_{n+1} = g(x_n)$ for $n \geq 0$ such that $x_n \neq p$ for all $n$.
+Suppose also that this sequence also converges to the fixed point $p$
+of $g$.  By definition of convergence, there exists $N>0$ such that
+$|x_n-p|<\delta$ for all $n>N$.  However,
+$x_n \in [p-\delta, p+\delta]$ for all $n>N$ implies that
+\[
+|x_{n+1} - p| = |g(x_n)-p| > |x_n-p|
+\]
+for all $n>N$ as we have shown above.  It follows by induction that
+$|x_n - p| \geq |x_{N+1}-p| > 0$ for $n>N$.   The distance between $x_n$
+and $p$ does not go to zero.  This is a contradiction that
+$\{x_n\}_{n=0}^\infty$ is a sequence converging to the fixed point $p$.
+}
+
+\solution{\SOL}{\ref{solvAQ27}}{
+We already have one of the two hypotheses required by the Fixed
+Point Theorem; namely, $|g'(x)| \leq \lambda < 1$ for all
+$x \in [x_0-\rho,x_0+\rho]$.  It is left to show that
+$g:[x_0-\rho,x_0+\rho] \rightarrow [x_0-\rho,x_0+\rho]$.
+
+Choose $x \in [x_0-\rho,x_0+\rho]$.  Then,
+\begin{align*}
+|g(x) - x_0| &= |g(x) - g(x_0) + g(x_0) - x_0|
+\leq |g(x)-g(x_0)| + |g(x_0)-x_0| \\
+&= |g'(\mu)(x-x_0)| + (1-\lambda)\rho \ ,
+\end{align*}
+where we have used the Mean Value Theorem to find $\mu$ between $x$ and
+$x_0$ such that $g(x)-g(x_0) = g'(\mu)(x-x_0)$.  We have also used the
+definition of $\rho$.  Hence, since $|g'(x)| \leq \lambda < 1$ for all
+$x \in [x_0-\rho, x_0+\rho]$, we have
+\[
+|g(x) - x_0| \leq \lambda |x-x_0| + (1-\lambda)\rho
+\leq \lambda\rho + (1-\lambda)\rho = \rho
+\]
+for all $x \in [x_0-\rho, x_0+\rho]$.  Hence,
+$g(x) \in [x_0 -\rho, x_0+\rho]$ for all $x \in [x_0-\rho, x_0+\rho]$.
+}
+
+\solution{\SOL}{\ref{solvAQ28}}{
+If $[a,b] = [0,1]$ and $f(x) = 0.5 x + 1$, then $f'(x) = 0.5 <1$ for
+all $x \in [0,1]$ but there is no fixed point of $f$ in $[a,b]$.
+
+A contraction satisfies all hypothesis of the Fixed Point Theorem but
+one.  The condition $f:[a,b]\rightarrow [a,b]$ is not required for a
+contraction.  The function $F$ of the previous paragraph satisfies
+$f:[0,1]\rightarrow [1, 1.5]$.  The interval $[0,1]$ has been
+contracted but not mapped into itself.
+
+$f(x)=0.5x+1$ for $x\in[1,3]$ does satisfy all the hypotheses of
+the Fixed Point Theorem (verify this).  The fixed point is $2\in[1,3]$.
+}
+
+\solution{\SOL}{\ref{solvAQ29}}{
+\stage{$\mathbf{\Leftarrow}$} From Taylor's Theorem,
+Theorem~\ref{TaylorTheo}, we have that
+$f(x) = p_{m-1}(x) + r_{m-1}(x)$, where
+\[
+p_{m-1}(x) = \sum_{j=0}^{m-1} \frac{1}{j!}\,f^{(j)}(p)\,(x-p)^j
+\quad \text{and} \quad
+r_{m-1}(x) = \frac{1}{m!}\,f^{(m)}(\xi)\,(x-p)^m
+\]
+for $\xi(x)$ in the interval with endpoints $x$ and $p$.  Since,
+$f^{(j)}(p) = 0$ for $0 \leq j < m$, we have that $p_{m-1}(x) = 0$ for
+all $x$.  Thus $f(x) = r_{m-1}(x) = q(x) \, (x-p)^m$ with
+$\displaystyle q(x) = \frac{1}{m!}\,f^{(m)}(\xi(x))$.
+
+Since $\xi(x)$ is between $x$ and $p$, we have
+that $\displaystyle \lim_{x\to p} \xi(x) = p$.  Therefore, since
+$f^{(m)}$ is continuous, we have
+\[
+  \lim_{x\to p} q(x) = \frac{1}{m!}\,f^{(m)}(p) \neq 0 \ .
+\]
+Note that $q$ is a continuous function on $\RR\setminus \{p\}$
+because $\displaystyle q(x) = \frac{f(x)}{(x-p)^m}$ for $x \neq p$,
+where $f$ and $(x-p)^m$ are continuous functions of $x$.  The function
+$q$ is also continuous at $p$ because
+$\displaystyle \lim_{x\to p} \frac{f(x)}{(x-p)^m} =
+\frac{1}{m!}\, f^{(m)}(p) = q(p)$ according to l'Hospital Rule. 
+
+\stage{$\mathbf{\Rightarrow}$}
+From $f(x) = (x-p)^m q(x)$, we have by induction that
+\begin{equation} \label{solveA29eq1} 
+f^{(k)}(x) = \sum_{j=0}^k \binom{k}{j} C_j (x-p)^{m-j} q^{(k-j)}(x)
+\end{equation}
+for $0 \leq k \leq m$, where
+\[
+C_j = \begin{cases}
+1 & \qquad \text{if} \quad j = 0 \\
+m(m-1)\ldots(m-j+1) & \qquad \text{if} \quad j>0
+\end{cases}
+\]
+Hence, $f^{(k)}(p) = 0$ for $0\leq k <m$ because each term in
+(\ref{solveA29eq1}) has a factor $(x-p)$.  For $k=m$, we get
+\[
+f^{(m)}(p) = \binom{m}{m} C_m q(p)
+= m!\, q(p) \neq 0 \ .
+\]
+}
+
+\solution{\SOL}{\ref{solvAQ30}}{
+According to Theorem~\ref{FPorder}, to get a convergence of order
+three, we need $F(r) = r$, $F'(r) = F''(r) =0$ and $F'''(r)\neq 0$.
+
+Since $f(r)=0$, we get $F(r) = r -f(r)f'(r) = r$.
+
+From $F'(r) = 0$, we get
+\[
+0 = 1 - (f'(r))^2 - f(r)f''(r) = 1 - (f'(r))^2
+\]
+because $f(r)=0$.  Hence $f'(r) = \pm 1$.   From $F''(r) = 0$, we get
+\[
+0 = -3 f'(r)f''(r) - f(r)f'''(r) = -3 f'(r) f''(r)
+\]
+because $f(r)=0$.  Since $f'(r) \neq 0$, we get $f''(r) = 0$.  From
+$F'''(r) \neq 0$, we get
+\[
+0 \neq  -3 (f''(r))^2 - 4 f'(r)f'''(r) - f(r)f^{(4)}(r)
+= - 4 f'(r) f'''(r)
+\]
+because $f(r) = f''(r) = 0$.  Since $f'(r) \neq 0$, we get
+$f'''(r) \neq 0$.
+
+The conditions on $f$ are $f(r)=f''(r)= 0$, $|f'(r)| = 1$ and
+$f'''(r)\neq 0$.
+}
+
+\solution{\SOL}{\ref{solvAQ31}}{
+To get a convergence of order exactly three, we need $F(r) = r$,
+$F'(r) = F''(r) =0$ and $F'''(r)\neq 0$.
+
+Since $f(r)=0$, we get $F(r) = r + f(r)g(r) = r$.
+
+From $F'(r) = 0$, we get
+\[
+0 = 1 +f'(r)g(r) + f(r)g'(r) = 1 + f'(r)g(r)
+\]
+because $f(r)=0$.  Hence $\displaystyle g(r) = -\frac{1}{f'(r)}$.
+From $F''(r) = 0$, we get
+\[
+0 = f''(r)g(r) + 2f'(r)g'(r) + f(r)g''(r)
+= -\frac{f''(r)}{f'(r)} + 2f'(r)g'(r)
+\]
+because $f(r)=0$ and $\displaystyle g(r) = -\frac{1}{f'(r)}$.  Hence
+$\displaystyle g'(r) = \frac{f''(r)}{2(f'(r))^2}$.  From $F'''(r) \neq 0$,
+we get
+\begin{align*}
+0 &\neq f'''(r)g(r) + 3 f''(r)g'(r) + 3 f'(r)g''(r) + f(r)g'''(r) \\
+&= -\frac{f'''(x)}{f'(r)} + \frac{3(f''(r))^2}{2(f'(r))^2}
++ 3 f'(r) g''(r)
+\end{align*}
+because $f(r)=0$, $\displaystyle g(r) = -\frac{1}{f'(r)}$ and
+$\displaystyle g'(r) = \frac{f''(r)}{2(f'(r))^2}$.  Hence
+$\displaystyle g''(r) \neq
+\frac{f'''(x)}{3(f'(r))^2} - \frac{(f''(r))^2}{2(f'(r))^3}$.
+
+The conditions on $g$ are 
+$\displaystyle g(r) = -\frac{1}{f'(r)}$,
+$\displaystyle g'(r) = \frac{f''(r)}{2(f'(r))^2}$ and
+$\displaystyle g''(r) \neq
+\frac{f'''(x)}{3(f'(r))^2} - \frac{(f''(r))^2}{2(f'(r))^3}$.
+}
+
+\solution{\SOL}{\ref{solvAQ32}}{
+We have to find for which sequence $\{x_n\}$ above the following statement
+is true.
+\[
+\lim_{n\rightarrow \infty}\frac{|x_{n+1}|}{|x_n|^2} = \lambda \neq 0
+\text{ or } \infty \ .
+\]
+Note that all sequences converge to $0$.  Therefore, the error $e_n$ is
+$e_n = |x_n - 0| = |x_n|$ for all $n$.
+
+We have:\\
+\subQ{a}
+\[
+\lim_{n\rightarrow \infty}\frac{1/(n+1)^2}{(1/n^2)^2}
+= \lim_{n\rightarrow \infty}\frac{n^4}{(n+1)^2}
+= \lim_{n\rightarrow \infty}\frac{n^4}{n^2+2n+1}
+= \lim_{n\rightarrow \infty}\frac{n^2}{1 + 2/n +1/n^2}
+=\infty \ .
+\]
+\subQ{b}
+\[
+\lim_{n\rightarrow \infty}\frac{1/2^{2^{(n+1)}}}{\left(1/2^{2^n}\right)^2}
+=\lim_{n\rightarrow \infty} \frac{2^{2^{(n+1)}}}{2^{2^{(n+1)}}} = 1 \ .
+\]
+\subQ{c}
+\[
+\lim_{n\rightarrow \infty}\frac{1/\sqrt{n+1}}{(1/\sqrt{n})^2}
+= \lim_{n\rightarrow \infty}\frac{n}{\sqrt{n+1}}
+= \infty
+\]
+because
+\[
+\frac{n}{\sqrt{n+1}} \geq \frac{n}{\sqrt{2n}} =
+\frac{\sqrt{n}}{\sqrt{2}} \rightarrow \infty
+\]
+as $n\rightarrow \infty$.\\
+\subQ{d}
+\[
+\lim_{n\rightarrow \infty}\frac{1/(e^{n+1})}{(1/e^n)^2}
+= \lim_{n\rightarrow \infty}\frac{e^{2n}}{e^{n+1}}
+= \lim_{n\rightarrow \infty} e^{n-1} = \infty \ .
+\]
+\subQ{e}  We have
+\[
+\lim_{n\rightarrow \infty}\frac{1/(n+1)^{n+1}}{(1/n^n)^2}
+= \lim_{n\rightarrow \infty}\frac{n^{2n}}{(n+1)^{n+1}}
+= \infty
+\]
+because
+\[
+\frac{n^{2n}}{(n+1)^{n+1}} \geq \frac{n^{2n}}{(2n)^{n+1}}
+= \frac{n^{n-1}}{2^{n+1}}
+= \frac{1}{2^2} \, \left(\frac{n}{2}\right)^{n-1} \rightarrow \infty
+\]
+as $n\rightarrow \infty$.
+
+Only the sequence in (b) converges quadratically.
+}
+
+\solution{\SOL}{\ref{solvAQ33}}{
+\subQ{a} Let $\displaystyle e_n = 10^{-k^n} - 0$.  We have
+\[
+\frac{|e_{n+1}|}{|e_n|^\alpha}
+= \frac{10^{-k^{n+1}}}{\left(10^{-k^n}\right)^\alpha}
+= 10^{-k^{n+1} +\alpha\, k^n} = 10^{(\alpha-k)k^n} \ .
+\]
+Hence,
+\[
+\lim_{n\rightarrow \infty} \frac{|e_{n+1}|}{|e_n|^\alpha} =
+\begin{cases}
+1 & \quad \text{if} \quad \alpha = k \\
++\infty & \quad \text{if} \quad \alpha > k \\
+0 & \quad \text{if} \quad \alpha < k
+\end{cases}
+\]
+The order of convergence is $\alpha = k$.
+
+\subQ{b} Let $\displaystyle e_n = 10^{-n^k}-0$.  We have
+\[
+\frac{|e_{n+1}|}{|e_n|^\alpha}
+= \frac{10^{-(n+1)^k}}{\left(10^{-n^k}\right)^\alpha}
+= 10^{-(n+1)^k +\alpha\, n^k} = 10^{(\alpha-1)n^k - k n^{k-1} -\, \text{l.o.t.}}
+\ ,
+\]
+where \mbox{l.o.t.} stands for the terms in $n^j$ with $0 \leq j < n-1$.
+Hence,
+\[
+\lim_{n\rightarrow \infty} \frac{|e_{n+1}|}{|e_n|^\alpha} =
+\begin{cases}
+0 & \quad \text{if} \quad \alpha \leq 1 \\
+\infty & \quad \text{if} \quad \alpha >1
+\end{cases}
+\]
+There is nothing in between.  Recall that according to the binomial theorem,
+\[
+(n+1)^k = \sum_{i=0}^k \binom{k}{i}\, n^i = n^k + k\,n^{k-1} +
+\ldots + 1 \ ,\ \text{where} \quad
+\binom{k}{i} = \frac{k!}{(k-i)!\,i!} \ .
+\]
+}
+
+\solution{\SOL}{\ref{solvAQ35}}{
+All the results of the computations below will be displayed using
+15-digit rounding accuracy to compare with the exact solutions at
+the end.
+
+Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
+with $x_0=1$ and a tolerance of $10^{-10}$, we find
+$r_0 = 0.333333333308985$ as an approximation of a root of $p$.
+
+The deflated polynomial $q_1$ such that $p(x) = (x-r_0) q_1(x)$ is\\
+$q_1(x) = x^2 -5.641592653691014 x + 7.853981634573692$\ .
+
+Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
+with $x_0=1$ and a tolerance of $10^{-10}$, we find
+$r_1 = 2.500000000539526$ as an approximation of a root of $q_1$.
+
+Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
+with $x_0=r_1$ and a tolerance of $10^{-10}$, we find
+$c_1 = 2.500000000539525$ as an approximation of a root of $p$.
+
+The deflated polynomial $q_2$ such that $q_1(x) = (x-r_1) q_2(x)$ is\\
+$q_2(x) =  x -3.141592653151490$\ .
+
+we have that $r_2 = 3.141592653151490$ as an approximation of a
+root of $q_2$.
+
+Finally, using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
+with $x_0=r_2$ and a tolerance of $10^{-10}$, we find
+$c_2 = 3.141592653151491$ as an approximation of a root of $p$.
+
+If $c_0 = r_0$, the approximations of the roots of $p$ are
+$c_i$ for $i =0$, $1$ and $2$.  If we use $10$-digit rounding accuracy
+for the $c_i$, we have that all the $10$ digits of $c_0$ are correct,
+only the last digit of $c_1$ and $c_2$ is wrong.
+}
+
+\solution{\SOL}{\ref{solvAQ36}}{
+All the results of the computations below will be displayed using
+15-digit rounding accuracy to compare with the exact solutions at
+the end.
+
+Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
+with $x_0=1$ and a tolerance of $10^{-9}$, we find
+$r_0 = -3.548232897979703$ as an approximation of a root of $p$.
+
+The deflated polynomial $q_1$ such that $p(x) = (x-r_0) q_1(x)$ is\\
+$q_1(x) = x^3 -5.548232897979703 x^2 + 7.686422494264843 x
+-11.273217161921718$\ .
+
+Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
+with $x_0=1$ and a tolerance of $10^{-9}$, we find
+$r_1 = 4.381113440995944$ as an approximation of a root of $q_1$.
+
+Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
+with $x_0=r_1$ and a tolerance of $10^{-9}$, we find
+$c_1 = 4.381113440995943$ as an approximation of a root of $p$.
+
+The deflated polynomial $q_2$ such that $q_1(x) = (x-r_1) q_2(x)$ is\\
+$q_2(x) =  x^2 -1.167119456983760 x + 2.573139754025407$\ .
+
+The polynomial $q_2$ has two complex roots that can be found with the
+formula to find the roots of a quadratic polynomial.  They are
+$r_2 = 0.583559728491880 + 1.494188006011255\, i$ and
+$r_3 = 0.583559728491880 - 1.494188006011255\, i$.
+Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
+with $x_0=r_2$ and a tolerance of $10^{-9}$, we find
+$c_2 = 0.583559728491880 + 1.494188006011255\,i$ as an approximation of
+a root of $p$.  Similarly, with $x_0 = r_3$, we find
+$c_3 = 0.583559728491880 - 1.494188006011255\,i$ as an approximation of
+a root of $p$ as expected since complex roots of a polynomial with real
+coefficients come in pairs of complex conjugate values.
+
+If $c_0 = r_0$, the approximations of the roots of $p$ are
+$c_i$ for $0 \leq i \leq 3$.  If we use $9$-digit rounding accuracy
+for the $c_i$, we have that all the $9$ digits are right.
+}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End: 

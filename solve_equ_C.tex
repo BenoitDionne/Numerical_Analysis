@@ -1,0 +1,1179 @@
+\chapter{Algebraic Methods to Solve Systems of Linear Equations}
+\label{chaptSeqC}
+
+As in the previous chapter, our goal is to numerically solve the
+system of linear equations $A \VEC{x} = \VEC{b}$, where
+$A$ is an invertible \nn matrix and $\VEC{b} \in \RR^n$ is given.
+However, we will only consider classical direct methods in this chapter.
+
+\section{Gaussian Elimination with Backward Substitution}
+
+Gaussian elimination is a well known method to solve systems of linear
+equations of the form
+\begin{equation}\label{lin_syst}
+A\VEC{x}=\VEC{b} \ ,
+\end{equation}
+where
+\[
+A = \begin{pmatrix}
+a_{1,1} & a_{1,2} & \dots & a_{1,n} \\
+a_{2,1} & a_{2,2} & \ldots & a_{2,n} \\
+\vdots & \vdots & \ddots & \vdots \\   % \hdotsfor[2]{4}
+a_{n,1} & a_{n,2} & \ldots & a_{n,n}
+\end{pmatrix}
+\quad , \quad
+\VEC{x} = \begin{pmatrix}
+x_1 \\ x_2 \\ \vdots \\ x_n
+\end{pmatrix}
+\quad \text{and} \quad
+\VEC{b} = \begin{pmatrix}
+b_1 \\ b_2 \\ \vdots \\ b_n
+\end{pmatrix} \ .
+\]
+We assume that $A$ is an invertible matrix.  Hence, the solution
+exists and is unique.
+
+We first review the Gaussian elimination method before implementing it.
+The {\bfseries augmented matrix}\index{Matrices!Augmented Matrix}
+associated to the system (\ref{lin_syst}) is the matrix
+\[
+[A\quad \VEC{b}\;] = \begin{pmatrix}
+a_{1,1} & a_{1,2} & \dots & a_{1,n} & b_1 \\
+a_{2,1} & a_{2,2} & \ldots & a_{2,n} & b_2\\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+a_{n,1} & a_{n,2} & \ldots & a_{n,n} & b_n
+\end{pmatrix}  \ .
+\]
+Let $M(1) = \begin{bmatrix} A & \VEC{b} \end{bmatrix}$.  Suppose that,
+after several row operations, we have the matrix
+
+\[
+M(k) = \begin{pmatrix}
+a^{[1]}_{1,1} & a^{[1]}_{1,2} & \dots & a^{[1]}_{1,k-1} & a^{[1]}_{1,k} & \ldots &
+a^{[1]}_{1,n} & | & b^{[1]}_1 \\
+0 & a^{[2]}_{2,2} & \ldots  & a^{[2]}_{1,k-1} & a^{[2]}_{1,k} &
+\ldots & a^{[2]}_{2,n} & | & b^{[2]}_2\\
+\vdots & \ddots & \ddots & \vdots & \vdots & \ldots & \vdots & | & \vdots \\
+\vdots & \vdots & \ddots & a^{[k-1]}_{k-1,k-1} & a^{[k-1]}_{k-1,k} & \ldots &
+a^{[k-1]}_{k-1,n} & | & b^{[k-1]}_{k-1}\\
+\vdots & \vdots & \vdots & 0 & a^{[k]}_{k,k} & \ldots & a^{[k]}_{k,n}
+& | & b^{[k]}_k\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & | & \vdots \\
+0 & \ldots & \ldots & 0 & a^{[k]}_{n,k} & \ldots & a^{[k]}_{n,n} & | & b^{[k]}_n
+\end{pmatrix}  \ .
+\]
+We may assume that $a^{[k]}_{k,k}\not=0$.  If $a^{[k]}_{k,k} = 0$, there
+exists $i>k$ such that $a^{[k]}_{i,k}\not=0$ because $A$ is invertible.
+We interchange the $k^{th}$ and $i^{th}$ rows.
+
+To get $M(k+1)$ from $M(k)$, we subtract
+$a^{[k]}_{i,k}/a^{[k]}_{k,k}$ times the $k^{th}$ row from the $i^{th}$ row
+and write the result back in the $i^{th}$ row for each $i > k$.  Namely,
+\begin{equation} \label{iminusk}
+a^{[k+1]}_{i,j} = a^{[k]}_{i,j} - \frac{a^{[k]}_{i,k}}{a^{[k]}_{k,k}} a^{[k]}_{k,j}
+\quad \text{and} \quad
+b^{[k+1]}_i = b^{[k]}_i - \frac{a^{[k]}_{i,k}}{a^{[k]}_{k,k}} b^{[k]}_k
+\end{equation}
+for $i=k+1$, $k+2$, \ldots, $n$ and $j=k+1$, $k+2$, \ldots, $n$.
+We have $a^{[k+1]}_{i,k} = 0$ for $i>k$.  Repeating these operations
+from $k=1$ to $k=n-1$, we get
+\[
+M(n) = \begin{pmatrix}
+a^{[1]}_{1,1} & a^{[1]}_{1,2} & \dots & a^{[1]}_{1,n-1} &
+a^{[1]}_{1,n} & | & b^{[1]}_1 \\
+0 & a^{[2]}_{2,2} & \ldots & a^{[2]}_{2,n-1} & a^{[2]}_{2,n} & | & b^{[2]}_2\\
+\vdots & \ddots & \ddots & \vdots & \vdots & | & \vdots \\
+\vdots & \vdots & \ddots & a^{[n-1]}_{n-1,n-1} & a^{[n-1]}_{n-1,n} & |
+& b^{[n-1]}_n \\
+0 & \ldots & \ldots & 0 & a^{[n]}_{n,n} & | & b^{[n]}_n
+\end{pmatrix}  \ .
+\]
+To compute $x_i$ for $1\leq i \leq n$, we use
+{\bfseries backward substitution}\index{Backward Substitution}; namely,
+\[
+x_n = \frac{b^{[n]}_n}{a^{[n]}_{n,n}}
+\]
+and
+\begin{equation} \label{backsubst}
+x_{k} = \frac{b^{[k]}_k - a^{[k]}_{k,k+1} x_{k+1} - a^{[k]}_{k,k+2}
+  x_{k+2} - \ldots  - a^{[k]}_{k,n} x_n}{a^{[k]}_{k,k}}
+\end{equation}
+for $k=n-1$, $n-2$, \ldots, $1$.
+
+The following code implements Gaussian elimination with backward
+substitution.
+
+\begin{code}[Gaussian Elimination with Backward Substitution]
+To compute the solution of the linear system of equations
+$A\VEC{x} = \VEC{b}$, where $A$ is invertible.\\
+\subI{Input} The matrix $A$ and the column vector $\VEC{b}$. \\
+\subI{Output} The solution $\VEC{x}$ of the system (in theory).
+\small
+\begin{verbatim}
+% function x = gauss(A,b)
+
+function x = gauss(A,b)
+  dim = size(A,1);
+  x = NaN;
+
+  % To avoid expensive row interchanges, we only interchange the
+  % indices of the rows.  We create the vector N = ( 1 2 3 ... dim )
+  % to keep track of the permutations of the rows.  N(i) will contain the
+  % index of the row in the original matrix  A  which is now located
+  % in row  i .
+  N=linspace(1,dim,dim);
+
+  for k = 1:dim-1
+    % We find the smallest index j such that A^k_{j,k} is non null.
+    j = k;
+    while (A(N(j),k) == 0)
+      j = j+1;
+      if (j > dim)
+        % A is not invertible.
+        return;
+      end
+    end
+
+    % We interchange the k'th and j'th rows.
+    temp = N(j);
+    N(j) = N(k);
+    N(k) = temp;
+
+    % We eliminate the entries in the k'th column which are in the
+    % rows below the k'th row.
+    for i = k+1:dim
+      m = A(N(i),k)/A(N(k),k);
+      A(N(i),k+1:dim) = A(N(i),k+1:dim) - m*A(N(k),k+1:dim);
+      b(N(i),1) = b(N(i),1)-m*b(N(k),1);
+    end
+  end
+
+  % We use backward substitution,
+  x(dim,1) = b(N(dim),1)/A(N(dim),dim);
+  for k = dim-1:-1:1
+    x(k)= (b(N(k),1) - A(N(k),k+1:dim)*x(k+1:dim,1))/A(N(k),k);
+  end
+end
+\end{verbatim}
+\end{code}
+
+\begin{rmk}
+If $|a^{[k]}_{i,k}| \gg |a^{[k]}_{k,k}|$, then
+$a^{[k]}_{i,k} / a^{[k]}_{k,k}$ is very large.  Hence, when performing
+(\ref{iminusk}), we may magnify the rounding error.  Moreover, when
+performing the backward substitution (\ref{backsubst}), we may also
+magnify the rounding error if we divide by a small number
+$a^{[k]}_{k,k}$.
+
+A strategy to minimize the problem with rounding error is to use
+{\bfseries maximal column pivoting}\index{Pivoting!Maximal Column Pivoting}
+also called {\bfseries partial pivoting}\index{Pivoting!Partial Pivoting}.
+Before performing (\ref{iminusk}), we choose the index $i$ such
+that
+\[
+|a^{[k]}_{i,k}|=\max_{k\leq j \leq n}|a^{[k]}_{j,k}|
+\]
+and interchange the $i^{th}$ and $k^{th}$ rows.
+
+Another strategy to minimize the problem with rounding error is to use
+{\bfseries scaled column pivoting}\index{Pivoting!Scaled Column Pivoting}.
+This time, before performing (\ref{iminusk}), we choose the index $i$
+such that
+\[
+\frac{|a^{[k]}_{i,k}|}{\displaystyle \max_{k\leq j \leq n}|a^{[k]}_{i,j}|} \geq
+\frac{|a^{[k]}_{s,k}|}{\displaystyle \max_{k\leq j \leq n}|a^{[k]}_{s,j}|}
+\]
+for $k\leq s \leq n$, and interchange the $i^{th}$ and $k^{th}$ rows.
+
+There is another strategy which is better than the previous two but is
+not often used because of the number of operations needed to perform
+it.  In {\bfseries total pivoting}\index{Pivoting!Total Pivoting}, before
+performing (\ref{iminusk}), we choose the indices $i$ and $j$ such that
+\[
+|a^{[k]}_{i,j}|=\max_{\substack{k\leq s \leq n\\k\leq r \leq n}}
+|a^{[k]}_{s,r}|
+\]
+and interchange the $i^{th}$ and $k^{th}$ rows and the $j^{th}$ and
+$k^{th}$ columns.  With this strategy, the indices of $\VEC{x}$ also
+have to be permuted.
+\end{rmk}
+
+\begin{egg}
+Consider the system
+\begin{align*}
+3 x_1+15660 x_2 &= 15690\\
+0.3454 x_1-2.436 x_2 &= 1.018
+\end{align*}
+The exact solution is $x_1=10$ and $x_2=1$.
+
+We first solve this system using Gaussian elimination with backward
+substitution, without row interchange and with 5-digit rounding
+arithmetic.
+\[
+M(1) = \begin{pmatrix}
+0.3\times 10 & 0.1566\times 10^5 & 0.1569\times 10^5 \\
+0.3454 & -0.2436\times 10 & 0.1018\times 10
+\end{pmatrix} \; .
+\]
+Let
+\[
+m = \frac{0.3454}{0.3\times 10} \approx 0.11513
+\]
+To get $M(2)$, we subtract $m$ times the first row from the second row
+and write the result in the second row.
+\[
+M(2) = \begin{pmatrix}
+0.3\times 10 & 0.1566\times 10^5 & 0.1569\times 10^5 \\
+10^{-5} & -0.18053 \times 10^4 & -0.18054\times 10^4
+\end{pmatrix} \ .
+\]
+Using backward substitution, we get
+\begin{align*}
+x_2 &\approx \frac{-0.18054\times 10^4}{-0.18053\times 10^4}
+\approx 0.10001 \times 10
+\intertext{and}
+x_1 &\approx \frac{0.1569\times 10^5-0.1566\times 10^5 \times 0.10001\times 10}
+{0.3\times 10} \approx 0.93333 \times 10 \ .
+\end{align*}
+We have a good approximation of $x_2$ but a bad approximation of
+$x_1$.
+
+If we use maximal column pivoting, we get the same answer because the
+method does not require to interchange the rows.
+
+If we use scaled column pivoting, we have to interchange the rows
+because
+\[
+\frac{|a^{[1]}_{2,1}|}{\displaystyle \max_{1\leq j \leq 2}|a^{[1]}_{2,j}|}
+= \frac{1727}{12180} > \frac{1}{5220}
+= \frac{|a^{[1]}_{1,1}|}{\displaystyle \max_{1\leq j \leq 2}|a^{[1]}_{1,j}|} \ .
+\]
+Hence
+\[
+M(1) = \begin{pmatrix}
+0.3454 & -0.2436\times 10 & 0.1018\times 10 \\
+0.3\times 10 & 0.1566\times 10^5 & 0.1569\times 10^5
+\end{pmatrix} \ .
+\]
+Let
+\[
+m = \frac{0.3\times 10}{0.3454} \approx 0.86856\times 10 \ .
+\]
+To get $M(2)$, we subtract $m$ times the first row from the second row
+and write the result in the second row.
+\[
+M(2) = \begin{pmatrix}
+0.3454 & -0.2436\times 10 & 0.1018\times 10 \\
+0 & 0.15681 \times 10^5 & 0.15681 \times 10^5
+\end{pmatrix} \ .
+\]
+Using backward substitution, we get
+\begin{align*}
+x_2 &\approx \frac{0.15681\times 10^5}{0.15681\times 10^5} \approx 1
+\intertext{and}
+x_1 &\approx \frac{0.1018\times 10 + 0.2436\times 10 \times 11}
+{0.3454} \approx 10 \ .
+\end{align*}
+We get the exact values of $x_1$ and $x_2$.
+\end{egg}
+
+We now give the code that implements Gaussian elimination with backward
+substitution, and maximum column pivoting or scaled column pivoting.
+
+\begin{code}[Gaussian Elimination with Backward Substitution and
+Pivoting Strategy]
+To compute the solution of the linear system of equations
+$A\VEC{x} = \VEC{b}$, where $A$ is invertible.  Maximal column or
+scaled column pivoting can be used.\\
+\subI{Input} The matrix $A$ and the column vector $\VEC{b}$.\\
+The option selected: maximal column or scaled column
+pivoting.\\
+\subI{Output} The solution $\VEC{x}$ of the system (in theory).
+\small
+\begin{verbatim}
+%  x = gauss(A,b,option)
+%
+%  We use gaussian elimination with maximal column pivoting
+%  (obtion = 1) or scaled column pivoting (obtion = 2) to solve
+%  a system of linear equations of the form
+%
+%    A(1,1)*x(1)     + ... + A(1,dim)*x(dim)   = b(1,:)
+%           . . . .
+%    A(dim,1)*x(x(1) + ... + A(dim,dim)*x(dim) = b(dim,:)
+%
+%  The following must be given:
+%    The matrix A
+%    The matrix ( b(:,i) ) for i = 1, 2, ..., M ; the M linear
+%      systems A x = b(:,i) are solved simultaneously.
+%    The option  option  chosen: option = 1 for partial column
+%      pivoting and option = 2 for scaled column pivoting.
+%
+%  The program gives an approximation  x(:,i)  of the solution of
+%  the linear system associated to b(:,i) for i=1, 2, ..., M.
+
+function x = gauss(A,b,option)
+  dim = size(A,1);
+  x = NaN;
+
+  if ( (option ~= 1) & (option ~= 2) )
+    disp 'There is no such algorithm.';
+    return;
+  end
+
+  % To avoid expensive row interchanges, we only interchange the
+  % indices of the rows.  We create the vector N = ( 1 2 3 ... dim )
+  % to keep track of the permutations of the rows.  N(i) will contain the
+  % index of the row in the original matrix  A  which is now located
+  % in row  i .
+  N = linspace(1,dim,dim);
+
+  % We use gaussian elimination to write the system in echelon form.
+
+  for k=1:(dim-1)
+    % If option = 1, then we use the maximal colum pivoting algorithm.
+    % If option = 2, then we use the scaled column pivoting algorithm.
+
+    if (option == 1)
+      j = k;
+      max = abs( A(N(k),k) );
+      for i=(k+1):dim
+        if (abs( A(N(i),k) ) > max)
+          max = abs( A(N(i),k) );
+          j = i;
+        end
+      end
+      if (max == 0)
+        disp 'The matrix  A  is not invertible.';
+        return;
+      end
+    else
+      % We find the index j such that
+      % |a^k_{j,k}|/max_{k\leq i \leq n}|a^k_{j,i}| >=
+      %   |a^k_{s,k}|/max_{k\leq i \leq n}|a^k_{s,i}|
+      % for k <= s <= dim.
+      j = k;
+      rowmax = norm(A(N(k),k:dim), inf);
+      if (rowmax == 0)
+        disp 'The matrix  A  is not invertible.';
+        return;
+      end
+      max = abs( A(N(k),k) )/rowmax;
+      for i=(k+1):dim
+        rowmax = norm(A(N(i),k:dim), inf);
+        if (rowmax == 0)
+          disp 'The matrix  A  is not invertible.';
+          return;
+        end
+        test = abs( A(N(i),k) )/rowmax;
+        if (test > max)
+          max = test;
+          j = i;
+        end
+      end
+    end
+
+    % We interchange the k^{th} and j^{th} rows.
+    if (k ~= j)
+      ncopy = N(k);
+      N(k) = N(j);
+      N(j) = ncopy;
+    end
+
+    for i=(k+1):dim
+      m = A(N(i),k)/A(N(k),k);
+      A(N(i),(k+1):dim) = A(N(i),(k+1):dim) - m*A(N(k),(k+1):dim);
+      b(N(i),:)=b(N(i),:) - m*b(N(k),:);
+    end
+  end
+
+  % We now use backward substitution to get an approximation of the
+  % solution of the system.
+  x(dim,:) = b(N(dim),:)/A(N(dim),dim);
+  for i=(dim-1):-1:1
+    x(i,:) = b(N(i),:);
+    for j=(i+1):dim
+      x(i,:) = x(i,:) - A(N(i),j)*x(j,:);
+    end
+    x(i,:) = x(i,:)/A(N(i),i);
+  end
+end
+\end{verbatim}
+\end{code}
+
+\section{LU Factorization}
+
+We consider a system of linear equation of the form (\ref{lin_syst})
+where $A$ is an \nn invertible matrix and $\VEC{b}$ is an
+\nm{n}{1} column vector.
+
+Suppose that we can write $A$ as the product $PLU$ where $P$ is a
+permutation matrix, $L$ is an invertible lower-triangular matrix and
+$U$ is an invertible upper-triangular matrix.  It is then easy to
+solve (\ref{lin_syst}).  We first solve
+$L\VEC{y} = \VEC{c} = P^{-1}\VEC{b}$.  Note that $\VEC{c}$ is
+obtained from $\VEC{b}$ by permuting the indices of $\VEC{b}$.  The
+solution of $A\VEC{x}=\VEC{b}$ is then the solution of $U\VEC{x} = \VEC{y}$.
+
+To solve $L\VEC{y}=\VEC{c}$, we use
+{\bfseries forward substitution}\index{Forward Substitution} as
+implemented in the next code.
+
+\begin{code}[Forward Substitution]
+To solve $L\VEC{y}=\VEC{c}$ where $L$ is an invertible
+lower-triangular matrix.\\
+\subI{Input} The matrix $L$ and the column vector $\VEC{c}$.\\
+\subI{Output} The solution $\VEC{y}$ of the system.
+\small
+\begin{verbatim}
+% y = forward(L,c)
+
+function y = forward(L,c)
+  dim = size(L,1);
+  y(1,1) = c(1,1)/L(1,1);
+  for i = 2:dim
+    y(i,1) = (c(i,1) - L(i,1:i-1)*c(1:i-1))/L(i,i);
+  end
+end
+\end{verbatim}
+\label{codeforward}
+\end{code}
+
+To solve $U\VEC{x}=\VEC{y}$, we use backward substitution as
+implemented in the next code.
+
+\begin{code}[Backward Substitution]
+To solve $U\VEC{x}=\VEC{y}$ where $U$ is an invertible
+upper-triangular matrix.\\
+\subI{Input} The matrix $U$ and the column vector $\VEC{y}$.\\
+\subI{Output} The solution $\VEC{x}$ of the system.
+\small
+\begin{verbatim}
+% x = backward(U,y)
+
+function x = backward(U,y)
+  dim = size(U,1);
+  x(dim,1) = y(dim,1)/U(dim,dim);
+  for i = dim-1:-1:1
+    x(i,1) = (y(i,1) - U(i,i+1:dim)*y(1:i+1:dim,1))/U(i,i);
+  end
+end
+\end{verbatim}
+\label{codebackward}
+\end{code}
+
+The matrices $P$, $L$ and $U$ are obtained from the Gaussian
+elimination procedure described in the previous section.  Using the
+same notation than in the previous section, the matrices $U$ and $L$ 
+are respectively given by $u_{i,j}= a^{[i]}_{i,j}$ and
+$\ell_{i,j} = a^{[j]}_{i,j}/a^{[j]}_{j,j}$.  Recall that
+$a^{[i]}_{i,j} = 0$ and $\ell_{i,j} = 0$ if $j<i$.
+
+We prove that $A=LU$.  To simplify the discussion, we assume for now
+that no row-interchange has been used.  From (\ref{iminusk}), we get
+\[
+a^{[k+1]}_{i,j} = a^{[k]}_{i,j} - \frac{a^{[k]}_{i,k}}{a^{[k]}_{k,k}}
+a^{[k]}_{k,j} =  a^{[k]}_{i,j} - \ell_{i,k} a^{[k]}_{k,j}
+\]
+for $i=k+1$, $k+2$, \ldots, $n$ and $j=1$, $2$, \ldots, $n$.
+Note that we only have null values for $1 \leq j < k+1$.
+If we substitute $k$ for $k-1$ in this formula, we get
+\[
+a^{[k]}_{i,j} = a^{[k-1]}_{i,j} - \ell_{i,k-1} a^{[k-1]}_{k-1,j} 
+\]
+for $i=k$, $k+1$, \ldots, $n$ and $j=1$, $2$, \ldots, $n$.
+Hence,
+\[
+a^{[k+1]}_{i,j}=a^{[k-1]}_{i,j}-\ell_{i,k-1}a^{[k-1]}_{k-1,j}-\ell_{i,k}a^{[k]}_{k,j}
+\]
+for $i=k+1$, $k+2$, \ldots, $n$ and $j=1$, $2$, \ldots, $n$.
+By induction,
+\[
+a^{[k+1]}_{i,j}=a^{[1]}_{i,j} -
+\ell_{i,1}a^{[1]}_{1,j}-\ell_{i,2}a^{[2]}_{2,j} - \ldots
+-\ell_{i,k}a^{[k]}_{k,j}
+\]
+for $i=k+1$, $k+2$, \ldots, $n$ and $j=1$, $2$, \ldots, $n$.
+In particular, if $i=k+1$, we get
+\[
+a^{[k+1]}_{k+1,j}=a^{[1]}_{k+1,j} -
+\ell_{k+1,1}a^{[1]}_{1,j}-\ell_{k+1,2}a^{[2]}_{2,j} - \ldots
+-\ell_{k+1,k}a^{[k]}_{k,j}
+\]
+for $j=1$, $2$, \ldots, $n$.
+Thus
+\[
+a^{[1]}_{k+1,j} = \ell_{k+1,1}a^{[1]}_{1,j} + \ell_{k+1,2}a^{[2]}_{2,j} + \ldots
++ \ell_{k+1,k}a^{[k]}_{k,j} + a^{[k+1]}_{k+1,j}
+\]
+for $j=1$, $2$, \ldots, $n$.
+Because $\ell_{k+1,k+1} = 1$ and $\ell_{k+1,s}=0$ for $s>k+1$, we get
+\begin{equation}\label{productLU}
+a^{[1]}_{k+1,j} = \sum_{s=1}^n\; \ell_{k+1,s} a^{[s]}_{s,j}
+= \sum_{s=1}^n\; \ell_{k+1,s} u_{s,j}
+\end{equation}
+for $j=1$, $2$, \ldots, $n$.  Since (\ref{productLU}) is true for
+$k=0$, $1$, \ldots, $n-1$, we get $A=LU$.
+
+If row interchanges are needed in Gaussian elimination, these row
+interchanges can be performed on $A$ and $\VEC{b}$ before starting
+Gaussian elimination.  Let $P^{-1}$ be the permutation matrix that
+performs all the needed row interchanges.  Note that $P=P^{-1}$.
+From our previous discussion, we can write $P^{-1}A$ as $P^{-1}A=LU$
+for a lower-triangular matrix $L$ and an upper-triangular matrix $U$.
+No row interchange is needed to reduce $P^{-1}A$ to an
+upper-triangular matrix using Gaussian elimination.  Hence $A=PLU$.
+
+To solve $A\VEC{x} = \VEC{b}$, we only have to solve
+$LU \VEC{x} = P^{-1}A\VEC{x}=P^{-1}\VEC{b}$.
+From a computational point of view, the row interchanges do not cause
+any problem.  The formulae for $U$ and $L$ given above are still valid
+if we performed the same row interchanges on the vector $\VEC{b}$ than
+the ones performed during Gaussian elimination.
+
+\begin{code}[LU Decomposition]
+To approximate the solution of the linear system of equations
+$A\VEC{x} = \VEC{b}$, where $A$ is invertible.  Maximal column or
+scaled column pivoting can be used.\\
+\subI{Input} The matrix $A$ and the column vector $\VEC{b}$.\\
+\subI{Output} The solution $\VEC{x}$ of the system (in theory).
+\small
+\begin{verbatim}
+%  x = LUfactor(A,b,option)
+%
+%  We use PLU factorization with maximal column pivoting
+%  (option 1) or scaled column pivoting (option 2) to solve
+%  a system of linear equations of the form
+%
+%    A(1,1)*x(1)     + ... + A(1,dim)*x(dim)   = b(1,:)
+%    . . .
+%    A(dim,1)*x(x(1) + ... + A(dim,dim)*x(dim) = b(dim,:)
+%
+%  The following must be given:
+%    The square matrix A
+%    The matrix ( b(:,i) ) for i=1, 2, ..., M ; the M linear
+%      systems A x = b(:,i) are solved simultaneously.
+%    The option  option  chosen: option = 1 for maximal column
+%      pivoting and option = 2 for scaled column pivoting.
+%
+%  The program gives an approximation  x(:,i)  of the solution of
+%  the linear system A x = b(:,i) for i=1, 2, ..., M.
+
+function x = LUfactor(A,b,option)
+  dim = size(A,1);
+  x = NaN;
+
+  if ( (option ~= 1) & (option ~= 2) )
+    disp 'There is no such algorithm.';
+    return;
+  end
+
+  % To avoid expensive row interchanges, we only interchange the
+  % indices of the rows.  We create the vector N = ( 1 2 3 ... dim )
+  % to keep track of the permutations of the rows.  N(i) will contain the
+  % index of the row in the original matrix  A  which is now located
+  % in row  i .
+  N=linspace(1,dim,dim);
+
+  % We compute the entries of  U  and  L .
+  for k=1:(dim-1)
+    % If option = 1, then we use the maximal colum pivoting algorithm.
+    % If option = 2, then we use the scaled column pivoting algorithm.
+
+    if (option==1)
+      j = k;
+      max = abs( A(N(k),k) );
+      for i=(k+1):dim
+        if (abs( A(N(i),k) ) > max)
+          max = abs( A(N(i),k) );
+          j = i;
+        end
+      end
+      if (max == 0)
+        disp 'The matrix  A  is not invertible.';
+        return;
+      end
+    else
+      % We find the index k such that
+      % |a^k_{k,k}|/\max_{k\leq i \leq n}|a^k_{k,i}| >=
+      %   |a^k_{s,k}|/\max_{k\leq i \leq n}|a^k_{s,i}|
+      % for k <= s <= dim.
+      j = k;
+      rowmax = norm(A(N(k),k:dim),inf);
+      if (rowmax == 0)
+        disp 'The matrix  A  is not invertible.';
+        return;
+      end
+      max = abs( A(N(k),k) )/rowmax;
+      for i=(k+1):dim
+        rowmax = norm(A(N(i),k:dim),inf);
+        if (rowmax == 0)
+          disp 'The matrix  A  is not invertible.';
+          return;
+        end
+        test = abs( A(N(i),k) )/rowmax;
+        if (test > max)
+          max = test;
+          j = i;
+        end
+      end
+    end
+
+    % We interchange the k'th and j'th rows.
+    if (k ~= j)
+      ncopy = N(k);
+      N(k) = N(j);
+      N(j) = ncopy;
+    end
+
+    % We perform the Gaussian elimination.
+    % We store the factors l_{i,k} = A(N(i),k)/A(N(k),k)  used in
+    % gaussian elimination for row  N(i)  in  A(N(i),k)  which
+    % is zero after elimination.
+    for i=(k+1):dim
+      A(N(i),k) = A(N(i),k)/A(N(k),k);
+      A(N(i),(k+1):dim) = A(N(i),(k+1):dim) ...
+                           - A(N(i),k)*A(N(k),(k+1):dim);
+    end
+  end
+
+  % Only at this point do we need the value of  b .
+  % We now use forward substitution to sole  Ly = c.
+  y(1,:) = b(N(1),:);
+  for i=2:dim
+    y(i,:) = b(N(i),:);
+    for j=1:(i-1)
+      y(i,:) = y(i,:) - A(N(i),j)*y(j,:);
+    end
+  end
+
+  % We now use backward substitution to get an approximation of the
+  % solution of the system.
+  x(dim,:) = y(dim,:)/A(N(dim),dim);
+  for i=(dim-1):-1:1
+    x(i,:) = y(i,:);
+    for j=(i+1):dim
+      x(i,:) = x(i,:) - A(N(i),j)*x(j,:);
+    end
+    x(i,:) = x(i,:)/A(N(i),i);
+  end
+end
+\end{verbatim}
+\end{code}
+
+We did not call the functions defined in Codes~\ref{codeforward} and 
+\ref{codebackward} in the previous code to save storage space for the
+matrices and to take advantage of the special form of the
+lower-triangular matrix $L$ that has $1$ everywhere on the diagonal.
+
+Moreover, $b$ in the previous code can be a matrix.  Thus, the
+previous code can be used to find the inverse of a matrix $A$ by
+posing $b = \Id$.
+
+\section{Cholesky Factorization}
+
+This is a special case of the LU factorization.  We assume that the
+matrix $A$ in (\ref{lin_syst}) is real, symmetric and strictly
+positive definite.  It can then be proved that $A$ has a LU
+factorization that does not need pivoting.  The proof is based on the
+fact that all the sub-matrices
+$\displaystyle
+\begin{pmatrix}
+a_{1,1} & \ldots & a_{1,k} \\
+\vdots & \ddots & \vdots \\
+a_{k,1} & \ldots & a_{k,k}
+\end{pmatrix}$ for $k=1$, $2$, \ldots, $n$
+have positive determinants.
+
+Suppose that $A = LU$ as in the previous section.  Let
+\[
+D = \begin{pmatrix}
+\sqrt{a^{[1]}_{1,1}} & 0 & \ldots & 0 \\
+0 & \sqrt{a^{[2]}_{2,2}} & \ldots & 0 \\
+\hdotsfor[2]{4} \\
+0 & 0 & \ldots & \sqrt{a^{[n]}_{n,n}}
+\end{pmatrix}  \ ,
+\]
+$M=LD$ and $N=D^{-1}U$.  Recall that the elements on the diagonal of a
+strictly positive definite matrix are all positive numbers.  Then
+$A=MN$, where $M$ is lower-triangular and $N = M^\top$.
+
+To prove that $M=N^\top$, we use the relation $A=MN$ to get
+\begin{align}
+m_{k,k} &= n_{k,k} = \sqrt{a_{k,k} -
+\sum_{i=1}^{k-1} m_{k,i} n_{i,k}} \ , \label{Chol_0} \\
+n_{k,j} &= \frac{1}{m_{k,k}} \{ a_{k,j} -
+\sum_{i=1}^{k-1} m_{k,i} n_{i,j} \}  \ , \label{Chol_1} \\
+m_{j,k} &= \frac{1}{n_{k,k}} \{ a_{j,k} -
+\sum_{i=1}^{k-1} m_{j,i} n_{i,k} \} \label{Chol_2} \\
+\intertext{and}
+m_{k,j} &= n_{j,k} = 0 \nonumber
+\end{align}
+for $j > k \geq 1$.  The summations in the formulae above are ignored
+when $k=1$.  It remains to show that $m_{j,k} = n_{k,j}$
+for $j > k \geq 1$.  We use induction on $k$.  For $k=1$, we have
+\[
+n_{1,j} = \frac{a_{1,j}}{m_{1,1}} = \frac{a_{j,1}}{n_{1,1}} = m_{j,1}
+\]
+for $j >1$ because $A$ is symmetric and $m_{1,1}=n_{1,1}$ from
+(\ref{Chol_0}).  We assume that
+$m_{j,i} = n_{i,j}$ for $j > i \geq 1$ and $i \leq k$ and show that
+$m_{j,k+1} = n_{k+1,j}$ for $j > k+1$.  We rewrite (\ref{Chol_1}) and
+(\ref{Chol_2}) with $k$ replaced by $k+1$ to get
+\begin{align}
+n_{k+1,j} &= \frac{1}{m_{k+1,k+1}} \{ a_{k+1,j} -
+\sum_{i=1}^k m_{k+1,i} n_{i,j} \}  \ , \label{Chol_4}
+\intertext{and}
+m_{j,k+1} &= \frac{1}{n_{k+1,k+1}} \{ a_{j,k+1} -
+\sum_{i=1}^k m_{j,i} n_{i,k+1} \} \label{Chol_5} \ .
+\end{align}
+Since $a_{k+1,j} = a_{j,k+1}$ because $A$ is symmetric,
+$m_{k+1,i} = n_{i,k+1}$ for $1 \leq i \leq k$ and
+$m_{j,i} = n_{i,j}$ for $1 \leq i \leq k < j$ by induction,
+we get that the summations in (\ref{Chol_4}) and (\ref{Chol_5}) are
+equal for $j > k+1$.
+
+From (\ref{Chol_0}), (\ref{Chol_1}) and (\ref{Chol_2}), we can get the
+following implementation of the Cholesky factorization.  This
+algorithm is faster than the previous algorithms to solve
+$A\VEC{x} = \VEC{b}$ with pivoting because it requires less
+computation.  However, $A$ has to be real symmetric and positive
+definite.
+
+\begin{code}[Cholesky Factorization]
+To compute the solution of the linear system of equations
+$A\VEC{x} = \VEC{b}$, where $A$ is real, symmetric and strictly
+positive definite.\\
+\subI{Input} The matrix $A$ and the column vector $\VEC{b}$.\\
+\subI{Output} The solution $\VEC{x}$ of the system and the matrix $M$
+in $A = M N$.
+\small
+\begin{verbatim}
+% function x = cholesky(A,b)
+
+function [x,M] = cholesky(A,b)
+  dim = size(A,1);
+
+  % In theory, we do not have to use pivoting.  Moreover, we only need
+  % to compute  M  because  N  is the trampose of  M.
+  M = zeros(dim,dim);
+  
+  M(1,1) = sqrt(A(1,1));
+  M(2:dim,1) = A(2:dim,1)/M(1,1);
+  for k = 2:dim-1
+    M(k,k) = sqrt(A(k,k) - sum(M(k,1:k-1).^2));
+    for j = k+1:dim
+      M(j,k) = (A(j,k) - sum(M(j,1:k-1).*M(k,1:k-1)))/M(k,k);
+    end
+  end
+  M(dim,dim) = sqrt(A(dim,dim) - sum(M(dim,1:dim-1).^2));
+
+  % Only at this point do we need the value of  b .
+  % We use forward substitution to sole  My = b.
+
+  y(1,1) = b(1,1)/M(1,1);
+  for i = 2:dim
+    y(i,1) = (b(i,1) - M(i,1:i-1)*y(1:i-1,1) )/M(i,i);
+  end
+
+  % We now use backward substitution to get an approximation of the
+  % solution of the system.
+
+  x(dim,1) = y(dim,1)/M(dim,dim);
+  for i = dim-1:-1:1
+    x(i,1) = (y(i,1)-M(i+1:dim,i)'*x(i+1:dim,1))/M(i,i);
+  end
+end
+\end{verbatim}
+\end{code}
+
+\section{Error estimates}\label{ErrorEstAxb}
+
+Let $\VEC{x}_a$ be an approximation of the solution $\VEC{p}$ of
+(\ref{sys1}) such that $\|\VEC{b} - A\VEC{x}_a\|$ is small.  Is
+$\|\VEC{p} - \VEC{x}_a\|$ small?
+
+\begin{egg}
+Consider the system $A\VEC{x} = \VEC{b}$ where
+$\displaystyle
+A = \begin{pmatrix}
+3 & 6 \\
+2.9999 & 6
+\end{pmatrix}$ and
+$\displaystyle
+\VEC{b} = \begin{pmatrix}
+9 \\ 8.9999
+\end{pmatrix}
+$.
+The unique solution is
+$\displaystyle
+\VEC{p} = \begin{pmatrix}
+1 \\ 1
+\end{pmatrix}
+$.
+
+If
+$\displaystyle
+\VEC{x}_a = \begin{pmatrix}
+3 \\ 0
+\end{pmatrix}
+$, let
+$\displaystyle
+\VEC{r} = \VEC{b} - A\VEC{x}_a =
+\begin{pmatrix}
+0 \\ 0.0002
+\end{pmatrix}$.
+We have that $\|\VEC{r}\|_\infty = 0.0002$ is a small number but
+$\|\VEC{p} - \VEC{x}_a\|_\infty = 2$ is a large number.
+\end{egg}
+
+\begin{defn}
+Let $A$ be an invertible \nn matrix.
+\begin{enumerate}
+\item If $\VEC{x}_a$ is an approximation of the unique solution of
+$A\VEC{x} = \VEC{b}$, then the vector
+$\VEC{r} = \VEC{b} - A \VEC{x}_a$ is 
+called the {\bfseries residual vector}\index{Residual Vector} for $\VEC{x}_a$.
+\item The {\bfseries condition number}\index{Matrices!Condition Number} of $A$
+is the number
+$K(A) = \| A \| \, \|A^{-1} \|$.
+\end{enumerate}
+\end{defn}
+
+\begin{theorem} \label{ResErrCondNbr}
+Let $A$ be an invertible matrix and $\VEC{x}_a$ be an approximation
+of the unique solution $\VEC{p}$ of $A\VEC{x} = \VEC{b}$. The residual
+vector $\VEC{r} = \VEC{b} - A \VEC{x}_a$ for $A$ satisfies
+\[
+\| \VEC{x}_a - \VEC{p} \| \leq K(A) \frac{\|\VEC{r}\|}{\|A\|}
+\]
+and
+\[
+\frac{\| \VEC{x}_a - \VEC{p} \|}{\| \VEC{p} \|} \leq K(A)
+\frac{\|\VEC{r}\|}{\|\VEC{b} \|}
+\]
+if $\VEC{p} \neq \VEC{0}$.
+\end{theorem}
+
+\begin{proof}
+From $\VEC{r} = \VEC{b} - A\VEC{x}_a = A(\VEC{p} - \VEC{x}_a)$, we get
+$\VEC{p} - \VEC{x}_a = A^{-1}\VEC{r}$.  Thus
+\begin{equation}\label{errorest}
+\| \VEC{p} - \VEC{x}_a \| \leq \| A^{-1} \| \|\VEC{r}\| =
+K(A) \frac{\|\VEC{r}\|} {\|A\|} \ .
+\end{equation}
+Since $\| \VEC{b} \| = \|A\VEC{p} \| \leq \|A\|\, \|\VEC{p}\|$,
+we get
+\[
+\frac{1}{\|A\|} \leq \frac{\|\VEC{p}\|}{\|\VEC{b}\|} \ .
+\]
+If we combine this last inequality with (\ref{errorest}), we get
+\[
+\| \VEC{p} - \VEC{x}_a \| \leq K(A)
+\frac{\|\VEC{r}\|\|\VEC{p}\|}{\|\VEC{b}\|}
+\]
+and so
+\[
+\frac{\| \VEC{p} - \VEC{x}_a \|}{\|\VEC{p}\|} \leq K(A)
+\frac{\|\VEC{r}\|}{\|\VEC{b}\|} \ .  \qedhere
+\]
+\end{proof}
+
+\begin{defn}
+An invertible matrix $A$ is
+{\bfseries well-conditioned}\index{Matrices!Well-Conditioned} when $K(A)$
+is small (near $1$) and
+{\bfseries ill-conditioned}\index{Matrices!Ill-Conditioned} otherwise.
+\end{defn}
+
+\begin{rmk}
+Suppose that the matrix $A$ in the statement of the previous theorem
+is a well-conditioned matrix, then the absolute error
+$\| \VEC{x}_a - \VEC{p}\|$ is small when the residual vector
+$\VEC{r}$ is small.  Moreover, the relative error
+$\| \VEC{x}_a - \VEC{p} \|/\|\VEC{p} \|$ is
+small when the relative size of the residual vector $\VEC{r}$ with
+respect to the vector $\VEC{b}$ is small.
+\end{rmk}
+
+\begin{egg}
+In the previous example
+$\displaystyle
+A = \begin{pmatrix}
+3 & 6 \\
+2.9999 & 6
+\end{pmatrix}
+$.  Hence $\|A\|_\infty = 9$.
+
+Since
+$\displaystyle
+A^{-1} = \begin{pmatrix}
+10^4 & -10^4 \\
+-4999.8\overline{3} & 5000
+\end{pmatrix} 
+$, we have
+$\| A^{-1}\|_\infty = 2\times 10^4$.
+Thus $K(A) = 1.8\times 10^5$ is really large.  $A$ is
+ill-conditioned.
+
+We have inequalities in Theorem~\ref{ResErrCondNbr} but we ``may'' in
+practice treat them as equalities because they suggest the
+potential for large errors as we have seen in the previous example.
+\end{egg}
+
+Due to rounding errors in representing on computers the entries
+of $A$ and $\VEC{b}$, solving numerically the system
+\begin{equation}\label{unpertub}
+A\VEC{x} = \VEC{b}
+\end{equation}
+is equivalent to solving exactly the perturbed system
+\begin{equation}\label{pertub}
+(A+\dtx{A})\VEC{x} = (\VEC{b} + \dtx{\VEC{b}}) \ ,
+\end{equation}
+where $\dtx{A}$ is an \nn matrix near the \nn null
+matrix and $\dtx{\VEC{b}}$ is a vector of $\RR^n$ near $\VEC{0}\in \RR^n$.
+The next theorem gives an estimate of the difference between the exact
+solution of (\ref{unpertub}) and the exact solution of
+(\ref{pertub}).
+
+\begin{theorem}
+If $\|\dtx{A}\| < \|A^{-1}\|^{-1}$, we have that
+the exact solution $\VEC{p}$ of (\ref{unpertub}) and the exact
+solution $\VEC{q}$ of (\ref{pertub}) satisfy
+\[
+\frac{\| \VEC{q} - \VEC{p} \|}{\| \VEC{p} \|} \leq
+\frac{K(A)}{1 - K(A) \|\dtx{A}\|/\|A\|}
+\left( \frac{\|\dtx{\VEC{b}}\|}{\|\VEC{b}\|}
++ \frac{\|\dtx{A}\|}{\|A\|} \right) \ .
+\]
+\end{theorem}
+
+\begin{proof}
+From Proposition~\ref{Banach}, $\Id_n + A^{-1}\dtx{A}$ is invertible
+because
+\[
+\|A^{-1}\dtx{A}\| \leq \|\dtx{A}\| \, \|A^{-1}\| < 1
+\]
+by hypothesis.  Moreover, Corollary~\ref{Banach_cor} gives
+\begin{equation}\label{banachconc}
+\left\|\left( \Id_n + A^{-1}\dtx{A} \right)^{-1} \right\| \leq
+\frac{1}{1 - \|A^{-1}\dtx{A}\|} \leq
+\frac{1}{1 - \|A^{-1}\|\,\|\dtx{A}\|} \ .
+\end{equation}
+
+Multiplying both sides of
+\[
+(A+\dtx{A})\left(\VEC{p} + (\VEC{q}-\VEC{p})\right)
+= (\VEC{b} + \dtx{\VEC{b}})
+\]
+from the left by $A^{-1}$, we get
+\[
+\left(\Id_n + A^{-1} \dtx{A} \right) \left(\VEC{q}-\VEC{p}\right)
++\VEC{p} + A^{-1}\dtx{A} \, \VEC{p} = \VEC{p} + A^{-1}\,\dtx{\VEC{b}}
+\]
+because $A\VEC{p}=\VEC{b}$.  Thus
+\[
+\VEC{q}-\VEC{p} = \left(\Id_n + A^{-1} \dtx{A} \right)^{-1}
+\left( A^{-1} \dtx{\VEC{b}} - A^{-1}\,\dtx{A} \, \VEC{p} \right) \ .
+\]
+Taking the norm on both sides, we get from (\ref{banachconc}) that
+\begin{align*}
+\| \VEC{q}-\VEC{p} \| &\leq \|\left(\Id_n + A^{-1} \dtx{A} \right)^{-1} \|
+\left( \|A^{-1}\|\, \|\dtx{\VEC{b}}\| +
+ \|A^{-1}\|\, \|\dtx{A} \| \, \| \VEC{p} \|\right) \\
+&\leq \frac{1}{1 - \|A^{-1}\|\, \|\dtx{A}\|}\, \|A^{-1}\|\,
+\left( \|\dtx{\VEC{b}}\| + \|\dtx{A} \|\, \| \VEC{p} \|\right) \ .
+\end{align*}
+Thus
+\begin{align*}
+\frac{\| \VEC{q}-\VEC{p} \|}{\|\VEC{p}\|}
+&\leq \frac{\|A^{-1}\|}{1 - \|A^{-1}\|\, \|\dtx{A}\|}
+\left( \frac{\|\dtx{\VEC{b}}\|}{\|\VEC{p}\|} + \|\dtx{A} \|\right)
+\leq \frac{\|A^{-1}\|\, \|A\|}{1 - \|A^{-1}\|\, \|\dtx{A}\|}
+\left( \frac{\|\dtx{\VEC{b}}\|}{\|\VEC{p}\|\, \|A\|}
++ \frac{\|\dtx{A}\|}{\|A\|} \right) \\
+&\leq \frac{K(A)}{1 - K(A) \|\dtx{A}\|/\|A\|}
+\left( \frac{\|\dtx{\VEC{b}}\|}{\|\VEC{b}\|}
++ \frac{\|\dtx{A}\|}{\|A\|} \right) \ ,
+\end{align*}
+where we have used $K(A) = \|A||\, \|A^{-1}\|$ and
+$\|\VEC{b}\| \leq \|A\|\, \|\VEC{p}\|$ from $\VEC{b}=A\VEC{p}$.
+\end{proof}
+
+\begin{rmkList}
+\begin{enumerate}
+\item Let $A$ be an invertible \nn matrix and $\VEC{p}$ be
+the unique solution of a system $A\VEC{x} = \VEC{b}$.  It has been
+proved\footnote{Forsythe, G.E. and Moler, E.B., {\bfseries Computer
+Solution of Linear Algebraic Systems}, Prentice-Hall, 1967} that the
+residual vector $\VEC{r}$ of $\VEC{x}_a$ obtained from Gaussian
+elimination with backward substitution and $t$-digit rounding arithmetic
+satisfies
+\[
+\| \VEC{r} \| \approx 10^{-t} \, \|A\| \| \VEC{x}_a \| \; ,
+\]
+where $\VEC{r}$ has been computed using $2t$-digit rounding arithmetic.
+
+Moreover, if $\VEC{y}$ is (an approximation of) the solution of the
+equation $A\VEC{x} = \VEC{r}$, then
+\[
+\|\VEC{y}\| \approx \|A^{-1} \VEC{r}\| \leq \|A^{-1}\|\, \|\VEC{r}\|
+\approx \|A^{-1}\|\left( 10^{-t} \, \|A\|\, \| \VEC{x}_a \| \right)
+= 10^{-t} K(A) \|\VEC{x}_a\| \ .
+\]
+Thus
+$\displaystyle 10^t \frac{\|\VEC{y}\|}{\|\VEC{x}_a\|}$ may be used as
+an rough approximation of $K(A)$.
+\item Let $A$ be an invertible matrix.  The method of
+{\bfseries iterative refinement}\index{Iterative Refinement}, to
+numerically solve a system of the form $A\VEC{x}=\VEC{b}$ with
+accuracy $\epsilon$, can be summarized as follows.
+\begin{enumerate}
+\item Using Gauss elimination with maximal column pivoting and single
+precision, find $\VEC{x}_a$ such that $A\VEC{x}_a \approx \VEC{b}$.
+\item Compute the residual vector $\VEC{r} = \VEC{b}-A\VEC{x}_a$ in
+double precision.  More precision most be used because the
+computations involve many almost identical numbers.
+\item Using Gauss elimination with maximal column pivoting and single
+precision, find $\VEC{x_c}$ such that $A\VEC{x_c} \approx \VEC{r}$.
+The steps for this Gauss elimination are already known from (a).
+\item Let $\VEC{x}_b = \VEC{x}_a + \VEC{x_c}$.
+\item If $10^t \|\VEC{x_c}\|/\|\VEC{x}_b\| < \epsilon$, the
+requested accuracy, then the vector $\VEC{x}_b$ should be the desired
+approximation of the solution $\VEC{p}$ of $A\VEC{x}=\VEC{b}$ and
+hopefully a better approximation of $\VEC{p}$ than $\VEC{x}_a$.
+If $10^t \|\VEC{x_c}\|/\|\VEC{x}_b\| \not< \epsilon$.
+replace $\VEC{x}_a$ by $\VEC{x}_b$, and repeat from step (b).
+\end{enumerate}
+\end{enumerate}
+\end{rmkList}
+
+\section{Exercises}
+
+\begin{question}
+The following questions could have come from a basic Linear algebra
+course.
+
+\subQ{a} Prove that if $A$ and $B$ are two \nn matrices such that $AB$ is
+invertible, then $A$ and $B$ are invertible.\\
+\subQ{b} Prove that the product of two lower-triangular (resp.\
+upper-triangular) matrices is a lower-triangular
+(resp.\ upper-triangular) matrix.\\
+\subQ{c} Suppose that $A$ is a \nn invertible matrix.  Prove that
+$A^{-1}$ is lower-triangular (resp.\ upper-triangular) if
+$A$ is lower-triangular (resp.\ upper-triangular).\\
+\subQ{d} Prove that the
+{\bfseries triangular factorization}\index{triangular factorization}
+of a \nn matrix is unique; namely, prove that if an invertible matrix
+$A$ can be expressed as $A = L_1U_1 = L_2U_2$, where $L_1$ and $L_2$
+are two lower-triangular matrices with $1$ as elements on the
+diagonal, and $U_1$ and $U_2$ are two upper-triangular matrices, then
+$L_1 = L_2$ and $U_1 = U_2$.\\
+\subQ{e} If $A$ is \nn symmetric matrix and $A = LU$, where $L$ is
+lower-triangular with $1$ as elements on its diagonal and $U$ is
+upper-triangular, prove that $U = DL^\top$, where $D$ is a diagonal
+matrix whose diagonal is the diagonal of the matrix $U$.\\
+\subQ{f} A matrix $A$ is
+{\bfseries tridiagonal}\index{Matrices!Tridiagonal Matrices}
+if $a_{i,j} = 0$ for $|i-j|\geq 2$.  If $A$ is \nn tridiagonal matrix
+and $A = LU$, where $L$ is lower-triangular and $U$ is
+upper-triangular, prove that $L$ and $U$ are also tridiagonal.
+\label{solvCQ1}
+\end{question}
+
+\begin{question}
+Suppose that $A$ is a \nn symmetric matrix.
+
+\subQ{a} If Gauss elimination without pivoting is used on the first
+column of $A$ to reduce it to the \nn matrix $B$.  Prove that the
+\nm{(n-1)}{(n-1)} matrix obtained from $B$ by removing the first
+column and the first row is also symmetric.\\
+\subQ{b} Use the result in (a) to write an algorithm to solve the
+system $A \VEC{x} = \VEC{b}$ that reduce the number of operations by
+about half.
+\label{solvCQ2}
+\end{question}
+
+\begin{question}
+Consider the matrix
+\[ A =\left(
+\begin{array}{ccc}
+2 & 4 & 3 \\
+2.001 & 4 & 3 \\
+0 & 2 & 1
+\end{array} \right) \ .
+\]
+Use Gaussian elimination with backward substitution and scaled column
+pivoting to compute the inverse of $A$.  Use $5$-digit rounding
+arithmetic.  Compute the condition number of $A$.  Is $A$
+ill-conditioned?\\
+Hint: the $i^{th}$ column of $A^{-1}$ is the solution of $A\VEC{x} = \VEC{e}_i$.
+\label{solvCQ3}
+\end{question}
+
+\begin{question}
+If $A$ is an invertible matrix, prove that the condition number 
+$K(A)$ satisfies $K(A)\geq 1$.
+\label{solvCQ4}
+\end{question}
+
+\begin{question}
+Consider the system of linear equations $A\VEC{x} = \VEC{b}$, where
+\[
+A = \begin{pmatrix}
+1 & 2 \\
+1.00001 & 2
+\end{pmatrix} \quad \text{and} \quad
+\VEC{b} = \begin{pmatrix} 3 \\ 3.00001 \end{pmatrix} \ .
+\]
+Use row operations and $7$-digit rounding arithmetic to compute the
+solution $\VEC{x}_p$ of the perturbed system $A\VEC{x} = \VEC{b}_p$,
+where $\VEC{b}_p = \begin{pmatrix} 3.00001 & 3.00003 \end{pmatrix}^\top$.
+Compare $\VEC{x}_p$ with the solution
+$\VEC{x}_s = \begin{pmatrix} 1 & 1 \end{pmatrix}^\top$
+of the unperturbed system.  Compute the condition number using the
+$\ell^\infty$-norm.  Is the system ill-conditioned or
+well-conditioned?
+\label{solvCQ5}
+\end{question}
+
+\begin{question}
+Let $A$ be the \nn lower-triangular matrix defined by
+\[
+a_{i,j} =
+\begin{cases}
+0 & \text{ if } j>i \\
+1 & \text{ if } j=i \\
+-1 & \text{ if } j<i \\
+\end{cases}
+\]
+Compute the condition number
+$K(A) = \|A\|_\infty \, \|A^{-1}\|_\infty$.  Is $A$ well conditioned?
+\label{solvCQ6}
+\end{question}
+
+\begin{question}
+Consider the system of linear equations $A\VEC{x} = \VEC{b}$, where
+\[
+A = \begin{pmatrix}
+0.04 & 0.01 & -0.01 \\
+0.2 & 0.5 & -0.2 \\
+1 & 2 & 4
+\end{pmatrix}
+\quad \text{and} \quad
+\VEC{b} = \begin{pmatrix} 0.0601 \\ 0.302 \\ 11.03 \end{pmatrix} \ .
+\]
+Suppose that
+$\displaystyle
+\VEC{q} = \begin{pmatrix} 1.8 \\ 0.64 \\ 1.9 \end{pmatrix}$
+is an approximation of the solution
+$\displaystyle
+\VEC{p} = \begin{pmatrix} 1.83 \\ 0.66 \\ 1.97 \end{pmatrix}$.
+Without computing $A^{-1}$, can you determine if the system is
+ill-conditioned or well-conditioned?
+\label{solvCQ7}
+\end{question}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End:

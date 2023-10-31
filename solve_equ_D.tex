@@ -1,0 +1,687 @@
+\chapter{Iterative Methods to Solve Systems of Nonlinear Equations}
+\label{chaptSeqD}
+
+The problem is to find the solutions of the equation
+\begin{equation} \label{Equ1}
+f(\VEC{x})  = \VEC{0} \ ,
+\end{equation}
+where $f:\RR^n \rightarrow \RR^n$ is a given function.  Namely, we
+have to find the vectors $\VEC{p} \in \RR^n$ such that $f(\VEC{p}) = 0$.
+As for real-valued functions, the vectors $\VEC{p}$ are called the
+{\bfseries roots}\index{Functions!Root} or
+{\bfseries zeros}\index{Functions!Zero} of $f$.
+
+\section{Fixed Point Method}
+
+To find a root of $f$, we rewrite (\ref{Equ1}) as
+\begin{equation} \label{Equ2}
+\VEC{x}  =  g(\VEC{x}) \ ,
+\end{equation}
+where $g:\RR^n \rightarrow \RR^n$, and a fixed point of $g$ is a root
+of $f$ and vice-versa.  Recall that a vector $\VEC{p} \in \RR^n$ is a
+{\bfseries fixed point}\index{Functions!Fixed Point} of $g$ if
+$g(\VEC{p}) = \VEC{p}$.  We say that
+(\ref{Equ1}) and (\ref{Equ2}) are
+{\bfseries equivalent}\index{Equations!Equivalent} (on a given
+set) if a root of $f$ is a fixed point of $g$ and vice-versa.
+
+Given $\VEC{x}_0$, we hope that the sequence
+$\left\{\VEC{x}_k\right\}_{k=0}^\infty$ defined by
+\begin{equation} \label{Formula1}
+\VEC{x}_{k+1} = g(\VEC{x}_k)\quad ,\quad  k=0,1,2,\dots
+\end{equation}
+will converge to a fixed point $\VEC{p}$ of $g$ and therefore a root
+of $f$.  The problem is to choose $g$ and $\VEC{x}_0$ adequately.
+
+The following theorem gives conditions that guarantee the convergence
+of the sequence
+$\displaystyle \left\{\VEC{x}_k\right\}_{k=0}^\infty$ defined by
+(\ref{Formula1}) to a fixed point of $g$.
+
+\begin{theorem}[Fixed Point Theorem for Mappings]
+Let $S$ be a closed and bounded subset of $\RR^n$ and suppose that
+$g:S \rightarrow \RR^n$ satisfies:
+\begin{enumerate}
+\item $g(\VEC{x})\in S$ for all $x\in S$.
+\item There exists $0<K<1$ such that
+$\| g(\VEC{x}) - g(\VEC{y}) \| \leq K \| \VEC{x} - \VEC{y} \|$ for all
+$\VEC{x}$ and $\VEC{y}$ in $S$.
+\end{enumerate}
+Then $g$ has a unique fixed point $\VEC{p} \in S$ and, given
+$\VEC{x}_0 \in S $, the sequence
+$\left\{\VEC{x}_k\right\}_{k=0}^\infty$
+defined by (\ref{Formula1}) converges to $\VEC{p}$.  Moreover,
+\[
+\| \VEC{x}_k - \VEC{p} \| \leq \frac{K^k}{1-K}\;
+\| \VEC{x}_1 - \VEC{x}_0 \| \ .
+\]
+\label{FixedPTinRN}
+\end{theorem}
+
+\begin{rmkList}
+\begin{enumerate}
+\item The proof of Theorem~\ref{FixedPTinRN} is identical to the proof of
+the Fixed Point Theorem, Theorem~\ref{FxPtTh}, for
+$g:\RR \rightarrow \RR$ if the absolute value is replaced by the
+norm.
+\item Suppose that $g:S\to \RR^n$ is continuously differentiable;
+namely, that all the partial derivatives
+$\displaystyle \pdydx{g_i}{x_j}(\VEC{x})$ of $g$
+exist and are continuous in $S$.  Therefore the derivative
+$\diff g(\VEC{x})$ of $g$ at $\VEC{x}$ exists and is given by
+\[
+\diff g(\VEC{x}) = \begin{pmatrix}
+\displaystyle \pdydx{g_1}{x_1}(\VEC{x}) &
+\displaystyle \pdydx{g_1}{x_2}(\VEC{x}) & \dots &
+\displaystyle \pdydx{g_1}{x_n}(\VEC{x}) \\[0.8em]
+\displaystyle \pdydx{g_2}{x_1}(\VEC{x}) &
+\displaystyle \pdydx{g_2}{x_2}(\VEC{x}) & \ldots &
+\displaystyle \pdydx{g_2}{x_n}(\VEC{x}) \\
+\vdots & \vdots & \ddots & \vdots \\
+\displaystyle \pdydx{g_n}{x_1}(\VEC{x}) &
+\displaystyle \pdydx{g_n}{x_2}(\VEC{x}) & \ldots &
+\displaystyle \pdydx{g_n}{x_n}(\VEC{x})
+\end{pmatrix} \ .
+\]
+If $S$ is convex and
+\begin{equation}\label{FPTMK}
+\max_{\VEC{x} \in S} \|\diff g(x)\|_\infty < 1 \ ,
+\end{equation}
+then $\displaystyle K \equiv \max_{\VEC{x} \in S} \|\diff g(x)\|_\infty$ can
+be used to satisfy the second hypothesis of the Fixed Point Theorem
+because we have that
+$\| g(\VEC{x}) - g(\VEC{y}) \|_\infty \leq K \| \VEC{x} - \VEC{y} \|_\infty$
+for all $\VEC{x}$ and $\VEC{y}$ in $S$.
+This is a consequence of the mean value theorem for real valued
+functions on $\RR^n$.  The previous inequality is also true for the norm
+$\|\cdot\|_2$ but the norm $\|\diff g(x)\|_2$ is a lot harder to
+compute in general.
+
+Thus, to find $S$ and $g$ that satisfy (\ref{FPTMK}), one needs to
+find $S$ and $g$ such that
+\[
+\sum_j^n \bigg|\pdydx{g_i}{x_j}(\VEC{x})\bigg| \leq K < 1
+\]
+for all $i$ and all $\VEC{x} \in S$.
+\end{enumerate}
+\label{rmkKcondFP}
+\end{rmkList}
+
+\begin{egg}
+Find a solution of
+\begin{align*}
+x_1^2 - 10x_1 +x_2^2 + 8 &= 0\\
+x_1x_2^2 + x_1 -10x_2+8 &= 0
+\end{align*}
+with an accuracy of $3 \times 10^{-5}$ using the norm
+$\|\cdot\|_\infty$.
+
+We consider the function
+\[
+g(\VEC{x}) = \begin{pmatrix}
+g_1(\VEC{x}) \\ g_2(\VEC{x})
+\end{pmatrix} = \begin{pmatrix}
+\displaystyle \frac{x_1^2 + x_2^2 +8}{10} \\[0.7em]
+\displaystyle \frac{x_1x_2^2 +x_1 +8}{10}
+\end{pmatrix}
+\]
+and
+\[
+S = \left\{ \VEC{x} = \begin{pmatrix}
+x_1 \\ x_2
+\end{pmatrix} : 0 \leq x_i \leq \frac{3}{2} \text{ for } i=1,2 \right\} \ .
+\]
+
+We show that the conditions of the Fixed Point Theorem for Mappings are
+satisfied.  Since
+\[
+0 \leq \frac{x_1^2 + x_2^2 + 8}{10} \leq \frac{5}{4} < \frac{3}{2}
+\quad \text{and} \quad
+0 \leq \frac{x_1x_2^2 + x_1 +8}{10} \leq \frac{103}{80} < \frac{3}{2}
+\]
+for $\VEC{x} \in S$, we have that $g(\VEC{x}) \in S$ if
+$\VEC{x} \in S$.
+
+Since $g$ is continuously differentiable on $S$, we may use the
+second item of Remark~\ref{rmkKcondFP} to find a $K$ satisfying the
+Fixed Point Theorem for Mappings.  We have
+\begin{align*}
+\left| \pdydx{g_1}{x_1}(\VEC{x}) \right| &=
+\left| \frac{x_1}{5} \right| \leq \frac{3}{10} \ , \quad
+\left| \pdydx{g_1}{x_2}(\VEC{x}) \right| =
+\left| \frac{x_2}{5}\right| \leq \frac{3}{10} \ , \\
+\left| \pdydx{g_2}{x_1}(\VEC{x}) \right| &=
+\left| \frac{x_2^2+1}{10}\right| \leq \frac{13}{40} \quad \text{and}
+\quad
+\left| \pdydx{g_2}{x_2}(\VEC{x}) \right| =
+\left| \frac{x_1 x_2}{5}\right| \leq \frac{9}{20} \ .
+\end{align*}
+Hence $\displaystyle K = \max_{\VEC{x} \in S} \|\diff g(\VEC{x})\|_\infty \leq
+\max\{3/10 + 3/10,13/40 + 9/20\} = 31/40 <1$.
+
+With $\VEC{x}_0 = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$, we get
+$\displaystyle \VEC{x}_1 = \begin{pmatrix} 0.8 \\ 0.8 \end{pmatrix}$,
+$\displaystyle \VEC{x}_2 = \begin{pmatrix} 0.928 \\ 0.9312 \end{pmatrix}$,
+\ldots ,
+$\displaystyle \VEC{x}_{10} = \begin{pmatrix} 0.9999570565 \\
+0.9999570577 \end{pmatrix}$,
+$\displaystyle \VEC{x}_{11} = \begin{pmatrix} 0.9999828232 \\
+0.9999828234 \end{pmatrix}$,
+$\displaystyle \VEC{x}_{12} = \begin{pmatrix} 0.9999931294 \\
+0.9999931294 \end{pmatrix}$.
+We get $\|\VEC{x}_k - \VEC{x}_{k-1}\|_\infty < 3\times 10^{-5}$
+only for $k\geq 12$.  So $\VEC{x}_{12}$ is the desired approximation.
+All the previous computations were done with as much precision as
+possible but the written values were rounded to $10$ decimals.
+
+With $K= 31/40$, we get
+\[
+\| \VEC{x}_{11} - \VEC{p} \|_\infty \leq \frac{K^{11}}{1-K}\;
+\| \VEC{x}_1 - \VEC{x}_0 \|_\infty
+= \frac{(31/40)^{11}}{1- 31/40} 
+\bigg\|\begin{pmatrix}
+0.8 \\ 0.8
+\end{pmatrix}\bigg\|_{\infty}
+= 0.2154\ldots
+\]
+This is a very large upper bound for the error.  This motivates the use
+of the condition
+\mbox{$\|\VEC{x}_k - \VEC{x}_{k-1}\|_\infty < 3\times 10^{-5}$}
+to stop the iteration.
+\end{egg}
+
+\section{Newton's Method}
+
+Let $f:\RR^n \rightarrow \RR^n$ be a continuously differentiable
+function; namely, all partial derivatives
+$\displaystyle \pdydx{f_i}{x_j}(\VEC{x})$ exist and are continuous.
+Then the derivative $\diff f(\VEC{x})$ of $f$ at $\VEC{x}$ is
+\[
+\diff f(\VEC{x}) = \begin{pmatrix}
+\displaystyle \pdydx{f_1}{x_1}(\VEC{x}) &
+\displaystyle \pdydx{f_1}{x_2}(\VEC{x}) & \dots &
+\displaystyle \pdydx{f_1}{x_n}(\VEC{x}) \\[0.7em]
+\displaystyle \pdydx{f_2}{x_1}(\VEC{x}) &
+\displaystyle \pdydx{f_2}{x_2}(\VEC{x}) & \ldots &
+\displaystyle \pdydx{f_2}{x_n}(\VEC{x}) \\
+\vdots & \vdots & \ddots & \vdots \\
+\displaystyle \pdydx{f_n}{x_1}(\VEC{x}) &
+\displaystyle \pdydx{f_n}{x_2}(\VEC{x}) & \ldots &
+\displaystyle \pdydx{f_n}{x_n}(\VEC{x})
+\end{pmatrix} \ .
+\]
+The Newton's Method for mappings is as follows:
+
+\begin{algo}[Newton's Method for Mappings]
+\begin{enumerate}
+\item Choose $\VEC{x}_0$ closed to a solution $\VEC{p}$ of
+$f(\VEC{x}) = \VEC{0}$ if possible.
+\item Given $\VEC{x}_k$, compute
+\begin{equation} \label{NMforS}
+\VEC{x}_{k+1}=\VEC{x}_k- (\diff f(\VEC{x}_k))^{-1} f(\VEC{x}_k)
+\end{equation}
+if $\diff f(\VEC{x}_k)$ is invertible.  If $\diff f(\VEC{x}_k)$ is not
+invertible, start over with a better choice for $\VEC{x}_0$.
+\item  Repeat (2) until $\| \VEC{x}_{k+1} - \VEC{x}_k \| < \epsilon$,
+where $\epsilon$ is given.
+\end{enumerate}
+\end{algo}
+
+\begin{theorem}
+Suppose that $\VEC{p}$ is a solution of $f(\VEC{x}) = \VEC{0}$.
+Let $S=\{ \VEC{x} \in \RR^n : \| \VEC{x} - \VEC{p} \| \leq \eta\}$.
+Suppose that $\diff f(\VEC{x})$ is invertible for all $\VEC{x} \in S$
+and let
+$\displaystyle g(\VEC{x}) = \VEC{x}- \diff f(\VEC{x})^{-1} f(\VEC{x})$.
+If the partial derivatives of order two
+$\displaystyle \pdydxnm{g_i}{x_j}{x_k}{2}{}{}$ exist and are
+continuous on $S$ for $1 \leq i,j,k \leq n$, then
+there exists a positive number $\delta \leq \eta$ such that the
+sequence defined by (\ref{NMforS}) converges at least quadratically to
+$\VEC{p}$ if $\| \VEC{x}_0 - \VEC{p} \| < \delta$.
+\end{theorem}
+
+The proof of this theorem is similar to the proof of the order of
+convergence for the Newton's Method for functions $f:\RR \to \RR$.
+
+\begin{rmk}
+Any norm on $\RR^n$ can be used.  However, the norm $\|\cdot\|_\infty$
+is often used because it is usually easy to compute.
+\end{rmk}
+
+\begin{egg}
+Use Newton's Method for Mappings to approximate a solution of
+\begin{align*}
+3x_1^2 - x_2^2 &= 0\\
+3x_1x_2^2 + x_1^3 - 1 &= 0
+\end{align*}
+near $\begin{pmatrix} 1 \\ 1 \end{pmatrix}$
+with an accuracy of $10^{-6}$ using $\|\cdot\|_\infty$.
+
+We have
+\[
+f(\VEC{x}) = \begin{pmatrix}
+f_1(\VEC{x}) \\ f_2(\VEC{x})
+\end{pmatrix} = \begin{pmatrix}
+3x_1^2 - x_2^2 \\
+3x_1x_2^2 - x_1^3 -1
+\end{pmatrix}
+\]
+and
+\[
+\diff f(\VEC{x}) = \begin{pmatrix}
+6x_1 &  -2 x_2 \\
+3(x_2^2 - x_1^2) & 6x_1x_2
+\end{pmatrix} \ .
+\]
+
+Let $\VEC{x}_0 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$.
+\begin{enumerate}
+\item $f(\VEC{x}_0) = \begin{pmatrix} 2 \\ 1 \end{pmatrix}$ and
+$\diff f(\VEC{x}_0) =  \begin{pmatrix} 6 & -2 \\ 0 & 6 \end{pmatrix}$.
+The solution of $\diff f(\VEC{x}_0)\VEC{y} = f(\VEC{x}_0)$ is
+$\VEC{y} =  \begin{pmatrix} 0.3\overline{8} \\
+0.1\overline{6} \end{pmatrix}$.  Hence
+$\VEC{x}_1 = \VEC{x}_0 - \VEC{y} =  \begin{pmatrix} 0.6\overline{1} \\
+0.8\overline{3} \end{pmatrix}$.
+\item $f(\VEC{x}_1) = \begin{pmatrix} 0.4\overline{259} \\ 0.044924554
+\end{pmatrix}$ and $\diff f(\VEC{x}_1) =
+\begin{pmatrix} 3.\overline{6} & -1.\overline{6} \\
+0.\overline{962} & 3.0\overline{5}
+\end{pmatrix}$.
+The solution of $\diff f(\VEC{x}_1)\VEC{y} = f(\VEC{x}_1)$ is
+$\VEC{y} =  \begin{pmatrix} 0.10745204 \\ -0.019161089
+\end{pmatrix}$.
+Hence, $\VEC{x}_2 = \VEC{x}_1 - \VEC{y} =
+\begin{pmatrix} 0.50365909 \\ 0.85249442 \end{pmatrix}$.
+\item And so on.
+\end{enumerate}
+We get
+$\|\VEC{x}_k - \VEC{x}_{k-1}\|_\infty < 10^{-6}$ for $k\geq 5$.
+So $\VEC{x}_5 = \begin{pmatrix} 0.50000000 \\ 0.86602540 \end{pmatrix}$
+is the desired approximation.  All the previous computations were done
+with as much precision as possible but the written values were rounded
+to $8$ decimals.
+\end{egg}
+
+\section{Quasi-Newton Methods}
+
+We consider the problem of finding a solution of the equation
+\begin{equation}
+f(\VEC{x}) = \VEC{0} \ ,
+\end{equation}
+where $f:\RR^n \rightarrow \RR^n$ is continuously differentiable.
+
+To use Newton's Method, we need to compute $\diff f(\VEC{x})$.  It is
+not always possible to compute $\diff f(\VEC{x})$ at each step or it may
+be costly to compute it at each step.  It would be nice to have a
+method like the secant method to solve systems of non-linear
+equations.
+
+The method proposed by Broyden produces a sequence
+$\displaystyle \{ \VEC{x} \}_{k=0}^\infty$ from an iterative formula of the
+form
+\begin{equation} \label{iter_NLE_qn}
+\VEC{x}_{k+1} = \VEC{x}_k - A_k^{-1} f(\VEC{x}_k) \quad , \quad k=0,1,2,\ldots
+\end{equation}
+where $\VEC{x}_0$ is the given initial value and the matrix $A_k$ is an
+approximation of $\diff f(\VEC{x}_k)$.
+
+The method developed by Broyden gives an approximation $A_k$ of $\diff
+f(\VEC{x}_k)$ such that the approximation $A_{k+1}$ 
+of $\diff f(\VEC{x}_{k+1})$ can be easily obtained from $A_k$.  Only
+$\diff f(\VEC{x}_0)$ is needed to start the iteration.
+The method reduces the number of functions evaluation at
+each steps.  However, it also produces an iterative method with a rate of
+convergence inferior to the quadratic rate of convergence of the Newton's
+Method.  The iterative method proposed by Broyden has a superlinear rate of
+convergence; namely,
+\[
+\lim_{k\rightarrow \infty} \frac{\|\VEC{x}_{k+1} - \VEC{p}\|}
+{\|\VEC{x}_k - \VEC{p}\|} = 0 \ ,
+\]
+where $\VEC{p}$ is the limit of the sequence
+$\displaystyle \{ \VEC{x} \}_{k=0}^\infty$ and thus a solution of
+$f(\VEC{x})=\VEC{0}$.
+Unlike Newton's Method, the iterative method developed by Broyden is not
+``self correcting''\quad  Newton's Method will correct round-off errors as one
+keeps iterating.  This is not so for the method presented in this section.
+
+The sequence $\displaystyle \{ \VEC{x} \}_{k=0}^\infty$ produced by the 
+iterative formula (\ref{iter_NLE_qn}) will generally converges to a solution
+$\VEC{p}$ of $f(\VEC{x})=\VEC{0}$ if $\VEC{x}_0$ is closed enough to
+$\VEC{p}$.
+
+The approximation $A_k$ of $\diff f(\VEC{x}_k)$ is given recursively
+as follows.
+\begin{enumerate}
+\item $\displaystyle A_0 = J_f(\VEC{x}_0)$.  This is the only time that
+$J_f(\VEC{x})$ needs to be computed.
+\item
+Given $A_k$, $\VEC{x}_{k}$ and $\VEC{x}_{k+1}$, the approximation
+$A_{k+1}$ is a matrix which satisfies
+\begin{align*}
+A_{k+1} \left( \VEC{x}_{k+1} - \VEC{x}_k \right) &= f(\VEC{x}_{k+1}) -
+f(\VEC{x}_k)
+\intertext{and}
+\KE(A_{k+1} - A_k) &\supset
+E \equiv \{ \lambda(\VEC{x}_{k+1}- \VEC{x}_k) : \lambda \in \RR \}^\bot \ ,
+\end{align*}
+where $\KE(A_{k+1} - A_k)$ denotes the kernel of the linear mapping
+associated to the matrix $A_{k+1} - A_k$.
+\end{enumerate}
+
+The second condition in item (2) can be expressed as
+follows.  $A_{k+1} \VEC{x} = A_k \VEC{x}$ for all $\VEC{x}$ such that
+$\ps{ \VEC{x}}{(\VEC{x}_{k+1} - \VEC{x}_k)} = 0$.  In other words,
+$A_{k+1} = A_k$ on the orthogonal complement of $E$.  It is easy to
+check that the matrix $A_{k+1}$ satisfying the item (2) above is
+\begin{equation} \label{ReccAkp1Ak}
+A_{k+1} = A_k + \frac{1}{\|\VEC{x}_{k+1}-\VEC{x}_k\|^2}
+\big( f(\VEC{x}_{k+1}) - f(\VEC{x}_k) - A_k(\VEC{x}_{k+1} - \VEC{x}_k)\big)
+(\VEC{x}_{k+1} - \VEC{x}_k)^\top \ .
+\end{equation}
+
+There is an additional benefit in using the iterative method above.  There is
+no need to solve a linear system of the form $A_k\VEC{y} = \VEC{x}_k$ at each
+iterative step.  It is easy to compute recursively $A_k^{-1}$.  To explain
+how to do this, we need the following proposition.
+
+\begin{prop}[Sherman and Morrison]
+If $A$ is an \nn nonsingular matrix and $\VEC{x}$, $\VEC{y}$ are two
+vectors such that $\VEC{y}^\top A^{-1} \VEC{x} + 1 \neq 0$, then
+$A + \VEC{x}\VEC{y}^\top$ is nonsingular and
+\begin{equation} \label{iter_NLE_qn3}
+\left( A + \VEC{x} \VEC{y}^\top \right)^{-1} = A^{-1}
+- \frac{1}{1+\VEC{y}^\top A^{-1} \VEC{x}} A^{-1} \VEC{x}\VEC{y}^\top A^{-1} \ .
+\end{equation}
+\end{prop}
+
+\begin{proof}
+Since
+\[
+A + \VEC{x} \VEC{y}^\top = A \left( \Id + A^{-1} \VEC{x}\VEC{y}^\top\right)
+\]
+and $A$ is nonsingular, it is enough to prove that
+$\Id + A^{-1} \VEC{x}\VEC{y}^\top$ is nonsingular to prove that
+$A + \VEC{x} \VEC{y}^\top$ is nonsingular.
+
+If $\VEC{z} \in \KE\left( \Id + A^{-1} \VEC{x}\VEC{y}^\top \right)$, 
+we get that
+\[
+\underbrace{\left( 1 +\VEC{y}^\top  A^{-1} \VEC{x} \right)}_{\neq 0}
+\VEC{y}^\top \VEC{z}
+=  \VEC{y}^\top \left( \Id + A^{-1} \VEC{x}\VEC{y}^\top \right) \VEC{z}
+=  \VEC{y}^\top \VEC{0} = 0 \ .
+\]
+Thus $\VEC{y}^\top \VEC{z} = 0$ and
+\[
+\VEC{0} = \left( \Id + A^{-1} \VEC{x}\VEC{y}^\top \right) \VEC{z} 
+= \VEC{z} + A^{-1} \VEC{x} \left( \VEC{y}^\top \VEC{z} \right) 
+= \VEC{z} \ .
+\]
+We conclude that
+$\KE\left( \Id + A^{-1} \VEC{x}\VEC{y}^\top \right) = \left\{ \VEC{0}\right\}$
+and $\Id + A^{-1} \VEC{x}\VEC{y}^\top$ is nonsingular.
+
+To prove that the right hand side of (\ref{iter_NLE_qn3}) is the
+inverse of $A + \VEC{x} \VEC{y}^\top$, it suffices to multiply
+the right hand side of (\ref{iter_NLE_qn3}) by
+$A + \VEC{x} \VEC{y}^\top$.  This is a simple computation left to the
+reader.
+\end{proof}
+
+Let
+\begin{align*}
+\VEC{u}_{k+1} &= \VEC{x}_{k+1} - \VEC{x}_k
+\intertext{and}
+\VEC{v}_{k+1} &= f(\VEC{x}_{k+1}) - f(\VEC{x}_k) \quad , \quad k=0,1,2,\ldots
+\end{align*}
+If we substitute
+\[
+\VEC{y} = \VEC{u}_{k+1} \ , \quad A=A_k \quad \text{and} \quad
+\VEC{x} = \frac{1}{\|\VEC{u}_{k+1} \|^2}
+\left( \VEC{v}_{k+1} - A_k \VEC{u}_{k+1} \right)
+\]
+in (\ref{iter_NLE_qn3}), we get from (\ref{ReccAkp1Ak}) that
+\begin{align*}
+A_{k+1}^{-1} &=
+\left( A_k + \frac{1}{\|\VEC{u}_{k+1}\|^2}
+\left(\VEC{v}_{k+1} - A_k\VEC{u}_{k+1} \right)\VEC{u}_{k+1}^\top \right)^{-1} \\
+&= A_k^{-1} -
+\left( 1 + \VEC{u}_{k+1}^\top A_{k}^{-1}\left(
+\frac{1}{\|\VEC{u}_{k+1}\|^2} \left(\VEC{v}_{k+1} - A_k\VEC{u}_{k+1}
+\right)\right)\right)^{-1}\\
+&\qquad \quad \left( A_k^{-1} \left(\frac{1}{\|\VEC{u}_{k+1}\|^2}
+\left(\VEC{v}_{k+1} - A_k\VEC{u}_{k+1} \right)\right) \VEC{u}_{k+1}^\top
+A_k^{-1}\right) \\
+&= A_k^{-1} +
+\left( \VEC{u}_{k+1}^\top A_{k}^{-1} \VEC{v}_{k+1}\right)^{-1}
+\left(\VEC{u}_{k+1} - A_k^{-1} \VEC{v}_{k+1}\right) \VEC{u}_{k+1}^\top
+A_k^{-1} \quad , \quad k=0,1,2,\ldots
+\end{align*}
+Once $A_0^{-1}$ has been computed, it becomes ``relatively easy'' to
+compute the $A_k^{-1}$ with the iterative formula above.
+
+\section{Steepest Descent for Nonlinear Systems}
+
+The problem of finding a solution of the equation
+\begin{equation}
+f(\VEC{x})  = 0 \ ,
+\end{equation}
+where $f:\RR^n \rightarrow \RR$ is continuously differentiable, can 
+be solved using a method similar to the steepest descent method that
+has been introduced earlier to solve linear systems of the form
+$A\VEC{x}=\VEC{b}$.
+
+The {\bfseries steepest descent}\index{Steepest Descent} algorithm
+that we present below is based on the following observations.  At a
+point $\VEC{x}_k$, the direction in which the function $f(\VEC{x})$
+decreases the fastest is the direction of the vector $-\nabla
+f(\VEC{x}_k)$.  The descent method is based on minimizing
+$\displaystyle q(t) = f\big(\VEC{x}_k - t \nabla f(\VEC{x}_k)\big)$
+for $t$ near the origin.  If $t_k$ is the value of $t$ nearest $0$ where a
+minimum of $q$ is reached, the next approximation of the solution of
+$f(\VEC{x})=\VEC{0}$ is given by
+$\displaystyle \VEC{x}_{k+1} = \VEC{x}_k - t_k \nabla f(\VEC{x}_k)$.
+Repeating this procedure, we hope to get a sequence of vectors
+$\displaystyle \{\VEC{x}_k\}_{k=0}^\infty$ converging toward the
+solution of $f(\VEC{x})$.
+
+\begin{algo}[Steepest descent]
+\begin{enumerate}
+\item Choose $\VEC{x}_0$ closed to a solution $\VEC{p}$ of
+$f(\VEC{x}) = \VEC{0}$ if possible.
+\item Given $\VEC{x}_k$, compute
+$\displaystyle \nabla f(\VEC{x}_k)$.
+\item Find the value of $t_k$ nearest $0$ for which
+$\displaystyle q(t) = f\big(\VEC{x}_k - t \nabla f(\VEC{x}_k)\big)$
+reaches a minimum.
+\item Let
+$\displaystyle \VEC{x}_{k+1} = \VEC{x}_k - t_k \nabla f(\VEC{x}_k)$.
+\item  Repeat (2) to (4) until
+$\| \VEC{x}_{k+1} - \VEC{x}_k \| < \epsilon$,
+where $\epsilon$ is given.
+\end{enumerate}
+\end{algo}
+
+To minimize $q$ in (3), one may look for the roots of $q'$;
+namely, the critical points of $q$.  We will not elaborate on the
+techniques to minimize $q$.  This is part of the important subject of
+optimization that we unfortunately do not cover in this book.
+
+\section{Exercises}
+
+\begin{question}
+Consider the function
+\[
+g(\VEC{x}) = \begin{pmatrix}
+\cos^2(x_1+x_2)/6 \\
+\sin(x_1)\cos(x_2)/5
+\end{pmatrix} \ .
+\]
+\subQ{a} Show that $g$ satisfies the hypothesis of the Fixed Point
+Theorem for mapping on
+$S = \{ \VEC{x} \in \RR^2 : -1\leq x_1,x_2 \leq 1 \}$.\\
+\subQ{b} Use the fixed point method to approximate
+the fixed point of $g$ in $S$ with an accuracy of $10^{-5}$.\\
+\subQ{c} Let $\VEC{p}$ be the fixed point of $g$ in $S$, find a small value
+of $n$ for which $\| \VEC{x}_n - \VEC{p}\|_\infty < 10^{-5}$, where
+$\{\VEC{x}_n\}_{n=1}^\infty$ is the sequence generated by
+$\VEC{x}_{n+1} = g(\VEC{x}_n)$ with $\VEC{x}_0 = \VEC{0}$. 
+\label{solvDQ1}
+\end{question}
+
+\begin{question}
+\subQ{a} Show that a solution of
+\[
+f(\VEC{x}) = \begin{pmatrix} f_1(\VEC{x}) \\ f_2(\VEC{x}) \end{pmatrix}
+= \begin{pmatrix}
+x_1^3 + 12x_1 - x_2 - 3 \\
+2x_1 + x_2^3 - 12x_2 + 2
+\end{pmatrix}
+= \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+\]
+is a fixed point of
+\[
+g(\VEC{x}) = \begin{pmatrix} g_1(\VEC{x}) \\ g_2(\VEC{x}) \end{pmatrix}
+= \begin{pmatrix}
+(x_2 - x_1^3 + 3)/12 \\
+(2x_1 + x_2^3 +2)/12
+\end{pmatrix}
+\]
+and vice-versa.\\
+\subQ{b} Use a sketch of the two level curves defined by $f_1(\VEC{x})=0$
+and $f_2(\VEC{x}) =0$ to show that there is at least one solution to
+$f(\VEC{x}) = \VEC{0}$.\\
+\subQ{c} Check that the function $g$ satisfies all the hypotheses of
+the Fixed Point Theorem for mappings on
+$S =\left\{ \VEC{x} : 0 \leq x_1, x_2 \leq 1 \right\}$.\\
+\subQ{d} Use the fixed point method to approximate a
+solution of $f(\VEC{x}) = \VEC{0}$ with an accuracy of $10^{-5}$.
+Start with $\VEC{x}_0 = \VEC{0}$.\\
+\subQ{e} Determine a small value of $n$ for which
+$\| \VEC{x}_n - \VEC{p}\|_\infty < 10^{-5}$, where $\VEC{p}$ is the
+unique fixed point of $g$ in $S$ and the vectors $\VEC{x}_n$ are
+generated by the fixed point method from $\VEC{x}_0 = \VEC{0}$.
+\label{solvDQ2}
+\end{question}
+
+\begin{question}
+Use the fixed point method to approximate a solution of
+$f(\VEC{x})=\VEC{0}$ to within $10^{-5}$, where
+\[
+f(\VEC{x}) =
+\begin{pmatrix}
+4 x_1 - x_2 - 5 \\
+1 + \sqrt{x_1} - (x_2 + 1)^3
+\end{pmatrix} \ .
+\]
+Don't forget to verify the hypothesis of the Fixed-Point Theorem
+first.
+\label{solvDQ3}
+\end{question}
+
+\begin{question}
+\subQ{a} Show that a root of
+\begin{equation} \label{SystemQuest1}
+f(\VEC{x}) = \begin{pmatrix}
+2(x_1-1)^2 - 2x_2 - 1 \\
+x_1^2 + 4x_2^2 - 4
+\end{pmatrix}
+\end{equation}
+is a fixed point of
+\[
+g(\VEC{x}) =
+\begin{pmatrix}
+(2x_1^2 - 2x_2 +1)/4 \\
+(-x_1^2 - 4x_2^2 + 8x_2 + 4)/8
+\end{pmatrix}
+\]
+and vice-versa.\\
+\subQ{b} Use a sketch of the two level curves defined by $f_1(\VEC{x})=0$
+and $f_2(\VEC{x}) =0$ to show that there is at least one solution to
+$f(\VEC{x}) = \VEC{0}$.\\
+\subQ{c} Verify that the function $g$ satisfies all the hypotheses
+of the Fixed Point Theorem for mappings on
+$S =\left\{ \VEC{x} : -1/4 \leq x_1 \leq 1/4 \ ,
+\ 3/4 \leq x_2 \leq 1 \right\}$.\\
+\subQ{d} Use the fixed point method to approximate a
+solution of (\ref{SystemQuest1}) with an accuracy of $10^{-5}$.  Start with
+$\displaystyle \VEC{x}_0 = \begin{pmatrix} 0 & 1 \end{pmatrix}^\top$.\\
+\subQ{e} Find a small value of $n$ for which 
+$\| \VEC{x}_n - \VEC{p}\|_\infty < 10^{-5}$, where $\VEC{p}$ is the
+unique fixed point of $g$ in $S$ and the vectors $\VEC{x}_n$
+are generated by the fixed point method from $\VEC{x}_0$ given in (d).
+\label{solvDQ4}
+\end{question}
+
+% 
+% $-0.25 = g_1(0,1) \leq g_1(x_1,x_2) \leq g_1(1/4,3/4) = -0.096094
+% \leq 1/4$ and $3/4 \leq 0.96094 = g_2(1/4,3/4) \leq g_2(x_1,x_2)
+% \leq g_2(0,1) = 1$
+% 
+% \[
+% D\vec{g} = \begin{pmatrix}
+%  x & -1/2 \\
+%  -x/4 & -y +1
+% \end{pmatrix}
+% \]
+%
+% and $K = \max\{ |x| + 1/2 , |x|/4 + |1-y| \} = 3/4 < 1$
+%
+% $\VS{x}{1} = (-1/4,1) = \vec{g}( (0,1) )$
+% $\VS{x}{2} = (-0.21875000000000   0.99218750000000)
+%           = \vec{g}( \VS{x}{1} )$
+%
+
+\begin{question}
+\subQ{a} Show that a root of
+\begin{equation} \label{SystemQuest2}
+f(\VEC{x}) = \begin{pmatrix}
+3 -15 x_1 + x_2^2 + 4 x_3 \\
+5 + x_1^2 -10 x_2 + x_3 \\
+22 +x_2^3 - 25 x_3
+\end{pmatrix}
+\end{equation}
+is a fixed point of
+\[
+g(\VEC{x}) =
+\begin{pmatrix}
+(x_2^2 + 4 x_3 + 3)/15 \\
+(5 +x_1^2 +x_3)/10 \\
+(x_2^3 +22)/25
+\end{pmatrix}
+\]
+and vice-versa.\\
+\subQ{b} Verify that the function $g$ satisfies all the hypotheses
+of the Fixed Point Theorem for mappings on
+$S =\left\{ \VEC{x} : 0 \leq x_i \leq 3/2 \right\}$.\\
+\subQ{c} Use the fixed point method to approximate a
+solution of (\ref{SystemQuest2}) with an accuracy of $10^{-5}$.  Start with
+$\displaystyle \VEC{x}_0 = \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}^\top$.\\
+\subQ{d} Find a small value of $n$ for which 
+$\| \VEC{x}_n - \VEC{p}\|_\infty < 10^{-5}$, where $\VEC{p}$ is the
+unique fixed point of $g$ in $S$ and the vectors $\VEC{x}_n$
+are generated by the fixed point method from $\VEC{x}_0$ given in (c).
+\label{solvDQ5}
+\end{question}
+
+\begin{question}
+Use Newton's Method to approximate a solution of $f(\VEC{x}) = \VEC{0}$
+with an accuracy $10^{-6}$, where
+\[
+f(\VEC{x}) = \begin{pmatrix}
+x_1^3 + x_1^2 x_2 - x_1 x_3 + 6 \\
+e^{x_1} + e^{x_2} - x_3 \\
+x_2^2 - 2 x_1 x_3 -4
+\end{pmatrix}
+\]
+for $-2 \leq x_1 , x_2 \leq -1$ and $0 \leq x_3 \leq 1$.
+\label{solvDQ6}
+\end{question}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End: 

@@ -1,0 +1,174 @@
+\nonumsection{Chapter~\ref{chaptInterB} : Splines}
+
+\solution{\SOL}{\ref{intBQ1}}{
+We have
+\[
+p_i(x) = \left(\left(\alpha_i(x-x_i) + \beta_i\right)(x-x_i)
++\gamma_i\right)(x-x_i) + \delta_i
+\]
+on $[x_i,x_{i+1}]$, where $x_0 = 0$, $x_1 = 1$, $x_2=3$. $x_3 = 4$,
+$x_4 =5$ and $x_5 = 5.5$.
+
+The solution of $A\VEC{z} = \VEC{b}$, where
+\begin{align*}
+A &= \begin{pmatrix}
+2 \Delta x_0 & \Delta x_0 & 0 & 0 & 0 & 0 \\
+\Delta x_0 & 2(\Delta x_1 - \Delta x_0) & \Delta x_1 & 0 & 0 & 0 \\
+0 & \Delta x_1 & 2(\Delta x_2 - \Delta x_1) & \Delta x_2 & 0 & 0 \\
+0 & 0 & \Delta x_2 & 2(\Delta x_3 - \Delta x_2) & \Delta x_3 & 0 \\
+0 & 0 & 0 & \Delta x_3 & 2(\Delta x_4 - \Delta x_3) & \Delta x_4 \\
+0 & 0 & 0 & 0 & \Delta x_4 & 2 \Delta x_4
+\end{pmatrix} \\
+&= \begin{pmatrix}
+2 & 1 & 0 & 0 & 0 & 0 \\
+1 & 6 & 2 & 0 & 0 & 0 \\
+0 & 2 & 6 & 1 & 0 & 0 \\
+0 & 0 & 1 & 4 & 1 & 0 \\
+0 & 0 & 0 & 1 & 3 & 0.5 \\
+0 & 0 & 0 & 0 & 0.5 & 1
+\end{pmatrix}
+\end{align*}
+and
+\[
+\VEC{b} = \begin{pmatrix}
+\displaystyle - 6f'(x_0) + 6\, \frac{f(x_1) - f(x_0)}{x_1-x_0}\\[0.8em]
+\displaystyle 6\,\frac{f(x_2) -f(x_1)}{x_2-x_1}
+- 6\,\frac{f(x_1) - f(x_0)}{x_1-x_0}\\[0.8em]
+\displaystyle 6\,\frac{f(x_3) -f(x_2)}{x_3-x_2}
+- 6\,\frac{f(x_3) - f(x_1)}{x_2-x_1}\\[0.8em]
+\displaystyle 6\,\frac{f(x_4) -f(x_3)}{x_4-x_3}
+- 6\,\frac{f(x_3) - f(x_2)}{x_3-x_2}\\[0.8em]
+\displaystyle 6\,\frac{f(x_5) -f(x_4)}{x_5-x_4}
+- 6\,\frac{f(x_4) - f(x_3)}{x_4-x_3}\\[0.8em]
+\displaystyle 6f'(x_5) - 6\,\frac{f(x_5)-f(x_4)}{x_5-x_4}
+\end{pmatrix}
+= \begin{pmatrix}
+6 \\
+-6 \\
+-6 \\
+6 \\
+-12 \\
+0
+\end{pmatrix} \ ,
+\]
+is
+\[
+\VEC{z} = \begin{pmatrix}
+3.615279672578445 \\
+-1.230559345156889 \\
+-1.115961800818554 \\
+3.156889495225103 \\
+-5.511596180081855 \\
+2.755798090040928
+\end{pmatrix} \ .
+\]
+
+The coefficients of $p_i$ are given by
+\[
+\delta_i = f(x_i)  \ , \quad
+\gamma_i = -\frac{z_i \Delta x_i}{3} - \frac{z_{i+1} \Delta x_i}{6} +
+\frac{f(x_{i+1})-f(x_i)}{\Delta x_i}  \ , \quad
+\beta_i = \frac{z_i}{2} \quad \text{and} \quad
+\alpha_i = \frac{z_{i+1}-z_i}{6 \Delta x_i}
+\]
+for $i=0$, $2$, \ldots, $5$.
+
+The following table lists the values of the coefficients of
+$p_i$.
+\[
+\begin{array}{c|cccc}
+i & \alpha_i & \beta_i & \gamma_i & \delta_i \\
+\hline
+0 & -0.807639836289222 & 1.807639836289222 & 0 & 2 \\
+1 & 0.009549795361528 & -0.615279672578445 & 1.192360163710777 & 3 \\
+2 & 0.712141882673943 & -0.557980900409277 & -1.154160982264666 & 3 \\
+3 & -1.444747612551160 & 1.578444747612551 & -0.133697135061392 & 2 \\
+4 & 2.755798090040928 & -2.755798090040928 & -1.311050477489768 & 2
+\end{array}
+\]
+The graph of the clamped cubic spline polynomial is given below.
+\figbox{interpolation_B/spline_quest1}{7cm}
+}
+
+\solution{\SOL}{\ref{intBQ2}}{
+The MATLAB code to generate the system $A \VEC{z} = \VEC{b}$ for the natural
+cubic spline interpolation is given in Code~\ref{codeNCSI}.
+
+The MATLAB code used to produce the figure below is given in
+Code~\ref{codeQuest2}.
+
+\figbox{interpolation_B/spline_quest2}{7cm}
+}
+  
+\begin{code}[Natural Cubic Spline Interpolant - System] \label{codeNCSI}
+This program computes the tridiagonal matrix $A$ and the right hand
+side column vector $\VEC{b}$ associated to the natural cubic spline
+interpolation.\\
+\subI{Input} The nodes $x_i$ for $0 \leq i \leq n$ (x(i+1) in the code
+below).\\
+The values $f(x_i)$ for $0 \leq i \leq n$ (f(i+1) in the code
+below).\\
+\subI{Output} The lower diagonal $L$, the diagonal $D$ and the upper
+diagonal $U$ of the tridiagonal matrix $A$.\\
+The right hand side $\VEC{b}$ of $A\VEC{x} = \VEC{b}$.
+\small
+\begin{verbatim}
+%   [L,D,U,b] = naturalsplinematrix(f,p)
+
+function [L,D,U,b] = naturalsplinematrix(f,fp,p)
+  N = length(p);
+  L = repmat(NaN,1,N-3);
+  U = repmat(NaN,1,N-3);
+  D = repmat(NaN,1,N-2);
+  b = repmat(NaN,1,N-2);
+
+  dp = p(2)-p(1);
+  if (dp == 0)
+    return;
+  end
+  ratio = (f(2)-f(1))/dp;
+
+  for n=1:N-2
+    prevdp = dp;
+    dp = p(n+2)-p(n+1);
+    if (dp == 0)
+      return;
+    end
+    prevratio = ratio;
+    ratio = (f(n+2)-f(n+1))/dp;
+    D(n) = 2*(dp+prevdp);
+    if ( n < N - 2 )
+        U(n) = dp;
+        L(n) = dp;
+    end
+    b(n) = 6*(ratio - prevratio);
+  end
+end
+\end{verbatim}
+\end{code}
+
+\begin{code}[Code for Question~\ref{intBQ2}] \label{codeQuest2}
+\small
+\begin{verbatim}
+p = [ 0 , 1 , 3 , 4 , 5 , 5.5 ];
+f = [ 2 , 3 , 3 , 2 , 2 , 1 ];
+[L,D,U,b] = naturalsplinematrix(f,p)
+
+z = tridmatrix(L,D,U,b);
+z = [0,z,0]
+
+x = 0:0.01:5.5;
+[y,coeffs] = splinepoly(z,f,p,x);
+coeffs
+plot(x,y,'b')
+grid on
+xlabel('x')
+ylabel('y')
+\end{verbatim}
+\end{code}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End: 

@@ -1,0 +1,7 @@
+\begin{picture}(0,0)%
+\includegraphics{solve_equ_A/tanmone.pdf}%
+\end{picture}%
+
+% fig2dev -L pdftex tanmone.fig tanmone.pdf
+% fig2dev -L pdftex_t tanmone.fig tanmone.pdf_t
+

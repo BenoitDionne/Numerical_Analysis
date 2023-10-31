@@ -1,0 +1,1855 @@
+\chapter{Splines}\label{chaptInterB}
+
+In the previous chapter, we showed how to generate a polynomial
+whose graph traverses a set of points $(x_i,f(x_i))$ for $i=0$, $1$,
+$2$, \ldots, $n$.  This polynomial could be of high degree and not be a
+very good fit for the function $f$ that produced the points.  In the
+present chapter, we describe several methods to generate a piecewise
+polynomial function $p$ that may provide a good fit for the function $f$.
+For some methods, the piecewise polynomial function $p$ may traverse
+all the points $(x_i,f(x_i))$ but this is not a necessity.  Because
+$p$ is a piecewise functions, it is possible to impose some conditions
+on $p$ at the points $(x_i,f(x_i))$ (using what is called ``control
+points'' ) to provide a good fit for the function $f$.
+
+Some of the methods presented in this chapter could be use to generate
+a piecewise parametric curve that traverses some points $(x_i,y_i)$ for
+$0 \leq i \leq n$, and satisfies some conditions at these points by
+adding some ``control points''.
+
+\section{Cubic Spline Interpolation} \label{CSI}
+
+Let $f:[a,b]\rightarrow \RR$ be a continuously differentiable
+function and $a = x_0 < x_1 < \ldots < x_n = b$.  We have seen in
+Remark~\ref{matlab} that MATLAB uses a piecewise linear function
+through the points $(x_i,f(x_i))$ for $0 \leq i \leq n$ to sketch
+the graph of $f$; to be precise, we should say that MATLAB plot a
+piecewise linear curve that looks like the graph of $f$.  Instead of
+using linear interpolation to join the points $(x_{i-1},f(x_{i-1}))$
+and $(x_i,f(x_i))$, we now propose to use cubic polynomial
+interpolation on the intervals $[x_{i-1},x_i]$.  The function 
+$p$ that we get is called a
+{\bfseries piecewise cubic polynomial}\index{Splines!Piecewise Cubic
+Polynomial}.
+Using cubic polynomials, we can impose a better fit between $f$ and
+$p$ than with linear polynomials.  Cubic spline interpolation is ideal
+to approximate function with discontinuous derivatives.
+
+\begin{defn}
+Let $f:[a,b]\rightarrow \RR$ be a continuously differentiable
+function and $a = x_0 < x_1 < \ldots < x_n = b$.  A
+{\bfseries free or natural spline interpolant}\index{Splines!Free or Natural
+Spline Interpolant} for the function $f$ on
+the {\bfseries nodes}\index{Splines!Nodes} $x_0$, $x_1$,\ldots, $x_n$ is a
+piecewise cubic polynomial $p$ defined as follows.
+\[
+p(x) = p_i(x) \quad \text{ if } \quad  x_i \leq x \leq x_{i+1} \ ,
+\]
+where the $p_i$ are polynomials of degree three that satisfy
+\begin{enumerate}
+\item $p_i(x_i) = f(x_i)$ for $i=0$, $1$, \ldots , $n-1$,
+\item $p_i(x_{i+1}) = f(x_{i+1})$ for $i=0$, $1$, \ldots, $n-1$,
+\item $p'_i(x_{i+1}) = p'_{i+1}(x_{i+1})$ for $i=0$, $1$, \ldots, $n-2$,
+\item $p''_i(x_{i+1}) = p''_{i+1}(x_{i+1})$ for $i=0$, $1$, \ldots, $n-2$,
+\item $p''_0(x_0) = p''_{n-1}(x_n) = 0$.
+\end{enumerate}
+\label{cubicspline}
+\end{defn}
+
+\begin{defn}
+If the fifth condition in Definition~\ref{cubicspline} is replaced
+by
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item $p'_0(x_0) = f'(x_0)$ and $p'_{n-1}(x_n) = f'(x_n)$,
+\end{enumerate}
+then $p$ is called a
+{\bfseries clamped spline interpolant}\index{Splines!Clamped Spline Interpolant}
+for the function $f$ on the nodes $x_0$, $x_1$, \ldots, $x_n$.
+
+\noindent If the third, fourth and fifth conditions in
+Definition~\ref{cubicspline} are replaced by
+\begin{enumerate}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+\setcounter{enumii}{2}
+\item $p'_i(x_i) = f'(x_i)$ for $i=0$, $1$, \ldots, $n-1$,
+\item $p'_i(x_{i+1}) = f'(x_{i+1})$ for $i=0$, $1$, \ldots, $n-1$,
+\end{enumerate}
+Then $p$ is called a
+{\bfseries piecewise cubic Hermite interpolant}\index{Splines!Piecewise
+Cubic Hermite Interpolant} for the function $f$ on the nodes $x_0$,
+$x_1$,\ldots, $x_n$.
+\end{defn}
+
+We now describe how to find the cubic polynomials $p_i$ needed for the 
+spline interpolant.  Let $z_i = p''(x_i)$ for $i=0$, $1$, \ldots, $n$.  
+We need to find the values of the $z_i$'s to satisfy the natural or
+clamped cubic splines.
+
+Since we assume that the $p_i$'s are cubic polynomials, $p''_i$ is a
+linear function through the points $(x_i,z_i)$ and
+$(x_{i+1}, z_{i+1})$.  Recall that $\dtx{x_i} = x_{i+1} - x_i$.  Hence, 
+\begin{align*}
+p''_i(x) &= \frac{z_{i+1}-z_i}{\dtx{x_i}} x +
+\frac{x_{i+1}z_i-x_i z_{i+1}}{\dtx{x_i}}
+= \left(\frac{z_i}{\dtx{x_i}}\right) (x_{i+1}-x)
++ \left(\frac{z_{i+1}}{\dtx{x_i}}\right) (x-x_i) \ .
+\end{align*}
+Integrating twice gives
+\begin{align}
+p_i(x) &= \left(\frac{z_i}{6 \dtx{x_i}}\right) (x_{i+1}-x)^3
++ \left(\frac{z_{i+1}}{6 \dtx{x_i}}\right) (x-x_i)^3
++ A_i x + B_i \nonumber \\
+&= \left(\frac{z_i}{6 \dtx{x_i}}\right) (x_{i+1}-x)^3
++ \left(\frac{z_{i+1}}{6 \dtx{x_i}}\right) (x-x_i)^3
++ C_i (x - x_i) + D_i (x_{i+1}-x) \ , \label{ncs1}
+\end{align}
+where $C_i-D_i=A_i$ and $D_i x_{i+1} - C_i x_i = B_i$.
+
+From $p_i(x_i) = f(x_i)$ and $p_i(x_{i+1}) = f(x_{i+1})$, we get
+\[
+f(x_i) = \left(\frac{z_i}{6}\right) (\dtx{x_i})^2
++ D_i \dtx{x_i}
+\quad \text{and} \quad
+f(x_{i+1}) = \left(\frac{z_{i+1}}{6}\right) (\dtx{x_i})^2
++ C_i \dtx{x_i} \ .
+\]
+Solving for $C_i$ and $D_i$, we get
+\[
+C_i = \frac{f(x_{i+1})}{\dtx{x_i}} - \frac{z_{i+1}\dtx{x_i}}{6}
+\quad \text{and} \quad
+D_i = \frac{f(x_i)}{\dtx{x_i}}-\frac{z_i \dtx{x_i}}{6} \ .
+\]
+If we substitute these values of $C_i$ and $D_i$ in (\ref{ncs1}), we
+get
+\begin{equation} \label{ncs2}
+\begin{split}
+p_i(x) &= \left(\frac{z_i}{6 \dtx{x_i}}\right) (x_{i+1}-x)^3
++ \left(\frac{z_{i+1}}{6 \dtx{x_i}}\right) (x-x_i)^3 \\
+&\qquad + \left(\frac{f(x_{i+1})}{\dtx{x_i}}
+-\frac{z_{i+1} \dtx{x_i}}{6}\right)(x-x_i)
++ \left( \frac{f(x_i)}{\dtx{x_i}}-\frac{z_i \dtx{x_i}}{6}\right)
+(x_{i+1}-x) \ .
+\end{split}
+\end{equation}
+
+To determine the values of the $z_i$'s, we will used the property that
+$p'_i(x_i) = p'_{i-1}(x_i)$ for $1\leq i \leq n-1$.  This gives $n-1$
+equations to determine the $n+1$ variables $z_i$ for $i=0$, $1$,
+\ldots, $n$.
+
+\subsection{Natural Spline}
+
+For the natural spline interpolant, we set $z_0 = z_n = 0$ and
+determine the values of the other $z_i$'s using 
+$p'_i(x_i) = p'_{i-1}(x_i)$ for $1\leq i \leq n-1$.
+
+From (\ref{ncs2}), we get
+\begin{equation} \label{ncs4}
+\begin{split} 
+p'_i(x) &= -\left(\frac{z_i}{2 \dtx{x_i}}\right) (x_{i+1}-x)^2
++ \left(\frac{z_{i+1}}{2 \dtx{x_i}}\right) (x-x_i)^2 \\
+&\qquad + \left(\frac{f(x_{i+1})}{\dtx{x_i}}
+-\frac{z_{i+1} \dtx{x_i}}{6}\right)
+- \left( \frac{f(x_i)}{\dtx{x_i}}-\frac{z_i \dtx{x_i}}{6}\right)
+\end{split}
+\end{equation}
+for $i=0$, $1$, \ldots, $n-1$.  Hence,
+\begin{align*}
+p'_i(x_i) &= -\left(\frac{z_i}{2}\right) \dtx{x_i}
++ \left(\frac{f(x_{i+1})}{\dtx{x_i}}-\frac{z_{i+1} \dtx{x_i}}{6}\right)
+- \left( \frac{f(x_i)}{\dtx{x_i}}-\frac{z_i \dtx{x_i}}{6}\right) \\
+&= -\frac{z_{i+1} \dtx{x_i}}{6} - \frac{z_i \dtx{x_i}}{3}
++ \frac{f(x_{i+1})-f(x_i)}{\dtx{x_i}} \ .
+\end{align*}
+Similarly,
+\begin{align*}
+p'_{i-1}(x) &= -\left(\frac{z_{i-1}}{2 \dtx{x_{i-1}}}\right) (x_i-x)^2
++ \left(\frac{z_i}{2 \dtx{x_{i-1}}}\right) (x-x_{i-1})^2 \\
+&\qquad  + \left(\frac{f(x_i)}{\dtx{x_{i-1}}}
+-\frac{z_i \dtx{x_{i-1}}}{6}\right)
+- \left( \frac{f(x_{i-1})}{\dtx{x_{i-1}}}
+- \frac{z_{i-1} \dtx{x_{i-1}}}{6}\right)
+\end{align*}
+for $i=1$, $2$, \ldots, $n$.  Hence,
+\begin{align*}
+p'_{i-1}(x_i) &= \left(\frac{z_i \dtx{x_{i-1}}}{2}\right)
++ \left(\frac{f(x_i)}{\dtx{x_{i-1}}}-\frac{z_i \dtx{x_{i-1}}}{6}\right)
+- \left( \frac{f(x_{i-1})}{\dtx{x_{i-1}}}
+- \frac{z_{i-1} \dtx{x_{i-1}}}{6}\right) \\
+&= \frac{z_i \dtx{x_{i-1}}}{3} + \frac{z_{i-1} \dtx{x_{i-1}}}{6}
++ \frac{f(x_i)-f(x_{i-1})}{\dtx{x_{i-1}}} \ .
+\end{align*}
+
+The relation $p'_i(x_i) = p'_{i-1}(x_i)$ yields
+\begin{equation} \label{ncs5}
+\begin{split}
+&z_{i+1} \dtx{x_i}  +2 z_i \left( \dtx{x_i} + \dtx{x_{i-1}}\right)
++ z_{i-1} \dtx{x_{i-1}} \\
+&\qquad = \frac{6}{\dtx{x_i}}\left(f(x_{i+1}) -f(x_i) \right)
+- \frac{6}{\dtx{x_{i-1}}} \left(f(x_i) - f(x_{i-1}) \right)
+\end{split}
+\end{equation}
+for $i=1$, $2$, \ldots, $n-1$.  We conclude that the $z_i$'s for
+$1\leq i \leq n-1$ are given by the solution of the
+$n-1$ dimensional linear system $A \VEC{z} = \VEC{b}$,
+where
+\begin{equation} \label{ncs6}
+A = \left( \begin{array}{ccccccccc}
+d_1  & u_1 & 0 & \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+l_2 & d_2  & u_2 & 0 & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+0 & l_3 & d_3 & u_3 & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+\vdots & 0 & l_4 & d_4 & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+\vdots & \vdots & 0 & l_5 & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+\vdots & \vdots & \vdots & \vdots & \ddots & \ldots & \ldots &
+\ldots & \ldots \\
+\vdots & \vdots & \vdots & \vdots & \vdots & u_{n-5} & 0 & \ldots & \ldots \\ 
+\vdots & \vdots & \vdots & \vdots & \vdots & d_{n-4} &  u_{n-4} & 0 & \ldots \\ 
+\vdots & \vdots & \vdots & \vdots & \vdots & l_{n-3} &  d_{n-3} & u_{d-3} & 0 \\ 
+\vdots & \vdots & \vdots & \vdots & \vdots & 0 & l_{n-2} & d_{n-2} & u_{n-2} \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & 0 & l_{n-1} & d_{n-1} 
+\end{array} \right)
+\end{equation}
+and
+\[
+\VEC{b} = \begin{pmatrix}
+\displaystyle - z_0 \dtx{x_0} + \frac{6}{\dtx{x_1}}\left(f(x_2)
+  -f(x_1) \right) - \frac{6}{\dtx{x_0}} \left(f(x_1) - f(x_0) \right) \\[0.8em]
+\displaystyle \frac{6}{\dtx{x_2}}\left(f(x_3) -f(x_2) \right)
+- \frac{6}{\dtx{x_1}} \left(f(x_2) - f(x_1) \right) \\[0.8em]
+\vdots \\
+\displaystyle \frac{6}{\dtx{x_{n-2}}}\left(f(x_{n-1}) -f(x_{n-2}) \right)
+- \frac{6}{\dtx{x_{n-3}}} \left(f(x_{n-2}) - f(x_{n-3}) \right) \\[0.8em]
+\displaystyle - z_n \dtx{x_{n-1}}
++ \frac{6}{\dtx{x_{n-1}}}\left(f(x_n) -f(x_{n-1}) \right)
+- \frac{6}{\dtx{x_{n-2}}}\left(f(x_{n-1}) - f(x_{n-2}) \right)
+\end{pmatrix}
+\]
+with $d_i = 2(\dtx{x_{i-1}} + \dtx{x_i})$, $u_i = \dtx{x_i}$ and
+$l_i = \dtx{x_{i-1}}$.
+
+To evaluate the polynomial $p_i$ defined in (\ref{ncs2}), we rewrite
+it in nested form.  If we expand $p_i$ around $x = x_i$, we get
+\begin{align*}
+p_i(x) &= \frac{z_{i+1}-z_i}{6 \dtx{x_i}} (x-x_i)^3
++ \frac{z_i}{2} (x-x_i)^2 \\
+&+ \left(-\frac{z_i \dtx{x_i}}{3} - \frac{z_{i+1} \dtx{x_i}}{6} +
+\frac{f(x_{i+1})-f(x_i)}{\dtx{x_i}}\right) (x-x_i) + f(x_i) \ .
+\end{align*}
+Thus,
+\begin{equation}\label{ncs3}
+p_i(x) = \left(\left(\alpha_i(x-x_i) + \beta_i\right)(x-x_i)
++\gamma_i\right)(x-x_i) + \delta_i \ ,
+\end{equation}
+where
+\begin{equation}\label{ncs7}
+\begin{split}
+\delta_i &= f(x_i) \ ,\\
+\gamma_i &= -\frac{z_i \dtx{x_i}}{3} - \frac{z_{i+1} \dtx{x_i}}{6} +
+\frac{f(x_{i+1})-f(x_i)}{\dtx{x_i}} \ ,\\
+\beta_i &= \frac{z_i}{2} \ ,\\
+\alpha_i &= \frac{z_{i+1}-z_i}{6 \dtx{x_i}} \ .
+\end{split}
+\end{equation}
+
+\begin{egg}
+Using the information in the table below, construct the natural spline
+interpolant for $f$ on the nodes $0$, $1$, $2$, $3$ and $5$.
+\[
+\begin{array}{c|c}
+x & f(x) \\
+\hline
+0 & 1 \\
+1 & 0.540302305868140 \\
+2 & -0.416146836547142 \\
+3 & -0.989992496600445 \\
+5 & 0.283662185463226
+\end{array}
+\]
+All the numerical results displayed below will be rounded to $10$
+digits.  The computations are done with more precision.
+
+We have
+\[
+p_i(x) = \left(\left(\alpha_i(x-x_i) + \beta_i\right)(x-x_i)
++\gamma_i\right)(x-x_i) + \delta_i
+\]
+on $[x_i,x_{i+1}]$ for $0\leq i \leq 3$, where $x_0=0$, $x_1=1$,
+$x_2=2$, $x_3=3$ and $x_4=5$.
+
+Let $\VEC{w} \in \RR^3$ be the solution of $A\VEC{w} = \VEC{b}$, where
+\[
+A = \begin{pmatrix}
+2 (x_2-x_0) & x_2-x_1 & 0 \\
+x_2-x_1 & 2(x_3-x_1) & x_3-x_2 \\
+0 & x_3-x_2 & 2(x_4-x_2)
+\end{pmatrix}
+= \begin{pmatrix}
+4 & 1 & 0 \\
+1 & 4 & 1 \\
+0 & 1 & 6
+\end{pmatrix}
+\]
+and
+\[
+\VEC{b} = \begin{pmatrix}
+\displaystyle 6\,\frac{f(x_2) - f(x_1)}{x_2-x_1} -
+6\,\frac{f(x_1) - f(x_0)}{x_1-x_0} \\[0.8em]
+\displaystyle 6\,\frac{f(x_3) - f(x_2)}{x_3-x_2} -
+6\,\frac{f(x_2) - f(x_1)}{x_2-x_1} \\[0.8em]
+\displaystyle 6\,\frac{f(x_4) - f(x_3)}{x_4-x_3} -
+6\,\frac{f(x_3) - f(x_2)}{x_3-x_2}
+\end{pmatrix}
+= \begin{pmatrix}
+-2.9805086897 \\
+2.29562089 \\
+7.26403801
+\end{pmatrix} \ .
+\]
+We find
+\[
+\VEC{w} = \begin{pmatrix}
+-0.8728068282 \\ 0.5107186229 \\ 1.125553231
+\end{pmatrix} \ .
+\]
+
+Let
+\[
+\VEC{z} = \begin{pmatrix}
+0 \\ -0.8728068282 \\ 0.5107186229 \\ 1.125553231 \\ 0
+\end{pmatrix} \ .
+\]
+The coefficients of $p_i$ are given by
+\begin{align*}
+\delta_i &= f(x_i)  \ , \\
+\gamma_i &= -\frac{z_i (x_{i+1}-x_i)}{3} - \frac{z_{i+1}(x_{i+1}-x_i)}{6} +
+\frac{f(x_{i+1})-f(x_i)}{x_{i+1} - x_i}  \ , \\
+\beta_i &= \frac{z_i}{2}
+\intertext{and}
+\alpha_i &= \frac{z_{i+1}-z_i}{6 (x_{i+1}- x_i)}
+\end{align*}
+for $i=0$, $1$, $2$ and $3$.
+
+The following table gives the values of the coefficients of
+$p_i$.
+\[
+\begin{array}{c|cccc}
+i & \alpha_i & \beta_i & \gamma_i & \delta_i \\
+\hline
+0 & -0.1454678047 & 0 & -0.3142298894 & 1 \\
+1 & 0.2305875752 & -0.4364034141 & -0.7506333035 & 0.5403023059 \\
+2 & 0.1024724346 & 0.2553593115 & -0.9316774061 & -0.4161468365 \\
+3 & -0.09379610255 & 0.5627766153 & -0.1135414794 & -0.9899924966
+\end{array}
+\]
+\end{egg}
+
+\subsection{Clamped Spline}
+
+For the clamped spline interpolant, $z_0$ and $z_n$ are free but
+we have the additional constraints $p'(x_0) = p_0'(x_0) = f'(x_0)$ and
+$p'(x_n) = p_{n-1}'(x_n) = f'(x_n)$.  Using (\ref{ncs4}), we get
+\begin{align*}
+f'(x_0) &= p_0'(x_0) = - \frac{z_0 \dtx{x_0}}{3} - \frac{z_1 \dtx{x_0}}{6}
++ \frac{f(x_1)-f(x_0)}{\dtx{x_0}}
+\intertext{and}
+f'(x_n) &= p_{n-1}'(x_n) =
+\frac{z_n \dtx{x_{n-1}}}{3} + \frac{z_{n-1} \dtx{x_{n-1}}}{6}
++ \frac{f(x_n)-f(x_{n-1})}{\dtx{x_{n-1}}} \ .
+\end{align*}
+
+Hence
+\begin{align*}
+2 z_0  \dtx{x_0} + z_1 \dtx{x_0} &= - 6f'(x_0)
++ \frac{6}{\dtx{x_0}}\left(f(x_1)-f(x_0)\right)
+\intertext{and}
+z_{n-1} \dtx{x_{n-1}} + 2 z_n \dtx{x_{n-1}}  &= 6f'(x_n)
+- \frac{6}{\dtx{x_{n-1}}}\left(f(x_n)-f(x_{n-1})\right) \ .
+\end{align*}
+These two equations give two linear equations that we may add to the
+$(n-1)$ linear equations given in (\ref{ncs5}).
+
+If we define $\dtx{x_{-1}} = 0$ and $\dtx{x_n} = 0$,
+the $z_i$'s for $0\leq i \leq n$ are given by the solution of the
+$n+1$ dimensional linear system $A \VEC{z} = \VEC{b}$,
+where
+\begin{equation} \label{ccs1}
+A = \left( \begin{array}{ccccccccc}
+d_0  & u_0 & 0 & \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+l_1 & d_1  & u_1 & 0 & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+0 & l_2 & d_2 & u_2 & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+\vdots & 0 & l_3 & d_3 & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+\vdots & \vdots & 0 & l_4 & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+\vdots & \vdots & \vdots & \vdots & \ddots & \ldots & \ldots &
+\ldots & \ldots \\ 
+\vdots & \vdots & \vdots & \vdots & \vdots & u_{n-4} & 0 & \ldots & \ldots \\ 
+\vdots & \vdots & \vdots & \vdots & \vdots & d_{n-3} &  u_{n-3} & 0 & \ldots \\ 
+\vdots & \vdots & \vdots & \vdots & \vdots & l_{n-2} &  d_{n-2} & u_{d-2} & 0 \\ 
+\vdots & \vdots & \vdots & \vdots & \vdots & 0 & l_{n-1} & d_{n-1} & u_{n-1} \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & 0 & l_n & d_n 
+\end{array} \right)
+\end{equation}
+and
+\[
+\VEC{b} = \begin{pmatrix}
+\displaystyle - 6f'(x_0) + \frac{6}{\dtx{x_0}}\left(f(x_1)-f(x_0)\right)
+\\[0.8em]
+\displaystyle \frac{6}{\dtx{x_1}}\left(f(x_2) -f(x_1) \right)
+- \frac{6}{\dtx{x_0}} \left(f(x_1) - f(x_0) \right) \\[0.8em]
+\displaystyle \frac{6}{\dtx{x_2}}\left(f(x_3) -f(x_2) \right)
+- \frac{6}{\dtx{x_1}} \left(f(x_2) - f(x_1) \right) \\[0.8em]
+\vdots \\
+\displaystyle \frac{6}{\dtx{x_{n-2}}}\left(f(x_{n-1}) -f(x_{n-2}) \right)
+- \frac{6}{\dtx{x_{n-3}}} \left(f(x_{n-2}) - f(x_{n-3}) \right) \\[0.8em]
+\displaystyle \frac{6}{\dtx{x_{n-1}}}\left(f(x_n) -f(x_{n-1}) \right)
+- \frac{6}{\dtx{x_{n-2}}} \left(f(x_{n-1}) - f(x_{n-2}) \right) \\[0.8em]
+\displaystyle 6f'(x_n) - \frac{6}{\dtx{x_{n-1}}}\left(f(x_n)-f(x_{n-1})\right)
+\end{pmatrix}
+\]
+with $d_i$, $u_i$ and $l_i$ for $0 \leq i \leq n$ defined as for
+the natural spline before.
+
+The expression for $p_i$ given in (\ref{ncs3}) and (\ref{ncs7}) is
+still valid for the clamped cubic spline interpolant.
+
+\begin{egg}
+Using the information in the table below, construct the clamped spline
+interpolant for $f$ on the nodes $0$, $0.3$ and $1$.
+\[
+\begin{array}{c|ccc}
+x & 0 & 0.3 & 1 \\
+\hline
+f(x) & 1 & 0.548811636094027 & 0.135335283236613 \\
+f'(x) & -2 & & -0.270670566473225
+\end{array}
+\]
+All the numerical results displayed will be rounded to $10$
+digits.  The computations are done with more precision.
+
+We have
+\[
+p_i(x) = \left(\left(\alpha_i(x-x_i) + \beta_i\right)(x-x_i)
++\gamma_i\right)(x-x_i) + \delta_i
+\]
+on $[x_i,x_{i+1}]$ for $i=0$ and $1$, where $x_0 = 0$, $x_1 = 0.3$ and
+$x_2=1$.
+
+Let $\VEC{z} \in \RR^3$ be the solution of $A\VEC{z} = \VEC{b}$, where
+\[
+A = \begin{pmatrix}
+2 (x_1-x_0) & x_1-x_0 & 0 \\
+x_1-x_0 & 2(x_2-x_0) & x_2-x_1 \\
+0 & x_2-x_1 & 2(x_2-x_1)
+\end{pmatrix}
+= \begin{pmatrix}
+0.6 & 0.3 & 0 \\
+0.3 & 2 & 0.7 \\
+0 & 0.7 & 1.4
+\end{pmatrix}
+\]
+and
+\[
+\VEC{b} = \begin{pmatrix}
+\displaystyle - 6f'(x_0) + 6\, \frac{f(x_1) - f(x_0)}{x_1-x_0}\\[0.8em]
+\displaystyle 6\,\frac{f(x_2) -f(x_1)}{x_2-x_1}
+- 6\,\frac{f(x_1) - f(x_0)}{x_1-x_0}\\[0.8em]
+\displaystyle 6f'(x_2) - 6\,\frac{f(x_2)-f(x_1)}{x_2-x_1}
+\end{pmatrix}
+= \begin{pmatrix}
+2.976232722 \\
+5.479684254 \\
+1.920059626    
+\end{pmatrix} \ .
+\]
+We find
+\[
+\VEC{z} = \begin{pmatrix}
+3.949875177 \\ 2.021025387 \\ 0.3609584679
+\end{pmatrix} \ .
+\]
+
+The coefficients of $p_i$ are given by
+\begin{align*}
+\delta_i &= f(x_i)  \ , \\
+\gamma_i &= -\frac{z_i \dtx{x_i}}{3} - \frac{z_{i+1} \dtx{x_i}}{6} +
+\frac{f(x_{i+1})-f(x_i)}{\dtx{x_i}}  \ , \\
+\beta_i &= \frac{z_i}{2}
+\intertext{and}
+\alpha_i &= \frac{z_{i+1}-z_i}{6 \dtx{x_i}}
+\end{align*}
+for $i=0$ and $1$.
+
+The following table gives the values of the coefficients of
+$p_i$.
+\[
+\begin{array}{c|cccc}
+i & \alpha_i & \beta_i & \gamma_i & \delta_i \\
+\hline
+0 & -1.071583217 & 1.974937588 & -2 & 1 \\
+1 & -0.3952540283 & 1.010512693 & -1.104364916 & 0.5488116361
+\end{array}
+\]
+\label{egg_clamped}
+\end{egg}
+
+We give below a code to find the clamped cubic spline interpolant.
+We leave the task of writing a code to find the natural cubic spline
+interpolant to the reader.
+
+\begin{code}[Clamped Cubic Spline Interpolant - System] \label{codeCCSI}
+This program computes the tridiagonal matrix $A$ and the right hand
+side $\VEC{b}$ associated to the clamped cubic spline interpolant.\\
+\subI{Input} The nodes $x_i$ for $0 \leq i \leq n$ (x(i+1) in the code
+below).\\
+The values $f(x_i)$ for $0 \leq i \leq n$ (f(i+1) in the code
+below).\\
+The values $f'(x_0)$ and $f'(x_n)$ (fx(1) and fx(2) respectively
+in the code below).\\
+\subI{Output} The lower diagonal $L$, the diagonal $D$ and the upper
+diagonal $U$ of the tridiagonal matrix $A$.\\
+The right hand side $\VEC{b}$ of $A\VEC{x} = \VEC{b}$.
+\small
+\begin{verbatim}
+%  [L,D,U,b] = clampedsplinematrix(f,fx,x)
+
+function [L,D,U,b] = campledsplinematrix(f,fx,x)
+  N = length(x);
+  L = repmat(NaN,1,N-1);
+  U = repmat(NaN,1,N-1);
+  D = repmat(NaN,1,N);
+  b = repmat(NaN,1,N);
+
+  dx = x(2)-x(1);
+  if (dx == 0)
+    return;
+  end
+  ratio = (f(2)-f(1))/dx;
+  D(1) = 2*dx;
+  U(1) = dx;
+  b(1) = 6*(ratio - fx(1));
+
+  for n=2:N-1
+    prevdx = dx;
+    dx = x(n+1)-x(n);
+    if (dx == 0)
+      return;
+    end
+    prevratio = ratio;
+    ratio = (f(n+1)-f(n))/dx;
+    L(n-1) = prevdx;
+    D(n) = 2*(dx+prevdx);
+    U(n) = dx;
+    b(n) = 6*(ratio - prevratio);
+  end
+
+  L(N-1) = dx;
+  D(N) = 2*dx;
+  b(N) = 6*(fx(2) - ratio);
+end
+\end{verbatim}
+\end{code}
+
+\begin{code}[Tridiagonal Matrix]
+To solve a system of the form $A\VEC{x} = \VEC{b}$, where $A$ is a
+tridiagonal matrix.\\
+\subI{Input} The lower diagonal $L$, the diagonal $D$ and the upper
+diagonal $U$ of the tridiagonal matrix $A$.  None of the components of
+the diagonal $D$ can be null.\\
+The right hand side $\VEC{b}$.\\
+\subI{Output} The solution if the system can be solved.
+\small
+\begin{verbatim}
+%  z = tridmatrix(L,D,U,b)
+
+function z = tridmatrix(L,D,U,b)
+  m = length(D);
+  z = repmat(NaN,1,m);
+
+  for n=2:m
+    if (D(n-1) == 0)
+      return;
+    end
+    q = L(n-1)/D(n-1);
+    D(n) = D(n)-q*U(n-1);
+    b(n) = b(n)-q*b(n-1);
+  end
+
+  if (D(m) == 0)
+    return;
+  end
+
+  % Backward substitution
+  z(m) = b(m)/D(m);
+  for n=(m-1):-1:1
+    z(n)=(b(n)-U(n)*z(n+1))/D(n);
+  end
+end
+\end{verbatim}
+\end{code}
+
+\begin{code}[Cubic Spline Interpolant - Polynomial]
+To evaluate a cubic spline interpolant defined by
+\[
+  p(x) = (\alpha_i(x-x_i) + \beta_i)*(x-x_i) + \gamma_i)*(x-x_i) + \delta_i
+\]
+for $x_i < x \leq x_{i+1}$.\\
+\subI{Input} The points $x_i$ for $0 \leq i \leq n$ (x(i+1) in the
+code below).\\
+The values $f(x_i)$ for $0 \leq i \leq n$ (f(i+1) in the code
+below).\\
+The solution $\VEC{z}$ of the system $A \VEC{z} = \VEC{b}$ associated
+to the cubic spline used.\\
+The values of $x$ where the cubic spline interpolant must
+be evaluated (X in the code below).\\
+\subI{Output} The value of the cubic spline interpolant at all the
+given values of $x$.\\
+The coefficients for each polynomials
+\[
+  p_i(x) = ((c_{i,1} (x-x_i) + c_{i,2})(x-x_i) + c_{i,3})(x-x_i) + c_{i,4}
+\]
+for $i=1$ ,$2$, \ldots, $n-1$ (the matrix coeffs in the code below).
+\small
+\begin{verbatim}
+function [y, coeffs] = splinepoly(z,f,x,X)
+  npoints = length(x);
+  N = length(X);
+  y = repmat(NaN,1,N);
+
+  for m=1:1:npoints-1
+    coeffs(m,4) = f(m);
+    dx = x(m+1)-x(m);
+    df = f(m+1)-f(m);
+    coeffs(m,3) = -(2*z(m)+z(m+1))*dx/6 + df/dx;
+    coeffs(m,2) = z(m)/2;
+    coeffs(m,1) = (z(m+1)-z(m))/(6*dx);
+  end
+
+  for n=1:1:N
+    J = 0;
+    if ( X(n) >= x(1) && X(n) <= x(npoints) )
+      for m = 2:1:npoints
+        if ( X(n) <= x(m) )
+          J = m-1;
+          break;
+        end
+      end
+      dx = X(n) - x(J);
+      y(n) = ((coeffs(J,1)*dx + coeffs(J,2))*dx + coeffs(J,3))*dx ...
+           + coeffs(J,4);
+    end
+  end
+end
+\end{verbatim}
+\end{code}
+
+\subsection{Existence of Interpolants}
+
+The are a few questions that come naturally after the presentation of
+the natural and clamped spline interpolants.  First, do the linear
+systems of the form $A\VEC{z} = \VEC{b}$ used to find the natural and
+clamped spline interpolants have always a solution?  If so, it is
+unique?  How good are the natural and clamped spline interpolant?
+We answer these questions below.
+
+\begin{prop}
+If $B$ is a strictly diagonally dominant \nn matrix, then
+$B$ is invertible.
+\end{prop}
+
+\begin{proof}
+Suppose that $\VEC{x} \neq \VEC{0}$ satisfies $B\VEC{x} = \VEC{0}$.
+Let $k$ be an index such that
+\[
+|x_k| = \|\VEC{x}\|_\infty = \max_{1\leq i \leq n} |x_i| \ .
+\]
+We have $|x_k|>0$ because $\VEC{x}\neq \VEC{0}$.
+
+From $\displaystyle \sum_{j=1}^n b_{k,j}x_j = 0$, we get
+\[
+b_{k,k} = \sum_{\substack{j=0\\j\neq k}}^n b_{k,j}
+\left(\frac{x_j}{x_k}\right)  \ .
+\]
+Hence
+\[
+|b_{k,k}| \leq \sum_{\substack{j=0\\j\neq k}}^n |b_{k,j}|
+\left|\frac{x_j}{x_k}\right|
+\leq \sum_{\substack{j=0\\j\neq k}}^n |b_{k,j}| \  .
+\]
+This contradict that $B$ is strictly diagonally dominant.
+\end{proof}
+
+\begin{theorem}
+Let $f:[a,b]\rightarrow \RR$ be a continuously differentiable
+function and $a = x_0 < x_1 < \ldots < x_n = b$.  There exists a
+unique natural cubic spline interpolant for $f$ on the nodes $x_0$,
+$x_1$, \ldots, $x_n$.  Similarly, There exists a unique clamped cubic
+spline interpolant for $f$ on the nodes $x_0$, $x_1$, \ldots, $x_n$.
+\end{theorem}
+
+\begin{proof}
+Any natural cubic spline on the nodes $x_0$, $x_2$, \ldots,
+$x_n$ has to satisfy the system $A\VEC{z} = \VEC{b}$ for $A$
+given in (\ref{ncs6}).  Since $A$ is strictly diagonally dominant, it
+follows from the previous proposition that $A$ is invertible.  Thus,
+the solution of $A\VEC{z}=\VEC{b}$ is unique.  The same reasoning is
+true for clamped cubic splines with $A$ given in (\ref{ccs1}).
+\end{proof}
+
+\begin{theorem}
+If $p$ is the natural cubic spline interpolant for a function $f$ of
+class $C^2$ on the nodes $a = x_0 < x_1 < \ldots < x_n=b$, then
+\[
+\int_a^b (p''(x))^2 \dx{x} \leq \int_a^b (f''(x))^2 \dx{x} \ .
+\]
+\end{theorem}
+
+\begin{proof}
+Let $g = f - p$.  We have
+\begin{align*}
+\int_a^b (f''(x))^2\dx{x} &= \int_a^b (g''(x)+p''(x))^2 \dx{x} \\
+&= \int_a^b (g''(x))^2\dx{x} + \int_a^b (p''(x))^2 \dx{x}
++ 2\int_a^b g''(x) p''(x)\dx{x} \ .
+\end{align*}
+To prove the theorem, we show that
+$\displaystyle \int_a^b g''(x) p''(x)\dx{x} = 0$.
+
+Using integration by parts and $p''_{n-1}(x_n)=p''_0(x_0) = 0$ for
+the natural cubic spline, we get
+\begin{align*}
+\int_a^b g''(x) p''(x)\dx{x} &= \sum_{j=0}^{n-1}
+\int_{x_j}^{x_{j+1}} g''(x) p''_j(x)\dx{x} \\
+&= \sum_{j=0}^{n-1} \left(g'(x_{j+1})p''_j(x_{j+1})
+- g'(x_j)p''_j(x_j) \right) -
+\sum_{j=0}^{n-1} \int_{x_j}^{x_{j+1}} g'(x) p'''_j(x)\dx{x} \\
+&= g'(x_n)p''_{n-1}(x_n) - g'(x_0)p''_0(x_0) -
+\sum_{j=0}^{n-1} \int_{x_j}^{x_{j+1}} g'(x)
+\left( \frac{z_{i+1}-z_i}{\dtx{x_i}} \right) \dx{x} \\
+&= - \sum_{j=0}^{n-1} \left( \frac{z_{i+1}-z_i}{\dtx{x_i}} \right)
+\left( g(x_{j+1})-g(x_j) \right) = 0 \ .
+\end{align*}
+The last equality comes from $g(x_j)=0$ for all $j$ because
+$p(x_j)=f(x_j)$ for all $j$.
+\end{proof}
+
+Using the approach presented in the next section, it is possible to
+prove the following theorem.
+
+\begin{theorem}
+Let $f:[a,b]\rightarrow \RR$ be a four times continuously
+differentiable function and suppose that
+\[
+\max_{x \in [a,b]}\,|f^{(4)}(x)| < M \ .
+\]
+If $p$ is the clamped cubic spline interpolant for $f$ on $x_0$,
+$x_1$,\ldots, $x_n$ in $]a,b[$, then
+\begin{align*}
+\max_{x \in [a,b]}\,|f(x)-p(x)| &\leq \frac{5M}{384}\,
+\max_{0\leq i<n-1}\,|\dtx{x_i}|^4 \\
+\intertext{and}
+\max_{x \in [a,b]}\,|f'(x)-p'(x)| &\leq \frac{M}{24}\,
+\max_{0\leq i<n-1}\,|\dtx{x_i}|^3 \ .
+\end{align*}
+\end{theorem}
+
+It follows from the previous theorem that the clamped cubic spline
+polynomial $p$ can be a good fit for a function $f$ if
+$\displaystyle \max_{0\leq i < n} |\Delta x_i|$ is small enough.
+
+\subsection{Another Approach}
+
+The presentation of the cubic spline that follows is based on
+\cite{CdB}.
+
+Suppose that $p$ is a cubic spline defined in
+Definition~\ref{cubicspline}.  If we express $p_i$ as
+\[
+p_i(x) = p(x_i) + p[x_i,x_i] (x-x_i) + p[x_i,x_i,x_{i+1}](x-x_i)^2
++ p[x_i,x_i,x_{i+1},x_{i+1}](x-x_i)^2(x-x_{i+1})
+\]
+and substitute $(x-x_{i+1}) = (x-x_i) + (x_i-x_{i+1})$, we get
+\begin{align*}
+p_i(x) &= p(x_i) + p[x_i,x_i] (x-x_i) +
+\left(p[x_i,x_i,x_{i+1}] - (x_{i+1}-x_i)p[x_i,x_i,x_{i+1},x_{i+1}]\right)
+(x-x_i)^2 \\
+&+ p[x_i,x_i,x_{i+1},x_{i+1}](x-x_i)^3 \ .
+\end{align*}
+Hence, we have
+\[
+p_i(x) = a_i + b_i\,(x-x_i) + c_i\,(x-x_i)^2 + d_i\,(x-x_i)^3 \  ,
+\]
+where
+\begin{equation}\label{boor1}
+\begin{split}
+a_i &= p(x_i)  \ , \\
+b_i &= p[x_i,x_i] = p'(x_i) \ , \\
+d_i &= p[x_i,x_i,x_{i+1},x_{i+1}]
+= \frac{p[x_i,x_{i+1},x_{i+1}] - p[x_i,x_i,x_{i+1}]}{\dtx{x_i}} \\
+&= \frac{p[x_{i+1},x_{i+1}] - 2p[x_i,x_{i+1}] + p[x_i,x_i]}{(\dtx{x_i})^2} \\
+& = \frac{b_{i+1} - 2 f[x_i,x_{i+1}] + b_i}{(\dtx{x_i})^2} \ ,\\
+c_i &= p[x_i,x_i,x_{i+1}] - (x_{i+1}-x_i)p[x_i,x_i,x_{i+1},x_{i+1}] \\
+&= \frac{p[x_i,x_{i+1}]-p[x_i,x_i]}{\dtx{x_i}}
+- p[x_i,x_i,x_{i+1},x_{i+1}] \dtx{x_i}
+= \frac{f[x_i,x_{i+1}]- b_i}{\dtx{x_i}} -  d_i \dtx{x_i} \\
+&= \frac{-2b_i - b_{i+1} + 3f[x_i,x_{i+1}]}{\dtx{x_i}}
+\end{split}
+\end{equation}
+for $i=0$, $1$, \ldots, $n-1$.  We have that
+$p[x_i,x_{i+1}] = f[x_i,x_{i+1}]$ because $p(x_i) = f(x_i)$ for all
+$i$.  We also have that $p[x_i,x_i] = p'(x_i)$ for $0\leq i \leq n$.
+
+There are only $n+1$ unknowns in (\ref{boor1}); namely,
+$b_i$ for $i=0$, $1$, \ldots, $n$.
+
+The conditions $p''_{i-1}(x_i)= p''_i(x_i)$ for $1\leq i \leq n-1$
+imply that
+\[
+2c_{i-1} + 6d_{i-1} \dtx{x_{i-1}} = 2 c_i
+\]
+for $1\leq i \leq n-1$.  Using the definitions of $c_i$ and $d_i$ in 
+(\ref{boor1}), we get
+\[
+(\dtx{x_i}) b_{i-1}  + 2 (\dtx{x_i} + \dtx{x_{i-1}}) b_i
++ (\dtx{x_{i-1}}) b_{i+1} 
+= 3 \left( f[x_{i-1},x_i] \dtx{x_i} + f[x_i,x_{i+1}] \dtx{x_{i-1}}
+\right)
+\]
+for $1 \leq i \leq n-1$.  Since we have $n+1$ unknowns and $n-1$
+equations, we have two free variables.  It is natural to take
+$b_0$ and $b_n$ as free variables.
+
+For the clamped cubic spline interpolant, we require
+$p_0'(x_0) = f'(x_0)$ and $p_{n-1}'(x_n) = f'(x_n)$.  Since
+$p_0'(x_0) = b_0$ and
+\begin{align*}
+p_{n-1}'(x_n) &= b_{n-1} + 2 c_{n-1} (x_n - x_{n-1})
++ 3 d_{n-1} ( x_n - x_{n-1})^2 \\
+& = b_{n-1} +2
+\left(\frac{-2b_{n-1} - b_n + 3f[x_{n-1},x_n]}{\dtx{x_{n-1}}}\right) 
+\dtx{x_{n-1}} \\
+&\qquad
++ 3 \left(\frac{b_n - 2 f[x_{n-1},x_n] + b_{n-1}}{(\dtx{x_{n-1}})^2}\right)
+(\dtx{x_{n-1}})^2  = b_n \ ,
+\end{align*}
+we have $b_0 = f'(x_0)$ and $b_n = f'(x_n)$.  The
+other $b_i$'s are given by the solution of $n-1$ dimensional linear system
+$A \VEC{b} = \VEC{q}$ where
+\[
+A = \left( \begin{array}{ccccccccc}
+d_1  & u_0 & 0 & \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+l_2 & d_2  & u_1 & 0 & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+0 & l_3 & d_3 & u_2 & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+\vdots & 0 & l_4 & d_4 & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+\vdots & \vdots & 0 & l_5 & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+\vdots & \vdots & \vdots & \vdots & \ddots & \ldots & \ldots &
+\ldots & \ldots \\ 
+\vdots & \vdots & \vdots & \vdots & \vdots & u_{n-6} & 0 & \ldots & \ldots \\ 
+\vdots & \vdots & \vdots & \vdots & \vdots & d_{n-4} &  u_{n-5} & 0 & \ldots \\ 
+\vdots & \vdots & \vdots & \vdots & \vdots & l_{n-3} &  d_{n-3} & u_{d-4} & 0 \\ 
+\vdots & \vdots & \vdots & \vdots & \vdots & 0 & l_{n-2} & d_{n-2} & u_{n-3} \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & 0 & l_{n-1} & d_{n-1} 
+\end{array} \right)
+\]
+and
+\[
+\VEC{q} = \begin{pmatrix}
+- b_0 \dtx{x_1} + 3 \left( f[x_0,x_1]\dtx{x_1} + f[x_1,x_2]
+\dtx{x_0} \right) \\[0.4em]
+3 \left( f[x_1,x_2]\dtx{x_2} + f[x_2,x_3] \dtx{x_1} \right) \\
+\vdots \\
+3 \left( f[x_{n-3},x_{n-2}]\dtx{x_{n-2}}
++ f[x_{n-2},x_{n-1}] \dtx{x_{n-3}} \right) \\[0.4em]
+- b_n \dtx{x_{n-2}} + 3 \left( f[x_{n-2},x_{n-1}]\dtx{x_{n-1}}
++ f[x_{n-1},x_n] \dtx{x_{n-2}} \right)
+\end{pmatrix}
+\]
+with $d_i = 2(\dtx{x_{i-1}} + \dtx{x_i})$, $u_i = \dtx{x_i}$ and
+$l_i = \dtx{x_{i-1}}$.
+
+This gives us another formulation for the clamped cubic spline.
+
+\begin{rmk}
+To find the piecewise cubic Hermite interpolant $p$ for a function $f$
+on the nodes $x_0$, $x_1$,\ldots, $x_n$, one uses the formulas above
+with $b_i = f[x_i,x_i] = f'(x_i)$ for $i=0$, $1$, \ldots, $n$.  The
+piecewise cubic Hermite interpolant gives a good approximation of $f$
+but requires almost twice as much information about $f$ than the
+clamped or free spline interpolant. We need to know $f'(x_i)$ for
+$i=0$, $1$, \ldots, $n$.
+\end{rmk}
+
+\begin{egg}
+Using the information in the table below and the approach developed
+in this subsection, construct the clamped spline interpolant for $f$ on
+the nodes $0$, $0.3$ and $1$.
+\[
+\begin{array}{c|ccc}
+x & 0 & 0.3 & 1 \\
+\hline
+f(x) & 1 & 0.548811636094027 & 0.135335283236613 \\
+f'(x) & -2 & & -0.270670566473225
+\end{array}
+\]
+All the numerical results displayed will be rounded to $10$
+digits.  The computations are done with more precision.
+
+We have
+\[
+p_i(x) = a_i + b_i\,(x-x_i) + c_i\,(x-x_i)^2 + d_i\,(x-x_i)^3
+\]
+on $[x_i,x_{i+1}]$ for $i=0$ and $1$, where $x_0 = 0$, $x_1 = 0.3$ and
+$x_2=1$.
+
+The coefficients of $p_i$ are given by
+\begin{align*}
+a_i &= p(x_i)  \ , \quad
+b_i = p'(x_i) \ , \quad
+d_i = \frac{b_{i+1} - 2 f[x_i,x_{i+1}] + b_i}{(\dtx{x_i})^2}
+\intertext{and}
+c_i &= \frac{-2b_i - b_{i+1} + 3f[x_i,x_{i+1}]}{\dtx{x_i}}
+\end{align*}
+for $i=0$ and $1$.  We have $b_0 = f'(0)$, $b_2 = f'(1)$ and
+$b_1$ is the solution of
+\[
+(\dtx{x_1})b_0 + 2(\dtx{x_0} + \dtx{x_1})b_1 + (\dtx{x_0})b_2 =
+3\left( f[x_0,x_1]\dtx{x_1} + f[x_1,x_2]\dtx{x_0} \right) \ ;
+\]
+namely,
+\[
+0.7f'(0) + 2 b_1 + 0.3 f'(1)
+= 3\left( \frac{0.7}{0.3} \left(f(0.3) - f(0)\right)
+ + \frac{0.3}{0.7} \left(f(1) - f(0.3)\right)\right) \ .
+\]
+Thus $b_1 = -1.104364916$\ .
+
+The following table gives the values of the coefficients of
+$p_i$.
+\[
+\begin{array}{c|cccc}
+i & d_i & c_i & b_i & a_i \\
+\hline
+0 & -1.071583217 & 1.974937588 & -2 & 1 \\
+1 & -0.3952540283 & 1.010512693 & -1.104364916 & 0.5488116361
+\end{array}
+\]
+As expected, we find the same clamped cubic spline as in
+Example~\ref{egg_clamped}.
+\end{egg}
+
+\section{Parametric Curves: Bézier Curves} \label{BEZIER}
+
+A general curves $C$ in the plane is the image of a vector valued
+function $\phi:[a,b] \rightarrow \RR^2$.  The function $\phi$ is
+called a
+{\bfseries parametric representation}\index{Bézier Curves!Parametric
+Representation} of the curve $C$.  The parametric representation of a
+curve is not unique.
+
+It is not always possible to describe a curve $C$ by the graph of a
+function $y=f(x)$ for $a\leq x \leq b$.  When it is possible,
+$\phi:[a,b]\to \RR^2$ defined by $\phi(x) = (x,f(x))$ is a parametric
+representation of the curve $C$.
+
+\begin{egg}
+The circle $C$ of radius $1$ centred at the origin has the following
+well known parametric representation.
+\[
+\phi(\theta) = (\cos(\theta),\sin(\theta))
+\]
+for $0 \leq \theta \leq 2 \pi$.  It is impossible to describe the full
+circle as the graph of a function $y=f(x)$.
+\end{egg}
+
+Given $n+1$ points $\VEC{p}_0 = (x_0,y_0)$, $\VEC{p}_1 = (x_1,y_1)$,
+\ldots, $\VEC{p}_n = (x_n,y_n)$, the goal is to find polynomial
+maps of degree three $\phi_i:[0,1] \rightarrow \RR^2$ such
+that $\phi_i(0) = \VEC{p}_i$ and $\phi_i(1) = \VEC{p}_{i+1}$ for $0\leq i <n$.
+By pasting all the mappings $\phi_i$ together, we hope to get a
+nice parametric representation of a curve.
+
+The curves that we are going to describe are called
+{\bfseries cubic Bézier curves}\index{Bézier Curves!Cubic Bézier Curves}.
+The mapping $\phi_i:[0,1]\to \RR^2$ between
+the points $\VEC{p}_i = (x_i,y_i)$ and $\VEC{p}_{i+1} = (x_{i+1},y_{i+1})$,
+is defined by
+\begin{enumerate}
+\item $\phi_i(0) = \VEC{p}_i$,
+\item $\phi_i(1) = \VEC{p}_{i+1}$,
+\item $\phi_i'(0) = 3(\alpha_i,\beta_i)$ and
+\item $\phi_i'(1) = 3(\alpha_{i+1}, \beta_{i+1})$,
+\end{enumerate}
+where the $\alpha_i$'s and $\beta_i$'s are parameters to be described
+later.
+
+Let $\VEC{\check{q}}_i=(x_i+\alpha_i,y_i+\beta_i)$ and
+$\VEC{\hat{q}}_{i+1}=(x_{i+1}-\alpha_{i+1},y_{i+1}-\beta_{i+1})$.
+It is easy to see that
+\begin{equation}\label{Bez_form1}
+\VEC{\phi}_i(t) = (1-t)^3 \VEC{p}_i + 3t(1-t)^2 \VEC{\check{q}}_i
++ 3t^2(1-t) \VEC{\hat{q}}_{i+1} + t^3 \VEC{p}_{i+1}
+\end{equation}
+satisfies the four conditions above.
+
+The points $\VEC{\check{q}}_i$ and $\VEC{\hat{q}}_{i+1}$ are called
+the {\bfseries control points}\index{Bézier Curves!Control Points}
+of the Bézier curve with endpoints $\VEC{p}_i$ and $\VEC{p}_{i+1}$.
+
+For the parametric representation between $\VEC{p}_i$ and $\VEC{p}_{i+1}$,
+\[
+\pdydx{y}{x}\bigg|_{x=\VEC{p}_i} = \frac{\beta_i}{\alpha_i}\ .
+\]
+As long as the ratio $\beta_i/\alpha_i$ is
+constant, the parametric representation has the same slope at
+$\VEC{p}_i$.  By taking $\alpha_i$ and $\beta_i$ very large, we
+flatten the image of the representation near $\VEC{p}_i$.
+
+We illustrate graphically the meaning
+of the parameters $\alpha_i$, $\beta_i$. $\alpha_{i+1}$ and
+$\beta_{i+1}$ in Figure~\ref{Bez_fig}.
+
+\pdfF{interpolation_B/bezier}{Piece of a Bézier curve}{Piece of a
+Bézier curve}{Bez_fig}
+
+(\ref{Bez_form1}) can be rewritten as
+\begin{align}
+\VEC{\phi}_i &= (-t^3+3t^2-3t+1) \VEC{p}_i + (3t^3-6t^2+3t) \VEC{\check{q}}_i +
+(-3t^3+3t^2) \VEC{\hat{q}}_{i+1} + t^3 \VEC{p}_{i+1} \nonumber \\
+&= \left(-\VEC{p}_i +3\VEC{\check{q}}_i - 3 \VEC{\hat{q}}_{i+1} +
+\VEC{p}_{i+1}\right) t^3 + \left(3 \VEC{p}_i -6 \VEC{\check{q}}_i
+ + 3 \VEC{\hat{q}}_{i+1}\right) t^2 \nonumber \\
+&\qquad + \left(-3 \VEC{p}_i + 3  \VEC{\check{q}}_i\right) t + \VEC{p}_i \ .
+\label{Bez_form2}
+\end{align}
+It is (\ref{Bez_form2}) instead of (\ref{Bez_form1}) that is used in
+computer codes to draw Bézier curves.  The coefficients are computed
+once and the nested form of (\ref{Bez_form2}) is used.  The number of
+arithmetic operations is minimal.
+
+\pdfF{interpolation_B/bezier_2}{Construction of a Bézier curve}
+{Construction of a Bézier curve}{Bez_2_fig}
+
+\begin{rmk}
+There is a nice geometric interpretation of the Bézier curve.
+
+Let $\VEC{a}$ be the middle point of the line from $\VEC{p}_i$ to
+$\VEC{\check{q}}_i$, $\VEC{b}$ be the middle point of the line from
+$\VEC{p}_{i+1}$ to $\VEC{\hat{q}}_{i+1}$, $\VEC{c}$ be the middle point of
+the line from $\VEC{\check{q}}_i$ to $\VEC{\hat{q}}_{i+1}$, $\VEC{d}$
+be the middle point of the line from $\VEC{a}$ to $\VEC{c}$, $\VEC{e}$
+be the middle point of the line from $\VEC{b}$ to $\VEC{c}$, and
+$\VEC{f}$ be the middle point of the line from $\VEC{d}$ to $\VEC{e}$.
+
+The point $\VEC{f}$ is on the Bézier curve $\Gamma$ with endpoints
+$\VEC{p}_i$, $\VEC{p}_{i+1}$ and control points $\VEC{\check{q}}_i$,
+$\VEC{\hat{q}}_{i+1}$.  Moreover, the Bézier curve $\Gamma$ is the
+pasting of the Bézier curve with endpoints $\VEC{p}_i$, $\VEC{f}$ and
+control points $\VEC{a}$, $\VEC{d}$, and the Bézier curve with
+endpoints $\VEC{f}$, $\VEC{p}_{i+1}$ and control points $\VEC{e}$,
+$\VEC{b}$.
+
+We can apply the previous construction to the Bézier curve with
+endpoints $\VEC{p}_i$, $\VEC{f}$ and control points $\VEC{a}$,
+$\VEC{d}$ to find another point $\VEC{f}\,'$ on the the Bézier curve
+$\Gamma$.  Similarly, the Bézier curve with endpoints $\VEC{f}$,
+$\VEC{p}_{i+1}$ and control points $\VEC{e}$, $\VEC{b}$ gives another
+point $\VEC{f}\,''$ on the Bézier curve $\Gamma$.  Repeating this
+construction on smaller and smaller portion of the Bézier curve
+$\Gamma$ gives a sequence of points on the Bézier curve
+$\Gamma$.  To draw the Bézier curve $\Gamma$, one may draw straight
+lines between the points of $\Gamma$ that have been found when the
+distance between them is smaller than a given small value.  It is not
+suggested however to use this method to draw Bézier curves because
+of the large number of operations needed to draw the curve.
+
+We first show that $\VEC{f}$ is on the Bézier curve with endpoints
+$\VEC{p}_i$, $\VEC{p}_{i+1}$ and control points $\VEC{\check{q}}_i$,
+$\VEC{\hat{q}}_{i+1}$.  We have that
+\begin{align*}
+\VEC{f} & = \frac{1}{2} \left(\VEC{d}+\VEC{e}\right)
+= \frac{1}{2} \left( \frac{1}{2}\left(\VEC{a}+\VEC{c}\right) +
+\frac{1}{2}\left(\VEC{c}+\VEC{b}\right) \right)
+= \frac{1}{4} \VEC{a} + \frac{1}{2} \VEC{c} + \frac{1}{4} \VEC{b} \\
+ & = \frac{1}{4} \left(\frac{1}{2}\left(\VEC{p}_i
++\VEC{\check{q}}_i\right)\right)
++ \frac{1}{2} \left(\frac{1}{2}\left(\VEC{\check{q}}_i
++\VEC{\hat{q}}_{i+1}\right)\right)
++ \frac{1}{4} \left(\frac{1}{2}\left(\VEC{\hat{q}}_{i+1}
++\VEC{p}_{i+1}\right)\right) \\
+& = \frac{1}{8} \left( \VEC{p}_i + 3 \VEC{\check{q}}_i
++ 3 \VEC{\hat{q}}_{i+1} + \VEC{p}_{i+1} \right)
+= \VEC{\phi}_i\left(\frac{1}{2}\right)\ .
+\end{align*}
+
+We now show that the first half of the Bézier curve with endpoints
+$\VEC{p}_i$, $\VEC{p}_{i+1}$ and control points $\VEC{\check{q}}_i$,
+$\VEC{\hat{q}}_{i+1}$, namely $\VEC{\phi}_i(t)$ for
+$0\leq t \leq 1/2$, is the Bézier curve with endpoints
+$\VEC{p}_i$, $\VEC{f}$ and control points $\VEC{a}$, $\VEC{d}$.
+We leave to the reader the proof that the second half of the Bézier
+curve with endpoints $\VEC{p}_i$, $\VEC{p}_{i+1}$ and control points
+$\VEC{\check{q}}_i$, $\VEC{\hat{q}}_{i+1}$, namely $\VEC{\phi}_i(t)$
+for $1/2 \leq t \leq 1$, is the Bézier curve with endpoints
+$\VEC{f}$, $\VEC{p}_{i+1}$ and control points $\VEC{e}$, $\VEC{b}$.
+
+The parametric representation of the Bézier curve with endpoints
+$\VEC{p}_i$, $\VEC{f}$ and control points $\VEC{a}$, $\VEC{d}$ is
+given by
+\[
+\VEC{\psi}(s) = (1-s)^3 \VEC{p}_i +3s(1-s)^2 \VEC{a} +
+3s^2(1-s)\VEC{d} +s^3 \VEC{f}
+\]
+for $0 \leq s \leq 1$.  Hence,
+\begin{align*}
+&\VEC{\psi}(s) =
+(1-s)^3 \VEC{p}_i +3s(1-s)^2 \VEC{a} + 3s^2(1-s)\VEC{d} +
+s^3 \frac{1}{2}\left(\VEC{d}+\VEC{e}\right) \\
+&\quad = (1-s)^3 \VEC{p}_i +3s(1-s)^2 \VEC{a} +
+\left( 3s^2(1-s) + \frac{1}{2} s^3\right) \VEC{d}
++ \frac{1}{2} s^3 \VEC{e} \\
+&\quad = (1-s)^3 \VEC{p}_i +3s(1-s)^2 \VEC{a} +
+\left( 3s^2(1-s) + \frac{1}{2} s^3\right) \left(
+\frac{1}{2}\left(\VEC{a}+\VEC{c}\right)\right)
++ \frac{1}{2} s^3 \left( \frac{1}{2}\left(\VEC{c}+\VEC{b}\right)\right) \\
+&\quad = (1-s)^3 \VEC{p}_i +
+\left(3s(1-s)^2 + \frac{3}{2}s^2(1-s) + \frac{1}{4} s^3\right) \VEC{a}
++ \left( \frac{3}{2}s^2(1-s) + \frac{1}{2} s^3 \right) \VEC{c}
++ \frac{1}{4} s^3 \VEC{b} \\
+&\quad = (1-s)^3 \VEC{p}_i +
+\left(3s(1-s)^2 + \frac{3}{2} s^2(1-s) + \frac{1}{4} s^3\right)
+\left( \frac{1}{2}\left(\VEC{p}_i+\VEC{\check{q}}_i\right) \right) \\
+&\qquad + \left( \frac{3}{2} s^2(1-s) + \frac{1}{2} s^3 \right)
+\left( \frac{1}{2}\left(\VEC{\check{q}}_i+\VEC{\hat{q}}_{i+1}\right)\right)
++ \frac{1}{4} s^3 \left(
+\frac{1}{2}\left(\VEC{p}_{i+1}+\VEC{\hat{q}}_{i+1}\right) \right) \\
+&\quad = \left( (1-s)^3 + \frac{3}{2}s(1-s)^2 + \frac{3}{4} s^2(1-s)
++ \frac{1}{8} s^3 \right) \VEC{p}_i \\
+&\qquad + \left(\frac{3}{2} s(1-s)^2 +
+\frac{3}{2} s^2(1-s) + \frac{3}{8} s^3\right) \VEC{\check{q}}_i
++ \left( \frac{3}{4} s^2(1-s) + \frac{3}{8} s^3 \right) \VEC{\hat{q}}_{i+1}
++ \frac{1}{8} s^3 \VEC{p}_{i+1} \\
+&\quad = \left( \frac{s}{2}+(1-s) \right)^3 \VEC{p}_i +
+\frac{3s}{2}\left(\frac{s}{2} + (1-s) \right)^2 \VEC{\check{q}}_i +
+3 \left( \frac{s}{2} \right)^2\left(\frac{s}{2}+(1-s) \right)
+\VEC{\hat{q}}_{i+1} + \left( \frac{s}{2} \right)^3 \VEC{p}_{i+1} \\
+&\quad = \left( 1 -\frac{s}{2}\right)^3 \VEC{p}_i +
+\frac{3s}{2}\left( 1- \frac{s}{2}\right)^2 \VEC{\check{q}}_i +
+3 \left( \frac{s}{2} \right)^2\left(1 - \frac{s}{2}\right) \VEC{\hat{q}}_{i+1}
++ \left( \frac{s}{2} \right)^3 \VEC{p}_{i+1}
+= \VEC{\phi}_i\left(\frac{s}{2}\right)
+\end{align*}
+for $0 \leq s \leq 1$.
+\end{rmk}
+
+\begin{egg}
+We want to construct a piecewise cubic Bézier curve that satisfy the
+following conditions.
+\[
+\begin{array}{c|cccc}
+i & \VEC{p}_i & \VEC{p}_{i+1} & \VEC{\check{q}}_i & \VEC{\hat{q}}_{i+1} \\
+\hline
+0 & (0,2) & (1,3) & (1,2) & (0.5,2.5) \\
+1 & (1,3) & (3,3) & (1.5,3.5) & (2.5,3.5) \\
+2 & (3,3) & (4,2) & (3.5,2.5) & (3.5,2.5) \\  
+3 & (4,2) & (5,2) & (4.5,1.5) & (4.5,2.5) \\
+4 & (5,2) & (5.5,1) & (5.5,1.5) & (5,1)
+\end{array}
+\]
+The pieces of the curve are given by
+\begin{align*}
+\VEC{\phi}_i(t) &=
+  \left(-\VEC{p}_i +3\VEC{\check{q}}_i - 3 \VEC{\hat{q}}_{i+1} +
+\VEC{p}_{i+1}\right) t^3 + \left(3 \VEC{p}_i -6 \VEC{\check{q}}_i
++ 3 \VEC{\hat{q}}_{i+1}\right) t^2 \\
+&\qquad + \left(-3 \VEC{p}_i + 3  \VEC{\check{q}}_i\right) t + \VEC{p}_i \\
+&= \begin{cases}
+\begin{pmatrix} 2.5 \\ -0.5 \end{pmatrix} t^3
++ \begin{pmatrix} -4.5 \\ 1.5 \end{pmatrix} t^2
++ \begin{pmatrix} 3.0 \\ 0.0 \end{pmatrix} t
++ \begin{pmatrix} 0.0 \\ 2.0 \end{pmatrix} & \quad \text{if}
+\quad i = 0 \\[1em]
+\begin{pmatrix} -1.0 \\ 0.0 \end{pmatrix} t^3
++ \begin{pmatrix} 1.5 \\ -1.5 \end{pmatrix} t^2
++ \begin{pmatrix} 1.5 \\ 1.5 \end{pmatrix} t
++ \begin{pmatrix} 1.0 \\ 3.0 \end{pmatrix} & \quad \text{if}
+\quad i = 1 \\[1em]
+\begin{pmatrix} 1.0 \\ -1.0 \end{pmatrix} t^3
++ \begin{pmatrix} -1.5 \\ 1.5 \end{pmatrix} t^2
++ \begin{pmatrix} 1.5 \\ -1.5 \end{pmatrix} t
++ \begin{pmatrix} 3.0 \\ 3.0 \end{pmatrix} & \quad \text{if}
+\quad i = 2 \\[1em]
+\begin{pmatrix} 1.0 \\ -3.0 \end{pmatrix} t^3
++ \begin{pmatrix} -1.5 \\ 4.5 \end{pmatrix} t^2
++ \begin{pmatrix} 1.5 \\ -1.5 \end{pmatrix} t
++ \begin{pmatrix} 4.0 \\ 2.0 \end{pmatrix} & \quad \text{if}
+\quad i = 3 \\[1em]
+\begin{pmatrix} 2.0 \\ 0.5 \end{pmatrix} t^3
++ \begin{pmatrix} -3.0 \\ 0.0 \end{pmatrix} t^2
++ \begin{pmatrix} 1.5 \\ -1.5 \end{pmatrix} t
++ \begin{pmatrix} 5.0 \\ 2.0 \end{pmatrix} & \quad \text{if}
+\quad i = 4
+\end{cases}
+\end{align*}
+for $0 \leq t \leq 1$.  The graph of the piecewise cubic Bézier
+curve is given below.
+\figbox{interpolation_B/bezier_ex1}{8cm}
+\end{egg}
+
+\begin{rmk}
+The {\bfseries Bernstein polynomial}\index{Bernstein Polynomial} of
+degree $m \in \NN^+$ for a function $f:[0,1]\rightarrow \RR$ is the
+polynomial
+\begin{equation} \label{bernstein1}
+B_m(t; f) = \sum_{k=0}^m f\left(\frac{k}{m}\right) \binom{m}{k}
+t^k(1-t)^{m-k} \ .
+\end{equation}
+One can prove that $B_m(\cdot ; f) \rightarrow f$ uniformely on $[0,1]$ as
+$m\rightarrow \infty$ if $f$ is continuous on $[0,1]$.  One of the
+proofs of the Stone-Weierstrass Theorem, Theorem~\ref{SWtheorem}, is
+effectively based on the Bernstein polynomials.
+
+The Bézier curve (\ref{Bez_form1}) can be written as the Bernstein
+polynomial
+\[
+\phi_i(t) = \sum_{k=0}^3 \VEC{c}_{i,k} \binom{3}{k} t^k(1-t)^{3-k}
+\]
+for $0 \leq i < n$, where $\VEC{c}_{i,k} \in \RR^2$ satisfies
+\[
+\binom{3}{k} \VEC{c}_{i,k} =
+\begin{cases}
+\VEC{p}_i & \quad \text{if} \quad k = 0 \\
+\VEC{\check{q}}_i & \quad \text{if} \quad k = 1 \\
+\VEC{\hat{q}}_{i+1} & \quad \text{if} \quad k = 2 \\
+\VEC{p}_{i+1} & \quad \text{if} \quad k = 3
+\end{cases}
+\]
+for $0 \leq i < n$.
+
+Similarly, we may generalize Bézier curves to more
+than two control points.  For each $m \geq 3$, we define the Bézier
+curve with $m-1$ control points as the curve defined by
+\begin{equation} \label{bernstein2}
+\phi_i(t) = \sum_{k=0}^m \VEC{c}_{i,k} \binom{m}{k} t^k(1-t)^{m-k} \ .
+\end{equation}
+The control points are
+$\displaystyle \binom{m}{k} \VEC{c}_{i,k}$ for $k=1$, $2$,
+\ldots, $m-1$.  In particular, if we assume that
+\[
+\binom{m}{k} \VEC{c}_{i,k} =
+\begin{cases}
+\VEC{p}_i & \quad \text{if} \quad k = 0 \\
+\VEC{\check{q}}_i & \quad \text{if} \quad k = 1 \\
+\VEC{\hat{q}}_{i+1} & \quad \text{if} \quad k = m-1 \\
+\VEC{p}_{i+1} & \quad \text{if} \quad k = m
+\end{cases}
+\]
+then $\phi_i(0) = \VEC{p}_i$ and
+$\phi_i(1) = \VEC{p}_{i+1}$ for $0\leq i < n$.  Moreover, since
+\[
+\phi_i'(t) = m
+\sum_{k=0}^{m-1} \left( \VEC{c}_{i,k+1} - \VEC{c}_{i,k} \right)
+\binom{m-1}{k} t^k(1-t)^{m-1-k} \ ,
+\]
+we get
+\[
+  \phi_i'(0) = m\left( \VEC{c}_{i,1} - \VEC{c}_{i,0} \right)
+  = m\left(\VEC{\check{q}}_i - \VEC{p}_i\right) = m (\alpha_i , \beta_i )
+\]
+and
+\[
+\phi_i'(1) = m\left( \VEC{c}_{i,m} - \VEC{c}_{i,m-1} \right)
+= m\left(\VEC{p}_{i+1} - \VEC{\hat{q}}_{i+1}\right)
+= m (\alpha_{i+1} , \beta_{i+1} ) \ .
+\]
+We still get a curve which is tangent to $(\alpha_i,\beta_i)$ at
+$\VEC{p}_i$ and tangent to $(\alpha_{i+1},\beta_{i+1})$ at
+$\VEC{p}_{i+1}$.
+\end{rmk}
+
+\section{B-Spline Interpolation} \label{BSI}
+
+In this section, we consider an infinite sequence of knots
+\[
+\ldots < t_{-2} < t_{-1} < t_0 < t_1 < t_2 < \ldots
+\]
+such that $\displaystyle \lim_{i\rightarrow -\infty} t_i = -\infty$ and
+$\displaystyle \lim_{i\rightarrow \infty} t_i = +\infty$.
+
+\begin{defn}
+The {\bfseries B-splines of degree $0$}\index{B-Splines of Degree $0$}
+are defined by
+\[
+B_i^0(t) = \begin{cases}
+1 & \qquad \text{if} \quad t_i \leq t < t_{i+1} \\
+0 & \qquad \text{otherwise}
+\end{cases}
+\]
+for $i\in \ZZ$.\\
+The {\bfseries B-splines of degree $k>0$}\index{B-Splines of Degree $k>0$}
+are defined by the recurrence relation
+\begin{equation}\label{Bsplinerecurence}
+B_i^k(t) = v_i^k(t) B_i^{k-1}(t)
++ \left( 1-v_{i+1}^k(t) \right) B_{i+1}^{k-1}(t)
+\end{equation}
+for $i\in \ZZ$, where
+$\displaystyle v_i^k(t) = \frac{t-t_i}{t_{i+k}-t_i}$.
+\end{defn}
+
+We sketch in Figure~\ref{Bsplines} a B-spline of degree $0$ and a
+B-spline of degree $1$.
+
+\pdfF{interpolation_B/b-splines}{The B-spline of degree $0$, $1$ and $2$.}
+{Clockwise from the top left corner: $B_i^0$, $B_i^1$ and $B_i^2$.}{Bsplines}
+
+The next propositions state some of the properties of the B-splines.
+We give some of the proofs and refer the reader to \cite{KC} for the
+missing proofs and more information.
+
+\begin{prop}
+The B-splines of degree $0$ are piecewise constant functions which are
+continuous from the right.  For $k>0$, the B-splines of degree $k$ are
+piecewise polynomials of degree $k$ and class $C^{k-1}$.
+\label{BSplineCkm1}
+\end{prop}
+
+That the B-splines of degree $k>0$ are piecewise polynomials of degree
+$k$ is proved by induction using (\ref{Bsplinerecurence}).   To proof
+that they are of class $C^{k-1}$ requires induction and tedious
+computations to show that
+\begin{equation}\label{derBspline}
+  \dfdx{B_i^k(t)}{t} =
+  \left( \frac{k}{t_{i+k}-t_i} \right) B_i^{k-1}(t)
+- \left( \frac{k}{t_{i+k+1}-t_{i+1}} \right) B_{i+1}^{k-1}(t)
+\end{equation}
+for $k>1$.  This formula is also true for $k=1$ as long as $t\neq t_j$
+for $j=i$, $i+1$ and $i+2$.
+
+A simple proof by induction based on (\ref{Bsplinerecurence}) gives
+the following result.
+
+\begin{prop}
+$B_i^0(t) > 0$ for $t_i \leq t < t_{i+1}$ and $B_i^0(t) = 0$ otherwise.
+For $k>0$, $B_i^k(t) > 0$ for $t_i < t < t_{i+k+1}$ and $B_i^k(t) = 0$
+otherwise.
+\label{Bsplienonneg}
+\end{prop}
+
+The next result is quite useful to evaluate B-splines.
+
+\begin{prop}
+Suppose that
+\[
+  p(t) = \sum_{i=-\infty}^\infty C_i^k(t) B_i^k(t) \quad .
+\]
+Given $t \in [t_j ,t_{j+1}[$, if we use the relation
+\begin{equation}\label{table_spline}
+\begin{split}
+  C_i^{r-1}(t) &= C_i^r(t) v_i^r(t) + C_{i-1}^r \left( 1-   v_i^r(t)\right) \\
+&= \frac{1}{t_{r+i}-t_i} \left( (t-t_i) C_i^r(t) +
+  (t_{r+i}-t) C_{i-1}^r(t) \right)
+\end{split}
+\end{equation}
+for $r=k$, $k-1$, \ldots, $0$ to generate the table
+\[
+\begin{array}{*{4}{c@{\hspace{1em}}}c}
+C_j^k(t) & C_j^{k-1}(t) & \ldots & C_j^1(t) & C_j^0(t) \\[0.5em]
+C_{j-1}^k(t) & C_{j-1}^{k-1}(t) & \ldots & C_{j-1}^1(t) & \\ 
+\vdots & \vdots & \udots &  & \\
+C_{j-k+1}^k(t) & C_{j-k+1}^{k-1}(t) & & & \\[0.5em]
+C_{j-k}^k(t) & & & & 
+\end{array}
+\]
+then $p(t) = C_j^0(t)$.
+\end{prop}
+
+\begin{proof}
+The proof of the previous proposition is based on the relation
+\begin{align*}
+\sum_{i=-\infty}^\infty C_i^r(t) B_i^r(t)
+&= \sum_{i=-\infty}^\infty C_i^r(t) \left( v_i^r(t) B_i^{r-1}(t)
++ \left( 1-v_{i+1}^r(t) \right) B_{i+1}^{r-1}\right) \\
+&= \sum_{i=-\infty}^\infty C_i^r(t) v_i^r(t) B_i^{r-1}(t)
++ \sum_{i=-\infty}^\infty C_i^r(t) \left( 1-v_{i+1}^r(t) \right) B_{i+1}^{r-1} \\
+&= \sum_{i=-\infty}^\infty C_i^r(t) v_i^r(t) B_i^{r-1}(t)
++ \sum_{i=-\infty}^\infty C_{i-1}^r(t) \left( 1-v_i^r(t) \right) B_i^{r-1} \\
+&= \sum_{i=-\infty}^\infty \big( C_i^r(t) v_i^r(t) 
++  C_{i-1}^r(t) \left( 1-v_i^r(t) \right) \big) B_i^{r-1} \\
+&= \sum_{i=-\infty}^\infty C_i^{r-1}(t) B_i^{r-1}(t)
+\end{align*}
+and a simple proof by induction to get
+\[
+p(t) = \sum_{i=-\infty}^\infty C_i^k(t) B_i^k(t)
+= \sum_{i=-\infty}^\infty C_i^0(t) B_i^0(t) \ .
+\]
+Don't forget that, for $t$ given, all sums are finite.
+\end{proof}
+
+\begin{rmk}
+The spline interpolant that we will present later will be
+of the form
+\[
+  p(t) = \sum_{i=-\infty}^\infty  c_i^k B_i^k(t)
+\]
+for some constants $c_i^k$.  If we set $C_i^r(t) = c_i^r$, we can use
+the method presented in the proposition above to compute $p(t)$.
+\end{rmk}
+
+\begin{prop}
+$\displaystyle \sum_{i=-\infty}^{+\infty} B_i^k(t) = 1$ for all $t \in \RR$
+and $k\geq 0$.
+\label{Bsplinesum1}
+\end{prop}
+
+\begin{proof}
+We use the previous proposition with $C_i^k(t) = 1$ for all $i$.  We
+have
+\[
+C_i^{k-1}(t) = C_i^k(t) v_i^k(t) + C_{i-1}^k \left( 1- v_i^k(t)\right)
+=  v_i^k(t) + \left( 1-  v_i^k(t)\right) = 1
+\]
+for all $i$.   A simple proof by induction shows that
+$C_i^r(t) = 1$ for all $i$ and all $r$ with $0 \leq r \leq k$.  Thus,
+\[
+  \sum_{i=-\infty}^\infty B_i^k(t) = \sum_{i=-\infty}^\infty B_i^0(t) \ .
+\]
+For $t\in [t_j,t_{j+1}[$, we get
+\[
+  \sum_{i=-\infty}^\infty B_i^k(t) = \sum_{i=-\infty}^\infty B_i^0(t)
+  = B_j^0(t) = 1 \ .  \qedhere
+\]
+\end{proof}
+
+\begin{prop}
+The set
+$\displaystyle \left\{ B_j^k, B_{j+1}^k, \ldots , B_{j+k}^k \right\}$
+is linearly independent on $]t_{j+k},t_{j+k+1}[$.
+\end{prop}
+
+We note that the only B-splines $B_i^k$ that are not trivially null on
+$]t_{j+k},t_{j+k+1}[$ are those for $j \leq i \leq j+k$.  The proof of
+this proposition is by induction and requires the formula for the
+derivative of the B-splines $B_i^k$ that was required for the proof
+of Proposition~\ref{BSplineCkm1}.
+
+\begin{prop}
+The set of B-splines
+$\displaystyle \left\{ B_{-k}^k, B_{-k+1}^k, \ldots , B_{n-1}^k \right\}$
+is a basis for the space $S_n^k$ of functions $p$ of class $C^{k-1}$ on
+$[t_0,t_n]$ such that
+$\displaystyle p\big|_{[t_i,t_{i+1}]}$ is a polynomials of degree at most
+$k$ for $0\leq i < n$.
+\label{BSplineLinInd}
+\end{prop}
+
+\begin{proof}
+We note that the only B-splines $B_i^k$ that are not trivially null on
+$]t_0,t_n[$ are those for $-k \leq i \leq n-1$.
+
+\subI{Linear Independence}
+Suppose that $\displaystyle \sum_{i=-k}^{n-1} c_i B_i^k = 0$ on $[t_0,t_n]$.
+We therefore also have that
+\[
+  \sum_{i=-k}^0 c_i B_i^k = \sum_{i=-k}^{n-1} c_i B_i^k = 0
+\]
+on $]t_0,t_1[$.  It follows from the previous proposition that
+$c_i = 0$ for $-k \leq i \leq 0$.
+
+Suppose that $j<n$ is the smallest index such that $c_j\neq 0$.  From
+the previous discussion, we have $j>0$.  Hence, for
+$t \in [t_j,t_j+1[$, we have
+\[
+ 0 = \sum_{i=-k}^{n-1} c_i B_i^k(t) = \sum_{i=j}^{n-1} c_i B_i^k(t) =
+  c_j B_j^k(t) \ .
+\]
+Since $B_j^k(t) > 0$, we get $c_j = 0$.  This is a contradiction that
+$c_j \neq 0$.  So, there is no such $j$ between $0$ and $n$ such
+$c_j \neq 0$.
+
+In particular, this proves that $S_n^k$ is at least of dimension
+$n+k$. 
+
+\subI{Generating set}
+We prove that all functions $p \in S_n^k$ can be expressed as a linear
+combination over $\RR$ of the following $n+k$ functions in $S_n^k$:
+$t^j$ for $0\leq j \leq k$ and $H(t-t_j)(t-t_j)^k$ for
+$1\leq j \leq n-1$, where $H$ is the Heavyside function defined by
+\[
+  H(x) = \begin{cases} 1 & \quad \text{if} \quad x \geq 0 \\
+    0 & \quad \text{if} \quad x < 0
+  \end{cases}
+\]
+This will prove that $S_n^k$ is at most of dimension $n+k$.  Combined
+with what we proved in the first part of the proof, this shows that
+$S_n^k$ is of dimension $n+k$ and that\\
+$\displaystyle \left\{ B_{-k}^k, B_{-k+1}^k, \ldots , B_{n-1}^k \right\}$
+is a basis of $S_n^k$.
+
+Given $p \in S_n^k$, we have that $p_0 = p\big|_{[t_0,t_1]}$ is a polynomial
+of degree at most $k$.  So
+$\displaystyle p_0(t) = \sum_{i=0}^k a_i t^i$ for some $a_i \in \RR$.
+
+We prove by induction that there exist constants $a_{k+i}$ such that
+\begin{equation}\label{Snkbasis}
+  p(t) =  \sum_{i=0}^k a_i t^i + \sum_{i=1}^j a_{k+i}H(t-t_i)(t-t_i)^k
+\end{equation}
+for $t_0 \leq t \leq t_{j+1}$ with $1 \leq j\ < n$.
+
+We have that $P_1 = p\big|_{[t_1,t_2]}$ is a polynomial of degree at
+most $k$.  Since $p$ is of class $C^{k-1}$, we have that
+\[
+  \dfdxn{(p_1 - p_0)(t_1)}{t}{m} = 0
+\]
+for $0 \leq m < k$.  Since $p_1-p_0$ is a
+polynomial of degree at most $k$, it follows from
+Lemma~\ref{FactPolyRoot} that
+$(p_1-p_0)(t) = a_{k+1} (t- t_1)^k$ for some $a_{k+1} \in \RR$.
+Thus
+\[
+  p(t) =  \sum_{i=0}^k a_i t^i + a_{k+1}H(t-t_1)(t-t_1)^k
+\]
+for $t_0 \leq t \leq t_2$.  This proves (\ref{Snkbasis}) for $j=1$.
+
+Suppose that (\ref{Snkbasis}) is true for $j$.
+We have that $p_{j+1} = p\big|_{[t_{j+1},t_{j+2}]}$ is a polynomial
+of degree at most $k$.  Moreover,
+\[
+p_j = p\big|_{[t_j,t_{j+1}]} = \left( \sum_{i=0}^k a_i t^i
++ \sum_{i=1}^j a_{k+i}H(t-t_i)(t-t_i)^k\right)\bigg|_{[t_j,t_{j+1}]}
+\]
+is a polynomial of degree at most $k$.  Since $p$ is of class
+$C^{k-1}$, we have that
+\[
+  \dfdxn{(p_{j+1} - p_j)}{t}{m}(t_{j+1}) = 0
+\]
+for $0 \leq m < k$.  Since $p_{j+1}-p_j$ is a polynomial of degree at
+most $k$, it again follows from
+Lemma~\ref{FactPolyRoot} that
+$(p_{j+1}-p_j)(t) = a_{k+j+1} (t- t_{j+1})^k$ for some $a_{k+j+1} \in \RR$.
+thus
+\[
+  p(t) =  \sum_{i=0}^k a_i t^i + \sum_{i=1}^{j+1} a_{k+i}H(t-t_i)(t-t_i)^k
+\]
+for $t_0 \leq t \leq t_{j+2}$.  This proves (\ref{Snkbasis}) for $j$
+replaced by $j+1$.
+
+(\ref{Snkbasis}) with $j=n-1$ shows that $f$ is a linear combination
+of the $n+k$ functions $t^j$ for $0\leq j \leq k$ and
+$H(t-t_j)(t-t_j)^k$ for $1\leq j \leq n-1$ as claimed.
+\end{proof}
+
+Our interpolation problem is as follows.   Given points
+$(x_1,y_1)$, $(x_2,y_2)$, \ldots, $(x_{n+k},y_{n+k})$
+such that $\displaystyle x_j < x_{j+1}$ for $1\leq j < n+k$, and
+$ x_j \in[t_0,t_n]$ for $1\leq j \leq n+k$,
+can we find constants $c_i$ with $-k \leq i \leq n-1$ such that
+\begin{equation}\label{BsplineFormCoeff}
+\sum_{i=-k}^{n-1} c_i B_i^k(x_j) = y_j
+\end{equation}
+for $1\leq j \leq n+ k$?   If such $c_i$ exist, then
+\begin{equation}\label{BsplineForm}
+p(x) = \sum_{i=-k}^{n-1} c_i B_i^k(x)
+\end{equation}
+is a
+{\bfseries spline interpolant}\index{B-Splines!Spline Interpolant} on
+the nodes $x_1$, $x_2$, \ldots, $x_{n+k}$.
+
+The answer to this question is a consequence of the following result.
+
+\begin{theorem}[Schoemberg-Whitney]
+Given $q \in \ZZ$ and $x_1 < x_2 < \ldots < x_m$, consider the
+\nm{m}{m} matrix $Q$ with the entries $Q_{j,i} = B_{i+q}^k(x_j)$ for
+$1 \leq i,j \leq m$.  Then, $Q$ is invertible if and only if
+$Q_{j,j} \neq 0$ for $1 \leq j \leq m$.
+\end{theorem}
+
+To find the $c_i^k$ required to satisfy (\ref{BsplineFormCoeff}), we
+have to solve the linear system $Q \VEC{z} = \VEC{y}$, where
+$Q_{j,i} = B_{i-k-1}^k(x_j)$ and $z_i = c_{i-k-1}$ 
+for $1\leq i,j \leq n+k$.  We get the following result from
+Schoemberg-Whitney Theorem and Proposition~\ref{Bsplienonneg}.
+
+\begin{prop}
+The system $Q\VEC{z} = \VEC{y}$ defined above has a solution if and
+only if $Q_{j,j} = B_{j-k-1}^k(x_j) \neq 0$ for $1\leq j \leq n+k$;
+namely, if $t_{j-k-1} < x_j < t_j$ for $1\leq j \leq n+k$.
+\end{prop}
+
+If we consider the set of B-splines
+$\displaystyle \left\{ B_{-k}^k, B_{-k+1}^k, \ldots , B_{n-1}^k \right\}$,
+then Schoemberg-Whitney Theorem not only gives a condition for the
+existence of a solution to $Q\VEC{z} = \VEC{y}$ but it also shows that
+this solution is unique.  However, there is no obligation to specify
+all the $n+k$ points $(x_1,y_1)$, $(x_2,y_2)$, \ldots,
+$(x_{n+k},y_{n+k})$.   Namely, we do not have to use all the equations
+(\ref{BsplineFormCoeff}) for $1\leq j \leq n+ k$ to determine the
+$c_i$.  We may use other conditions to determine some of the
+$c_i$.  We will do just that in an example below.
+
+\begin{rmk}
+We will need the following information for the next example.  Let
+\[
+  p(t) = \sum_{-\infty}^\infty c_i B_i^k(t) \ .
+\]
+If we derive $f$ using (\ref{derBspline}), we get
+\[
+p'(t) = k\sum_{-\infty}^\infty \left(\frac{c_i - c_{i-1}}{t_{i+k}-t_i}\right)
+B_i^{k-1}(t)
+\]
+for $k>1$.  This formula is also true for $k=1$ as long as $t\neq t_i$
+for all $i$.  Again, if we derive $f'$ using (\ref{derBspline}), we get
+\[
+p''(t) = k(k-1)
+\sum_{-\infty}^\infty\left(\frac{1}{t_{i+k-1}-t_i}\right)
+\left(\frac{c_i - c_{i-1}}{t_{i+k}-t_i}
+- \frac{c_{i-1} - c_{i-2}}{t_{i+k-1}-t_{i-1}}
+\right) B_i^{k-2}(t)
+\]
+for $k>2$.  This formula is also true for $k=2$ as long as $t\neq t_i$
+for all $i$.
+\end{rmk}
+
+\begin{egg}
+Suppose that $f:\RR \rightarrow \RR$.  We will give a natural cubic
+interpolant of $f$ on the nodes $x_1 < x_2 < \ldots < x_n$. 
+
+We have $k=3$ and we select the knots $t_i$ such that $x_j = t_{j-1}$ for
+$1\leq j \leq n$.   The spline interpolant $p$ that we are
+looking for will be determined by the points
+$(x_j,y_j) = (t_{j-1},f(t_{j-1}))$ for $1\leq j \leq n$.
+We need $j-4 \leq i < j$ to possibly have that $B_i^3(x_j)$ is non null.
+
+The spline interpolant $p$ is of the form
+\[
+p(x) = \sum_{i=-3}^{n-2} c_i B_i^3(x) \ ,
+\]
+where
+\begin{equation}\label{BsplieCubiccoeff}
+p(x_j) = \sum_{i=-3}^{n-2} c_i B_i^3(x_j)
+= \sum_{i=j-3}^{j-2} c_i B_i^3(x_j) = y_j
+\end{equation}
+for $1\leq j \leq n$.  We have dropped the term for
+$i\not\in \{-3,-2,\ldots,n-2\}$ from the
+summation because $B_i^3(x_j) = B_i^3(t_{j-1}) = 0$ for these values of
+$i$.  There are $n$ equations with $n+2$ variables $c_i$ for
+$-3\leq i \leq n-2$.  We use the two extra variables to
+satisfy the conditions for a natural cubic spline interpolant; namely,
+$p''(x_1) = p''(x_n) = 0$.
+
+From the result stated in the previous remark, we have
+\begin{align*}
+p''(x_1) &= p''(t_0) = 6 \sum_{-\infty}^\infty\left(\frac{1}{t_{i+2}-t_i}\right)
+\left(\frac{c_i - c_{i-1}}{t_{i+3}-t_i}
+- \frac{c_{i-1} - c_{i-2}}{t_{i+2}-t_{i-1}} \right) B_i^1(t_0) \\
+&= 6 \left(\frac{1}{t_1-t_{-1}}\right) \left(\frac{c_{-1} - c_{-2}}{t_2-t_{-1}}
+- \frac{c_{-2} - c_{-3}}{t_1-t_{-2}}\right)  = 0
+\end{align*}
+and
+\[
+p''(x_n) = p''(t_{n-1}) = 6
+\left(\frac{1}{t_n-t_{n-2}}\right)\left(\frac{c_{n-2} - c_{n-3}}{t_{n+1}-t_{n-2}}
+- \frac{c_{n-3} - c_{n-4}}{t_n-t_{n-3}}\right) = 0  \ .
+\]
+These give two extra equations,
+\begin{align*}
+&(t_1-t_{-2})c_{-1} -(t_2 + t_1- t_{-1} - t_{-2}) c_{-2}
+  + ( t_2 - t_{-1}) c_{-3} = 0
+\intertext{and}
+&(t_n-t_{n-3}) c_{n-2} - ( t_{n+1}+t_n - t_{n-2} - t_{n-3})c_{n-3}
++ (t_{n+1}-t_{n-2})c_{n-4} = 0 \ ,
+\end{align*}
+to combine with the $n$ equations in (\ref{BsplieCubiccoeff}) to
+determine the $n+2$ variables $c_i^3$ for $-3 \leq i \leq n-2$.
+\end{egg}
+
+Consider a function $f:I \to \RR$, where $I$ is a sub-interval
+of $\RR$, and $\delta >0$.  The
+{\bfseries modulus of continuity}\index{B-Splines!Modulus of Continuity} of
+$f$ on $I$ is defined by
+\[
+  \omega(f; \delta, I) = \sup \{ |f(x)-f(y)| : x,y\in I \text{ and }
+  |x-y|\leq \delta \} \quad .
+\]
+For a uniformly continuous function $f$ on $I$, we can have
+$\omega(f; \delta,I)$ as small as we want by taking $\delta$ small
+enough.
+
+\begin{theorem}
+Let $\displaystyle q(t) = \sum_{i=-\infty}^\infty f(t_{i+2}) B_i^k(t)$ for
+$t\in \RR$ and $k\geq 2$.  If $f:[t_{-k},t_{n+1}] \to \RR$, then 
+\[
+  \sup_{t_0 \leq t\leq t_n} |f(t) - q(t)|
+  \leq k \omega(f; \delta, [t_{-k},t_{n+1}])
+\]
+for $\displaystyle \delta = \max_{-k\leq i \leq n+1} |t_i - t_{i-1}|$.
+\label{SplineApprox}
+\end{theorem}
+
+\begin{proof}
+Using Propositions~\ref{Bsplienonneg} and \ref{Bsplinesum1}, we may write
+\begin{align*}
+|f(t) - q(t)| &= \left| f(t) \sum_{i=-\infty}^\infty B_i^k(t)
+- \sum_{i=-\infty}^\infty f(t_{i+2})B_i^k(t) \right|
+= \left| \sum_{i=-\infty}^\infty \left( f(t) - f(t_{i+2})\right) B_i^k(t)
+\right| \\
+&\leq \sum_{i=-\infty}^\infty \left| f(t) - f(t_{i+2})\right| B_i^k(t)
+= \sum_{i=j-k}^j \left| f(t) - f(t_{i+2})\right| B_i^k(t)
+\end{align*}
+for $t \in [t_j,t_{j+1}]$ and $0 \leq j \leq n-1$.  Hence,
+\[
+|f(t) - q(t)|
+\leq \max_{j-k \leq i \leq j} \left| f(t) - f(t_{i+2})\right|
+\  \underbrace{\sum_{i=j-k}^j B_i^k(t)}_{\leq 1}
+\leq \max_{j-k \leq i \leq j}  \left| f(t) - f(t_{i+2})\right|
+\]
+for $t \in [t_j,t_{j+1}]$.
+For $i = j$, we have
+\[
+\left| f(t) - f(t_{i+2})\right|
+= \left| f(t) - f(t_{j+2})\right|
+\leq \left| f(t) - f(t_{j+1})\right| + \left| f(t_{j+1}) - f(t_{j+2})\right|
+\leq 2 \omega(f, \delta, [t_{-k},t_{n+1}])
+\]
+for $t \in [t_j,t_{j+1}]$.  For $i = j-1$, we have
+\[
+\left| f(t) - f(t_{i+2})\right|
+= \left| f(t) - f(t_{j+1})\right|
+\leq \omega(f, \delta, [t_{-k},t_{n+1}])
+\]
+for $t \in [t_j,t_{j+1}]$.  For $i = j-2$, we have
+\[
+\left| f(t) - f(t_{i+2})\right|
+= \left| f(t) - f(t_j)\right| \leq \omega(f, \delta, [t_{-k},t_{n+1}])
+\]
+for $t \in [t_j,t_{j+1}]$.  For $i = j-s$ with $3\leq s \leq k$, we have
+\begin{align*}
+&\left| f(t) - f(t_{i+2})\right|
+= \left| f(t) - f(t_{j-s+2})\right| \\
+& \quad \leq \left| f(t) - f(t_j)\right| + \left| f(t_j) - f(t_{j-1})\right|
++ \ldots + \left| f(t_{j-s+3}) - f(t_{j-s+2})\right|
+\leq (s-1) \omega(f, \delta, [t_{-k},t_{n-1}])
+\end{align*}
+for $t \in [t_j,t_{j+1}]$.  In all cases, we have
+$\left| f(t) - f(t_{i+2})\right| \leq k \omega(f, \delta, [t_{-k},t_{n-1}])$
+for $t \in [t_j,t_{j+1}]$.  The conclusion of the theorem follows
+since this is true for all $j$ such that $0 \leq j < n$.
+
+\noindent Note: As the proof shows, we could have used only the
+interval $[t_{-k+2},t_{n+1}]$ instead of $[t_{-k},t_{n+1}]$ in the
+statement of the theorem.  We have used the second one because the
+statement was nicer.
+\end{proof}
+
+Since every element of $S_n^k$ is a linear combination of
+$B_{j}^k$ for $-k \leq j <n$, we get the following result from the
+previous theorem.
+
+\begin{cor}
+We have that
+\[
+  \dist{f}{S_n^k} \leq k \omega(f;\delta, [t_{-k},t_{n+1}])
+\]
+for all $f:[t_{-k},t_{n+1}] \to \RR$.
+\end{cor}
+
+If $f$ is continuous on $[t_{-k},t_{n-1}]$, and so uniformly
+continuous on $[t_{-k},t_{n-1}]$, we have that 
+$\omega(f;\delta, [t_{-k},t_{n+1}] \to 0$ as $\delta \to 0$.
+Therefore, to theoretically improve the accuracy of the interpolation of a
+function $f$ on a given interval, we may increase the number of knots
+$t_i$ in the interval (increase $n$) while decreasing the
+distance between them (decreasing $\delta$).
+
+\section{Other Spline Methods}
+
+Consider $n+1$ points $\VEC{p}_i = (x_i,y_i)$ for $i=0$, $1$,
+\ldots, $n$.  We now define a piecewise polynomial, parametric
+representation of a curve that shadows the points $\VEC{p}_i$
+but does not include the points $\VEC{p}_i$.
+
+First, we add the points $\VEC{p}_{-2} = \VEC{p}_{-1} = \VEC{p}_0$ and
+$\VEC{p}_{n+2} = \VEC{p}_{n+1} = \VEC{p}_n$.  There are other
+approaches to handle the end points $\VEC{p}_0$ and $\VEC{p}_n$.  With
+this approach, $\VEC{p}_0$ and $\VEC{p}_n$ are on the spline.
+
+For $-1 \leq i \leq n$, we define the curve with the parametric
+representation
+\begin{equation} \label{Bspline}
+\VEC{\phi}_i(t) = \sum_{j=-1}^2 b_j(t) \VEC{p}_{i+j} \  ,
+\end{equation}
+where
+$\displaystyle
+b_{-1}(t) = -\frac{t^3}{6} + \frac{t^2}{2} - \frac{t}{2} + \frac{1}{6}$,
+$\displaystyle b_0(t) = \frac{t^3}{2} - t^2 + \frac{2}{3}$,
+$\displaystyle
+b_1(t) = -\frac{t^3}{2} + \frac{t^2}{2} + \frac{t}{2} + \frac{1}{6}$
+and
+$\displaystyle b_2(t) = \frac{t^3}{6}$
+for $0 \leq t \leq 1$.  Each component of the parametric representation
+is a polynomial of degree three in $t$.
+
+The small curve defined by the parametric representation
+$\VEC{\phi}_i(t)$ with $0\leq t \leq 1$ is in the convex hull of the 
+points $\VEC{p}_j$ for $j=i-1$, $i$, $i+1$ and $i+2$.  The coordinates
+of $\VEC{\phi}_i(t)$ are the weighted sums of the coordinates of
+$\VEC{p}_j$ for $j=i-1$, $i$, $i+1$ and $i+2$ because
+$\displaystyle \sum_{j=-1}^2 b_j(t) = 1 $ for all $t$.
+
+The parametric representations $\VEC{\phi}_i(t)$ satisfy the following
+properties:
+\[
+\VEC{\phi}_i(1) = \VEC{\phi}_{i+1}(0) \ ,\quad
+\VEC{\phi}'_i(1) = \VEC{\phi}'_{i+1}(0) \quad
+\text{and} \quad
+\VEC{\phi}''_i(1) = \VEC{\phi}''_{i+1}(0)
+\]
+for $i=-1$, $0$, $1$, \ldots, $n$.
+
+The parametric representation $\VEC{\phi}_i(t)$ given in (\ref{Bspline})
+can be rewritten as
+\begin{align}
+\VEC{\phi}_i(t) &= \frac{1}{6} \left(-\VEC{p}_{i-1} + 3 \VEC{p}_i
+- 3 \VEC{p}_{i+1} + \VEC{p}_{i+2} \right) t^3
++ \frac{1}{6} \left(3 \VEC{p}_{i-1} - 6 \VEC{p}_i
++ 3 \VEC{p}_{i+1} \right) t^2
+\nonumber \\
+&\quad + \frac{1}{6} \left(-3 \VEC{p}_{i-1} + 3 \VEC{p}_{i+1} \right) t
++ \frac{1}{6} \left(\VEC{p}_{i-1} + 4 \VEC{p}_i + \VEC{p}_{i+1} \right)\ .
+\label{Bspline_comp}
+\end{align}
+
+Note the resemblance between (\ref{Bspline_comp}) and the definition
+of Bézier curves in Section~\ref{BEZIER}.
+
+\section{Exercises}
+
+\begin{question}
+Construct the clamped cubic spline interpolant to $f$ associated to
+the data of the following table.
+\[
+\begin{array}{c|cccccc}
+x & 0 & 1 & 3 & 4 & 5 & 5.5 \\
+\hline
+f(x) & 2 & 3 & 3 & 2 & 2 & 1 \\
+f'(x) & 0 & & & & & -2 
+\end{array}
+\]
+Plot the graph of this cubic spline for $0 \leq x \leq 5.5$.
+\label{intBQ1}
+\end{question}
+
+\begin{question}
+Write a code similar to Code~\ref{codeCCSI} for the natural cubic spline
+interpolation and use it to draw the natural cubic spline interpolant
+to $f$ associated to the data of the following table.
+\[
+\begin{array}{c|cccccc}
+x & 0 & 1 & 3 & 4 & 5 & 5.5 \\
+\hline
+f(x) & 2 & 3 & 3 & 2 & 2 & 1
+\end{array}
+\]
+\label{intBQ2}
+\end{question}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End: 

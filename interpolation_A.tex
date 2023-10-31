@@ -1,0 +1,1679 @@
+\chapter{Polynomial Interpolation}\label{chaptInterA}
+
+Suppose that an unknown function $f$ governs some physical phenomenon
+and that the results of an experiment gives the data $(x_i,f(x_i))$
+for $i=0$, $1$, $2$, \ldots, $n$.  Could we use these data to
+approximate $f(x)$ at $x \neq x_i$ for $i=0$, $1$, \ldots, $n$?
+In this chapter, we present some methods that answer this question
+using (piecewise) polynomial approximations of $f$.
+
+\begin{defn}
+Suppose that $p$ is a (piecewise) polynomial approximations of $f$, if $x$ is
+inside the smallest interval containing the $x_i$'s, we say that
+$p(x)$ is a
+{\bfseries polynomial interpolation}\index{Functions!Polynomial Interpolation}
+of $f(x)$. Otherwise, we say that $p(x)$ is a
+{\bfseries polynomial extrapolation}\index{Functions!Polynomial Extrapolation}
+of $f(x)$.
+\end{defn}
+
+\section{Lagrange Interpolation}
+
+\begin{defn}
+If $f:[a,b] \rightarrow \RR$ is a function and
+$a \leq x_0 < x_1 < x_2 < \ldots < x_n \leq b$, then the polynomial $p$ 
+of degree $n$ defined by
+\begin{eqnarray}\label{poly}
+p(x) & = &
+\sum_{i=0}^n\,f(x_i)\,\prod_{\substack{j=0\\j\neq i}}^n \left(
+\frac{x-x_j}{x_i-x_j} \right)
+\end{eqnarray}
+is such that $p(x_i) = f(x_i)$ for $0 \leq i \leq n$.  The polynomial
+$p$ is called the
+{\bfseries Lagrange Interpolating Polynomial}\index{Functions!Lagrange
+Interpolating Polynomial} of $f$ 
+at $x_0$, $x_1$, \ldots, $x_n$.
+\end{defn}
+
+The polynomial $p$ is often used as
+an approximation of $f$ on the interval $[x_0,x_n]$.
+
+Since polynomials of degree $n$ have exactly $n$ complex roots
+counted with multiplicity, the Lagrange Interpolating Polynomial in
+(\ref{poly}) is the unique polynomial of degree at most $n$ satisfying
+$p(x_i) = f(x_i)$ for $0 \leq i \leq n$.  To prove this statement,
+suppose that $q$ is another polynomial of degree less than or equal to
+$n$ such that $q(x_i) = f(x_i)$ for $0 \leq i \leq n$, then $p-q$ is a
+polynomial of degree at most $n$ such that $(p-q)(x_i) = 0$ at $n+1$
+distinct values.  Namely, $p-q$ is a polynomial of degree at most $n$
+with $n+1$ roots.  The only possibility is $p - q = 0$.
+
+(\ref{poly}) is not the best form of the interpolating polynomial of a
+function but it is an important tool to develop formulas for
+derivation and integration later on.  We will present another form of
+the interpolating polynomial below.
+
+\section{Newton Interpolation} \label{GenNewtonInter}
+
+We now extend the definition of interpolating polynomial of a function
+at $(n+1)$ distinct points $x_0$, $x_1$, \ldots, $x_n$ to the case
+where the $x_i$'s are not all distinct.
+
+\begin{defn}
+Let $f: ]a,b[ \rightarrow \RR$ and $g: ]a,b[ \rightarrow \RR$ be two
+functions sufficiently differentiable.  Suppose that $x_0$, $x_1$,
+\ldots, $x_n$ are $(n+1)$ points in $]a,b[$ (not necessarily
+distinct).  We say that
+{\bfseries $f$ and $g$ agree at the points}\index{Functions!Agree at the Points}
+$x_0$, $x_1$, \ldots, $x_n$ if
+\[
+\dydxn{f}{x}{j}(z) = \dydxn{g}{x}{j}(z)
+\]
+for $j=0$, $1$, \ldots, $m-1$ whenever $z$ appears $m$ times in the list 
+$x_0$, $x_1$, \ldots, $x_n$.  Obviously, we set
+\[
+\dydxn{f}{x}{j}(z) = f(z)
+\]
+for $j=0$.
+\end{defn}
+
+\begin{theorem}
+Let $f: ]a,b[ \rightarrow \RR$ be a function sufficiently
+differentiable.  Suppose that $x_0$, $x_1$, \ldots, $x_n$ are $(n+1)$
+points in $]a,b[$ not necessarily distinct.
+Then there is a unique polynomial $p$ of degree at most
+$n$ such that $f$ and $p$ agree at $x_0$, $x_1$, \ldots, $x_n$.
+\label{unique}
+\end{theorem}
+
+\begin{proof}
+See Section~\ref{approx_proofs} below.
+\end{proof}
+
+\begin{defn}
+The polynomial $p$ in Theorem~\ref{unique} is called the
+{\bfseries interpolating polynomial}\index{Functions!Interpolating Polynomial}
+of $f$ at the
+{\bfseries interpolatory points}\index{Functions!Interpolatory Points}
+$x_0$, $x_1$, \ldots , $x_n$.
+\end{defn}
+
+\begin{defn}
+Let $f: ]a,b[ \rightarrow \RR$ be a function sufficiently
+differentiable.  The
+{\bfseries $k^{th}$ divided difference}\index{$k^{th}$ Divided Difference}
+of $f$ at $k+1$ not necessarily distinct points $x_0$, $x_1$, \ldots, $x_k$ in
+$]a,b[$, denoted $f[x_0,x_1,\ldots,x_k]$, is the coefficient of $x^k$
+in the unique polynomial of degree at most $k$ that agrees with $f$ at
+$x_0$, $x_1$, \ldots, $x_k$.
+\end{defn}
+
+\begin{theorem}
+Let $f: ]a,b[ \rightarrow \RR$ be a function sufficiently
+differentiable.  Suppose that $x_0$, $x_1$, \ldots, $x_n$ are
+$n+1$ not necessarily distinct points in $]a,b[$.
+Then the unique polynomial $p$ of degree at most $n$ that agrees with
+$f$ at $x_0$, $x_1$, \ldots, $x_n$ is given by
+\begin{equation} \label{NFDDF}
+\begin{split}
+p(x) &= f[x_0]+f[x_0,x_1]\,(x-x_0) +
+f[x_0,x_1,x_2]\,(x-x_0)(x-x_1) + \ldots \\
+ &+f[x_0,x_1,\dots,x_n]\,(x-x_0)(x-x_1)\dots(x-x_{n-1}) \ .
+\end{split}
+\end{equation}
+Moreover, for $x_j \neq x_{j+k}$,
+\begin{equation}\label{divide1}
+f[x_j,x_{j+1},\dots,x_{j+k}] =
+\frac{f[x_{j+1},x_{j+2},\dots,x_{j+k}]-f[x_j,x_{j+1},\dots,x_{j+k-1}]}
+{x_{j+k}-x_j}
+\end{equation}
+and, for $x_j = x_{j+1} = x_{j+2} = \ldots = x_{j+k}$,
+\begin{equation}\label{divide2}
+f[x_j,x_{j+1},\dots,x_{j+k}] = \frac{1}{k!}\,\dydxn{f}{x}{k}(x_j) \ .
+\end{equation}
+Finally,
+\begin{equation} \label{IPerror}
+f(x) = p(x) +
+f[x_0,x_1,\dots,x_n,x]\,(x-x_0)(x-x_1)\dots(x-x_{n-1})(x-x_n) \ .
+\end{equation}
+\label{InterpTh}
+\end{theorem}
+
+\begin{proof}
+See Section~\ref{approx_proofs} below.
+\end{proof}
+
+It is easy to deduce the first divided difference of $f$
+
+\stage{a}  The interpolating polynomial $p$ of $f$ of degree $0$ at
+$x_0$ is given by the constant function $p(x) = f(x_0)$ for all $x$.
+Hence, the coefficient $f[x_0]$ of $x^0$ is
+\[
+f[x_0] = f(x_0) \ .
+\]
+
+\stage{b} The interpolating polynomial $p$ of $f$ of degree at most
+$1$ at $x_0$, $x_1$ is given by
+\[
+p(x) = \begin{cases} \displaystyle
+f(x_0) + \frac{f(x_1)-f(x_0)}{x_1-x_0} \, (x-x_0) & \quad \text{if} \quad
+x_0 \neq x_1 \\
+f(x_0) + f'(x_0)\, (x-x_0) & \quad \text{if} \quad x_0 = x_1
+\end{cases}
+\]
+In the first case, it is the equation of the secant line through
+$(x_0,f(x_0))$ and $(x_1,f(x_1))$.  In the second case, it is the
+equation of the tangent line at $x_0$ because we must have
+$p(x_0)=f(x_0)$ and $p'(x_0) = f'(x_0)$.  Hence, the coefficient
+$f[x_0,x_1]$ of $x^1$ is
+\[
+f[x_0,x_1] = \begin{cases}
+\displaystyle \frac{f(x_1)-f(x_0)}{x_1-x_0} & \quad \text{if} \quad
+x_0 \neq x_1 \\
+f'(x_0) & \quad \text{if} \quad x_0 = x_1
+\end{cases}
+\]
+
+\stage{c} The interpolating polynomial $p$ of $f$ of degree at most
+$2$ at $x_0$, $x_1$, $x_2$ is of the form
+\[
+p(x) = A + B\,(x-x_0) + C\,(x-x_0)(x-x_1) \ .
+\]
+If the $x_i$'s are distinct, the polynomial $p$ must satisfy
+\begin{align*}
+f(x_0) &= p(x_0) = A \; , \\
+f(x_1) &= p(x_1) = A +B\,(x_1-x_0)
+\intertext{and}
+f(x_2) &= p(x_2) = A + B\,(x_2-x_0) + C\,(x_2-x_0)(x_2-x_1) \ .
+\end{align*}
+Hence,
+\[
+A=f(x_0) = f[x_0] \ , \quad
+B = \frac{f(x_1)-f(x_0)}{x_1-x_0} = f[x_0,x_1]
+\]
+and
+\begin{align*}
+C &= \frac{1}{(x_2-x_0)(x_2-x_1)} \left(f(x_2) - f(x_0) - 
+\frac{f(x_1)-f(x_0)}{x_1-x_0} \, (x_2-x_0) \right) \\
+&= \frac{1}{(x_2-x_0)(x_2-x_1)} \left(f(x_2) - f(x_0) - 
+\frac{f(x_1)-f(x_0)}{x_1-x_0} \, \left((x_2-x_1)+(x_1-x_0)\right)
+\right) \\
+&= \frac{1}{(x_2-x_0)(x_2-x_1)} \left(f(x_2) - f(x_0) - 
+\frac{f(x_1)-f(x_0)}{x_1-x_0} \,(x_2-x_1)
+-f(x_1)+f(x_0) \right) \\
+&= \frac{1}{(x_2-x_0)(x_2-x_1)} \left(f(x_2) - f(x_1) - 
+\frac{f(x_1)-f(x_0)}{x_1-x_0} \,(x_2-x_1)\right) \\
+&= \frac{1}{(x_2-x_0)} \left(\frac{f(x_2) - f(x_1)}{x_2-x_1} - 
+\frac{f(x_1)-f(x_0)}{x_1-x_0}\right)\\
+&= \frac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0} \ .
+\end{align*}
+Hence, the coefficient $f[x_0,x_1,x_2]$ of $x^2$ is
+\[
+f[x_0,x_1,x_2] = \frac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0}
+\]
+if the $x_i$'s are distinct.  We get a similar formula if
+$x_0=x_1 \neq x_2$ or $x_1 \neq x_2=x_3$.   Recall that we assume that
+if a value $z$ appears more than once in $\{ x_0, x_1, x_3\}$, then
+all occurrences of $z$ are contiguous.
+
+If $x_0=x_1=x_2$, the interpolating polynomial $p$ of $f$ of degree at
+most $2$ is given by the Taylor polynomial of degree $2$ at $x_0$; namely,
+\[
+p(x) = f(x_0) + f'(x_0)\,(x-x_0) + \frac{1}{2!}\,f''(x_0)\,(x-x_0)^2 \ .
+\]
+It is easy to check that $p(x_0)=f(x_0)$, $f'(x_0)=p'(x_0)$ and
+$f''(x_0) = p''(x_0)$.  Hence, the coefficient $f[x_0,x_1,x_2]$ of $x^2$
+is
+\[
+f[x_0,x_1,x_2] = \frac{1}{2!}\,f''(x_0)
+\]
+if $x_0=x_1=x_2$.
+
+\begin{rmkList}
+\begin{enumerate}
+\item Because of Theorem~\ref{unique}, (\ref{poly}) and (\ref{NFDDF}) are
+two ways to represent the polynomial of degree at most $n$ that agrees
+with $f$ at the $n+1$ distinct points $x_0$, $x_1$, \ldots, $x_n$,
+\item Because the interpolating polynomial of degree at most $n$ of
+$f$ at $x_0$, $x_1$, $x_2$, \ldots, $x_n$ is independent of the order
+in which the $x_i$'s are listed, in particular the coefficient of
+$x^n$ is not going to change if the order of the $x_i$'s is changed,
+we have that
+\[
+f[x_0,x_1,\ldots,x_k] = f[x_{\sigma(0)},x_{\sigma(1)},\ldots,x_{\sigma(k)}]
+\]
+for any permutation $\sigma$ of $\{0,1,2,3,\ldots, k\}$.
+\item To be able to use (\ref{divide2}) and thus get simple divided
+difference formulae, we assume that if a value $z$ appears 
+more than once in $\{ x_0, x_1, x_2, \ldots, x_n\}$, then all occurrences
+of $z$ are contiguous.
+\item From a computational point of view, (\ref{NFDDF}) is better than
+(\ref{poly}) because there are lest operations needed to evaluate
+$p(x)$ if we use the nested form to evaluate polynomials.
+\item The form (\ref{NFDDF}) of the interpolating polynomial of $f$ at
+$x_0$, $x_1$, \ldots, $x_n$ can be easily extended to the
+form (\ref{NFDDF}) of the interpolating polynomial of $f$ at the
+$n+1$ points $x_0$, $x_1$, \ldots, $x_n$ and $x_{n+1}$, where
+$x_{n+1}$ is a new point.  Only the divided difference
+$f[x_0,x_1,\ldots,x_n,x_{n+1}]$ needs to be computed because we
+already have the divided differences $f[x_0]$, $f[x_0,x_1]$, \ldots,
+$f[x_0,x_1,\ldots, x_n]$ from the interpolating polynomial of $f$ at
+$x_0$, $x_1$, \ldots, $x_n$.
+\end{enumerate}
+\end{rmkList}
+
+The divided differences have the following properties.
+
+\begin{theorem}
+Let $x_0$, $x_1$, \ldots , $x_k$ be $k+1$ points in $]a,b[$ and
+$f:]a,b[\rightarrow \RR$ be a sufficiently continuously differentiable
+function.  Then
+\[
+f[x_0,x_1,\ldots,x_k] = \frac{1}{k!}\,\dydxn{f}{x}{k}(\xi)
+\]
+for some $\xi$ in the smallest interval containing $x_0$, $x_1$,
+\ldots , $x_k$.
+
+Moreover,
+\begin{equation}\label{derDDF}
+\dfdxn{f[x_0,x_1,\ldots,x_k,x]}{x}{j} =
+j!\,f[x_0,x_1,\ldots,x_k,\underbrace{x,x,\ldots,x}_{j+1 \text{ times}}]
+\end{equation}
+for $j\geq 0$.
+\label{InterpProp}
+\end{theorem}
+
+\begin{proof}
+See Section~\ref{approx_proofs} below.
+\end{proof}
+
+To motivate (\ref{derDDF}), we prove that
+\[
+\dfdx{f[x_0,x]}{x} = f[x_0,x,x] \quad \text{and} \quad
+\dfdxn{f[x_0,x]}{x}{2} = 2 f[x_0,x,x,x] \ .
+\]
+We have
+\begin{align*}
+\dfdx{f[x_0,x]}{x} &= \dfdx{\left(\frac{f(x)-f(x_0)}{x-x_0}\right)}{x}
+= \frac{f'(x) (x-x_0) - ( f(x)- f(x_0) )}{(x-x_0)^2} \\
+&= \frac{\displaystyle  f'(x) - \frac{f(x)-f(x_0)}{x-x_0}}{x-x_0}
+= \frac{f[x,x] - f[x_0,x]}{x-x_0} = f[x_0,x,x]
+\end{align*}
+at $x\neq x_0$ and
+\begin{align*}
+\dfdxn{f[x_0,x]}{x}{2} &= \dfdx{\left(
+\frac{f'(x) (x-x_0) - ( f(x)- f(x_0) )}{(x-x_0)^2}\right)}{x} \\
+&= \frac{f''(x)(x-x_0)^3 - 2 f'(x) (x-x_0)^2 +  2(f(x)- f(x_0))(x-x_0)}
+{(x-x_0)^4}\\
+&= 2\, \frac{\displaystyle \frac{f''(x)}{2} -
+\frac{1}{x-x_0}\left(f'(x) - \frac{f(x)- f(x_0)}{x-x_0}\right)}{x-x_0}\\
+&= 2\, \frac{\displaystyle f[x,x,x] -
+\frac{1}{x-x_0}\left(f[x,x] - f[x,x_0]\right)}{x-x_0}\\
+&= 2\, \frac{f[x,x,x] - f[x_0,x,x]}{x-x_0} = 2 f[x_0,x,x,x]
+\end{align*}
+at $x \neq x_0$.
+
+Before proving Theorems~\ref{unique}, \ref{InterpTh} and
+\ref{InterpProp}, we illustrate how these theorems are used.
+
+\subsection{Linear Interpolation}
+
+Suppose that we only have two points $(x_0,f(x_0))$ and $(x_1,f(x_1))$
+with $x_0\neq x_1$.  Then
+\[
+p(x)=f[x_0]+f[x_0,x_1]\,(x-x_0) \ ,
+\]
+where
+\[
+f[x_0]  = f(x_0)
+\quad \text{and} \quad
+f[x_0,x_1] =\frac{f(x_1)-f(x_0)}{x_1-x_0} \ .
+\]
+
+\begin{egg}
+If $(x_0,f(x_0))= (2.2,6.2)$ and $(x_1,f(x_1)) = (2.5,6.7)$, find an
+approximation of $f(x)$ at $x = 2.35$.
+
+We have $f[2.2]= f(2.2) = 6.2$ and 
+\[
+f[2.2,2.5]=\frac{f(2.5)-f(2.2)}{2.5-2.2}
+=\frac{6.7-6.2}{2.5-2.2}=1.\overline{6} \ .
+\]
+Thus $p(x)=6.2+1.\overline{6}(x-2.2)$ and
+$f(2.35) \approx p(2.35) = 6.45$.
+\end{egg}
+
+\begin{egg}
+Suppose that only the values of $f(x) = \cos(x)$ at $x=0$ and
+$x=\pi/6$ are known, find an approximation of $\cos(0.2)$.
+
+We compute the interpolating polynomial at the points
+\[
+(0,\cos(0))=(0,1) \quad \text{and} \quad
+\left(\pi/6, \cos\left(\pi/6\right)\right)
+=\left(\pi/6, \sqrt{3}/2\right) \; .
+\]
+We have $f[0] = f(0) = 1$ and
+\[
+f[0,\pi/6]= \frac{f(pi/6) - f(0)}{\pi/6-0}
+= \frac{\sqrt{3}/2-1}{\pi/6-0} = \frac{3\sqrt{3}-6}{\pi} \ .
+\]
+Thus
+\[
+p(x)=1+\left(\frac{3\sqrt{3}-6}{\pi}\right) x
+\]
+and $\cos(0.2) \approx p(0.2) \approx 0.948825$.  Rounded after six digits,
+$\cos(0.2)=0.980067$.  Thus, the absolute error is about $0.031242$.
+\label{cos}
+\end{egg}
+
+\begin{rmk}
+MATLAB can be used to plot the graph of a function $f$ associated to
+the data set
+\[
+\left\{ (x_0,f(x_0)), (x_1,f(x_1)), \ldots , (x_n,f(x_n)) \right\}
+\ ,
+\]
+where $x_0 < x_1 < \ldots < x_n$.   MATLAB plots the graph of
+the {\bfseries piecewise linear function}\index{Piecewise Linear Function}
+$p$ that passes through each
+point of the data set.  Namely, $f$ is approximated by the piecewise
+polynomial $p$ (each piece is a polynomial of degree one) defined by
+\[
+p(x) = f[x_i]+f[x_i,x_{i+1}]\,(x-x_i) \quad, \quad  x_i \leq x \leq x_{i+1}
+\ ,
+\]
+for $i=0$, $1$, $2$, \ldots, $n-1$.
+\label{matlab}
+\end{rmk}
+
+\subsection{Quadratic Interpolation}
+
+Suppose that we have the points $(x_0,f(x_0))$, $(x_1,f(x_1))$ and
+$(x_2,f(x_2))$ with $x_i\neq x_j$ for $i\neq j$.  Then
+\[
+p(x)=f[x_0]+f[x_0,x_1]\,(x-x_0)+f[x_0,x_1,x_2]\,(x-x_0)(x-x_1) \; ,
+\]
+where
+\[
+f[x_0] = f(x_0) \ , \quad
+f[x_0,x_1] =\frac{f(x_1)-f(x_0)}{x_1-x_0} \quad
+\text{and} \quad
+f[x_0,x_1,x_2] =\frac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0} \ .
+\]
+Moreover, we need to compute
+$\displaystyle f[x_1,x_2] =\frac{f(x_2)-f(x_1)}{x_2-x_1}$ in the
+formula of $f[x_0,x_1,x_2]$.
+
+\begin{egg}
+Given the data $(x_0,f(x_0))=(2.2,6.2)$, $(x_1,f(x_1))=(2.5,6.7)$
+and $(x_2,f(x_2))=(2.7,6.5)$.  Find the approximation of $f(x)$ at
+$x=2.35$.
+
+We have $f[2.2] = f(2.2) = 6.2$,
+\begin{align*}
+f[2.2,2.5] &= \frac{f(2.5)-f(2.2)}{2.5-2.2} =
+\frac{6.7-6.2}{2.5-2.2}=1.\overline{6} \ , \\
+f[2.5,2.7] & =\frac{f(2.7) - f(2.5)}{2.7-2.5}
+=\frac{6.5-6.7}{2.7-2.5}= -1
+\intertext{and}
+f[2.2,2.5,2.7] &=\frac{f[2.5,2.7]-f[2.2,2.5]}{2.7-2.2}
+=\frac{-1-1.\overline{6}}{2.7-2.2} =-5.\overline{3} \; .
+\end{align*}
+Thus
+\begin{align*}
+p(x) &= 6.2+1.\overline{6}(x-2.2)-5.\overline{3}(x-2.2)(x-2.5) \\
+&=6.2 + (x-2.2)(1.\overline{6}-5.\overline{3}(x-2.5))
+\end{align*}
+and $f(2.35) \approx p(2.35) = 6.57$.
+\end{egg}
+
+\subsection{General Interpolation}
+
+We now consider the general interpolating polynomial at the points
+$x_0$, $x_1$, \ldots, $x_n$.
+
+If the $x_i$'s are distinct (i.e.\ $x_i \neq x_j$ for all $i$ and $j$),
+then Table~\ref{TNDDFormulae}(a) gives the formulas to compute the first
+Newton divided differences of $f$ and thus the first coefficients of
+the interpolating polynomial (\ref{NFDDF}) of $f$ of degree at most
+$n$ at $x_0$, $x_1$, \ldots, $x_n$.  The coefficients are on the top
+line of the table.
+
+\begin{table}
+\begin{sideways}
+\begin{tabular}{ccccc}
+\multicolumn{5}{l}{a) $x_0 < x_1 <x_2 < x_3$} \\
+&&&&\\
+$\displaystyle x_i$ & $\displaystyle f[\cdot] $ &
+$\displaystyle f[\cdot,\cdot]$ &
+$\displaystyle f[\cdot,\cdot,\cdot]$ &
+$\displaystyle f[\cdot,\cdot,\cdot,\cdot]$ \\
+\hline
+\rule{0em}{2em} $\displaystyle x_0$ & \multicolumn{1}{|c}{$\displaystyle
+  f(x_0)$} &
+\multicolumn{1}{|c}{$\displaystyle f[x_1,x_0] =
+  \frac{f(x_1)-f(x_0)}{x_1-x_0}$} &
+\multicolumn{1}{|c}{$\displaystyle
+  f[x_2,x_1,x_0]=\frac{f[x_2,x_1]-f[x_1,x_0]}{x_2-x_0}$} &
+\multicolumn{1}{|c|}{$\displaystyle f[x_3,x_2,x_1,x_0] =
+\frac{f[x_3,x_2,x_1]-f[x_2,x_1,x_0]}{x_3-x_0}$} \\[1em]
+\cline{2-5}
+\rule{0em}{2em} $\displaystyle x_1$ & $\displaystyle f(x_1)$ &
+$\displaystyle f[x_2,x_1] = \frac{f(x_2)-f(x_1)}{x_2-x_1}$ &
+$\displaystyle f[x_3,x_2,x_1] = \frac{f[x_3,x_2]-f[x_2,x_1]}{x_3-x_1}$
+& \\[1em]
+\rule{0em}{2em} $\displaystyle x_2$ & $\displaystyle f(x_2)$ &
+$\displaystyle f[x_3,x_2] = \frac{f(x_3)-f(x_2)}{x_3-x_2}$ & & \\[1em]
+$\displaystyle x_3$ & $\displaystyle f(x_3)$ & & & \\
+&&&&\\
+&&&&\\
+\multicolumn{5}{l}{b) $x_0 < x_1 =x_2 = x_3$} \\
+&&&&\\
+$\displaystyle x_i$ & $\displaystyle f[\cdot] $ &
+$\displaystyle f[\cdot,\cdot]$ &
+$\displaystyle f[\cdot,\cdot,\cdot]$ &
+$\displaystyle f[\cdot,\cdot,\cdot,\cdot]$ \\
+\hline
+\rule{0em}{2em} $\displaystyle x_0$ & \multicolumn{1}{|c}{$\displaystyle
+  f(x_0)$} &
+\multicolumn{1}{|c}{$\displaystyle f[x_1,x_0] =
+  \frac{f(x_1)-f(x_0)}{x_1-x_0}$} &
+\multicolumn{1}{|c}{$\displaystyle
+  f[x_2,x_1,x_0]=\frac{f[x_2,x_1]-f[x_1,x_0]}{x_2-x_0}$} &
+\multicolumn{1}{|c|}{$\displaystyle f[x_3,x_2,x_1,x_0] =
+\frac{f[x_3,x_2,x_1]-f[x_2,x_1,x_0]}{x_3-x_0}$} \\[1em]
+\cline{2-5}
+\rule{0em}{2em} $\displaystyle x_1$ & $\displaystyle f(x_1)$ &
+$\displaystyle f[x_2,x_1] = f'(x_1)$ &
+$\displaystyle f[x_3,x_2,x_1] = \frac{1}{2} f''(x_1)$
+& \\[1em]
+\rule{0em}{2em} $\displaystyle x_2$ & $\displaystyle f(x_2)$ &
+$\displaystyle f[x_3,x_2] = f'(x_2)$ & & \\[1em]
+$\displaystyle x_3$ & $\displaystyle f(x_3)$ & & &
+\end{tabular}
+\end{sideways}
+\caption{Some tables of Newton divided differences}\label{TNDDFormulae}
+\end{table}
+
+When $x_0$, $x_1$, \ldots, $x_n$ are not all distinct, we use
+(\ref{divide2}) to evaluate the entries in the table of Newton divided
+differences as show in Table~\ref{TNDDFormulae}(b).  We assume that if
+a value $z$ appears more than once in $\{x_0, x_1, x_2, \ldots, x_n\}$,
+then all occurrences of $z$ are contiguous.  For instance,
+\begin{align*}
+x_1 = x_0 &\Rightarrow f[x_1,x_0] = f'(x_0) \quad , \quad
+x_0 = x_1 = x_2 \Rightarrow f[x_2,x_1,x_0] = \frac{1}{2}\,f''(x_0)
+\intertext{and}
+x_3 = x_4 =x_5 = x_6 &\Rightarrow f[x_6,x_5,x_4,x_3]
+= \frac{1}{3!}\,f'''(x_3) \ .
+\end{align*}
+
+\begin{defn}
+\begin{enumerate}
+\item (\ref{NFDDF}) is the
+{\bfseries Newton form}\index{Function Interpolation!Newton Form}
+or {\bfseries Newton-Cotes form}\index{Function Interpolation!Newton-Cotes Form}
+of the interpolating polynomial of $f$ at $x_0$, $x_1$ , \ldots , $x_n$.
+\item If $n$ is odd and $x_0 = x_1 < x_2 = x_3 < \ldots < x_{2k} =
+x_{2k+1} < \ldots < x_{n-1} = x_n$, then (\ref{NFDDF}) is also called the
+{\bfseries Hermite's interpolating polynomial}\index{Functions!Hermite's
+Interpolating Polynomial} for $f$ at $x_0$, $x_1$, \ldots, $x_n$.
+\end{enumerate}
+\end{defn}
+
+\begin{egg}
+If $(x_0,f(x_0))=(1.0,2.4)$, $(x_1,f(x_1))=(1.3,2.2)$,
+$(x_2,f(x_2))=(1.5,2.3)$ and $(x_3,f(x_3))=(1.7,2.4)$, find an
+approximation for $f(1.4)$.
+
+The following table gives the divided differences needed for the
+Newton form of the interpolating polynomial of $f$ at $x_0$, $x_1$,
+$x_2$ and $x_3$.
+\[
+\begin{array}{rrrrr}
+x_i & f[\cdot] & f[\cdot,\cdot] & f[\cdot,\cdot,\cdot]&
+f[\cdot,\cdot,\cdot,\cdot] \\
+\hline
+\rule{0em}{2.5ex} 1.0 & \multicolumn{1}{|r}{2.4} &
+\multicolumn{1}{|r}{-0.\overline{6}} & \multicolumn{1}{|r}{2.\overline{3}} &
+\multicolumn{1}{|r|}{-3.\overline{3}} \\
+\cline{2-5}
+1.3 & 2.2 & 0.5 & 0.0 & \\
+1.5 & 2.3 & 0.5 & & \\
+1.7 & 2.4 & & &
+\end{array}
+\]
+Hence,
+\begin{align*}
+p(x) &= 2.4-0.\overline{6}\,(x-1.0) + 2.\overline{3}\,(x-1.0)(x-1.3)
+-3.\overline{3}(x-1.0)(x-1.3)(x-1.5) \\
+&= 2.4 +(x-1.0)(-0.\overline{6} +(x-1.3)(2.\overline{3}
+-3.\overline{3}\,(x-1.5)))
+\end{align*}
+and $f(1.4) \approx p(1.4) = 2.24$.
+\end{egg}
+
+\begin{code}[Newton Divided Differences]
+To produce the table of divided differences to generate the coefficients
+$a_i$ and the interpolating polynomial
+\[
+  p(x) = a_0 + a_1(x-x_0) + a_2(x-x_0)(x-x_1) + \ldots
+  + a_{n-1}(x-x_0)(x-x_1)\ldots(x-x_{n-2})
+\]
+at the points $x_i$ for $0 \leq i < n$.\\
+\subI{Input} The matrix
+\[
+  \begin{pmatrix}
+    x_0 & f_0 \\
+    x_1 & f_1 \\
+    \vdots & \vdots \\
+    x_{n-1} & f_{n-1}
+  \end{pmatrix}
+\]
+(d in the code below), where $x_0 \leq x_1 \leq \ldots \leq x_{n-1}$ an
+$f_k = f^{(j)}(x_k)$ if $x_{k-j-1} < x_{k-j} = x_{x-j+1} = \ldots = x_k$;
+namely, the point $x_k$ appears $j$ times before. \\
+\subI{Output} The table of divided difference and the coefficients 
+$a_i$ for $0\leq i < n$ (a in the code below) of the interpolating
+polynomial.
+\small
+\begin{verbatim}
+%  [a, table] = divideddiff(d)
+
+function [a, table] = divideddiff(d)
+  n = size(d,1);
+  md = 0;
+  
+  % generate the table of divided differences
+  table = repmat(NaN,n,n+1);
+
+  table(:,1) = d(:,1);
+  table(1,2) = d(1,2);
+  for i=2:n
+    if ( table(i,1) == table(i-1,1) )
+      table(i,2) = table(i-1,2);
+    else
+      table(i,2) = d(i,2);
+    end
+  end
+  for k=3:n+1
+    for i=1:n-k+2
+      m = i+k-2;
+      if ( table(m,1) == table(i,1) )
+        if ( md == 0 )
+          md = m;
+        end
+        table(i,k) = d(md,2)/factorial(k-2);
+      else 
+        table(i,k)=(table(i+1,k-1)-table(i,k-1))/(table(m,1)-table(i,1));
+        md = 0;
+      end
+    end
+    md = 0;
+  end
+
+  a = table(1,2:n+1);
+end
+\end{verbatim}
+\end{code}
+
+\begin{code}[Nested Form]
+To evaluate a polynomial
+\[
+  p(x) = a_0 + a_1(x-x_0) + a_2(x-x_0)(x-x_1) + \ldots
+  + a_{n-1}(x-x_0)(x-x_1)\ldots(x-x_{n-2})
+\]
+using its nested form.\\
+\subI{Input}
+The coefficients $a_i$ for $0 \leq i < n$ (a in the code below).\\
+The points $x_i$ for $0 \leq i < n-1$ (X in the code below).\\
+The value $x$ where to evaluate the polynomial (x in the code below).\\
+\subI{Output} The value of $p(x)$.
+\small
+\begin{verbatim}
+%  v = polynomial(X,a,x)
+
+function v = polynomial(X,a,x)
+  n=length(a);
+  v = a(n);
+  for i=(n-1):-1:1
+    v=a(i)+(x-X(i)).*v;
+  end
+end
+\end{verbatim}
+\end{code}
+
+\begin{rmkList} \label{appr_interp_rmk}
+\begin{enumerate}
+\item Let $f:[a,b] \rightarrow \RR$ be a continuous function and $p$
+be the interpolating polynomial of $f$ at the interpolatory points
+$x_0 < x_1 < \ldots x_n$.  Suppose that $c \in [a,b]$ and
+$c \neq x_i$ for all $i$.   Will $p(c)$ approach $f(c)$ as the number of
+interpolatory points $n$ increases? Namely, will $p(c)$ give a better
+approximation of $f(c)$ as $n$ increases?  In general, the answer is
+no.
+
+When equally spaced points are used in the interpolating
+polynomial, the approximation of $f(x)$ given by $p(x)$ is generally
+getting worse as $n$ increases if $x$ is near the endpoints of the
+interval $[a,b]$.  The approximation of $f(x)$ given by $p(x)$ is 
+slowly getting better as $n$ increases if $x$ is near the centre of
+the interval $[a,b]$.
+
+Consider the function $f(x) = |x|$ on $[-1,1]$.  We list in the next
+table the result of $p_n(x)$ for some values of $x$ and $n$, where
+$p_n$ is the interpolating polynomial of $f$ at the $n+1$ equally
+spaced points $x_i = -1 + (2i)/n$ for $i=0$, $1$, \ldots , $n$.
+\[
+\begin{array}{c|c|c|c|c|}
+\multicolumn{2}{c|}{p_n(x)} & \multicolumn{3}{c|}{x} \\
+\cline{3-5}
+\multicolumn{2}{c|}{} & 0 & 0.8 & 0.9 \\
+\hline
+& 3 & 0.25 & 0.73 & 0.8575 \\
+\cline{2-5}
+n & 7 & 0.097656250 & 0.775586650 & 0.857468784 \\
+\cline{2-5}
+ & 15 & 0.043878794 & 0.852540445 & 0.748920770 \\
+\hline
+\end{array}
+\]
+The approximation of $f(0)$ improves really slowly when $n$ increases.
+However, the approximations of $f(0.8)$ and $f(0.9)$ are getting worse
+when $n$ increases.  The results in the table above were
+rounded to $9$ decimals.  The graphs of $f$, $p_3$, $p_7$ and $p_{15}$
+are given in Figure~\ref{EqualSpace}.
+
+\mathF{interpolation_A/interpol_abs}{8cm}{Interpolating polynomials of
+$y=f(x)=|x|$}{The solid blue line is the graph of $f(x)=|x|$ for
+$-1\leq x \leq 1$. The dotted grey line is the graph of the interpolating
+polynomial $p_3$ of degree at most $3$ at $x_i = -1 +2i/3$ for $i=0$,
+$1$, $2$ and $3$.  The dashed red line is the graph of the interpolating
+polynomial $p_7$ of degree at most $7$ at $x_i = -1 +2i/7$ for $i=0$,
+$1$, \ldots, $7$.  The dashed-dotted green line is the graph of the
+interpolating polynomial $p_{15}$ of degree at most $15$ at
+$x_i = -1 + 2i/15$ for $i=0$, $1$, \ldots, $15$.}{EqualSpace}
+
+\item Consider the function $f(x) = 1/(1+x^2)$ on $[-5,5]$.  Suppose
+that $p_n$ is the interpolating polynomial of $f$ at the equally
+spaced points $x_i = -5 + (10i)/n$ for $i=0$, $1$, \ldots, $n$.
+The uniform distance
+\[
+\max_{x \in [-5,5]}\,|p_n(x) - f(x)|
+\]
+increases as $n$ increases.  See Figure~\ref{Unifapprox}.
+
+The approximation of $f(x)$ given by $p_n(x)$ is generally getting
+worse as $n$ increases if $x$ is near $-5$ or $5$.  the approximation
+of $f(x)$ given by $p_n(x)$ is generally getting slowly better as $n$
+increases if $x$ is near the origin.
+
+\mathF{interpolation_A/interpol_1o1px2}{8cm}{Interpolating polynomial of
+$y=f(x)=1/(1+x^2)$}{The black line is the graph of $f(x)=1/(1+x^2)$
+and the blue line is the graph of the interpolating polynomial
+$p_{10}$ of $f$ at the $11$ equally spaced points
+$x_i = -5 + i$ for $i=0$, $1$, \ldots, $10$.}{Unifapprox}
+
+\item \label{appr_interp_rmk_lbl} Let $f:[a,b] \rightarrow \RR$ be a
+continuous function and $p_n$ be the interpolating polynomial of $f$ at the
+interpolatory points $x_0 < x_1 < \ldots x_n$.  One way to improve the
+uniform approximation of $f$ by the polynomial $p$ is to use more
+interpolatory points near the ends of the interval $[a,b]$ than near the
+middle of the interval $[a,b]$.
+
+Good interpolatory points are the
+{\bfseries Chebyshev points}\index{Chebyshev Points} $x_i$ adjusted to
+the interval $[a,b]$ which are defined by
+\[
+x_i = \frac{a+b}{2} - \frac{b-a}{2}\cos\left(\frac{2i+1}{2n+2}\,\pi\right)
+\]
+for $i=0$, $1$, \ldots , $n$.
+
+Among all polynomials of order at most $n$ interpolating $f$ at $(n+1)$
+points of $[a,b]$, we will show in Section~\ref{appr_Cheb_sect} that the
+interpolating polynomial $p_n$ of $f$ at the Chebyshev points above is
+the ``best uniform approximation'' of $f$ on $[a,b]$.
+Moreover, the approximation $p_n(x)$ of $f(x)$ is as good for $x$ near
+the endpoints of the interval $[a,b]$ as it is for $x$ near the middle of
+the interval $[a,b]$.
+
+For instance, let $f(x) = 1/(1+x^2)$ on $[-5,5]$ as before.
+From Theorems~\ref{InterpTh} and \ref{InterpProp}, we have
+\[
+f(x) - p_n(x) =
+\frac{1}{(n+1)!}\,\dydxn{f}{x}{n+1}(\xi) \, \prod_{i=0}^n\,(x-x_i)
+\]
+for some $\xi$ in the smallest interval containing the $x_i$ and $x$.
+
+We may assume that
+\[
+\frac{1}{(n+1)!}\,\dydxn{f}{x}{n+1}(\xi)
+\]
+is almost constant on $[-5,5]$.   Hence, the behaviour of
+$|f(x)-p_n(x)|$ is roughly described by
+$\displaystyle \left|\prod_{i=0}^n\,(x-x_i)\right|$.
+We have in Figure~\ref{Chebpts} the graph of
+$\displaystyle \left|\prod_{i=0}^n\,(x-x_i)\right|$ for
+$-5 \leq x \leq 5$, where
+\begin{description}
+\item[(i)]
+$\displaystyle
+x_i = -5\cos\left(\frac{2i+1}{16}\,\pi \right)$
+for $i=0$, $1$, \ldots, $7$ are the Chebyshev points adjusted to the
+interval $[-5,5]$ and
+\item[(ii)]
+$x_i = -5 + (10i)/7$ with $i=0$, $1$, \ldots, $7$ are equally
+spaced points.
+\end{description}
+\end{enumerate}
+\end{rmkList}
+
+\mathF{interpolation_A/interpol_errors}{10cm}{Comparison of the error for the
+interpolating polynomials at equally spaced points and at Chebyshev
+points}{The blue line represents the qualitative behavior of the
+error for interpolating polynomials using equally spaced points and
+the black line represents the qualitative behavior of the error for
+interpolating polynomial using Chebyshev points adjusted to the
+interval $[-5,5]$.}{Chebpts}
+
+\begin{rmk}
+As we promised in Section~\ref{OrderConvNBmeth}, we now show that
+if there exist $\alpha>0$ and $\lambda \neq 0$ such that
+\begin{equation} \label{secantGoldRatLim}
+\lim_{n\rightarrow \infty} \frac{|e_{n+1}|}{|e_n|^\alpha} = \lambda \ ,
+\end{equation}
+then $\alpha$ must be the {\bfseries golden ratio}\index{Golden Ratio}
+$(1+\sqrt{5})/2$.  Namely, the order of convergence of the sequence method
+must be $(1+\sqrt{5})/2$.  Obviously, we assume that the secant method
+yields a sequence $\displaystyle \{ x_n\}_{n=0}^\infty$ that converges
+to a root $p$ of a function $f$ so that (\ref{secantGoldRatLim}) can
+be stated.
+
+For any distinct real numbers $a$, $b$ and $x$, we have
+\[
+f(x) = f(a) + f[a,b] (x-a) + f[a,b,x](x-a)(x-b) \ ,
+\]
+where
+\[
+f[a,b] = \frac{f(b)-f(a)}{b-a} \ , \quad
+f[b,x] = \frac{f(x)-f(b)}{x-b}
+\quad \text{and} \quad
+f[a,b,x] = \frac{f[b,x] - f[a,b]}{x-a} \ .
+\]
+From,
+\[
+0 = f(p) = f(a) + f[a,b] (p-a) + f[a,b,p](p-a)(p-b) \ ,
+\]
+we get
+\[
+p = a - \frac{f(a)}{f[a,b]} - \frac{f[a,b,p]}{f[a,b]}(p-a)(p-b) \ .
+\]
+If $a=x_n$ and $b=x_{n-1}$, we get
+\begin{align*}
+p &= \underbrace{x_n - \frac{f(x_n)}{f[x_n,x_{n-1}]}}_{\text{secant method}}
+ - \frac{f[x_n,x_{n-1},p]}{f[x_n,x_{n-1}]}(p-x_n)(p-x_{n-1}) \\
+&= x_{n+1} - \frac{f[x_n,x_{n-1},p]}{f[x_n,x_{n-1}]}(p-x_n)(p-x_{n-1})
+\end{align*}
+and thus
+\begin{equation} \label{ecee}
+e_{n+1} = \frac{f[x_n,x_{n-1},p]}{f[x_n,x_{n-1}]} \, e_n e_{n-1} \ .
+\end{equation}
+
+We can rewrite (\ref{ecee}) as $e_{n+1} = c_n e_n e_{n-1}$, where
+$\displaystyle c_n = \left| \frac{f[x_n,x_{n-1},p]}{f[x_n,x_{n-1}]} \right|$.
+Hence,
+\[
+\frac{|e_{n+1}|}{|e_n|^\alpha} 
+= \frac{|c_n e_n e_{n-1}|}{|e_n|^\alpha}
+= c_n |e_n|^{1-\alpha} |e_{n-1}|
+= c_n \left( \frac{|e_n|}{|e_{n-1}|^\alpha} \right)^\beta \ ,
+\]
+where $\beta$ satisfies $\beta=1-\alpha$ and $\alpha\beta=-1$.
+Thus, $-\alpha^2 + \alpha + 1 = 0$.  The roots of this polynomial are
+$(1\pm \sqrt{5})/2$.  We are only interested in the positive root
+$\alpha = (1 + \sqrt{5})/2$.   We then have that
+$\beta = -1/\alpha = (1 -\sqrt{5})/2$
+and $-1 < \beta <0$.
+
+If $\displaystyle y_n = \frac{|e_n|}{|e_{n-1}|^\alpha}$, we get
+$y_{n+1} = c_n y_n^\beta$.  Taking the limit $n\rightarrow \infty$ on
+both sides, we get $\lambda = c_\infty \lambda^\beta$, where
+\[
+c_\infty = \lim_{n\rightarrow \infty} c_n = \frac{f''(p)}{2f'(p)} \neq 0 \ .
+\]
+Thus,
+\[
+  \lambda = c_\infty^{1/(1-\beta)} = c_\infty^{1/\alpha} \neq 0
+\]
+as expected.
+
+We have shown that, with
+$\displaystyle \alpha = \frac{1 + \sqrt{5}}{2}$, we have
+$\displaystyle
+\lim_{n\rightarrow \infty} \frac{|e_{n+1}|}{|e_n|^\alpha} =
+\lambda =  \left(\frac{f''(p)}{2f'(p)}\right)^{1/\alpha} \neq 0$.
+\label{bisOrderGold}
+\end{rmk}
+
+\section{Proofs of Theorems~\ref{unique}, \ref{InterpTh} and
+\ref{InterpProp}} \label{approx_proofs}
+
+\begin{defn}
+Suppose that $f:[a,b]\rightarrow \RR$ is sufficiently differentiable
+and $z\in ]a,b[$.  Then $z$ is a
+{\bfseries zero of $f$ of order $k$}\index{Functions!Order of Zero} if
+\[
+\dydxn{f}{x}{j}(z) = 0 \quad \text{for} \quad 0\leq j < k \quad
+\text{and} \quad \dydxn{f}{x}{k}(z) \neq 0 \ .
+\]
+If $k=0$, the previous condition is reduced to $f(z)\neq 0$.  As
+usual,
+\[
+\dydxn{f}{x}{j}(z) = f(z)
+\]
+for $j=0$.
+\end{defn}
+
+\begin{lemma} \label{FactPolyRoot}
+If $z$ is a zero of order $k$ of a polynomial $p$ of degree
+$n\geq k$, then one can write $p(x) = (x-z)^k\,q(x)$, where $q$ is a
+polynomial of degree $n-k$ such that $q(z)\neq 0$.
+\end{lemma}
+
+This factorization can be obtained with the help of the Horner Algorithm.
+
+If $z$ is a root of $p$, then Horner's Theorem,
+Theorem~\ref{HornerTh}, yields $p(x) = (x-z)\,q_1(x)$, where $q_1$ is
+a polynomial of degree $n-1$. Since $p'(x) = q_1(x) + (x-z)\,q_1'(x)$,
+we get $p'(z) = q_1(z)$.
+
+If $k>1$, then $q_1(z) = p'(z) =0$.  Since $z$ is a root of
+$q_1$, Horner's Theorem yields $q_1(x) = (x-z)\,q_2(x)$, where $q_2$ is
+a polynomial of degree $n-2$.  Hence $p(x) = (x-z)^2\,q_2(x)$.  Since
+$p''(x) = 2\,q_2(x) + 4(x-z)\,q_2'(x) + (x-z)^2\, q_2''(x)$, we get
+$p''(z) = 2 \,q_2(z)$.
+
+If $k>2$, then $q_2(z) = p''(z)/2 = 0$ and we can again use Horner's
+Theorem.  Since $z$ is a root of $q_2$, Horner's Theorem yields
+$q_2(x) = (x-z)q_3(x)$, where $q_3$ is a polynomial of degree $n-3$.
+Hence $p(x) = (x-z)^3q_3(x)$.
+
+It becomes clear that the claim of the first paragraph of the remark
+can be proved by induction.  A shorter proof is given by the Taylor
+polynomial of $p$ at $z$.
+
+\begin{proof}[Proof of Lemma~\ref{FactPolyRoot}]
+The Taylor polynomial of degree $n$ of $p$ at $z$ is $p$ itself
+because $\displaystyle \dydxn{p}{x}{j} = 0$ for $j>n$.  Hence,
+\begin{align*}
+p(x) &= p(z) + \dydx{p}{x}(z)\,(x-z) +
+\frac{1}{2!}\,\dydxn{p}{x}{2}(z)\,(x-z)^2
++ \ldots + \frac{1}{k!}\,\dydxn{p}{x}{k}(z)\,(x-z)^k \\
+&\quad + \frac{1}{(k+1)!}\,\dydxn{p}{x}{k+1}(z)\,(x-z)^{k+1}
++ \ldots + \frac{1}{n!}\,\dydxn{p}{x}{n}(z)\,(x-z)^n \\
+&= \frac{1}{k!}\,\dydxn{p}{x}{k}(z)\,(x-z)^k
++ \frac{1}{(k+1)!}\,\dydxn{p}{x}{k+1}(z)\,(x-z)^{k+1}
++ \ldots + \frac{1}{n!}\,\dydxn{p}{x}{n}(z)\,(x-z)^n \\
+&= (x-z)^k
+\underbrace{\left( \frac{1}{k!}\,\dydxn{p}{x}{k}(z)
++ \frac{1}{(k+1)!}\,\dydxn{p}{x}{k+1}(z)\,(x-z)
++ \ldots + \frac{1}{n!}\,\dydxn{p}{x}{n}(z)\,(x-z)^{n-m}\right)}_{=q(x)} \\
+&= (x-z)^k q(x) \ ,
+\end{align*}
+where we have used $\displaystyle \dydxn{p}{x}{j}(z)=0$ for $j=0$,
+$1$, \ldots, $k-1$.  Moreover,
+$\displaystyle q(z) = \frac{1}{k!} \dydxn{p}{x}{k}(z) \neq 0$.
+\end{proof}
+
+\begin{proof}[Proof (of Theorem~\ref{unique})]
+Since polynomials of degree $n$ have exactly $n$ (complex) roots
+(counted with multiplicity), there could be only one polynomial of
+degree at most $n$ which agrees with $f$ at $x_0$, $x_1$, \ldots,
+$x_n$.  Suppose that $p_1$ and $p_2$ are two polynomials of degree at
+most $n$ such that $p_1(x_i)=p_2(x_i)$ for $i=0$, $1$, $2$, \ldots, $n$.
+Then $p(x) = p_1(x) - p_2(x)$ is a polynomial of degree at most $n$
+with $n+1$ roots (counted with multiplicity).  Thus, $p$ is the zero
+polynomial.
+
+The proof of the existence of the polynomial $p$ satisfying the
+conclusion of the theorem is by induction on $n$.  Without lost of
+generality, we may assume that
+$x_0 \leq x_1 \leq x_2 \leq \ldots \leq x_n$
+
+If $n=1$, then
+\[
+p(x) = \frac{x-x_0}{x_1-x_0}\, f(x_1) +
+\frac{x-x_1}{x_0-x_1}\,f(x_0)
+\]
+satisfies the conclusion of the theorem if $x_0 < x_1$ and
+\[
+p(x) = f(x_0) + f'(x_0)(x-x_0)
+\]
+satisfies the conclusion of the theorem if $x_0 = x_1$.
+
+We assume that the conclusion of the theorem is true for $n=k$ and
+show that it is then true for $n=k+1$.
+
+\stage{$\mathbf{x_0 = x_{k+1}}$}  Since
+$x_0 \leq x_1 \leq \ldots \leq x_{k+1}$,
+we get $x_0 = x_1 = \ldots = x_{k+1}$.  Let $p$ be the Taylor
+polynomial of degree $k+1$ of $f$ at $x_0$; namely,
+\begin{equation}\label{badP}
+\begin{split}
+p(x) &= f(x_0) + \dydx{f}{x}(x_0)\,(x-x_0) +
+\frac{1}{2!}\,\dydxn{f}{x}{2}(x_0)\,(x-x_0)^2
++ \ldots \\
+& \qquad + \frac{1}{(k+1)!}\,\dydxn{f}{x}{k+1}(x_0)\,(x-x_0)^{k+1} \ .
+\end{split}
+\end{equation}
+We obviously have that $f$ and $p$ agree at
+$x_0$, $x_1$, \ldots, $x_{k+1}$.
+
+\stage{$\mathbf{x_0 < x_{k+1}}$}  By induction, there exist
+polynomials $q_1$ and $q_2$ of degree $k$ such that $q_1$ agrees with
+$f$ at $x_0$, $x_1$, \ldots $x_k$ and $q_2$ agrees with $f$
+at $x_1$, $x_2$, \ldots, $x_{k+1}$.  Let
+\begin{equation}\label{goodP}
+p(x) = \frac{x-x_0}{x_{k+1}-x_0}\,q_2(x) +
+\frac{x_{k+1}-x}{x_{k+1}-x_0}\, q_1(x) \ .
+\end{equation}
+We show that $f$ agree with $p$ at $x_0$, $x_1$, \ldots, $x_{k+1}$.
+
+We have that
+\[
+p(x_i) = \frac{x_i-x_0}{x_{k+1}- x_0} q_2(x_i) +
+\frac{x_{k+1}-x_i}{x_{k+1}- x_0} q_1(x_i)
+= \frac{x_i-x_0}{x_{k+1}- x_0} f(x_i) +
+\frac{x_{k+1}-x_i}{x_{k+1}- x_0} f(x_i) = f(x_i)
+\]
+for all $0<i<k+1$,
+\[
+p(x_0) = \frac{x_0-x_0}{x_{k+1}- x_0} q_2(x_0) +
+\frac{x_{k+1}-x_0}{x_{k+1}- x_0} q_1(x_0)
+= q_1(x_0) = f(x_0)
+\]
+and
+\[
+p(x_{k+1}) = \frac{x_{k+1}-x_0}{x_{k+1}- x_0} q_2(x_{k+1}) +
+\frac{x_{k+1}-x_{k+1}}{x_{k+1}- x_0} q_1(x_{k+1})
+= q_2(x_{k+1}) = f(x_{k+1}) \ .
+\]
+
+Suppose now that $x_i = x_{i+1} = \ldots = x_{i+r} \neq x_m$ for
+$m \not\in \{i,i+1, \ldots, i+r\}$ with $r>0$.
+
+The polynomial $p$ has degree at most $k+1$ and
+\begin{equation}\label{derGoodP}
+\begin{split}
+\dydxn{p}{x}{j}(x)
+&= \left(\frac{x-x_0}{x_{k+1}-x_0}\right)\dydxn{q_2}{x}{j}(x) +
+\left(\frac{x_{k+1}-x}{x_{k+1}-x_0}\right) \dydxn{q_1}{x}{j}(x) \\
+& \qquad + \frac{j}{x_{k+1}-x_0}\left(
+\dydxn{q_2}{x}{j-1}(x)-\dydxn{q_1}{x}{j-1}(x)\right)
+\end{split}
+\end{equation}
+for all $j\geq 1$ by induction.
+
+If $i=0$, then
+\[
+\dydxn{q_1}{x}{j}(x_i) = \dydxn{q_2}{x}{j}(x_i) = \dydxn{f}{x}{j}(x_i)
+\]
+for $j=0$, $1$, \ldots, $r-1$ and
+\[
+\dydxn{q_1}{x}{r}(x_i) = \dydxn{f}{x}{r}(x_i)
+\]
+by definition of $q_1$ and $q_2$.  Hence, we get from (\ref{derGoodP})
+that
+\begin{align*}
+\dydxn{p}{x}{j}(x_i)
+& = \underbrace{\left(\frac{x_i-x_0}{x_{k+1}-x_0}\right)}_{=0}
+\dydxn{q_2}{x}{j}(x_i) +
+\underbrace{\left(\frac{x_{k+1}-x_i}{x_{k+1}-x_0}\right)}_{=1}
+\dydxn{q_1}{x}{j}(x_i) \\
+&\qquad  + \frac{j}{x_{k+1}-x_0}\left(
+\dydxn{q_2}{x}{j-1}(x_i)-\dydxn{q_1}{x}{j-1}(x_i)\right) \\
+&= \dydxn{f}{x}{j}(x_i) + \frac{j}{x_{k+1}-x_0}\left(
+\dydxn{f}{x}{j-1}(x_i)-\dydxn{f}{x}{j-1}(x_i)\right)
+= \dydxn{f}{x}{j}(x_i)
+\end{align*}
+for $j=1$, $2$, \ldots, $r$.  If $i+r=k+1$, a similar argument yields
+\[
+  \dydxn{p}{x}{j}(x_{i+r}) = \dydxn{f}{x}{j}(x_{i+r})
+\]
+for $j=1$, $2$, \ldots, $r$.
+
+If $i\neq 0$ and $i+r \neq k+1$, then
+\[
+\dydxn{q_1}{x}{j}(x_i) = \dydxn{q_2}{x}{j}(x_i) = \dydxn{f}{x}{j}(x_i)
+\]
+for $j=0$, $1$, \ldots, $r$ by definition of $q_1$ and $q_2$.
+From (\ref{derGoodP}), we get
+\begin{align*}
+\dydxn{p}{x}{j}(x_i)
+&= \left( \frac{x_i-x_0}{x_{k+1}-x_0}\right)\dydxn{q_2}{x}{j}(x_i) +
+\left(\frac{x_{k+1}-x_i}{x_{k+1}-x_0}\right) \dydxn{q_1}{x}{j}(x_i)
++ \frac{j}{x_{k+1}-x_0}\left(
+\dydxn{q_2}{x}{j-1}(x_i)-\dydxn{q_1}{x}{j-1}(x_i)\right) \\
+&= \left(\frac{x_i-x_0}{x_{k+1}-x_0}\right)\dydxn{f}{x}{j}(x_i) +
+\left(\frac{x_{k+1}-x_i}{x_{k+1}-x_0}\right) \dydxn{f}{x}{j}(x_i)
++\frac{j}{x_{k+1}-x_0}\left(
+\dydxn{f}{x}{j-1}(x_i)-\dydxn{f}{x}{j-1}(x_i)\right) \\
+&= \left( \frac{x_i-x_0}{x_{k+1}-x_0} +
+  \frac{x_{k+1}-x_i}{x_{k+1}-x_0} \right) \,\dydxn{f}{x}{j}(x_i)
+= \dydxn{f}{x}{j}(x_i)
+\end{align*}
+for $j=1$, $2$, \ldots, $r$.
+This proves that, for $x_0 < x_{k+1}$, $f$ and $p$ agree at
+$x_0$, $x_1$, \ldots, $x_{k+1}$.
+
+This complete the proof by induction.
+\end{proof}
+
+\begin{rmk}
+We have from (\ref{badP}) (after replacing $k$ by $n-1$) that the
+coefficient of $x^n$ in the interpolating polynomial of $f$ at $x_0$,
+$x_1$, \ldots, $x_n$ is
+\begin{equation}\label{coeffA}
+f[x_0,x_1,\ldots,x_n] = \frac{1}{n!}\,\dydxn{f}{x}{n}(x_0)
+\end{equation}
+when $x_0 = x_1 = \ldots = x_n$.
+
+We have from (\ref{goodP}) (after replacing $k$ by $n-1$) that the
+coefficient of $x^n$ in the interpolating polynomial of $f$ at $x_0$,
+$x_1$, \ldots, $x_n$ is
+\begin{align*}
+f[x_0,x_1,\ldots,x_n] &= \frac{1}{x_n-x_0}\,f[x_1,x_2,\ldots,x_n] -
+\frac{1}{x_n-x_0}\, f[x_0,x_1,\ldots,x_{n-1}] \\
+&= \frac{f[x_1,x_2,\ldots,x_n]-f[x_0,x_1,\ldots,x_{n-1}]}{x_n-x_0} \ ,
+\end{align*}
+when $x_0 \neq x_n$, because $f[x_0,x_1,\ldots,x_{n-1}]$ (resp.\
+$f[x_1,x_2,\ldots,x_n]$) is the coefficient of $x^{n-1}$ in the
+interpolating polynomial of $f$ at
+$x_0$, $x_1$, \ldots, $x_{n-1}$ (resp.\ $x_1$, $x_2$, \ldots, $x_n$.)
+\label{rmkNDDF}
+\end{rmk}
+
+Before proving Theorems~\ref{InterpTh} and \ref{InterpProp}, we need
+the following results.
+
+\begin{prop}
+Suppose that $f:]a,b[\rightarrow \RR$ is a $n$ times continuously
+differentiable fonctions and that $x_0$, $x_1$, $x_2$, \ldots, $x_n$
+are $n+1$ distinct points in $]a,b[$, then there exists $\xi$ in the
+smallest closed interval containing the $x_i$'s such that
+\begin{equation}\label{diffNDDF}
+f[x_0,x_1,x_2, \ldots, x_n] = \frac{1}{n!} \dydxn{f}{x}{n}(\xi) \ .
+\end{equation}
+\label{prop1_NDDF}
+\end{prop}
+
+\begin{proof}
+Without lost of generality, we may assume that
+$x_0 < x_1 < x_2 < \ldots < x_n$.
+
+For $n=1$, (\ref{diffNDDF}) is the statement of the Mean Value
+Theorem.  There exists $\xi$ between $x_0$ and $x_1$ such that
+\[
+f[x_0,x_1] = \frac{f(x_1)-f(x_0)}{x_1-x_0} = f'(\xi) \ .
+\]
+
+Let $p$ be the interpolating polynomial of degree at most $n$ of $f$
+at $x_0$, $x_1$, \ldots, $x_n$.  Let $g = f - p$.  The fonction $g$
+has $n+1$ distinct roots at $x_0$, $x_1$, \ldots, $x_n$.
+
+We prove by induction that $\displaystyle \dydxn{g}{x}{j}$
+has $n-j+1$ distinct roots between $x_0$ and $x_n$ for $j=1$, $2$,
+\ldots, $n$.
+
+By the Mean Value Theorem, for each pair of points
+$\{ x_i, x_{i+1}\}$ with $i\in\{0,1,2,\ldots,n-1\}$, there exists
+$\mu_i$ between $x_i$ and $x_{i+1}$ such that
+\[
+0 = g(x_{x+1}) - g(x_i) = g'(\mu_i)(x_{i+1}-x_i) \ .
+\]
+Hence $g'(\mu_i)=0$ for $i=0$, $1$, \ldots, $n-1$.  The function $g'$
+has therefore $n = n-1+1$ distinct roots between $x_0$ and $x_n$.  The
+hypothesis of induction is true if $j=1$.
+
+Suppose that the hypothesis of induction is true for $j=k$; namely,
+$\displaystyle \dydxn{g}{x}{k}$ has $n-k+1$ distinct roots
+at $\zeta_0$, $\zeta_1$, \ldots, $\zeta_{n-k}$ between $x_0$ and $x_n$.
+By the Mean Value Theorem, for each pair of points
+$\{ \zeta_i, \zeta_{i+1}\}$, where $i\in\{0,1,2,\ldots,n-k-1\}$, there
+exists $\nu_i$ between $\zeta_i$ and $\zeta_{i+1}$ such that
+\[
+0 = \dydxn{g}{x}{k}(\zeta_{x+1}) - \dydxn{g}{x}{k}(\zeta_i)
+= \dydxn{g}{x}{k+1}(\nu_i)(\zeta_{i+1}-\zeta_i) \ .
+\]
+Hence $\displaystyle \dydxn{g}{x}{k+1}(\nu_i)=0$ for $i=0$, $1$,
+\ldots, $n-k-1$.  The function $\displaystyle \dydxn{g}{x}{k+1}$ has
+therefore $n-k = n-(k+1)+1$ distinct roots at $\nu_0$, $\nu_1$,
+\ldots, $\nu_{n-k-1}$ between $x_0$ and $x_n$.  This proves the
+hypothesis of induction.
+
+We have that $\displaystyle \dydxn{g}{x}{n}$
+has $n-n+1 = 1$ root between $x_0$ and $x_n$.  Let $\xi$ be this root,
+Since $p$ is a polynomial of degree at most $n$ whose coefficient for
+$x^n$ is $f[x_0,x_1,\ldots, x_n]$, we have
+\[
+\dydxn{g}{x}{n}(x) = \dydxn{f}{x}{n}(x) - n!\,f[x_0,x_1,\ldots,x_n] \ .
+\]
+Hence,
+\[
+0 = \dydxn{f}{x}{n}(\xi) - n!\,f[x_0,x_1,\ldots,x_n] \ .
+\]
+This proves the proposition.
+\end{proof}
+
+\begin{prop}
+Suppose that $f:]a,b[\rightarrow \RR$ is a $n$ times continuously
+differentiable fonctions, then
+\begin{equation}\label{propA}
+f[x_0,x_1,\ldots,x_n] = \frac{1}{n!}\,\dydxn{f}{x}{n}(\xi)
+\end{equation}
+for some $\xi$ in the smallest closed interval containing $x_0$,
+$x_1$, \ldots, $x_n$.
+
+Moreover, if $\{x_{i,j}\}_{j=0}^\infty$ are sequences such that
+\[
+\lim_{j\rightarrow \infty} x_{i,j} = x_i
+\]
+for $i=0$, $1$, \ldots, $n$, then
+\begin{equation}\label{propB}
+\lim_{j\rightarrow \infty} f[x_{0,j}, x_{1.j}, x_{2,j}, \ldots, x_{n,j}]
+= f[x_0,x_1,x_2,\ldots, x_n] \ .
+\end{equation}
+\label{prop2_NDDF}
+\end{prop}
+
+\begin{proof}
+Without lost of generality, we may assume that
+$x_0\leq x_1 \leq x_2 \leq \ldots \leq x_n$.
+
+For $n=0$, we have $f[x_0] = f(x_0)$ and the conclusion of the
+proposition are obviously true.  Note that the case $k=1$ is also
+obvious.  (\ref{propA}) is the Mean Value Theorem when $x_0 \neq x_1$
+and $f[x_0,x_1] = f'(x_0)$ when $x_0 = x_1$.  As for
+(\ref{propB}), it follows from the continuity of $f$ when
+$x_0 \neq x_1$, the definition of $f'$ when $x_0 = x_1$, of the
+continuity of $f'$ when $x_{1,j} = x_{2,j}$ for all $j$ (large enough).
+
+We suppose that the conclusion of the theorem is true for $n=k$ and
+show that it is true for $n=k+1$.
+
+\stage{I}
+First, we prove (\ref{propB}) with $n=k+1$ and $x_0 < x_{k+1}$.  Since
+$x_{i,j}\rightarrow x_i$ as $j\rightarrow \infty$ and
+$x_0 \neq x_{k+1}$, there exists $J>0$ such that
+$x_{0,j} \neq x_{k+1,j}$ for $j \geq J$.  Hence, for $j\geq J$, we have
+\begin{align*}
+f[x_{0,j}, x_{1,j},\ldots,x_{k+1,j}]
+&=
+\frac{f[x_{1,j},x_{2,j},\ldots,x_{k+1,j}] -
+f[x_{0,j},x_{1,j},\ldots,x_{k,j}]}{x_{k+1,j} - x_{0,j}} \\
+&\rightarrow 
+\frac{f[x_1,x_2,\ldots,x_{k+1}] -
+f[x_0,x_1,\ldots,x_k]}{x_{k+1} - x_0} \\
+&= f[x_0,x_1,x_2, \ldots, x_{k+1}]
+\end{align*}
+because
+$\displaystyle f[x_{1,j},x_{2,j},\ldots,x_{k+1,j}] \rightarrow
+f[x_1,x_2,\ldots,x_{k+1}]$ and \\
+$\displaystyle f[x_{0,j},x_{1,j},\ldots,x_{k,j}] \rightarrow
+f[x_0,x_1,\ldots,x_k]$
+as $j\rightarrow \infty$ by hypothesis of induction for $n=k$.
+
+\stage{II}
+Second, we prove (\ref{propA}) with $n=k+1$.  If
+$x_0=x_1=\ldots=x_{k+1}$, then (\ref{propA}) with $n=k+1$ is just
+(\ref{coeffA}) with $n=k+1$.  If $x_0 < x_{k+1}$, we choose sequences
+$\{x_{i,j}\}_{j=0}^\infty$ in $]a,b[$ such that
+\[
+\lim_{j\rightarrow \infty} x_{i,j} = x_i
+\]
+for $i=0$, $1$, $2$, \ldots, $k+1$ and
+\[
+x_0 \leq x_{0,j} < x_{1,j} < x_{2,j} < \ldots < x_{k+1,j} \leq x_{k+1}
+\]
+for all $j$.  From Proposition~\ref{prop1_NDDF}, there exist
+$\xi_j \in [x_{0,j}, x_{k+1,j}]$ such that
+\[
+f[x_{0,j},x_{1,j},x_{2,j}, \ldots, x_{k+1,j}] =
+\frac{1}{(k+1)!}\,\dydxn{f}{x}{k+1}(\xi_j) 
+\]
+for all $j$.  From (I), we have that
+\[
+\lim_{j\rightarrow \infty}
+\left( \frac{1}{(k+1)!}\,\dydxn{f}{x}{k+1}(\xi_j) \right)
+= \lim_{j\rightarrow \infty} f[x_{0,j}, x_{1,j}, x_{2,j}, \ldots, x_{k+1,j}]
+= f[x_0,x_1, \ldots, x_{k+1}] \ . 
+\]
+
+Consider
+\begin{align*}
+  g: ]a,b[ & \to \RR \\
+  x & \mapsto \frac{1}{(k+1)!}\dydxn{f}{x}{k+1}(x)
+\end{align*}
+We have
+$\displaystyle \lim_{j\rightarrow \infty} g(\xi_j) = f[x_0,x_1,\ldots, x_{k+1}] $.
+Since $\displaystyle
+\xi_j \in [x_{0,j}, x_{k+1,j}] \subset [x_0,x_{k+1}]$ for all
+$j$, we have that
+$g(\xi_j) \in g([x_0,x_{k+1}])$ for all $j$.
+Since $g$ is a continuous function by assumption and since
+the image of a closed and bounded interval (a compact and connected
+set) by a continuous function like $g$ is a closed and bounded
+interval (another compact and connected set), it follows that
+$g([x_0,x_{k+1}])$ is closed and
+$\displaystyle \lim_{j\rightarrow \infty} g(\xi_j) \in g([x_0,x_{k+1}])$.
+Thus, there exists $\xi \in [x_0,x_{k+1}]$
+such that
+\[
+f[x_0,x_1,\ldots,x_{k+1}]
+= \lim_{j\rightarrow \infty}
+\frac{1}{(k+1)!}\,\dydxn{f}{x}{k+1}(\xi_j)
+= \lim_{j\rightarrow \infty} g(\xi_j) = g(\xi)
+= \frac{1}{(k+1)!} \dydxn{f}{x}{k+1}(\xi) \ .
+\]
+This proves (\ref{propA}) for $n=k+1$.
+
+\subQ{III}
+Finally, we prove (\ref{propB}) with $n=k+1$ and
+$x_0 = x_1 = \ldots = x_{k+1}$.  Let
+$\displaystyle \{x_{i,j}\}_{j=0}^\infty$ be
+any sequences such that $\displaystyle \lim_{j\to \infty} x_{i,j} = x_i$
+for $i=0$, $1$, \ldots, $k+1$.   From (II),
+there exist $\xi_j \in [x_{0,j}, x_{k+1,j}]$ such that
+\[
+f[x_{0,j},x_{1,j},x_{2,j}, \ldots, x_{k+1,j}] =
+\frac{1}{(k+1)!}\,\dydxn{f}{x}{k+1}(\xi_j) 
+\]
+for all $j$.  Moreover, since
+\[
+\lim_{j\rightarrow \infty} x_{0,j} =
+\lim_{j\rightarrow \infty} x_{k+1,j} = x_0
+\]
+and $x_{0,j} \leq \xi_j \leq x_{k+1,j}$ for all $j$, we have that
+\[
+\lim_{j\rightarrow \infty} \xi_j = x_0 \ .
+\]
+Hence, by continuity of $\displaystyle \dydxn{f}{x}{k+1}$,
+\begin{align*}
+\lim_{j\rightarrow \infty}
+f[x_{0,j}, x_{1,j}, x_{2,j}, \ldots, x_{k+1,j}]
+&= \lim_{j\rightarrow \infty}
+\left( \frac{1}{(k+1)!}\,\dydxn{f}{x}{k+1}(\xi_j) \right) \\
+&= \frac{1}{(k+1)!}\,\dydxn{f}{x}{k+1}(x_0)
+= f[x_0,x_1, \ldots, x_{k+1}] \ ,
+\end{align*}
+where we have used (\ref{coeffA}) with $n=k+1$.
+
+This completes the proof by induction.
+\end{proof}
+
+\begin{proof}[Proof (of Theorem~\ref{InterpTh})]
+We first prove (\ref{NFDDF}) by induction on $n$.
+
+If $n=0$, then $p(x) = f(x_0)$ for all $x$ is the interpolating
+polynomial of degree $0$ of $f$ at $x_0$.  In addition, we can even
+note that for $n=1$, the interpolating polynomial of degree at
+most $1$ of $f$ at $x_0$ and $x_1$ is
+$p(x) = f(x_0) + f[x_0,x_1](x-x_0)$, where
+$f[x_0,x_1] = (f(x_1)-f(x_0))/(x_1-x_0)$ for $x_0 \neq x_1$ and
+$f[x_0,x_1] = f'(x_0)$ for $x_0 = x_1$.
+
+We assume that (\ref{NFDDF}) is true for $n=k$ and show that it is
+also true for $n=k+1$.
+
+Let $p$ be the interpolating polynomial of degree at most $k+1$ of $f$
+at $x_0$, $x_2$, \ldots, $x_{k+1}$.  By definition, the coefficient of
+$x^{k+1}$ is $f[x_0, x_1, x_2, \ldots, x_{k+1}]$.  Let
+\[
+q(x) = p(x) - f[x_0, x_1, x_2, \ldots, x_{k+1}]
+(x-x_0)(x-x_1) \ldots (x-x_k) \ .
+\]
+$q$ is a polynomial of degree at most $k$ that agree with $f$ at
+$x_0$, $x_2$, \ldots, $x_k$.
+By the hypothesis of induction, we have
+\begin{align*}
+q(x) &= f[x_0]+f[x_0,x_1]\,(x-x_0) +
+f[x_0,x_1,x_2]\,(x-x_0)(x-x_1) + \ldots \\
+ &+f[x_0,x_1,\ldots,x_k]\,(x-x_0)(x-x_1)\ldots(x-x_{k-1}) \ .
+\end{align*}
+Hence,
+\begin{align*}
+p(x) &= q(x) + f[x_0, x_1, x_2, \ldots, x_{k+1}]
+(x-x_0)(x-x_1) \ldots (x-x_k) \\
+&= f[x_0]+f[x_0,x_1]\,(x-x_0) +
+f[x_0,x_1,x_2]\,(x-x_0)(x-x_1) + \ldots \\
+&+f[x_0,x_1,\ldots,x_{k+1}]\,(x-x_0)(x-x_1)\ldots(x-x_k) \ .
+\end{align*}
+Thus (\ref{NFDDF}) is true for $k+1$ and this completes the proof of
+(\ref{NFDDF}).
+
+(\ref{divide1}) and (\ref{divide2}) follow from 
+Remark~\ref{rmkNDDF} if the interpolating polynomial of $f$ is at $x_j$,
+$x_{j+1}$, \ldots, $x_{j+k}$ only.
+
+Finally, to prove (\ref{IPerror}), let $p$ be the interpolating
+polynomial of degree at most $n+1$ of $f$ at $x_0$, $x_1$, $x_2$,
+\ldots, $x_n$ given by (\ref{NFDDF}).  Let $\tilde{p}$ be the
+interpolating polynomial of degree at most $n+2$ of $f$ at $x_0$,
+$x_1$, $x_2$, \ldots, $x_n$ and $\tilde{x}$.  We have
+\begin{align*}
+\tilde{p}(x) &= \sum_{j=0}^n f[x_0, x_1, \ldots, x_j]
+(x-x_0)(x-x_1)\ldots(x-x_{j-1}) \\
+&\qquad+ f[x_0,x_1,\dots,x_n,\tilde{x}]\,(x-x_0)(x-x_1)\ldots(x-x_n) \\
+&= p(x) + f[x_0,x_1,\dots,x_n,\tilde{x}]\,(x-x_0)(x-x_1)\ldots(x-x_n) \ .
+\end{align*}
+Hence, since $\tilde{p}(\tilde{x}) = f(\tilde{x})$ by construction,
+\[
+f(\tilde{x})
+= p(\tilde{x}) + f[x_0,x_1,\ldots,x_n,\tilde{x}]\,
+(\tilde{x}-x_0)(\tilde{x}-x_1)\ldots(\tilde{x}-x_n) \ .
+\]
+This is (\ref{IPerror}) if we substitute $\tilde{x}$ by $x$.
+\end{proof}
+
+\begin{proof}[Proof (of Theorem~\ref{InterpProp})]
+The first part of Theorem~\ref{InterpProp} is the first par of
+Proposition~\ref{prop2_NDDF}.
+
+To prove (\ref{derDDF}) in Theorem~\ref{InterpProp}, we proceed by
+induction on $j$.  For $j=1$, let
+\[
+g(x) = f[x_0,x_1,x_2,\ldots, x_k,x] \ .
+\]
+Since
+\begin{align*}
+\lim_{h\rightarrow 0} \frac{g(x+h)-g(x)}{h}
+&= \lim_{h\rightarrow 0}
+\frac{f[x_0,x_1,x_2,\ldots,x_k,x+h] - f[x_0,x_1,x_2,\ldots, x_k,x]}{h} \\
+&= \lim_{h\rightarrow 0} f[x_0,x_1,x_2,\ldots, x_k,x,x+h]
+= f[x_0,x_1,x_2,\ldots, x_k,x,x]
+\end{align*}
+because of (\ref{propB}), we get
+\[
+\dfdx{f[x_0,x_1,x_2,\ldots, x_k,x]}{x}  = g'(x) =
+f[x_0,x_1,x_2,\ldots, x_k,x,x] \ .
+\]
+
+Suppose that (\ref{derDDF}) is true for $j=m$.  We have by induction
+that
+\begin{equation} \label{derDDFinduct}
+\begin{split}
+&\dfdxn{f[x_0,x_1,\ldots,x_k,x]}{x}{m+1} =
+\dfdx{\left(\dfdxn{f[x_0,x_1,\ldots,x_k,x]}{x}{m}\right)}{x} \\
+&\quad = \dfdx{\left( m!\,f[x_0,x_1,\ldots, x_k,
+\underbrace{x,x,\ldots,x}_{m+1 \text{ times}}] \right)}{x}
+= m!\, \dfdx{f[x_0,x_1,\ldots, x_k, x,x,\ldots,x]}{x} \ .
+\end{split}
+\end{equation}
+Moreover,
+\begin{align*}
+&\dfdx{f[x_0,x_1,\ldots, x_k, x,x,\ldots,x]}{x}  \\
+&\qquad = \lim_{h\rightarrow 0}
+\frac{f[x_0,x_1,\ldots, x_k, x+h,x+h,\ldots,x+h]-
+f[x_0,x_1,\ldots, x_k, x,x,\ldots,x]}{h} \ .
+\end{align*}
+Hence,
+\begin{align*}
+&\dfdx{f[x_0,x_1,\ldots, x_k, x,x,\ldots,x]}{x} \\
+&= \lim_{h\rightarrow 0} \bigg(
+\big(f[x_0,x_1,\ldots, x_k, x+h,x+h,\ldots,x+h]-
+f[x_0,x_1,\ldots, x_k, x,x+h,\ldots,x+h]\big) \\
+&\qquad +\big(f[x_0,x_1,\ldots, x_k, x,x+h,\ldots,x+h]-
+f[x_0,x_1,\ldots, x_k, x,x,x+h,\ldots,x+h] \big) \\
+&\qquad + \ldots +\big(f[x_0,x_1,\ldots, x_k, x,x,\ldots,x,x+h]-
+f[x_0,x_1,\ldots, x_k, x,x,\ldots,x]\big) \bigg)\frac{1}{h} \\
+&= \lim_{h\rightarrow 0} \bigg(
+\frac{1}{h}\big(f[x_0,x_1,\ldots, x_k, x+h,x+h,\ldots,x+h]-
+ f[x_0,x_1,\ldots, x_k, x,x+h,\ldots,x+h]\big) \\
+&\qquad +\frac{1}{h}\big(f[x_0,x_1,\ldots, x_k, x,x+h,\ldots,x+h]-
+f[x_0,x_1,\ldots, x_k, x,x,x+h,\ldots,x+h] \big) \\
+&\qquad + \ldots
++\frac{1}{h}\big(f[x_0,x_1,\ldots, x_k, x,x,\ldots,x,x+h]-
+f[x_0,x_1,\ldots, x_k, x,x,\ldots,x]\big) \bigg) \\
+&= \lim_{h\rightarrow 0} \bigg( f[x_0,x_1,\ldots, x_k, x,
+\underbrace{x+h,\ldots,x+h}_{m+1 \text{ times}}]
++f[x_0,x_1,\ldots, x_k, x,x,
+\underbrace{x+h,\ldots,x+h}_{m \text{ times}}] \\
+&\qquad + \ldots +f[x_0,x_1,\ldots, x_k,
+\underbrace{x,x,\ldots,x}_{m+1 \text{ times}},x+h] \bigg) \ .
+\end{align*}
+There are $m+1$ divided differences in the previous equality, all
+converging to
+\[
+f[x_0,x_1,\ldots,x_k,\underbrace{x,x,\ldots,x}_{m+2 \text{ times}}]
+\]
+according to (\ref{propB}) of Proposition~\ref{prop2_NDDF}.  Hence,
+\[
+\dfdx{f[x_0,x_1,\ldots, x_k,\underbrace{x,x,\ldots,x}_{m=1\text{ times}}]}{x}
+= (m+1)
+f[x_0,x_1,\ldots,x_k,\underbrace{x,x,\ldots,x}_{m+2 \text{ times}}] \ .
+\]
+If we combine with (\ref{derDDFinduct}), we get
+\[
+\dfdxn{f[x_0,x_1,\ldots,x_k,x]}{x}{m+1} = (m+1)!
+f[x_0,x_1,\ldots,x_k,\underbrace{x,x,\ldots,x}_{m+2 \text{ times}}] \ .
+\]
+This completes the proof by induction.
+\end{proof}
+
+\section{Exercises}
+
+\begin{question}
+Let $x_0$, $x_1$, \ldots, $x_n$ be $n+1$ distinct points and let
+\[
+\ell_j(x) = \prod_{\substack{i=0\\i\neq j}}^n \left(\frac{x-x_j}{x_i-x_j}\right)
+\]
+for $j=0$, $1$, $2$, \ldots, $n$.  Suppose that $p$ is the Lagrange
+interpolating polynomial of a function $f$ at $x_0$, $x_1$, \ldots,
+$x_n$.  Show that
+\[
+f(x) - p(x) = \sum_{j=0}^n \left(f(x)-p(x_j)\right) \ell_j(x) \ .
+\]
+\label{intAQ1}
+\end{question}
+
+\begin{question}
+We would like to find a polynomial $p$ of degree at most two such that
+$p(0) = \alpha$, $p(1) = \beta$ and $p'(\xi) = \gamma$, where the
+constants $\alpha$, $\beta$ and $\gamma$ are given.  Describe
+analytically and graphically the variation in the answers as $\xi$
+varies.  Does your observations contradict the existence and uniqueness
+of the interpolating polynomial of $f$?
+\label{intAQ2}
+\end{question}
+
+\begin{question}
+Suppose that $x_0$, $x_1$, $x_2$, \ldots, $x_n$ are $n+1$ distinct points.
+If $p$ is the interpolating polynomial of $f$ of degree at most $n-1$
+at $x_0$, $x_1$, \ldots, $x_{n-1}$ and $q$ is the interpolating
+polynomial of $f$ of degree at most $n-1$ at $x_1$, $x_2$, \ldots,
+$x_n$, show that
+\[
+r(x) = \frac{x-x_n}{x_0-x_n} \, p(x) + \frac{x-x_0}{x_n-x_0}\, q(x)
+\]
+is the interpolating polynomial of degree at most $n$ at $x_0$, $x_1$,
+\ldots, $x_n$.
+\label{intAQ3}
+\end{question}
+
+\begin{question}
+If $p$ is the interpolating polynomial of $f$ of degree at most $n$ at
+the $n+1$ distinct points $x_0$, $x_1$, \ldots, $x_n$, show that the
+coefficient of $x^n$ in $p$ is
+$\displaystyle \sum_{i=0}^n f(x_i) \ell_i$, where
+$\displaystyle
+\ell_i = \prod_{\substack{j=0\\i\neq j}}^n \left(\frac{1}{x_i-x_j} \right)$.
+Conclude that $\displaystyle \sum_{i=0}^n f(x_i) \ell_i = 0$ if $f$
+is a polynomial of degree less than $n$.
+\label{intAQ4}
+\end{question}
+
+\begin{question}
+We have seen in Question~\ref{intAQ4} that the coefficient of
+$x^n$ in the interpolating polynomial of $f$ of degree at most $n$ at
+the $n+1$ distinct points $x_0$, $x_1$, $x_2$, \ldots, $x_n$ is
+\begin{equation}\label{sgnEQ0}
+f[x_0,x_1,x_2,\ldots,x_n] = \sum_{i=0}^n f(x_i) \ell_i \ ,
+\end{equation}
+where
+\[
+\ell_i = \prod_{\substack{i=0\\i\neq j}}^n \left(\frac{1}{x_i-x_j} \right)\ .
+\]
+\subQ{a} If $x_0<x_1<x_2<\ldots<x_n$, show that the $\ell_j$ alternate
+sign.\\
+\subQ{b} Show that
+\begin{align}
+\sum_{j=0}^n x_i^n \ell_j &= 1 \label{sgnEQ1}
+\intertext{and}
+\sum_{j=0}^n \ell_j &=
+\begin{cases} 1 & \quad \text{if} \quad n=0 \\
+0 & \quad \text{if} \quad n>0 \end{cases}  \label{sgnEQ2}
+\end{align}
+\label{intAQ5}
+\end{question}
+
+\begin{question}
+Prove that
+\begin{equation}\label{binewt}
+f[0,1,2,\ldots,m] = \frac{1}{m!} \sum_{j=0}^m (-1)^{m-j} \binom{m}{j} f(j) \ .
+\end{equation}
+Hint: $\displaystyle \binom{m}{j-1} + \binom{m}{j} = \binom{m+1}{j}$,
+where $\displaystyle \binom{p}{q} = 0$ for $q>p$ by convention.
+\label{intAQ6}
+\end{question}
+
+\begin{question}
+Some values of a function $f$ are given in the following table.
+\[
+\begin{array}{c|c}
+x & f(x)\\        % f(x) = exp(1-x).
+\hline
+ 1 & 1 \\
+1.1 & 0.904837418 \\
+1.3 & 0.740818221 \\
+1.4 & 0.670320046 \\
+1.6 & 0.548811636 \\
+1.8 & 0.449328964
+\end{array}
+\]
+Use Newton divided difference formula to construct an
+interpolating polynomial $p$ of degree at most $5$ for $f$ at the points
+$1$, $1,1$, $1,3$, $1.4$, $1.6$ and $1.8$.
+
+Approximate $f(1.35)$ using the nested form of the polynomial.
+\label{intAQ7}
+\end{question}
+
+\begin{question}
+\subQ{a} Find the interpolating polynomial $p$ of degree at most $3$
+of $f(x) = e^{x/2}$ such that
+$p(0) = f(0)$, $p(2) = f(2)$, $p'(2) = f'(2)$ and $p''(2) = f''(2)$.\\
+\subQ{b} Use the nested form of the interpolating polynomial that you
+have found in (a) to approximate $f(1)$.\\
+\subQ{c} Find an upper bound on the truncation error of the interpolating
+polynomial $p$ of $f$ on $[0,2]$.
+\label{intAQ8}
+\end{question}
+
+\begin{question}
+\subQ{a} Find the interpolating polynomial $p$ of degree at most $4$
+of a function $f$ using all the following information on $f$.
+\[
+\begin{array}{c|c|c|c}
+x & f(x) & f'(x) & f''(x) \\
+\hline
+0 & e & & \\
+1 & 1 & -1 & 1 \\
+2 & e^{-1} & &
+\end{array}
+\]
+% f(x) = e^{1-x}
+\subQ{b} Use the nested form of the interpolating polynomial that you
+have found in (a) to approximate $f(1.1)$.\\
+\subQ{c} Knowing that $|f^{(5)}(x)| \leq e$ for $0\leq x\leq 2$, find
+an upper bound on the truncation error of the interpolating polynomial
+of $f$ on $[0,2]$.
+\label{intAQ9}
+\end{question}
+
+\begin{question}
+Some values of a function $f$ and its derivatives are given in the
+following table.
+\[
+\begin{array}{c|c|c|c}
+x & f(x) & f'(x) & f''(x) \\
+\hline
+ 1  & 1.7165256995 & -1.4444065708 & 0.28798342609 \\
+1.8 & 0.79675974510 & & \\
+2.4 & 0.4783590320 & -0.32311391318 &
+\end{array}
+\]
+% f(x) = exp(cos(x)) , f'(x) = - exp(cos(x))*sin(x) and
+% f''(x) = exp(cos(x))*sin^2(x) - exp(cos(x))*cos(x)
+Use Newton divided difference formula to construct an
+interpolating polynomial of degree at most $5$ for $f$ at
+$1$, $1$, $1$, $1.8$, $2.4$ and $2.4$\ .
+
+Approximate $f(1.75)$ using the nested form of the polynomial.
+The exact value is\\ $f(1.75) = 0.83673651441075\ldots$\quad  Compute the
+absolute error, the relative error and the number of significant
+digits.
+\label{intAQ10}
+\end{question}
+
+\begin{question}
+Let $f(x) = 3x e^x - e^{2x}$.  Approximate $f(1.03)$ using the Hermite
+interpolating polynomial of degree at most five at the points
+$x_0 = x_1 = 1$, $x_2 = x_3 = 1.05$ and $x_4 = x_5 = 1.07$.
+\label{intAQ11}
+\end{question}
+
+\begin{question}
+The following data are given by a polynomial $p$ of unknown degree.
+\[
+\begin{array}{c|c|c|c}
+ x & 0 & 1 & 2 \\
+\hline
+ p(x) & 2 & 1 & 4
+\end{array}
+\]
+If all third order forward divided differences are $1$, find the
+polynomial $p$.
+\label{intAQ12}
+\end{question}
+
+\begin{question}
+\subQ{a} Find the interpolating polynomial $p$ of degree at most $4$ of
+\[
+f(x) = \cos\left(\frac{\pi}{2}-x\right)
+\]
+that satisfies the following requirements.
+\[
+\begin{array}{c|c|c|c}
+x & f(x) & f'(x) & f''(x) \\
+\hline
+0 & 0 & & \\
+\pi/4 & \sqrt{2}/2 & \sqrt{2}/2 & - \sqrt{2}/2 \\
+\pi/2 & 1 &  & 
+\end{array}
+\]
+Use at lest $10$-digit rounding arithmetic for all your computations.\\
+\subQ{b} Use the nested form of the interpolating polynomial that you
+have found in (a) to approximate $f(\pi/8)$.\\
+\subQ{c} Find an upper bound on the truncation error of the
+interpolating polynomial $p$ of $f$ on $[0,\pi/4]$.\\
+\subQ{d} Sketch the graphs of $f$ and $p$ on the same coordinate
+system to assess the quality of the interpolating polynomial.
+\label{intAQ13}
+\end{question}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End:

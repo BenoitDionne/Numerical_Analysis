@@ -1,0 +1,1861 @@
+\nonumsection{Chapter~\ref{chaptDiffInt} : Numerical Differentiation and Integration}
+
+\solution{\SOL}{\ref{diffQ1}}{
+The polynomial interpolation of degree at most $2$ at the points
+$x_0$, $x_1$ and $x_2$ is
+\begin{align*}
+f(x) &= f[x_0] + f[x_0,x_1]\,(x-x_0) + f[x_0,x_1,x_2]\,(x-x_0)(x-x_1) \\
+&+ f[x_0,x_1,x_2,x]\,(x-x_0)(x-x_1)(x-x_2) \ .
+\end{align*}
+If we derive, we get
+\begin{align*}
+f'(x) &= f[x_0,x_1] + f[x_0,x_1,x_2]\,\big((x-x_0)+(x-x_1)\big) \\
+&\qquad + f[x_0,x_1,x_2,x]\,\big((x-x_1)(x-x_2) + (x-x_0)(x-x_2) +
+(x-x_0)(x-x_1)\big) \\
+&\qquad + f[x_0,x_1,x_2,x,x]\,(x-x_0)(x-x_1)(x-x_2) \ ,
+\end{align*}
+where we have used the formula
+$\displaystyle \dfdx{f[x_0,x_1,x_2,x]}{x} = f[x_0,x_1,x_2,x,x]$.
+Since
+$\displaystyle f[x_0,x_1,x_2,x] = \frac{1}{3!}\dydxn{f}{x}{3}(\xi)$
+and
+$\displaystyle f[x_0,x_1,x_2,x,x] = \frac{1}{4!}\dydxn{f}{x}{4}(\eta)$
+for some $\xi$ and $\eta$ in the smallest interval containing $x_0$,
+$x_1$, $x_2$ and $x$, we get
+\begin{align*}
+f'(x) &= f[x_0,x_1] + f[x_0,x_1,x_2]\,\big((x-x_0)+(x-x_1)\big) \\
+&\quad
++ \frac{1}{3!}\dydxn{f}{x}{3}(\xi)\,\big((x-x_1)(x-x_2) + (x-x_0)(x-x_2)
++ (x-x_0)(x-x_1)\big) \\
+&\quad + \frac{1}{4!}\dydxn{f}{x}{4}(\eta)\,(x-x_0)(x-x_1)(x-x_2) \ .
+\end{align*}
+Each of the $x_i$ must be replaced by one of $a$, $a+h$ and $a+2h$ but
+there is no obligation to have $x_0 < x_1 < x_2$.  We take
+$x_0=a+2h$, $x_1 = a+h$ and $x_2 = a$.  Hence, for $x= a$, the previous
+equation becomes
+\begin{align*}
+f'(a) &= f[a+2h,a+h] + f[a+2h,a+h,a]\,\big((-2h)+(-h)\big)
++ \frac{1}{3!}\dydxn{f}{x}{3}(\xi)\,\big((-2h)(-h)\big) \\
+&= \frac{f(a+h)-f(a+2h)}{-h} +
+\left(\frac{\displaystyle \frac{f(a)-f(a+h)}{-h}
+- \frac{f(a+h)-f(a+2h)}{-h}}{-2h}\right)(-3h) \\
+&\qquad + \frac{1}{3}\dydxn{f}{x}{3}(\xi)\,h^2 \\
+&=\frac{-f(a+2h)+4f(a+h)-3f(a)}{2h} 
++ \frac{1}{3}\dydxn{f}{x}{3}(\xi)\,h^2 \ .
+\end{align*}
+We get (\ref{dfapproxA}) with the truncation error
+$\displaystyle \frac{1}{3}\dydxn{f}{x}{3}(\xi)\,h^2$.
+}
+
+\solution{\SOL}{\ref{diffQ2}}{
+The polynomial interpolation of degree at most $2$ of $f$ at the three
+points $x_0$, $x_1$ and $x_2$ is
+\begin{align*}
+f(x) &= f[x_0] + f[x_0,x_1]\,(x-x_0) + f[x_0,x_1,x_2]\,(x-x_0)(x-x_1) \\
+& \quad + f[x_0,x_1,x_2,x]\,(x-x_0)(x-x_1)(x-x_2) \ .
+\end{align*}
+If we derive once, we get
+\begin{align*}
+f'(x) &= f[x_0,x_1] + f[x_0,x_1,x_2]\,\big((x-x_0)+(x-x_1)\big) \\
+&\quad + f[x_0,x_1,x_2,x]\,\big((x-x_1)(x-x_2) + (x-x_0)(x-x_2) +
+(x-x_0)(x-x_1)\big) \\
+&\quad + f[x_0,x_1,x_2,x,x]\,(x-x_0)(x-x_1)(x-x_2) \ ,
+\end{align*}
+where we have used the formula
+\begin{equation}\label{fddderf}
+\dfdx{f[x_0,x_1,x_2,x]}{x} = f[x_0,x_1,x_2,x,x] \ .
+\end{equation}
+If we derive a second time, we get
+\begin{align*}
+f''(x) &= 2\,f[x_0,x_1,x_2]
++ 2\, f[x_0,x_1,x_2,x]\,\big((x-x_0) + (x-x_1) + (x-x_2)\big) \\
+&\quad + 2\,f[x_0,x_1,x_2,x,x]\,\big((x-x_1)(x-x_2) + (x-x_0)(x-x_2) +
+(x-x_0)(x-x_1)\big) \\
+&\quad + 2\,f[x_0,x_1,x_2,x,x,x]\,(x-x_0)(x-x_1)(x-x_2) \ ,
+\end{align*}
+where we have used (\ref{fddderf}) and the formula
+$\displaystyle \dfdx{f[x_0,x_1,x_2,x,x]}{x} = 2\,f[x_0,x_1,x_2,x,x,x]$.
+Since
+$\displaystyle f[x_0,x_1,x_2,x] = \frac{1}{3!}\dydxn{f}{x}{3}(\xi)$,
+$\displaystyle f[x_0,x_1,x_2,x,x] = \frac{1}{4!}\dydxn{f}{x}{4}(\eta)$
+and
+$\displaystyle f[x_0,x_1,x_2,x,x,x] = \frac{1}{5!}\dydxn{f}{x}{5}(\nu)$
+for some $\xi$, $\eta$ and $\nu$ in the smallest interval containing
+$x_0$, $x_1$, $x_2$ and $x$, we get
+\begin{align*}
+f''(x) &= 2\,f[x_0,x_1,x_2]
++ \frac{2}{3!}\dydxn{f}{x}{3}(\xi)\,\big((x-x_0) + (x-x_1) + (x-x_2)\big) \\
+&\quad + \frac{2}{4!}\dydxn{f}{x}{4}(\eta)\,
+\big((x-x_1)(x-x_2) + (x-x_0)(x-x_2) + (x-x_0)(x-x_1)\big) \\
+&\quad + \frac{2}{5!}\dydxn{f}{x}{5}(\nu)\,(x-x_0)(x-x_1)(x-x_2) \ .
+\end{align*}
+We take $x_0=a$, $x_1 = a+h$ and $x_2 = a+2h$.  Hence, for $x=a$,  we get
+\begin{align*}
+f''(a) &= 2\,f[a,a+h,a+2h]
++ \frac{2}{3!}\dydxn{f}{x}{3}(\xi)\,\big((-h) + (-2h)\big)
++ \frac{2}{4!}\dydxn{f}{x}{4}(\eta)\,(-h)(-2h) \\
+&= 2\,\left(\frac{\displaystyle\frac{f(a+2h)-f(a+h)}{h} -
+\frac{f(a+h)-f(a)}{h}}{2h}\right) - \dydxn{f}{x}{3}(\xi)\,h
++\frac{1}{3!}\dydxn{f}{x}{4}(\eta)\,h^2 \\
+&= \frac{ f(a)-2f(a+h)+f(a+2h)}{h^2} -\dydxn{f}{x}{3}(\xi)\,h
++\frac{1}{3!}\dydxn{f}{x}{4}(\eta)\,h^2 \ .
+\end{align*}
+We get (\ref{ddfapprox}) with the truncation error
+$\displaystyle
+-\dydxn{f}{x}{3}(\xi)\,h+\frac{1}{3!}\dydxn{f}{x}{4}(\eta)\,h^2$.
+}
+
+\solution{\SOL}{\ref{diffQ3}}{
+Let $L^0_h(f) = L_h(f)$.  We prove by induction on $n$ that
+\begin{equation}\label{Binduct1}
+L(f) = L_{h/2^k}^n(f) + \sum_{j=n+1}^\infty
+\frac{(2^{2n-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
+{(2^{2n-1}-1)\ldots(2^3-1)(2-1)}\, a_j\, \left(\frac{h}{2^k}\right)^{2j-1} \ ,
+\end{equation}
+where
+\[
+L_{h/2^k}^n(f) = \frac{2^{2n-1}L_{h/2^k}^{n-1}(f)-L_{h/2^{k-1}}^{n-1}(f)}
+{2^{2n-1}-1}
+\]
+and $k \geq n > 0$.
+
+\stage{$\mathbf{n=1}$}
+If we replace $h$ by $h/2$ in (\ref{questB1}), we get
+\begin{equation}\label{questB2}
+L(f) = L_{h/2}(f)+ \sum_{j=1}^\infty a_j\,\left(\frac{h}{2}\right)^{2j-1} \ .
+\end{equation}
+If we subtract (\ref{questB1}) from $2$ times (\ref{questB2}) and divide by
+$2-1$, we get
+\begin{align*}
+L(f) &= L_{h/2}^1(f) + 2 \sum_{j=1}^\infty a_j\,\left(\frac{h}{2}\right)^{2j-1}
+- \sum_{j=1}^\infty a_j\,h^{2j-1} \\
+&= L_{h/2}^1(f) + \sum_{j=1}^\infty \left( 2
+a_j\,\left(\frac{h}{2}\right)^{2j-1}
+- 2^{2j-1} a_j\,\left(\frac{h}{2}\right)^{2j-1}\right)
+= L_{h/2}^1(f) + \sum_{j=2}^\infty \frac{2 - 2^{2j-1}}{2-1}\, a_j\,
+\left(\frac{h}{2}\right)^{2j-1}  \ ,
+\end{align*}
+where
+\[
+L_{h/2}^1(f) = \frac{2L_{h/2}(f) -L_h(f)}{2-1} \ .
+\]
+So (\ref{Binduct1}) is true for $n=1$ and $k=1$.  Replacing $h$ by
+$h/2$ as many times as we want, we get that (\ref{Binduct1}) is true
+for $n=1$ and $k\geq 1$.
+
+\stage{$\mathbf{n=m}$} We suppose that (\ref{Binduct1}) is true for $n=m$.
+
+\stage{$\mathbf{n=m+1}$} By induction, we have
+\begin{align}
+L(f) &= L_{h/2^k}^m(f) + \sum_{j=m+1}^\infty
+\frac{(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
+{(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\, a_j\, \left(\frac{h}{2^k}\right)^{2j-1}
+\label{questB3}
+\intertext{and}
+L(f) &= L_{h/2^{k+1}}^m(f) + \sum_{j=m+1}^\infty
+\frac{(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
+{(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\, a_j\, \left(\frac{h}{2^{k+1}}\right)^{2j-1}
+\label{questB4}
+\end{align}
+for $k\geq m$.
+
+If we subtract (\ref{questB3}) from $2^{2m+1}$ times (\ref{questB4})
+and divide by $2^{2m+1}-1$, we get
+\begin{align*}
+&L(f) = L_{h/2^{k+1}}^{m+1}(f) \\
+&\quad + \frac{1}{2^{2m+1}-1}
+\bigg( 2^{2m+1} \sum_{j=m+1}^\infty
+\frac{(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
+{(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\, a_j\, \left(\frac{h}{2^{k+1}}\right)^{2j-1} \\
+& \quad -\sum_{j=m+1}^\infty
+\frac{(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
+{(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\, a_j\, \left(\frac{h}{2^k}\right)^{2j-1}
+\bigg) \\
+&= L_{h/2^{k+1}}^{m+1}(f) + \frac{1}{2^{2m+1}-1}
+\bigg( 2^{2m+1} \sum_{j=m+1}^\infty
+\frac{(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
+{(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\, a_j\, \left(\frac{h}{2^{k+1}}\right)^{2j-1} \\
+& \quad -\sum_{j=m+1}^\infty
+2^{2j-1} \,\frac{(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
+{(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\, a_j\, \left(\frac{h}{2^{k+1}}\right)^{2j-1}
+\bigg) \\
+&= L_{h/2^{k+1}}^{m+1}(f) + \sum_{j=m+1}^\infty
+\frac{(2^{2m+1} - 2^{2j-1})(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
+{(2^{2m+1}-1)(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\,
+a_j\, \left(\frac{h}{2^{k+1}}\right)^{2j-1} \\
+&= L_{h/2^{k+1}}^{m+1}(f) + \sum_{j=m+2}^\infty
+\frac{(2^{2m+1} - 2^{2j-1})(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
+{(2^{2m+1}-1)(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\,
+ a_j\, \left(\frac{h}{2^{k+1}}\right)^{2j-1}\ ,
+\end{align*}
+where
+\[
+L_{h/2^{k+1}}^{m+1}(f) = \frac{2^{2m+1}L_{h/2^{k+1}}^m(f)-L_{h/2^k}^m(f)}
+{2^{2m+1}-1} \ .
+\]
+This is (\ref{Binduct1}) for $n=m+1$ if we substitute
+$k \geq n$ by $k\geq m$.
+
+The general formula is
+\[
+L_{h/2^k}^n(f) = \frac{2^{2n-1} L_{h/2^k}^{n-1}(f) -
+  L_{h/2^{k-1}}^{n-1}(f)}{2^{2n-1} -1}
+\]
+for $k \geq n > 0$ with a truncation error of $O(h^{2n+1})$.
+}
+
+\solution{\SOL}{\ref{diffQ4}}{
+Let $L^0_h(f) = L_h(f)$.  We prove by induction on $n$ that
+\begin{equation}\label{Cinduct1}
+L(f) = L_{h/2^k}^n(f) + \sum_{j=n+1}^\infty
+\frac{(2^{3n}-2^{3j}) \ldots (2^6-2^{3})(2^3-2^{3j})}
+{(2^{3n}-1)\ldots(2^6-1)(2^3-1)}\, a_j\, \left(\frac{h}{2^k}\right)^{3j} \ ,
+\end{equation}
+where
+\[
+L_{h/2^k}^n(f) = \frac{2^{3n}L_{h/2^k}^{n-1}(f)-L_{h/2^{k-1}}^{n-1}(f)}
+{2^{3n}-1}
+\]
+and $k \geq n > 0$.
+
+\stage{$\mathbf{n=1}$}
+If we replace $h$ by $h/2$ in (\ref{questC1}), we get
+\begin{equation}\label{questC2}
+L(f) = L_{h/2}(f)+ \sum_{j=1}^\infty a_j\,\left(\frac{h}{2}\right)^{3j} \ .
+\end{equation}
+If we subtract (\ref{questC1}) from $2^3$ times (\ref{questC2}) and divide by
+$2^3-1$, we get
+\begin{align*}
+  L(f) &= L_{h/2}^1(f) + \frac{1}{2^3-1}\left(
+2^3 \sum_{j=1}^\infty a_j\,\left(\frac{h}{2}\right)^{3j}
+- \sum_{j=1}^\infty a_j\,h^{3j}\right) \\
+&= L_{h/2}^1(f) + \frac{1}{2^3-1} \sum_{j=1}^\infty \left( 2^3
+  a_j\,\left(\frac{h}{2}\right)^{3j}
+- 2^{3j} a_j\,\left(\frac{h}{2}\right)^{3j}\right)
+= L_{h/2}^1(f) + \sum_{j=2}^\infty \frac{2^3 - 2^{3j}}{2^3-1}\, a_j\,
+\left(\frac{h}{2}\right)^{3j}  \ ,
+\end{align*}
+where
+\[
+L_{h/2}^1(f) = \frac{2^3 L_{h/2}(f) -L_h(f)}{2^3-1} \ .
+\]
+So (\ref{Cinduct1}) is true for $n=1$ and $k=1$.  Replacing $h$ by
+$h/2$ as many times as we want, we get that (\ref{Cinduct1}) is true
+for $n=1$ and $k\geq 1$.
+
+\stage{$\mathbf{n=m}$} We suppose that (\ref{Cinduct1}) is true for $n=m$.
+
+\stage{$\mathbf{n=m+1}$} By induction, we have
+\begin{align}
+L(f) &= L_{h/2^k}^m(f) + \sum_{j=m+1}^\infty
+\frac{(2^{2m}-2^{3j}) \ldots (2^6-2^{3j})(2^3-2^{3j})}
+{(2^{3m}-1)\ldots(2^6-1)(2^3-1)}\, a_j\, \left(\frac{h}{2^k}\right)^{3j}
+\label{questC3}
+\intertext{and}
+L(f) &= L_{h/2^{k+1}}^m(f) + \sum_{j=m+1}^\infty
+\frac{(2^{3m}-2^{3j}) \ldots (2^6-2^{3j})(2^3-2^{3j})}
+{(2^{3m}-1)\ldots(2^6-1)(2^3-1)}\, a_j\, \left(\frac{h}{2^{k+1}}\right)^{3j}
+\label{questC4}
+\end{align}
+for $k\geq m$.
+
+If we subtract (\ref{questC3}) from $2^{3m+3}$ times (\ref{questC4})
+and divide by $2^{3m+3}-1$, we get
+\begin{align*}
+&L(f) = L_{h/2^{k+1}}^{m+1}(f) \\
+&\quad + \frac{1}{2^{3m+3}-1}
+\bigg( 2^{3m+3} \sum_{j=m+1}^\infty
+\frac{(2^{3m}-2^{3j}) \ldots (2^6-2^{3j})(2^3-2^{3j})}
+{(2^{3m}-1)\ldots(2^6-1)(2^3-1)}\, a_j\, \left(\frac{h}{2^{k+1}}\right)^{3j} \\
+&\quad -\sum_{j=m+1}^\infty
+\frac{(2^{3m}-2^{3j}) \ldots (2^6-2^{3j})(2^3-2^{3j})}
+{(2^{3m}-1)\ldots(2^6-1)(2^3-1)}\, a_j\, \left(\frac{h}{2^k}\right)^{3j}
+\bigg) \\
+&= L_{h/2^{k+1}}^{m+1}(f) + \frac{1}{2^{3m+3}-1}
+\bigg( 2^{3m+3} \sum_{j=m+1}^\infty
+\frac{(2^{3m}-2^{3j}) \ldots (2^6-2^{3j})(2^3-2^{3j})}
+{(2^{3m}-1)\ldots(2^6-1)(2^3-1)}\, a_j\, \left(\frac{h}{2^{k+1}}\right)^{3j} \\
+& \quad -\sum_{j=m+1}^\infty
+2^{3j} \,\frac{(2^{3m}-2^{3j}) \ldots (2^6-2^{3j})(2^3-2^{3j})}
+{(2^{3m}-1)\ldots(2^6-1)(2^3-1)}\, a_j\, \left(\frac{h}{2^{k+1}}\right)^{3j}
+\bigg) \\
+&= L_{h/2^{k+1}}^{m+1}(f) + \sum_{j=m+1}^\infty
+\frac{(2^{3m+3} - 2^{3j})(2^{3m}-2^{3j}) \ldots (2^6-2^{3j})(2^3-2^{3j})}
+{(2^{3m+3}-1)(2^{3m}-1)\ldots(2^6-1)(2^3-1)}\,
+a_j\, \left(\frac{h}{2^{k+1}}\right)^{3j} \\
+&= L_{h/2^{k+1}}^{m+1}(f) + \sum_{j=m+2}^\infty
+\frac{(2^{3m+3} - 2^{3j})(2^{3m}-2^{3j}) \ldots (2^6-2^{3j})(2^3-2^{3j})}
+{(2^{3m+3}-1)(2^{3m}-1)\ldots(2^6-1)(2^3-1)}\,
+ a_j\, \left(\frac{h}{2^{k+1}}\right)^{3j} \ ,
+\end{align*}
+where
+\[
+L_{h/2^{k+1}}^{m+1}(f) = \frac{2^{3m+3}L_{h/2^{k+1}}^m(f)-L_{h/2^k}^m(f)}
+{2^{3m+3}-1} \ .
+\]
+This is (\ref{Cinduct1}) for $n=m+1$ if we substitute
+$k \geq n$ by $k\geq m$.
+
+The general formula is
+\[
+L_{h/2^k}^n(f) = \frac{2^{3n} L_{h/2^k}^{n-1}(f) -
+  L_{h/2^{k-1}}^{n-1}(f)}{2^{3n} -1}
+\]
+for $k \geq n > 0$ with a truncation error of $O(h^{3n+3})$.
+}
+
+\solution{\SOL}{\ref{diffQ5}}{
+With $L_h(f) = (f(3+h)-f(3-h))/(2h)$, we get the following table.
+{
+\small
+\[
+\begin{array}{c|cccccc}
+\hline
+h & L_h(f) & & L_h^1(f) & & L_h^2(f) \\ 
+\hline
+0.8 & 0.16441388 &&&& \\ 
+0.4 & 0.15472628 & \fbox{4.13687170} & 0.15149708 && \\ 
+0.2 & 0.15238451 & \fbox{4.03339716} & 0.15160392 & \fbox{16.53008728}
+    & 0.15161104  \\ 
+0.1 & 0.15180391 & \fbox{4.00829909} & 0.15161038 & \fbox{16.13017524}
+    & 0.15161081 \\ 
+0.05 & 0.15165906 && 0.15161078 && 0.15161081 \\ 
+\hline
+\multicolumn{1}{c}{} & & & & & \\
+\cline{2-5}
+\multicolumn{1}{c}{} & & L_h^3(f) & L_h^4(f) & |L_h^i(f)-L_{2h}^{i-1}(f)| & \\ 
+\cline{2-5}
+\multicolumn{1}{c}{} &&&&& \\
+\multicolumn{1}{c}{} &&&& -0.0129169 & \\ 
+\multicolumn{1}{c}{} &&&& 0.11396344 \times 10^{-03} & \\ 
+\multicolumn{1}{c}{} & \fbox{65.68377022} & 0.15161081 &
+& -0.23203700\times 10^{-06} & \\ 
+\multicolumn{1}{c}{} & & 0.15161081 & 0.15161081 &
+0.93304309 \times 10^{-10} & \\
+\cline{2-5}
+\end{array}
+\]
+}
+All the values in the table have been rounded.
+We stop the procedure as soon as $|L_h^i(f) - L_{2h}^{i-1}(f)|$ gets
+smaller than $10^{-7}$ and take $L_h^i(f)$ as our approximation of
+$f'(3)$.  We have also included the ratios defined in
+(\ref{checkRich}) to ensure that the approximating values $L_h^i(h)$
+can be trusted.  We have that
+$f'(3) \approx L_{0.05}^4(f) \approx 0.15161081$ meets our criterion
+of accuracy.
+}
+
+\solution{\SOL}{\ref{diffQ7}}{
+Let $a=1$, $b=3$, $h=(b-a)/2m = 1/m$ and
+$x_i = 1 + i\,h$ for $i=0$, $1$, $2$, \ldots, $n=2m$.
+
+The local truncation error for the composite midpoint rule is
+$\displaystyle - \frac{f''(\xi)(b-a)}{6}\,h^2$ for some
+$\xi \in [a,b]$.  We seek a small $m$ for which this 
+truncation error will be smaller in absolute value than $10^{-5}$.
+We have
+\[
+f''(x) = \frac{1}{x} + \frac{x}{4} -10 \ .
+\]
+We use the Extremum Theorem to find the maximum of $f''(x)|$ on
+$[1,3]$.  We have that $x=2$ is the only critical point of
+$f^{(3)}(x) = -1/x^2 + 1/4$ in the interval $[1,3]$.  Since
+$f''(2) = -9 < f''(3) = -107/12 < f''(1) = -35/4$, we have that
+$-9 \leq f''(x) \leq -35/4$ for $1 \leq x \leq 3$.  Thus,
+$|f''(x)| \leq 9$ for $1\leq x \leq 3$.  Hence,
+\[
+\left| - \frac{f''(\xi)(b-a)}{6} \, h^2\right|
+= \frac{|f''(\xi)|}{3m^2} \leq \frac{3}{m^2}
+\]
+because $1 \leq \xi \leq 3$.  We chose $m$ that satisfies
+$\displaystyle \frac{3}{m^2} < 10^{-5}$; namely,
+$m > \sqrt{ 3 \times 10^5} \approx 547.72$.
+
+With $m=548$, we get
+\[
+\int_1^3 \left( x \ln(x) + \frac{x^3}{24} - 5x^2\right) \dx{x} \approx
+\frac{1}{274} \, \sum_{i=1}^{548} 
+\left( x_{2i-1} \ln(x_{2i-1}) + \frac{x_{2i-1}^3}{24} - 5x_{2i-1}^2 \right)
+\approx -39.5562347658 \ .
+\]
+}
+
+\solution{\SOL}{\ref{diffQ8}}{
+Let $a=2$, $b=4$, $h=(b-a)/2m = 1/m$ and
+$x_i = 2 + i\,h$ for $i=0$, $1$, $2$, \ldots, $n=2m$.
+
+The local truncation error for the composite Simpson rule is
+$\displaystyle - \frac{h^4(b-a)}{180}\,f^{(4)}(\xi)$
+for some $\xi \in [a,b]$.  We seek a small $m$ for which this
+truncation error will be smaller in absolute value than $10^{-5}$.
+We have
+\[
+f^{(4)}(x) = -\frac{80}{81} \, (x+1)^{-11/3} \ .
+\]
+Hence,
+\[
+\left| \frac{h^4(b-a)}{180}\,f^{(4)}(\xi) \right|
+= \left(\frac{1}{90\,m^4}\right) \left(\frac{80}{81}\right) (\xi+1)^{-11/3}
+\leq \frac{8}{3^6\,m^4} \, 3^{-11/3} = \frac{8}{3^{29/3}\,m^4}
+\]
+because $2 \leq \xi \leq 4$.  We chose $m$ that satisfies
+$\displaystyle \frac{8}{3^{29/3}\,m^4} < 10^{-5}$; namely,
+$\displaystyle m > \left( \frac{8}{3^{29/3}}\, 10^{5}\right)^{1/4}
+\approx 2.102468339$\ .
+
+With $m=3$, we get
+\begin{align*}
+\int_2^4\, (x+2)^{1/3} \dx{x} &\approx
+\frac{1}{9} \bigg( (3)^{1/3}
++ 2 \sum_{i=1}^2 \left(1+ \left(2+\frac{2i}{3}\right)\right)^{1/3}
++ 4 \sum_{i=0}^2 \left(1+\left(2+\frac{2i+1}{3}\right)\right)^{1/3} 
++ (5)^{1/3} \bigg) \\
+& \approx 3.16734727452 \ .
+\end{align*}
+}
+
+\solution{\SOL}{\ref{diffQ9}}{
+Before answering this question, we note that $f'(x) = 2x\ln(x) + x$,
+$f''(x) = 2\ln(x)+3$, $f^{(3)}(x) = 2/x$ and $f^{(4)}(x) = -2/x^2$.
+
+Moreover, a simple integration by parts gives
+\[
+\int_1^3 x^2\,\ln(x)\dx{x} = 9 \ln(3) - \frac{26}{9} \approx 6.99862170912 \ .
+\]
+
+We have $a=1$ and $b=3$ in the formulae for the truncation errors of
+the composite methods.
+
+\subQ{a} For the midpoint rule, we choose $n = 2m$ and
+$h = (b-a)/n = 1/m$ such that the truncation error
+$\displaystyle \left| \frac{f''(\eta)(b-a)}{6} \, h^2  \right|$ for
+some $\eta \in [1,3]$ satisfies
+\[
+\left| \frac{f''(\eta)(b-a)}{6} \, h^2  \right|
+= \frac{1}{3} \left(\frac{1}{m}\right)^2\, 
+\left| 2\ln(\eta)+3\right|
+\leq \frac{1}{3m^2} \left| 2\ln(3)+3\right| < 10^{-5} \ .
+\]
+Thus,
+\[
+  m > \left(\frac{10^5}{3}\left(2\ln(3)+3\right)\right)^{1/2} \approx 416.22 \ .
+\]
+We take $m=417$.  It follows that $h=1/417$ and
+\[
+\int_1^3 x^2\,\ln(x)\dx{x} \approx \frac{2}{417}
+\sum_{j=1}^{417} f(x_{2j-1}) \approx 6.99861347 \ ,
+\]
+where $x_j = 1 + j\,h = 1 + j/417$.  The absolute error is
+about $0.82348266 \times 10^{-5}$.
+
+\subQ{b} For the trapezoidal rule, we choose $n$ and
+$h = (b-a)/n = 2/n$ such that the truncation error
+$\displaystyle \left| \frac{f''(\eta)(b-a)}{12} \, h^2 \right|$ for
+some $\eta \in [1,3]$ satisfies
+\[
+\left| \frac{f''(\eta)(b-a)}{12} \, h^2 \right|
+= \frac{1}{6} \,\left(\frac{2}{n}\right)^2\, 
+\left| 2\ln(\eta)+3\right|
+\leq \frac{2}{3n^2} \left| 2\ln(3)+3\right| < 10^{-5} \ .
+\]
+Thus,
+\[
+n > \left( \frac{2\times 10^5}{3}\left(2\ln(3)+3\right) \right)^{1/2}
+\approx 588.6269 \ .
+\]
+We take $n= 589$.  It follows that $h=2/589$ and
+\[
+\int_1^3 x^2\,\ln(x)\dx{x} \approx \frac{1}{589}
+\left( f(x_0) + 2 \sum_{j=1}^{588} f(x_j) + f(x_{589}) \right)
+\approx 6.99862996 \ ,
+\]
+where $x_j = 1 + j\,h = 1 + 2j/589$.  The absolute error is
+about $0.82551686 \times 10^{-5}$.
+
+\subQ{c} For the Simpson rule, we choose $n = 2m$ and
+$h = (b-a)/n = 1/m$ such that the truncation error
+$\displaystyle \left| \frac{f^{(4)}(\eta)(b-a)}{180} \, h^4  \right|$
+for some $\eta \in [1,3]$ satisfies
+\[
+\left| \frac{f^{(4)}(\eta)(b-a)}{180} \, h^4  \right|
+= \frac{1}{90} \,\left(\frac{1}{m}\right)^4\, 
+\left| \frac{-2}{\eta^2} \right|
+\leq \frac{1}{45\,m^4}  < 10^{-5} \ .
+\]
+Thus,
+\[
+  m > \left( \frac{10^5}{45}\right)^{1/4} \approx 6.86589 \ .
+\]
+We take $m=7$.  It follows that $h=1/7$ and
+\[
+\int_1^3 x^2\,\ln(x)\dx{x} \approx \frac{1}{21}
+\left( f(x_0) + 2 \sum_{j=1}^6 f(x_{2j}) +4 \sum_{j=0}^6 f(x_{2j+1})
++ f(x_{14}) \right) \approx 6.99861865 \ ,
+\]
+where $x_j = 1 + j\,h = 1 + j/7$.    The absolute error is
+about $0.30640240 \times 10^{-5}$.
+}
+
+\solution{\SOL}{\ref{diffQ10}}{
+There are two ways to answer this question.  We could use the formula
+\[
+\int_a^b  f(x) \dx{x} = \frac{f(a) + 4f((a+b)/2) +f(b)}{6}\, (b-a)
+-\frac{f^{(4)}(\xi)\,(b-a)^5}{2880}
+\]
+for some $\xi$ between $a$ and $b$.  The truncation error will be $0$
+for all polynomials of degree less than $4$ becuase $f^{(4)}(x)=0$ for
+all polynomials $f$ of degree less than $4$.
+
+The other way to answer the question is to proceed directly.  By
+linearity of the integral, it is enough to show that Simpson's rule is
+exact for $x^i$ with $i=0$, $1$, $2$ and $3$.  For $f(x) = x^i$,
+Simpson's rule becomes
+\begin{equation} \label{SimpsonQ10}
+\int_a^b x^i \dx{x} \approx \frac{b-a}{6} \left(a^i + 4
+\left(\frac{a+b}{2}\right)^i + b^i\right) \ .
+\end{equation}
+For $i=0$, the right hand side of (\ref{SimpsonQ10}) is
+\[
+\frac{b-a}{6} \left(1 + 4 + 1\right)
+= b-a = \int_a^b \, \dx{x} \ .
+\]
+For $i=1$, the right hand side of (\ref{SimpsonQ10}) is
+\[
+\frac{b-a}{6} \left(a + 4
+\left(\frac{a+b}{2}\right) + b\right)
+= \frac{b-a}{6}\,(3 a + 3 b)
+= \frac{1}{2} \left( b^2 - a^2 \right)
+= \int_a^b x \dx{x} \ .
+\]
+For $i=2$, the right hand side of (\ref{SimpsonQ10}) is
+\[
+\frac{b-a}{6} \left(a^2 + 4
+\left(\frac{a+b}{2}\right)^2 + b^2\right)
+=\frac{b-a}{6} \left(2 a^2 + 2 ab + 2 b^2\right)
+= \frac{1}{3} \left( b^3-a^3\right) = \int_a^b x^2\dx{x} \ .
+\]
+Finally, for $i=3$, the right hand side of (\ref{SimpsonQ10}) is
+\begin{align*}
+\frac{b-a}{6} \left(a^3 + 4
+\left(\frac{a+b}{2}\right)^3 + b^3\right)
+&= \frac{b-a}{6} \left(a^3 + \frac{1}{2}
+\left(a^3 + 3 a^2b + 3 ab^3 + b^3\right) + b^3\right) \\
+&= \frac{b-a}{12}\left(3 a^3+3 a^2b+3 ab^2+3 b^3\right)
+= \frac{1}{4} \left( b^4 - a^4 \right) = \int_a^b x^3\dx{x} \ .
+\end{align*}
+Thus, Simpson's rule is exact for polynomial of degree up to three.
+
+However, for $i=4$, the right hand side of (\ref{SimpsonQ10}) is
+\begin{align*}
+\frac{b-a}{6} \left(a^4 + 4
+\left(\frac{a+b}{2}\right)^4 + b^4\right)
+&= \frac{b-a}{6} \left(a^4 + \frac{1}{4}
+\left(a^4 + 4 a^3b + 6 a^2b^2 + 4 ab^4 + b^4\right) + b^4\right) \\
+&= \frac{b-a}{24}\left(5 a^4+4 a^3b+6 a^2b^2+4 ab^3+5 b^4\right) \\
+&= \frac{1}{24} \left( 5 b^5- ab^4+2 a^2b^3 -2 a^3b^2 + a^4b -5 a^5\right)\\
+&\neq \frac{1}{5}\left(b^5-a^5\right) = \int_a^b x^4\dx{x} 
+\end{align*}
+for almost all values of $a$ and $b$.
+}
+
+\solution{\SOL}{\ref{diffQ11}}{
+We use the composite trapezoidal rule to generate the first column of
+the table for Romberg integration.
+
+\noindent For $n=2$, we have $h=(4-2)/2=1$ and $x_j=2+j\,h = 2+j$ for
+$0\leq j \leq 2$.  Hence,
+\[
+\int_2^4 (1+x)^{1/3} \dx{x} \approx
+\frac{1}{2} \left( 3^{1/3} + 2 \, (4^{1/3}) + 5^{1/3} \right)
+\approx 3.163513810460252 \ .
+\]
+For $n=4$, we have $h=(4-2)/4=1/2$ and $x_j=2+j\,h = 2+j/2$ for
+$0\leq j \leq 4$.  Hence,
+\[
+\int_2^4 (1+x)^{1/3} \dx{x} \approx
+\frac{1}{4} \left( 3^{1/3} + 2 \left( 3.5^{1/3} + 4^{1/3} +
+4.5^{1/3}\right) + 5^{1/3} \right)
+\approx 3.166385960422699 \ .
+\]
+For $n=8$, we have $h=(4-2)/8=1/4$ and $x_j=2+j\,h = 2+j/4$ for
+$0\leq j \leq 8$.  Hence,
+\[
+\int_2^4 (1+x)^{1/3} \dx{x} \approx
+\frac{1}{8} \left( 3^{1/3} + 2 \sum_{j=1}^7 (1+2+j/4)^{1/3} + 5^{1/3} \right)
+\approx 3.167107453016058 \ .
+\]
+
+All values in the table below have been rounded to nine digits.
+{
+\small
+\[
+\begin{array}{cc|cccc}
+n & h & L_h^0(f) & & L^1_h(f) & L^2_h(f) \\
+\hline
+2 & 1 & 3.16351381 & & & \\
+4 & 1/2 & 3.16638596 & \fbox{3.98084469} & 3.16734334 & \\
+8 & 1/4 & 3.16710745 & & 3.16734795 & 3.16734826  
+\end{array}
+\]
+}
+Note that
+$\displaystyle L_{1/2}^1(f) = (4L_{1/2}^0(f)-L_1^0(f))/(4-1)$,
+$\displaystyle L_{1/4}^1(f) = (4L_{1/4}^0(f)-L_{1/2}^0(f))/(4-1)$
+and
+$\displaystyle L_{1/4}^2(f) = (4^2L_{1/4}^1(f)-L_{1/2}^1(f))/(4^2-1)$.
+
+The requested approximation is $3.16734826$ because
+$\displaystyle \left| L_{1/2}^1(f) - L_1^0(f) \right| \approx 0.0038295
+> 10^{-5}$ and
+$\displaystyle \left| L_{1/4}^2(f) - L_{1/2}^1(f) \right| \approx
+0,49139 \times 10^{-5}  < 10^{-5}$.
+}
+
+\solution{\SOL}{\ref{diffQ12}}{
+We have used the composite trapezoidal rule to generate the first
+column of the table for Romberg integration; namely, we have used
+\[
+L_h^0(f) = \frac{h}{2}\left( f(x_0) + 2 \sum_{j=1}^{n-1} f(x_j) + f(x_n)
+\right) \ ,
+\]
+where $x_i= 1+ih$ and $h=2/n$.
+{
+\small
+\[
+\begin{array}{c|ccccc}
+\hline
+h & L_h^0(f) & & L_h^1(f) & & L_h^2(f) \\
+\hline
+2 & 2.31607401 & & & & \\ 
+1 & 2.34724412 & 3.69506105 & 2.35763416 &  & \\ 
+0.5 & 2.35567974 & 3.88972370 & 2.35849161 & 10.75596733 & 2.35854877  \\ 
+0.25 & 2.35784843 & \fbox{3.96766871} & 2.35857133 & 13.53301479
+& 2.35857664 \\ 
+0.125 & 2.35839502 &  & 2.35857722 &  & 2.35857761 \\ 
+\hline
+\multicolumn{1}{c}{} & & & & & \\
+\cline{2-5}
+\multicolumn{1}{c}{} & & L_h^3(f) &  L_h^4(f) & |L_h^i(f) - L_{2h}^{i-1}(f)| & \\
+\cline{2-5}
+\multicolumn{1}{c}{} & & & & & \\
+\multicolumn{1}{c}{} & & & & 0.0415601 & \\
+\multicolumn{1}{c}{} & & & & 0.914612 \times 10^{-3} & \\
+\multicolumn{1}{c}{} & 28.76692226 & 2.35857708 & &
+0.283121 \times 10^{-4} & \\ 
+\multicolumn{1}{c}{} & & 2.35857762 & 2.35857763 & 0.543938 \times 10^{-6} & \\ 
+\cline{2-5}
+\end{array}
+\]
+}
+All the values in the table have been rounded.
+
+We stopped the procedure when $|L_h^i(f) - L_{2h}^{i-1}(f)|$ got
+smaller than $10^{-5}$ and took $L_h^i(f)$ as our approximation of
+the integral.  We have that
+\[
+\int_3^5 (x-2)^{1/4} \dx{x} \approx L_{0.125}^4 \approx 2.35857763
+\]
+with the required accuracy.
+
+We have also included the ratios defined in (\ref{checkRich}) to check
+if the values of $L_h^i(h)$ can be trusted.  However, we have ignored
+this information.
+}
+
+\solution{\SOL}{\ref{diffQ13}}{
+The first column of table used for Romberg integration is produced by
+the composite trapezoidal rule
+\[
+L_h^0(f) = \frac{h}{2}\left( f(x_0) + 2 \sum_{j=1}^{n-1} f(x_j) + f(x_n)
+\right) \ ,
+\]
+where $x_i= 1+ih$ and $h=2/n$.  The table is given below.
+{
+\small
+\[
+\begin{array}{c|ccccc}
+\hline
+h & L_h^0(f) & & L_h^1(f) & & L_h^2(f) \\ 
+\hline
+2 & 9.88751060 & & & & \\ 
+1 & 7.71634402 & \fbox{4.03101596} & 6.99262183 & & \\ 
+0.5 & 7.17772879 & \fbox{4.00899805} & 6.99819039 & 13.81887982 & 6.99856162 \\ 
+0.25 & 7.04337721 & \fbox{4.00237347} & 6.99859335 & \fbox{15.17336693}
+& 6.99862022 \\ 
+0.125 & 7.00980924 & & 6.99861991 & & 6.99862168 \\ 
+\hline
+\multicolumn{1}{c}{} & & & & & \\
+\cline{2-5}
+\multicolumn{1}{c}{} & & L_h^3(f) & L_h^4(f) & |L_h^i(f)-L_{2h}^{i-1}(f)| &\\ 
+\cline{2-5}
+\multicolumn{1}{c}{} &&&&& \\
+\multicolumn{1}{c}{} &&&& 2.8948888 & \\
+\multicolumn{1}{c}{} &&&& 0.005939793 & \\  
+\multicolumn{1}{c}{} & 40.03582483 & 6.99862115 & &
+0.59524745 \times 10^{-4} & \\ 
+\multicolumn{1}{c}{} && 6.99862170 & 6.99862171 & 0.55889607 \times 10^{-5} & \\
+\cline{2-5}
+\end{array}
+\]
+}
+All the values in the table have been rounded.
+We stopped the procedure when $|L_h^i(f) - L_{2h}^{i-1}(f)|$ got
+smaller than $10^{-7}$ and took $L_h^i(f)$ as our approximation of
+the integral.  We have that
+\[
+\int_1^3 x^2\,\ln(x) \dx{x} \approx L_{0.125}^4 \approx 6.99862171
+\]
+meet our criteria of accuracy.
+
+In question~\ref{diffQ9}, we found that
+\[
+\int_1^3 x^2\,\ln(x)\dx{x} = 9 \ln(3) - \frac{26}{9} =
+6.99862170912\ldots
+\]
+So, the absolute error of our approximation $6.99862171$ is about
+$-0.88 \times 10^{-9}$.  This is better than expected.
+
+We have also included the ratios defined in (\ref{checkRich}) to check
+if the values of $L_h^i(h)$ can be trusted.  However, we have ignored
+this information.  The approximation of the value of the integral
+suggested by the ratios defined in (\ref{checkRich}) is
+$L_{0.25}^2(f) \approx 6.99862022$ associated to the ratio
+$15.17336693$.  The absolute error for this approximation is about
+$0.14891 \times 10^{-5}$.  Despite the fact that the ratios were not
+respecting the rule of $4^i$, we did the right thing by proceeding
+with the computations.  The problem with the computations of the
+ratios defined in (\ref{checkRich}) is that they have to be done with
+very high precision because we are dividing by values closed to zero.
+}
+
+\solution{\SOL}{\ref{diffQ14}}{
+The first column of the table associated to Romberg integration is
+given by the composite trapezoidal rule
+\[
+L_h(f) = \frac{h}{2} \left( f(x_0) + 2\,\sum_{j=1}^{n-1}\,f(x_j)
++ f(x_n)\right) \ ,
+\]
+where $h=(b-a)/n$ and $x_i = a+i\,h$ for $i=1$, $2$, $3$, \ldots, $n$.
+
+The second column of this table is
+\begin{align*}
+L_{h/2}^1(f) &= \frac{4L_{h/2}(f) - L_h(f)}{4-1}
+= \frac{1}{3} \bigg(
+h\, \left( f(x_0) + 2\,\sum_{j=1}^{n-1}\,f(x_j)
++ 2\,\sum_{j=0}^{n-1}\,f(x_j+h/2) + f(x_n)\right) \\
+&\qquad - \frac{h}{2} \left( f(x_0) + 2\,\sum_{j=1}^{n-1}\,f(x_{j})
++ f(x_n)\right) \bigg) \\
+&= \frac{h}{6} \left(f(x_0) + 2\,\sum_{j=1}^{n-1}\,f(x_j)
++ 4\,\sum_{j=0}^{n-1}\,f(x_{j}+h/2) + f(x_n) \right) \\
+&= \frac{\tilde{h}}{3} \left(
+f(\tilde{x}_0) + 2\,\sum_{j=1}^{n-1}\,f(\tilde{x}_{2j})
++ 4\,\sum_{j=0}^{n-1}\,f(\tilde{x}_{2j+1}) + f(\tilde{x}_n) \right) \ ,
+\end{align*}
+where $\tilde{h} = (b-a)/(2n)$ and $\tilde{x}_j = a + j\tilde{h}$ for
+$0 \leq j \leq 2n$.  This is the composite Simpson rule with $m$
+replaced by $n$, $h$ by $\tilde{h}$ and $x_j$ by $\tilde{x}_j$.
+}
+
+\solution{\SOL}{\ref{diffQ15}}{
+Use the adaptive quadrature method presented in
+Section~\ref{SectAdaptQMethod} to approximate
+\[
+\int_3^5 (x-2)^{1/4} \dx{x}
+\]
+with an accuracy of $10^{-5}$.  For this purpose and to simplify the
+discussion, let $S(a,b,h)$ be the result of the composite Simpson's Rule,
+Theorems~\ref{SimpsonRule} and \ref{CSR}, for
+$\displaystyle \int_a^b (x-2)^{1/4} \dx{x}$ with $m = (b-a)/(2h)$.
+The values displayed in the following computations have been rounded
+to $12$ significant digits though the computations have been
+done with as many digits as possible.
+
+\subI{level 0}
+\[
+\begin{array}{c|ccccc}
+i & 1 & 2 & 3 & 4 & 5 \\
+\hline
+x_i & 3 & 7/2 & 4 & 9/2 & 5
+\end{array}
+\]
+$h=1$, $T=10^{-5}$, $S_{[3,5]} = S(3,5,1) \approx 2.35763415765$,\\
+$S_1 = S(3,4,0.5) \approx 1.10265579897$,
+$S_2 = S(4,5,0.5) \approx 1.25583580778$,\\
+$\tilde{S}_{[3,5]} = S(3,5,0.5) \approx S_1+S_2 = 2.35849160675$ and\\
+$\displaystyle \tilde{R}_{[3,5]} \approx
+\frac{1}{15}\left| \tilde{S}_{[3,5]} - S_{[3,5]}\right|
+\approx 0.571633 \times 10^{-4} \not< 10^{-5}$.
+
+\subI{Level 1}
+\[
+\begin{array}{c|ccccc}
+i & 1 & 2 & 3 & 4 & 5 \\
+\hline
+x_i & 3 & 13/4 & 7/2 & 15/4 & 4
+\end{array}
+\]
+$h=0.5$, $T=0.5\times 10^{-5}$ (store for $[4, 5]$),
+$S_{[3,4]} = S(3,4,0.5) \approx 1.10265579897$,\\
+$S_1 = S(3,3.5,0.25) \approx 0.528013914455$,
+$S_2 = S(3.5,4,0.25) \approx 0.574711858524$,\\
+$\tilde{S}_{[3,4]} = S(3,4,0.25) = S_1+S_2 \approx 1.10272577298$ and\\
+$\displaystyle \tilde{R}_{[3,4]} \approx
+\frac{1}{15}\left| \tilde{S}_{[3,4]} - S_{[3,4]}\right|
+\approx 0.466493 \times 10^{-5} < 0.5 \times 10^{-5}$.\\
+We accept $\tilde{S}_{[3,4]} \approx 1.10272577298$ as an approximation of
+$\displaystyle \int_3^4 (x-2)^{1/4} \dx{x}$.
+
+\subI{Level 1}
+\[
+\begin{array}{c|ccccc}
+i & 1 & 2 & 3 & 4 & 5 \\
+\hline
+x_i & 4 & 17/4 & 9/2 & 19/4 & 5
+\end{array}
+\]
+$h=0.5$, $T=0.5\times 10^{-5}$,
+$S_{[4,5]} = S(4,5,0.5) \approx 1.25583580778$,\\
+$S_1 = S(4,4.5,0.25) \approx 0.612135002521$,
+$S_2 = S(4.5, 5, 0.25) \approx 0.643710549703$,\\
+$\tilde{S}_{[4,5]} = S(4,5,0.25) = S_1+S_2 \approx 1.25584555222$ and\\
+$\displaystyle \tilde{R}_{[4,5]} \approx
+\frac{1}{15}\left| \tilde{S}_{[4,5]} - S_{[4,5]}\right|
+\approx 0.649630 \times 10^{-6} < 0.5 \times 10^{-5}$.\\
+We accept $\tilde{S}_{[4,5]}\approx 1.25584555222$ as an approximation of
+$\displaystyle \int_4^5 (x-2)^{1/4} \dx{x}$.
+
+\subI{Level 0} We are done.  We have found that
+\begin{align*}
+\int_3^5 (x-2)^{1/4} \dx{x} &=
+\int_3^4 (x-2)^{1/4} + \int_4^5 (x-2)^{1/4} \\
+&\approx 1.10272577298 + 1.25584555222 = 2.35857132520 \ .
+\end{align*}
+This approximation is meeting the required accuracy.
+}
+
+\solution{\SOL}{\ref{diffQ16}}{
+Since (\ref{NF01}) is a linear functional with respect to $f$ and
+since all polynomial of degree at most $4$ are linear combinations of
+the monomials $x^i$ for $0 \leq i \leq 4$, it is enough to show
+that (\ref{NF01}) is true for $f(x) = x^i$ with $0\leq i \leq 4$ to
+prove that (\ref{NF01}) is true for all polynomials of degree less
+than or equal to $4$.  For instance, for $i=4$, we get
+\[
+\int_0^1 x^4 \dx{x} = \frac{x^5}{5}\bigg|_{x=0}^1 = \frac{1}{5}
+\]
+and
+\[
+\frac{1}{90}\left(7 (0^4) +32 \left(\frac{1}{4}\right)^4 +
+12 \left(\frac{1}{2}\right)^4 + 32 \left(\frac{3}{4}\right)^4
++ 7 (1^4)\right) = \frac{1}{5} \ .
+\]
+We leave to the reader the task of verifying the equality for the
+other monomials.
+
+If we substitute $y = (b-a)x + a$ in
+$\displaystyle \int_a^b\,f(y)\dx{y}$, we get
+\begin{align*}
+\int_a^b\,f(y)\dx{y} &= \int_0^1 f\big( (b-a)x+a\big)\, (b-a)\dx{x} \\
+&= \frac{b-a}{90}\bigg(7\,f(a)+32\,f\left(\frac{3a+b}{4}\right) +
+12\,f\left(\frac{a+b}{2}\right)
++ 32\,f\left(\frac{a+3b}{4}\right) + 7\,f(b)\bigg) \ .
+\end{align*}
+}
+
+\solution{\SOL}{\ref{diffQ17}}{
+For $f(x) = x^i$, the formula is
+\[
+\int_0^1 x^i \dx{x} \approx A\, \left( x_0^i + x_1^i \right) \ .
+\]
+For $i=0$, we have $\displaystyle 1 = \int_0^1 \dx{x} = 2\,A$.
+Thus, $A = 1/2$.  For $i=1$, we have
+$\displaystyle
+\frac{1}{2} = \int_0^1 x\dx{x} = A \,(x_0+x_1) =
+\frac{1}{2}(x_0-x_1)$.  Thus
+\begin{equation} \label{Q17equ1}
+  1 = x_0+x_1 \ .
+\end{equation}
+For $i=2$, we have
+$\displaystyle
+\frac{1}{3} = \int_0^1 x^2 \dx{x} = A\, (x_0^2+x_1^2)
+= \frac{1}{2} (x_0^2+x_1^2)$.  Thus,
+\begin{equation} \label{Q17equ2}
+\frac{2}{3} = x_0^2 + x_1^2 \ .
+\end{equation}
+If we solve the system of equations given by (\ref{Q17equ1}) and
+(\ref{Q17equ2}) for $x_0$ and $x_1$, we get two solutions
+$\displaystyle x_0= \frac{1}{2} + \frac{1}{2\sqrt{3}}$ and
+$\displaystyle x_1= \frac{1}{2} - \frac{1}{2\sqrt{3}}$, and
+$\displaystyle x_0= \frac{1}{2} - \frac{1}{2\sqrt{3}}$ and
+$\displaystyle x_1= \frac{1}{2} + \frac{1}{2\sqrt{3}}$.
+Hence, we find that the formula
+\[
+\int_0^1 x^i \dx{x} \approx \frac{1}{2}\left(
+f\left(\frac{1}{2} + \frac{1}{2\sqrt{3}}\right)
++f\left(\frac{1}{2} - \frac{1}{2\sqrt{3}}\right)\right)
+\]
+is exact for polynomials of degree less or equal to $2$.
+}
+
+\solution{\SOL}{\ref{diffQ18}}{
+For $f(x) = x^i$, the formula is
+\[
+\int_0^2 x^{i+1} \dx{x} \approx A\,x^i\big|_{x=0} + B\,x^i\big|_{x=1}
++ C\,x^i\big|_{x=2}
+\]
+for $i \geq 0$.  For $i=0$, we get
+\begin{equation} \label{Q18equ1}
+  2 = \int_0^2 x\dx{x} = A + B + C \ .
+\end{equation}
+For $i=1$, we get
+\begin{equation} \label{Q18equ2}
+ \frac{8}{3} = \int_0^2 x^2\dx{x} = B + 2\,C \ .
+\end{equation}
+For $i=2$, we get
+\begin{equation} \label{Q18equ3}
+  4 = \int_0^2 x^3 \dx{x} = B + 4\,C \ .
+\end{equation}
+The system of linear equations formed of (\ref{Q18equ1}),
+(\ref{Q18equ2}) and (\ref{Q18equ3}) has a unique solution given by
+$A=0$, $B=4/3$ and $C=2/3$.
+
+For $i=3$, we have
+\[
+\frac{32}{5} = \int_0^2 x^4\dx{x} = B + 8\,C \ .
+\]
+Since this equation is not satisfied with $B=4/3$ and $C=2/3$, the
+formula is not valid for $i=3$.  Therefore, we can get a formula which
+is exact for polynomials of degree up to two with $A=0$, $B=4/3$ and
+$C=2/3$.  It is not possible to do better.
+}
+
+\solution{\SOL}{\ref{diffQ19}}{
+We get $\displaystyle A + B = \int_0^{2\pi} \dx{x} = 2\pi$ when $k=0$
+and
+$\displaystyle A \cos(0) + B \cos(\pi) = \int_0^{2\pi} \cos(x) \dx{x}
+= \sin(x)\Big|_{x=0}^{2\pi} = 0$ when $k=1$.
+Thus $A+B=2\pi$ and $A-B=0$.  We find $A=B=\pi$.
+The requested formula is
+\begin{equation}\label{QuestFourierForm}
+\int_0^{2\pi} f(x) \dx{x} \approx \pi\,f(0) + \pi\,f(\pi) \ .
+\end{equation}
+
+Since
+\[
+\int_0^{2\pi} \cos((2k+1)x) \dx{x} =
+\frac{1}{2k+1}\sin((2k+1)x)\bigg|_{x=0}^{2\pi} = 0
+\]
+and
+\[
+\pi \cos((2k+1)x)\bigg|_{x=0} + \pi\cos((2k+1)x)\bigg|_{x=\pi}
+= \pi + \pi\cos((2k-1)\pi) = \pi - \pi = 0
+\]
+for all $k\geq 0$, (\ref{QuestFourierForm}) is exact for
+$f(x) = \cos((2k+1)x)$ with $k\geq 0$.  Moreover, since
+\[
+\int_0^{2\pi} \sin(kx) \dx{x} = -\frac{1}{k}\cos(kx)\bigg|_{x=0}^{2\pi}
+= -\frac{1}{k}\left(\cos(2\pi k)-1\right) = 0
+\]
+and
+\[
+\pi \sin(kx)\bigg|_{x=0} + \pi\sin(kx)\bigg|_{x=\pi}
+= 0 + \pi\sin(k\pi) = 0 - 0 = 0
+\]
+for $k>0$, (\ref{QuestFourierForm}) is exact for $f(x) = \sin(kx)$
+with $k>0$.  It is also true for $f(x)=\sin(kx)$ with 
+$k=0$ because $f(x)=0$ for all $x$ in this case.
+
+By linearity of the integral, (\ref{QuestFourierForm}) is exact for
+expressions of the form (\ref{QuestFourierType}).  It is not a really
+interesting relation because the integral of (\ref{QuestFourierType})
+in (\ref{QuestFourierForm}) is null and therefore does not require the
+formula $\pi f(0) + \pi f(\pi)$ to be computed.
+
+\noindent Note: Formula (\ref{QuestFourierForm}) is not true for
+$f(x) = \cos(2k\,x)$ with $k\geq 1$.  This can be shown directly.
+Another way to prove this is by contradiction.  Suppose that the
+formula is true for $f(x) = \cos(2k\,x)$ with $k\geq 1$.  Since all
+continuous functions on $[0,2\pi]$ can be expressed as a Fourier
+series of $\cos(kx)$ and $\sin(kx)$ for $k\geq 0$,
+(\ref{QuestFourierForm}) will then be true for all continuous 
+functions on $[0,2\pi]$.  But the formula is not true for $f(x) =x$.
+}
+
+\solution{\SOL}{\ref{diffQ20}}{
+The polynomial interpolation of $f$ at the points
+$x_0=a + (b-a)/3=(2a+b)/3$ and $x_1 = a + 2(b-a)/3 = (a+2b)/3$ is
+given by
+\[
+f(x) = f[x_0] + f[x_0,x_1]\left(x-x_0\right)
++f[x_0,x_1,x]\left(x-x_0\right)\left(x-x_1\right) \ .
+\]
+Hence,
+\[
+\int_a^b f(x) \dx{x}
+= \int_a^b \left( f[x_0] + f[x_0,x_1]\left(x-x_0\right) \right)\dx{x}
++ \int_a^b f[x_0,x_1,x] \left(x-x_0\right)\left(x-x_1\right) \dx{x} \ .
+\]
+
+Since $\displaystyle f[x_0]= f(x_0) = f\left(\frac{2a+b}{2}\right)$
+and
+\[
+f[x_0,x_1] = 
+\frac{f\big((a+2b)/3\big) - f\big((2a+b)/3\big)}{(a+2b)/3 - (2a+b)/3}
+=
+\frac{3}{b-a} \left(f\left(\frac{a+2b}{3}\right)
+- f\left(\frac{2a+b}{3}\right) \right) \ ,
+\]
+we get the formula
+\begin{align*}
+&\int_a^b f(x) \dx{x} \approx
+\int_a^b \left( f[x_0] + f[x_0,x_1]\left(x-x_0\right)\right)\dx{x}
+= \left( f(x_0)\, x + \frac{1}{2}\, f[x_),x_1]\,
+\left(x-x_0\right)^2 \right)\bigg|_{x=a}^b \\
+& \quad = f\left(\frac{2a+b}{3}\right) (b-a)
++ \frac{3}{2(b-a)} \left(f\left(\frac{a+2b}{3}\right)
+- f\left(\frac{2a+b}{3}\right) \right)
+\left( \left(b -\frac{2a+b}{3}\right)^2
+-\left(a-\frac{2a+b}{3}\right)^2\right) \\
+& \quad = \frac{b-a}{2}\,
+\left(f\left(\frac{a+2b}{3}\right)+f\left(\frac{2a+b}{3}\right)\right) \ .
+\end{align*}
+We choose $A = B = (b-a)/2$.
+
+For each $x\in[a,b]$, there exists $\xi \in [a,b]$ such that
+\[
+\left| f[x_0,x_1,x] \right| =
+\left| \frac{1}{2}\,f''(\xi) \right| < \frac{M}{2} \ .
+\]
+Thus,
+\begin{align*}
+\left| \int_a^b f[x_0,x_1,x]
+\left(x-x_0\right)\left(x-x_1\right) \dx{x} \right|
+&\leq \int_a^b \left| f[x_0,x_1,x] \right|\,
+\left| \left(x-x_0\right)\left(x-x_1\right) \right|
+\dx{x} \\
+&\leq \frac{M}{2} \int_a^b \left|
+\left(x-x_0\right)\left(x-x_1\right) \right| \dx{x} \ .
+\end{align*}
+To compute this integral, we split the interval of integration in three
+subintervals such that the sign of the integrand is constant on each
+subinterval.  We can then eliminate the absolute value.
+To simplify the computation, we use integration by parts to get
+\begin{align*}
+\int (x-x_0)(x-x_1) \dx{x}
+&= \frac{(x-x_0)(x-x_1)^2}{2}- \frac{(x-x_1)^3}{6} + C_1
+\intertext{and}
+\int (x-x_0)(x-x_1) \dx{x}
+&= \frac{(x-x_1)(x-x_0)^2}{2}- \frac{(x-x_0)^3}{6} + C_2
+\end{align*}
+for some constants $C_1$ and $C_2$.  It is interesting to note that if
+we subtract the second integral from the first integral, we find
+that $C_2 - C_1 = (x_1-x_0)^3/6$.
+\begin{align*}
+&\int_a^b \left| \left(x-x_0\right)\left(x-x_1\right) \right| \dx{x} \\
+&\quad = \int_a^{x_0} \left(x-x_0\right)\left(x-x_1\right) \dx{x}
+- \int_{x_0}^{x_1} \left(x-x_0\right)\left(x-x_1\right) \dx{x}
++ \int_{x_1}^b \left(x-x_0\right)\left(x-x_1\right) \dx{x} \\
+&\quad
+= \left(\frac{(x-x_1)(x-x_0)^2}{2}- \frac{(x-x_0)^3}{6}\right)\bigg|_{x=a}^{x_0}
+-\left(\frac{(x-x_1)(x-x_0)^2}{2}- \frac{(x-x_0)^3}{6}\right)\bigg|_{x=x_0}^{x_1}
+\\
+&\quad \qquad
++\left(\frac{(x-x_0)(x-x_1)^2}{2}- \frac{(x-x_1)^3}{6}\right)\bigg|_{x=x_1}^{b}
+\\
+&\quad = -\left(\frac{(a-x_1)(a-x_0)^2}{2}- \frac{(a-x_0)^3}{6}\right)
++\frac{(x_1-x_0)^3}{6}
++\left(\frac{(b-x_0)(b-x_1)^2}{2}- \frac{(b-x_1)^3}{6}\right) \\
+&\quad = -\frac{1}{2}\left(\frac{2(a-b)}{3}\right)
+\left(\frac{a-b}{3}\right)^2+\frac{1}{6}\left(\frac{a-b}{3}\right)^3
++\frac{1}{6} \left(\frac{b-a}{3}\right)^3
++ \frac{1}{2} \left(\frac{2(b-a)}{3}\right)\left(\frac{b-a}{3}\right)^2
+-\frac{1}{6} \left(\frac{b-a}{3}\right)^3 \\
+&\quad = \frac{11(b-a)^3}{162} \ .
+\end{align*}
+Hence,
+\[
+\left| \int_a^b f[x_0,x_1,x]
+\left(x-x_0\right)\left(x-x_1\right) \dx{x} \right|
+\leq \frac{11 M(b-a)^3}{162} \ .
+\]
+}
+
+\solution{\SOL}{\ref{diffQ21}}{
+The polynomial interpolation of $f$ (of degree at most $2$) at the
+points $x_0=a + (b-a)/4 = (3a+b)/4$,
+$x_1=a+(b-a)/2 = (a+b)/2$ and $x_2=a+3(b-a)/4=(a+3b)/4$ is given by
+\begin{align*}
+f(x) &= f[x_0] + f[x_0,x_1]\,(x-x_0) + f[x_0,x_1,x_2]\,(x-x_0)(x-x_1) \\
+&+ f[x_0,x_1,x_2,x]\,(x-x_0)(x-x_1)(x-x_2) \ .
+\end{align*}
+Hence,
+\begin{equation}\label{QuestNIForm}
+\begin{split}
+\int_a^b f(x) \dx{x} &= \int_a^b \left(
+f[x_0] + f[x_0,x_1]\,(x-x_0) + f[x_0,x_1,x_2]\,(x-x_0)(x-x_1)
+\right)\dx{x} \\
+&\qquad + \int_a^b f[x_0,x_1,x_2,x]\,(x-x_0)(x-x_1)(x-x_2)\dx{x} \ .
+\end{split}
+\end{equation}
+
+The integration formula is given by the first integral on the right
+side of (\ref{QuestNIForm}).  Since
+\begin{align*}
+f[x_0] &= f\left(\frac{3a+b}{4}\right) \ , \\
+f[x_0,x_1] &= \frac{f(x_1)-f(x_0)}{x_1-x_0} =
+\left(\frac{1}{(b+a)/2 - (3a+b)/4}\right)
+\left(f\left(\frac{b+a}{2}\right) - f\left(\frac{3a+b}{4}\right)\right) \\
+& = \frac{4}{b-a} \,\left(f\left(\frac{b+a}{2}\right)
+- f\left(\frac{3a+b}{4}\right)\right) \ , \\
+f[x_1,x_2] &= \frac{f(x_2)-f(x_1)}{x_2-x_1} =
+\left(\frac{1}{(a+3b)/4 - (b+a)/2}\right)
+\left(f\left(\frac{a+3b}{4}\right)-f\left(\frac{b+a}{2}\right)\right) \\
+&= \frac{4}{b-a} \,\left(f\left(\frac{a+3b}{4}\right)
+- f\left(\frac{b+a}{2}\right)\right)
+\intertext{and}
+f[x_0,x_1,x_2] &= \frac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0} \\
+&= \left(\frac{1}{(a+3b)/4 - (3a+b)/4}\right) \bigg(
+\frac{4}{b-a} \,\left(f\left(\frac{a+3b}{4}\right)
+- f\left(\frac{b+a}{2}\right)\right) \\
+&\qquad - \frac{4}{b-a} \,\left(f\left(\frac{b+a}{2}\right)
+- f\left(\frac{3a+b}{4}\right)\right) \bigg)\\
+&= \frac{8}{(b-a)^2}
+\left(f\left(\frac{a+3b}{4}\right)
+- 2\,f\left(\frac{b+a}{2}\right)
++ f\left(\frac{3a+b}{4}\right)\right) \ ,
+\end{align*}
+we get
+\begin{align*}
+&\int_a^b f(x) \dx{x} \approx \int_a^b \big(
+f[x_0] + f[x_0,x_1]\,(x-x_0) + f[x_0,x_1,x_2]\,(x-x_0)(x-x_1) \big)\dx{x}\\
+&\quad = f\left(\frac{3a+b}{4}\right) \int_a^b \dx{x} +
+\frac{4}{b-a} \,\left(f\left(\frac{b+a}{2}\right)
+- f\left(\frac{3a+b}{4}\right)\right)
+\int_a^b \left(x-\frac{3a+b}{4}\right)\dx{x} \\
+&\qquad  + \frac{8}{(b-a)^2}
+\left(f\left(\frac{a+3b}{4}\right) - 2\,f\left(\frac{b+a}{2}\right)
++ f\left(\frac{3a+b}{4}\right)\right)
+\int_a^b \left(x-\frac{3a+b}{4}\right)\left(x-\frac{a+b}{2}\right)\dx{x} \ .
+\end{align*}
+Moreover, since
+\begin{align*}
+\int_a^b \left(x-\frac{3a+b}{4}\right)\dx{x} &=
+\frac{1}{2} \left(x-\frac{3a+b}{4}\right)^2\bigg|_{x=a}^b
+= \frac{1}{4}\,\left(b-a\right)^2
+\intertext{and}
+\int_a^b \left(x-\frac{3a+b}{4}\right)\left(x-\frac{a+b}{2}\right)\dx{x} &=
+\int_a^b \left( x^2-\frac{5a+3b}{4}\, x + \frac{3a^2+4ab+b^2}{8}
+\right)\dx{x}\\
+&= \left(\frac{x^3}{3} -\frac{5a+3b}{8}\, x^2 + \frac{3a^2+4ab+b^2}{8}\, x
+\right)\bigg|_{x=a}^b
+=\frac{1}{12}\,\left(b-a\right)^3 \ ,
+\end{align*}
+we finally get
+\begin{align*}
+\int_a^b f(x) \dx{x} & \approx \int_a^b \big(
+f[x_0] + f[x_0,x_1]\,(x-x_0) + f[x_0,x_1,x_2]\,(x-x_0)(x-x_1) \big)\dx{x} \\
+&= f\left(\frac{3a+b}{4}\right) \, (b-a)
++ \left(f\left(\frac{b+a}{2}\right) - f\left(\frac{3a+b}{4}\right)\right)
+\, \left(b-a\right) \\
+&\qquad + \frac{2}{3}
+\left(f\left(\frac{a+3b}{4}\right)
+- 2\,f\left(\frac{b+a}{2}\right)
++ f\left(\frac{3a+b}{4}\right)\right)
+\,\left(b-a\right) \\
+&= \left(\frac{2}{3}\, f\left(\frac{a+3b}{4}\right)
+- \frac{1}{3}\,f\left(\frac{b+a}{2}\right)
++ \frac{2}{3}\,f\left(\frac{3a+b}{4}\right)\right)
+\,\left(b-a\right) \ .
+\end{align*}
+
+The truncation error is given by the second integral on the right hand
+side of (\ref{QuestNIForm}). Since, for each $x\in [a,b]$ there exists
+$\xi\in [a,b]$ such that
+\[
+\left| f[x_0,x_1,x_2,x] \right| =
+\left| \frac{1}{3!}\,f^{(3)}(\xi) \right| < \frac{M}{3!} \ ,
+\]
+we get
+\begin{align*}
+&\left| \int_a^b \left(f[x_0,x_1,x_2,x]\,(x-x_0)(x-x_1)(x-x_2)
+  \right)\dx{x} \right| \\
+&\quad \leq \int_a^b \left|f[x_0,x_1,x_2,x]\right|\,
+\left|(x-x_0)(x-x_1)(x-x_2) \right|\dx{x}
+\leq \frac{M}{6} \, \int_a^b
+\left|(x-x_0)(x-x_1)(x-x_2) \right|\dx{x} \ .
+\end{align*}
+Because of the symmetry of the graph of
+$p(x)=|(x-x_0)(x-x_1)(x-x_2)|$ with respect to the vertical line
+$x=(a+b)/2$, we have
+\begin{align*}
+&\int_a^b \left|(x-x_0)(x-x_1)(x-x_2) \right|\dx{x} 
+= 2\int_{x_1}^b \left|(x-x_0)(x-x_1)(x-x_2) \right|\dx{x} \\
+&\qquad = - 2\int_{x_1}^{x_2} (x-x_0)(x-x_1)(x-x_2) \dx{x}
++ 2\int_{x_2}^b (x-x_0)(x-x_1)(x-x_2) \dx{x} \ .
+\end{align*}
+Using integration by parts with $u(x) = (x-x_0)(x-x_1)$ and
+$v'(x) = x-x_2$, we get $u'(x) = (x-x_0) + (x-x_1)$,
+$v(x) = (x-x_2)^2/2$ and
+\begin{align*}
+&\int (x-x_0)(x-x_1)(x-x_2) \dx{x}
+= u(x)v(x) - \int u'(x) v(x) \dx{x} \\  
+&\qquad = \frac{1}{2}(x-x_0)(x-x_1)(x-x_2)^2
+- \frac{1}{2} \int (x-x_0)(x-x_2)^2\dx{x}
+- \frac{1}{2} \int (x-x_1)(x-x_2)^2\dx{x} \ .
+\end{align*}
+Again, using integration by parts with $u(x) = (x-x_0)$ and
+$v'(x) = (x-x_2)^2$ for the first integral on the right hand side
+of the equation above, and $u(x) = (x-x_0)$ and $v'(x) = (x-x_2)^2$
+for the second integral on the right hand side of the equation above,
+we get
+\begin{align*}
+& \int (x-x_0)(x-x_1)(x-x_2) \dx{x} \\
+&\quad = \frac{1}{2}(x-x_0)(x-x_1)(x-x_2)^2 - \frac{1}{2}
+\left( \frac{1}{3}(x-x_0)(x-x_2)^3 - \frac{1}{12}(x-x_2)^4\right) \\
+&\quad\qquad - \frac{1}{2}
+\left( \frac{1}{3}(x-x_1)(x-x_2)^3 - \frac{1}{12}(x-x_2)^4\right) + C \\
+&\quad= \frac{1}{2}(x-x_0)(x-x_1)(x-x_2)^2 - \frac{1}{6}(x-x_0)(x-x_2)^3
+- \frac{1}{6}(x-x_1)(x-x_2)^3
++ \frac{1}{12}(x-x_2)^4 + C \ .
+\end{align*}
+Hence
+\begin{align*}
+&\int_a^b \left|(x-x_0)(x-x_1)(x-x_2) \right|\dx{x}
+= - 2\, \bigg( \frac{1}{2}(x-x_0)(x-x_1)(x-x_2)^2 -
+\frac{1}{6}(x-x_0)(x-x_2)^3 \\
+&\quad \qquad - \frac{1}{6}(x-x_1)(x-x_2)^3
++ \frac{1}{12}(x-x_2)^4 \bigg)\bigg|_{x=x_1}^{x_2}
++2\, \bigg( \frac{1}{2}(x-x_0)(x-x_1)(x-x_2)^2 \\
+&\quad \qquad - \frac{1}{6}(x-x_0)(x-x_2)^3
+- \frac{1}{6}(x-x_1)(x-x_2)^3
++ \frac{1}{12}(x-x_2)^4 \bigg)\bigg|_{x=x_2}^b \\
+&\quad =  2\, \bigg( -\frac{1}{6}(x_1-x_0)(x_1-x_2)^3
++ \frac{1}{12}(x_1-x_2)^4 \bigg)
++2\, \bigg( \frac{1}{2}(b-x_0)(b-x_1)(b-x_2)^2  \\
+&\quad\qquad  - \frac{1}{6}(b-x_0)(b-x_2)^3
+- \frac{1}{6}(b-x_1)(b-x_2)^3 + \frac{1}{12}(b-x_2)^4 \bigg) \\
+&\quad =  2\left( \frac{1}{4} \left(\frac{b-a}{4}\right)^4 \right)
+  +2 \left( \frac{9}{4} \left(\frac{b-a}{4}\right)^4 \right)
+=  5 \left(\frac{b-a}{4}\right)^4  \ .
+\end{align*}
+Therefore,
+\[
+\left| \int_a^b \left(f[x_0,x_1,x_2,x]\,(x-x_0)(x-x_1)(x-x_2)
+  \right)\dx{x} \right| \leq \frac{5 M}{6} \left(\frac{b-a}{4}\right)^4 \ .
+\]
+}
+
+\solution{\SOL}{\ref{diffQ22}}{
+\subQ{a} The polynomial interpolation of $f$ at the points $x_0=-2h$,
+$x_1=-h$ and $x_2 = 0$ is given by
+\begin{align*}
+f(x) &= f[x_0] + f[x_0,x_1](x-x_0)+f[x_0,x_1,x_2](x-x_0)(x-x_1) \\
+&\qquad +f[x_0,x_1,x_2,x](x-x_0)(x-x_1)(x-x_2) \ .
+\end{align*}
+Hence,
+\begin{align*}
+&\int_0^h f(x) \dx{x}
+= \int_0^h \big( f[x_0] + f[x_0,x_1](x-x_0)
++f[x_0,x_1,x_2](x-x_0)(x-x_1) \big)\dx{x} \\
+&\qquad\qquad\qquad + \int_0^h f[x_0,x_1,x_2,x]
+(x-x_0)(x-x_1)(x-x_2) \dx{x} \\
+&\quad= \int_0^h \big( f[-2h] + f[-2h,-h](x+2h)
++f[-2h,-h,0](x+2h)(x+h) \big)\dx{x} \\
+&\quad\qquad + \int_0^h f[-2h,-h,0,x] (x+2h)(x+h)x \dx{x} \\
+&\quad=  f[-2h]\,x\bigg|_0^h + f[-2h,-h]\,
+\left( \frac{x^2}{2} +2hx\right)\bigg|_0^h 
++f[-2h,-h,0]\left( \frac{x^3}{3} + \frac{3hx^2}{2} + 2h^2x\right)\bigg|_0^h \\
+&\quad\qquad + \int_0^h f[-2h,-h,0,x] (x+2h)(x+h)x \dx{x} \\
+&\quad = f[-2h]\,h + \frac{5}{2} f[-2h,-h]\,h^2
++ \frac{23}{6}f[-2h,-h,0]\,h^3 \\
+&\quad\qquad + \int_0^h f[-2h,-h,0,x] (x+2h)(x+h)x \dx{x} \ .
+\end{align*}
+
+The formula to approximate the integral is
+\begin{align*}
+& \int_0^1 f(x)\dx{x} \approx
+f[-2h]\,h + \frac{5}{2} f[-2h,-h]\,h^2 + \frac{23}{6}f[-2h,-h,0]\,h^3  \\
+&\qquad = f(-2h)\,h + \frac{5}{2} \left(\frac{f(-h)-f(-2h)}{-h-(-2h)}\right) h^2
++ \frac{23}{6}
+\left( \frac{\displaystyle \frac{f(0)-f(-h)}{0-(-h)}
+ - \frac{f(-h)-f(-2h)}{-h-(-2h)}}{0-(-2h)}\right)h^3 \\
+&\qquad = \left(\frac{23}{12}\,f(0) - \frac{4}{3} \, f(-h) + \frac{5}{12} \,
+f(-2h)\right) h \ .
+\end{align*}
+
+Since $(x+2h)(x+h)x \geq 0$ for all $x\in[0,h]$, we may use the Mean
+Value Theorem for Integrals to get $\eta \in [0,h]$ such that
+\[
+\int_0^h f[-2,-1,0,x] (x+2h)(x+h)x \dx{x}
+ = f[-2h,-h,0,\eta] \int_0^h(x+2h)(x+h)x \dx{x} \ .
+\]
+Moreover, from the theory on divided difference formulas, there exists
+$\xi \in [-2h,h]$ such that
+\begin{align*}
+f[-2h,-h,0,\eta] \int_0^h (x+2h)(x+h)x \dx{x}
+&= \frac{1}{3!}f^{(3)}(\xi)
+\int_0^h (x+2h)\,(x+h)\,x \dx{x} \\
+&= \frac{1}{3!}f^{(3)}(\xi) \,\left(\frac{9}{4}\right)\, h^4
+= \frac{3}{8}\,f^{(3)}(\xi)\,h^4 \ .
+\end{align*}
+
+Hence
+\begin{equation}\label{formula1}
+\int_0^h f(x) \dx{x}
+= \left(\frac{23}{12}\,f(0) - \frac{4}{3}\,f(-h) +
+\frac{5}{12}\,f(-2h)\right)\,h + \frac{3}{8}\,f^{(3)}(\xi)\,h^4
+\end{equation}
+for some $\xi \in [-2h,h]$.
+
+\subQ{b} To obtain a formula for $\displaystyle \int_a^b f(x)\dx{x}$ from
+(\ref{formula1}), we use the substitution $x= a + t$ with $h=b-a$ to get
+\begin{align*}
+\int_a^b f(x)\dx{x} &= \int_0^h f(a+t) \dx{t}
+= \left(\frac{23}{12}\,f(a) - \frac{4}{3}\,f(a-h) +
+\frac{5}{12}\,f(a-2h)\right)\,h
++ \frac{3}{8}\,\dfdxn{f(a+t)}{t}{3}\bigg|_{t=\xi} \, h^4 \\
+&= \left(\frac{23}{12}\,f(a) - \frac{4}{3}\,f(a-h) +
+\frac{5}{12}\,f(a-2h)\right)
++\frac{3}{8}\,f^{(3)}(a+\xi)\,h^4 \ .
+\end{align*}
+
+\subQ{c} The formula in (b) can be used to approximate the solution of
+the initial value problem given.  If $y(a)$, $y(a-h)$ and
+$y(a-2h)$ are known, we can used them to approximate $y(a+h)$.
+We have
+\[
+\int_{a}^{a+h} y'(x) \dx{x} = y(x)\bigg|_{x=a}^{a+h}
+= y(a+h) - y(a) \ .
+\]
+We also have
+\begin{align*}
+\int_{a}^{a+h} y'(x) \dx{x} &= \int_{a}^{a+h} f(x,y(x)) \dx{x} \\
+&\approx \left(\frac{23}{12}\,f(a,y(a)) - \frac{4}{3}\,f(a-h,y(a-h)) +
+\frac{5}{12}\,f(a-2h,y(a-2h))\right) \ .
+\end{align*}
+Hence,
+\[
+y(a+h) \approx y(a) + h\left(\frac{23}{12}\,f(a,y(a)) -
+  \frac{4}{3}\,f(a-h,y(a-h)) + \frac{5}{12}\,f(a-2h,y(a-2y))\right) \ .
+\]
+}
+
+\solution{\SOL}{\ref{diffQ23}}{
+\subQ{a} The polynomial interpolating of $f$ at the points $x_0=-2h$,
+$x_1=-h$ and $x_2 = 0$ is
+\begin{align*}
+f(x) &= f[x_0] + f[x_0,x_1](x-x_0)+f[x_0,x_1,x_2](x-x_0)(x-x_1) \\
+&\qquad +f[x_0,x_1,x_2,x](x-x_0)(x-x_1)(x-x_2) \ .
+\end{align*}
+Hence,
+\begin{align*}
+&\int_{-h}^h f(x) \dx{x} = \int_{-h}^h \big( f[x_0] + f[x_0,x_1](x-x_0)
++f[x_0,x_1,x_2](x-x_0)(x-x_1) \big)\dx{x} \\
+&\quad \qquad\qquad + \int_{-h}^h f[x_0,x_1,x_2,x]
+(x-x_0)(x-x_1)(x-x_2) \dx{x} \\
+&\quad = \int_{-h}^h \big( f[-2h] + f[-2h,-h](x+2h)
++f[-2h,-h,0](x+2h)(x+h) \big)\dx{x} \\
+&\quad\qquad + \int_{-h}^h f[-2h,-h,0,x] (x+2h)(x+h)x \dx{x} \\
+&\quad =  f[-2h]\,x\bigg|_{-h}^h
++ f[-2h,-h]\,\left(\frac{x^2}{2} + 2hx\right)\bigg|_{-h}^h
++f[-2h,-h,0]\left( \frac{x^3}{3} + \frac{3hx^2}{2}
++ 2h^2x\right)\bigg|_{-h}^h \\
+&\quad\qquad + \int_{-h}^h f[-2h,-h,0,x] (x+2h)(x+h)x \dx{x} \\
+&\quad =  2\,f[-2h]\,h + 4 f[-2h,-h]\,h^2 +
+\frac{14}{3}f[-2h,-h,0]\,h^3 \\
+&\quad\qquad + \int_{-h}^h f[-2h,-h,0,x] (x+2h)(x+h)x \dx{x} \ .
+\end{align*}
+
+The formula to approximate the integral is
+\begin{align*}
+&\int_{-h}^h f(x)\dx{x} \approx
+2\,f[-2h]\,h + 4 f[-2h,-h]\,h^2 + \frac{14}{3}f[-2h,-h,0]\,h^3  \\
+& \quad = 2\,f(-2h)\,h + 4 \left(\frac{f(-h)-f(-2h)}{-h-(-2h)}\right) h^2
+ + \frac{14}{3}
+\left(\frac{\displaystyle \frac{f(0)-f(-h)}{0-(-h)}
+- \frac{f(-h)-f(-2h)}{-h-(-2h)}}{0-(-2h)}\right) h^3\\
+&\quad = \left(\frac{7}{3}\,f(0) - \frac{2}{3}\,f(-h)
++ \frac{1}{3}\,f(-2h)\right)h \ .
+\end{align*}
+
+Since $(x+2h)(x+h)x$ changes sign at $x=0$ on the interval $[-h,h]$, we
+may not directly use the Mean Value Theorem for Integrals to simplify
+the truncation error.  However, from
+\[
+f[x_0,x_1,x_2,x_2,x] = \frac{f[x_0,x_1,x_2,x] - f[x_0,x_1,x_2,x_2]}{x-x_2} \ ,
+\]
+we get
+\[
+f[-2h,-h,0,x] = f[-2h,-h,0,0,x] x + f[-2h,-h,0,0] \ .
+\]
+Hence,
+\begin{align*}
+&\int_{-h}^h f[-2h,-h,0,x] (x+2h)(x+h)x \dx{x} \\
+&\quad = \int_{-h}^h
+\left( f[-2h,-h,0,0,x] x + f[-2h,-h,0,0] \right)
+(x+2h)(x+h)x \dx{x} \\
+&\quad = \int_{-h}^h f[-2h,-h,0,0,x] (x+2h)(x+h)x^2 \dx{x}
++f[-2h,-h,0,0] \int_{-h}^h (x+2h)(x+h)x \dx{x} \ .
+\end{align*}
+The second integral can be easily computed.  For the first integral,
+Since $(x+2h)(x+h)x^2$ is non-negative on the interval $[-h,h]$, we may
+use the Mean Value Theorem for Integrals to get $\eta \in [-h,h]$ such
+that
+\[
+\int_{-h}^h f[-2h,-h,0,0,x] (x+2h)(x+h)x^2 \dx{x}
+= f[-2h,-h,0,0,\eta] \int_{-h}^h(x+2h)(x+h)x^2 \dx{x} \ .
+\]
+Hence,
+\begin{align*}
+&\int_{-h}^h f[-2h,-h,0,x] (x+2h)(x+h)x \dx{x} \\
+&\quad = f[-2h,-h,0,0,\eta] \int_{-h}^h (x+2h)(x+h)x^2 \dx{x}
+ + f[-2h,-h,0,0] \int_{-h}^h (x+2h)(x+h)x \dx{x} \\
+&\quad = \frac{26}{15} f[-2h,-h,0,0,\eta]\,h^5 + 2 f[-2h,-h,0,0]\,h^4 \ .
+\end{align*}
+Moreover, from the theory on divided difference formulas, there exists
+$\xi_1, \xi_2 \in [-2h,h]$ such that
+$\displaystyle f[-2h,-h,0,0,\eta] = \frac{1}{4!} f^{(4)}(\xi_1)$
+and
+$\displaystyle f[-2h,-h,0,0] = \frac{1}{3!} f^{(3)}(\xi_2)$.
+The truncation error is therefore
+\begin{align*}
+\int_{-h}^h f[-2h,-h,0,x] (x+2h)(x+h)x \dx{x} 
+&= \left(\frac{26}{15}\right) \frac{1}{4!} f^{(4)}(\xi_1)\, h^5
++ 2 \,\frac{1}{3!} f^{(3)}(\xi_2)\, h^4 \\
+&= \frac{13}{180} \, f^{(4)}(\xi_1)\,h^5 + \frac{1}{3} f^{(3)}(\xi_2)\,h^4 \ .
+\end{align*}
+Hence,
+\begin{equation}\label{Questformula1}
+\int_{-h}^h f(x) \dx{x}
+= \left(\frac{7}{3}\,f(0) - \frac{2}{3}\,f(-h) +
+\frac{1}{3}\,f(-2h)\right)\,h
++ \frac{13}{180} \, f^{(4)}(\xi_1)\,h^5 + \frac{1}{3} f^{(3)}(\xi_2)\,h^4 \ .
+\end{equation}
+
+\subQ{b} To obtain a formula for $\displaystyle \int_a^b f(x)\dx{x}$ from
+(\ref{Questformula1}), we use the substitution
+$\displaystyle x= \frac{b+a}{2} + t$ with $\displaystyle h = \frac{b-a}{2}$
+to get
+\begin{align*}
+&\int_a^b f(x)\dx{x} = \int_{-h}^h
+f\left(\frac{b+a}{2} + t\right) \dx{t} \\
+&\quad = \left(\frac{7}{3}\,f\left(\frac{a+b}{2}\right)
+- \frac{2}{3}\,f(a)
++ \frac{1}{3}\,f\left(\frac{3a-b}{2}\right)\right)
+\left(\frac{b-a}{2}\right) \\
+&\quad\qquad + \frac{13}{180}\,
+\dfdxn{f\left(\frac{b+a}{2}+t\right)}{t}{4}\bigg|_{t=\xi_1}
+\left(\frac{b-a}{2}\right)^5 + \frac{1}{3} \,
+\dfdxn{f\left(\frac{b+a}{2}+t\right)}{t}{3}\bigg|_{t=\xi_2}
+\left(\frac{b-a}{2}\right)^4 \\  
+&\quad= \left(\frac{7}{6}\,f\left(\frac{b+a}{3}\right)
+- \frac{1}{3}\,f(a) + \frac{1}{6}\,f\left(\frac{3a-b}{2}\right)\right)
+(b-a) \\
+&\quad\qquad + \frac{13}{5960}\,
+f^{(4)}\left(\frac{b+a}{2}+\xi_1\right) (b-a)^5 + \frac{1}{48} \,
+f^{(3)}\left(\frac{b+a}{2}+\xi_2\right) (b-a)^4 \ .
+\end{align*}
+}
+
+\solution{\SOL}{\ref{diffQ24}}{
+It suffices to show that there exist $c_1$, $c_2$, \ldots, $c_k$ such
+that (\ref{G_quadr}) is true for $p(x) = x^m$ with $0 \leq m <k$.  Namely,
+\[
+\int_a^b x^m\,w(x)\dx{x} = \sum_{j=1}^k\,c_j\,x_j^m
+\]
+for $0\leq m < k$.  This can be rewritten as the
+system of linear equations  $A\VEC{c} = \VEC{d}$, where
+\[
+A = \begin{pmatrix}
+1 & 1 & \ldots & 1 \\
+x_1 & x_2 & \ldots & x_k \\
+\vdots & \vdots & \ddots & \vdots \\
+x_1^{k-1} & x_2^{k-1} & \ldots & x_k^{k-1} \\
+\end{pmatrix}
+\ , \quad
+\VEC{c} = \begin{pmatrix} c_1 \\ c_2 \\ \ldots \\ c_k \end{pmatrix}
+\quad \text{and} \quad
+\VEC{d} = \begin{pmatrix} \int_a^b w(x)\dx{x} \\[0.5em]
+\int_a^b x\,w(t)\dx{x} \\ \vdots \\
+\int_a^b x^{k-1} w(x)\dx{x} \end{pmatrix} \ .
+\]
+This system has a unique solution because $A$ is an invertible
+Vandermonde matrix.  In fact, one can show that the determinant of the
+matrix $A$ above is $\displaystyle \prod_{0<i<j\leq k} (x_j - x_i)$.
+}
+
+\solution{\SOL}{\ref{diffQ25}}{
+Let $p$ be a polynomial of degree less than $k+m$.  By the Euclidean
+division algorithm, we get $p=P q + r$, where $q$ and $r$ are
+polynomials of degree less than $m$.  Hence,
+\begin{equation} \label{ord_2k_1}
+\int_a^b p(x)\,w(x)\dx{x} =
+\int_a^b P(x)\,q(x)\,w(x)\dx{x} +
+\int_a^b r(x)\,w(x)\dx{x} =  \int_a^b r(x)\,w(x)\dx{x}
+\end{equation}
+because $\ps{P}{q} = 0$ since $q$ is of degree less than $m$.
+Moreover,
+\begin{equation} \label{ord_2k_2}
+\sum_{j=1}^k c_j\,p(x_j) = \sum_{j=1}^k c_j\,P(x_j)\,q(x_j) +
+\sum_{j=1}^k c_j\,r(x_j) = \sum_{j=1}^k c_j\,r(x_j)
+\end{equation}
+because $x_1$, $x_2$, \ldots, $x_k$ are the roots of $P$ by
+hypothesis.
+Finally, because (\ref{G_quadr}) is true for polynomials of degree
+less than $k$ if the coefficients $c_i$ are defined by
+(\ref{GquadrCoeff}), we have
+\begin{equation} \label{ord_2k_3}
+\int_a^b r(x)\,w(x)\dx{x} = \sum_{j=1}^k c_j\,r(x_j)
+\end{equation}
+since $r$ is of degree less than $m \leq k$.
+It follows from (\ref{ord_2k_1}), (\ref{ord_2k_2}) and
+(\ref{ord_2k_3}) that
+\[
+\int_a^b p(t)\,w(t)\dx{x} = \sum_{j=1}^k c_j\,p(x_j)
+\]
+for any polynomial of degree less than $k+m$.
+
+We now prove that the quadrature formula is not true for all
+polynomial of degree $k+m$.  Let $p(x) = x^m P(x) + r(x)$, where $r$
+is a polynomial of degree less than $m$.  The equations
+(\ref{ord_2k_2}) and (\ref{ord_2k_3}) are still true if we replace
+$q(x)$ by $x^m$.  So
+\[
+  \int_a^b r(x)\,w(x)\dx{x} = \sum_{j=1}^k c_j\,p(x_j) \ .
+\]
+However,
+\begin{align*}
+\int_a^b p(x)\,w(x)\dx{x} &=
+\underbrace{\int_a^b x^m P(x)\,w(x)\dx{x}}_{\neq 0} +
+\int_a^b r(x)\,w(x)\dx{x}
+\neq  \int_a^b r(x)\,w(x)\dx{x}
+= \sum_{j=1}^k c_j\,p(x_j) \ .
+\end{align*}
+}
+
+\solution{\SOL}{\ref{diffQ26}}{
+If $f$ is $q$-time continuously differentiable on an open interval
+containing $[a,b]$, it follows from Taylor's Theorem,
+Theorem~\ref{TaylorTheo}, that $f(x) = p(x) + r(x)$, where
+\[
+p(x) = \sum_{j=0}^{q-1} \frac{f^{(j)}(a)}{j!} \, (x-a)^j \quad
+\text{and} \quad r(x) = \frac{f^{(q)}(\xi(x))}{q!} \, (x-a)^q
+\]
+for some $\xi(x)$ between $a$ in $x$.  Thus,
+\[
+\int_a^b f(x) w(x) \dx{x} = \int_a^b p(x) w(x) \dx{x} + \int_a^b r(x)
+w(x) \dx{x} 
+= \sum_{j=1}^k b_j p(x_j) + \int_a^b r(x) w(x) \dx{x}
+\]
+because $p$ is a polynomial of degree at most $q-1$.  Moreover
+\begin{align*}
+\int_a^b r(x) w(x) \dx{x}
+&= \frac{1}{q!} \int_a^b f^{(q)}(\xi(x))\, (x-a)^q w(x) \dx{x}
+= \frac{1}{q!} f^{(q)}(\xi(c)) \int_a^b (x-a)^q w(x) \dx{x} \\
+&= \frac{1}{q!} f^{(q)}(\xi(c))\,(b-a)^{q+1} \int_0^1 s^q w(a+(b-a)s)
+\dx{s}
+\end{align*}
+for $c \in [a,b]$, where we have used the Mean Value Theorem for
+Integrals, Theorem~\ref{Th4}, to get the second equality and the
+substitution $x=a+(b-a)s$ to get the last one.  Finally, we also have
+\[
+\sum_{j=1}^k\,b_j\,f(c_j)
+= \sum_{j=1}^k\,b_j\,p(c_j) + \sum_{j=1}^k\,b_j\,r(c_j)
+= \sum_{j=1}^k\,b_j\,p(c_j) + \frac{1}{q!}\sum_{j=1}^k\,b_j\,
+f^{(q)}(\xi(c_j)) \, (c_j-a)^q \ .
+\]
+Therefore,
+\begin{align*}
+&\bigg| \int_a^b \; f(x)\,w(x)\dx{x} - \sum_{j=1}^k\,b_j\,f(c_j)
+\bigg| \\
+&= \bigg|
+\frac{1}{q!} f^{(q)}(\psi(x))\,(b-a)^{q+1} \int_0^1 s^q w(a+(b-a)s)
+\dx{s}
+- \frac{1}{q!}\sum_{j=1}^k\,b_j\,
+f^{(q)}(\xi(c_j)) \, (c_j-a)^q \bigg| \\
+&\leq \frac{1}{q!} \max_{a\leq x \leq b} |f^{(q)}(x)|\,(b-a)^{q+1} 
+\int_0^1 s^q w(a+(b-a)s) \dx{s} 
++ \frac{1}{q!} \max_{a\leq x \leq b}|f^{(q)}(x)| \, (b-a)^q
+\sum_{j=1}^k\,|b_j| \\
+&= K (b-a)^q \max_{a\leq x \leq b}|f^{(q)}(x)| \ ,
+\end{align*}
+where
+\[
+K = \frac{1}{q!} \left( (b-a) \int_0^1 s^q w(a+(b-a)s) \dx{s} 
++ \sum_{j=1}^k\,|b_j| \right) \ .
+\]
+}
+
+\solution{\SOL}{\ref{diffQ28}}{
+To use Gauss-Legendre quadrature, we need to transform the intergral
+between $1$ and $3$ into an integral between $-1$ and $1$.  For this
+purpose, we use the change of variable $y = (x-M)/L$, where $M=2$ is
+the middle of the interval $[1,3]$ and $L=1$ is half the length of the
+interval $[1,3]$.   Thus $y=x-2$ and, if we solve for $x$, we get
+$x=y+2$.  The integral (\ref{gauss_quadr}) becomes
+\[
+\int_1^3 x^2 \ln(x) \dx{x} = \int_{-1}^1 (y+2)^2 \ln(y+2) \dx{y}
+\approx \sum_{j=1}^5\,c_j (y_j+2)^2\,\ln(y_j+2)
+\approx 2.4040942246 \ ,
+\]
+where $y_i$ and $c_i$ are given in the following table.
+\[
+\begin{array}{lrr}
+\hline
+n & \text{roots } y_j & \text{coefficients } c_j \\
+\hline
+5 & -0.9061798459 & 0.2369268851 \\
+  & -0.5384693101 & 0.4786286705 \\
+  & 0.0 & 0.5688888889 \\
+  & 0.5384693101 & 0.4786286705 \\
+  & 0.9061798459 & 0.2369268851 \\
+\hline
+\end{array}
+\]
+}
+
+\solution{\SOL}{\ref{diffQ29}}{
+Because of the factor $\sqrt{(x-2)(3-x)}$ in the denominator of the
+integrand, Gauss-Chebyshev quadrature is a possible choice.
+
+To transform the integral from an integral between $2$ and $3$ to an
+integral between $-1$ and $1$, we use the substitution
+$t= (x-5/2)/(1/2)$.   So $x = t/2 + 5/2$, $\dx{x} = (1/2) \dx{t}$ and
+\begin{align*}
+\int_2^3 \frac{\sin(x)}{\sqrt{(x-2)(3-x)}} \dx{x}
+&= \int_{-1}^1 \frac{\sin(t/2+5/2)}{\sqrt{1-t^2}} \dx{t}
+\approx  \frac{\pi}{3} \sum_{j=1}^3 \sin\left(\frac{1}{2}
+\cos\left(\frac{(2j-1)\pi}{6}\right) +\frac{5}{2}\right) \\
+&\approx 1.7644706129 \ .
+\end{align*}
+}
+
+\solution{\SOL}{\ref{diffQ32}}{
+Because of the factor $\sqrt{x(1-x)}$ in the denominator of the
+integrand, Gauss-Chebyshev quadrature is a possible choice.
+
+To transform the integral from an integral between $0$ and $1$ to an
+integral between $-1$ and $1$, we use the substitution $x=(t+1)/2$.
+We get
+\[
+\int_0^1  \frac{e^x}{\sqrt{x(1-x)}} \dx{x}
+= \int_{-1}^1 \frac{e^{(t+1)/2}}{\sqrt{1-t^2}} \dx{t}
+\approx \frac{\pi}{3} \sum_{i=1}^3\, e^{ (\cos((2i-1)\pi/6) + 1)/2 }
+\approx 5.50842622975 \ .
+\]
+}
+
+\solution{\SOL}{\ref{diffQ34}}{
+Because of the factor $\sqrt{(1-x)(3+x)}$ in the denominator of the
+integrand, Gauss-Chebyshev quadrature is a possible choice.
+
+Since we want the exact answer and the numerator of the integrand is a
+polynomial of degree $4$, we have to take $n$ equal to at least $3$ as
+suggested by Theorem~\ref{Gaussquadr}.
+
+To transform the integral from an integral between $-3$ and $1$ to an
+integral between $-1$ and $1$, we use the substitution $t = (x+1)/2$.
+We get $x = 2t-1$ and
+\begin{align*}
+\int_{-3}^1 \frac{(1+x)^4}{\sqrt{(1-x)(3+x)}} \dx{x} &=
+2 \int_{-1}^1 \frac{(2t)^4}{\sqrt{(2-2t)(2+2t)}} \dx{x}
+= 16\, \int_{-1}^1 \frac{t^4}{\sqrt{1-t^2}} \dx{x} \\
+&= \frac{16 \pi}{3} \sum_{j=1}^3 \cos^4\left(\frac{(2j-1)\pi}{6}\right)
+= \frac{16\pi}{3}\, \left( \left(-\frac{\sqrt{2}}{3}\right)^4
++ \left(\frac{\sqrt{2}}{3}\right)^4\right)
+= \frac{128\pi}{243} \ .
+\end{align*}
+}
+
+\solution{\SOL}{\ref{diffQ36}}{
+We have to find polynomials $P_k$ of degree exactly $k$ such that the
+set $\{P_0, P_1, P_2, \ldots \}$ is an orthogonal set with respect to
+the scalar product
+\[
+\ps{g}{h} = \int_0^1 g(x)\,h(x)\,x\dx{x} \ .
+\]
+To generate the family of orthogonal polynomials, we use
+Theorem~\ref{orthpoly} with $\alpha_{k,k}=1$ for all $k$ and $w(x) =x$ for
+$0\leq x\leq 1$.  Let $P_0(x) = 1$ for all $x$.  Since $A_0=1$ and
+$\displaystyle
+B_0 = \frac{\int_0^1 x^2 \dx{x}}{\int_0^1 x \dx{x}} = \frac{2}{3} \ ,
+$
+we get
+\[
+P_1(x) = (x-B_0)P_0(x) = x - \frac{2}{3} \ .
+\]
+Since $A_1=1$,
+$\displaystyle
+B_1 = \frac{\int_0^1 x^2(x-2/3)^2 \dx{x}}{\int_0^1 x(x-2/3)^2\dx{x}}
+= \frac{8}{15}$ and
+$\displaystyle
+C_1 = \frac{\int_0^1 x(x-2/3)^2 \dx{x}}{\int_0^1 x\dx{x}}
+=\frac{1}{18}$, we get
+\[
+P_2(x) = (x-B_1)P_1(x)-C_1P_0(x)
+= \left(x- \frac{8}{15}\right)\left(x-\frac{2}{3}\right)
+-\frac{1}{18} = x^2 - \frac{6}{5} x + \frac{3}{10} \ .
+\]
+According to Theorem~\ref{Gaussquadr}, we do not need higher
+degree polynomials since we want a Gaussian quadrature
+formula which is exact for polynomials of degree up to $3$ only.
+
+The roots of $P_2$ are $x_1 = (6-\sqrt{6})/10$ and
+$x_2 = (6+\sqrt{6})/10$.
+
+The coefficients of (\ref{quadFormQuest1}) are
+\begin{align*}
+A &= \int_0^1 \left(\frac{x-x_2}{x_1-x_2}\right) x\dx{x}
+= \frac{x^3/3 - x_2x^2/2}{x_1-x_2}\bigg|_{x=0}^1 =
+\frac{9-\sqrt{6}}{36}
+\intertext{and}
+B &= \int_0^1 \left(\frac{x-x_1}{x_2-x_1}\right) x\dx{x}
+= \frac{x^3/3-x_1x^2/2}{x_2-x_1}\bigg|_{x=0}^1 =
+\frac{9+\sqrt{6}}{36} \ .
+\end{align*}
+
+It follows from Theorem~\ref{Gaussquadr} that (\ref{quadFormQuest1})
+with the choice of $x_1$, $x_2$, $A$ and $B$ above is exact for
+polynomials of degree up to $3$.
+}
+
+\solution{\SOL}{\ref{diffQ37}}{
+We have to find polynomials $P_k$ of degree exactly $k$ such that the
+set $\{P_0, P_1, P_2, \ldots \}$ is an orthogonal set with respect to
+the scalar product
+\[
+\ps{g}{h} = \int_0^1 g(x)\,h(x)\,x^2\dx{x} .
+\]
+To generate the family of orthogonal polynomials, we use
+Theorem~\ref{orthpoly} with $\alpha_{k,k}=1$ for all $k$ and $w(x) =x^2$ for
+$0\leq x\leq 1$.  Let $P_0(x) = 1$ for all $x$.  Since $A_0=1$ and
+$\displaystyle
+B_0 = \frac{\int_{-1}^1 x^3 \dx{x}}{\int_{-1}^1 x^2 \dx{x}} = 0$,
+we get
+\[
+P_1(x) = (x-B_0)P_0(x) = x \ .
+\]
+Since $A_1=1$,
+$\displaystyle B_1 = \frac{\int_{-1}^1 x^5 \dx{x}}{\int_{-1}^1 x^4 \dx{x}}
+= 0$ and
+$\displaystyle C_1 = \frac{\int_{-1}^1 x^4 \dx{x}}{\int_{-1}^1 x^2\dx{x}}
+=\frac{3}{5}$, we get
+\[
+P_2(x) = (x-B_1)P_1(x)-C_1P_0(x) = x^2 - \frac{3}{5} \ .
+\]
+According to Theorem~\ref{Gaussquadr}, we do not need higher degree
+polynomials since we want a Gaussian quadrature formula
+which is exact for polynomials of degree up to $3$ only.
+
+The roots of $P_2$ are $x_1 = -\sqrt{3/5}$ and $x_2 = \sqrt{3/5}$.
+
+The coefficients of (\ref{quadFormQuest2}) are
+\begin{align*}
+A &= \int_{-1}^1 \frac{x-x_2}{x_1-x_2}\, x^2\dx{x}
+= \frac{x^4/4-x_2x^3/3}{x_1-x_2}\bigg|_{x=-1}^1 =
+\frac{1}{3}
+\intertext{and}
+B &= \int_{-1}^1 \frac{x-x_1}{x_2-x_1}\, x^2\dx{x}
+= \frac{x^4/4-x_1x^3/3}{x_2-x_1}\bigg|_{x=-1}^1 =
+\frac{1}{3} \ .
+\end{align*}
+
+It follows from Theorem~\ref{Gaussquadr} that (\ref{quadFormQuest1})
+with the choice of $x_1$, $x_2$, $A$ and $B$ above is exact for
+polynomials of degree up to $3$.
+}
+
+\solution{\SOL}{\ref{diffQ38}}{
+Recall that the Gauss-Chebyshev quadrature with $n>0$ is given by the
+the formula
+\begin{equation}\label{GCquestA}
+\int_a^b f(x) \dx{x} \approx \int_a^b p(x) \dx{x} \ ,
+\end{equation}
+where $p$ is the interpolating polynomial of degree $n$ of $f$ at the
+$n+1$ Chebishev points adjusted to the interval $[a,b]$; namely, at
+the points
+\[
+x_j = \frac{a+b}{2} + \frac{b-a}{2}\cos\left(\frac{(2j-1)\pi}{2(n+1)}\right)
+\]
+for $j=1$, $2$, \ldots , $n+1$.
+
+If we substitute $\displaystyle x= \frac{a+b}{2} + \frac{b-a}{2}\,t$
+in the integrals in (\ref{GCquestA}), we get
+\begin{align*}
+\int_a^b f(x) \dx{x} &=
+\frac{b-a}{2} \int_{-1}^1 f\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right) \dx{t}
+\intertext{and}
+\int_a^b p(x) \dx{x} &=
+\frac{b-a}{2}  \int_{-1}^1 p\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right)
+\dx{t} \ .
+\end{align*}
+$\displaystyle p\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right)$ is the
+interpolating polynomial of
+$\displaystyle f\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right)$ at the
+Chebyshev points
+$\displaystyle t_i = \cos\left( \frac{(2i-1)\pi}{2(n+1)}\right)$
+for $1\leq i \leq n+1$.
+From Proposition~\ref{ChebyshevTrancMax}, we have that
+\begin{align*}
+&\left| f\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right) -
+p\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right) \right|
+\leq \frac{1}{2^n(n+1)!}
+\max_{-1\leq t \leq 1}\left| \dfdxn{
+f\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right)}{t}{(n+1)} \right| \\
+&\qquad
+\leq \frac{1}{2^n(n+1)!}
+\max_{-1\leq t \leq 1}\left|
+f^{(n+1)}\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right)\right|
+\left(\frac{b-a}{2}\right)^{n+1} \\
+&\qquad
+\leq \frac{1}{2^n(n+1)!} \max_{a\leq x \leq b}\left| f^{(n+1)}(x)\right|
+\left(\frac{b-a}{2}\right)^{n+1}
+\leq \frac{M(b-a)^{n+1}}{2^{2n+1}(n+1)!}
+\end{align*}
+for $-1\leq x \leq 1$.  Hence
+\begin{align*}
+&\left| \int_a^b f(x) \dx{x} - \int_a^b p(x) \dx{x} \right|
+= \left| \frac{b-a}{2}
+\int_{-1}^1 \left( f\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right) 
+- p\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right)\right) \dx{t} \right| \\
+&\qquad
+\leq \frac{b-a}{2}
+\int_{-1}^1 \left| f\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right) -
+p\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right) \right| \dx{t} \\
+& \qquad \leq
+\frac{b-a}{2} \int_{-1}^1 \frac{M(b-a)^{n+1}}{2^{2n+1}(n+1)!} \dx{t}
+= \frac{M(b-a)^{n+2}}{2^{2n+1}(n+1)!} \dx{t} \ .
+\end{align*}
+}
+
+\solution{\SOL}{\ref{diffQ39}}{
+Let $q$ be any polynomial of degree less than $n$, then
+$\displaystyle f(x) = q(x)\,\prod_{j=1}^n (x-x_j)$
+is a polynomial of degree less than $2n$.  By hypothesis, we then have
+\[
+\int_a^b f(x)\,w(x)\dx{x} = \sum_{i=1}^n a_i \,f(x_i)
+= \sum_{i=1}^n \left( a_i \,q(x_i)\,\prod_{j=1}^n
+\underbrace{(x_i-x_j)}_{=0\text{ for }j=i} \right) = 0 \ .
+\]
+}
+
+\solution{\SOL}{\ref{diffQ40}}{
+Consider the polynomial of degree $2n$ defined by
+$\displaystyle f(x) = \prod_{i=1}^n (x-x_i)^2$.  If
+(\ref{2nQuadrQuestEqu}) is exact for polynomials of degree $2n$, we
+must have
+\[
+\int_a^b f(x)\,w(x) \dx{x} = \sum_{j=1}^n c_j \,f(x_j)
+= \sum_{j=1}^n \left( c_j \prod_{i=1}^n
+\underbrace{(x_j-x_i)^2}_{=0\text{ for }j=i} \right) = 0 \ .
+\]
+But this is not possible because the integral cannot be null since $f$
+is a continuous function such that $f(x)>0$ for all
+$x \in [a,b]\setminus \{x_1,x_2,\ldots,x_n\}$ and $w(x)>0$ almost everywhere.
+}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End:

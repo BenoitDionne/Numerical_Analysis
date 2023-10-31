@@ -1,0 +1,7 @@
+\begin{picture}(0,0)%
+\includegraphics{interpolation_B/b-splines.pdf}%
+\end{picture}%
+
+% fig2dev -L pdftex b-splines.fig b-splines.pdf
+% fig2dev -L pdftex_t b-splines.fig b-splines.pdf_t
+ 

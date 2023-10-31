@@ -1,0 +1,169 @@
+\nonumsection{Chapter~\ref{chaptSeqD} : Iterative Methods for Systems of Nonlinear Equations}
+
+\solution{\SOL}{\ref{solvDQ2}}{
+\subQ{a} We have
+\begin{align*}
+f(\VEC{x}) = \VEC{0} & \iff
+x_1^3 + 12 x_1 - x_2 - 3 = 0 \quad \text{and} \quad
+2x_1 + x_2^3 - 12x_2 + 2 = 0 \\
+&\iff 12 x_1 = x_2 -x_1^3 + 3 \quad \text{and} \quad
+12x_2 = 2x_1 + x_2^3 + 2 \\
+&\iff x_1 = \frac{x_2 -x_1^3 + 3}{12} \quad \text{and} \quad
+x_2 = \frac{2x_1 + x_2^3 + 2}{12} \iff \VEC{x} = g(\VEC{x}) \ .
+\end{align*}
+
+\subQ{b} In the figure below, the level curve $f_1(\VEC{x})=0$ is in blue
+and the level curve $f_2(\VEC{x}) = 0$ is in red.
+\figbox{solve_equ_D/fixed_point_quest0}{7cm}
+It follows from the figure above that there are at least three solutions of
+$f(\VEC{x}) = \VEC{0}$ corresponding to the points of intersection of
+the two level curves.  We will focus on the solution in the set $S$
+given in (c).
+
+\subQ{c}  We very the two hypotheses of the Fixed Point Theorem.
+\begin{enumerate}
+\item Since
+$0 < 1/6 = g_1(1,0) \leq g_1(x,y) \leq g_1(0,1) = 1/3 < 1$ and
+$0 < 1/6 = g_2(0,0) \leq g_2(x,y) \leq g_2(1,1) = 5/12 < 1$,
+we have that $g(S) \subset S$.
+\item We have that
+\[
+J_g(\VEC{x}) = \begin{pmatrix} -x_1^2/4 & 1/12 \\  1/6 & x_2^2/4
+\end{pmatrix} \ .
+\]
+Let
+\[
+K = \| J_g(\VEC{x} \|_\infty
+= \max_{0\leq x_1,x_2\leq 1} \{ |-x^2/4| + 1/12 , 1/6 + |y^2/4| \} =
+5/12 \ .
+\]
+We get from Remark~\ref{rmkKcondFP} that
+$\| g(\VEC{x}) - g(\VEC{y}) \|_\infty \leq K \| \VEC{x} - \VEC{y} \|_\infty$
+for all $\VEC{x}$ and $\VEC{y}$ in $S$ with $K <1$.
+\end{enumerate}
+
+\subQ{d}  If we start with $\VEC{x}_0 = \VEC{0}$ and compute
+$\VEC{x}_{n+1} = g(\VEC{x}_n)$ for $n\geq 0$, we find that
+$\|\VEC{x}_n - \VEC{x}_{n-1}\|_\infty < 10^{-5}$ for the first time when
+$n=6$.  We get
+$\displaystyle
+\VEC{x}_6 \approx \begin{pmatrix} 0.266078 & 0.211797 \end{pmatrix}^\top$,
+where we have rounded the values to $6$ significant digits.
+
+\subQ{e} We use the formula
+\[
+\| \VEC{x}_n - \VEC{p} \| \leq \frac{K^n}{1-K}\;
+\| \VEC{x}_1 - \VEC{x}_0 \| < 10^{-5}
+\]
+to determine the value of $n$.  If $\VEC{x}_0= \VEC{0}$, we get
+$\displaystyle \VEC{x}_1 = \begin{pmatrix} 1/4 & 1/6 \end{pmatrix}^\top$.
+Hence, with $K = 5/12$, we have
+\begin{align*}
+\frac{K^n}{1-K} \| \VEC{x}_1 - \VEC{x}_0 \|_\infty < 10^{-5}
+& \Rightarrow
+\frac{(5/12)^n}{7/12} \left(\frac{1}{4}\right) < 10^{-5}
+\Rightarrow
+(5/12)^n < 10^{-5}\,\left(\frac{7}{3}\right) \\
+& \Rightarrow
+n > \frac{-5 \ln(10) +\ln(7/3)}{\ln(5/12)} \approx 12.18276 \ .
+\end{align*}
+So, $n=13$ will be sufficient.
+}
+
+\solution{\SOL}{\ref{solvDQ3}}{
+We rewrite $f(\VEC{x})= \VEC{0}$ as $g(\VEC{x}) = \VEC{x}$ with
+\[
+g(\VEC{x}) = \begin{pmatrix} (x_2+5)/4 \\ (1+\sqrt{x_1})^{1/3} - 1
+\end{pmatrix} \ .
+\]
+Let
+$S = \{\VEC{x} : 1 \leq x_1 \leq 2 \text{ and } 1/4 \leq x_2 \leq 3/4\}$.
+We have that $g:\RR^2 \to \RR^2$ satisfies the two hypotheses of the
+Fixed Point Theorem, Theorem~\ref{FixedPTinRN}.
+\begin{enumerate}
+\item Since 
+$\displaystyle (x_2+5)/4 \leq \big((3/4) + 5\big)/4 = 23/16 < 2$,
+$\displaystyle (x_2+5)/4 \geq \big((1/4) + 5\big)/4 = 21/16 > 1$,
+$\displaystyle (1+\sqrt{x_1})^{1/3} - 1 \leq (1+\sqrt{2})^{1/3} - 1 =
+0.3415\ldots < 3/4$ and
+$\displaystyle (1+\sqrt{x_1})^{1/3} - 1 \geq (1+\sqrt{1})^{1/3} - 1 =
+0.2599\ldots > 1/4$, we have $g(S) \subset S$.
+\item Instead of proving directly that there exists $0<K<1$ such
+that
+$\| g(\VEC{x}) - g(\VEC{y}) \|_\infty \leq K \| \VEC{x} - \VEC{y} \|_\infty$
+for all $\VEC{x}$ and $\VEC{y}$ in $S$, we show that the Jacobian
+$J_g$ of $g$ satisfies
+$\displaystyle \max_{\VEC{x} \in S} \|J_g(x)\|_\infty < 1$ and use
+Remark~\ref{rmkKcondFP}.  Since
+\[
+J_g(\VEC{x}) = \begin{pmatrix}
+\displaystyle \pdydx{g_1}{x_1}(\VEC{x}) &
+\displaystyle \pdydx{g_1}{x_2}(\VEC{x}) \\[0.7em]
+\displaystyle \pdydx{g_2}{x_1}(\VEC{x}) &
+\displaystyle \pdydx{g_2}{x_2}(\VEC{x})
+\end{pmatrix}
+= \begin{pmatrix}
+0 & \displaystyle \frac{1}{4} \\[0.7em]
+\displaystyle \frac{1}{6\sqrt{x_1}\,(1+\sqrt{x_1})^{2/3}} & 0
+\end{pmatrix} \ ,
+\]
+we get
+\[
+\max_{\VEC{x} \in S} \|J_g(\VEC{x})\|_\infty
+= \max\left\{\frac{1}{4} , \frac{1}{6\,(2^{2/3})} \right\}
+= \frac{1}{4} < 1 \ .
+\]
+Hence $\| g(\VEC{x}) - g(\VEC{y}) \|_\infty \leq K
+\| \VEC{x} - \VEC{y} \|_\infty$ for all $\VEC{x}$ and $\VEC{y}$ in
+$S$ with
+$\displaystyle K = \max_{\VEC{x} \in S} \|J_g(\VEC{x})\|_\infty < 1$.
+\end{enumerate}
+
+Starting with
+$\displaystyle \VEC{x}_0 = \begin{pmatrix} 1.5 & 0.5 \end{pmatrix}^\top$,
+we compute $\VEC{x}_{k+1} = g(\VEC{x}_k)$ until
+$\|\VEC{x}_{k+1} - \VEC{x}_k\|_\infty < 10^{-5}$.
+It takes $7$ iterations to get the first approximation
+$\VEC{x}_7 \approx \begin{pmatrix} 1.32266994 & 0.29067777
+\end{pmatrix}^\top$ of the fixed point in $S$ that satisfies the
+required accuracy.
+}
+
+\solution{\SOL}{\ref{solvDQ6}}{
+To use Newton's Method, we first need to compute the Jacobian of $f$.
+\[
+J_f(\VEC{x}) = \begin{pmatrix}
+\displaystyle \pdydx{f_1}{x_1}(\VEC{x}) &
+\displaystyle \pdydx{f_1}{x_2}(\VEC{x}) &
+\displaystyle \pdydx{f_1}{x_3}(\VEC{x}) \\[0.7em]
+\displaystyle \pdydx{f_2}{x_1}(\VEC{x}) &
+\displaystyle \pdydx{f_2}{x_2}(\VEC{x}) &
+\displaystyle \pdydx{f_2}{x_3}(\VEC{x}) \\[0.7em]
+\displaystyle \pdydx{f_3}{x_1}(\VEC{x}) &
+\displaystyle \pdydx{f_3}{x_2}(\VEC{x}) &
+\displaystyle \pdydx{f_3}{x_3}(\VEC{x})
+\end{pmatrix}
+= \begin{pmatrix}
+3 x_1^2 + 2x_1x_2 -x_3 & x_1^2 &  -x_1 \\
+e^{x_1} & e^{x_2} & -1 \\
+-2x_3 & 2 x_2 & -2x_1
+\end{pmatrix} \ .
+\]
+Starting with $\VEC{x}_0 = \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}^\top $,
+we compute
+\[
+\VEC{x}_{k+1}=\VEC{x}_k- (J_f(\VEC{x}_k))^{-1} \, f(\VEC{x}_k)
+\]
+until $\| \VEC{x}_{k+1} - \VEC{x}_k \| < 10^{-6}$.  It takes $12$
+iterations to get the first approximation\\
+$\VEC{x}_{12} \approx \begin{pmatrix}
+-1.95629521 & -0.131795995 & 1.017901033 \end{pmatrix}^\top$
+of a solution of $f(\VEC{x}) = \VEC{0}$ that satisfies the required
+accuracy.
+}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End: 

@@ -1,0 +1,1175 @@
+\chapter{Least Square Approximation (in $\ell^2$)}
+\label{ChaptApproxC}
+
+Consider the data provided in Figure~\ref{appr_DiscrLeastSqr}
+
+It is not reasonable to use polynomial interpolation at all these points to
+describe their distribution.  There seem to be a pattern in the distribution
+of these points that polynomial interpolation will completely miss.  Instead,
+it makes more sense to find a curve that ``best fit'' the data.  This curve
+may not intersect any of the given points but may better describe the
+distribution of these points; in particular if we want to extrapolate from
+this set of data.
+
+\pdfF{approx_funct_C/discr_least_sqr}{Linear least square approximation}
+{Least square approximation of a set of data by a straight line}
+{appr_DiscrLeastSqr}
+
+If we assume that the data $\left\{ (x_i,y_i) : i=1,2,\ldots, n\right\}$
+represent a line as in Figure~\ref{appr_DiscrLeastSqr}, the best known
+methods to fit a line $y=p(x)=ax+b$ through this set of points are the
+following methods.
+\begin{description}
+\item[Minimax]: Find $a$ and $b$ that minimize
+$\displaystyle I(a,b) = \max_{1\leq i \leq n} \left| y_i - (ax_i+b) \right|$.
+\item[Absolute Deviation]: Find $a$ and $b$ that minimize
+$\displaystyle I(a,b) = \sum_{i=1}^{n} \left| y_i - (ax_i+b)\right|$.
+\item[Least Square]: Find $a$ and $b$ that minimize
+$\displaystyle I(a,b) = \sum_{i=1}^{n} \left( y_i - (ax_i+b)\right)^2$.
+\end{description}
+
+Instead of a straight line, we may have assumed that the data in
+Figure~\ref{appr_DiscrLeastSqr} represent a parabola $y=p(x)= ax^2+bx+c$ or
+some other functions.  We will say more on this later.  We have chosen a
+straight line to illustrate the discrete least square method.  The least
+square method is the most convenient method for the following reasons.
+\begin{enumerate}
+\item We can use elementary calculus to determine the values of $a$ and $b$
+that minimize $I(a,b)$ because $I$ is a differentiable function.  $I$ is not
+differentiable everywhere for the other two methods.
+\item The method does not assign too much weight to the few points which are
+far away (vertically) from the straight line that we try to fit.
+\item The method is statistically significant.
+\item The method is theoretically significant.  It is closely related to the
+notion of $L^2$ approximation that we will study in the next sections.
+\end{enumerate}
+
+\section{Linear Modeling} \label{sectLinMod}
+
+Let
+\[
+I(a,b) = \sum_{i=1}^n \left( y_i - (ax_i+b)\right)^2 \ .
+\]
+To minimize $I$, we first find the critical points of $I$.
+\begin{align*}
+\pdydx{I}{a} = -2 \sum_{i=1}^n x_i \left( y_i - (ax_i+b)\right) = 0
+\intertext{and}
+\pdydx{I}{b} = -2 \sum_{i=1}^n \left( y_i - (ax_i+b)\right) = 0 \ .
+\end{align*}
+This yields the system of linear equation 
+\[
+\begin{pmatrix}
+\displaystyle \sum_{i=1}^n x_i^2 & \displaystyle \sum_{i=1}^n x_i \\
+\displaystyle \sum_{i=1}^n x_i & \displaystyle n
+\end{pmatrix}
+\begin{pmatrix}
+a \\ b
+\end{pmatrix}
+=
+\begin{pmatrix}
+\displaystyle \sum_{i=1}^n x_i y_i \\ \displaystyle \sum_{i=1}^n y_i
+\end{pmatrix} \ .
+\]
+The solution of this system is
+\begin{align*}
+a &= \frac{\displaystyle  n \sum_{i=1}^n x_i y_i -
+\left(\sum_{i=1}^n x_i\right)\left( \sum_{i=1}^n y_i\right)}
+{\displaystyle n \left(\sum_{i=1}^n x_i^2\right) -
+\left(\sum_{i=1}^n x_i\right)^2}
+\intertext{and}
+b &= \frac{\displaystyle  \left(\sum_{i=1}^n x_i^2\right)
+\left(\sum_{i=1}^n y_i\right) - \left(\sum_{i=1}^n x_i y_i\right)
+\left(\sum_{i=1}^n x_i\right)}
+{\displaystyle n \left(\sum_{i=1}^n x_i^2\right) -
+\left(\sum_{i=1}^n x_i\right)^2} \ .
+\end{align*}
+Since $I:\RR^2\rightarrow [0,\infty[$ is a quadratic polynomial
+function, its only critical point must be a local and absolute minimum.
+
+\section{Nonlinear Modelling}
+
+We will just present a couple of examples of nonlinear modelling to
+give a feeling of the subject.  We do not plan to investigate this
+topic very deeply.
+
+If instead of a line, we assume that the data
+$\left\{ (x_i,y_i) : i=1,2,\ldots, n\right\}$ represent a polynomial
+$\displaystyle p(x) = \sum_{j=0}^m a_j x^j$, then we must minimize
+\[
+I(\VEC{a}) = \sum_{i=1}^n \left( y_i - p(x_i)\right)^2
+= \sum_{i=1}^n y_i^2 -2 \sum_{j=0}^m a_j \left(\sum_{i=1}^n y_i x_i^j\right)
++ \sum_{j_1=0}^m\sum_{j_2=0}^m a_{j_1} a_{j_2}
+\left( \sum_{i=1}^n x_i^{j_1+j_2} \right) \ ,
+\]
+where $\displaystyle \VEC{a} = \begin{pmatrix}
+a_0 & a_1 & \ldots & a_n \end{pmatrix}^\top$.
+The critical points are given by
+\[
+\pdydx{I}{a_k} = -2 \sum_{i=1}^n y_i x_i^k
++ 2 \sum_{j=0}^m a_j \left( \sum_{i=1}^n x_i^{j+k} \right) = 0 \quad
+\text{for} \quad k=0,1,2,\ldots,m \ . 
+\]
+This yields the system of linear equations $H \VEC{a} = \VEC{b}$, where
+\[
+h_{k,j} = \sum_{i=1}^n x_i^{j+k} \quad \text{and} \quad
+b_k = \sum_{i=1}^n y_i x_i^k \quad \text{for} \quad k,j =0,1,2, \ldots, m \ .
+\]
+This is a system of linear equations with $m+1$ equations and $m+1$ unknowns.
+This system has always a unique solution because the matrix $H$ is a
+{\bfseries Hilbert matrix}\index{Hilbert Matrix}.
+
+As a final example, suppose that the data
+$\left\{ (x_i,y_i) : i=1,2,\ldots, n\right\}$ represent an exponential curve
+$p(x) = b e^{ax}$ ( or $\displaystyle p(x) = b x^a = b e^{a\ln(x)}$).
+In theory, we have to minimize
+\[
+I(a,b) = \sum_{i=1}^n \left( y_i - b e^{ax_i}\right)^2 \; .
+\]
+However, this is not an easy function to minimize exactly or
+numerically (the reader should try to do it).  So, instead, we minimize
+\[
+J(a,b) = \sum_{i=1}^n \left( \ln(y_i) -
+\ln\left(b e^{ax_i}\right) \right)^2 
+= \sum_{i=1}^n \left( \ln(y_i) - \ln(b) - ax_i \right)^2 \; .
+\]
+The unique critical point of $J$ is given by
+\begin{align*}
+a &= \frac{\displaystyle  n \sum_{i=1}^n x_i \ln(y_i) -
+\left(\sum_{i=1}^n x_i\right)\left( \sum_{i=1}^n \ln(y_i)\right)}
+{\displaystyle n \left(\sum_{i=1}^n x_i^2\right) -
+\left(\sum_{i=1}^n x_i\right)^2}
+\intertext{and}
+\ln(b) &= \frac{\displaystyle  \left(\sum_{i=1}^n x_i^2\right)
+\left(\sum_{i=1}^n \ln(y_i)\right) - \left(\sum_{i=1}^n x_i \ln(y_i)\right)
+\left(\sum_{i=1}^n x_i\right)}
+{\displaystyle n \left(\sum_{i=1}^n x_i^2\right) -
+\left(\sum_{i=1}^n x_i\right)^2} \ .
+\end{align*}
+These values of $a$ and $b$ are not the values of $a$ and $b$ that minimize
+$I$.  Thus, $y= be^{ax}$ may not be a ``best fit'' for the set of data as
+we will expect with the least square method.
+
+\section[Trigonometric Polynomial Approximation (Real Case)]{Trigonometric Polynomial Approximation (Real\\ Case)}
+
+Suppose that
+$\displaystyle \left\{ (x_n,y_n) : n=0,1,2,\ldots, 2N-1\right\}$ are $2N$
+data points, where
+$\displaystyle x_n = \frac{n \pi}{N}$ for $n=0$, $1$, $2$,\ldots, $2N-1$.
+We suppose that these data come from (the approximation of) a
+$2\pi$-periodic function $f:\RR\rightarrow \RR$; namely, $y_n = f(x_n)$
+for all $n$.
+
+Our goal is to find the coefficients $a_0$, $a_1$, \ldots, $a_K$, $b_1$,
+$b_2$, \ldots, $b_K$ of the trigonometric polynomial
+\begin{equation} \label{approx_trig_polyn}
+p(x) = a_0 + \sum_{k=1}^{K} a_k \cos(k x) + \sum_{k=1}^{K} b_k \sin(k x)
+\end{equation}
+that minimizes
+\[
+I(a_0,a_1,\ldots,a_K,b_1,b_2,\ldots,b_K) =
+\sum_{n=0}^{2N-1} \left( y_n - p(x_n) \right)^2 \ .
+\]
+We assume that $K\leq N$.  The main goal of this section is to
+efficiently generalize the method of least square approximation
+presented in Section~\ref{sectLinMod}.  For that, we need a couple of
+results about the trigonometric polynomial given in
+(\ref{approx_trig_polyn}).
+
+\begin{lemma}
+Assume that $r \in \ZZ$.  If $r$ is not a multiple of $2N$, then
+\begin{equation} \label{approx_trig_equ1}
+\sum_{n=0}^{2N-1} \cos(r x_n) = \sum_{n=0}^{2N-1} \sin(r x_n) = 0 \; .
+\end{equation}
+Moreover, if $r$ is not a multiple of $N$, then
+\begin{equation}  \label{approx_trig_equ2}
+\sum_{n=0}^{2N-1} \cos^2(r x_n) = \sum_{n=0}^{2N-1} \sin^2(r x_n) = N \; .
+\end{equation}
+\label{approx_trig_realSP}
+\end{lemma}
+
+\begin{proof}
+Using complex notation, we have
+\[
+\sum_{n=0}^{2N-1} \cos(r x_n) + i \sum_{n=0}^{2N-1} \sin(r x_n) =
+\sum_{n=0}^{2N-1} e^{i r x_n}
+= \sum_{n=0}^{2N-1} e^{(r n \pi/N)i}
+= \left(\frac{\displaystyle 1- \left(e^{(r \pi/N)i}\right)^{2N}}
+{1 - e^{(r \pi/N)i}}\right) = 0
+\]
+because $\displaystyle \left(e^{(r \pi/N)i}\right)^{2N} = e^{2 r \pi i} = 1$
+whatever $r$, and $\displaystyle e^{(r \pi/N)i} \neq 1$ since $r$ is
+not a multiple of $2N$.  Thus (\ref{approx_trig_equ1}) follows from
+setting the real and imaginary parts of the right hand side of the
+previous relation to $0$.
+
+If $r$ is not a multiple of $N$, then $2r$ is not a multiple of $2N$
+and it follows from (\ref{approx_trig_equ1}) that
+$\displaystyle \sum_{n=0}^{2N-1} \cos(2r x_n) = 0$.  Hence
+\[
+\sum_{n=0}^{2N-1} \cos^2(r x_n)
+= \sum_{n=0}^{2N-1} \frac{1}{2} \left( 1 + \cos(2r x_n)\right)
+= \frac{1}{2} \sum_{n=0}^{2N-1} 1 + \frac{1}{2} \sum_{n=0}^{2N-1} \cos(2r x_n)
+= N \ .
+\]
+A similar proof gives $\displaystyle \sum_{n=0}^{2N-1} \sin^2(r x_n) = 1$.
+\end{proof}
+
+\begin{prop}
+Suppose that $K\leq N$.  Let $\displaystyle S_K =\{\phi_k\}_{k=0}^{2K}$,
+where $\displaystyle \phi_0(x) = 1/2$,
+$\displaystyle \phi_{2k}(x) = \cos(k x)$ and
+$\displaystyle \phi_{2k-1}(x) = \sin(k x)$ for $k=1$, $2$, \ldots, $K$.
+The set $S_K$ is an orthogonal set of functions with respect to the
+{\bfseries pseudo scalar product}\index{Linear Spaces!Pseudo Scalar Product}
+\begin{equation} \label{approx_real_finiteSP}
+\pps{f}{g} = \sum_{n=0}^{2N-1} f(x_n)g(x_n) \quad, \quad
+f,g:[0,2\pi[\rightarrow \RR \ .
+\end{equation}
+Namely, $\displaystyle \pps{\phi_k}{\phi_j} = 0$ for $k\neq j$.
+\label{approx_orth_trig}
+\end{prop}
+
+\begin{rmk}
+We call (\ref{approx_real_finiteSP}) a
+{\bfseries pseudo scalar product}\index{Linear Spaces!Pseudo Scalar Product}
+because $\pps{f}{f} = 0$ implies only that $f(x_n) = 0$ for $0 \leq n < 2N$.
+We do not necessarily get $f(x) = 0$ for all $x \in [0,2\pi[$.  All
+the other properties for a scalar product are satisfied by
+(\ref{approx_real_finiteSP}).  We could consider that
+(\ref{approx_real_finiteSP}) defines a scalar product if we consider
+only functions defined on the set
+$\{x_0, x_1, \ldots, x_{2N-1}\}$.
+\end{rmk}
+
+\begin{proof}
+Using basic trigonometric identities and (\ref{approx_trig_equ1}), we get
+\begin{align*}
+\pps{\phi_{2j}}{\phi_{2k}} &=
+\sum_{n=0}^{2N-1} \cos(j x_n) \cos(k x_n) =
+\sum_{n=0}^{2N-1} \frac{1}{2}\left( \cos((j+k)x_n) + \cos((j-k)x_n)\right) \\
+&= \frac{1}{2} \sum_{n=0}^{2N-1} \cos((j+k)x_n) +
+\frac{1}{2} \sum_{n=0}^{2N-1} \cos((j-k)x_n) = 0
+\end{align*}
+for $k\neq j$ and $0< k,j \leq K$ because $0<|j+k| < 2K$ and
+$0<|j-k|<2K$; so neither $j+k$ nor $j-k$ is a multiple of $2N$.
+
+Similarly,
+\[
+\pps{\phi_{2j-1}}{\phi_{2k-1}} = \sum_{n=0}^{2N-1} \sin(j x_n) \sin(k x_n) = 0
+\]
+for $k\neq j$ and $0< k,j \leq K$, and
+\[
+\pps{\phi_{2j}}{\phi_{2k-1}} =
+\sum_{n=0}^{2N-1} \cos(j x_n) \sin(k x_n) = 0
+\]
+for $0< k,j \leq K$.  Finally,
+\[
+\pps{\phi_0}{\phi_{2j}} = \sum_{n=0}^{2N-1} \frac{1}{2} \cos(j x_n) = 0
+\quad \text{and} \quad
+\pps{\phi_0}{\phi_{2j-1}}= \sum_{n=0}^{2N-1} \frac{1}{2} \sin(j x_n) = 0
+\]
+according to (\ref{approx_trig_equ1}).
+\end{proof}
+
+We may now give the formulae to compute the values of $a_k$ for
+$0\leq k \leq K$ and $b_k$ for $1 \leq k \leq K$
+that minimize $I(a_0,a_1,\ldots,a_K,b_1,b_2,\ldots,b_K)$.
+
+\begin{theorem}
+Suppose that $K\leq N$.  The values of the coefficients $a_0$, $a_1$, \ldots,
+$a_K$, $b_1$, $b_2$, \ldots, $b_K$ of the trigonometric polynomial $p$
+defined in (\ref{approx_trig_polyn}) that minimizes
+\[
+I(a_0,a_1,\ldots,a_K,b_1,b_2,\ldots,b_K) =
+\sum_{n=0}^{2N-1} \left( y_n - p(x_n) \right)^2
+\]
+are given by
+\begin{equation} \label{approx_trig_abcoef}
+a_0 = \frac{1}{2N}\sum_{n=0}^{2N-1} y_n \ ,
+\ a_k = \frac{1}{N}\sum_{n=0}^{2N-1} y_n \cos(k x_n)
+\quad \text{and}
+\quad b_k = \frac{1}{N}\sum_{n=0}^{2N-1} y_n \sin(k x_n) 
+\end{equation}
+for $k=1$, $2$, \ldots, $K$.
+\label{approx_coeff_real_trig}
+\end{theorem}
+
+\begin{proof}
+The idea of the proof is not profound.  We just have to find the critical
+points of $I$.  We get from
+\[
+\pdydx{I}{b_k} = - 2 \sum_{n=0}^{2N-1} \left( y_n - p(x_n) \right)\sin(k x_n)
+= 0
+\]
+that
+\begin{align*}
+\sum_{n=0}^{2N-1} y_n \sin(k x_n)
+& = a_0 \sum_{n=0}^{2N-1} \sin(k x_n)
++ \sum_{j=0}^K a_j \left( \sum_{n=0}^{2N-1} \cos(j x_n) \sin(k x_n) \right) \\
+&\qquad
++ \sum_{j=0}^K b_j \left( \sum_{n=0}^{2N-1} \sin(j x_n) \sin(k x_n) \right) \ .
+\end{align*}
+Using (\ref{approx_trig_equ1}) and (\ref{approx_trig_equ2})
+of Proposition~\ref{approx_orth_trig}, we can simplify this expression to get
+\[
+\sum_{n=0}^{2N-1} y_n \sin(k x_n) = b_k \sum_{n=0}^{2N-1} \sin^2(k x_n) = N
+b_k \ .
+\]
+Solving for $b_k$ gives the formula in (\ref{approx_trig_abcoef}).
+A very similar reasoning yields the formula for $a_k$ in
+(\ref{approx_trig_abcoef}).  For $a_0$, we have
+\[
+\pdydx{I}{a_0} = -2\sum_{n=0}^{2N-1} \left( y_n - p(x_n) \right) = 0 \ .
+\]
+Thus
+\[
+\sum_{n=0}^{2N-1} y_n = a_0 \sum_{n=0}^{2N-1} 1
++ \sum_{k=0}^K a_k \left( \sum_{n=0}^{2N-1} \cos(k x_n) \right)
++ \sum_{k=0}^K b_k \left( \sum_{n=0}^{2N-1} \sin(k x_n) \right) \\
+= 2 N a_0 \ ,
+\]
+where we have used (\ref{approx_trig_equ1}) to get the last equality.
+
+Finally, since $I:\RR^{2N+1} \rightarrow [0,\infty[$ is a
+quadratic polynomial function with a single critical point, this
+critical point is a local and absolute minimum.
+\end{proof}
+
+\begin{rmk}
+If we use $y_n = f(x_n)$ for all $n$, we get from
+Theorem~\ref{approx_coeff_real_trig} that
+\[
+a_k = \frac{\pps{f(x)}{\cos(k x)}}{\pps{\cos(k x)}{\cos(k x)}}
+= \left(\sum_{n=0}^{2N-1} f(x_n)\cos(k x_n)\right) \bigg/
+\left( \sum_{n=0}^{2N-1}\cos^2(kx_n) \right)
+\]
+for $k=0$, $1$, $2$, \ldots, $K$ and 
+\[
+b_k = \frac{\pps{f(x)}{\sin(k x)}}{\pps{\sin(k x)}{\sin(k x)}} =
+= \left( \sum_{n=0}^{2N-1} f(x_n)\sin(k x_n) \right) \bigg/
+\left( \sum_{n=0}^{2N-1}\sin^2(kx_n) \right)
+\]
+for $k=1$, $2$, \ldots, $K$.
+\end{rmk}
+
+\begin{rmk}
+It was shown in Example~\ref{appr_egg_trig_poly} of
+Chapter~\ref{chaptApproxA} that the trigonometric polynomials defined in
+Proposition~\ref{approx_orth_trig} form an orthogonal set of functions
+in the space of square integrable functions on the interval
+$[0,2\pi]$, where the scalar product is defined by the integral
+$\displaystyle \ps{f}{g} = \int_0^{2\pi} f(x)g(x) \dx{x}$ for $f$ and $g$
+two square integrable functions.  In the space of square integrable
+functions, the least square problem is to find $a_0$, $a_1$, \ldots, $a_K$,
+$b_1$, $b_2$, \ldots, $b_K$ that minimize
+$\displaystyle I(a_0, \ldots, b_K) = \int_{-\pi}^\pi (f(x)-p(x))^2 \dx{x}$,
+where $p$ is defined in (\ref{approx_trig_polyn}).  The values of $a_k$
+and $b_k$ that minimize $I$ are
+\[
+a_0 = \frac{1}{2\pi} \int_0^{2\pi} f(x) \dx{x} \ ,
+\ a_k = \frac{1}{\pi} \int_0^{2\pi} f(x) \cos(kx)\dx{x}
+\quad \text{and} \quad
+b_k = \frac{1}{\pi} \int_0^{2\pi} f(x) \sin(kx)\dx{x}
+\]
+for $k=1$, $2$, \ldots, $K$.  These coefficients can also be expressed as
+\[
+a_k = \frac{\ps{f(x)}{\cos(k x)}}{\ps{\cos(k x)}{\cos(k x)}}
+= \left(\int_0^{2\pi} f(x)\cos(k x) \dx{x} \right) \bigg/
+\left( \int_0^{2\pi} \cos^2(kx) \dx{x} \right)
+\]
+for $k=0$, $1$, $2$, \ldots, $K$ and 
+\[
+b_k = \frac{\ps{f(x)}{\sin(k x)}}{\ps{\sin(k x)}{\sin(k x)}} =
+= \left( \int_0^{2\pi} f(x)\sin(k x) \dx{x} \right) \bigg/
+\left( \int_0^{2\pi} \sin^2(kx) \dx{x} \right)
+\]
+for $k=1$, $2$, \ldots, $K$.
+
+This information is not needed in this section but shows the similarities
+between the discrete least square method and the least square method in the
+space of square integrable functions studied in Chapter~\ref{chaptApproxA}.
+\label{approx_appr_related}
+\end{rmk}
+
+\section{Trigonometric Polynomial Approximation (Complex Case)}
+
+Instead of limiting the theory to $2\pi$-periodic real value functions as we
+have done in the previous section, we now consider $2\pi$-periodic complex
+valued functions.  In the context of complex valued functions, the complex
+trigonometric polynomials are finite linear combinations of
+$\displaystyle e^{k x i}$ for $k\in \ZZ$, where $i$ is the complex number
+satisfying $i^2=-1$.  In particular, we will consider trigonometric
+polynomials of the form
+\begin{equation}\label{approx_complex_polyn}
+p(x) = \sum_{k=-K}^K r_k e^{k x i}
+\end{equation}
+for $r_k \in \CC$.
+
+Suppose that $\displaystyle \left\{ (x_n,y_n) : n=0,1,2,\ldots, N-1\right\}$
+are $N$ data points, where
+$\displaystyle x_n = \frac{2n \pi}{N}$ for $n=0$, $1$, $2$,\ldots, $N-1$.
+
+We suppose that these data comes from (the approximation of) a
+$2\pi$-periodic function $f:\RR\rightarrow \CC$; namely, $y_n = f(x_n)$ for
+all $n$.  Unlike the least square for real trigonometric polynomials
+of the previous section, we now accept an odd number of data
+points.
+
+The least square method in the present context is to find the coefficients
+$r_k$ in (\ref{approx_complex_polyn}) that minimize
+\begin{equation} \label{approx_cpl_ls}
+I(r_{-K},r_{-K+1},\ldots,r_K) =
+\sum_{n=0}^{N-1} \left| y_n - p(x_n) \right|^2 \ .
+\end{equation}
+
+The points $x_n$ are called
+{\bfseries sampling points}\index{Polynomial Approximations!Sampling Points}.
+The values $f(x_n)$ are called the
+{\bfseries sampling values}\index{Polynomial Approximations!Sampling Values}.
+$2\pi/N$ is the
+{\bfseries sampling interval}\index{Polynomial Approximations!Sampling Interval}
+and $N/(2\pi)$ is the
+{\bfseries sampling frequency}\index{Polynomial
+Approximations!Sampling Frequency}.
+
+In the context of complex valued functions, the pseudo scalar product
+(\ref{approx_real_finiteSP}) becomes
+\begin{equation} \label{approx_complex_finiteSP}
+\pps{f}{g} = \sum_{n=0}^{N-1} f(x_n) \overline{g(x_n)} \quad , \quad
+f,g: [0,2\pi] \rightarrow \CC \ .
+\end{equation}
+The set $\displaystyle S = \{ e^{kx i}\}_{k\in \ZZ}$ is not
+orthogonal with respect to this pseudo scalar product.  However, we
+have a result similar to orthogonality.
+
+\begin{prop}
+The set $S = \{ e^{kx i}\}_{k\in \ZZ}$ satisfies
+\[
+\pps{e^{kx i}}{e^{j x i}} =
+\begin{cases}
+N & \quad \text{if} \quad k \equiv j \pmod{N} \\
+0 & \quad \text{if} \quad k \not\equiv j \pmod{N}
+\end{cases}
+\]
+\label{approx_no_orth_compl_trig}
+\end{prop}
+
+\begin{proof}
+The proof is similar to the proof of Lemma~\ref{approx_trig_realSP}.
+For $k\not\equiv j \pmod{N}$, we have
+\[
+\pps{e^{kx i}}{e^{jx i}} = \sum_{n=0}^{N-1} e^{(k-j)x_n i} =
+\sum_{n=0}^{N-1} e^{(2n\pi(k-j)/N) i}
+= \frac{\displaystyle 1- \left(e^{(2\pi(k-j)/N)i}\right)^{N}}
+{1 - e^{(2\pi(k-j)/N)i}} = 0
+\]
+because
+$\displaystyle \left(e^{(2\pi(k-j)/N)i}\right)^{N} = e^{2(k-j)\pi i} = 1$
+and $\displaystyle e^{(2\pi(k-j)/N)i} \neq 1$ since
+$k-j$ is not a multiple of $N$.
+
+For $k \equiv j \pmod{N}$, we have
+\[
+\pps{e^{kx i}}{e^{jx i}} = \sum_{n=0}^{N-1} e^{(k-j)x_n i} =
+\sum_{n=0}^{N-1} e^{(2n\pi(k-j)/N) i} = \sum_{n=0}^{N-1} 1 = N
+\]
+because $\displaystyle e^{(2n\pi(k-j)/N)i} = 1$ since $k-j$ is a
+multiple of $N$.
+\end{proof}
+
+Based on our experience in the previous section with $2\pi$-periodic
+real valued functions, it would tempting to say that the coefficients
+$r_k$ in (\ref{approx_complex_polyn}) that minimize \ref{approx_cpl_ls} are
+\begin{equation} \label{approx_cpl_coeff_gen}
+r_k = \frac{\pps{f(x)}{e^{k x i}}}{\pps{e^{k x i}}{e^{k x i}}} =
+\frac{1}{N} \sum_{n=0}^{N-1} f(x_n) e^{-kx_n i} \quad , \quad -K \leq
+k \leq K \ .
+\end{equation}
+Unfortunately, this is only true for $K < N/2$.  For $K = N/2$,
+the coefficients $r_{-K}$ and $r_K$ have to be modified.  More precisely,
+\begin{equation} \label{approx_coeff_guess}
+r_{-K} = \frac{1}{2N} \sum_{n=0}^{N-1} f(x_n) e^{-Kx_n i}
+\quad \text{and} \quad
+r_K = \frac{1}{2N} \sum_{n=0}^{N-1} f(x_n) e^{Kx_n i} \ .
+\end{equation}
+The reason for this exception comes from the fact that
+$\displaystyle \pps{f(x)}{e^{K x i}} = \pps{f(x)}{e^{-K x i}}$
+for $K=N/2$ because
+\[
+e^{-Kx_n i} = e^{-n\pi i} = e^{n\pi i} = e^{Kx_n i} =
+\begin{cases}
+1 & \quad \text{$n$ is even} \\
+-1 & \quad \text{$n$ is odd}
+\end{cases}
+\]
+Thus
+\[
+\sum_{n=0}^{N-1} f(x_n) e^{Kx_n i} = \sum_{n=0}^{N-1} f(x_n) e^{-Kx_n i} =
+\sum_{n=0}^{N-1} (-1)^n f(x_n)  \ .
+\]
+
+A proof similar to the proof of Theorem~\ref{approx_coeff_real_trig}
+could be given to show that the coefficients $r_k$ defined above for
+$K \leq N/2$ minimize (\ref{approx_cpl_ls}) (This is left to the reader).  We
+will proceed differently.  The proof that we will give requires some
+knowledge of Fourier series of complex valued functions in $L^2$.
+This was the subject of Chapter~\ref{chaptApproxA}.  We only state the
+result that is needed from that chapter.  This approach has the
+advantage of linking the discrete least square method above to $L^2$
+approximation in the space of $2\pi$-periodic square integrable
+functions.  However, it has the disadvantage or requesting that $f$ be
+continuously differentiable.  This is an extra condition which is not
+required to determine the coefficients $r_k$ minimizing
+(\ref{approx_cpl_ls}).
+
+We saw in Chapter~\ref{chaptApproxA} that if $f$ is an $L^2$-integrable
+function on $[0,2\pi]$, then we may write
+\[
+f = \sum_{k\in\ZZ} A_k e^{k x i} \ ,
+\]
+where the convergence is the $L^2$ convergence and
+\[
+A_k = \frac{1}{2\pi} \int_0^{2\pi} f(x) e^{-k x i} \quad , \quad k \in \ZZ \ .
+\]
+If $f$ is a $2\pi$-periodic differentiable function, then it can be
+proved \cite{R} that the series
+$\displaystyle \sum_{k\in \ZZ} A_k e^{k x i}$
+converges absolutely to $f(x)$ for all $x$ and uniformly on $\RR$ to
+$f$.  In particular, this implies that
+$\displaystyle \sum_{k=0}^\infty A_{\alpha_k} e^{\alpha_k x i}$
+converges pointwise to $f(x)$ for any reordering
+$\displaystyle \{\alpha_k\}_{k=0}^\infty$ of the natural
+numbers\footnote{Namely, $k \mapsto \alpha_k$ is an injective and
+  surjective mapping of $\ZZ$ to itself.}.
+Hence, we can change the order of the summation without changing the limit.
+
+Let
+\begin{equation} \label{approx_a_coeff}
+a_k = \frac{1}{N} \sum_{n=0}^{N-1} f(x_n) e^{-kx_n i} \quad , \quad k \in \ZZ \ .
+\end{equation}
+Before stating the relation between the $a_k$'s and the $A_k$'s, we show
+that $\displaystyle \pps{f}{e^{j_1 x i}} = \pps{f}{e^{j_2 x i}}$ for
+$j_1 \equiv j_2 \pmod{N}$.  This is at the root of the relation that we will
+find between the $a_k$'s and $A_k$'s.  Suppose that $j_2 = sN +j_1$ with
+$s\in \ZZ$, then
+\[
+e^{j_2 x_n i} = e^{(2\pi (sN+j_1)n/N)i} = e^{2\pi s n i}e^{(2\pi j_1 n/N)i}
+= e^{j_1 x_n i}
+\]
+for $n = 0$, $1$, $2$,\ldots, $N-1$ because
+$\displaystyle e^{2\pi s n i} = 1$ for all $n$.  Thus
+\[
+\pps{f}{e^{j_1 x i}} = \sum_{n=0}^{N-1} f(x_n) e^{j_1 x_n i}
+= \sum_{n=0}^{N-1} f(x_n) e^{j_2 x_n i} = \pps{f}{e^{j_2 x i}} \ .
+\]
+
+\begin{prop}
+If $f$ is a $2\pi$-periodic differentiable function, then
+\[
+a_k = \sum_{j\equiv k\pmod{N}} A_j  \ .
+\]
+\end{prop}
+
+\begin{proof}
+We have
+\begin{align*}
+a_k &= \frac{1}{N} \sum_{n=0}^{N-1} f(x_n) e^{-k x_n i}
+= \frac{1}{N} \sum_{n=0}^{N-1} \left(
+\lim_{J\rightarrow \infty} \sum_{j=-J}^J A_j e^{j x_n i}\right) e^{-k x_n i} \\
+&= \lim_{J\rightarrow \infty} \sum_{j=-J}^J A_j \left(
+\frac{1}{N} \sum_{n=0}^{N-1} e^{j x_n i} e^{-k x_n i} \right)
+= \sum_{j\equiv k \pmod{N}} A_j \ .
+\end{align*}
+The third equality comes from the absolute convergence of the series
+$\displaystyle \sum_{k\in \ZZ} A_k e^{k x i}$ to $f(x)$ for all $x$.
+The last equality comes from
+Proposition~\ref{approx_no_orth_compl_trig} and the absolute
+convergence of the series $\displaystyle \sum_{k\in \ZZ} A_k$.
+\end{proof}
+
+The result of the previous proposition is called
+{\bfseries aliasing}\index{Polynomial Approximations!Aliasing}.
+
+\begin{theorem}
+Assume that $f$ is a $2\pi$-periodic differentiable function and that
+$a_k$ is defined by (\ref{approx_a_coeff}) for all $k$.
+\begin{enumerate}
+\item If $K<N/2$, then
+$\displaystyle I(r_{-K},r_{-K+1}, \ldots, r_K)
+\leq I(b_{-K},b_{-K+1}, \ldots, b_K)$ for all $b_k \in \CC$ with
+$|k|\leq K$ if $r_k =a_k$ for $k)\leq K$.
+\item If $K=N/2$, then
+$\displaystyle I(r_{-K},r_{-K+1}, \ldots, r_K)
+\leq I(b_{-K},b_{-K+1}, \ldots, b_K)$ for all $b_k \in \CC$ with
+$|k|\leq K$ if $r_k = a_k$ for $|k|<K$ and
+$\displaystyle r_{-K}=r_K = \frac{1}{2} a_K$.
+\end{enumerate}
+\label{approx_coeffs_comple_trig}
+\end{theorem}
+
+\begin{proof}
+\subQ{i} If $K<N/2$ and $b_k=0$ for $K<|k|\leq N/2$, we have
+\begin{align*}
+\sum_{n=0}^{N-1} \left| f(x_n) - \sum_{k=-K}^K b_k e^{k x_n i} \right|^2 &= 
+\sum_{n=0}^{N-1} \left| \left(\sum_{j\in\ZZ} A_j e^{j x_n i} \right)
+- \sum_{k=-K}^K b_k e^{k x_n i} \right|^2 \\
+&=\sum_{n=0}^{N-1} \left| \sum_{-N/2<k\leq N/2}
+\left( \sum_{j\equiv k \pmod{N}} A_j \right) e^{k x_n i} - \sum_{k=-K}^K b_k
+e^{k x_n i} \right|^2 \\
+&= \sum_{n=0}^{N-1} \left| \sum_{-N/2<k\leq N/2}
+\left( \left(\sum_{j\equiv k \pmod{N}} A_j\right) - b_k \right) e^{k x_n i}
+\right|^2 \\
+&= \sum_{n=0}^{N-1} \left| \sum_{-N/2<k\leq N/2}
+\left( a_k - b_k \right) e^{k x_n i} \right|^2 \ .
+\end{align*}
+To get the first equality,
+we have used $\displaystyle e^{jx_n i} =  e^{k x_n i}$ for
+$j \equiv k \pmod{N}$ and the absolute convergence of the series to
+rearrange the summation.  Hence
+\begin{align*}
+\sum_{n=0}^{N-1} \left| f(x_n) - \sum_{k=-K}^K b_k e^{k x_n i} \right|^2 &= 
+\sum_{\substack{-N/2<k_1\leq N/2\\-N/2<k_2\leq N/2}} \left(a_{k_1} - b_{k_1} \right)
+\overline{\left(a_{k_2} - b_{k_2} \right)}
+\underbrace{\left( \sum_{n=0}^{N-1}  e^{k_1 x_n i} e^{-k_2 x_n i} \right)
+}_{= \begin{cases} 0 &\text{ if } k_1 \neq k_2 \\ N &\text{ if } k_1 =
+    k_2\end{cases} }  \\
+&= N \sum_{-N/2<k\leq N/2} \left|a_k - b_k \right|^2
+\end{align*}
+because of Lemma~\ref{approx_no_orth_compl_trig}.
+Therefore, the minimum
+$\displaystyle N \bigg(\sum_{\substack{-N/2<k<-K\\K<k\leq N/2}}
+\left|a_k \right|^2\bigg)$. 
+is reached at $b_k=a_k$ for $|k| \leq K$.
+
+\subQ{i} If $K=N/2$, we have as for the case $K<N/2$ above that
+\begin{align*}
+&\sum_{n=0}^{N-1} \left| f(x_n) - \sum_{k=-K}^K b_k e^{k x_n i} \right|^2 =
+\sum_{n=0}^{N-1} \left| \left(\sum_{j\in\ZZ} A_j e^{j x_n i} \right)
+- \sum_{k=-K}^K b_k e^{k x_n i} \right|^2 \\
+&\quad =\sum_{n=0}^{N-1} \left| \sum_{-N/2<k\leq N/2}
+\left( \sum_{j\equiv k \pmod{N}} A_j \right) e^{k x_n i} - \sum_{k=-K}^K b_k
+e^{k x_n i} \right|^2 \\
+&\quad = \sum_{n=0}^{N-1} \left| \sum_{|k|<N/2}
+\left( \left(\sum_{j\equiv k \pmod{N}} A_j\right) - b_k \right) e^{k x_n i} 
++ \left(\left(\sum_{j\equiv K \pmod{N}} A_j\right) - b_K - b_{-K}\right)
+e^{Kx_n i} \right|^2 \ .
+\end{align*}
+Hence,
+\begin{align*}
+\sum_{n=0}^{N-1} \left| f(x_n) - \sum_{k=-K}^K b_k e^{k x_n i} \right|^2 &=
+\sum_{n=0}^{N-1} \left| \sum_{|k|<N/2}
+\left( a_k - b_k \right) e^{k x_n i} +\left(a_K - b_K - b_{-K}\right)
+e^{Kx_n i}\right|^2\\
+&= N \left( \sum_{-N/2<k <N/2} \left|a_k - b_k \right|^2 +
+\left|a_K - b_{-K}-b_K \right|^2 \right)
+\end{align*}
+because of Lemma~\ref{approx_no_orth_compl_trig}.
+Therefore, the minimum is $0$ when
+$b_k=a_k$ for $|k| < K$ and $\displaystyle b_{-K}=b_K = \frac{a_K}{2}$.
+
+Note that other choices of $b_{-K}$ and $b_K$ are possible as long as
+$a_K = b_{-K} +b_K$.
+\end{proof}
+
+\begin{rmkList} \label{approx_compl_rmks}
+\begin{enumerate}
+\item There is another proof for the case $K<N/2$ in
+Theorem~\ref{approx_coeffs_comple_trig}.  According to
+Proposition~\ref{approx_no_orth_compl_trig}, the set
+$\displaystyle S_N= \left\{ e^{kx i} \right\}_{|k|\leq K}$ is a orthogonal set
+with respect to the pseudo scalar product
+(\ref{approx_complex_finiteSP}).  Hence, a theorem similar to
+Theorem~\ref{appr_finiteS} in Chapter~\ref{chaptApproxA} says that
+$\displaystyle I(r_{-K},r_{-K+1}, \ldots, r_K) = \pps{f-p}{f-p}$,
+where $p$ is defined in (\ref{approx_complex_polyn}), reaches its
+minimum if and only if $r_k$ is given by
+(\ref{approx_cpl_coeff_gen}) for $|k|\leq K$.
+\item Since $e^{-K x_n i} = e^{K x_n i}$ for all $n$ when $K=N/2$, it
+follows from the proof of the previous theorem that
+\[
+p(x) = \sum_{-N/2<k\leq N/2} a_k e^{k x i}
+\]
+minimizes $\displaystyle \sum_{n=0}^{N-1} \left| y_n - p(x_n) \right|^2$
+among all trigonometric polynomials of the form \\
+$\displaystyle \sum_{|k|\leq \intpt{N/2}} a_k e^{k x i}$,
+where $\intpt{N/2}$ is the largest integer less than or equal
+to $N/2$.
+\item \label{approx_compl_rmks_lbl1} Let
+$\displaystyle p(x) = \sum_{|k|\leq K} r_k e^{k x i}$
+be the polynomial given by
+Theorem~\ref{approx_coeffs_comple_trig} when $K=\intpt{N/2}$.
+Since
+\[
+f(x_n) = \sum_{j\in\ZZ} A_j e^{j x_n i}
+= \sum_{-N/2<k\leq N/2} \left(\sum_{k\equiv j \pmod{N}} A_j \right) e^{k x_n i}
+= \sum_{-N/2<k\leq N/2} a_k e^{k x_n i} = p(x_n)
+\]
+for $0 \leq n < N$, the polynomial $p$ is an interpolating
+polynomial of $f$ at $x_0$, $x_1$, \ldots, $x_{N-1}$.
+\item \label{approx_compl_rmks_lbl2} If $f$ is a $2\pi$-periodic real valued
+function,  then $a_{-k} = \overline{a_{k}}$ for all $k$.  In
+particular, $a_0 \in \RR$.  Hence, for $K<N/2$, we have
+\begin{align*}
+p(x) &= \sum_{k=-K}^K a_k e^{k x i} = a_0 + \sum_{k=1}^K \left(
+a_k e^{k x i} + \overline{a_k e^{k xi}} \right) 
+= a_0 + 2\sum_{k=1}^K \RE\left( a_k e^{kxi} \right) \\
+&= a_0 + 2\sum_{k=1}^K \big(\RE(a_k) \cos(kx) - \IM(a_k) \sin(kx) \big) \\
+&= \tilde{a}_0 + \sum_{k=1}^K \tilde{a}_k \cos(kx) +
+\sum_{k=1}^K \tilde{b}_k \sin(kx) \ ,
+\end{align*}
+where
+\begin{align*}
+\tilde{a}_0 &= a_0 = \frac{1}{N} \sum_{n=0}^{N-1} f(x_n) \ ,\\
+\tilde{a}_k &= 2\RE(a_k) =
+2\RE\left( \frac{1}{N} \sum_{n=0}^{N-1} f(x_n) e^{-kx_n i}\right)
+= \frac{2}{N} \sum_{n=0}^{N-1} f(x_n) \cos(k x_n)
+\intertext{and}
+\tilde{b}_k &= -2\IM(a_k) =
+-2\IM\left( \frac{1}{N} \sum_{n=0}^{N-1} f(x_n) e^{-kx_n i}\right)
+= \frac{2}{N} \sum_{n=0}^{N-1} f(x_n) \sin(k x_n) \ .
+\end{align*}
+Therefore, the real case is a special case of the complex case when $K<N/2$.
+\end{enumerate}
+\end{rmkList}
+
+\begin{rmk}
+We considered in Example~\ref{appr_egg_complex_poly} of
+Chapter~\ref{chaptApproxA} the following least square problem.
+Let $f$ be a $2\pi$-periodic complex valued functions, find $r_k \in \CC$ for
+$-K\leq k \leq K$ that minimize
+$\displaystyle I(r_{-K}, r_{-K+1}, \ldots, r_K) =
+\int_0^{2\pi} (f(x)-p(x))^2 \dx{x}$,
+where $p$ is defined in (\ref{approx_complex_polyn}).  We showed in
+Example~\ref{appr_egg_complex_poly} that the choice of $r_k$ that minimize
+$I$ is given by
+\[
+r_k = A_k = \frac{1}{2\pi} \int_0^{2\pi} f(x) e^{-kx i} \dx{x} \quad , \quad
+k \in \ZZ \ .
+\]
+
+It is interesting to approximate the coefficients $A_k$ using a numerical
+method like the composite trapezoidal rule given in Theorem~\ref{CTR}.
+Suppose that $g:\RR \rightarrow \CC$ is a $2\pi$-periodic function.
+If we use the partition of the interval $[0,2\pi]$ given by
+$\displaystyle x_n = \frac{2n \pi}{N}$ for $0 \leq n \leq N$, we get
+\[
+\int_0^{2\pi} g(x) \dx{x} \approx \frac{\pi}{N}g(0) + \frac{2\pi}{N}
+\sum_{n=1}^{N-1} g\left(x_n\right) + \frac{\pi}{N}g(2\pi)
+= \frac{2\pi}{N}g(0)
++ \frac{2\pi}{N}\sum_{n=1}^{N-1} g\left(x_n\right)
+= \frac{2\pi}{N} \sum_{n=0}^{N-1} g\left(x_n\right) \ .
+\]
+In particular, if $g(x) = f(x) e^{-k x i}$ with $f$ a $2\pi$-periodic
+complex valued function, we get
+\[
+A_k = \frac{1}{2\pi} \int_0^{2\pi} f(x) e^{-k x i} \dx{x}
+\approx = \frac{1}{N} \sum_{n=0}^{N-1} f(x_n) e^{-k x_n i} = a_k \ .
+\]
+So $a_k$ is approximately $A_k$.  The terms other than $A_k$ in
+$\displaystyle a_k = \sum_{j\equiv k \pmod{N}} A_j$ are almost negligible.
+\end{rmk}
+
+\begin{egg}
+Find the trigonometric polynomial
+$\displaystyle p(x) = \sum_{|k|\leq 1} b_k e^{kxi}$ that interpolates
+$f(x) = \sin^2(x)$ at $x_n = 2n\pi/3$ for $n=0$, $1$ and $2$.
+
+According to Item~\ref{approx_compl_rmks_lbl1} of
+Remark~\ref{approx_compl_rmks}, the answer is given by
+Theorem~\ref{approx_coeffs_comple_trig} with $N=3$ and $K=1$.  Since $f$ is a
+real valued function, we may used Item~\ref{approx_compl_rmks_lbl2} of
+Remark~\ref{approx_compl_rmks}, to write
+\[
+p(x) = a_0 + a_1 \cos(x) + b_1 \sin(x) \ ,
+\]
+where
+\begin{align*}
+a_0 &= \frac{1}{3} \sum_{n=0}^2 \sin^2(x_n) = \frac{1}{3} \left(
+\sin^2(0) + \sin^2\left(\frac{2\pi}{3}\right)
++ \sin^2\left(\frac{4\pi}{3}\right) \right) = \frac{1}{3}\left( 0+\frac{3}{4}
++ \frac{3}{4} \right) = \frac{1}{2} \ ,\\
+a_1 &= \frac{2}{3} \sum_{n=0}^2 \sin^2(x_n) \cos(x_n)
+= \frac{2}{3} \left( \sin^2(0)\cos(0)
++ \sin^2\left(\frac{2\pi}{3}\right)\cos\left(\frac{2\pi}{3}\right)
++ \sin^2\left(\frac{4\pi}{3}\right)\cos\left(\frac{4\pi}{3}\right) \right) \\
+&= \frac{2}{3}\left( 0 + \frac{3}{4}\left(\frac{-1}{2}\right) +
+\frac{3}{4}\left(\frac{-1}{2}\right) \right) = -\frac{1}{2}
+\intertext{and}
+b_1 &= \frac{2}{3} \sum_{n=0}^2 \sin^2(x_n) \sin(x_n)
+= \frac{2}{3} \left( \sin^3(0) + \sin^3\left(\frac{2\pi}{3}\right)
++ \sin^3\left(\frac{4\pi}{3}\right) \right) \\
+&= \frac{2}{3}\left( 0 + \frac{3}{4}\left(\frac{\sqrt{3}}{2}\right) +
+\frac{3}{4}\left(\frac{-\sqrt{3}}{2}\right) \right) = 0 \ .
+\end{align*}
+Hence,
+\[
+p(x) = \frac{1}{2} - \frac{1}{2} \cos(x) \ .
+\]
+\end{egg}
+
+\begin{rmk}
+Suppose that $N$ is odd and let $K = \intpt{N/2}$.  Let $\Pi_K$ be the
+space of all trigonometric polynomials of the form
+$\displaystyle p(x) = \sum_{|k|\leq K} b_k e^{kxi}$.  Suppose that
+$f$ is a $2\pi$-periodic continuous function and let
+$\displaystyle \dist{f}{\Pi_K} = \inf_{q\in \Pi_K} \|f - q\|_\infty$, where
+$\displaystyle \|h\|_\infty = \max_{0\leq x \leq 2\pi} |h(x)|$ for
+all continuous function $h:[0,2\pi]\rightarrow \CC$.  If
+$\displaystyle p(x) = \sum_{|k|\leq K} r_k e^{kxi}$ is the
+trigonometric polynomial given by
+Theorem~\ref{approx_coeffs_comple_trig}, then one can prove that 
+\[
+\| f - p \|_\infty \leq C \dist{f}{\Pi_K}
+\]
+for some constant $C$ \cite{CdB}.
+
+Moreover, if $f$ is $j$-times differentiable with $f^{(j)}$ piecewise
+continuous, one can prove that $|A_k| = O(|k|^{-j-1})$ and that this implies
+that $\displaystyle \dist{f}{\Pi_K} = O(K^{-j})$ \cite{CdB}.
+\end{rmk}
+
+\section{Fast Fourier Transform}
+
+As we have seen in the previous section, the main task for the
+complex case of trigonometric polynomial approximation was to compute
+the coefficients $a_k$ defined in (\ref{approx_a_coeff}); namely,
+\[
+  a_k = \frac{1}{N} \sum_{n=0}^{N-1} f(x_n) e^{-2\pi k n i/N}
+\]
+for $k\in \ZZ$, where $f:\RR \to \CC$ is a $2\pi$-periodic function.
+We present in this section fast algorithms to compute these coefficients.
+The Fast Fourier Transform algorithms that we will introduce have many
+other applications.
+
+\begin{defn}
+Let $\Pi_N$ be the space of all periodic functions
+$\fct{z}:\ZZ \rightarrow \CC$
+of period $N$ and let $\omega_N$ be the $N^{th}$ root of unity defined by
+$\omega_N = e^{2\pi i/N}$.  The
+{\bfseries Discrete Fourier Transform}\index{Discrete Fourier Transform}
+is the mapping $\FF_N: \Pi_N \rightarrow \Pi_N$ such that
+$\fct{y} = \FF_N \fct{x}$ is defined by
+\[
+\fct{y}(n) \equiv \frac{1}{N} \sum_{k=0}^{N-1} \, \omega_N^{-nk}
+\fct{x}(k)
+\]
+for $n \in \ZZ$.
+\end{defn}
+
+The Discrete Fourier Transform has the following property.
+
+\begin{prop}
+$\FF_N:\Pi_N \rightarrow \Pi_N$ is one-to-one and onto.  The inverse
+of $\FF_N$ is the mapping $\FF_N^{-1}: \Pi_N \rightarrow \Pi_N$ such
+that $\fct{x} = \FF_N^{-1} \fct{y}$ is defined by
+\[
+\fct{x}(n) \equiv \sum_{k=0}^{N-1} \, \omega_N^{nk} \fct{y}(k)
+\]
+for $n \in \ZZ$.
+\end{prop}
+
+The functions $\fct{x}:\Pi_N\rightarrow \Pi_N$ and
+$\fct{y}: \Pi_N\rightarrow \Pi_N$ could also be written as
+the infinite sequences $\displaystyle \{x_n\}_{n\in\ZZ}$ and
+$\displaystyle \{y_n\}_{n\in\ZZ}$ respectively.  We do not use this
+notation to avoid complicated indices in the formulae that we will
+introduce later.
+
+In this subsection, we will develop some
+{\bfseries Fast Fourier Transform}\index{Fast Fourier Transform}
+algorithms to compute the Discrete
+Fourier Transform on $\Pi_N$.  There are many Fast Fourier Transform
+algorithms; one for each integer decomposition of $N$.  The Fast
+Fourier Transform algorithms that we give below is based on the
+work of Cooley and Tukey \cite{CT}.  The Fast Fourier Transform is
+used in signal processing, image compression, \ldots\  Fast Poisson
+Solver is a technique to solve some types of partial differential
+equations using the Fast Fourier Transform.  We will not cover any of
+these applications in this book.   Henrici \cite{He} has a nice
+overview of the applications of the Fast Fourier Transforms.  Another good
+starting reference for the applications of the Fast Fourier Transforms
+is Strang \cite{St}.
+
+To simplify the notation, we consider
+\[
+\FF^\ast_N \fct{x} \equiv N \FF_N \fct{x}
+\]
+for $\fct{x}\in \Pi_N$.  Hence,
+$\fct{y}^\ast = \FF^\ast_N \fct{x}$ is given by
+\[
+\fct{y}^\ast(n) \equiv \sum_{k=0}^{N-1} \omega_N^{-nk} \fct{x}(k)
+\]
+for $n \in \ZZ$.  In many books, $\FF^\ast_N$ is used as the definition
+of the Discrete Fourier Transform.
+
+The idea behind the Fast Fourier Transforms is to construct a sequence
+$\fctt{y}_m$, $\fctt{y}_{m-1}$, \ldots, $\fctt{y}_0$ of functions from
+$\ZZ\times \ZZ$ into $\RR$ such that $\fctt{y}_{j-1}$ is obtained from
+$\fctt{y}_j$ for $j=m$, $m-1$, \ldots , $2$, $1$.  Moreover,
+$\fctt{y}_m(\cdot,0)$ is $\fct{x}$ and $\fctt{y}_0(0,\cdot)$ is
+$\fct{y}^\ast = \FF^\ast_N \fct{x}$.
+
+\begin{defn}
+\begin{enumerate}
+\item Given $\fct{x} \in \Pi_N$, if $N=AB$ with $A$ and $B$ two
+integers, we define $\fct{x}_{A,a} \in \Pi_B$ with $a\in \NN$ by
+\[
+\fct{x}_{A,a}(n) = \fct{x}(a+An)
+\]
+for $n \in \ZZ$.
+\item Suppose that $N = P_1 P_2 P_3 \ldots P_m$ and let
+$N = A_k  P_k B_k$, where $A_k=P_1 P_2 \ldots P_{k-1}$ and
+$B_k=P_{k+1} P_{k+2} \ldots P_m$.  If $k=0$, we set $P_k = 1$ and
+$A_k = 1$.  If $k=m$, we set $B_k=1$. 
+
+For each $q \in \ZZ$, we define the function
+$\fct{y}^\ast_{A_k P_k,q} \in \Pi_{B_k}$ by
+\[
+\fct{y}^\ast_{A_k P_k,q} = \FF^\ast_{B_k} \fct{x}_{A_k P_k,q} \ .
+\]
+Namely,
+\begin{equation} \label{FFTstep}
+\fct{y}^\ast_{A_k P_k,q}(b) =
+\sum_{s=0}^{B_k-1} x(q +A_kP_k s) \omega_{B_k}^{-ns} \bigg|_{n=b}
+= \sum_{s=0}^{B_k-1}\, \fct{x}(q+A_k P_k s) \omega_{B_k}^{-s b}
+\end{equation}
+for $b \in \ZZ$.
+\item $\fct{y}^\ast_{A_k P_k, q}$ can be used to define the function
+\begin{align*}
+\fctt{y}_k: \ZZ \times \ZZ & \rightarrow \RR \\
+(q,b) &\mapsto \fct{y}^\ast_{A_k P_k,q}(b)
+\end{align*}
+The function $\fctt{y}_k$ is of period $B_k$ in its second variable
+and of period $N$ in its first variable.
+\end{enumerate}
+\end{defn}
+
+\begin{rmkList}
+\begin{enumerate}
+\item For $k=m$, we have the special case $A_k=P_1 P_2 \ldots P_{m-1}$,
+$P_k = P_m$ and $B_k=1$ in (\ref{FFTstep}).  Thus,
+\[
+\fct{y}^\ast_{A_m P_m,q}(0) = \FF^\ast_1 \fct{x}_{N, q}(n) \bigg|_{n=0}
+= \sum_{s=0}^{0}\, \fct{x}(q+Ns) \omega_1^{-ns}\bigg|_{n=0} = \fct{x}(q)
+\]
+for $q \in \NN$.  Namely, $\displaystyle \fctt{y}_m(q,0) = \fct{x}(q)$ for
+$q \in \NN$.
+\item For $k=0$, we have $A_k = P_k = 1$ and $B_k = N$ in
+(\ref{FFTstep}).  Thus,
+\[
+\fct{y}^\ast_{A_0 P_0, 0}(b) = \FF^\ast_N \fct{x}_{1,0}(n) \bigg|_{n=b}
+= \sum_{s=0}^{N-1}\, \fct{x}(s) \omega_N^{-ns}\bigg|_{n=b}
+= \fct{y}^\ast(b)
+= \FF^\ast_N \fct{x}(n)\bigg|_{n=b}
+\]
+for $b \in \NN$.  Namely,
+$\displaystyle \fctt{y}_0(0,b) = \FF^\ast_N \fct{x}(b)$
+for $b \in \NN$.
+\end{enumerate}
+\end{rmkList}
+
+The next proposition justifies the method to compute $\fctt{y}_j$ from
+$\fctt{y}_{j-1}$ that will be introduced later.
+
+\begin{prop}
+\[
+\sum_{s=0}^{P_k-1} \fctt{y}_k(a+A_k s, b) \omega_{P_k B_k}^{-s(b+B_k p)}
+= \fctt{y}_{k-1}(a, b+B_k p)
+\]
+for $a$, $b$ and $p$ in $\NN$.
+\label{heart_of_FFT}
+\end{prop}
+
+\begin{proof}
+We have
+\begin{align*}
+\sum_{s=0}^{P_k-1} \FF^\ast_{B_k} \fct{x}_{A_k P_k,a+A_k s } (b) 
+\omega_{P_k B_k}^{-s(b+B_k p)}
+&= \sum_{s=0}^{P_k-1} \left( \sum_{r=0}^{B_k-1} \fct{x}(a+A_k s + A_k P_k r)
+\omega_{B_k}^{-br} \right) \omega_{P_k B_k}^{-s(b+B_k p)}  \\
+&= \sum_{s=0}^{P_k-1} \sum_{r=0}^{B_k-1} \fct{x}(a+ A_k (s + P_k r))
+\omega_{B_k P_k}^{-brP_k} \omega_{P_k B_k}^{-s(b+B_k p)}  \\
+&= \sum_{s=0}^{P_k-1} \sum_{r=0}^{B_k-1} \fct{x}(a+ A_k (s + P_k r))
+\omega_{B_k P_k}^{-(s+rP_k)(b+B_k p)}  \\
+&= \FF^\ast_{P_kB_k}\fct{x}_{A_k,a} (b+B_k p)
+\end{align*}
+because $\omega_{P_kB_k}^{-mP_kB_k} = 1^{-m} = 1$ for all $m\in \ZZ$.
+Thus
+\[
+\sum_{s=0}^{P_k-1} \fctt{y}_k(a+A_k s, b) \omega_{P_k B_k}^{-s(b+B_k p)}
+= \fctt{y}_{k-1}(a, b+B_k p) \ .  \qedhere
+\]
+\end{proof}
+
+A consequence of Proposition~\ref{heart_of_FFT} for $0\leq a <A_k$,
+$0\leq b < B_k$ and $0\leq p < P_k$ is the following
+Fast Fourier Transform algorithms.
+
+\begin{code}[Fast Fourier Transform]
+To compute the Fast Fourier Transform of $\fct{x}$ in $\Pi_N$.  We
+assume that $N = P_1 P_2 \ldots P_m$.\\
+\subI{Input} The vector $(P_1,P_2, \ldots P_m)$ and the column vector
+$\fct{x}$ which are respectively denoted \verb!MP! and \verb!X! in the
+code below.  Since $\fct{x}$ is $N$-periodic, only the
+components $\fct{x}(j)$ for $0 \leq j < N$ are needed.\\
+\subI{Output} The Fast Fourier Transform
+$\fct{y}^\ast= \FF^\ast_N \fct{x}$ which is
+denoted \verb!Z! in the code below.  As for the input, only the
+components $\fct{y}^\ast(j)$ for $0 \leq j < N$ are returned
+because of the periodicity of $\fct{y}^\ast$.
+\small
+\begin{verbatim}
+function Z = FFT(X,MP)
+  m = length(MP);
+
+  % For k = m, Y = X
+  Y(:,1) = X;
+  for k = m:-1:1
+    if k < m
+      B = prod(MP(k+1:m));
+    else 
+      B = 1;
+    end
+    P = MP(k);
+    if ( k > 1 )
+      A = prod(MP(1:k-1));
+    else
+      A = 1;
+    end
+
+    x = 1;
+    omega = exp(-(2*pi*i)/(P*B))
+    p = [0:P-1]';
+    for b = 0:B-1
+      omega_p =  omega.^(b+B*p);
+      for a = 0:A-1
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        % Do not forget that the column vectors in Matlab are
+        % indexed (1,1),(2,1), ...
+        Ytempo = ones(P,1)*Y(1+b+B*a+A*B*(P-1),1);
+        for s = P-2:-1:0
+          Ytempo = Ytempo.*omega_p + Y(1+b+B*a+A*B*s,1);
+        end
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        % We transfer the information to Z for the next value of m.
+        for s = 0:P-1
+          Z(1+b+B*s+B*P*a,1) = Ytempo(s+1);
+        end
+      end
+    end
+
+    % The value of Y for the next value of m.
+    Y = Z;
+  end
+
+  % The final result
+  % For m = 1, Z is the Fast Fourier Transform of X. 
+end
+\end{verbatim}
+\end{code}
+
+\begin{rmkList}
+\begin{enumerate}
+\item The portion of code between the two lines of \%'s is 
+\begin{equation}\label{recfft}
+\sum_{s=0}^{P_k-1} \fctt{y}_k(a+A_k s, b) \omega_{P_k B_k}^{-s(b+B_k p)}
+\end{equation}
+computed for all the values of $p$ at the same time using Matlab
+matrix operations.  We repeat this operation for $0\leq a < A_k$ and
+$0\leq b < B_k$ to get the full vector $\fctt{y}_{k-1}(a, b+B_k p)$.
+We have also used the nested form of the polynomial in
+$\omega_{P_k B_k}^{-(b+B_k p)}$ to evaluate the expression
+(\ref{recfft}) above.  To formulate (\ref{recfft}) in MATLAB, we have to
+note that
+\begin{itemize}
+\item \verb!Z(1+b+B*p+B*P*a,1)! represents
+$\fctt{y}_{k-1}(a, b+B_k p)$ and
+\item \verb!Y(1+b+B*a+A*B*s,1) = Y(1+b+B*(a+A*s),1)! represents
+$\fctt{y}_k(a+A_k s, b)$
+\end{itemize}
+for $0\leq a < A_k$, $0\leq b<B_k$ and $0\leq p,s < P_k$.
+\item About $N(P_1+P_2+\ldots+P_m) = N \log(N)$ operations are needed
+in the code above to compute $\FF^\ast_N \fct{x}$.  The evaluation
+of omega and copying data has been ignored when computing the number
+of operations.  The number of operations to compute
+$\FF^\ast_N\fct{x}$ directly from the definition is about $N^2$.
+This is much larger than $N(P_1+P_2+\ldots+P_m)$ in general.
+\item When $N=2^m$, an efficient Fast Fourier Transform algorithm can
+be developed.  It is probably the must often used Fast Fourier
+Transform algorithm.
+\begin{align*}
+\FF^\ast_N \fct{x}(n)
+&= \sum_{k=0}^{N-1} \, \omega_N^{-nk} \fct{x}(k)
+= \sum_{k=0}^{2^m-1} \, \omega_{2^m}^{-nk} \fct{x}(k) \\
+&= \sum_{k=0}^{2^{m-1}-1} \, \omega_{2^m}^{-n(2k)} \fct{x}(2k) +
+\sum_{k=0}^{2^{m-1}-1} \, \omega_{2^m}^{-n(2k+1)} \fct{x}(2k+1) \\
+&= \sum_{k=0}^{2^{m-1}-1} \, \omega_{2^{m-1}}^{-nk} \fct{x}(2k) +
+\omega_{2^m}^{-n} \,
+\sum_{k=0}^{2^{m-1}-1} \, \omega_{2^{m-1}}^{-nk} \fct{x}(2k+1) \\
+&= \FF^\ast_{2^{m-1}} \fct{x}_{e}(n) +
+\omega_{2^m}^{-n} \, \FF^\ast_{2^{m-1}} \fct{x}_{o}(n) \ ,
+\end{align*}
+where $\fct{x}_{e}(k) = \fct{x}(2k)$ and $\fct{x}_{o}(k) = \fct{x}(1+2k)$
+for $k \in \NN$.
+We have used the relation $\omega_{2^m}^{2n} = \omega_{2^{m-1}}^n$ to
+get the fourth equality.  Moreover, since
+$\omega_{2^m}^{-j-2^{m-1}} = -\omega_{2^m}^{-j}$ for
+$0 \leq j < 2^{m-1}$, we get
+\begin{align*}
+\FF^\ast_N \fct{x}(n)
+&= \FF^\ast_{2^{m-1}} \fct{x}_{e}(n) + \omega_{2^m}^{-n} \,
+\FF^\ast_{2^{m-1}} \fct{x}_{o}(n) \\
+\intertext{and}
+\FF^\ast_N \fct{x} \left(n+2^{m-1}\right)
+&= \FF^\ast_{2^{m-1}} \fct{x}_{e} \left(n+2^{m-1}\right)
++ \omega_{2^m}^{-(n+2^{m-1})} \, \FF^\ast_{2^{m-1}}
+\fct{x}_{o}\left(n+2^{m-1}\right) \\
+&= \FF^\ast_{2^{m-1}} \fct{x}_{e}(n) -
+\omega_{2^m}^{-n} \, \FF^\ast_{2^{m-1}} \fct{x}_{o}(n)
+\end{align*}
+for $0 \leq n < 2^{m-1}$.  The last equality, comes from the fact that
+$\FF^\ast_{2^{m-1}} \fct{x}_{e}$ and
+$\FF^\ast_{2^{m-1}} \fct{x}_{o}$ are of period $2^{m-1}$ because
+$\fct{x}_{e}$ and $\fct{x}_{o}$ are of period $2^{m-1}$.
+This gives the following simple algorithm.
+
+\begin{code}[Fast Fourier Transform]
+To compute the Fast Fourier Transform of $\fct{x}$ in $\Pi_N$, where
+$N=2^m$. \\ 
+\subI{Input} The column vector $\fct{x}$ (denoted X in the code
+below).  Since $\fct{x}$ is $N$-periodic, only the
+components $\fct{x}(j)$ for $0 \leq j < N$ are needed.\\
+\subI{Output} The Fast Fourier Transform $\fct{y}^\ast= \FF^\ast_N \fct{x}$
+(denoted Z in the code below).  As for the input, only the 
+components $\fct{z}^\ast(j)$ for $0 \leq j < N$ are returned because of
+the periodicity of $\fct{z}^\ast$.
+\small
+\begin{verbatim}
+function Z = recursiveFFT(X)
+  N = length(X);
+  if N == 1
+    Z = X;
+  else
+    % We compute the Fourier Transform for x_{2k}
+    Y1 = recursiveFFT( X(1:2:N) );
+
+    % We compute the Fast Fourier Transform for x_{1+2k}
+    Y2 = recursiveFFT( X(2:2:N) );
+
+    a = [0:N/2-1]';
+    Y3 = Y2.*exp(-(2*pi*i)*a/N);
+    Z = [Y1+Y3 ; Y1-Y3];
+  end
+end
+\end{verbatim}
+\end{code}
+
+\end{enumerate}
+\end{rmkList}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "notes"
+%%% End: 
