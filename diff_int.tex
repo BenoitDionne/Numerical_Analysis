@@ -2556,53 +2556,6 @@ such that $|f^{(3)}(x)|<M$ for all $x\in[a,b]$.
 \label{diffQ21}
 \end{question}
 
-% \begin{question}
-% Use polynomial interpolation to find an integration formula of the
-% form
-% \[
-% \int_{-2h}^h f(x)\dx{x} = h\left(A\,f(0)+B\,f(-h)+C\,f(-2h)\right)
-% \]
-% with its truncation error.
-% \end{question}
-
-% \solution{
-% We use the interpolating polynomial of $f$ at $x_0=-2h$, $x_1=-h$ and
-% $x_0 = 0$.  We have
-% \begin{align*}
-% f(x) &= f[x_0] + f[x_0,x_1]\left(x-x_0\right)
-% +f[x_0,x_1,x_2]\left(x-x_0\right)\left(x-x_1\right) \\
-% &+f[x_0,x_1,x_2,x]\left(x-x_0\right)\left(x-x_1\right)\left(x-x_2\right)
-% \quad .
-% \end{align*}
-% Hence,
-% \begin{align*}
-% \int_{-2h}^h f(x) \dx{x}
-% &= \int_{-2h}^h \big( f[x_0] + f[x_0,x_1]\left(x-x_0\right)
-% +f[x_0,x_1,x_2]\left(x-x_0\right)\left(x-x_1\right) \big)\dx{x} \\
-% &+ \int_{-2h}^h f[x_0,x_1,x_2,x]
-% \left(x-x_0\right)\left(x-x_1\right)\left(x-x_2\right) \dx{x} \quad .
-% \end{align*}
-
-% The formula is given by
-% \begin{align*}
-% &\int_{-2h}^h \big( f[x_0] + f[x_0,x_1]\left(x-x_0\right)
-% +f[x_0,x_1,x_2]\left(x-x_0\right)\left(x-x_1\right) \big)\dx{x} \\
-% &\quad =\int_{-2h}^h \big( f[-2h] + f[-2h,-h]\left(x+2h\right)
-% +f[-2h,-h,0]\left(x+2h\right)\left(x+h\right) \big)\dx{x} \\
-% &\quad =\left( f[-2h]\,x + f[-2h,-h]\left( \frac{x^2}{2} +2h \, x \right)
-% +f[-2h,-h,0]\left( \frac{x^3}{3} + 3h\,\frac{x^2}{2}
-% +2h^2\,x \right) \right)\bigg|_{x=-2h}^h \\
-% &\quad = f(-2h)(3h) + \left(\frac{f(-h)-f(-2h)}{h}\right)\,
-% \left( \frac{9}{2}\,h^2 \right) \\
-% &\quad\qquad + \left(\frac{\displaystyle \frac{f(0)-f(-h)}{0-(-h)}
-% - \frac{f(-h)-f(-2h)}{-h-(-2h)}}{0-(-2h)}\right)
-% \left( \frac{9}{2}\, h^3 \right) \\
-% &\quad =h\left(\frac{9}{4}\,f(-2h) + \frac{3}{4}\,f(0)\right) \quad .
-% \end{align*}
-% THERE IS SOMETHING THAT I DON'T LIKE WITH THIS QUESTION.
-% THE TRUNCATION ERROR HAS NOT BEEN COMPUTED.
-% }
-
 \begin{question}
 \subQ{a} Use polynomial interpolation to find an integration formula
 of the form
