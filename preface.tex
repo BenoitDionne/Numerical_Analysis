@@ -79,21 +79,18 @@ $p_\epsilon$ such that
 \]
 Stone-Weierstrass Theorem, Theorem~\ref{SWtheorem}, states that
 $p_\epsilon$ can always be found if $f$ is a continuous function on
-$[a,b]$.  The function $f$ is
-{\bfseries uniformly approximate}\index{Functions!Uniformly Approximate}
+$[a,b]$.  The function $f$ is {\bfseries uniformly approximate}
 by the polynomial $p_\epsilon$.  This will
 be studied in Chapter~\ref{chaptApproxB}.  This very short
 chapter is more theoretical.  Nevertheless, it is important to
 understand the limitations of polynomial interpolation and splines
-presented in Chapters~\ref{chaptInterA} and
-\ref{chaptInterB}.
+presented in Chapters~\ref{chaptInterA} and \ref{chaptInterB}.
 \item Given any small $\epsilon$, we could find a polynomial
 $p_\epsilon$ such that
 \[
 \int_a^b \,|f(x) - p_\epsilon(x)|^2 \dx{x} < \epsilon \ .
 \]
-The polynomial $p_\epsilon$ is a
-{\bfseries quadratic approximation}\index{Functions!Quadratic Approximation}
+The polynomial $p_\epsilon$ is a {\bfseries quadratic approximation}
 of the function $f$.  This will be studied in Chapter~\ref{chaptApproxB}.
 Again, this chapter is more theoretical but essential to understand
 discrete least square approximation in Chapter~\ref{ChaptApproxC}.
@@ -106,8 +103,7 @@ $p_\epsilon$ such that
 \[
 \sum_{i=0}^n \,|f(x_i) - p_\epsilon(x_i)|^2 < \epsilon \ .
 \]
-This is a {\bfseries discrete least square
-approximation}\index{Functions!Discrete Least Square Approximation}
+This is a {\bfseries discrete least square approximation}
 of the data set
 \[
 \{(x_i,f(x_i)) : i=0,1,2,\ldots, n\}
@@ -123,11 +119,9 @@ interval $[x_i,x_{i+1}]$.  The polynomials $p_i$ are determined from
 conditions at the endpoints $x_i$ that provide some degree of
 smoothness for the piecewise polynomial $p$ defined by $p(x) = p_i(x)$
 for $x\in [x_i, x_{i+1}]$.  The polynomial $p$ is called a
-{\bfseries spline}\index{Spline}.   We will present the
-{\bfseries cubic splines}\index{Functions!Cubic Spline
-Interpolation}, {\bfseries B\'ezier curves}\index{B\'ezier Curves} and
-{\bfseries B-Splines}\index{Functions!B-Spline Interpolation}
-in Sections~\ref{CSI}, \ref{BEZIER} and \ref{BSI} of
+{\bfseries spline}.   We will present the
+{\bfseries cubic splines}, {\bfseries B\'ezier curves} and
+{\bfseries B-Splines} in Sections~\ref{CSI}, \ref{BEZIER} and \ref{BSI} of
 Chapter~\ref{chaptInterB}.  These piecewise polynomial approximations
 are superior to the simple polynomial interpolation mentioned in the
 previous item.  Cubic splines, B\'ezier curves, ... are used in some
