@@ -1352,7 +1352,7 @@ for $r=k$, $k-1$, \ldots, $0$ to generate the table
 \begin{array}{*{4}{c@{\hspace{1em}}}c}
 C_j^k(t) & C_j^{k-1}(t) & \ldots & C_j^1(t) & C_j^0(t) \\[0.5em]
 C_{j-1}^k(t) & C_{j-1}^{k-1}(t) & \ldots & C_{j-1}^1(t) & \\ 
-\vdots & \vdots & \udots &  & \\
+\vdots & \vdots & \iddots &  & \\
 C_{j-k+1}^k(t) & C_{j-k+1}^{k-1}(t) & & & \\[0.5em]
 C_{j-k}^k(t) & & & & 
 \end{array}
@@ -1701,12 +1701,12 @@ for $t \in [t_j,t_{j+1}]$ and $0 \leq j \leq n-1$.  Hence,
 \]
 for $t \in [t_j,t_{j+1}]$.
 For $i = j$, we have
-\[
+\begin{align*}
 \left| f(t) - f(t_{i+2})\right|
-= \left| f(t) - f(t_{j+2})\right|
-\leq \left| f(t) - f(t_{j+1})\right| + \left| f(t_{j+1}) - f(t_{j+2})\right|
-\leq 2 \omega(f, \delta, [t_{-k},t_{n+1}])
-\]
+&= \left| f(t) - f(t_{j+2})\right|
+\leq \left| f(t) - f(t_{j+1})\right| + \left| f(t_{j+1}) - f(t_{j+2})\right| \\
+&\leq 2 \omega(f, \delta, [t_{-k},t_{n+1}])
+\end{align*}
 for $t \in [t_j,t_{j+1}]$.  For $i = j-1$, we have
 \[
 \left| f(t) - f(t_{i+2})\right|
@@ -1720,10 +1720,10 @@ for $t \in [t_j,t_{j+1}]$.  For $i = j-2$, we have
 \]
 for $t \in [t_j,t_{j+1}]$.  For $i = j-s$ with $3\leq s \leq k$, we have
 \begin{align*}
-&\left| f(t) - f(t_{i+2})\right|
-= \left| f(t) - f(t_{j-s+2})\right| \\
-& \quad \leq \left| f(t) - f(t_j)\right| + \left| f(t_j) - f(t_{j-1})\right|
-+ \ldots + \left| f(t_{j-s+3}) - f(t_{j-s+2})\right|
+\left| f(t) - f(t_{i+2})\right|
+&= \left| f(t) - f(t_{j-s+2})\right|
+\leq \left| f(t) - f(t_j)\right| + \left| f(t_j) - f(t_{j-1})\right| + \ldots \\
+&\qquad + \left| f(t_{j-s+3}) - f(t_{j-s+2})\right|
 \leq (s-1) \omega(f, \delta, [t_{-k},t_{n-1}])
 \end{align*}
 for $t \in [t_j,t_{j+1}]$.  In all cases, we have

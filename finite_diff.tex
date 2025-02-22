@@ -1254,13 +1254,13 @@ boundary of $R$ is defined as the set
 $\partial R  = \{ (x,0) : 0 \leq x \leq L \} \cup
 \{ (x,t) : x = 0 \ \text{or} \ L, \ \text{and} \ 0 \leq t \leq T \}$.
 The boundary of $R_\Delta$ is defined as the set
-\[
-\partial
-R_\Delta = \{ (x_i,0) : x_i = i \dtx{x} \ \text{for} \ 0 \leq i \leq N \}
-\cup 
+\begin{align*}
+\partial R_\Delta
+&= \{ (x_i,0) : x_i = i \dtx{x} \ \text{for} \ 0 \leq i \leq N \} \\
+& \qquad \cup 
 \{ (x,t_j) : x = 0 \ \text{or} \ L ,\ \text{and} \ t_j = j \dtx{t}
 \ \text{for} \ 1 \leq j \leq M \} \ .
-\]
+\end{align*}
 For the Dirichlet equation, the boundaries of $R$ and
 $R_\delta$ have the expected definition:
 $\partial R  = \{ (x,y) : y = c \ \text{or} \ d ,\ \text{and}
@@ -2349,18 +2349,18 @@ for all $k\in \ZZ$, where $a_s = a_{0,s}$ and $b_s = b_{0,s}$.
 
 Hence, proceeding as we have done for $Q_\alpha$, we have
 \begin{align*}
-\Phi^{-1}\left(A_\alpha(g_{j+1})\right) = \Phi^{-1}\left(B_\alpha(g_j)\right)
-& \Rightarrow
+&\Phi^{-1}\left(A_\alpha(g_{j+1})\right) = \Phi^{-1}\left(B_\alpha(g_j)\right) \\
+&\qquad  \Rightarrow
 \sum_{k\in \ZZ} \left(\sum_{s\in \ZZ} a_s\, g_{j+1}(s+k) \right) e^{kx i}
 = \sum_{k\in \ZZ} \left(\sum_{s\in \ZZ} b_s\, g_j(s+k) \right) e^{kx i} \\
-&\Rightarrow
+&\qquad \Rightarrow
 \sum_{s\in \ZZ} a_s
 \underbrace{\left( \sum_{r\in \ZZ}  g_{j+1}(r)
 e^{rx i}\right)}_{=\check{g}_{j+1}(x)}  e^{-sx i}
 = \sum_{s\in \ZZ} b_s
 \underbrace{\left( \sum_{r\in \ZZ}  g_j(r)
 e^{rx i}\right)}_{=\check{g}_j(x)}  e^{-sx i} \\
-&\Rightarrow
+&\qquad \Rightarrow
 \left( \sum_{s\in \ZZ} a_s e^{-sx i} \right) \check{g}_{j+1}(x)
 = \left( \sum_{s\in \ZZ} b_s e^{-sx i} \right) \check{g}_j(x)
 \end{align*}
@@ -2968,7 +2968,8 @@ treat this subject.
 
 \begin{rmk}
 There is a link between definition of stability given in
-Definition~\ref{fdmStableDefNo3} and Definition~\ref{fdmStableDefNo4}.
+Definition~\ref{fdmStableDefNo3} and \\
+Definition~\ref{fdmStableDefNo4}.
 
 Suppose that $w_{k,j} = g_j(k \dtx{x})$ for a continuous function
 $g_j:[0,2\pi]\to \RR$ for all $j$.  Then
@@ -3137,13 +3138,13 @@ Thus, the eigenvalues of $Q$ are
 Since $\beta = \alpha$ in (\ref{fdm_DE4}), the eigenvectors
 $\VEC{v}_k$ of $Q$ associated to the eigenvalue $\lambda_k$ will have
 the components
-\[
-v_{j,k} = \alpha \left(\left(\frac{c}{b}\right)^{j/2} e^{jk\pi\,i/(n+1)}
-- \left(\frac{c}{b}\right)^{j/2} e^{-jk\pi\,i/(n+1)}\right)
-= 2 \alpha \,i \left(\frac{c}{b}\right)^{j/2}
+\begin{align*}
+v_{j,k} &= \alpha \left(\left(\frac{c}{b}\right)^{j/2} e^{jk\pi\,i/(n+1)}
+- \left(\frac{c}{b}\right)^{j/2} e^{-jk\pi\,i/(n+1)}\right) \\
+&= 2 \alpha \,i \left(\frac{c}{b}\right)^{j/2}
 \sin\left(\frac{jk\pi}{n+1}\right) \quad, \quad
 0 < j < n+1 \ .
-\]
+\end{align*}
 Since $\alpha$ can be any non-null complex number, we may
 take $\alpha =-i/2$ to get real eigenvectors
 \[
@@ -3526,8 +3527,8 @@ e^{at_j}\cos(bx_{i-1})}{(\dtx{x})^2} \\
 - c^2\, \frac{e^{at_j}\cos(bx_i)\cos(b\dtx{x}) - 2 e^{at_j}\cos(bx_i) +
 e^{at_j}\cos(bx_i)\cos(b\dtx{x})}{(\dtx{x})^2} \\
 &= \frac{e^{at_j}\cos(bx_i)}{\dtx{t}} \left( e^{a\dtx{t}} - 1 + 2\alpha
-(1 - \cos(b\dtx{x})) \right)
-= \frac{e^{at_j}\cos(bx_i)}{\dtx{t}} \left( e^{a\dtx{t}} - 1 + 4\alpha
+(1 - \cos(b\dtx{x})) \right) \\
+&= \frac{e^{at_j}\cos(bx_i)}{\dtx{t}} \left( e^{a\dtx{t}} - 1 + 4\alpha
 \sin^2\left(\frac{b\dtx{x}}{2}\right) \right)
 \end{align*}
 for all $i$ and $j$, where $\alpha$ is defined in
@@ -3647,14 +3648,14 @@ for $m < k-1$.
 
 We have that
 \begin{align*}
-\left|w_{i,j}\right|
-&\geq |\beta_k|\, \left|1 - 4\alpha \right|^{2^{2k} S t_j/T}
+&\left|w_{i,j}\right|\\
+& \geq |\beta_k|\, \left|1 - 4\alpha \right|^{2^{2k} S t_j/T}
 - \sum_{m=0}^{k-1} |\beta_m|
 \left| \cos\left( \frac{ 2^m i \pi}{2^k}\right) \right|
 \, \left|1 - 4\alpha \sin^2\left( \frac{2^m\pi}{2^{k+1}} \right)
 \right|^{2^{2k} S t_j/T}
 - \sum_{m=k+1}^\infty |\beta_m| \\
-&\geq |\beta_k|\, \left|1 - 4\alpha \right|^{2^{2k} S t_j/T}
+& \geq |\beta_k|\, \left|1 - 4\alpha \right|^{2^{2k} S t_j/T}
 - \sum_{m=0}^{k-1} |\beta_m| - \sum_{m=k+1}^\infty |\beta_m|
 \geq |\beta_k|\, \left|1 - 4\alpha \right|^{2^{2k} S t_j/T}
 - \sum_{m=0}^\infty |\beta_m| \ .
@@ -3671,14 +3672,14 @@ $\displaystyle \sum_{m=1}^\infty|\beta_m|$ and
 $\displaystyle \sum_{m=1}^\infty\beta_m^2$ converge as required.
 
 Hence
-\[
+\begin{align*}
 \left|w_{i,j}\right|
-\geq  e^{-2^k} \left|1 - 4\alpha \right|^{2^{2k} S t_j/T}
+&\geq  e^{-2^k} \left|1 - 4\alpha \right|^{2^{2k} S t_j/T}
 - \sum_{m=0}^\infty \beta_m
-= e^{-2^k + 2^{2k} S t_j \ln|1-4\alpha|/T} - g(0) 
-\geq e^{-2^k + 2^{2k} S t_j/T} - g(0) 
+= e^{-2^k + 2^{2k} S t_j \ln|1-4\alpha|/T} - g(0) \\
+&\geq e^{-2^k + 2^{2k} S t_j/T} - g(0) 
 \to \infty
-\]
+\end{align*}
 as $k\to \infty$ because $|1 - 4\alpha|>1$.  Thus $w_{i,j}$ cannot
 approach $u(x_i,y_j)$ as $\min \{N,M\} \to \infty$.
 \end{egg}
@@ -3707,9 +3708,9 @@ P\left(u(x,t), \pdydx{u}{x}(x,t), \pdydx{u}{y}(x,t),
 \]
 and
 \begin{align*}
-P_\Delta\left(w_{i,j}, w_{i,j+1}, w_{i+1,j}, \ldots\right)
-&= \frac{w_{i,j+1} - w_{i,j}}{\dtx{t}} \\
-& \qquad - c^2 \left( \frac{w_{i+1,j} - 2w_{i,j} + w_{i-1,j}}{(\dtx{x})^2}
+&P_\Delta\left(w_{i,j}, w_{i,j+1}, w_{i+1,j}, \ldots\right) \\
+&\quad = \frac{w_{i,j+1} - w_{i,j}}{\dtx{t}}
+- c^2 \left( \frac{w_{i+1,j} - 2w_{i,j} + w_{i-1,j}}{(\dtx{x})^2}
 + \frac{w_{i+1,j+1} - 2w_{i,j+1} + w_{i-1,j+1}}{(\dtx{x})^2} \right)
 \end{align*}
 for the Crank-Nicolson scheme.  For this scheme, the local truncation is
@@ -3735,7 +3736,8 @@ note that
 + \frac{1}{2} \left( \frac{q(x_i,t_{j+1})-q(x_i,t_j)}{\dtx{t}}
 - \pdydx{q}{t}(x_i,t_{j+1}) \right) \\
 & \ = \frac{1}{2} \left( \frac{1}{2}\, \pdydxn{q}{t}{2}(x_i,t_j) \dtx{t}
-+ \frac{1}{6}\, \pdydxn{q}{t}{3}(x_i,\xi_{i,j}) (\dtx{t})^2 \right)
++ \frac{1}{6}\, \pdydxn{q}{t}{3}(x_i,\xi_{i,j}) (\dtx{t})^2 \right) \\
+&\qquad\quad
 +\frac{1}{2} \left( - \frac{1}{2}\, \pdydxn{q}{t}{2}(x_i,t_{j+1}) \dtx{t}
 + \frac{1}{6}\, \pdydxn{q}{t}{3}(x_i,\tilde{\xi}_{i,j}) (\dtx{t})^2 \right) \\
 & \ = \frac{1}{4} \left( \pdydxn{q}{t}{2}(x_i,t_j) \dtx{t}
@@ -3777,20 +3779,19 @@ for $\zeta_{i,j}, \eta_{i,j},\nu_{i,j},\mu_{i,j} \in ]x_{i-1},x_{i+1}[$.
 Thus, the local truncation error of the finite difference equation
 (\ref{fdm_sch11}) is
 \begin{align*}
-\tau_{i,j}(\dtx{x},\dtx{t},q)
-&= P_\Delta\left(q(x_i,t_j), q(x_i,t_{j+1}), q(x_{i+1},t_j), \ldots\right) \\
-&\quad -
+&\tau_{i,j}(\dtx{x},\dtx{t},q)
+= P_\Delta\left(q(x_i,t_j), q(x_i,t_{j+1}), q(x_{i+1},t_j), \ldots\right) \\
+&\quad \qquad -
 \frac{1}{2} \left(
 P\left(q(x_i,t_j), \pdydx{q}{x}(x_i,t_j), \pdydx{q}{y}(x_i,t_j),
 \pdydxn{q}{x}{2}(x_i,t_j), \ldots \right) \right. \\
-& \left.
-\quad\qquad + P\left(q(x_i,t_{j+1}), \pdydx{q}{x}(x_i,t_{j+1}),
+&\qquad \qquad \left. + P\left(q(x_i,t_{j+1}), \pdydx{q}{x}(x_i,t_{j+1}),
 \pdydx{q}{y}(x_i,t_{j+1}), \pdydxn{q}{x}{2}(x_i,t_{j+1}), \ldots \right)
 \right) \\
-&= \left( -\frac{1}{4}\, \pdydxn{q}{t}{3}(x_i,\breve{\xi}_j)
+&\quad = \left( -\frac{1}{4}\, \pdydxn{q}{t}{3}(x_i,\breve{\xi}_j)
 + \frac{1}{12}\, \pdydxn{q}{t}{3}(x_i,\xi_{i,j})
 + \frac{1}{12}\, \pdydxn{q}{t}{3}(x_i,\tilde{\xi}_{i,j}) \right) (\dtx{t})^2 \\
-&\quad
+&\quad \qquad
 - \frac{c^2}{48} \left( \pdydxn{q}{x}{4}\left(\zeta_{i,j},t_j\right)
 + \pdydxn{q}{x}{4}\left(\eta_{i,j},t_j\right)
 + \pdydxn{q}{x}{4}\left(\nu_{i,j},t_{j+1}\right)

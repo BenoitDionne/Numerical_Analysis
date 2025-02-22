@@ -597,7 +597,7 @@ If we assume that $|\lambda_3|< |\lambda_2|$, then
 {\displaystyle \sum_{i=2}^m
 \left(\frac{\lambda_i}{\lambda_1}\right)^j \phi(\VEC{v}_i)
 -\sum_{i=2}^m \left(\frac{\lambda_i}{\lambda_1}\right)^{j-1} \phi(\VEC{v}_i)} \\
-&\qquad\quad =\left(\frac{\lambda_2}{\lambda_1}\right)
+&\qquad =\left(\frac{\lambda_2}{\lambda_1}\right)
 \frac{\displaystyle \left(\frac{\lambda_2}{\lambda_1} - 1\right)
 \phi(\VEC{v}_2) +\sum_{i=3}^m \left(\frac{\lambda_i}{\lambda_1} - 1\right)
 \left(\frac{\lambda_i}{\lambda_2}\right)^j \phi(\VEC{v}_i)}
@@ -644,15 +644,15 @@ $\displaystyle \VEC{w}_j = \frac{1}{\|A^j\VEC{y}\|}\,A^j\VEC{y}$ converges
 to $\displaystyle \frac{1}{\|\VEC{v}_1\|}\, \VEC{v}_1$, an
 eigenvector of norm one associated to the eigenvalue $\lambda_1$,
 because
-\[
-\VEC{w}_j = \frac{1}{\|A^j\VEC{y}\|}\, A^j\VEC{y}
+\begin{align*}
+\VEC{w}_j &= \frac{1}{\|A^j\VEC{y}\|}\, A^j\VEC{y}
 = \displaystyle \left\| \sum_{i=1}^m \lambda_i^j \VEC{v}_i\right\|^{-1}
-\left( \sum_{i=1}^m \lambda_i^j \VEC{v}_i \right)
-= \frac{1}{\displaystyle \left\| \VEC{v}_1 + \psi_j \right\|}
+\left( \sum_{i=1}^m \lambda_i^j \VEC{v}_i \right) \\
+&= \frac{1}{\displaystyle \left\| \VEC{v}_1 + \psi_j \right\|}
 \left( \VEC{v}_1 + \psi_j \right)
 \to \frac{1}{\displaystyle \| \VEC{v}_1 \|} \, \VEC{v}_1
 \quad \text{as} \quad  j \to \infty \ .
-\]
+\end{align*}
 In general, the vector $\VEC{w}_j$ is getting ``more parallel'' to
 the direction of the eigenvector $\VEC{v}_1$ as $j \to \infty$.
 
@@ -697,8 +697,8 @@ We then have
 = \frac{\VEC{y}^\top A^{2j+1} \VEC{y}}
 {\VEC{y}^\top A^{2j} \VEC{y}}
 = \frac{\displaystyle \sum_{i=1}^m \lambda_i^{2j+1} \VEC{v}_i^\top\VEC{v}_i}
-{\displaystyle \sum_{i=1}^m \lambda_i^{2j} \VEC{v}_i^\top \VEC{v}_i}
-= \lambda_1 \left(
+{\displaystyle \sum_{i=1}^m \lambda_i^{2j} \VEC{v}_i^\top \VEC{v}_i} \\
+&= \lambda_1 \left(
 \frac{\displaystyle \VEC{v}_1^\top \VEC{v}_1 + \psi_{2j+1}}
 {\displaystyle \VEC{v}_1^\top \VEC{v}_1 + \psi_{2j}} \right)
 \rightarrow \lambda_1
@@ -1122,7 +1122,7 @@ Our goal is now to implement efficiently the previous theorem to get, for any
 given matrix $A$, an Hessemberg form conjugate to $A$.  The implementation
 presented is based on \cite{BT}.
 
-\subsection{Finding the vector $\VEC{w}_i$}
+\subsection{Finding the vector $\mathbf{w}_i$}
 
 The first task is to find an efficient way to find the vector $\VEC{w}_i$.
 Without lost of generality, we will assume that $\|\VEC{w}_i\|_2 = 1$.

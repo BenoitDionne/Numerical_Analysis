@@ -140,10 +140,10 @@ if and only if $\lambda_j = \ps{f}{\phi_j}$ for all $j$.
 We have
 \begin{align*}
 \left\| f - \sum_{j=1}^J \lambda_j \phi_j \right\|^2 &=
-\ps{f - \sum_{j=1}^J \lambda_j\phi_j}{f - \sum_{j=1}^J \lambda_j\phi_j}
-= \ps{f}{f} - \sum_{j=1}^J \overline{\lambda_i}\ps{f}{\phi_j}
+\ps{f - \sum_{j=1}^J \lambda_j\phi_j}{f - \sum_{j=1}^J \lambda_j\phi_j} \\
+& = \ps{f}{f} - \sum_{j=1}^J \overline{\lambda_i}\ps{f}{\phi_j}
 - \sum_{j=1}^J \lambda_j\ps{\phi}{f} + \sum_{_j=1}^J |\lambda_j|^2 \\
-&= \ps{f}{f} - \sum_{j=1}^J \overline{\lambda_j}\ps{f}{\phi_j}
+& = \ps{f}{f} - \sum_{j=1}^J \overline{\lambda_j}\ps{f}{\phi_j}
 - \sum_{j=1}^J \lambda_j \overline{\ps{f}{\phi}}
 + \sum_{j=1}^J |\lambda_j|^2 \\
 &= \ps{f}{f}
@@ -476,18 +476,14 @@ distinct real roots in $]a,b[$.
 \[
 P_{k+1}(x) = A_k(x-B_k)P_k(x) - C_k P_{k-1}(x)
 \]
-for $k \geq 0$, where
-\begin{align*}
-P_{-1} &= 0 \ , \quad
-A_k = \frac{\alpha_{k+1,k+1}}{\alpha_{k,k}} \quad \text{for} \quad k \geq 0 \ ,
-\quad B_k = \frac{\displaystyle \int_a^b xP_k^2(x)w(x) \dx{x}}
-{\displaystyle \int_a^b P_k^2(x)w(x)\dx{x}} \quad \text{for}
-\quad k\geq 0 \ , \\
-C_0 &= 0 \quad \text{and} \quad
+for $k \geq 0$, where $P_{-1} = 0$,
+$\displaystyle A_k = \frac{\alpha_{k+1,k+1}}{\alpha_{k,k}}$ for $k \geq 0$,\\
+$\displaystyle B_k = \frac{\displaystyle \int_a^b xP_k^2(x)w(x) \dx{x}}
+{\displaystyle \int_a^b P_k^2(x)w(x)\dx{x}}$ for $k\geq 0$,\\
+$C_0 = 0$ and $\displaystyle
 C_k = \frac{\displaystyle A_k\int_a^b P_k^2(x)w(x) \dx{x}}
-{\displaystyle A_{k-1} \int_a^b P_{k-1}^2(x)w(x) \dx{x}}
-\quad \text{for} \quad  k>0 \ .
-\end{align*}
+{\displaystyle A_{k-1} \int_a^b P_{k-1}^2(x)w(x) \dx{x}}$
+for $k>0$.
 \end{enumerate}
 \label{orthpoly}
 \end{theorem}

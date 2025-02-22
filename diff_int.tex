@@ -917,9 +917,9 @@ the truncation error is at most $\displaystyle \frac{e}{2n^2}$.  We
 choose $n$ such that $\displaystyle \frac{e}{2n^2} <10^{-4}$; namely, 
 $n> 116.5821991\ldots$.  With $n=117$, we get $h=1/117$ and
 \begin{align*}
-\int_{a}^{b}f(x)\dx{x} &\approx
+&\int_{a}^{b}f(x)\dx{x} \approx
 \frac{1}{234}\, \left(f(0)+2\,\sum_{j=1}^{116}\,f(j/117)+f(1)\right) \\
-&= \frac{1}{234}\, \left( 1 + 2e^{(1/117)^2}
+&\qquad = \frac{1}{234}\, \left( 1 + 2e^{(1/117)^2}
 +2e^{(2/117)^2}+ \ldots + 2e^{(115/117)^2}+2e^{(116/117)^2}
 + e \right) \approx 1.46268 \ .
 \end{align*}
@@ -1015,10 +1015,11 @@ choose $m$ such that $\displaystyle \frac{19e}{720 m^4} < 10^{-4}$;
 namely, $m > 5.175220955\ldots$.  With $m=6$, we get $h=1/12$
 and
 \begin{align*}
-\int_0^1\,e^{x^2}\dx{x} &\approx
+&\int_0^1\,e^{x^2}\dx{x} \approx
 \frac{1}{36}\left(f(0) + 2\sum_{j=1}^{5}\,f(j/6)
 + 4 \sum_{j=0}^{5}\,f((2j+1)/12) + f(1) \right) \\
-&= \frac{1}{36}\left( 1 + 2\left(e^{(2/12)^2} + \ldots + e^{(10/12)^2}\right)
+&\qquad
+= \frac{1}{36}\left( 1 + 2\left(e^{(2/12)^2} + \ldots + e^{(10/12)^2}\right)
 + 4\left( e^{(1/12)^2} + \ldots + e^{(11/12)^2}\right) +e \right)
 \approx 1.46267 \ .
 \end{align*}
@@ -1136,10 +1137,10 @@ namely, $m > 82.436\ldots$.  With $m=83$, we get $h=1/166$
 and
 \begin{align*}
 \int_{a}^{b} f(x)\dx{x}
-&\approx \frac{1}{83} \sum_{j=1}^{83}\,f((2j-1)/166)
-= \frac{1}{83} \left( e^{(1/166)^2} + e^{(3/166)^2} + \dots
-+e^{(163/166)^2}+e^{(165/166)^2} \right) \\
-& \approx 1.4626189 \ .
+&\approx \frac{1}{83} \sum_{j=1}^{83}\,f((2j-1)/166) \\
+&= \frac{1}{83} \left( e^{(1/166)^2} + e^{(3/166)^2} + \dots
++e^{(163/166)^2}+e^{(165/166)^2} \right)
+\approx 1.4626189 \ .
 \end{align*}
 \end{egg}
 

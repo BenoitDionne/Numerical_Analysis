@@ -1,4 +1,4 @@
-\chapter[Initial Value Problems]{Initial Value Problems for Ordinary Differential Equations}
+\chapter[Initial Value Problems]{Initial Value Problems for Ordinary Differential Equations} 
 \label{chaptInitVal}
 
 \section{Introduction to Ordinary Differential Equations}
@@ -3049,13 +3049,14 @@ for some $\xi_i \in [t_{i-3},t_{i+1}]$ and $3 \leq i < N$.
 We had to use the Mean Value Theorem for Integrals, Theorem~\ref{Th4},
 to get the discretization error $(251/720)\,y^{(5)}(\xi_i)\,h^5$; namely,
 \begin{align*}
-\int_0^1 (-1)^4 \binom{-s}{4} g^{(4)}(t_i+\eta_i(s)h) \dx{s}
-&=
+&\int_0^1 (-1)^4 \binom{-s}{4} g^{(4)}(t_i+\eta_i(s)h) \dx{s} \\
+&\qquad =
 \int_0^1 (-1)^4 \frac{(-s)(-s-1)(-s-2)(-s-3)}{4!}
 y^{(5)}(t_i+\eta_i(s)h) \dx{s} \\
-&= \frac{1}{24} \int_0^1 \underbrace{s(s+1)(s+2)(s+3)}_{\geq 0} \,
+&\qquad = \frac{1}{24} \int_0^1 \underbrace{s(s+1)(s+2)(s+3)}_{\geq 0} \,
 y^{(5)}(t_i+\eta_i(s)h) \dx{s} \\
-&= \frac{1}{24}\, y^{(5)}(t_i+\tilde{\eta}_ih) \int_0^1 s(s+1)(s+2)(s+3) \dx{s}
+&\qquad
+= \frac{1}{24}\, y^{(5)}(t_i+\tilde{\eta}_ih) \int_0^1 s(s+1)(s+2)(s+3) \dx{s}
 \end{align*}
 for some $\tilde{\eta}_i \in [-3,1]$.
 If we let $\xi_i = t_i+\tilde{\eta}_i h$ and compute the integral, we get\\
@@ -3348,25 +3349,25 @@ w_{i+1} = w_{i-q} +
 for the implicit multistep methods.  The two integrals above can be
 computed using the substitution $t = t_i + sh$.  We get respectively
 \begin{align*}
-\int_{t_{i-q}}^{t_{i+1}} \prod_{\substack{k=i-m\\k\neq j}}^i
+&\int_{t_{i-q}}^{t_{i+1}} \prod_{\substack{k=i-m\\k\neq j}}^i
 \left(\frac{t-t_k}{t_j-t_k}\right) \dx{t}
-&= h\int_{-q}^1 \prod_{\substack{k=0\\k\neq i-j}}^m
-\left(\frac{t_i+sh -t_{i-k}}{t_{i-(i-j)}-t_{i-k}}\right) \dx{s}
-= h \int_{-q}^1 \prod_{\substack{k=0\\k\neq i-j}}^m
-\left(\frac{s+k}{-(i-j)+k}\right) \dx{s} \\
-& = \frac{h (-1)^{i-j}}{(i-j)!\,(m-i+j)!}
+= h\int_{-q}^1 \prod_{\substack{k=0\\k\neq i-j}}^m
+\left(\frac{t_i+sh -t_{i-k}}{t_{i-(i-j)}-t_{i-k}}\right) \dx{s} \\
+&\qquad = h \int_{-q}^1 \prod_{\substack{k=0\\k\neq i-j}}^m
+\left(\frac{s+k}{-(i-j)+k}\right) \dx{s}
+= \frac{h (-1)^{i-j}}{(i-j)!\,(m-i+j)!}
 \int_{-q}^1 \prod_{\substack{k=0\\k\neq i-j}}^m (s+k) \dx{s}
 \end{align*}
 after substituting $k$ by $i-k$ and noting that $0 \leq i-j\leq m$,
 and
 \begin{align*}
-&\int_{t_{i-q}}^{t_{i+1}} \prod_{\substack{k=i-m\\k\neq j}}^{i+1}
+\int_{t_{i-q}}^{t_{i+1}} \prod_{\substack{k=i-m\\k\neq j}}^{i+1}
 \left(\frac{t-t_k}{t_j-t_k}\right) \dx{t}
-= h\int_{-q}^1 \prod_{\substack{k=0\\k\neq i-j+1}}^{m+1}
+&= h\int_{-q}^1 \prod_{\substack{k=0\\k\neq i-j+1}}^{m+1}
 \left(\frac{t_i+sh -t_{i-k+1}}{t_{i-(i-j)}-t_{i-k+1}}\right) \dx{s} \\
-&\qquad = h \int_{-q}^1 \prod_{\substack{k=0\\k\neq i-j+1}}^{m+1}
-\left(\frac{s+k-1}{-(i-j+1)+k}\right) \dx{s}
-= \frac{h (-1)^{i-j+1}}{(i-j+1)!\,(m-i+j)!}
+&= h \int_{-q}^1 \prod_{\substack{k=0\\k\neq i-j+1}}^{m+1}
+\left(\frac{s+k-1}{-(i-j+1)+k}\right) \dx{s} \\
+&= \frac{h (-1)^{i-j+1}}{(i-j+1)!\,(m-i+j)!}
 \int_{-q}^1 \prod_{\substack{k=0\\k\neq i-j+1}}^{m+1} (s+k-1) \dx{s} \ .
 \end{align*}
 after substituting $k$ by $i-k+1$ and noting that
@@ -3416,19 +3417,19 @@ $f(t_i,y(t_i)) = y'(t_i)$, we get
 -h\,\sum_{j=-1}^m\,b_j\,f(t_i-jh,y(t_i-jh)) \\
 &\quad =
 \sum_{k=0}^\infty\,\frac{1}{k!}\,y^{(k)}(t_i)\,h^k - \sum_{j=0}^m\,a_j
-\left( \sum_{k=0}^\infty\,\frac{1}{k!}\,y^{(k)}(t_i)\,(-j)^kh^k \right)
--h \sum_{j=-1}^m\,b_j
+\left( \sum_{k=0}^\infty\,\frac{1}{k!}\,y^{(k)}(t_i)\,(-j)^kh^k \right) \\
+&\quad\quad -h \sum_{j=-1}^m\,b_j
 \left(\sum_{k=0}^\infty\,\frac{1}{k!}\,y^{(k+1)}(t_i)\,(-j)^kh^k \right)  \\
 &\quad = \left( 1 - \sum_{j=0}^m\,a_j \right) y(t_i) +
 \left( 1 + \sum_{j=0}^m\,a_j\, j - \sum_{j=-1}^m b_j \right) y'(t_i) h \\
-&\quad\qquad
+&\quad\quad
 + \sum_{k=2}^\infty\,\frac{1}{k!}\,\left(1 - (-1)^k\sum_{j=0}^m\,a_j\,j^k\right) 
 y^{(k)}(t_i)\,h^k 
 -h\sum_{k=1}^\infty\,\frac{1}{k!}\,\left( (-1)^k\sum_{j=-1}^m\,b_j\,
 j^k\right) y^{(k+1)}(t_i)\,h^k\\
 &\quad = \left( 1 - \sum_{j=0}^m\,a_j \right) y(t_i) +
 \left( 1 + \sum_{j=0}^m\,a_j\, j - \sum_{j=-1}^m b_j \right) y'(t_i) h \\
-&\quad\qquad
+&\quad\quad
 + \sum_{k=2}^\infty\,\frac{1}{k!}\,\bigg( 1 - (-1)^k \sum_{j=0}^m\,a_j\,j^k
 - (-1)^{k-1} k \sum_{j=-1}^m\,b_j\, j^{k-1}\bigg) y^{(k)}(t_i)\,h^k \ .
 \end{align*}
@@ -3569,7 +3570,7 @@ and the multistep method is
 w_{i+1} = w_i + h \left(
 \frac{3}{8}\,f(t_{i+1},w_{i+1}) + \frac{19}{24}\,f(t_i,w_i)
 -\frac{5}{24} f(t_{i-1},w_{i-1}) + \frac{1}{24}f(t_{i-2},w_{i-2}) \right)
-\ , \ \leq i < N \ .
+, \ \leq i < N .
 \]
 This is our famous Adams-Moulton method of order four.
 \end{egg}
@@ -4406,13 +4407,13 @@ We have that
   \| \VEC{K} \|_1 \leq L \|\VEC{W}\|_1 + L h \|B\|_1 \|\VEC{K}\|_1 \ .
 \]
 Thus
-\[
-\left| K_j^{[1]}  - K_j^{[2]}  \right| \leq
-\|\VEC{K}\|_1 \leq \frac{L}{1-L h\|B\|_1} \|\VEC{W}\|_1
-\leq 2 L \|\VEC{W}\|_1
-= 2 L s \left| w_i^{[1]} - w_i^{[2]} \right|
+\begin{align*}
+\left| K_j^{[1]}  - K_j^{[2]}  \right|
+&\leq \|\VEC{K}\|_1 \leq \frac{L}{1-L h\|B\|_1} \|\VEC{W}\|_1
+\leq 2 L \|\VEC{W}\|_1 \\
+&= 2 L s \left| w_i^{[1]} - w_i^{[2]} \right|
 \quad , \quad 1 \leq j \leq s \ ,
-\]
+\end{align*}
 if we assume that $h$ is small enough to have $L h\|B\|_1 < 1/2$
 \footnote{Any value smaller than $1$ could have been used.}.
 Finally, we have that
@@ -5006,13 +5007,13 @@ for $0<k<m$.  Hence
 for $0<k<m$.  We have shown that
 $\{ v_i^{[k]} \}_{i=0}^\infty$ with $v_i = i(i-1)\ldots(i-k+1)r^i$ and
 $0 < k <m$ are solutions for (\ref{homFDP}).  Since
-\[
+\begin{align*}
 i \prod_{n=1}^N (i - a_n)
-= i^{N+1} + \underbrace{\left(-\sum_{n_1=1}^N a_{n_1}\right)}_{=A_1}  i^N
+&= i^{N+1} + \underbrace{\left(-\sum_{n_1=1}^N a_{n_1}\right)}_{=A_1}  i^N
 + \underbrace{\left( (-1)^2 \sum_{\substack{n_1,n_2=1 \\ n_1 \neq n_2}}^N
-a_{n_1}a_{n_2}\right)}_{=A_2} i^{N-1}  + \ldots
-+ \underbrace{\left( (-1)^N\prod_{n_1=1}^N a_{n_1}\right)}_{=A_N} i \ ,
-\]
+a_{n_1}a_{n_2}\right)}_{=A_2} i^{N-1}  + \ldots \\
+&\qquad + \underbrace{\left( (-1)^N\prod_{n_1=1}^N a_{n_1}\right)}_{=A_N} i \ ,
+\end{align*}
 we have that
 \[
 i(i-1)\ldots(i-k+1) = i^k + \sum_{j=1}^{k-1}A_j i^{k-j}
@@ -5874,12 +5875,12 @@ B = \begin{pmatrix} \beta_{1,1} & \beta_{1,2} & \ldots & \beta_{1,s} \\
 \vdots & \vdots & \ddots & \vdots \\
 \beta_{s,1} & \beta_{s,2} & \ldots & \beta_{s,s}
 \end{pmatrix}
-\ , \quad
+\ , \
 \VEC{c} = \begin{pmatrix} \gamma_1 \\ \gamma_2 \\ \vdots \\ \gamma_s
 \end{pmatrix}
-\ , \quad
+\ , \
 \VEC{K} = \begin{pmatrix} K_1 \\ K_2 \\ \vdots \\ K_s \end{pmatrix}
-\ , \quad
+\ , \
 \VEC{u} = \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix}
 \quad \text{and} \quad
 \VEC{w}_i = w_i \VEC{u} \ .
@@ -6101,17 +6102,18 @@ It follows from (\ref{RKstabMotivC}) with $i=0$ that
 (\ref{RKstabMotivD}) is true for $i=1$.  Suppose that (\ref{RKstabMotivD})
 is true. then (\ref{RKstabMotivC}) and the induction hypothesis imply that
 \begin{align*}
-|y_{i+1}-u_{i+1}| &\leq |r(h\mu)|\,|y_i-u_i| + |h\tau_{i+1}(h)| + |\delta_i| \\
-&\leq |r(h\mu)| \left(|r(h\,u)|^i |y_0-u_0| + \sum_{j=0}^{i-1}
+&|y_{i+1}-u_{i+1}| \leq |r(h\mu)|\,|y_i-u_i| + |h\tau_{i+1}(h)| + |\delta_i| \\
+&\qquad
+\leq |r(h\mu)| \left(|r(h\,u)|^i |y_0-u_0| + \sum_{j=0}^{i-1}
 |r(h\mu)|^j \big( |h\tau_{i-j}(h)| + |\delta_{i-1-j}|\big) \right)
 + |h \tau_{i+1}(h)| + |\delta_i| \\
-&= |r(h\,u)|^{i+1} |y_0-u_0| + \sum_{j=0}^{i-1}
+&\qquad = |r(h\,u)|^{i+1} |y_0-u_0| + \sum_{j=0}^{i-1}
 |r(h\mu)|^{j+1} \big(|h\tau_{i-j}(h)| + |\delta_{i-1-j}|\big)
 + |h\tau_{i+1}(h)| + |\delta_i| \\
-&= |r(h\,u)|^{i+1} |y_0-u_0| + \sum_{j=1}^i
+&\qquad = |r(h\,u)|^{i+1} |y_0-u_0| + \sum_{j=1}^i
 |r(h\mu)|^j \big(|h\tau_{i+1-j}(h)| + |\delta_{i-j}|\big)
 + |h\tau_{i+1}(h)| + |\delta_i| \\
-&= |r(h\,u)|^{i+1} |y_0-u_0| + \sum_{j=0}^i
+&\qquad = |r(h\,u)|^{i+1} |y_0-u_0| + \sum_{j=0}^i
 |r(h\mu)|^j \big(|h\tau_{i+1-j}(h)| + |\delta_{i-j}|\big)
 \end{align*}
 This is (\ref{RKstabMotivD}) with $i$ replaced by $i+1$.  Thus completing
@@ -6187,15 +6189,15 @@ $\VEC{c}= \begin{pmatrix} 1/4 \\ 3/4 \end{pmatrix}$.  Thus,
 $\Id-z B = \begin{pmatrix} 1-z/4 & z/4 \\ -z/4 & 1-5z/12 \end{pmatrix}$
 and 
 \begin{align*}
-r(z) &= 1 +z\VEC{c}^\top(\Id-z B)^{-1}\VEC{u}
-= 1+ \frac{z}{(1-z/4)(1-5z/12) + z^2/16}
+r(z) &= 1 +z\VEC{c}^\top(\Id-z B)^{-1}\VEC{u} \\
+&= 1+ \frac{z}{(1-z/4)(1-5z/12) + z^2/16}
 \,\VEC{c}^\top
 \begin{pmatrix}
 1-5z/12 & -z/4 \\
 z/4 & 1 - z/4
 \end{pmatrix}
-\VEC{u} \\
-&= \frac{1+z/3}{1-2z/3+ z^2/6} \ .
+\VEC{u}
+= \frac{1+z/3}{1-2z/3+ z^2/6} \ .
 \end{align*}
 To show that this method is A-stable, we show that
 $|r(z)| < 1$ for $z=\rho e^{i\theta}$ with $\rho>0$ and
@@ -7354,8 +7356,8 @@ commute, we get
 Q^{-1} \VEC{w}_0 \ .
 \end{align*}
 We finally get
-\[
-\VEC{w}_{i+1} =
+\begin{align*}
+\VEC{w}_{i+1} &=
 \begin{pmatrix}
 \left(\displaystyle \frac{1-\lambda h/2}{1+\lambda h/2}\right)^{i+1}
 & \displaystyle
@@ -7364,9 +7366,9 @@ We finally get
 \\
 0 &                                                                     
 \left(\displaystyle \frac{1- h/20}{1+ h/20}\right)^{i+1}
-\end{pmatrix} \VEC{w}_0
-\quad , \quad 0 \leq i < N \ .
-\]
+\end{pmatrix} \VEC{w}_0 \ , \\
+&\hspace{30em} 0 \leq i < N \ .
+\end{align*}
 Independently of the choice of $h$, we have that
 $\VEC{w}_i \rightarrow \VEC{0}$ as $i \rightarrow \infty$ because
 $\displaystyle \bigg| \frac{1-\lambda h/2}{1+\lambda h/2} \bigg| < 1$
@@ -7386,20 +7388,20 @@ to solve stiff differential equations.
 \begin{question}
 Show that the following initial value problems are well posed.
 \begin{center}
-\begin{tabular}{*{1}{l@{\hspace{0.4em}}l@{\hspace{2.7em}}}l@{\hspace{0.4em}}l}
+\begin{tabular}{*{1}{l@{\hspace{0.4em}}l@{\hspace{2em}}}l@{\hspace{0.4em}}l}
 \subQ{a} &
 $\displaystyle \begin{array}{rl}
-y'(t) &= 2y(t)+2 \quad , \quad 0 \leq t \leq 1 \\
+y'(t) &= 2y(t)+2 \ , \ 0 \leq t \leq 1 \\
 y(0) &= 1
 \end{array}$ &
 \subQ{b} &
 $\displaystyle \begin{array}{rl}
-y'(t) &= t^2 y(t) + 1   \quad , \quad 0 \leq t \leq 1 \\
+y'(t) &= t^2 y(t) + 1 \ , \ 0 \leq t \leq 1 \\
 y(0) &= 1
 \end{array}$  \\[1em]
 \subQ{c} &
 $\displaystyle \begin{array}{rl}
-y'(t) &= t^2 \sin(y(t)) + y(t)   \quad , \quad  0 \leq t \leq 1 \\
+y'(t) &= t^2 \sin(y(t)) + y(t) \ , \ 0 \leq t \leq 1 \\
 y(0) &= 1
 \end{array}$ & &
 \end{tabular}

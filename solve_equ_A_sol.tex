@@ -73,14 +73,14 @@ Hence, the relative error satisfies
 \frac{|x_n-r|}{|r|} < \frac{(b_0-a_0)}{2^n\,|r|}
 \end{equation}
 If $n$ satisfies (\ref{first}), we have that
-\[
-\ln(2^n) = n \ln(2) \geq \ln(b_0-a_0)-\ln(\epsilon)-\ln(a_0)
-= \ln\left(\frac{b_0-a_0}{\epsilon \, a_0}\right)
-\Rightarrow 
+\begin{align*}
+\ln(2^n) &= n \ln(2) \geq \ln(b_0-a_0)-\ln(\epsilon)-\ln(a_0)
+= \ln\left(\frac{b_0-a_0}{\epsilon \, a_0}\right) \\
+&\qquad \Rightarrow 
 2^n \geq \frac{b_0-a_0}{\epsilon \, a_0}
 \Rightarrow
 \epsilon\, a_0 \geq \frac{b_0-a_0}{ 2^n} \ .
-\]
+\end{align*}
 Hence, from (\ref{second}), we get
 \[
 \frac{|x_n-r|}{|r|} < \frac{\epsilon\,a_0}{|r|} \leq \epsilon

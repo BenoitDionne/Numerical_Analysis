@@ -1,4 +1,4 @@
-\chapter{Iterative Methods to Solve Systems of Linear  Equations}
+\chapter{Iterative Methods to Solve Systems of Linear Equations}
 \label{chaptSeqB}
 
 Our goal is to numerically solve the system of linear equations
@@ -1151,16 +1151,16 @@ Suppose that $A$ is a \nn complex matrix which is strictly
 positive definite.  Let $A = D - U - L$, where $D$, $U$ and $L$ are
 defined in (\ref{ADUL}).  Then, $D$ is strictly positive definite
 because it is obviously Hermitian and 
-\[
-\VEC{x}^{\ast} D \VEC{x} =
+\begin{align*}
+\VEC{x}^{\ast} D \VEC{x} &=
 \left(\sum_{j=1}^n\overline{x}_j\VEC{e}_j^\ast \right) D
 \left(\sum_{i=1}^n x_i\VEC{e}_i \right)
 = \sum_{j=1}^n \sum_{i=1}^n \overline{x}_j x_i
 \underbrace{\ \VEC{e}_j^\ast D \VEC{e}_i\ }_{\substack{=0\text{ for }
-i\neq j\\=a_{j,j} \text{ for } i=j}}
-= \sum_{j=1}^n \overline{x}_j x_j a_{j,j}
+i\neq j\\=a_{j,j} \text{ for } i=j}} \\
+&= \sum_{j=1}^n \overline{x}_j x_j a_{j,j}
 = \sum_{j=1}^n |x_j|^2 a_{j,j} > 0
-\]
+\end{align*}
 for all $\VEC{x} \neq \VEC{0}$.
 \label{spd_rmk}
 \end{rmk}

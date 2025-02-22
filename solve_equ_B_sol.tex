@@ -10,15 +10,14 @@ for all $\VEC{x}$.  The sum of non-negative terms is non-negative.
 Since a sum of non-negative terms is null if and only if each term is
 null, $2^{-i}|x_i| = 0$ for all $i$ and therefore $x_i = 0$ for all $i$.
 \item For $\lambda \in \RR$, we have
-\[
+\begin{align*}
 \|\lambda \VEC{x}\|
-= \|
-\begin{pmatrix}
+&= \| \begin{pmatrix}
 \lambda x_1 & \lambda x_2 & \ldots & \lambda x_n \end{pmatrix}^\top\|
 = \sum_{i=1}^n 2^{-i}|\lambda x_i|
-= \sum_{i=1}^n 2^{-i}|\lambda|\, |x_i|
-= |\lambda|\,\sum_{i=1}^n 2^{-i} |x_i| = |\lambda|\, \|\VEC{x}\| \ .
-\]
+= \sum_{i=1}^n 2^{-i}|\lambda|\, |x_i| \\
+&= |\lambda|\,\sum_{i=1}^n 2^{-i} |x_i| = |\lambda|\, \|\VEC{x}\| \ .
+\end{align*}
 \item For any $\VEC{x}$ and $\VEC{y}$ in $\RR^n$, we have
 \begin{align*}
 \|\VEC{x}+\VEC{y}\|
@@ -267,13 +266,13 @@ Theorem~\ref{convth} to show that these three methods converge.
 Since $r_R < r_{GS} < r_J$, we expect that the relaxation method will
 be the method that converges the fastest to the equilibrium, followed
 by the Gauss-Seidel iterative method.  The slowest method should be
-the Jacobi Iterative Method.
+the Jacobi iterative method.
 
 We start all three iterations with the vector
 $\VEC{x}_0 = (1 \ 1 \ 1 \ 1 \ 1 \ 1 \ 1 \ 1)^\top$.
 
 \subQ{a} The solution (rounded to seven significant digits) found with
-the Jacobi Iterative Method is
+the Jacobi iterative method is
 \[
 \VEC{F} \approx \begin{pmatrix}
 10000 & -13660.25 & 13660.25 & 19318.52 &  -23660.25 & 0 &
@@ -319,7 +318,7 @@ x_{n+1,2} &= \frac{1}{5} \left(2-x_{n,1} - x_{n,3} + x_{n,4}\right)\\
 x_{n+1,3} &= \frac{1}{6} \left(-14-2x_{n,1} + x_{n,2} - 2x_{n,4}\right)\\
 x_{n+1,4} &= \frac{1}{5} \left(25+x_{n,1} - x_{n,2} +2 x_{n,3}\right)
 \end{align*}
-After $25$ iterations, the Jacobi Iterative Method yields the
+After $25$ iterations, the Jacobi iterative method yields the
 following approximation of the solution of
 $A\VEC{x} = \VEC{b}$ with an accuracy of $10^{-5}$.
 \[
@@ -445,7 +444,7 @@ $\{\VEC{x}_k\}_{k=0}^\infty$ doesn't converge for all $\VEC{x}_0$.
 }
 
 \solution{\SOL}{\ref{solvBQ12}}{
-\subQ{a} Jacobi Iterative Method is of the form
+\subQ{a} Jacobi iterative method is of the form
 $\VEC{x}_{k+1} = T \VEC{x_k} + \VEC{c}$,
 where $\VEC{c}=D^{-1}\VEC{b}$ and $T=D^{-1}(L+U)=D^{-1}U$ is
 a strictly upper-triangular matrix (only $0$ on the diagonal).  Since
@@ -460,28 +459,26 @@ $\displaystyle U = \begin{pmatrix} 0 & -3 & -5 \\ 0 & 0 & -5 \\ 0 & 0
 Thus $T = U$.  With
 $\displaystyle \VEC{x}_0 = \begin{pmatrix} 1 & 0 & 0 \end{pmatrix}^\top$,
 we get
-\begin{align*}
-\VEC{x}_1 &=
+$\displaystyle \VEC{x}_1 =
 \begin{pmatrix} 0 & -3 & -5 \\ 0 & 0 & -5 \\ 0 & 0 & 0 \end{pmatrix}
 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} +
 \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} =
-\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \ , \quad
-\VEC{x}_2 =
+\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$,
+$\displaystyle \VEC{x}_2 =
 \begin{pmatrix} 0 & -3 & -5 \\ 0 & 0 & -5 \\ 0 & 0 & 0 \end{pmatrix}
 \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} +
 \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} =
-\begin{pmatrix} -7 \\ -4 \\ 1 \end{pmatrix} \ , \\ 
-\VEC{x}_3 &=
+\begin{pmatrix} -7 \\ -4 \\ 1 \end{pmatrix}$,
+$\displaystyle \VEC{x}_3 =
 \begin{pmatrix} 0 & -3 & -5 \\ 0 & 0 & -5 \\ 0 & 0 & 0 \end{pmatrix}
 \begin{pmatrix} -7 \\ -4 \\ 1 \end{pmatrix} +
 \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} =
-\begin{pmatrix} 8 \\ -4 \\ 1 \end{pmatrix} \ , \quad
-\VEC{x}_4 =
+\begin{pmatrix} 8 \\ -4 \\ 1 \end{pmatrix}$ and
+$\displaystyle \VEC{x}_4 =
 \begin{pmatrix} 0 & -3 & -5 \\ 0 & 0 & -5 \\ 0 & 0 & 0 \end{pmatrix}
 \begin{pmatrix} 8 \\ -4 \\ 1 \end{pmatrix} +
 \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} =
-\begin{pmatrix} 8 \\ -4 \\ 1 \end{pmatrix} \ .
-\end{align*}
+\begin{pmatrix} 8 \\ -4 \\ 1 \end{pmatrix}$.
 The solution is
 $\displaystyle \begin{pmatrix} 8 & -4 & 1 \end{pmatrix}^\top$.
 

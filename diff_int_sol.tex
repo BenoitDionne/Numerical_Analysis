@@ -131,8 +131,8 @@ L(f) &= L_{h/2}^1(f) + 2 \sum_{j=1}^\infty a_j\,\left(\frac{h}{2}\right)^{2j-1}
 - \sum_{j=1}^\infty a_j\,h^{2j-1} \\
 &= L_{h/2}^1(f) + \sum_{j=1}^\infty \left( 2
 a_j\,\left(\frac{h}{2}\right)^{2j-1}
-- 2^{2j-1} a_j\,\left(\frac{h}{2}\right)^{2j-1}\right)
-= L_{h/2}^1(f) + \sum_{j=2}^\infty \frac{2 - 2^{2j-1}}{2-1}\, a_j\,
+- 2^{2j-1} a_j\,\left(\frac{h}{2}\right)^{2j-1}\right) \\
+&= L_{h/2}^1(f) + \sum_{j=2}^\infty \frac{2 - 2^{2j-1}}{2-1}\, a_j\,
 \left(\frac{h}{2}\right)^{2j-1}  \ ,
 \end{align*}
 where
@@ -162,28 +162,31 @@ for $k\geq m$.
 If we subtract (\ref{questB3}) from $2^{2m+1}$ times (\ref{questB4})
 and divide by $2^{2m+1}-1$, we get
 \begin{align*}
-&L(f) = L_{h/2^{k+1}}^{m+1}(f) \\
+L(f) &= L_{h/2^{k+1}}^{m+1}(f) \\
 &\quad + \frac{1}{2^{2m+1}-1}
 \bigg( 2^{2m+1} \sum_{j=m+1}^\infty
 \frac{(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
 {(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\, a_j\, \left(\frac{h}{2^{k+1}}\right)^{2j-1} \\
-& \quad -\sum_{j=m+1}^\infty
+&\quad -\sum_{j=m+1}^\infty
 \frac{(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
 {(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\, a_j\, \left(\frac{h}{2^k}\right)^{2j-1}
 \bigg) \\
-&= L_{h/2^{k+1}}^{m+1}(f) + \frac{1}{2^{2m+1}-1}
+&= L_{h/2^{k+1}}^{m+1}(f) \\
+&\quad + \frac{1}{2^{2m+1}-1}
 \bigg( 2^{2m+1} \sum_{j=m+1}^\infty
 \frac{(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
 {(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\, a_j\, \left(\frac{h}{2^{k+1}}\right)^{2j-1} \\
-& \quad -\sum_{j=m+1}^\infty
+&\quad -\sum_{j=m+1}^\infty
 2^{2j-1} \,\frac{(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
 {(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\, a_j\, \left(\frac{h}{2^{k+1}}\right)^{2j-1}
 \bigg) \\
-&= L_{h/2^{k+1}}^{m+1}(f) + \sum_{j=m+1}^\infty
+&= L_{h/2^{k+1}}^{m+1}(f) \\
+&\quad + \sum_{j=m+1}^\infty
 \frac{(2^{2m+1} - 2^{2j-1})(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
 {(2^{2m+1}-1)(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\,
 a_j\, \left(\frac{h}{2^{k+1}}\right)^{2j-1} \\
-&= L_{h/2^{k+1}}^{m+1}(f) + \sum_{j=m+2}^\infty
+&= L_{h/2^{k+1}}^{m+1}(f) \\
+&\quad + \sum_{j=m+2}^\infty
 \frac{(2^{2m+1} - 2^{2j-1})(2^{2m-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
 {(2^{2m+1}-1)(2^{2m-1}-1)\ldots(2^3-1)(2-1)}\,
  a_j\, \left(\frac{h}{2^{k+1}}\right)^{2j-1}\ ,
@@ -231,8 +234,8 @@ $2^3-1$, we get
 - \sum_{j=1}^\infty a_j\,h^{3j}\right) \\
 &= L_{h/2}^1(f) + \frac{1}{2^3-1} \sum_{j=1}^\infty \left( 2^3
   a_j\,\left(\frac{h}{2}\right)^{3j}
-- 2^{3j} a_j\,\left(\frac{h}{2}\right)^{3j}\right)
-= L_{h/2}^1(f) + \sum_{j=2}^\infty \frac{2^3 - 2^{3j}}{2^3-1}\, a_j\,
+- 2^{3j} a_j\,\left(\frac{h}{2}\right)^{3j}\right) \\
+&= L_{h/2}^1(f) + \sum_{j=2}^\infty \frac{2^3 - 2^{3j}}{2^3-1}\, a_j\,
 \left(\frac{h}{2}\right)^{3j}  \ ,
 \end{align*}
 where
@@ -373,12 +376,12 @@ $\displaystyle \frac{3}{m^2} < 10^{-5}$; namely,
 $m > \sqrt{ 3 \times 10^5} \approx 547.72$.
 
 With $m=548$, we get
-\[
-\int_1^3 \left( x \ln(x) + \frac{x^3}{24} - 5x^2\right) \dx{x} \approx
+\begin{align*}
+\int_1^3 \left( x \ln(x) + \frac{x^3}{24} - 5x^2\right) \dx{x} & \approx
 \frac{1}{274} \, \sum_{i=1}^{548} 
-\left( x_{2i-1} \ln(x_{2i-1}) + \frac{x_{2i-1}^3}{24} - 5x_{2i-1}^2 \right)
-\approx -39.5562347658 \ .
-\]
+\left( x_{2i-1} \ln(x_{2i-1}) + \frac{x_{2i-1}^3}{24} - 5x_{2i-1}^2 \right) \\
+&\approx -39.5562347658 \ .
+\end{align*}
 }
 
 \solution{\SOL}{\ref{diffQ8}}{
@@ -400,18 +403,17 @@ Hence,
 \leq \frac{8}{3^6\,m^4} \, 3^{-11/3} = \frac{8}{3^{29/3}\,m^4}
 \]
 because $2 \leq \xi \leq 4$.  We chose $m$ that satisfies
-$\displaystyle \frac{8}{3^{29/3}\,m^4} < 10^{-5}$; namely,
-$\displaystyle m > \left( \frac{8}{3^{29/3}}\, 10^{5}\right)^{1/4}
+$\displaystyle \frac{8}{3^{29/3}\,m^4} < 10^{-5}$; namely,\\
+$\displaystyle m > \left( 8 \times 10^5 / 3^{29/3}\right)^{1/4}
 \approx 2.102468339$\ .
 
 With $m=3$, we get
 \begin{align*}
 \int_2^4\, (x+2)^{1/3} \dx{x} &\approx
 \frac{1}{9} \bigg( (3)^{1/3}
-+ 2 \sum_{i=1}^2 \left(1+ \left(2+\frac{2i}{3}\right)\right)^{1/3}
-+ 4 \sum_{i=0}^2 \left(1+\left(2+\frac{2i+1}{3}\right)\right)^{1/3} 
-+ (5)^{1/3} \bigg) \\
-& \approx 3.16734727452 \ .
++ 2 \sum_{i=1}^2 \left(1+ \left(2+\frac{2i}{3}\right)\right)^{1/3} \\
+&\qquad + 4 \sum_{i=0}^2 \left(1+\left(2+\frac{2i+1}{3}\right)\right)^{1/3} 
++ (5)^{1/3} \bigg) \approx 3.16734727452 \ .
 \end{align*}
 }
 
@@ -511,7 +513,7 @@ The other way to answer the question is to proceed directly.  By
 linearity of the integral, it is enough to show that Simpson's rule is
 exact for $x^i$ with $i=0$, $1$, $2$ and $3$.  For $f(x) = x^i$,
 Simpson's rule becomes
-\begin{equation} \label{SimpsonQ10}
+\begin{equation} \protect\label{SimpsonQ10}
 \int_a^b x^i \dx{x} \approx \frac{b-a}{6} \left(a^i + 4
 \left(\frac{a+b}{2}\right)^i + b^i\right) \ .
 \end{equation}
@@ -537,11 +539,11 @@ For $i=2$, the right hand side of (\ref{SimpsonQ10}) is
 \]
 Finally, for $i=3$, the right hand side of (\ref{SimpsonQ10}) is
 \begin{align*}
-\frac{b-a}{6} \left(a^3 + 4
+&\frac{b-a}{6} \left(a^3 + 4
 \left(\frac{a+b}{2}\right)^3 + b^3\right)
-&= \frac{b-a}{6} \left(a^3 + \frac{1}{2}
+= \frac{b-a}{6} \left(a^3 + \frac{1}{2}
 \left(a^3 + 3 a^2b + 3 ab^3 + b^3\right) + b^3\right) \\
-&= \frac{b-a}{12}\left(3 a^3+3 a^2b+3 ab^2+3 b^3\right)
+&\qquad \qquad = \frac{b-a}{12}\left(3 a^3+3 a^2b+3 ab^2+3 b^3\right)
 = \frac{1}{4} \left( b^4 - a^4 \right) = \int_a^b x^3\dx{x} \ .
 \end{align*}
 Thus, Simpson's rule is exact for polynomial of degree up to three.
@@ -1012,12 +1014,12 @@ we get the formula
 \int_a^b \left( f[x_0] + f[x_0,x_1]\left(x-x_0\right)\right)\dx{x}
 = \left( f(x_0)\, x + \frac{1}{2}\, f[x_),x_1]\,
 \left(x-x_0\right)^2 \right)\bigg|_{x=a}^b \\
-& \quad = f\left(\frac{2a+b}{3}\right) (b-a)
-+ \frac{3}{2(b-a)} \left(f\left(\frac{a+2b}{3}\right)
+&\quad = f\left(\frac{2a+b}{3}\right) (b-a) \\
+&\qquad \qquad + \frac{3}{2(b-a)} \left(f\left(\frac{a+2b}{3}\right)
 - f\left(\frac{2a+b}{3}\right) \right)
 \left( \left(b -\frac{2a+b}{3}\right)^2
 -\left(a-\frac{2a+b}{3}\right)^2\right) \\
-& \quad = \frac{b-a}{2}\,
+&\quad = \frac{b-a}{2}\,
 \left(f\left(\frac{a+2b}{3}\right)+f\left(\frac{2a+b}{3}\right)\right) \ .
 \end{align*}
 We choose $A = B = (b-a)/2$.
@@ -1069,9 +1071,9 @@ that $C_2 - C_1 = (x_1-x_0)^3/6$.
 &\quad = -\frac{1}{2}\left(\frac{2(a-b)}{3}\right)
 \left(\frac{a-b}{3}\right)^2+\frac{1}{6}\left(\frac{a-b}{3}\right)^3
 +\frac{1}{6} \left(\frac{b-a}{3}\right)^3
-+ \frac{1}{2} \left(\frac{2(b-a)}{3}\right)\left(\frac{b-a}{3}\right)^2
--\frac{1}{6} \left(\frac{b-a}{3}\right)^3 \\
-&\quad = \frac{11(b-a)^3}{162} \ .
++ \frac{1}{2} \left(\frac{2(b-a)}{3}\right)\left(\frac{b-a}{3}\right)^2 \\
+&\quad \qquad -\frac{1}{6} \left(\frac{b-a}{3}\right)^3
+= \frac{11(b-a)^3}{162} \ .
 \end{align*}
 Hence,
 \[
@@ -1129,25 +1131,29 @@ we get
 \begin{align*}
 &\int_a^b f(x) \dx{x} \approx \int_a^b \big(
 f[x_0] + f[x_0,x_1]\,(x-x_0) + f[x_0,x_1,x_2]\,(x-x_0)(x-x_1) \big)\dx{x}\\
-&\quad = f\left(\frac{3a+b}{4}\right) \int_a^b \dx{x} +
+&\qquad = f\left(\frac{3a+b}{4}\right) \int_a^b \dx{x} +
 \frac{4}{b-a} \,\left(f\left(\frac{b+a}{2}\right)
 - f\left(\frac{3a+b}{4}\right)\right)
 \int_a^b \left(x-\frac{3a+b}{4}\right)\dx{x} \\
-&\qquad  + \frac{8}{(b-a)^2}
+&\qquad \quad+ \frac{8}{(b-a)^2}
 \left(f\left(\frac{a+3b}{4}\right) - 2\,f\left(\frac{b+a}{2}\right)
-+ f\left(\frac{3a+b}{4}\right)\right)
++ f\left(\frac{3a+b}{4}\right)\right)\\
+&\qquad \qquad \qquad
 \int_a^b \left(x-\frac{3a+b}{4}\right)\left(x-\frac{a+b}{2}\right)\dx{x} \ .
 \end{align*}
 Moreover, since
-\begin{align*}
-\int_a^b \left(x-\frac{3a+b}{4}\right)\dx{x} &=
+\[
+\int_a^b \left(x-\frac{3a+b}{4}\right)\dx{x} =
 \frac{1}{2} \left(x-\frac{3a+b}{4}\right)^2\bigg|_{x=a}^b
 = \frac{1}{4}\,\left(b-a\right)^2
-\intertext{and}
-\int_a^b \left(x-\frac{3a+b}{4}\right)\left(x-\frac{a+b}{2}\right)\dx{x} &=
+\]
+and
+\begin{align*}
+&\int_a^b \left(x-\frac{3a+b}{4}\right)\left(x-\frac{a+b}{2}\right)\dx{x} =
 \int_a^b \left( x^2-\frac{5a+3b}{4}\, x + \frac{3a^2+4ab+b^2}{8}
 \right)\dx{x}\\
-&= \left(\frac{x^3}{3} -\frac{5a+3b}{8}\, x^2 + \frac{3a^2+4ab+b^2}{8}\, x
+&\qquad \qquad
+= \left(\frac{x^3}{3} -\frac{5a+3b}{8}\, x^2 + \frac{3a^2+4ab+b^2}{8}\, x
 \right)\bigg|_{x=a}^b
 =\frac{1}{12}\,\left(b-a\right)^3 \ ,
 \end{align*}
@@ -1180,9 +1186,9 @@ we get
 \begin{align*}
 &\left| \int_a^b \left(f[x_0,x_1,x_2,x]\,(x-x_0)(x-x_1)(x-x_2)
   \right)\dx{x} \right| \\
-&\quad \leq \int_a^b \left|f[x_0,x_1,x_2,x]\right|\,
-\left|(x-x_0)(x-x_1)(x-x_2) \right|\dx{x}
-\leq \frac{M}{6} \, \int_a^b
+&\qquad \leq \int_a^b \left|f[x_0,x_1,x_2,x]\right|\,
+\left|(x-x_0)(x-x_1)(x-x_2) \right|\dx{x} \\
+&\qquad \leq \frac{M}{6} \, \int_a^b
 \left|(x-x_0)(x-x_1)(x-x_2) \right|\dx{x} \ .
 \end{align*}
 Because of the symmetry of the graph of
@@ -1216,8 +1222,8 @@ we get
 &\quad\qquad - \frac{1}{2}
 \left( \frac{1}{3}(x-x_1)(x-x_2)^3 - \frac{1}{12}(x-x_2)^4\right) + C \\
 &\quad= \frac{1}{2}(x-x_0)(x-x_1)(x-x_2)^2 - \frac{1}{6}(x-x_0)(x-x_2)^3
-- \frac{1}{6}(x-x_1)(x-x_2)^3
-+ \frac{1}{12}(x-x_2)^4 + C \ .
+- \frac{1}{6}(x-x_1)(x-x_2)^3 \\
+&\quad \qquad + \frac{1}{12}(x-x_2)^4 + C \ .
 \end{align*}
 Hence
 \begin{align*}
@@ -1276,11 +1282,11 @@ The formula to approximate the integral is
 \begin{align*}
 & \int_0^1 f(x)\dx{x} \approx
 f[-2h]\,h + \frac{5}{2} f[-2h,-h]\,h^2 + \frac{23}{6}f[-2h,-h,0]\,h^3  \\
-&\qquad = f(-2h)\,h + \frac{5}{2} \left(\frac{f(-h)-f(-2h)}{-h-(-2h)}\right) h^2
+&\quad = f(-2h)\,h + \frac{5}{2} \left(\frac{f(-h)-f(-2h)}{-h-(-2h)}\right) h^2
 + \frac{23}{6}
 \left( \frac{\displaystyle \frac{f(0)-f(-h)}{0-(-h)}
  - \frac{f(-h)-f(-2h)}{-h-(-2h)}}{0-(-2h)}\right)h^3 \\
-&\qquad = \left(\frac{23}{12}\,f(0) - \frac{4}{3} \, f(-h) + \frac{5}{12} \,
+&\quad = \left(\frac{23}{12}\,f(0) - \frac{4}{3} \, f(-h) + \frac{5}{12} \,
 f(-2h)\right) h \ .
 \end{align*}
 
@@ -1313,8 +1319,8 @@ for some $\xi \in [-2h,h]$.
 \begin{align*}
 \int_a^b f(x)\dx{x} &= \int_0^h f(a+t) \dx{t}
 = \left(\frac{23}{12}\,f(a) - \frac{4}{3}\,f(a-h) +
-\frac{5}{12}\,f(a-2h)\right)\,h
-+ \frac{3}{8}\,\dfdxn{f(a+t)}{t}{3}\bigg|_{t=\xi} \, h^4 \\
+\frac{5}{12}\,f(a-2h)\right)\,h \\
+&\qquad \quad + \frac{3}{8}\,\dfdxn{f(a+t)}{t}{3}\bigg|_{t=\xi} \, h^4 \\
 &= \left(\frac{23}{12}\,f(a) - \frac{4}{3}\,f(a-h) +
 \frac{5}{12}\,f(a-2h)\right)
 +\frac{3}{8}\,f^{(3)}(a+\xi)\,h^4 \ .
@@ -1658,10 +1664,11 @@ To transform the integral from an integral between $-3$ and $1$ to an
 integral between $-1$ and $1$, we use the substitution $t = (x+1)/2$.
 We get $x = 2t-1$ and
 \begin{align*}
-\int_{-3}^1 \frac{(1+x)^4}{\sqrt{(1-x)(3+x)}} \dx{x} &=
+&\int_{-3}^1 \frac{(1+x)^4}{\sqrt{(1-x)(3+x)}} \dx{x} =
 2 \int_{-1}^1 \frac{(2t)^4}{\sqrt{(2-2t)(2+2t)}} \dx{x}
 = 16\, \int_{-1}^1 \frac{t^4}{\sqrt{1-t^2}} \dx{x} \\
-&= \frac{16 \pi}{3} \sum_{j=1}^3 \cos^4\left(\frac{(2j-1)\pi}{6}\right)
+& \qquad \quad
+= \frac{16 \pi}{3} \sum_{j=1}^3 \cos^4\left(\frac{(2j-1)\pi}{6}\right)
 = \frac{16\pi}{3}\, \left( \left(-\frac{\sqrt{2}}{3}\right)^4
 + \left(\frac{\sqrt{2}}{3}\right)^4\right)
 = \frac{128\pi}{243} \ .
@@ -1799,16 +1806,16 @@ for $1\leq i \leq n+1$.
 From Proposition~\ref{ChebyshevTrancMax}, we have that
 \begin{align*}
 &\left| f\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right) -
-p\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right) \right|
-\leq \frac{1}{2^n(n+1)!}
+p\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right) \right| \\
+&\qquad \quad \leq \frac{1}{2^n(n+1)!}
 \max_{-1\leq t \leq 1}\left| \dfdxn{
 f\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right)}{t}{(n+1)} \right| \\
-&\qquad
+&\qquad \quad
 \leq \frac{1}{2^n(n+1)!}
 \max_{-1\leq t \leq 1}\left|
 f^{(n+1)}\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right)\right|
 \left(\frac{b-a}{2}\right)^{n+1} \\
-&\qquad
+&\qquad \quad
 \leq \frac{1}{2^n(n+1)!} \max_{a\leq x \leq b}\left| f^{(n+1)}(x)\right|
 \left(\frac{b-a}{2}\right)^{n+1}
 \leq \frac{M(b-a)^{n+1}}{2^{2n+1}(n+1)!}

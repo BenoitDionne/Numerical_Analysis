@@ -8,13 +8,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % AMS packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{bm}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
+% \usepackage{txfonts}   % I prefer the output without these fonts
+\usepackage{bm}          % Using \bm in the title of a chapter,
+                         % section ... may fail with an error message
+                         % like "Illegal parameter number in
+                         % definition of \BKM@title."  \mathbg{}
+                         % should be used in this situation.  It is
+                         % not a perfect fix but it works in this
+                         % document.
+% \newcommand\bmmar{0}   % to prevent pre-allocating math alphabets.
 \usepackage{amscd}     % For simple commutative diagrams
-\usepackage{stmaryrd}
-\usepackage{MnSymbol}  % For \udots
 
 \allowdisplaybreaks
 
@@ -559,7 +565,7 @@
   of Ottawa.
 
   \noindent This document is available on the following sites.\\
-  uO Research: \\ % http://hdl.handle.net/10393/44594 \\
+  uO Research: http://hdl.handle.net/10393/45600 \\
   GitHub: https://github.com/BenoitDionne/Numerical\_Analysis
 
   \vspace*{1cm}
@@ -730,8 +736,7 @@
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\Id}{Id}
 \DeclareMathOperator{\sgn}{sgn}
-% \DeclareMathOperator{\diff}{D}
-\newcommand{\diff}{\mathrm{D}}
+\DeclareMathOperator{\diff}{D}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\curL}{curl}
 \DeclareMathOperator{\diV}{div}
@@ -746,14 +751,16 @@
 \DeclareMathOperator{\Span}{span}
 \DeclareMathOperator{\diam}{diam}
 
-\newcommand{\VEC}[1]{\mathbf{#1}}
+\newcommand{\Chi}{\mathcal{X}}        % \chi is to small for subscripts.
+
+\newcommand{\VEC}[1]{\bm{#1}}
 \newcommand{\ps}[2]{ \left\langle{#1} , {#2}\right\rangle }
 \newcommand{\conj}[1]{\overline{#1}}
 \newcommand{\HH}{$H_{\VEC{w}}$}
 \newcommand{\AP}{AP}
 \newcommand{\SN}[1]{\mathrm{S}_{#1}}
 \newcommand{\Sone}{S^1}
-\newcommand{\torus}[1]{\mathbf{T}^{#1}}
+\newcommand{\torus}[1]{\displaystyle \mathbf{T}^{#1}}
 \newcommand{\dist}[2]{\mathrm{dist}\left(#1,#2\right)}
 \newcommand{\sgm}[1]{\overline{#1}}
 \newcommand{\ii}{\VEC{i}}
@@ -765,21 +772,25 @@
 
 \newcommand{\dx}[1]{\,\mathrm{d}#1}
 \newcommand{\dydx}[2]{\frac{\mathrm{d}#1}{\mathrm{d}{#2}}}
-\newcommand{\dydxn}[3]{\frac{\mathrm{d}^{#3}{#1}}{\mathrm{d}{#2}^{#3}}}
+\newcommand{\dydxn}[3]{\displaystyle \frac{\mathrm{d}^{#3}{#1}}%
+{\displaystyle \mathrm{d}{#2}^{#3}}}
 \newcommand{\dfdx}[2]{\frac{\mathrm{d}}{\mathrm{d}{#2}}{#1}}
-\newcommand{\dfdxn}[3]{\frac{\mathrm{d}^{#3}}{\mathrm{d}{#2}^{#3}}{#1}}
+\newcommand{\dfdxn}[3]{\frac{\displaystyle \mathrm{d}^{#3}}%
+{\displaystyle \mathrm{d}{#2}^{#3}}{#1}}
 
 \newcommand{\pdydx}[2]{\frac{\partial{#1}}{\partial{#2}}}
-\newcommand{\pdydxn}[3]{\frac{\partial^{#3}{#1}}{\partial{#2}^{#3}}}
-\newcommand{\pdydxnm}[6]{\frac{\partial^{#4}{#1}}%
-{\partial{#2}^{#5} \partial{#3}^{#6}}}
-\newcommand{\pdydxdots}[8]{\frac{\partial^{#5}#1}%
-{\partial{#2}^{#6} \partial{#3}^{#7} \ldots \partial{#4}^{#8}}}
+\newcommand{\pdydxn}[3]{\frac{\displaystyle \partial^{#3}{#1}}%
+{\displaystyle \partial{#2}^{#3}}}
+\newcommand{\pdydxnm}[6]{\frac{\displaystyle \partial^{#4}{#1}}%
+{\displaystyle \partial{#2}^{#5} \partial{#3}^{#6}}}
+\newcommand{\pdydxdots}[8]{\frac{\displaystyle \partial^{#5}#1}%
+{\displaystyle \partial{#2}^{#6} \partial{#3}^{#7} \ldots \partial{#4}^{#8}}}
 
 \newcommand{\pdfdx}[2]{\frac{\partial}{\partial{#2}}{#1}}
-\newcommand{\pdfdxn}[3]{\frac{\partial^{#3}}{\partial{#2}^{#3}}{#1}}
-\newcommand{\pdfdxnm}[6]{\frac{\partial^{#4}}%
-{\partial{#2}^{#5} \partial{#3}^{#6}}{#1}}
+\newcommand{\pdfdxn}[3]{\frac{\displaystyle \partial^{#3}}%
+{\displaystyle \partial{#2}^{#3}}{#1}}
+\newcommand{\pdfdxnm}[6]{\frac{\displaystyle \partial^{#4}}%
+{\displaystyle \partial{#2}^{#5} \partial{#3}^{#6}}{#1}}
 
 \newcommand{\fdiff}[2]{\mathrm{D}^{#2}{#1}}
 
@@ -793,11 +804,15 @@
                                                        % pseudo scalar product
 
 % For the section of Fast Fourier Transform
-\newcommand{\fct}[1]{\mathbf{#1}}
-\newcommand{\fctt}[1]{\tilde{\mathbf{#1}}}
+\newcommand{\fct}[1]{\bm{#1}}
+\newcommand{\fctt}[1]{\tilde{\bm{#1}}}
 
 \newcommand{\NNN}{\mathcal{N}}
 \newcommand{\GL}[1]{\mathrm{GL}(#1)}
+
+% Reverse diagonal three dots
+\newcommand{\iddots}{\hbox{\raise-1pt\hbox{.}\kern1.9pt\raise2.7pt\hbox{.}%
+\kern1.9pt\raise6.4pt\hbox{.}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Trouble

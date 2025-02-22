@@ -7,19 +7,19 @@ $\displaystyle \frac{1}{2}\left( f(x_i,y_j) + f(x_i,y_{j+1})\right)
 = P_\Delta(v_{i,j},v_{i,j+1},v_{i+1,j},\ldots)$.
 
 We have
-\[
-\frac{v_{i,j+1}- v_{i,j}}{\dtx{t}} - \frac{c^2}{2} \,
+\begin{align*}
+&\frac{v_{i,j+1}- v_{i,j}}{\dtx{t}} - \frac{c^2}{2} \,
 \left( \frac{v_{i+1,j} - 2v_{i,j} + v_{i-1,j}}{(\dtx{x})^2}
-+ \frac{v_{i+1,j+1} - 2v_{i,j+1} + v_{i-1,j+1}}{(\dtx{x})^2} \right)
-= \frac{1}{2}\left( f(x_i,y_j) + f(x_i,y_{j+1})\right)
-\]
++ \frac{v_{i+1,j+1} - 2v_{i,j+1} + v_{i-1,j+1}}{(\dtx{x})^2} \right) \\
+& \qquad \qquad = \frac{1}{2}\left( f(x_i,y_j) + f(x_i,y_{j+1})\right)
+\end{align*}
 for $0<i<N$ and $0\leq j < M$.  Thus
-\[
-(1 + \alpha) v_{i,j+1} = (1-\alpha) v_{i,j}
+\begin{align*}
+(1 + \alpha) v_{i,j+1} &= (1-\alpha) v_{i,j}
 + \frac{\alpha}{2} \left( v_{i+1,j} + v_{i-1,j} \right)
-+ \frac{\alpha}{2} \left( v_{i+1,j+1} + v_{i-1,j+1} \right)
-+ \frac{1}{2}\left( f(x_i,y_j) + f(x_i,y_{j+1})\right) \dtx{t}
-\]
++ \frac{\alpha}{2} \left( v_{i+1,j+1} + v_{i-1,j+1} \right) \\
+&\qquad \qquad + \frac{1}{2}\left( f(x_i,y_j) + f(x_i,y_{j+1})\right) \dtx{t}
+\end{align*}
 for $0<i<N$ and $0\leq j < M$, where
 $\displaystyle \alpha = \frac{c^2\dtx{t}}{(\dtx{x})^2}$.
 
@@ -78,12 +78,12 @@ such that $(x_i,t_j) \in \partial R_\Delta$, we get
 = \ps{P^\ast P x}{P^\ast P x} \ .
 \]
 Thus
-\[
-\|P^2\| = \sup_{\|x|=1} \left\|P^2 x\right\|
+\begin{align*}
+\|P^2\| &= \sup_{\|x|=1} \left\|P^2 x\right\|
 = \sup_{\|x|=1} \sqrt{\ps{P^2 x}{P^2x}}  
-= \sup_{\|x|=1} \sqrt{\ps{P^\ast P x}{P^\ast P x}}  
-= \sup_{\|x|=1} \left\| P^\ast P x \right\| = \left\|P^\ast P\right\| \ .
-\]
+= \sup_{\|x|=1} \sqrt{\ps{P^\ast P x}{P^\ast P x}} \\
+&= \sup_{\|x|=1} \left\| P^\ast P x \right\| = \left\|P^\ast P\right\| \ .
+\end{align*}
 
 \subQ{b}  We first prove that
 \begin{equation} \label{fdmQ2eq1}

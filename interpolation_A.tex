@@ -1050,16 +1050,16 @@ If $i\neq 0$ and $i+r \neq k+1$, then
 for $j=0$, $1$, \ldots, $r$ by definition of $q_1$ and $q_2$.
 From (\ref{derGoodP}), we get
 \begin{align*}
-\dydxn{p}{x}{j}(x_i)
-&= \left( \frac{x_i-x_0}{x_{k+1}-x_0}\right)\dydxn{q_2}{x}{j}(x_i) +
+&\dydxn{p}{x}{j}(x_i) \\
+&\ = \left( \frac{x_i-x_0}{x_{k+1}-x_0}\right)\dydxn{q_2}{x}{j}(x_i) +
 \left(\frac{x_{k+1}-x_i}{x_{k+1}-x_0}\right) \dydxn{q_1}{x}{j}(x_i)
 + \frac{j}{x_{k+1}-x_0}\left(
 \dydxn{q_2}{x}{j-1}(x_i)-\dydxn{q_1}{x}{j-1}(x_i)\right) \\
-&= \left(\frac{x_i-x_0}{x_{k+1}-x_0}\right)\dydxn{f}{x}{j}(x_i) +
+&\ = \left(\frac{x_i-x_0}{x_{k+1}-x_0}\right)\dydxn{f}{x}{j}(x_i) +
 \left(\frac{x_{k+1}-x_i}{x_{k+1}-x_0}\right) \dydxn{f}{x}{j}(x_i)
 +\frac{j}{x_{k+1}-x_0}\left(
 \dydxn{f}{x}{j-1}(x_i)-\dydxn{f}{x}{j-1}(x_i)\right) \\
-&= \left( \frac{x_i-x_0}{x_{k+1}-x_0} +
+&\ = \left( \frac{x_i-x_0}{x_{k+1}-x_0} +
   \frac{x_{k+1}-x_i}{x_{k+1}-x_0} \right) \,\dydxn{f}{x}{j}(x_i)
 = \dydxn{f}{x}{j}(x_i)
 \end{align*}

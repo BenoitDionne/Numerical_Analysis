@@ -166,7 +166,7 @@ $\displaystyle \VEC{y}_0(t) =
 $\displaystyle \VEC{y}_1(t) =
 \begin{pmatrix} \cos(t) \\ -\sin(t) \end{pmatrix}$,
 $\displaystyle \VEC{y}_2(t) =
-\begin{pmatrix} \sin(t) \\ \cos(t) \end{pmatrix}$ and
+\begin{pmatrix} \sin(t) \\ \cos(t) \end{pmatrix}$ and\\
 $\displaystyle Y(t) = \begin{pmatrix}
 \cos(t) & \sin(t) \\  -\sin(t) & \cos(t) \end{pmatrix}$.  Thus
 \[
@@ -305,14 +305,12 @@ y_1(0) = 1 \quad , \quad y_2(1) = e
 This problem can be restated as
 $\VEC{y}'(t) = A(t) \VEC{y}(t) + f(t)$ with
 $B_a \VEC{y}(0) + B_b\VEC{y}(1) = \VEC{y}_c$, where
-\[
-\VEC{y} = \begin{pmatrix} y_1(t) \\ y_2(t) \end{pmatrix} \ ,
-\ A(t) = \begin{pmatrix} 0 & 1 \\ 4 & 0 \end{pmatrix} \ ,
-\ f(t) = \begin{pmatrix} 0 \\ -3 e^t \end{pmatrix} \ ,
-\ B_a = \begin{pmatrix} 1 & 0 \\  0 & 0 \end{pmatrix} \ ,
-\ B_b = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \ \text{and}
-\ \VEC{y}_c = \begin{pmatrix} 1 \\ e \end{pmatrix} \ .
-\]
+$\displaystyle \VEC{y} = \begin{pmatrix} y_1(t) \\ y_2(t) \end{pmatrix}$,
+$\displaystyle A(t) = \begin{pmatrix} 0 & 1 \\ 4 & 0 \end{pmatrix}$,
+$\displaystyle f(t) = \begin{pmatrix} 0 \\ -3 e^t \end{pmatrix}$,
+$\displaystyle B_a = \begin{pmatrix} 1 & 0 \\  0 & 0 \end{pmatrix}$,
+$\displaystyle B_b = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$
+and $\displaystyle \VEC{y}_c = \begin{pmatrix} 1 \\ e \end{pmatrix}$.
 If we use the code above with $N=25$, we find the following approximations of
 the solution.
 \[
@@ -371,19 +369,18 @@ with
 This problem can be rewritten as
 $\VEC{y}'(t) = A(t) \VEC{y}(t) + f(t)$ with
 $B_a \VEC{y}(0) + B_b\VEC{y}(1) = \VEC{y}_c$, where
-\begin{align*}
-\VEC{y}
-&= \begin{pmatrix} y_1(t) \\ y_2(t) \\ y_3(t) \\ y_4(t) \end{pmatrix} \ ,
-\ A(t) = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\
-0 & 0 & 0 & 1 \\ -400 & 0 & 401 & 0 \end{pmatrix} \ ,
-\ f(t) = \begin{pmatrix} 0 \\ 0 \\ 0 \\ -1 + 200 t^2 \end{pmatrix} \ ,
-\ B_a = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 \end{pmatrix} \ , \\
-B_b &= \begin{pmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 0 \\
-0 & 1 & 0 & 0 \end{pmatrix} \ \text{and}
-\ \VEC{y}_c = \begin{pmatrix} 1 \\ 1 \\ 3/2 + \sinh(1) \\ 1 + \cosh(1)
-\end{pmatrix} \ .
-\end{align*}
+$\displaystyle \VEC{y}
+= \begin{pmatrix} y_1(t) \\ y_2(t) \\ y_3(t) \\ y_4(t) \end{pmatrix}$,
+$\displaystyle A(t) = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\ -400 & 0 & 401 & 0 \end{pmatrix}$,
+$\displaystyle f(t) = \begin{pmatrix} 0 \\ 0 \\ 0 \\ -1 + 200
+t^2 \end{pmatrix}$,
+$\displaystyle B_a = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\
+ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}$,
+$\displaystyle B_b = \begin{pmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\
+ 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \end{pmatrix}$ and
+$\displaystyle \VEC{y}_c = \begin{pmatrix} 1 \\ 1 \\ 3/2 + \sinh(1) \\
+ 1 + \cosh(1) \end{pmatrix}$.
 
 If we use the code above with $N=25$, we find the following approximations of
 the solution $y(t) = y_1(t)$.
@@ -885,7 +882,7 @@ numerical analysis.  \label{ParShootPartSepRmkItem3}
 \end{enumerate}
 \end{rmkList}
 
-\subsection{The Choice of $F_i$ and $\VEC{y}_{c,i}$}\label{Fiyci}
+\subsection{The Choice of $F_i$ and $\mathbf{y}_{c,i}$}\label{Fiyci}
 
 The simple shooting method is given by $F_i = \Id$ for $0 \leq i < N$,
 $\VEC{y}_{c,i} = \VEC{0}$ for $1 \leq i < N$, and
@@ -1899,7 +1896,7 @@ Q(\VEC{s}^{[j]}) \left( \VEC{s}^{[j+1]} - \VEC{s}^{[j]} \right) =
 where
 \begin{align*}
 &Q(\VEC{s}) = \diff_{\VEC{s}} \phi(\VEC{s}) = \\
-&\begin{pmatrix}
+&\hspace{-5pt} \begin{pmatrix}
 \diff_{\VEC{y}_1}g(\VEC{s}_1,\VEC{u}_N(1,\VEC{s}_N))
 & 0 & \ldots & 0 &
 \diff_{\VEC{y}_2}g(\VEC{s}_1,\VEC{u}_N(1,\VEC{s}_N))U_N(1,\VEC{s}_N) \\
@@ -1907,7 +1904,7 @@ where
 0 & -U_2(1,\VEC{s}_2) &  \ldots & 0 & 0\\
 \vdots & \vdots & \ddots & \vdots & \vdots \\
 0 & 0 & \ldots & -U_{N-1}(1,\VEC{s}_{N-1}) & \Id \\
-\end{pmatrix}\ ,
+\end{pmatrix},
 \end{align*}
 where
 \[
@@ -2244,7 +2241,7 @@ We will prove a version of this theorem for the linear boundary value
 problems in the next section.
 
 \subsection{Finite Difference Methods for Linear Boundary Value
-Problems}
+Pro\-blems}
 
 As we did for the shooting methods, we start with the linear boundary
 value problem
@@ -2305,7 +2302,7 @@ where
 $\displaystyle L_{i,h}(\VEC{W})
 = \frac{\VEC{w}_{i+1} - \VEC{w}_i}{h} - \frac{1}{2}
 \left( A(t_i+h) \VEC{w}_{i+1} + A(t_i) \VEC{w}_i \right)$
-and
+and \\
 $\displaystyle F_{i,h}(f) = \frac{1}{2}\left( f(t_i+h) + f(t_i) \right)$.
 \label{eggtrapezSchemeLin}
 \end{egg}
@@ -2772,7 +2769,7 @@ Note that (\ref{BVP_IVP}) has a unique solution.
 \end{proof}
 
 \subsection{Numerical Aspect of the One-Step Finite Difference
-Method for Linear Boundary Value Problems}
+Me\-thod for Linear Boundary Value Problems}
 
 If only $\VEC{w}_i$ and $\VEC{w}_{i+1}$ are used in (\ref{MFFDM}), we
 say that the method is a one-step finite difference method.
@@ -2780,7 +2777,7 @@ say that the method is a one-step finite difference method.
 \begin{eggList}
 \begin{enumerate}
 \item For the midpoint scheme, we have
-$\displaystyle C_{i,i} = -\frac{1}{h_i}\,\Id -\frac{1}{2}\,A(t_i+h_i/2)$,
+$\displaystyle C_{i,i} = -\frac{1}{h_i}\,\Id -\frac{1}{2}\,A(t_i+h_i/2)$, \\
 $\displaystyle C_{i,i+1} = \frac{1}{h_i}\,\Id - \frac{1}{2}\,A(t_i+h_i/2)$
 and $\displaystyle F_{i,h}(f) = f(t_i+h_i/2)$ for $0 \leq i < N$.
 We also have that $C_{i,j} = 0$ otherwise.
@@ -3093,29 +3090,25 @@ end
 Recall that the boundary value problem was
 $\VEC{y}'(t) = A(t) \VEC{y}(t) + f(t)$ with
 $B_a \VEC{y}(0) + B_b\VEC{y}(1) = \VEC{y}_c$, where
-\[
-\VEC{y} = \begin{pmatrix} y_1(t) \\ y_2(t) \end{pmatrix} \ ,
-\ A(t) = \begin{pmatrix} 0 & 1 \\ 4 & 0 \end{pmatrix} \ ,
-\ f(t) = \begin{pmatrix} 0 \\ -3 e^t \end{pmatrix} \ ,
-\ B_a = \begin{pmatrix} 1 & 0 \\  0 & 0 \end{pmatrix} \ ,
-\ B_b = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \ \text{and}
-\ \VEC{y}_c = \begin{pmatrix} 1 \\ e \end{pmatrix} \ .
-\]
+$\displaystyle \VEC{y} = \begin{pmatrix} y_1(t) \\ y_2(t) \end{pmatrix}$,
+$\displaystyle A(t) = \begin{pmatrix} 0 & 1 \\ 4 & 0 \end{pmatrix}$,
+$\displaystyle f(t) = \begin{pmatrix} 0 \\ -3 e^t \end{pmatrix}$,
+$\displaystyle B_a = \begin{pmatrix} 1 & 0 \\  0 & 0 \end{pmatrix}$,
+$\displaystyle B_b = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$
+and $\displaystyle \VEC{y}_c = \begin{pmatrix} 1 \\ e \end{pmatrix}$.
 We use the previous code with the trapezoidal method to numerically
 solve the boundary value problem.  We need to set
-\begin{align*}
-C_{i,i} &=  -\frac{1}{h}\,\Id -\frac{1}{2}\,A(t_i)
-= \begin{pmatrix} -1/h & -1/2 \\ -2 & -1/h \end{pmatrix} \ ,
-\ C_{i,i+1} = \frac{1}{h}\,\Id -\frac{1}{2}\,A(t_i+h)
-= \begin{pmatrix} 1/h & -1/2 \\ -2 & 1/h \end{pmatrix} \ , \\
-F_{i,h}(f) &= \frac{1}{2}\,\left( f(t_i) + f(t_i+h) \right)
-= \begin{pmatrix} 0 \\ -3 \left(e^{t_1} + e^{t_i+h}\right)/2 \end{pmatrix} \ ,
-\ B_a^{[a]} = \begin{pmatrix} 1 & 0 \end{pmatrix} \ ,
-\ B_a^{[b]} = \begin{pmatrix} 0 & 0 \end{pmatrix} \ , \\
-B_b^{[b]} &= \begin{pmatrix} 1 & 0 \end{pmatrix}
-\quad \text{and}
-\quad \VEC{y}_c = \begin{pmatrix} 1 \\ e^1 \end{pmatrix} \ .
-\end{align*}
+$\displaystyle C_{i,i} =  -\frac{1}{h}\,\Id -\frac{1}{2}\,A(t_i)
+= \begin{pmatrix} -1/h & -1/2 \\ -2 & -1/h \end{pmatrix}$,
+$\displaystyle C_{i,i+1} = \frac{1}{h}\,\Id -\frac{1}{2}\,A(t_i+h)
+= \begin{pmatrix} 1/h & -1/2 \\ -2 & 1/h \end{pmatrix}$,
+$\displaystyle F_{i,h}(f) = \frac{1}{2}\,\left( f(t_i) + f(t_i+h) \right)
+= \begin{pmatrix} 0 \\ -3 \left(e^{t_1} + e^{t_i+h}\right)/2 \end{pmatrix}$,
+$\displaystyle B_a^{[a]} = \begin{pmatrix} 1 & 0 \end{pmatrix}$,
+$\displaystyle B_a^{[b]} = \begin{pmatrix} 0 & 0 \end{pmatrix}$,
+$B_b^{[b]} = \begin{pmatrix} 1 & 0 \end{pmatrix}$
+and
+$\displaystyle \VEC{y}_c = \begin{pmatrix} 1 \\ e^1 \end{pmatrix}$.
 If we use the code above with $N=100$, we find the following approximations of
 the solution.
 \[
@@ -3211,31 +3204,28 @@ B_a(\VEC{W}) \,\VEC{u}_0 + B_b(\VEC{W})\,\VEC{u}_n &= \VEC{0}
 \end{split}
 \end{equation}
 where
-\begin{align*}
-C_{i,k}(\VEC{W})  &= \diff_{\VEC{y}_k} P_{i,h}(\VEC{Y})\bigg|_{\VEC{Y}=\VEC{W}}
-\ , \quad
-B_a(\VEC{W}) = \diff_{\VEC{y}_1} g(\VEC{y}_0,\VEC{y}_N)\bigg|_{\VEC{Y}=\VEC{W}}
-\ ,  \\
-B_b[\VEC{W}) &= \diff_{\VEC{y}_2} g(\VEC{y}_0,\VEC{y}_N)\bigg|_{\VEC{Y}=\VEC{W}}
-\ , \quad
-\VEC{W} = \begin{pmatrix} \VEC{w}_0 \\
-\VEC{w}_1 \\ \vdots \\ \VEC{w}_N \end{pmatrix} \in (\RR^n)^{N+1} \quad
-\text{and} \quad
-\VEC{U} = \begin{pmatrix} \VEC{u}_0 \\
-\VEC{u}_1 \\ \vdots \\ \VEC{u}_N \end{pmatrix} \in (\RR^n)^{N+1} \ .
-\end{align*}
+$\displaystyle C_{i,k}(\VEC{W}) = \diff_{\VEC{y}_k}
+P_{i,h}(\VEC{Y})\bigg|_{\VEC{Y}=\VEC{W}}$,
+$\displaystyle B_a(\VEC{W}) = \diff_{\VEC{y}_1}
+g(\VEC{y}_0,\VEC{y}_N)\bigg|_{\VEC{Y}=\VEC{W}}$,\\
+$\displaystyle B_b[\VEC{W}) = \diff_{\VEC{y}_2}
+g(\VEC{y}_0,\VEC{y}_N)\bigg|_{\VEC{Y}=\VEC{W}}$,
+$\displaystyle \VEC{W} = \begin{pmatrix} \VEC{w}_0 \\
+\VEC{w}_1 \\ \vdots \\ \VEC{w}_N \end{pmatrix} \in (\RR^n)^{N+1}$
+and
+$\displaystyle \VEC{U} = \begin{pmatrix} \VEC{u}_0 \\
+\VEC{u}_1 \\ \vdots \\ \VEC{u}_N \end{pmatrix} \in (\RR^n)^{N+1}$.
 
 let
-\[
+$\displaystyle
 A(\VEC{Z}) = \begin{pmatrix}
 B_a(\VEC{Z}) & 0 & \ldots & B_b(\VEC{Z}) \\
 C_{0,0}(\VEC{Z}) & C_{1,1}(\VEC{Z}) & \ldots & C_{0,N}(\VEC{Z}) \\
 \vdots & \vdots & \ddots & \vdots \\
 C_{N-1,0}(\VEC{Z}) & C_{N,1}(\VEC{Z}) & \ldots & C_{N-1,N}(\VEC{Z})
-\end{pmatrix} \quad \text{with} \quad
-\VEC{Z} = \begin{pmatrix} \VEC{z}_0 \\ \VEC{z}_1\\
-\vdots \\ \VEC{z}_N \end{pmatrix} \in (\RR^n)^{N+1} \ .
-\]
+\end{pmatrix}$ with
+$\displaystyle \VEC{Z} = \begin{pmatrix} \VEC{z}_0 \\ \VEC{z}_1\\
+\vdots \\ \VEC{z}_N \end{pmatrix} \in (\RR^n)^{N+1}$.
 
 \begin{theorem}
 Suppose that $\VEC{y}$ is an isolate solution of (\ref{NLBVPreapeat}).
