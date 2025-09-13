@@ -3,7 +3,7 @@ Lectures notes for numercial analaysis (University of Ottawa)
 
 These lecture notes are written in LaTeX with the figures produced with xfig and matlab.
 
-To compile: execute  pdflatex notes.tex two or three times, makeindex notes.idx, padfatex notes.pdf, makeindex notes.idx and pdflatex notes.tex .  Or, on linux, execute make_notes.sh in a shell.
+To compile: execute  pdflatex notes.tex two or three times, makeindex notes.idx, padfatex notes.pdf, makeindex notes.idx and pdflatex notes.tex .  Or, on linux, execute make notes.sh in a shell.
 
 It is expected that instructors who adopt these lecture notes for their course will adapt them for their needs.  For instance, they may edit the main file "notes.tex" to keep only the chapters that they require for their course.  They may also add examples and exercises by editing the appropriate LaTeX files.
 
