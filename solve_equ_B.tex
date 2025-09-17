@@ -48,36 +48,38 @@ $\VEC{x}$ and $\VEC{y}$ in $V$.
 \end{defn}
 
 \begin{rmk}
-Three important norms on $V=\RR^n$ are the
-{\bfseries Euclidean or $\mathbf \ell^2$ norm}\index{Norms!Euclidean or
-$\mathbf \ell^2$}
+Three important norms on $\displaystyle V=\RR^n$ are the
+{\bfseries Euclidean or $\displaystyle \mathbf{\ell^2}$
+norm}\index{Norms!Euclidean or $\mathbf \ell^2$}
 \[
 N(\VEC{x}) \equiv \|\VEC{x} \|_2 = \sqrt{\sum_{i=1}^{n} x_i^2} \ ,
 \]
-the {\bfseries maximum or $\mathbf \ell^\infty$ norm}\index{Norms!Maximum or
-$\mathbf \ell^\infty$} 
+the {\bfseries maximum or $\displaystyle \mathbf{\ell^\infty}$
+norm}\index{Norms!Maximum or $\mathbf{\ell^\infty}$} 
 \[
 N(\VEC{x}) \equiv \| \VEC{x} \|_{\infty} = \max_{1\leq i \leq n} |x_i|
 \]
-and the {\bfseries $\mathbf \ell^1$ norm}\index{Norms!$\mathbf \ell^1$}
+and the {\bfseries $\displaystyle \mathbf{\ell^1}$
+norm}\index{Norms!$\mathbf{\ell^1}$}
 \[
 N(\VEC{x}) \equiv \| \VEC{x} \|_1 = \sum_1^n |x_i| \ .
 \]
 \end{rmk}
 
 \begin{defn}
-Let $\|\cdot\|$ be any norm on $\RR^n$.  The
+Let $\|\cdot\|$ be any norm on $\displaystyle \RR^n$.  The
 {\bfseries distance}\index{Distance}
-between two vectors $\VEC{x}$ and $\VEC{y}$ in $\RR^n$,
+between two vectors $\VEC{x}$ and $\VEC{y}$ in $\displaystyle \RR^n$,
 denoted $d(\VEC{x},\VEC{y})$, is defined by 
 $d(\VEC{x},\VEC{y}) = \| \VEC{x} - \VEC{y} \|$.
 \end{defn}
 
 \begin{defn}
 A sequence of vectors
-$\displaystyle \left\{\VEC{x}_k\right\}_{k=1}^\infty$ in
-$\RR^n$ {\bfseries converges}\index{convergence} to a vector $\VEC{p}$
-in $\RR^n$ if $\displaystyle \lim_{k\to \infty} \| \VEC{x}_k - \VEC{p} \| = 0$.
+$\displaystyle \{\VEC{x}_k\}_{k=1}^\infty$ in
+$\displaystyle \RR^n$ {\bfseries converges}\index{convergence} to a
+vector $\VEC{p}$ in $\displaystyle \RR^n$ if
+$\displaystyle \lim_{k\to \infty} \| \VEC{x}_k - \VEC{p} \| = 0$.
 \end{defn}
 
 \begin{rmkList} \label{equiv_norms}
@@ -89,23 +91,23 @@ constants $c_1$ and $c_2$ such that
 \[
 c_1 N_1(\VEC{x}) \leq N_2(\VEC{x}) \leq c_2 N_1(\VEC{x})
 \]
-for all vector $\VEC{x} \in \RR^n$.
+for all vector $\displaystyle \VEC{x} \in \RR^n$.
 For instance, we have
 \[
 \|\VEC{x}\|_\infty \leq \|\VEC{x}\|_2 \leq \sqrt{n}\|\VEC{x}\|_\infty \; .
 \]
 \item One can also show that
-$\displaystyle \left\{\VEC{x}_k\right\}_{k=0}^\infty$
+$\displaystyle \{\VEC{x}_k\}_{k=0}^\infty$
 converges to $\VEC{x}$ if and only if
-$\displaystyle \left\{x_{k,j}\right\}_{k=0}^\infty$
+$\displaystyle \{x_{k,j}\}_{k=0}^\infty$
 converges to $x_j$ for $1\leq j \leq n$, where $x_j$ is the
-$j^{th}$ component of the vector $\VEC{x}$ and $x_{k,j}$ is the
-$j^{th}$ component of the vector $\VEC{x}_k$.
+$\displaystyle j^{th}$ component of the vector $\VEC{x}$ and $x_{k,j}$ is the
+$\displaystyle j^{th}$ component of the vector $\VEC{x}_k$.
 \end{enumerate}
 \end{rmkList}
 
 \begin{defn}
-Let $\|\cdot\|$ be any norm on $\RR^n$ and
+Let $\|\cdot\|$ be any norm on $\displaystyle \RR^n$ and
 $A$ be an \nn matrix.  The
 {\bfseries natural}\index{Linear Mappings!Natural Matrix Norm} or
 {\bfseries induced matrix norm}\index{Linear Mappings!Induced Matrix Norm}
@@ -120,15 +122,16 @@ of $A$ is defined by
 \item The reader is invited to verify that the induced matrix norm
 satisfies the properties of a norm on the space $V$ of \nn matrices.
 We note that the space $V$ of \nn matrices is linearly isomorphic to
-$\RR^{n^2}$ and so is of finite dimension.
+$\displaystyle \RR^{n^2}$ and so is of finite dimension.
 \item It is easy to see that $\|A\VEC{x}\| \leq \|A\|\|\VEC{x}\|$ for
-all $\VEC{x} \in \RR^n$.  This shows that the mapping
-$\phi:\RR^n \to \RR^n$ defined by $\phi(\VEC{x}) = A\VEC{x}$ for all
+all $\displaystyle \VEC{x} \in \RR^n$.  This shows that the mapping
+$\displaystyle \phi:\RR^n \to \RR^n$ defined by
+$\phi(\VEC{x}) = A\VEC{x}$ for all
 $\VEC{x}$ is a continuous mapping. \label{MatrNormP1}
 \item Since $S = \{ \VEC{x} : \|\VEC{x}\| = 1\}$ is a compact subset of
-$\RR^n$, the continuous mapping $\phi$ defined in the previous item
-reaches its maximum on $S$ at a point in $S$.   For this reason, we
-may replace $\sup$ by $\max$ in the definition of the induced norm.
+$\displaystyle \RR^n$, the continuous mapping $\phi$ defined in the
+previous item reaches its maximum on $S$ at a point in $S$.   For this
+reason, we may replace $\sup$ by $\max$ in the definition of the induced norm.
 \item If $A$ and $B$ are two \nn matrices, then
 $\|AB\| \leq \|A\|\|B\|$. \label{MatrNormP2}
 \end{enumerate}
@@ -145,9 +148,9 @@ norm of $A$ induced by $\|\cdot\|_\infty$ is given by
 \end{theorem}
 
 \begin{proof}
-For $\VEC{x} \in \RR^n$ satisfying
+For $\displaystyle \VEC{x} \in \RR^n$ satisfying
 $\displaystyle \|\VEC{x}\|_\infty = \max_{1\leq s \leq n} |x_s| = 1$,
-we have
+we have that
 \[
 \|A\VEC{x}\|_\infty
 = \max_{1\leq i \leq n} |\sum_{j=1}^n\,a_{i,j}x_j|
@@ -166,7 +169,7 @@ To prove equality, suppose that $k$ is the index such that
 \[
 \sum_{j=1}^n\,|a_{k,j}| = \max_{1\leq i \leq n} \sum_{j=1}^n\,|a_{i,j}| \ .
 \]
-Define $\VEC{x} \in \RR^n$ by
+Define $\displaystyle \VEC{x} \in \RR^n$ by
 \[
 x_j = \begin{cases}
 1 & \text{ if $a_{k,j} \geq 0$}\\
@@ -189,7 +192,7 @@ Thus
 \end{proof}
 
 \begin{rmk}
-If $A$ is an \nn matrix, let $A^\ast$ be the transpose complex
+If $A$ is an \nn matrix, let $\displaystyle A^\ast$ be the transpose complex
 conjugate of $A$.  It is usually proved in applied linear algebra that
 \[
 \|A\|_2 = \max \{ \sqrt{|\lambda|} : \lambda \text{ is an eigenvalue of }
@@ -257,7 +260,7 @@ u_{i,j} = \begin{cases}
 0 & \quad \text{for}\quad  j<i
 \end{cases}
 \]
-Since $u_{i,j} = \epsilon^{i-j} t_{i,j} \rightarrow 0$
+Since $\displaystyle u_{i,j} = \epsilon^{i-j} t_{i,j} \rightarrow 0$
 as $\epsilon \rightarrow 0$ for all $j>i$, the off-diagonal elements
 can be arbitrary small.
 \end{proof}
@@ -286,7 +289,7 @@ $\epsilon$ can be arbitrary small.
 
 Choose $\epsilon >0$.  From the previous lemma, there exists an
 invertible matrix $Q_\epsilon$ such that
-$Q_\epsilon A Q_\epsilon^{-1} = D + S_\epsilon$, where $D$ is a
+$\displaystyle Q_\epsilon A Q_\epsilon^{-1} = D + S_\epsilon$, where $D$ is a
 diagonal matrix whose elements on the diagonal are the eigenvalues of
 $A$ and where $S_\epsilon$ is a strictly upper-triangular matrix whose
 elements are assumed to be small enough to get
@@ -303,9 +306,10 @@ because
 \]
 
 Since $Q_\epsilon$ is invertible,
-$\|\VEC{x}\|_\epsilon = \|Q_\epsilon\VEC{x}\|_\infty$ for $\VEC{x} \in \RR^n$
-defines a norm on $\RR^n$.  The induced norm of $A$ with respect to
-the norm $\|\cdot\|_\epsilon$ is
+$\|\VEC{x}\|_\epsilon = \|Q_\epsilon\VEC{x}\|_\infty$ for
+$\displaystyle \VEC{x} \in \RR^n$
+defines a norm on $\displaystyle \RR^n$.  The induced norm of $A$ with
+respect to the norm $\|\cdot\|_\epsilon$ is
 \begin{align*}
 \|A\|_\epsilon &= \max_{\|\VEC{x}\|_\epsilon=1} \|A\VEC{x}\|_\epsilon
 = \max_{\|Q_\epsilon \VEC{x}\|_\infty=1} \|Q_\epsilon A\VEC{x}\|_\infty
@@ -336,9 +340,9 @@ equivalent.
 $\displaystyle \| A^k \| = \|\underbrace{ A A \ldots A}_{k\;times} \|$
 converges to zero as $k$ goes to $\infty$.
 \item [(ii)] $\rho (A) < 1$.
-\item [(iii)] Given any $\VEC{x} \in \RR^n$, the sequence
+\item [(iii)] Given any $\displaystyle \VEC{x} \in \RR^n$, the sequence
 $\displaystyle \left\{ A^k \VEC{x}\right\}_{k=0}^\infty$ converges to
-$\VEC{0} \in \RR^n$.
+$\displaystyle \VEC{0} \in \RR^n$.
 \end{itemize}
 \end{theorem}
 
@@ -348,7 +352,7 @@ Using item~\ref{MatrNormP1} of Remark~\ref{nABppnAnB}, we have that
 \[
 \|A^k \VEC{x} \| \leq \|A^k\|\, \|\VEC{x} \| \rightarrow 0
 \]
-as $k\rightarrow \infty$ for all $\VEC{x}\in \RR^n$.
+as $k\rightarrow \infty$ for all $\displaystyle \VEC{x}\in \RR^n$.
 
 \stage{(iii) $\mathbf \Rightarrow$ (ii)}  Suppose that $\rho(A) \geq 1$.
 There exists an eigenvalue $\lambda$ such that $|\lambda|\geq 1$.
@@ -368,7 +372,8 @@ $\displaystyle \|A^k\|_\epsilon \leq \|A\|_\epsilon^k$.
 From Remark~\ref{equiv_norms}, there exists
 a positive constant $c$ such that $\|B\| \leq c \|B\|_\epsilon$ for
 all \nn matrices $B$ since the linear space of \nn matrices is
-linearly isomorphic to the finite linear space $\RR^{n^2}$.  Hence,
+linearly isomorphic to the finite linear space
+$\displaystyle \RR^{n^2}$.  Hence,
 \[
 \|A^k\| \leq c\|A^k\|_\iota \leq c \|A\|_\iota^k \rightarrow 0
 \]
@@ -379,8 +384,8 @@ as $k\rightarrow \infty$ because $\|A\|_\epsilon < 1$.
 
 \subsection{Jacobi Iterative Method}
 
-Given a vector $\VEC{x}_{0} \in \RR^n$, the goal is to generate a
-sequence $\left\{\VEC{x}_{k}\right\}_{k=1}^\infty$ that converges to
+Given a vector $\displaystyle \VEC{x}_{0} \in \RR^n$, the goal is to generate a
+sequence $\displaystyle \{\VEC{x}_{k}\}_{k=1}^\infty$ that converges to
 the solution of (\ref{sys1}).
 
 Suppose that $a_{i,i} \neq 0$ for all $i$, then we can rewrite
@@ -467,8 +472,8 @@ end
 \subsection{Gauss-Seidel Iterative Method}
 
 As for Jacobi iterative method, given a vector
-$\VEC{x}_{0} \in \RR^n$, the goal is to generate a sequence
-$\left\{\VEC{x}_{k}\right\}_{k=1}^\infty$ that converges to the
+$\displaystyle \VEC{x}_{0} \in \RR^n$, the goal is to generate a sequence
+$\displaystyle \{\VEC{x}_{k}\}_{k=1}^\infty$ that converges to the
 solution of (\ref{sys1}).
 
 If we use $x_{k+1,1}$, $x_{k+1,2}$, \ldots , $x_{k+1,i-1}$
@@ -478,7 +483,7 @@ $x_{k+1,2}$, \ldots , $x_{k+1,i-1}$ are better
 approximations of the first $(i-1)$ coordinates of the solution of
 (\ref{sys1}) than $x_{k,1}$, $x_{k,2}$, \ldots ,
 $x_{k,i-1}$, then perhaps that will get a new sequence
-$\{x_k\}_{k=0}^\infty$ that converges faster to the solution of
+$\displaystyle \{x_k\}_{k=0}^\infty$ that converges faster to the solution of
 (\ref{sys1}).  This motivates the following algorithm.
 
 \begin{algo}[Gauss-Seidel Iterative Method]
@@ -586,16 +591,16 @@ $(D-U-L)\VEC{x} = \VEC{b}$.
 
 Hence, the formula (\ref{formula5}) for the Jacobi iterative method
 can be rewritten as
-$\VEC{x}_{k+1} = D^{-1}(L + U) \VEC{x}_{k} + D^{-1}\VEC{b}$.
+$\displaystyle \VEC{x}_{k+1} = D^{-1}(L + U) \VEC{x}_{k} + D^{-1}\VEC{b}$.
 We have that $\VEC{x}$ is a solution of
-$\VEC{x} = D^{-1}(L + U) \VEC{x} + D^{-1}\VEC{b}$ if and only if
+$\displaystyle \VEC{x} = D^{-1}(L + U) \VEC{x} + D^{-1}\VEC{b}$ if and only if
 $\VEC{x}$ is a solution of $A \VEC{x} = \VEC{b}$.
 
 As well, the formula (\ref{formula6}) for the Gauss-Seidel iterative
 method can be rewritten as
-$\VEC{x}_{k+1} = (D-L)^{-1} U \VEC{x}_{k} + (D-L)^{-1}\VEC{b}$.
+$\displaystyle \VEC{x}_{k+1} = (D-L)^{-1} U \VEC{x}_{k} + (D-L)^{-1}\VEC{b}$.
 Again, $\VEC{x}$ is a solution of
-$\VEC{x} = (D-L)^{-1} U \VEC{x} + (D-L)^{-1}\VEC{b}$
+$\displaystyle \VEC{x} = (D-L)^{-1} U \VEC{x} + (D-L)^{-1}\VEC{b}$
 if and only if $\VEC{x}$ is a solution of $A \VEC{x} = \VEC{b}$.
 
 Both the Jacobi iterative method and the Gauss-Seidel iterative
@@ -605,9 +610,10 @@ method are of the form
 \end{equation}
 for $k=0$, $1$, $2$,\ldots
 
-For the Jacobi iterative method, $T = D^{-1}(L + U)$ and
-$\VEC{c} = D^{-1}\VEC{b}$.  For the Gauss-Seidel iterative method,
-$T = (D-L)^{-1} U$ and $\VEC{c} = (D-L)^{-1}\VEC{b}$.
+For the Jacobi iterative method, $\displaystyle T = D^{-1}(L + U)$ and
+$\displaystyle \VEC{c} = D^{-1}\VEC{b}$.  For the Gauss-Seidel iterative method,
+$\displaystyle T = (D-L)^{-1} U$ and
+$\displaystyle \VEC{c} = (D-L)^{-1}\VEC{b}$.
 
 We now find necessary and sufficient conditions for the convergence of
 methods of the form (\ref{formula7}).
@@ -628,7 +634,7 @@ invertible and
 \end{prop}
 
 \begin{proof}
-Let $S_k = \Id_n + T + T^2 + \ldots + T^k$.  We have
+Let $\displaystyle S_k = \Id_n + T + T^2 + \ldots + T^k$.  We have
 \begin{equation}\label{partsum}
 S_k(\Id_n-T) = (\Id_n-T)S_k = \Id_n - T^{k+1} \ .
 \end{equation}
@@ -668,7 +674,7 @@ In Proposition~\ref{Banach}, we have
 \end{cor}
 
 \begin{proof}
-From $\Id_n=(\Id_n-T)(\Id_n-T)^{-1}$, we get
+From $\displaystyle \Id_n=(\Id_n-T)(\Id_n-T)^{-1}$, we get
 \begin{align*}
 1 &= \|\Id_n\| = \|(\Id_n-T)(\Id_n-T)^{-1}\| \leq
 \|\Id_n-T\|\; \|(\Id_n-T)^{-1}\| \\
@@ -677,7 +683,7 @@ From $\Id_n=(\Id_n-T)(\Id_n-T)^{-1}$, we get
 \end{align*}
 This proves the first inequality in (\ref{banachrel}).
 
-From $(\Id_n-T)^{-1} = \Id_n + T (\Id_n - T)^{-1}$, we get
+From $\displaystyle (\Id_n-T)^{-1} = \Id_n + T (\Id_n - T)^{-1}$, we get
 \[
 \|(\Id_n-T)^{-1}\| = \|\Id_n + T (\Id_n - T)^{-1}\|
 \leq \|\Id_n\| + \|T\|\,\|(\Id_n - T)^{-1}\|
@@ -714,9 +720,10 @@ Since
 we have that $\displaystyle \sigma\left((P-Q)P^{-1}\right) < 1$.
 It follows from Proposition~\ref{Banach}, that
 $\displaystyle QP^{-1} = \Id_n - (P-Q)P^{-1}$ is invertible.
-Since $P^{-1}$ is invertible, we get the $Q$ is invertible.
+Since $\displaystyle P^{-1}$ is invertible, we get the $Q$ is invertible.
 
-Moreover, we get from Corollary~\ref{Banach_cor} with $T=(P-Q)P^{-1}$ that
+Moreover, we get from Corollary~\ref{Banach_cor} with
+$\displaystyle T=(P-Q)P^{-1}$ that
 \[
 \frac{1}{1+\|(P-Q)P^{-1}\|} \leq \| P Q^{-1} \| \leq
 \frac{1}{1-\|(P-Q)P^{-1}\|} \ .
@@ -737,8 +744,8 @@ and
 
 \begin{theorem}
 Let $T$ be an \nn matrix.  The sequence
-$\left\{\VEC{x}_{k}\right\}_{k=0}^\infty$ defined by
-(\ref{formula7}) converges for all $\VEC{x}_{0} \in \RR^n$ to the
+$\displaystyle \{\VEC{x}_{k}\}_{k=0}^\infty$ defined by
+(\ref{formula7}) converges for all $\displaystyle \VEC{x}_{0} \in \RR^n$ to the
 unique solution $\VEC{p}$ of $\VEC{x} = T\VEC{x} + \VEC{c}$ if and
 only if $\rho(T) < 1$.
 \label{convth}
@@ -748,7 +755,7 @@ only if $\rho(T) < 1$.
 \stage{$\Leftarrow$} Since $\rho(T) <1$, we have from the
 Proposition~\ref{Banach} that $\Id_n-T$ is invertible.  Thus
 $\VEC{x} = T\VEC{x} + \VEC{c}$, namely $(\Id_n-T)\VEC{x} = \VEC{c}$,
-has a unique solution given by $\VEC{p} = (\Id_n-T)^{-1}\VEC{c}$.
+has a unique solution given by $\displaystyle \VEC{p} = (\Id_n-T)^{-1}\VEC{c}$.
 
 We show by induction that
 \[
@@ -773,7 +780,7 @@ Using Proposition~\ref{Banach} and Theorem~\ref{spect}, we get
 = \VEC{0} + (\Id_n - T)^{-1}\VEC{c} = \VEC{p} \ .
 \]
 
-\stage{$\Rightarrow$} Let $\VEC{x}_{0}$ be any vector in $\RR^n$.
+\stage{$\Rightarrow$} Let $\VEC{x}_{0}$ be any vector in $\displaystyle \RR^n$.
 We show by induction that
 \[
 \VEC{p} - \VEC{x}_{k} = T^k\left(\VEC{p} - \VEC{x}_{0}\right) \ .
@@ -795,9 +802,9 @@ Hence
 = \lim_{k\rightarrow \infty} \left(\VEC{p} -\VEC{x}_{k}\right)
 = \VEC{0}
 \]
-because $\left\{\VEC{x}_{k}\right\}_{k=0}^\infty$ converges to $\VEC{p}$
+because $\displaystyle \{\VEC{x}_{k}\}_{k=0}^\infty$ converges to $\VEC{p}$
 by hypothesis.  Since $\VEC{p} - \VEC{x}_{0}$ can be any vector in
-$\RR^n$ by the arbitrary status of $\VEC{x}_0$, we get that
+$\displaystyle \RR^n$ by the arbitrary status of $\VEC{x}_0$, we get that
 $\rho(T) < 1$ from Theorem~\ref{spect}. 
 \end{proof}
 
@@ -850,7 +857,7 @@ If we let $m$ goes to infinity, we get
 \sum_{j=0}^\infty \, \|T\|^j\right)\|\VEC{x}_{1} - \VEC{x}_{0}\| = 
 \frac{\|T\|^k}{1-\|T\|} \|\VEC{x}_{1} - \VEC{x}_{0}\|
 \]
-because $\left\{\VEC{x}_{m}\right\}_{m=0}^\infty$ converges to
+because $\displaystyle \{\VEC{x}_{m}\}_{m=0}^\infty$ converges to
 $\VEC{p}$ by the previous theorem since $\rho(T) \leq \|T\| <1$.  The
 series in the previous expression is the geometric series.
 \end{proof}
@@ -891,7 +898,7 @@ for $i=1$, $2$, $3$, \ldots , $n$.
 \begin{theorem}
 If $A$ is strictly row diagonally dominant, then for any choice of
 $\VEC{x}_{0}$, both the Jacobi and the Gauss-Seidel iterative methods
-generate sequences $\left\{\VEC{x}_k\right\}_{k=0}^\infty$ which
+generate sequences $\displaystyle \{\VEC{x}_k\}_{k=0}^\infty$ which
 converge to the unique solution of $A \VEC{x} = \VEC{b}$.
 \label{convcond}
 \end{theorem}
@@ -899,8 +906,8 @@ converge to the unique solution of $A \VEC{x} = \VEC{b}$.
 \begin{proof}
 \stage{For Jacobi}  Using the notation at the beginning
 of the section, we have seen that the Jacobi iterative method is of
-the form (\ref{formula7}), where $T = D^{-1}(L + U)$ and
-$\VEC{c} = D^{-1}\VEC{b}$.
+the form (\ref{formula7}), where $\displaystyle T = D^{-1}(L + U)$ and
+$\displaystyle \VEC{c} = D^{-1}\VEC{b}$.
 
 Since $A$ is strictly row diagonally dominant
 \[
@@ -913,8 +920,8 @@ conclusion of the theorem follows from Theorem~\ref{convth}.
 
 \stage{For Gauss-Seidel}
 The Gauss-Seidel iterative method defined by (\ref{formula6}) is of
-the form (\ref{formula7}), where $T = (D-L)^{-1} U$ and
-$\VEC{c} = (D-L)^{-1}\VEC{b}$.
+the form (\ref{formula7}), where $\displaystyle T = (D-L)^{-1} U$ and
+$\displaystyle \VEC{c} = (D-L)^{-1}\VEC{b}$.
 
 Let $\lambda$ be an eigenvalue of $T$ and $\VEC{x}$ be an eigenvector
 associated to $\lambda$.  We assume that $\| \VEC{x} \|_\infty = 1$.
@@ -961,8 +968,8 @@ Theorem~\ref{convth}.
 \section{Relaxation Methods}
 
 As for Jacobi and Gauss-Seidel iterative methods, given a vector
-$\VEC{x}_{0} \in \RR^n$, the goal is to generate a sequence
-$\left\{\VEC{x}_{k}\right\}_{k=1}^\infty$ that converges to the
+$\displaystyle \VEC{x}_{0} \in \RR^n$, the goal is to generate a sequence
+$\displaystyle \{\VEC{x}_{k}\}_{k=1}^\infty$ that converges to the
 solution of (\ref{sys1}). The classical
 {\bfseries relaxation methods}\index{Relaxation Methods} are given in
 the following algorithm.
@@ -1006,7 +1013,7 @@ $D\VEC{x}$ on both sides yield
 \left( D - \omega L\right) \VEC{x} = (1 - \omega) D\VEC{x}
 + \omega U\VEC{x} + \omega \VEC{b} \ .
 \]
-Finally, multiplying by $(D-\omega L)^{-1}$ from the left on both
+Finally, multiplying by $\displaystyle (D-\omega L)^{-1}$ from the left on both
 sides of the equality above gives
 \begin{equation}\label{rmlongform}
 \VEC{x} = (D-\omega L)^{-1} \left( (1-\omega)D + \omega U\right)
@@ -1014,11 +1021,11 @@ sides of the equality above gives
 \end{equation}
 This equation equivalent to $A\VEC{x} = \VEC{b}$.
 
-With $T = (D-\omega L)^{-1}((1-\omega)D + \omega U)$ and
-$\VEC{c} = \omega (D-\omega L)^{-1}\VEC{b}$, the equation
+With $\displaystyle T = (D-\omega L)^{-1}((1-\omega)D + \omega U)$ and
+$\displaystyle \VEC{c} = \omega (D-\omega L)^{-1}\VEC{b}$, the equation
 (\ref{rmlongform}) becomes $\VEC{x} = T\VEC{x} + \VEC{c}$.  If the
 matrix $T$ satisfies Theorem~\ref{convth}, the sequence
-$\left\{\VEC{x}_{k}\right\}_{k=1}^\infty$ defined by
+$\displaystyle \{\VEC{x}_{k}\}_{k=1}^\infty$ defined by
 $\VEC{x}_{k+1} = T\VEC{x}_k + \VEC{c}$ converges to a solution
 $\VEC{p}$ of $\VEC{x} = T\VEC{x} + \VEC{c}$; namely, a solution of
 $A\VEC{x} = \VEC{b}$.
@@ -1083,31 +1090,34 @@ $0 < \omega < 2$.  Theorem~\ref{wconv} below gives a sufficient condition
 for the convergence of a restricted form of the relaxation methods.
 
 To prove Theorem~\ref{wconv} below, we consider complex matrices.
-Recall that the standard scalar product on $\CC^n$ is defined by
+Recall that the standard scalar product on $\displaystyle \CC^n$ is defined by
 \[
 \ps{\VEC{x}}{\VEC{y}} = \sum_{j=1}^n x_j \overline{y_j}
 \]
-for any $\VEC{x}$ and $\VEC{y}$ in $\CC^n$.  We therefore have that
+for any $\VEC{x}$ and $\VEC{y}$ in $\displaystyle \CC^n$.  We
+therefore have that
 $\ps{\VEC{x}}{\lambda \VEC{y}} = \overline{\lambda} \ps{\VEC{x}}{\VEC{y}}$ 
 for $\lambda\in \CC$.  Moreover,
 $\overline{\ps{\VEC{x}}{\VEC{y}}} = \ps{\VEC{y}}{\VEC{x}}$.
 
-The dual $A^\ast$ of a \nn complex matrix $A$ is a \nn matrix such that
-$\ps{A^\ast\VEC{x}}{\VEC{y}} = \ps{\VEC{x}}{A\VEC{y}}$ for all $\VEC{x}$ and
-$\VEC{y}$ in $\CC^n$.
+The dual $\displaystyle A^\ast$ of a \nn complex matrix $A$ is a \nn
+matrix such that
+$\displaystyle \ps{A^\ast\VEC{x}}{\VEC{y}} = \ps{\VEC{x}}{A\VEC{y}}$
+for all $\VEC{x}$ and $\VEC{y}$ in $\displaystyle \CC^n$.
 Let $\{\VEC{e}_1, \VEC{e}_2, \ldots, \VEC{e}_n\}$ be the canonical basis
-of $\CC^n$, then
+of $\displaystyle \CC^n$, then
 \begin{equation}\label{complconjrel}
 \ps{A^\ast\VEC{e}_i}{\VEC{e}_j} = \ps{\VEC{e}_i}{A\VEC{e}_j}
 \Rightarrow  a^\ast_{j,i} = \overline{a}_{i,j}
 \end{equation}
-for $1\leq i,j \leq n$.  Thus $A^\ast$ is the complex conjugate
+for $1\leq i,j \leq n$.  Thus $\displaystyle A^\ast$ is the complex conjugate
 transpose of $A$.
 
 A \nn complex matrix $A$ is
-{\bfseries Hermitian}\index{Linear Mappings!Hermitian} if $A^\ast = A$; namely,
+{\bfseries Hermitian}\index{Linear Mappings!Hermitian} if
+$\displaystyle A^\ast = A$; namely,
 $\ps{A\VEC{x}}{\VEC{y}} = \ps{\VEC{x}}{A\VEC{y}}$ for all $\VEC{x}$ and
-$\VEC{y}$ in $\CC^n$.  It follows from (\ref{complconjrel}) that
+$\VEC{y}$ in $\displaystyle \CC^n$.  It follows from (\ref{complconjrel}) that
 $a_{j,i} = \overline{a}_{i,j}$ for $1\leq i,j \leq n$.  In particular, 
 for $i=j$, we get $a_{j,j} = \overline{a}_{j,j}$ for $1\leq j \leq n$.
 The elements on the diagonal of $A$ are real numbers.
@@ -1129,7 +1139,7 @@ Positive Definite} if $A$ is Hermitian and
 \[
 \ps{\VEC{x}}{A\VEC{x}} = \VEC{x}^{\ast} A \VEC{x} > 0
 \]
-for all non-zero vector $\VEC{x} \in \CC^n$, where
+for all non-zero vector $\displaystyle \VEC{x} \in \CC^n$, where
 $\displaystyle \VEC{x}^{\ast} = 
 \begin{pmatrix} \overline{x_1} & \overline{x_2} & \ldots & \overline{x_n}
 \end{pmatrix}$.  Since
@@ -1168,7 +1178,7 @@ for all $\VEC{x} \neq \VEC{0}$.
 \begin{theorem}
 Suppose that the \nn matrix $A$ is strictly positive
 definite.   If $0 < \omega < 2$ and $\VEC{x}_{0}$ is any vector in
-$\RR^n$, then the relaxation method given by (\ref{formula8})
+$\displaystyle \RR^n$, then the relaxation method given by (\ref{formula8})
 generates a sequence which converges to the only solution of
 $A\VEC{x} = \VEC{b}$. 
 \label{wconv}
@@ -1177,9 +1187,10 @@ $A\VEC{x} = \VEC{b}$.
 \begin{proof}
 The conclusion of the theorem is a consequence of Theorem~\ref{convth}
 if we prove that $\rho(T)<1$, where
-$T = (D-\omega L)^{-1}((1-\omega)D + \omega U)$.
+$\displaystyle T = (D-\omega L)^{-1}((1-\omega)D + \omega U)$.
 
-Let $\lambda \in \CC$ be an eigenvalue of $T$ and $\VEC{x} \in \CC^n$
+Let $\lambda \in \CC$ be an eigenvalue of $T$ and
+$\displaystyle \VEC{x} \in \CC^n$
 be an eigenvector associated to $\lambda$.  We first note that
 $\lambda \neq 1$.  If $\lambda = 1$, we get from $T\VEC{x} = \VEC{x}$
 that
@@ -1200,10 +1211,10 @@ be used to show that $|\lambda| < 1$.  Since
   (1-\omega)D + \omega U = D - \omega(D -U)
   = D - \omega L - \omega ( D - U - L) = (D - \omega L) - \omega A \ ,
 \]
-we get that $T = \Id - Q^{-1}A$, where
+we get that $\displaystyle T = \Id - Q^{-1}A$, where
 $\displaystyle Q = \frac{1}{\omega}(D-\omega L)$.
-Hence, $\Id - T = Q^{-1}A$ and
-$(D-\omega L)Q^{-1} \VEC{y} = \omega \VEC{y}$ for all $\VEC{y}$.
+Hence, $\displaystyle \Id - T = Q^{-1}A$ and
+$\displaystyle (D-\omega L)Q^{-1} \VEC{y} = \omega \VEC{y}$ for all $\VEC{y}$.
 We get
 \[
 (1-\lambda) (D-\omega L) \VEC{x}
@@ -1216,7 +1227,7 @@ Thus
 \begin{equation}\label{sorA}
   (D-\omega L) \VEC{x} = \frac{\omega}{1-\lambda} A\VEC{x} \ .
 \end{equation}
-Moreover, from $T = \Id - Q^{-1}A$, we also have that
+Moreover, from $\displaystyle T = \Id - Q^{-1}A$, we also have that
 $Q(\Id - T) = A$.  Hence
 \[
 (1-\lambda) QT\VEC{x}
@@ -1246,7 +1257,7 @@ and
 = \frac{\omega \overline{\lambda}}{1-\overline{\lambda}}
 \ps{\VEC{x}}{A\VEC{x}} \ .
 \end{equation}
-Since $A = A^\ast$, we have that
+Since $\displaystyle A = A^\ast$, we have that
 $\ps{\VEC{x}}{U\VEC{x}} = \ps{L\VEC{x}}{\VEC{x}}$ and
 $\ps{\VEC{x}}{D\VEC{x}} = \ps{D\VEC{x}}{\VEC{x}}$ because the
 transposed conjugate of $U$ is $L$ and the elements on the diagonal of
@@ -1258,29 +1269,30 @@ $A$ are real.  Adding (\ref{sorC}) and (\ref{sorD}), we get
 = \frac{\omega(1-|\lambda|^2)}{|1-\lambda|^2} \ps{A\VEC{x}}{\VEC{x}}
 \ .
 \]
-Since $2-\omega > 0$, $|1-\lambda|^2>0$,
+Since $2-\omega > 0$, $\displaystyle |1-\lambda|^2>0$,
 $\ps{D\VEC{x}}{\VEC{x}} > 0$ (Remark~\ref{spd_rmk}) and
 $\ps{A\VEC{x}}{\VEC{x}} > 0$ because $A$ is strictly positive definite
 , we must have $|\lambda|<1$.  Since this is true for any
 eigenvalue $\lambda$ of $T$, we get $\rho(T) < 1$ as desired.
 \end{proof}
 
-We state without proving.
+We state the following result without proving it.
 
 \begin{theorem}
 Let $A$ be a tridiagonal, strictly positive definite matrix.  Let
-$T_j = D^{-1}(L+U)$ (Jacobi iterative method) and
-$T_{gs} = (D-L)^{-1}U$ (Gauss-Seidel iterative method).  Then
-$\rho(T_{gs}) = (\rho(T_j))^2 < 1$ and
-$\omega = 2/(1+\sqrt{1-\rho(T_{gs})}) = 2/(1+\sqrt{1-\rho^2(T_j)})$
+$\displaystyle T_j = D^{-1}(L+U)$ (Jacobi iterative method) and
+$\displaystyle T_{gs} = (D-L)^{-1}U$ (Gauss-Seidel iterative method).  Then
+$\displaystyle \rho(T_{gs}) = (\rho(T_j))^2 < 1$ and
+$\displaystyle \omega = 2/(1+\sqrt{1-\rho(T_{gs})})
+= 2/(1+\sqrt{1-\rho^2(T_j)})$
 is the optimal choice of $\omega$ for the relaxation method.
 \end{theorem}
 
 \begin{rmk}
 The proof of Theorem~\ref{wconv} is true if we replace $A=D-U-L$ by
-$A=D-C-C^\ast$, where $D$ is strictly positive definite.  By modifying
-the decomposition of $A$ as stated in the previous statement, we can
-generate other relaxation methods than the classical one.
+$\displaystyle A=D-C-C^\ast$, where $D$ is strictly positive definite.
+By modifying the decomposition of $A$ as stated in the previous
+statement, we can generate other relaxation methods than the classical one.
 \end{rmk}
 
 \section{Extrapolation}
@@ -1303,8 +1315,7 @@ that $\rho(T_{s_0})<1$ and solve
 $\VEC{x} = T_{s_0} \VEC{x} + \VEC{c}_{s_0}$ using the
 iterative procedure
 $\VEC{x}_{k+1} = T_{s_0} \VEC{x}_{k} + \VEC{c}_{s_0}$
-for $k=1$, $2$, $3$, \ldots
-Since $\rho(T_{s_0})<1$, this iterative procedure
+for $k=1$, $2$, $3$, \ldots\  Since $\rho(T_{s_0})<1$, this iterative procedure
 converges toward a solution of $\VEC{x} = T\VEC{x} + \VEC{c}$.
 \end{enumerate}
 
@@ -1397,7 +1408,8 @@ The basis for the method of steepest descent is the
 result of the following proposition.
 
 \begin{prop}
-Let $A$ be a strictly positive definite matrix and $\VEC{b}\in\RR^n$.
+Let $A$ be a strictly positive definite matrix and
+$\displaystyle \VEC{b}\in\RR^n$.
 The solution $\VEC{p}$ of the linear system $A\VEC{x} = \VEC{b}$ is
 the point where the quadratic function 
 \begin{align*}
@@ -1412,7 +1424,7 @@ reaches its strict absolute minimum.
 Let $\VEC{p}$ and $\VEC{u}$ be any two vectors and let
 $q(t) = g(\VEC{p}+t\VEC{u})$.
 
-For the standard scalar product on $\RR^n$,
+For the standard scalar product on $\displaystyle \RR^n$,
 \[
 \ps{\VEC{u}}{A\VEC{p}} = \ps{A\VEC{u}}{\VEC{p}} = \ps{\VEC{p}}{A\VEC{u}}
 \]
@@ -1428,8 +1440,8 @@ q(t) &= \ps{\VEC{p}+t\VEC{u}}{A(\VEC{p}+t\VEC{u})}
 
 We note that $\ps{\VEC{u}}{A\VEC{u}} > 0$ for $\VEC{u} \neq \VEC{0}$
 because $A$ is strictly positive definite.  Since the coefficient of
-$t^2$ in $q(t)$ is positive, we have a quadratic polynomial which is
-concave upward.  Its minimum is reached at
+$\displaystyle t^2$ in $q(t)$ is positive, we have a quadratic
+polynomial which is concave upward.  Its minimum is reached at
 \[
 t = t_m = \frac{\ps{\VEC{u}}{\VEC{b} - A\VEC{p}}}{\ps{\VEC{u}}{A\VEC{u}}}
 \]
@@ -1450,9 +1462,10 @@ reaches its strict absolute minimum.
 
 Conversely, if $\VEC{p}$ is the strict absolute minimum for
 $g(\VEC{x})$, we get from (\ref{quadr_lin}) that \\
-$\ps{\VEC{u}}{A\VEC{p} - \VEC{b}} = 0$ for all $\VEC{u} \in \RR^n$.
-The only vector orthogonal to all vectors in $\RR^n$, in particular to
-itself, is $\VEC{0}$.
+$\ps{\VEC{u}}{A\VEC{p} - \VEC{b}} = 0$ for all
+$\displaystyle \VEC{u} \in \RR^n$.
+The only vector orthogonal to all vectors in
+$\displaystyle \RR^n$, in particular to itself, is $\VEC{0}$.
 Thus $A\VEC{p} - \VEC{b}=\VEC{0}$ and $\VEC{p}$ is the solution of
 $A\VEC{x}=\VEC{b}$.
 \end{proof}
@@ -1505,10 +1518,11 @@ happen for the computer implementation of this algorithm because of
 round off errors, ill-conditioning, \ldots
 
 \begin{prop}
-Let $A$ be a strictly positive definite matrix and $\VEC{b}\in\RR^n$.
+Let $A$ be a strictly positive definite matrix and
+$\displaystyle \VEC{b}\in\RR^n$.
 Suppose that the vectors
 $\VEC{u}_1$, $\VEC{u}_2$, \ldots , $\VEC{u}_n$ are $A$-orthogonal
-vectors in $\RR^n$; namely, $\ps{\VEC{u}_i}{A\VEC{u}_j} = 0$ for
+vectors in $\displaystyle \RR^n$; namely, $\ps{\VEC{u}_i}{A\VEC{u}_j} = 0$ for
 $i\neq j$.  Then the steepest descent algorithm produces the solution
 of $A\VEC{x}=\VEC{b}$ after $n$ steps.
 \end{prop}
@@ -1559,9 +1573,10 @@ $A$-orthogonality of the vectors $\VEC{u}_j$, we find that
 &= \ps{\VEC{b} - A\VEC{x}_1}{\VEC{u}_k} - \ps{\VEC{b} - A\VEC{x}_1}{\VEC{u}_k}
 = 0
 \end{align*}
-for $k=1$, $2$, \ldots $n$.  Since
+for $k=1$, $2$, \ldots, $n$.  Since
 $\{\VEC{u}_1, \VEC{u}_2, \ldots, \VEC{u}_n\}$ is a basis of
-$\RR^n$, the previous equations shows that $A \VEC{x}_{n+1} = \VEC{b}$.
+$\displaystyle \RR^n$, the previous equations shows that
+$A \VEC{x}_{n+1} = \VEC{b}$.
 \end{proof}
 
 \subsection{Conjugate Gradient}
@@ -1586,7 +1601,7 @@ t_k =
 $\VEC{x}_{k+1} = \VEC{x}_k + t_k \VEC{u}_k$ 
 and $\VEC{r}_{k+1} = \VEC{r}_k - t_k A \VEC{u}_k$.
 \item Stop if
-$\| \VEC{r}_{k+1} \|_2^2 < \epsilon$, where $\epsilon$ is given.
+$\displaystyle \| \VEC{r}_{k+1} \|_2^2 < \epsilon$, where $\epsilon$ is given.
 \item Compute
 \[
 s_k =
@@ -1799,19 +1814,22 @@ conditioned -- Namely, the condition number $\kappa(A)$ of the matrix
 $A$ is large (Section~\ref{ErrorEstAxb}).  Instead of working with
 the original system $A\VEC{x} = \VEC{b}$, one often transforms this
 system into an equivalent system $\tilde{A} \tildev{x} = \tildev{b}$,
-where $\tilde{A} = T^\top A T$, $\tildev{x} = T^{-1}\VEC{x}$ and
-$\tildev{b} = T^\top \VEC{b}$ for an invertible matrix $T$.
+where $\displaystyle \tilde{A} = T^\top A T$,
+$\displaystyle \tildev{x} = T^{-1}\VEC{x}$ and
+$\displaystyle \tildev{b} = T^\top \VEC{b}$ for an invertible matrix $T$.
 
 Instead of computing $\tilde{A}$ and $\tildev{b}$, and using the
 conjugate gradient algorithm directly to approximate the solution of
 $\tilde{A} \tildev{x} = \tildev{b}$, we derive an algorithm from
 the conjugate gradient algorithm that gives us an approximation of the
 solution of $A\VEC{x} =  \VEC{b}$ without having to compute
-$\tilde{A} =T^\top A T$ and $\tildev{b} = T^{\top}\VEC{b}$.
+$\displaystyle \tilde{A} =T^\top A T$ and
+$\displaystyle \tildev{b} = T^{\top}\VEC{b}$.
 
 To compare the conjugate gradient algorithm applied to both systems
 $A\VEC{x} = \VEC{b}$ and $\tilde{A} \tildev{x} = \tildev{b}$, we let
-$\tildev{x}_k = T^{-1}\VEC{x}_k$ and $\tildev{u}_k = T^{-1}\VEC{u}_k$.
+$\displaystyle \tildev{x}_k = T^{-1}\VEC{x}_k$ and
+$\displaystyle \tildev{u}_k = T^{-1}\VEC{u}_k$.
 
 We have that
 \[
@@ -1821,8 +1839,9 @@ We have that
 \]
 
 For the preconditioned conjugate gradient method, we assume that
-$T\,T^\top$ is an invertible matrix.  If $Q^{-1} = T\,T^\top$, then
-$Q^{-1}$ is a strictly positive definite matrix.
+$\displaystyle T\,T^\top$ is an invertible matrix.  If
+$\displaystyle Q^{-1} = T\,T^\top$, then
+$\displaystyle Q^{-1}$ is a strictly positive definite matrix.
 
 In the conjugate gradient algorithm applied to
 $\tilde{A} \tildev{x} = \tildev{b}$, we have
@@ -1837,7 +1856,8 @@ $\tilde{A} \tildev{x} = \tildev{b}$, we have
 \end{equation}
 From
 $\tildev{x}_{k+1} = \tildev{x}_k + \tilde{t}_k \tildev{u}_k$, we get
-$T^{-1}\VEC{x}_{k+1} = T^{-1}\VEC{x}_k + \tilde{t}_k T^{-1} \VEC{u}_k$.
+$\displaystyle T^{-1}\VEC{x}_{k+1} = T^{-1}\VEC{x}_k + \tilde{t}_k
+T^{-1} \VEC{u}_k$.
 Multiplying both sides of this equality by $T$ from the left,
 we get
 \begin{equation} \label{CGM2}
@@ -1846,9 +1866,9 @@ we get
 From 
 $\tildev{r}_{k+1} = \tildev{r}_k - \tilde{t}_k \tilde{A} \, \tildev{u}_k$,
 we get
-$T^\top\VEC{r}_{k+1} = T^\top\VEC{r}_k
+$\displaystyle T^\top\VEC{r}_{k+1} = T^\top\VEC{r}_k
 + \tilde{t}_k (T^\top A T)(T^{-1} \VEC{u}_k)$.  Multiplying both sides of
-this equality by $(T^{-1})^\top$ from the left, we get
+this equality by $\displaystyle (T^{-1})^\top$ from the left, we get
 \begin{equation} \label{CGM3}
 \VEC{r}_{k+1} = \VEC{r}_k + \tilde{t}_k A \VEC{u}_k \ .
 \end{equation}
@@ -1865,7 +1885,8 @@ We also have
 \end{equation}
 Finally, from
 $\tildev{u}_{k+1} = \tildev{r}_{k+1} + \tilde{s}_k \, \tildev{u}_k$, we get
-$T^{-1}\VEC{u}_{k+1} = T^\top \VEC{r}_{k+1} + \tilde{s}_k T^{-1} \VEC{u}_k$.
+$\displaystyle T^{-1}\VEC{u}_{k+1} = T^\top \VEC{r}_{k+1} +
+\tilde{s}_k T^{-1} \VEC{u}_k$.
 Multiplying both sides of this equality by $T$ from the left,
 we get
 \begin{equation} \label{CGM5}
@@ -1894,7 +1915,7 @@ and $\VEC{r}_{k+1} = \VEC{r}_k - \tilde{t}_k A \VEC{u}_k$.
 \item Solve $Q\tildev{v}_{k+1} = \VEC{r}_{k+1}$.
 \item If
 $\ps{\tildev{v}_{k+1}}{\VEC{r}_{k+1}} < \epsilon$, where $\epsilon>0$ is
-given, compute $\| \VEC{r}_{k+1} \|_2^2$.  Stop if this last
+given, compute $\displaystyle \| \VEC{r}_{k+1} \|_2^2$.  Stop if this last
 expression is smaller than $\epsilon$.
 \item Compute
 \[
@@ -1922,14 +1943,15 @@ right balance between speeding up the convergence and keeping the
 systems $Q\tildev{v}_k = \VEC{r}_k$ easy to solve.
 
 In (7) of the preconditioning conjugate gradient algorithm, we compute
-$\| \VEC{r}_{k+1} \|_2^2$ only if
+$\displaystyle \| \VEC{r}_{k+1} \|_2^2$ only if
 $\ps{\tildev{v}_{k+1}}{\VEC{r}_{k+1}} < \epsilon$
-because $\| \VEC{r}_{k+1} \|_2^2$ is not used to compute $\tilde{s}_k$ and
+because $\displaystyle \| \VEC{r}_{k+1} \|_2^2$ is not used to compute
+$\tilde{s}_k$ and
 $\tilde{t}_{k+1}$, and eventually $\VEC{x}_{k+2}$ as it is the case in the
 original conjugate gradient algorithm.  So, to avoid extra
-computations, we compute $\| \VEC{r}_{k+1} \|_2^2$ only when we feel
-that there is a good chance that it is smaller than $\epsilon$.
-Note that, since $Q^{-1} = TT^\top$,
+computations, we compute $\displaystyle \| \VEC{r}_{k+1} \|_2^2$ only
+when we feel that there is a good chance that it is smaller than $\epsilon$.
+Note that, since $\displaystyle Q^{-1} = TT^\top$,
 \[
 \ps{\tildev{v}_{k+1}}{\VEC{r}_{k+1}}
 = \ps{Q^{-1}\VEC{r}_{k+1}}{\VEC{r}_{k+1}}
@@ -1942,12 +1964,12 @@ for all $\VEC{r}_{k+1} \neq \VEC{0}$.
 
 \begin{question}
 Prove that $\displaystyle \|\VEC{x}\| = \sum_{i=1}^n 2^{-i}|x_i|$
-defines a norm on $\RR^n$.
+defines a norm on $\displaystyle \RR^n$.
 \label{solvBQ1}
 \end{question}
 
 \begin{question}
-If $\|\cdot\|$ is a norm on $\RR^n$, show that
+If $\|\cdot\|$ is a norm on $\displaystyle \RR^n$, show that
 \begin{equation}\label{triminus}
 \|\VEC{x}-\VEC{y}\| \geq \big| \|\VEC{x}\|-\|\VEC{y}\| \big|
 \end{equation}
@@ -1956,8 +1978,8 @@ for any vector $\VEC{x}$ and $\VEC{y}$.
 \end{question}
 
 \begin{question}
-Let $\|\cdot\|$ be a norm on $\RR^n$.  Show that the induced norm on
-the \nn matrices satisfies
+Let $\|\cdot\|$ be a norm on $\displaystyle \RR^n$.  Show that the
+induced norm on the \nn matrices satisfies
 \[
 \|A\| = \sup_{\VEC{x}\neq\VEC{0}} \frac{\|A\VEC{x}\|}{\|\VEC{x}\|}
 \]
@@ -1994,11 +2016,11 @@ answer.
 \end{question}
 
 \begin{question}
-Let $\|\cdot\|$ be a norm on $\RR^n$ and $A$ be an \nn matrix.
+Let $\|\cdot\|$ be a norm on $\displaystyle \RR^n$ and $A$ be an \nn matrix.
 Prove that $\|A\VEC{x} \| \leq \|A\| \, \|\VEC{x}\|$ for all
-$\VEC{x} \in \RR^n$.  Moreover, prove that $\|A\|$ is the smallest
+$\displaystyle \VEC{x} \in \RR^n$.  Moreover, prove that $\|A\|$ is the smallest
 number $C$ such that $\|A\VEC{x} \| \leq C \, \|\VEC{x}\|$ for all
-$\VEC{x} \in \RR^n$.
+$\displaystyle \VEC{x} \in \RR^n$.
 \label{solvBQ7}
 \end{question}
 
@@ -2013,8 +2035,10 @@ x_1 + 3 x_2 - x_3 &= 1
 which the Gauss-Seidel iterative method converges.  You must proof the
 convergence.\\
 \subQ{b} Use the Gauss-Seidel iterative method to approximate the
-solution of $A\VEC{x} = \VEC{b}$ with an accuracy of $10^{-5}$ if the
-infinite norm is used.  Start with $\VEC{x}_0 = \VEC{0} \in \RR^3$.
+solution of $A\VEC{x} = \VEC{b}$ with an accuracy of
+$\displaystyle 10^{-5}$ if the
+infinite norm is used.  Start with
+$\displaystyle \VEC{x}_0 = \VEC{0} \in \RR^3$.
 \label{solvBQ8}
 \end{question}
 
@@ -2044,11 +2068,11 @@ external forces, and the sum of the moments must be zero.  We will not
 consider these equations.
 
 \subQ{a} Use Jacobi iterative method to approximate the solution of this
-system of forces to within $10^{-3}$.\\
+system of forces to within $\displaystyle 10^{-3}$.\\
 \subQ{b} Use Gauss-Seidel iterative method to approximate the solution of this
-system of forces to within $10^{-3}$.\\
+system of forces to within $\displaystyle 10^{-3}$.\\
 \subQ{c} Use a relaxation method to approximate the solution of this system
-of forces to within $10^{-3}$.
+of forces to within $\displaystyle 10^{-3}$.
 
 Start the iteration with $f_i= F_j = 1$ for all $i$ and $j$.
 Note that you may have to reorder the equations to ensure that the
@@ -2068,12 +2092,12 @@ A = \begin{pmatrix} 4 & 1 & -1 & 1 \\ 1 & 5 & 1 & -1 \\
 \subQ{a} Show that both Jacobi and Gauss-Seidel iteration methods
 converge.\\
 \subQ{b} Use Jacobi iteration method to approximate the solution of
-$A\VEC{x} = \VEC{b}$ with an accuracy of $10^{-5}$.\\
+$A\VEC{x} = \VEC{b}$ with an accuracy of $\displaystyle 10^{-5}$.\\
 \subQ{c} Use Gauss-Seidel iteration method to approximate the solution of
-$A\VEC{x} = \VEC{b}$ with an accuracy of $10^{-5}$.\\
+$A\VEC{x} = \VEC{b}$ with an accuracy of $\displaystyle 10^{-5}$.\\
 \subQ{d} Use a relaxation method to approximate the solution of
-$A\VEC{x} = \VEC{b}$ with an accuracy of $10^{-5}$.  You must first
-show that the method converges with your choice of $\omega$.
+$A\VEC{x} = \VEC{b}$ with an accuracy of $\displaystyle 10^{-5}$.  You
+must first show that the method converges with your choice of $\omega$.
 Experiment with different values of $\omega$.  For your choice of
 $\VEC{x}_0$, determine roughly the value(s) of $\omega$ for which the
 relaxation method converges the fastest (i.e.\ with the smallest number
@@ -2085,7 +2109,7 @@ of iterations to satisfy the accuracy.)
 Consider the iterative system $\VEC{x}_{k+1} = T \VEC{x}_k + \VEC{c}$,
 where $T$ is an \nn matrix whose spectral radius $\rho(T)$ is bigger
 or equal to $1$.  Give a vector $\VEC{x}_0$ such that the sequence
-$\{ \VEC{x}_k \}_{k=0}^\infty$ does not converge to a solution of
+$\displaystyle \{ \VEC{x}_k \}_{k=0}^\infty$ does not converge to a solution of
 $\VEC{x} = T \VEC{x} + \VEC{c}$ is there is a solution.
 \label{solvBQ11}
 \end{question}
@@ -2104,13 +2128,15 @@ Choose any initial vector $\VEC{x}_0$ and show that only a finite
 number of iterations of Jacobi iterative method is necessary to get
 the solution of $A\VEC{x} = \VEC{b}$.\\
 \subQ{c} If $A$ is a general \nn upper-triangular matrix and
-$\VEC{b}\in \RR^n$, show that a finite number of iterations of the Jacobi
-iterative method is sufficient to get the solution of $A\VEC{x} = \VEC{b}$.
+$\displaystyle \VEC{b}\in \RR^n$, show that a finite number of
+iterations of the Jacobi iterative method is sufficient to get the
+solution of $A\VEC{x} = \VEC{b}$.
 \label{solvBQ12}
 \end{question}
 
 \begin{question}
-Let $A$ be an \nn upper-triangular matrix and $\VEC{b}\in \RR^n$, show
+Let $A$ be an \nn upper-triangular matrix and
+$\displaystyle \VEC{b}\in \RR^n$, show
 that the Gauss-Seidel iterative method converges to the solution of
 $A\VEC{x} = \VEC{b}$ for any initial vector $\VEC{x}_0$, and that it
 does so in a finite number of iterations
@@ -2120,8 +2146,7 @@ does so in a finite number of iterations
 \begin{question}
 Suppose that
 $\displaystyle A = \begin{pmatrix} 1 & 0 \\ 2 & 3 \end{pmatrix}$
-and $\VEC{x}_0$ is any vector in $\RR^2$.
-
+and $\VEC{x}_0$ is any vector in $\displaystyle \RR^2$.\\
 \subQ{a} Show that the sequence
 $\{\VEC{x}_k\}_{k=0}^\infty$ generated by the relaxation method
 converges to the solution of $A\VEC{x}=\VEC{b}$ whatever the choice of
@@ -2129,7 +2154,7 @@ $\VEC{x}_0$ if and only if $\omega \in ]0,2[$\\
 \subQ{b} What is the optimal value of $\omega$; namely, what is the
 value of $\omega$ for which we expect the fastest convergence?\\
 \subQ{c} If $\omega \not\in\, ]0,2[$, show that there exists
-$\VEC{x}_0$ for which the sequence $\{\VEC{x}_k\}_{k=0}^\infty$
+$\VEC{x}_0$ for which the sequence $\displaystyle \{\VEC{x}_k\}_{k=0}^\infty$
 generated by the relaxation method does not converge.  So, it
 certainly does not converge to a solution of $A\VEC{x}=\VEC{b}$.  Give
 such a vector $\VEC{x}_0$.
@@ -2145,8 +2170,7 @@ by
 $\VEC{u}_k = \VEC{b} - A\VEC{x}_k$
 
 Obviously, if $\VEC{b} = A\VEC{x}_k$, then we have the solution
-$\VEC{x}_k$ and we stop the iteration.
-
+$\VEC{x}_k$ and we stop the iteration.\\
 \subQ{a} Prove that $\VEC{u}_k$ is parallel to the gradient of
 $g(x) = \ps{\VEC{x}}{A\VEC{x}} - 2 \ps{\VEC{x}}{\VEC{b}}$ at $\VEC{x}
 = \VEC{x}_k$.  Therefore, perpendicular to the level curve of $g$ at
@@ -2167,7 +2191,7 @@ then $A\VEC{x}_k = \VEC{b}$.
 If $A$ is a strictly positive definite matrix and $\VEC{b}$ is a given
 vector.  Show that the scalar product of the residual error
 $\VEC{r} = \VEC{b} - A \VEC{x}$ and the error vector
-$\VEC{e} = A^{-1}\VEC{b} - \VEC{x}$ is positive unless
+$\displaystyle \VEC{e} = A^{-1}\VEC{b} - \VEC{x}$ is positive unless
 $A\VEC{x} = \VEC{b}$.
 \label{solvBQ17}
 \end{question}
