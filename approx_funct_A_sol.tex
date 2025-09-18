@@ -1,11 +1,12 @@
 \nonumsection{Chapter~\ref{chaptApproxA} : Least Square Approximation
-(in $L^2$)}
+(in $\displaystyle L^2$)}
 
 \solution{\SOL}{\ref{apprAQ1}}{
-Suppose that $\{ P_k^{[i]} \}_{k=0}^\infty$ for $i=1$ and
+Suppose that $\displaystyle \{ P_k^{[i]} \}_{k=0}^\infty$ for $i=1$ and
 $2$ are two orthogonal families of monic polynomials such that
-$\ps{p}{P_k^{[i]}}=0$ for all polynomial $p$ of degree less than $k$.
-Given $k > 0$, we have that $P_k^{[1]} - P_k^{[2]}$ is a polynomial
+$\displaystyle \ps{p}{P_k^{[i]}}=0$ for all polynomial $p$ of degree
+less than $k$. Given $k > 0$, we have that
+$\displaystyle P_k^{[1]} - P_k^{[2]}$ is a polynomial
 of degree $k-1$ because both polynomials are monic, such that
 \[
   \ps{p}{P_k^{[1]} - P_k^{[2]}}
@@ -16,8 +17,8 @@ for all polynomial $p$ of degree less than $k$.  In particular,
   \ps{P_k^{[1]} - P_k^{[2]}}{P_k^{[1]} - P_k^{[2]}}
   = \int_a^b (P_k^{[1]} - P_k^{[2]})^2 w(x) \dx{x} = 0 \ .
 \]
-Since $P_k^{[1]} - P_k^{[2]}$ is continuous on $[a,b]$, we get that
-$P_k^{[1]}(x) = P_k^{[2]}(x)$ for all $x \in [a,b]$.
+Since $\displaystyle P_k^{[1]} - P_k^{[2]}$ is continuous on $[a,b]$,
+we get that $\displaystyle P_k^{[1]}(x) = P_k^{[2]}(x)$ for all $x \in [a,b]$.
 }
 
 \solution{\SOL}{\ref{apprAQ2}}{
@@ -30,7 +31,7 @@ $k\geq 0$ and $\displaystyle C_k = \frac{A_k}{A_{k-1}}
 our choice for $a_{-1,-1}$, we also have $C_0 = 0$ as required.
 Note that $\displaystyle A_k = \frac{a_{k+1,k+1}}{a_{k,k}}$ can
 be easily proved by comparing the coefficient of
-$x^{k+1}$ on both sides of (\ref{apprAQ2equ1}).
+$\displaystyle x^{k+1}$ on both sides of (\ref{apprAQ2equ1}).
 
 It remains only to prove that
 \[

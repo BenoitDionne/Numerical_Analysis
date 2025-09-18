@@ -1,4 +1,4 @@
-\chapter{Least Square Approximation (in $\ell^2$)}
+\chapter{Least Square Approximation (in $\displaystyle \ell^2$)}
 \label{ChaptApproxC}
 
 Consider the data provided in Figure~\ref{appr_DiscrLeastSqr}
@@ -29,7 +29,8 @@ $\displaystyle I(a,b) = \sum_{i=1}^{n} \left( y_i - (ax_i+b)\right)^2$.
 \end{description}
 
 Instead of a straight line, we may have assumed that the data in
-Figure~\ref{appr_DiscrLeastSqr} represent a parabola $y=p(x)= ax^2+bx+c$ or
+Figure~\ref{appr_DiscrLeastSqr} represent a parabola
+$\displaystyle y=p(x)= ax^2+bx+c$ or
 some other functions.  We will say more on this later.  We have chosen a
 straight line to illustrate the discrete least square method.  The least
 square method is the most convenient method for the following reasons.
@@ -41,7 +42,8 @@ differentiable everywhere for the other two methods.
 far away (vertically) from the straight line that we try to fit.
 \item The method is statistically significant.
 \item The method is theoretically significant.  It is closely related to the
-notion of $L^2$ approximation that we will study in the next sections.
+notion of $\displaystyle L^2$ approximation that we will study in the
+next sections.
 \end{enumerate}
 
 \section{Linear Modeling} \label{sectLinMod}
@@ -83,7 +85,7 @@ b &= \frac{\displaystyle  \left(\sum_{i=1}^n x_i^2\right)
 {\displaystyle n \left(\sum_{i=1}^n x_i^2\right) -
 \left(\sum_{i=1}^n x_i\right)^2} \ .
 \end{align*}
-Since $I:\RR^2\rightarrow [0,\infty[$ is a quadratic polynomial
+Since $\displaystyle I:\RR^2\rightarrow [0,\infty[$ is a quadratic polynomial
 function, its only critical point must be a local and absolute minimum.
 
 \section{Nonlinear Modelling}
@@ -120,17 +122,18 @@ This system has always a unique solution because the matrix $H$ is a
 
 As a final example, suppose that the data
 $\left\{ (x_i,y_i) : i=1,2,\ldots, n\right\}$ represent an exponential curve
-$p(x) = b e^{ax}$ ( or $\displaystyle p(x) = b x^a = b e^{a\ln(x)}$).
+$\displaystyle p(x) = b e^{ax}$ (or
+$\displaystyle p(x) = b x^a = b e^{a\ln(x)}$).
 In theory, we have to minimize
 \[
-I(a,b) = \sum_{i=1}^n \left( y_i - b e^{ax_i}\right)^2 \; .
+I(a,b) = \sum_{i=1}^n \left( y_i - b e^{ax_i}\right)^2 \ .
 \]
 However, this is not an easy function to minimize exactly or
 numerically (the reader should try to do it).  So, instead, we minimize
 \[
 J(a,b) = \sum_{i=1}^n \left( \ln(y_i) -
 \ln\left(b e^{ax_i}\right) \right)^2 
-= \sum_{i=1}^n \left( \ln(y_i) - \ln(b) - ax_i \right)^2 \; .
+= \sum_{i=1}^n \left( \ln(y_i) - \ln(b) - ax_i \right)^2 \ .
 \]
 The unique critical point of $J$ is given by
 \begin{align*}
@@ -146,8 +149,8 @@ a &= \frac{\displaystyle  n \sum_{i=1}^n x_i \ln(y_i) -
 \left(\sum_{i=1}^n x_i\right)^2} \ .
 \end{align*}
 These values of $a$ and $b$ are not the values of $a$ and $b$ that minimize
-$I$.  Thus, $y= be^{ax}$ may not be a ``best fit'' for the set of data as
-we will expect with the least square method.
+$I$.  Thus, $\displaystyle y= be^{ax}$ may not be a ``best fit'' for
+the set of data as we will expect with the least square method.
 
 \section[Trigonometric Polynomial Approximation (Real Case)]{Trigonometric Polynomial Approximation (Real\\ Case)}
 
@@ -178,11 +181,11 @@ results about the trigonometric polynomial given in
 \begin{lemma}
 Assume that $r \in \ZZ$.  If $r$ is not a multiple of $2N$, then
 \begin{equation} \label{approx_trig_equ1}
-\sum_{n=0}^{2N-1} \cos(r x_n) = \sum_{n=0}^{2N-1} \sin(r x_n) = 0 \; .
+\sum_{n=0}^{2N-1} \cos(r x_n) = \sum_{n=0}^{2N-1} \sin(r x_n) = 0 \ .
 \end{equation}
 Moreover, if $r$ is not a multiple of $N$, then
 \begin{equation}  \label{approx_trig_equ2}
-\sum_{n=0}^{2N-1} \cos^2(r x_n) = \sum_{n=0}^{2N-1} \sin^2(r x_n) = N \; .
+\sum_{n=0}^{2N-1} \cos^2(r x_n) = \sum_{n=0}^{2N-1} \sin^2(r x_n) = N \ .
 \end{equation}
 \label{approx_trig_realSP}
 \end{lemma}
@@ -330,7 +333,7 @@ Thus
 \]
 where we have used (\ref{approx_trig_equ1}) to get the last equality.
 
-Finally, since $I:\RR^{2N+1} \rightarrow [0,\infty[$ is a
+Finally, since $\displaystyle I:\RR^{2N+1} \rightarrow [0,\infty[$ is a
 quadratic polynomial function with a single critical point, this
 critical point is a local and absolute minimum.
 \end{proof}
@@ -398,8 +401,8 @@ have done in the previous section, we now consider $2\pi$-periodic complex
 valued functions.  In the context of complex valued functions, the complex
 trigonometric polynomials are finite linear combinations of
 $\displaystyle e^{k x i}$ for $k\in \ZZ$, where $i$ is the complex number
-satisfying $i^2=-1$.  In particular, we will consider trigonometric
-polynomials of the form
+satisfying $\displaystyle i^2=-1$.  In particular, we will consider
+trigonometric polynomials of the form
 \begin{equation}\label{approx_complex_polyn}
 p(x) = \sum_{k=-K}^K r_k e^{k x i}
 \end{equation}
@@ -443,7 +446,7 @@ orthogonal with respect to this pseudo scalar product.  However, we
 have a result similar to orthogonality.
 
 \begin{prop}
-The set $S = \{ e^{kx i}\}_{k\in \ZZ}$ satisfies
+The set $\displaystyle S = \{ e^{kx i}\}_{k\in \ZZ}$ satisfies
 \[
 \pps{e^{kx i}}{e^{j x i}} =
 \begin{cases}
@@ -512,22 +515,24 @@ A proof similar to the proof of Theorem~\ref{approx_coeff_real_trig}
 could be given to show that the coefficients $r_k$ defined above for
 $K \leq N/2$ minimize (\ref{approx_cpl_ls}) (This is left to the reader).  We
 will proceed differently.  The proof that we will give requires some
-knowledge of Fourier series of complex valued functions in $L^2$.
+knowledge of Fourier series of complex valued functions in $\displaystyle L^2$.
 This was the subject of Chapter~\ref{chaptApproxA}.  We only state the
 result that is needed from that chapter.  This approach has the
-advantage of linking the discrete least square method above to $L^2$
+advantage of linking the discrete least square method above to
+$\displaystyle L^2$
 approximation in the space of $2\pi$-periodic square integrable
 functions.  However, it has the disadvantage or requesting that $f$ be
 continuously differentiable.  This is an extra condition which is not
 required to determine the coefficients $r_k$ minimizing
 (\ref{approx_cpl_ls}).
 
-We saw in Chapter~\ref{chaptApproxA} that if $f$ is an $L^2$-integrable
+We saw in Chapter~\ref{chaptApproxA} that if $f$ is an
+$\displaystyle L^2$-integrable
 function on $[0,2\pi]$, then we may write
 \[
 f = \sum_{k\in\ZZ} A_k e^{k x i} \ ,
 \]
-where the convergence is the $L^2$ convergence and
+where the convergence is the $\displaystyle L^2$ convergence and
 \[
 A_k = \frac{1}{2\pi} \int_0^{2\pi} f(x) e^{-k x i} \quad , \quad k \in \ZZ \ .
 \]
@@ -686,16 +691,15 @@ $\displaystyle I(r_{-K},r_{-K+1}, \ldots, r_K) = \pps{f-p}{f-p}$,
 where $p$ is defined in (\ref{approx_complex_polyn}), reaches its
 minimum if and only if $r_k$ is given by
 (\ref{approx_cpl_coeff_gen}) for $|k|\leq K$.
-\item Since $e^{-K x_n i} = e^{K x_n i}$ for all $n$ when $K=N/2$, it
-follows from the proof of the previous theorem that
+\item Since $\displaystyle e^{-K x_n i} = e^{K x_n i}$ for all $n$
+when $K=N/2$, it follows from the proof of the previous theorem that
 \[
 p(x) = \sum_{-N/2<k\leq N/2} a_k e^{k x i}
 \]
 minimizes $\displaystyle \sum_{n=0}^{N-1} \left| y_n - p(x_n) \right|^2$
 among all trigonometric polynomials of the form \\
 $\displaystyle \sum_{|k|\leq \intpt{N/2}} a_k e^{k x i}$,
-where $\intpt{N/2}$ is the largest integer less than or equal
-to $N/2$.
+where $\intpt{N/2}$ is the largest integer less than or equal to $N/2$.
 \item \label{approx_compl_rmks_lbl1} Let
 $\displaystyle p(x) = \sum_{|k|\leq K} r_k e^{k x i}$
 be the polynomial given by
@@ -761,8 +765,8 @@ $\displaystyle x_n = \frac{2n \pi}{N}$ for $0 \leq n \leq N$, we get
 + \frac{2\pi}{N}\sum_{n=1}^{N-1} g\left(x_n\right)
 = \frac{2\pi}{N} \sum_{n=0}^{N-1} g\left(x_n\right) \ .
 \]
-In particular, if $g(x) = f(x) e^{-k x i}$ with $f$ a $2\pi$-periodic
-complex valued function, we get
+In particular, if $\displaystyle g(x) = f(x) e^{-k x i}$ with $f$ a
+$2\pi$-periodic complex valued function, we get
 \[
 A_k = \frac{1}{2\pi} \int_0^{2\pi} f(x) e^{-k x i} \dx{x}
 \approx = \frac{1}{N} \sum_{n=0}^{N-1} f(x_n) e^{-k x_n i} = a_k \ .
@@ -774,7 +778,7 @@ $\displaystyle a_k = \sum_{j\equiv k \pmod{N}} A_j$ are almost negligible.
 \begin{egg}
 Find the trigonometric polynomial
 $\displaystyle p(x) = \sum_{|k|\leq 1} b_k e^{kxi}$ that interpolates
-$f(x) = \sin^2(x)$ at $x_n = 2n\pi/3$ for $n=0$, $1$ and $2$.
+$\displaystyle f(x) = \sin^2(x)$ at $x_n = 2n\pi/3$ for $n=0$, $1$ and $2$.
 
 According to Item~\ref{approx_compl_rmks_lbl1} of
 Remark~\ref{approx_compl_rmks}, the answer is given by
@@ -825,8 +829,10 @@ Theorem~\ref{approx_coeffs_comple_trig}, then one can prove that
 \]
 for some constant $C$ \cite{CdB}.
 
-Moreover, if $f$ is $j$-times differentiable with $f^{(j)}$ piecewise
-continuous, one can prove that $|A_k| = O(|k|^{-j-1})$ and that this implies
+Moreover, if $f$ is $j$-times differentiable with
+$\displaystyle f^{(j)}$ piecewise
+continuous, one can prove that
+$\displaystyle |A_k| = O(|k|^{-j-1})$ and that this implies
 that $\displaystyle \dist{f}{\Pi_K} = O(K^{-j})$ \cite{CdB}.
 \end{rmk}
 
@@ -846,8 +852,8 @@ other applications.
 \begin{defn}
 Let $\Pi_N$ be the space of all periodic functions
 $\fct{z}:\ZZ \rightarrow \CC$
-of period $N$ and let $\omega_N$ be the $N^{th}$ root of unity defined by
-$\omega_N = e^{2\pi i/N}$.  The
+of period $N$ and let $\omega_N$ be the $\displaystyle N^{th}$ root of
+unity defined by $\displaystyle \omega_N = e^{2\pi i/N}$.  The
 {\bfseries Discrete Fourier Transform}\index{Discrete Fourier Transform}
 is the mapping $\FF_N: \Pi_N \rightarrow \Pi_N$ such that
 $\fct{y} = \FF_N \fct{x}$ is defined by
@@ -862,8 +868,9 @@ The Discrete Fourier Transform has the following property.
 
 \begin{prop}
 $\FF_N:\Pi_N \rightarrow \Pi_N$ is one-to-one and onto.  The inverse
-of $\FF_N$ is the mapping $\FF_N^{-1}: \Pi_N \rightarrow \Pi_N$ such
-that $\fct{x} = \FF_N^{-1} \fct{y}$ is defined by
+of $\FF_N$ is the mapping
+$\displaystyle \FF_N^{-1}: \Pi_N \rightarrow \Pi_N$ such
+that $\displaystyle \fct{x} = \FF_N^{-1} \fct{y}$ is defined by
 \[
 \fct{x}(n) \equiv \sum_{k=0}^{N-1} \, \omega_N^{nk} \fct{y}(k)
 \]
@@ -897,19 +904,19 @@ To simplify the notation, we consider
 \FF^\ast_N \fct{x} \equiv N \FF_N \fct{x}
 \]
 for $\fct{x}\in \Pi_N$.  Hence,
-$\fct{y}^\ast = \FF^\ast_N \fct{x}$ is given by
+$\displaystyle \fct{y}^\ast = \FF^\ast_N \fct{x}$ is given by
 \[
 \fct{y}^\ast(n) \equiv \sum_{k=0}^{N-1} \omega_N^{-nk} \fct{x}(k)
 \]
-for $n \in \ZZ$.  In many books, $\FF^\ast_N$ is used as the definition
-of the Discrete Fourier Transform.
+for $n \in \ZZ$.  In many books, $\displaystyle \FF^\ast_N$ is used as
+the definition of the Discrete Fourier Transform.
 
 The idea behind the Fast Fourier Transforms is to construct a sequence
 $\fctt{y}_m$, $\fctt{y}_{m-1}$, \ldots, $\fctt{y}_0$ of functions from
 $\ZZ\times \ZZ$ into $\RR$ such that $\fctt{y}_{j-1}$ is obtained from
 $\fctt{y}_j$ for $j=m$, $m-1$, \ldots , $2$, $1$.  Moreover,
 $\fctt{y}_m(\cdot,0)$ is $\fct{x}$ and $\fctt{y}_0(0,\cdot)$ is
-$\fct{y}^\ast = \FF^\ast_N \fct{x}$.
+$\displaystyle \fct{y}^\ast = \FF^\ast_N \fct{x}$.
 
 \begin{defn}
 \begin{enumerate}
@@ -919,13 +926,13 @@ integers, we define $\fct{x}_{A,a} \in \Pi_B$ with $a\in \NN$ by
 \fct{x}_{A,a}(n) = \fct{x}(a+An)
 \]
 for $n \in \ZZ$.
-\item Suppose that $N = P_1 P_2 P_3 \ldots P_m$ and let
-$N = A_k  P_k B_k$, where $A_k=P_1 P_2 \ldots P_{k-1}$ and
-$B_k=P_{k+1} P_{k+2} \ldots P_m$.  If $k=0$, we set $P_k = 1$ and
+\item Suppose that $N = P_1 P_2 P_3 \cdots P_m$ and let
+$N = A_k  P_k B_k$, where $A_k=P_1 P_2 \cdots P_{k-1}$ and
+$B_k=P_{k+1} P_{k+2} \cdots P_m$.  If $k=0$, we set $P_k = 1$ and
 $A_k = 1$.  If $k=m$, we set $B_k=1$. 
 
 For each $q \in \ZZ$, we define the function
-$\fct{y}^\ast_{A_k P_k,q} \in \Pi_{B_k}$ by
+$\displaystyle \fct{y}^\ast_{A_k P_k,q} \in \Pi_{B_k}$ by
 \[
 \fct{y}^\ast_{A_k P_k,q} = \FF^\ast_{B_k} \fct{x}_{A_k P_k,q} \ .
 \]
@@ -936,7 +943,8 @@ Namely,
 = \sum_{s=0}^{B_k-1}\, \fct{x}(q+A_k P_k s) \omega_{B_k}^{-s b}
 \end{equation}
 for $b \in \ZZ$.
-\item $\fct{y}^\ast_{A_k P_k, q}$ can be used to define the function
+\item $\displaystyle \fct{y}^\ast_{A_k P_k, q}$ can be used to define
+the function 
 \begin{align*}
 \fctt{y}_k: \ZZ \times \ZZ & \rightarrow \RR \\
 (q,b) &\mapsto \fct{y}^\ast_{A_k P_k,q}(b)
@@ -948,7 +956,7 @@ and of period $N$ in its first variable.
 
 \begin{rmkList}
 \begin{enumerate}
-\item For $k=m$, we have the special case $A_k=P_1 P_2 \ldots P_{m-1}$,
+\item For $k=m$, we have the special case $A_k=P_1 P_2 \cdots P_{m-1}$,
 $P_k = P_m$ and $B_k=1$ in (\ref{FFTstep}).  Thus,
 \[
 \fct{y}^\ast_{A_m P_m,q}(0) = \FF^\ast_1 \fct{x}_{N, q}(n) \bigg|_{n=0}
@@ -995,8 +1003,8 @@ We have
 \omega_{B_k P_k}^{-(s+rP_k)(b+B_k p)}  \\
 &= \FF^\ast_{P_kB_k}\fct{x}_{A_k,a} (b+B_k p)
 \end{align*}
-because $\omega_{P_kB_k}^{-mP_kB_k} = 1^{-m} = 1$ for all $m\in \ZZ$.
-Thus
+because $\displaystyle \omega_{P_kB_k}^{-mP_kB_k} = 1^{-m} = 1$ for
+all $m\in \ZZ$.  Thus
 \[
 \sum_{s=0}^{P_k-1} \fctt{y}_k(a+A_k s, b) \omega_{P_k B_k}^{-s(b+B_k p)}
 = \fctt{y}_{k-1}(a, b+B_k p) \ .  \qedhere
@@ -1009,16 +1017,16 @@ Fast Fourier Transform algorithms.
 
 \begin{code}[Fast Fourier Transform]
 To compute the Fast Fourier Transform of $\fct{x}$ in $\Pi_N$.  We
-assume that $N = P_1 P_2 \ldots P_m$.\\
-\subI{Input} The vector $(P_1,P_2, \ldots P_m)$ and the column vector
+assume that $N = P_1 P_2 \cdots P_m$.\\
+\subI{Input} The vector $(P_1,P_2, \cdots P_m)$ and the column vector
 $\fct{x}$ which are respectively denoted \verb!MP! and \verb!X! in the
 code below.  Since $\fct{x}$ is $N$-periodic, only the
 components $\fct{x}(j)$ for $0 \leq j < N$ are needed.\\
 \subI{Output} The Fast Fourier Transform
-$\fct{y}^\ast= \FF^\ast_N \fct{x}$ which is
+$\displaystyle \fct{y}^\ast= \FF^\ast_N \fct{x}$ which is
 denoted \verb!Z! in the code below.  As for the input, only the
-components $\fct{y}^\ast(j)$ for $0 \leq j < N$ are returned
-because of the periodicity of $\fct{y}^\ast$.
+components $\displaystyle \fct{y}^\ast(j)$ for $0 \leq j < N$ are returned
+because of the periodicity of $\displaystyle \fct{y}^\ast$.
 \small
 \begin{verbatim}
 function Z = FFT(X,MP)
@@ -1082,7 +1090,7 @@ computed for all the values of $p$ at the same time using Matlab
 matrix operations.  We repeat this operation for $0\leq a < A_k$ and
 $0\leq b < B_k$ to get the full vector $\fctt{y}_{k-1}(a, b+B_k p)$.
 We have also used the nested form of the polynomial in
-$\omega_{P_k B_k}^{-(b+B_k p)}$ to evaluate the expression
+$\displaystyle \omega_{P_k B_k}^{-(b+B_k p)}$ to evaluate the expression
 (\ref{recfft}) above.  To formulate (\ref{recfft}) in MATLAB, we have to
 note that
 \begin{itemize}
@@ -1093,13 +1101,14 @@ $\fctt{y}_k(a+A_k s, b)$
 \end{itemize}
 for $0\leq a < A_k$, $0\leq b<B_k$ and $0\leq p,s < P_k$.
 \item About $N(P_1+P_2+\ldots+P_m) = N \log(N)$ operations are needed
-in the code above to compute $\FF^\ast_N \fct{x}$.  The evaluation
+in the code above to compute $\displaystyle \FF^\ast_N \fct{x}$.  The evaluation
 of omega and copying data has been ignored when computing the number
 of operations.  The number of operations to compute
-$\FF^\ast_N\fct{x}$ directly from the definition is about $N^2$.
+$\displaystyle \FF^\ast_N\fct{x}$ directly from the definition is
+about $\displaystyle N^2$.
 This is much larger than $N(P_1+P_2+\ldots+P_m)$ in general.
-\item When $N=2^m$, an efficient Fast Fourier Transform algorithm can
-be developed.  It is probably the must often used Fast Fourier
+\item When $\displaystyle N=2^m$, an efficient Fast Fourier Transform
+algorithm can be developed.  It is probably the must often used Fast Fourier
 Transform algorithm.
 \begin{align*}
 \FF^\ast_N \fct{x}(n)
@@ -1114,11 +1123,11 @@ Transform algorithm.
 \omega_{2^m}^{-n} \, \FF^\ast_{2^{m-1}} \fct{x}_{o}(n) \ ,
 \end{align*}
 where $\fct{x}_{e}(k) = \fct{x}(2k)$ and $\fct{x}_{o}(k) = \fct{x}(1+2k)$
-for $k \in \NN$.
-We have used the relation $\omega_{2^m}^{2n} = \omega_{2^{m-1}}^n$ to
+for $k \in \NN$.  We have used the relation
+$\displaystyle \omega_{2^m}^{2n} = \omega_{2^{m-1}}^n$ to
 get the fourth equality.  Moreover, since
-$\omega_{2^m}^{-j-2^{m-1}} = -\omega_{2^m}^{-j}$ for
-$0 \leq j < 2^{m-1}$, we get
+$\displaystyle \omega_{2^m}^{-j-2^{m-1}} = -\omega_{2^m}^{-j}$ for
+$\displaystyle 0 \leq j < 2^{m-1}$, we get that
 \begin{align*}
 \FF^\ast_N \fct{x}(n)
 &= \FF^\ast_{2^{m-1}} \fct{x}_{e}(n) + \omega_{2^m}^{-n} \,
@@ -1131,22 +1140,23 @@ $0 \leq j < 2^{m-1}$, we get
 &= \FF^\ast_{2^{m-1}} \fct{x}_{e}(n) -
 \omega_{2^m}^{-n} \, \FF^\ast_{2^{m-1}} \fct{x}_{o}(n)
 \end{align*}
-for $0 \leq n < 2^{m-1}$.  The last equality, comes from the fact that
-$\FF^\ast_{2^{m-1}} \fct{x}_{e}$ and
-$\FF^\ast_{2^{m-1}} \fct{x}_{o}$ are of period $2^{m-1}$ because
-$\fct{x}_{e}$ and $\fct{x}_{o}$ are of period $2^{m-1}$.
-This gives the following simple algorithm.
+for $\displaystyle 0 \leq n < 2^{m-1}$.  The last equality, comes from
+the fact that $\displaystyle \FF^\ast_{2^{m-1}} \fct{x}_{e}$ and
+$\displaystyle \FF^\ast_{2^{m-1}} \fct{x}_{o}$ are of period
+$\displaystyle 2^{m-1}$ because $\fct{x}_{e}$ and $\fct{x}_{o}$ are of
+period $\displaystyle 2^{m-1}$.  This gives the following simple algorithm.
 
 \begin{code}[Fast Fourier Transform]
 To compute the Fast Fourier Transform of $\fct{x}$ in $\Pi_N$, where
-$N=2^m$. \\ 
+$\displaystyle N=2^m$. \\
 \subI{Input} The column vector $\fct{x}$ (denoted X in the code
 below).  Since $\fct{x}$ is $N$-periodic, only the
 components $\fct{x}(j)$ for $0 \leq j < N$ are needed.\\
-\subI{Output} The Fast Fourier Transform $\fct{y}^\ast= \FF^\ast_N \fct{x}$
+\subI{Output} The Fast Fourier Transform
+$\displaystyle \fct{y}^\ast= \FF^\ast_N \fct{x}$
 (denoted Z in the code below).  As for the input, only the 
-components $\fct{z}^\ast(j)$ for $0 \leq j < N$ are returned because of
-the periodicity of $\fct{z}^\ast$.
+components $\displaystyle \fct{z}^\ast(j)$ for $0 \leq j < N$ are
+returned because of the periodicity of $\displaystyle \fct{z}^\ast$.
 \small
 \begin{verbatim}
 function Z = recursiveFFT(X)

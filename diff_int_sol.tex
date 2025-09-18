@@ -106,7 +106,7 @@ $\displaystyle
 }
 
 \solution{\SOL}{\ref{diffQ3}}{
-Let $L^0_h(f) = L_h(f)$.  We prove by induction on $n$ that
+Let $\displaystyle L^0_h(f) = L_h(f)$.  We prove by induction on $n$ that
 \begin{equation}\label{Binduct1}
 L(f) = L_{h/2^k}^n(f) + \sum_{j=n+1}^\infty
 \frac{(2^{2n-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
@@ -159,8 +159,8 @@ L(f) &= L_{h/2^{k+1}}^m(f) + \sum_{j=m+1}^\infty
 \end{align}
 for $k\geq m$.
 
-If we subtract (\ref{questB3}) from $2^{2m+1}$ times (\ref{questB4})
-and divide by $2^{2m+1}-1$, we get
+If we subtract (\ref{questB3}) from $\displaystyle 2^{2m+1}$
+times (\ref{questB4}) and divide by $\displaystyle 2^{2m+1}-1$, we get that
 \begin{align*}
 L(f) &= L_{h/2^{k+1}}^{m+1}(f) \\
 &\quad + \frac{1}{2^{2m+1}-1}
@@ -204,11 +204,11 @@ The general formula is
 L_{h/2^k}^n(f) = \frac{2^{2n-1} L_{h/2^k}^{n-1}(f) -
   L_{h/2^{k-1}}^{n-1}(f)}{2^{2n-1} -1}
 \]
-for $k \geq n > 0$ with a truncation error of $O(h^{2n+1})$.
+for $k \geq n > 0$ with a truncation error of $\displaystyle O(h^{2n+1})$.
 }
 
 \solution{\SOL}{\ref{diffQ4}}{
-Let $L^0_h(f) = L_h(f)$.  We prove by induction on $n$ that
+Let $\displaystyle L^0_h(f) = L_h(f)$.  We prove by induction on $n$ that
 \begin{equation}\label{Cinduct1}
 L(f) = L_{h/2^k}^n(f) + \sum_{j=n+1}^\infty
 \frac{(2^{3n}-2^{3j}) \ldots (2^6-2^{3})(2^3-2^{3j})}
@@ -226,8 +226,8 @@ If we replace $h$ by $h/2$ in (\ref{questC1}), we get
 \begin{equation}\label{questC2}
 L(f) = L_{h/2}(f)+ \sum_{j=1}^\infty a_j\,\left(\frac{h}{2}\right)^{3j} \ .
 \end{equation}
-If we subtract (\ref{questC1}) from $2^3$ times (\ref{questC2}) and divide by
-$2^3-1$, we get
+If we subtract (\ref{questC1}) from $\displaystyle 2^3$ times
+(\ref{questC2}) and divide by $\displaystyle 2^3-1$, we get that
 \begin{align*}
   L(f) &= L_{h/2}^1(f) + \frac{1}{2^3-1}\left(
 2^3 \sum_{j=1}^\infty a_j\,\left(\frac{h}{2}\right)^{3j}
@@ -262,8 +262,8 @@ L(f) &= L_{h/2^{k+1}}^m(f) + \sum_{j=m+1}^\infty
 \end{align}
 for $k\geq m$.
 
-If we subtract (\ref{questC3}) from $2^{3m+3}$ times (\ref{questC4})
-and divide by $2^{3m+3}-1$, we get
+If we subtract (\ref{questC3}) from $\displaystyle 2^{3m+3}$ times
+(\ref{questC4}) and divide by $\displaystyle 2^{3m+3}-1$, we get that
 \begin{align*}
 &L(f) = L_{h/2^{k+1}}^{m+1}(f) \\
 &\quad + \frac{1}{2^{3m+3}-1}
@@ -304,7 +304,7 @@ The general formula is
 L_{h/2^k}^n(f) = \frac{2^{3n} L_{h/2^k}^{n-1}(f) -
   L_{h/2^{k-1}}^{n-1}(f)}{2^{3n} -1}
 \]
-for $k \geq n > 0$ with a truncation error of $O(h^{3n+3})$.
+for $k \geq n > 0$ with a truncation error of $\displaystyle O(h^{3n+3})$.
 }
 
 \solution{\SOL}{\ref{diffQ5}}{
@@ -340,13 +340,15 @@ h & L_h(f) & & L_h^1(f) & & L_h^2(f) \\
 \]
 }
 All the values in the table have been rounded.
-We stop the procedure as soon as $|L_h^i(f) - L_{2h}^{i-1}(f)|$ gets
-smaller than $10^{-7}$ and take $L_h^i(f)$ as our approximation of
+We stop the procedure as soon as
+$\displaystyle |L_h^i(f) - L_{2h}^{i-1}(f)|$ gets
+smaller than $\displaystyle 10^{-7}$ and take
+$\displaystyle L_h^i(f)$ as our approximation of
 $f'(3)$.  We have also included the ratios defined in
-(\ref{checkRich}) to ensure that the approximating values $L_h^i(h)$
-can be trusted.  We have that
-$f'(3) \approx L_{0.05}^4(f) \approx 0.15161081$ meets our criterion
-of accuracy.
+(\ref{checkRich}) to ensure that the approximating values
+$\displaystyle L_h^i(h)$ can be trusted.  We have that
+$\displaystyle f'(3) \approx L_{0.05}^4(f) \approx 0.15161081$ meets
+our criterion of accuracy.
 }
 
 \solution{\SOL}{\ref{diffQ7}}{
@@ -356,14 +358,14 @@ $x_i = 1 + i\,h$ for $i=0$, $1$, $2$, \ldots, $n=2m$.
 The local truncation error for the composite midpoint rule is
 $\displaystyle - \frac{f''(\xi)(b-a)}{6}\,h^2$ for some
 $\xi \in [a,b]$.  We seek a small $m$ for which this 
-truncation error will be smaller in absolute value than $10^{-5}$.
+truncation error will be smaller in absolute value than $\displaystyle 10^{-5}$.
 We have
 \[
 f''(x) = \frac{1}{x} + \frac{x}{4} -10 \ .
 \]
 We use the Extremum Theorem to find the maximum of $f''(x)|$ on
 $[1,3]$.  We have that $x=2$ is the only critical point of
-$f^{(3)}(x) = -1/x^2 + 1/4$ in the interval $[1,3]$.  Since
+$\displaystyle f^{(3)}(x) = -1/x^2 + 1/4$ in the interval $[1,3]$.  Since
 $f''(2) = -9 < f''(3) = -107/12 < f''(1) = -35/4$, we have that
 $-9 \leq f''(x) \leq -35/4$ for $1 \leq x \leq 3$.  Thus,
 $|f''(x)| \leq 9$ for $1\leq x \leq 3$.  Hence,
@@ -373,7 +375,7 @@ $|f''(x)| \leq 9$ for $1\leq x \leq 3$.  Hence,
 \]
 because $1 \leq \xi \leq 3$.  We chose $m$ that satisfies
 $\displaystyle \frac{3}{m^2} < 10^{-5}$; namely,
-$m > \sqrt{ 3 \times 10^5} \approx 547.72$.
+$\displaystyle m > \sqrt{ 3 \times 10^5} \approx 547.72$.
 
 With $m=548$, we get
 \begin{align*}
@@ -391,8 +393,9 @@ $x_i = 2 + i\,h$ for $i=0$, $1$, $2$, \ldots, $n=2m$.
 The local truncation error for the composite Simpson rule is
 $\displaystyle - \frac{h^4(b-a)}{180}\,f^{(4)}(\xi)$
 for some $\xi \in [a,b]$.  We seek a small $m$ for which this
-truncation error will be smaller in absolute value than $10^{-5}$.
-We have
+truncation error will be smaller in absolute value than
+$\displaystyle 10^{-5}$.
+We have that
 \[
 f^{(4)}(x) = -\frac{80}{81} \, (x+1)^{-11/3} \ .
 \]
@@ -407,7 +410,7 @@ $\displaystyle \frac{8}{3^{29/3}\,m^4} < 10^{-5}$; namely,\\
 $\displaystyle m > \left( 8 \times 10^5 / 3^{29/3}\right)^{1/4}
 \approx 2.102468339$\ .
 
-With $m=3$, we get
+With $m=3$, we get that
 \begin{align*}
 \int_2^4\, (x+2)^{1/3} \dx{x} &\approx
 \frac{1}{9} \bigg( (3)^{1/3}
@@ -419,7 +422,8 @@ With $m=3$, we get
 
 \solution{\SOL}{\ref{diffQ9}}{
 Before answering this question, we note that $f'(x) = 2x\ln(x) + x$,
-$f''(x) = 2\ln(x)+3$, $f^{(3)}(x) = 2/x$ and $f^{(4)}(x) = -2/x^2$.
+$f''(x) = 2\ln(x)+3$, $\displaystyle f^{(3)}(x) = 2/x$ and
+$\displaystyle f^{(4)}(x) = -2/x^2$.
 
 Moreover, a simple integration by parts gives
 \[
@@ -449,7 +453,7 @@ We take $m=417$.  It follows that $h=1/417$ and
 \sum_{j=1}^{417} f(x_{2j-1}) \approx 6.99861347 \ ,
 \]
 where $x_j = 1 + j\,h = 1 + j/417$.  The absolute error is
-about $0.82348266 \times 10^{-5}$.
+about $\displaystyle 0.82348266 \times 10^{-5}$.
 
 \subQ{b} For the trapezoidal rule, we choose $n$ and
 $h = (b-a)/n = 2/n$ such that the truncation error
@@ -473,7 +477,7 @@ We take $n= 589$.  It follows that $h=2/589$ and
 \approx 6.99862996 \ ,
 \]
 where $x_j = 1 + j\,h = 1 + 2j/589$.  The absolute error is
-about $0.82551686 \times 10^{-5}$.
+about $\displaystyle 0.82551686 \times 10^{-5}$.
 
 \subQ{c} For the Simpson rule, we choose $n = 2m$ and
 $h = (b-a)/n = 1/m$ such that the truncation error
@@ -496,7 +500,7 @@ We take $m=7$.  It follows that $h=1/7$ and
 + f(x_{14}) \right) \approx 6.99861865 \ ,
 \]
 where $x_j = 1 + j\,h = 1 + j/7$.    The absolute error is
-about $0.30640240 \times 10^{-5}$.
+about $\displaystyle 0.30640240 \times 10^{-5}$.
 }
 
 \solution{\SOL}{\ref{diffQ10}}{
@@ -506,13 +510,14 @@ There are two ways to answer this question.  We could use the formula
 -\frac{f^{(4)}(\xi)\,(b-a)^5}{2880}
 \]
 for some $\xi$ between $a$ and $b$.  The truncation error will be $0$
-for all polynomials of degree less than $4$ becuase $f^{(4)}(x)=0$ for
+for all polynomials of degree less than $4$ because
+$\displaystyle f^{(4)}(x)=0$ for
 all polynomials $f$ of degree less than $4$.
 
 The other way to answer the question is to proceed directly.  By
 linearity of the integral, it is enough to show that Simpson's rule is
-exact for $x^i$ with $i=0$, $1$, $2$ and $3$.  For $f(x) = x^i$,
-Simpson's rule becomes
+exact for $\displaystyle x^i$ with $i=0$, $1$, $2$ and $3$.  For
+$\displaystyle f(x) = x^i$, Simpson's rule becomes
 \begin{equation} \protect\label{SimpsonQ10}
 \int_a^b x^i \dx{x} \approx \frac{b-a}{6} \left(a^i + 4
 \left(\frac{a+b}{2}\right)^i + b^i\right) \ .
@@ -652,17 +657,17 @@ h & L_h^0(f) & & L_h^1(f) & & L_h^2(f) \\
 }
 All the values in the table have been rounded.
 
-We stopped the procedure when $|L_h^i(f) - L_{2h}^{i-1}(f)|$ got
-smaller than $10^{-5}$ and took $L_h^i(f)$ as our approximation of
-the integral.  We have that
+We stopped the procedure when $\displaystyle |L_h^i(f) - L_{2h}^{i-1}(f)|$ got
+smaller than $\displaystyle 10^{-5}$ and took
+$\displaystyle L_h^i(f)$ as our approximation of the integral.  We have that
 \[
 \int_3^5 (x-2)^{1/4} \dx{x} \approx L_{0.125}^4 \approx 2.35857763
 \]
 with the required accuracy.
 
 We have also included the ratios defined in (\ref{checkRich}) to check
-if the values of $L_h^i(h)$ can be trusted.  However, we have ignored
-this information.
+if the values of $\displaystyle L_h^i(h)$ can be trusted.  However, we
+have ignored this information.
 }
 
 \solution{\SOL}{\ref{diffQ13}}{
@@ -702,8 +707,9 @@ h & L_h^0(f) & & L_h^1(f) & & L_h^2(f) \\
 \]
 }
 All the values in the table have been rounded.
-We stopped the procedure when $|L_h^i(f) - L_{2h}^{i-1}(f)|$ got
-smaller than $10^{-7}$ and took $L_h^i(f)$ as our approximation of
+We stopped the procedure when $\displaystyle |L_h^i(f) - L_{2h}^{i-1}(f)|$ got
+smaller than $\displaystyle 10^{-7}$ and took
+$\displaystyle L_h^i(f)$ as our approximation of
 the integral.  We have that
 \[
 \int_1^3 x^2\,\ln(x) \dx{x} \approx L_{0.125}^4 \approx 6.99862171
@@ -716,19 +722,20 @@ In question~\ref{diffQ9}, we found that
 6.99862170912\ldots
 \]
 So, the absolute error of our approximation $6.99862171$ is about
-$-0.88 \times 10^{-9}$.  This is better than expected.
+$\displaystyle -0.88 \times 10^{-9}$.  This is better than expected.
 
 We have also included the ratios defined in (\ref{checkRich}) to check
-if the values of $L_h^i(h)$ can be trusted.  However, we have ignored
-this information.  The approximation of the value of the integral
+if the values of $\displaystyle L_h^i(h)$ can be trusted.  However, we
+have ignored this information.  The approximation of the value of the integral
 suggested by the ratios defined in (\ref{checkRich}) is
-$L_{0.25}^2(f) \approx 6.99862022$ associated to the ratio
+$\displaystyle L_{0.25}^2(f) \approx 6.99862022$ associated to the ratio
 $15.17336693$.  The absolute error for this approximation is about
-$0.14891 \times 10^{-5}$.  Despite the fact that the ratios were not
-respecting the rule of $4^i$, we did the right thing by proceeding
-with the computations.  The problem with the computations of the
-ratios defined in (\ref{checkRich}) is that they have to be done with
-very high precision because we are dividing by values closed to zero.
+$\displaystyle 0.14891 \times 10^{-5}$.  Despite the fact that the
+ratios were not respecting the rule of $\displaystyle 4^i$, we did the
+right thing by proceeding with the computations.  The problem with the
+computations of the ratios defined in (\ref{checkRich}) is that they
+have to be done with very high precision because we are dividing by
+values closed to zero.
 }
 
 \solution{\SOL}{\ref{diffQ14}}{
@@ -765,9 +772,9 @@ Section~\ref{SectAdaptQMethod} to approximate
 \[
 \int_3^5 (x-2)^{1/4} \dx{x}
 \]
-with an accuracy of $10^{-5}$.  For this purpose and to simplify the
-discussion, let $S(a,b,h)$ be the result of the composite Simpson's Rule,
-Theorems~\ref{SimpsonRule} and \ref{CSR}, for
+with an accuracy of $\displaystyle 10^{-5}$.  For this purpose and to
+simplify the discussion, let $S(a,b,h)$ be the result of the composite
+Simpson's Rule, Theorems~\ref{SimpsonRule} and \ref{CSR}, for
 $\displaystyle \int_a^b (x-2)^{1/4} \dx{x}$ with $m = (b-a)/(2h)$.
 The values displayed in the following computations have been rounded
 to $12$ significant digits though the computations have been
@@ -781,7 +788,8 @@ i & 1 & 2 & 3 & 4 & 5 \\
 x_i & 3 & 7/2 & 4 & 9/2 & 5
 \end{array}
 \]
-$h=1$, $T=10^{-5}$, $S_{[3,5]} = S(3,5,1) \approx 2.35763415765$,\\
+$h=1$, $\displaystyle T=10^{-5}$,
+$S_{[3,5]} = S(3,5,1) \approx 2.35763415765$,\\
 $S_1 = S(3,4,0.5) \approx 1.10265579897$,
 $S_2 = S(4,5,0.5) \approx 1.25583580778$,\\
 $\tilde{S}_{[3,5]} = S(3,5,0.5) \approx S_1+S_2 = 2.35849160675$ and\\
@@ -797,7 +805,7 @@ i & 1 & 2 & 3 & 4 & 5 \\
 x_i & 3 & 13/4 & 7/2 & 15/4 & 4
 \end{array}
 \]
-$h=0.5$, $T=0.5\times 10^{-5}$ (store for $[4, 5]$),
+$h=0.5$, $\displaystyle T=0.5\times 10^{-5}$ (store for $[4, 5]$),
 $S_{[3,4]} = S(3,4,0.5) \approx 1.10265579897$,\\
 $S_1 = S(3,3.5,0.25) \approx 0.528013914455$,
 $S_2 = S(3.5,4,0.25) \approx 0.574711858524$,\\
@@ -816,7 +824,7 @@ i & 1 & 2 & 3 & 4 & 5 \\
 x_i & 4 & 17/4 & 9/2 & 19/4 & 5
 \end{array}
 \]
-$h=0.5$, $T=0.5\times 10^{-5}$,
+$h=0.5$, $\displaystyle T=0.5\times 10^{-5}$,
 $S_{[4,5]} = S(4,5,0.5) \approx 1.25583580778$,\\
 $S_1 = S(4,4.5,0.25) \approx 0.612135002521$,
 $S_2 = S(4.5, 5, 0.25) \approx 0.643710549703$,\\
@@ -839,8 +847,9 @@ This approximation is meeting the required accuracy.
 \solution{\SOL}{\ref{diffQ16}}{
 Since (\ref{NF01}) is a linear functional with respect to $f$ and
 since all polynomial of degree at most $4$ are linear combinations of
-the monomials $x^i$ for $0 \leq i \leq 4$, it is enough to show
-that (\ref{NF01}) is true for $f(x) = x^i$ with $0\leq i \leq 4$ to
+the monomials $\displaystyle x^i$ for $0 \leq i \leq 4$, it is enough to show
+that (\ref{NF01}) is true for $\displaystyle f(x) = x^i$ with
+$0\leq i \leq 4$ to
 prove that (\ref{NF01}) is true for all polynomials of degree less
 than or equal to $4$.  For instance, for $i=4$, we get
 \[
@@ -866,7 +875,7 @@ $\displaystyle \int_a^b\,f(y)\dx{y}$, we get
 }
 
 \solution{\SOL}{\ref{diffQ17}}{
-For $f(x) = x^i$, the formula is
+For $\displaystyle f(x) = x^i$, the formula is
 \[
 \int_0^1 x^i \dx{x} \approx A\, \left( x_0^i + x_1^i \right) \ .
 \]
@@ -901,7 +910,7 @@ is exact for polynomials of degree less or equal to $2$.
 }
 
 \solution{\SOL}{\ref{diffQ18}}{
-For $f(x) = x^i$, the formula is
+For $\displaystyle f(x) = x^i$, the formula is
 \[
 \int_0^2 x^{i+1} \dx{x} \approx A\,x^i\big|_{x=0} + B\,x^i\big|_{x=1}
 + C\,x^i\big|_{x=2}
@@ -1052,7 +1061,7 @@ To simplify the computation, we use integration by parts to get
 \end{align*}
 for some constants $C_1$ and $C_2$.  It is interesting to note that if
 we subtract the second integral from the first integral, we find
-that $C_2 - C_1 = (x_1-x_0)^3/6$.
+that $\displaystyle C_2 - C_1 = (x_1-x_0)^3/6$.
 \begin{align*}
 &\int_a^b \left| \left(x-x_0\right)\left(x-x_1\right) \right| \dx{x} \\
 &\quad = \int_a^{x_0} \left(x-x_0\right)\left(x-x_1\right) \dx{x}
@@ -1202,7 +1211,7 @@ $x=(a+b)/2$, we have
 \end{align*}
 Using integration by parts with $u(x) = (x-x_0)(x-x_1)$ and
 $v'(x) = x-x_2$, we get $u'(x) = (x-x_0) + (x-x_1)$,
-$v(x) = (x-x_2)^2/2$ and
+$\displaystyle v(x) = (x-x_2)^2/2$ and
 \begin{align*}
 &\int (x-x_0)(x-x_1)(x-x_2) \dx{x}
 = u(x)v(x) - \int u'(x) v(x) \dx{x} \\  
@@ -1211,8 +1220,9 @@ $v(x) = (x-x_2)^2/2$ and
 - \frac{1}{2} \int (x-x_1)(x-x_2)^2\dx{x} \ .
 \end{align*}
 Again, using integration by parts with $u(x) = (x-x_0)$ and
-$v'(x) = (x-x_2)^2$ for the first integral on the right hand side
-of the equation above, and $u(x) = (x-x_0)$ and $v'(x) = (x-x_2)^2$
+$\displaystyle v'(x) = (x-x_2)^2$ for the first integral on the right hand side
+of the equation above, and $u(x) = (x-x_0)$ and
+$\displaystyle v'(x) = (x-x_2)^2$
 for the second integral on the right hand side of the equation above,
 we get
 \begin{align*}
@@ -1405,9 +1415,9 @@ Hence,
 +f[-2h,-h,0,0] \int_{-h}^h (x+2h)(x+h)x \dx{x} \ .
 \end{align*}
 The second integral can be easily computed.  For the first integral,
-Since $(x+2h)(x+h)x^2$ is non-negative on the interval $[-h,h]$, we may
-use the Mean Value Theorem for Integrals to get $\eta \in [-h,h]$ such
-that
+Since $\displaystyle (x+2h)(x+h)x^2$ is non-negative on the interval
+$[-h,h]$, we may use the Mean Value Theorem for Integrals to get $\eta
+\in [-h,h]$ such that
 \[
 \int_{-h}^h f[-2h,-h,0,0,x] (x+2h)(x+h)x^2 \dx{x}
 = f[-2h,-h,0,0,\eta] \int_{-h}^h(x+2h)(x+h)x^2 \dx{x} \ .
@@ -1466,7 +1476,8 @@ f^{(3)}\left(\frac{b+a}{2}+\xi_2\right) (b-a)^4 \ .
 
 \solution{\SOL}{\ref{diffQ24}}{
 It suffices to show that there exist $c_1$, $c_2$, \ldots, $c_k$ such
-that (\ref{G_quadr}) is true for $p(x) = x^m$ with $0 \leq m <k$.  Namely,
+that (\ref{G_quadr}) is true for $\displaystyle p(x) = x^m$ with
+$0 \leq m <k$.  Namely, 
 \[
 \int_a^b x^m\,w(x)\dx{x} = \sum_{j=1}^k\,c_j\,x_j^m
 \]
@@ -1523,10 +1534,11 @@ It follows from (\ref{ord_2k_1}), (\ref{ord_2k_2}) and
 for any polynomial of degree less than $k+m$.
 
 We now prove that the quadrature formula is not true for all
-polynomial of degree $k+m$.  Let $p(x) = x^m P(x) + r(x)$, where $r$
+polynomial of degree $k+m$.  Let
+$\displaystyle p(x) = x^m P(x) + r(x)$, where $r$
 is a polynomial of degree less than $m$.  The equations
 (\ref{ord_2k_2}) and (\ref{ord_2k_3}) are still true if we replace
-$q(x)$ by $x^m$.  So
+$q(x)$ by $\displaystyle x^m$.  So
 \[
   \int_a^b r(x)\,w(x)\dx{x} = \sum_{j=1}^k c_j\,p(x_j) \ .
 \]
@@ -1573,7 +1585,7 @@ f^{(q)}(\xi(c_j)) \, (c_j-a)^q \ .
 \]
 Therefore,
 \begin{align*}
-&\bigg| \int_a^b \; f(x)\,w(x)\dx{x} - \sum_{j=1}^k\,b_j\,f(c_j)
+&\bigg| \int_a^b f(x)\,w(x)\dx{x} - \sum_{j=1}^k\,b_j\,f(c_j)
 \bigg| \\
 &= \bigg|
 \frac{1}{q!} f^{(q)}(\psi(x))\,(b-a)^{q+1} \int_0^1 s^q w(a+(b-a)s)
@@ -1735,7 +1747,8 @@ the scalar product
 \ps{g}{h} = \int_0^1 g(x)\,h(x)\,x^2\dx{x} .
 \]
 To generate the family of orthogonal polynomials, we use
-Theorem~\ref{orthpoly} with $\alpha_{k,k}=1$ for all $k$ and $w(x) =x^2$ for
+Theorem~\ref{orthpoly} with $\alpha_{k,k}=1$ for all $k$ and
+$\displaystyle w(x) =x^2$ for
 $0\leq x\leq 1$.  Let $P_0(x) = 1$ for all $x$.  Since $A_0=1$ and
 $\displaystyle
 B_0 = \frac{\int_{-1}^1 x^3 \dx{x}}{\int_{-1}^1 x^2 \dx{x}} = 0$,

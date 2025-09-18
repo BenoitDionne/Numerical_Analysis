@@ -52,7 +52,7 @@ for $0\leq j \leq M$.  Hence,
 for $0\leq j \leq M$ and $0<i<N$.  Since
 $\displaystyle \frac{1}{2}\left( f(x_i,y_j) + f(x_i,y_{j+1})\right)
 = P_\Delta(v_{i,j},v_{i,j+1},v_{i+1,j},\ldots)$
-for $(i,j)$ such that $(x_i,t_j) \in R_\Delta^o$
+for $(i,j)$ such that $\displaystyle (x_i,t_j) \in R_\Delta^\circ$
 and $B_\Delta(v_{i,j},v_{i,j+1},v_{i+1,j},\ldots) = v_{i,j}$
 for $(i,j)$ such that $(x_i,t_j) \in \partial R_\Delta$.  We can
 rewrite the previous inequality as
@@ -62,7 +62,7 @@ rewrite the previous inequality as
 \\
 &\leq \max_{\substack{(i,j)\ \text{such that}\\(x_i,t_j) \in \partial R_\Delta}}
 |B_\Delta(v_{i,0},v_{i,1},v_{i+1,0},\ldots)|
-+ T \max_{\substack{(i,j)\ \text{such that}\\(x_i,t_j) \in R_\Delta^o}}
++ T \max_{\substack{(i,j)\ \text{such that}\\(x_i,t_j) \in R_\Delta^\circ}}
 |P_\Delta(v_{i,j},v_{i,j+1},v_{i+1,j},\ldots)|
 \end{align*}
 for $0\leq j \leq M$ and $0<i<N$.  Since
@@ -72,7 +72,7 @@ such that $(x_i,t_j) \in \partial R_\Delta$, we get
 }
 
 \solution{\SOL}{\ref{fdmQ2}}{
-\subQ{a} Since $P P^\ast = P^\ast P$, we have that
+\subQ{a} Since $\displaystyle P P^\ast = P^\ast P$, we have that
 \[
 \ps{P^2 x}{P^2x} = \ps{Px}{P^\ast P P x} = \ps{Px}{P P^\ast Px}
 = \ps{P^\ast P x}{P^\ast P x} \ .
@@ -106,7 +106,7 @@ Moreover
 = \sup_{\|y\|=1} \left\|P^\ast P y \right\| = \left\|P^\ast P\right\| \ .
 \end{equation}
 because $\|x\|=1$ for
-$x = \left\|P^\ast P y \right\|^{-1} P^\ast P y$.  Thus
+$\displaystyle x = \left\|P^\ast P y \right\|^{-1} P^\ast P y$.  Thus
 (\ref{fdmQ2eq1}) follows from (\ref{fdmQ2eq2}) and (\ref{fdmQ2eq3}).
 
 We have that
@@ -145,7 +145,7 @@ A = \begin{pmatrix}
 0 & 1 & -2 & 1 & 0 & \ldots & 0 & 0 \\
 0 & 0 & 1 & -2 & 1 & \ldots & 0 & 0 \\
 \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-0 & 0 & 0 & 0 & 0 & \cdots & 1 & -2
+0 & 0 & 0 & 0 & 0 & \ldots & 1 & -2
 \end{pmatrix}
 \]
 is a \nm{(N-1)}{(N-1)} matrix.  It follows from
@@ -179,7 +179,8 @@ However,
 \]
 for $0 < k < N$ and converges to $1/2$ for $k=N-1$ and $N \to \infty$.
 
-Thus, the finite difference scheme is $\ell^2$-stable if $0 < \alpha \leq 1/2$.
+Thus, the finite difference scheme is
+$\displaystyle \ell^2$-stable if $0 < \alpha \leq 1/2$.
 }
 
 %%% Local Variables:

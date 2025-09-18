@@ -107,19 +107,21 @@ not want to add a large number to a small number.  So we compute
 &= \left(\left( 0.2167 + 0.5 \right) + 1 \right) +1
 = \left(0.7167 + 1 \right) +1 = 1.717  +1 = 2.717 \ .
 \end{align*}
-The absolute error is $|e- 2.717| \approx 0.128183 \times 10^{-2}$ and
+The absolute error is
+$\displaystyle |e- 2.717| \approx 0.128183 \times 10^{-2}$ and
 the relative error is
-$\displaystyle \frac{|e-2.717|}{e} \approx
-0.4715583 \times 10^{-3}$.  Since $4$ is the largest value of $r$
+$\displaystyle \frac{|e-2.717|}{e} \approx 0.4715583 \times 10^{-3}$.
+Since $4$ is the largest value of $r$
 such that the relative error is smaller than
-$5 \times 10^{-r}$, there are $4$ significant digits.
+$\displaystyle5 \times 10^{-r}$, there are $4$ significant digits.
 }
 
 \solution{\SOL}{\ref{arithQ4}}{
 Suppose that the mantissa of the normalized representation of the
 numbers has ten digits.  Then, the ten-digit representation of
 $\cos(0.25)$ is $0.9689124217$.  Using $10$-digit rounding arithmetic,
-we have that $1-\cos(0.25) \approx 0.310875783 \times 10^{-1}$.  The
+we have that
+$\displaystyle 1-\cos(0.25) \approx 0.310875783 \times 10^{-1}$.  The
 mantissa of the result has only nine digits, a lost of one digit.
 
 This illustrates the importance of not subtracting two numbers that are
@@ -155,35 +157,39 @@ The interval is
 
 \solution{\SOL}{\ref{arithQ7}}{
 \subQ{a} There are two possible formulae to compute the smallest root
-of the polynomial $ax^2 + b x + c$, either
+of the polynomial $\displaystyle ax^2 + b x + c$, either
 $\displaystyle x_- = \frac{-b - \sqrt{b^2-4ac}}{2a}$ or
 $\displaystyle x_- = \frac{2c}{-b + \sqrt{b^2-4ac}}$.  For the
 polynomial given in the question, since $b<0$ 
-and $\sqrt{b^2 -4ac} \approx b$, the operation $-b -\sqrt{b^2-4ac}$ is
+and $\displaystyle \sqrt{b^2 -4ac} \approx b$, the operation
+$\displaystyle -b -\sqrt{b^2-4ac}$ is
 not suggested because we will subtract two numbers which are almost
 equal.  We risk to lose a lot of significant digits.  Therefore, to
 avoid this problem, we should choose
 $\displaystyle x_- = \frac{2c}{-b + \sqrt{b^2-4ac}}$.
 
 \subQ{b} Using $4$-digit rounding arithmetic, we have 
-$b^2 = 55230$, $4ac = 12$, $b^2-4ac = 55220$, $\sqrt{b^2-4ac} = 235$,
-$-b+\sqrt{b^2-4ac} = 470$, $2c=6$ and finally
+$\displaystyle b^2 = 55230$,
+$\displaystyle 4ac = 12$, $\displaystyle b^2-4ac = 55220$,
+$\displaystyle \sqrt{b^2-4ac} = 235$,
+$\displaystyle -b+\sqrt{b^2-4ac} = 470$, $2c=6$ and finally
 \[
 \tilde{x}_- = \frac{2c}{-b+\sqrt{b^2-4ac}} = \frac{6}{470} = 0.01277 \ .
 \]
 
 \subQ{c} Using $x_- = 0.012766651010\ldots$, we get the absolute error
-$\epsilon = |\tilde{x}_- - x_-| = 0.334899 \times 10^{-5}$ and the relative
+$\displaystyle \epsilon = |\tilde{x}_- - x_-| = 0.334899 \times 10^{-5}$
+and the relative 
 error $\displaystyle \epsilon_r = \frac{\epsilon}{|x_-|}
 = 0.262323 \times 10^{-3}$.  The number of significant digits is
 $4$ because it is the largest value of $r$ such that
-$\epsilon_r < 5 \times 10^{-r}$.
+$\displaystyle \epsilon_r < 5 \times 10^{-r}$.
 }
 
 \solution{\SOL}{\ref{arithQ8}}{
-If $x$ and $y$ are very large, $x^2+y^2$ can produce an overflow.
+If $x$ and $y$ are very large, $\displaystyle x^2+y^2$ can produce an overflow.
 To avoid overflow, we use one of the following equivalent expressions
-for $\sqrt{x^2+y^2}$.
+for $\displaystyle \sqrt{x^2+y^2}$.
 \[
 \sqrt{x^2+y^2} = x \sqrt{1+\left(\frac{y}{x}\right)^2}
 \quad \text{or} \quad
@@ -214,17 +220,18 @@ because $1+\cos(x) \approx 2$ for $x$ near $0$.
 }
 
 \solution{\SOL}{\ref{arithQ11}}{
-The problem with $\sqrt{x^4+4}-2$ for $x$ near $0$ is the subtraction
-of almost equal numbers.    If $x$ is closed to $0$, then $x^4$ is
-closer to $0$ and $\sqrt{x^4+4} \approx \sqrt{4} = 2$.  One way to
+The problem with $\displaystyle \sqrt{x^4+4}-2$ for $x$ near $0$ is
+the subtraction of almost equal numbers.    If $x$ is closed to $0$,
+then $\displaystyle x^4$ is closer to $0$ and
+$\displaystyle \sqrt{x^4+4} \approx \sqrt{4} = 2$.  One way to
 eliminate this subtraction of almost equal numbers is with the formula
 \[
 \sqrt{x^4+4}-2 = 
 (\sqrt{x^4+4}-2)\left(\frac{\sqrt{x^4+4}+2}{\sqrt{x^4+4}+2}\right)
 = \frac{x^4}{\sqrt{x^4+4}+2} \ .
 \]
-Note that $\sqrt{x^4+4}+2\approx 4$ for $x$ near $0$ and so there is
-no risk of division by a really small number.
+Note that $\displaystyle \sqrt{x^4+4}+2\approx 4$ for $x$ near $0$ and
+so there is no risk of division by a really small number.
 }
 
 \solution{\SOL}{\ref{arithQ12}}{
@@ -251,25 +258,27 @@ no risk of division by a really small number.
 }
 
 \solution{\SOL}{\ref{arithQ13}}{
-We seek a solution of the form $x_n = \lambda^n$.  If we substitute
-this value of $x_n$ into (\ref{finite_diff}), we get
+We seek a solution of the form $\displaystyle x_n = \lambda^n$.  If we
+substitute this value of $x_n$ into (\ref{finite_diff}), we get
 \[
 \lambda^n = 2 \lambda^{n-1} + \lambda^{n-2} \ .
 \]
-If $\lambda \neq 0$, we can divide by $\lambda^{n-2}$ on both sides of
-the equality to get $\lambda^2 = 2 \lambda +1$; namely,
-$\lambda^2 -2\lambda -1 = 0$.  The roots of this polynomial are
+If $\lambda \neq 0$, we can divide by $\displaystyle \lambda^{n-2}$ on
+both sides of the equality to get
+$\displaystyle \lambda^2 = 2 \lambda +1$; namely,
+$\displaystyle \lambda^2 -2\lambda -1 = 0$.  The roots of this polynomial are
 $\lambda_{\pm} = 1\pm \sqrt{2}$.
 
 The general solution of (\ref{finite_diff}) is
 \[
-x_n = \alpha_1 \; (1+\sqrt{2})^n + \alpha_2\; (1-\sqrt{2})^n
+x_n = \alpha_1 \, (1+\sqrt{2})^n + \alpha_2\, (1-\sqrt{2})^n
 \]
 
 Since $1+\sqrt{2} > 1 > |1 - \sqrt{2}|$, the term
-$(1+\sqrt{2})^n$ will dominate as $n$ increase.  Thus, because of
+$\displaystyle (1+\sqrt{2})^n$ will dominate as $n$ increase.  Thus, because of
 rounding errors, the formula for the solution of (\ref{finite_diff})
-will always eventually produce a sequence $\{x_n\}_{n=0}^\infty$ that
+will always eventually produce a sequence
+$\displaystyle \{x_n\}_{n=0}^\infty$ that
 will converge to $\infty$ in absolute value as $n$ increase, even if
 the initials conditions are $x_0 = c$ and $x_1= c(1-\sqrt{2})$ for
 some constant $c$.

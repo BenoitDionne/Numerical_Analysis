@@ -24,9 +24,9 @@ is small and $b-a \leq 1$, then $p$ can be a good uniform
 approximation of $f$.  So, instead of evaluating $f(x)$, it may be
 simpler and sufficiently accurate to evaluate $p_n(x)$.
 Unfortunately, in practice, it may be very hard to compute the
-derivatives of $f$ and to find an upper bound on $|f^{n+1}|$.
+derivatives of $f$ and to find an upper bound on $\displaystyle |f^{n+1}|$.
 Moreover, the interval $[a,b]$ may be of length greater than $1$ and
-so $(b-a)^{n+1} \to \infty$ as $n \to \infty$.
+so $\displaystyle (b-a)^{n+1} \to \infty$ as $n \to \infty$.
 
 Therefore, it is still preferable to use interpolation polynomials
 as presented in Chapter~\ref{chaptInterA} to approximate $f$.
@@ -42,7 +42,7 @@ The fundamental theorem in this chapter is the following.
 
 \begin{theorem}[Stone-Weierstrass]
 Given a continuous function $f:[a,b] \to \CC$, there exists a sequence
-of polynomials $\{p_n\}_{n=0}^\infty$ over $\CC$ such that
+of polynomials $\displaystyle \{p_n\}_{n=0}^\infty$ over $\CC$ such that
 \[
   \max_{a\leq x \leq b} |f(x)-p_n(x)| \to 0 \quad \text{as}
   \quad n \to \infty \ .
@@ -100,7 +100,7 @@ polynomials.  Thus (\ref{appr_Cheb_defn}) is another way to define the
 Chebyshev polynomials.
 
 We know from Theorem~\ref{orthpoly} that the Chebyshev polynomials are
-orthogonal on $L^2[-1,1]$, where the weight function is
+orthogonal on $\displaystyle L^2[-1,1]$, where the weight function is
 $\displaystyle w(x) = \frac{1}{\sqrt{1-x^2}}$.  This can be directly proved
 from (\ref{appr_Cheb_defn}).  Using the substitution
 $\theta= \arccos(x)$ for $-1<x<1$ and
@@ -155,7 +155,7 @@ points
 \[
 s_i = \cos\left(\frac{i\pi}{n}\right) \quad , \quad i=0,1,2,\ldots, n \ .
 \]
-Moreover, $T_n(s_i) = (-1)^i$.
+Moreover, $\displaystyle T_n(s_i) = (-1)^i$.
 \end{prop}
 
 \begin{proof}
@@ -165,10 +165,10 @@ points of $T_n$.  Since $T_n'$ is a polynomial of degree $n-1$, it has at
 most $n-1$ roots.  Thus $T_n$ has exactly $n-1$ critical points in $]-1,1[$
 given by $s_i$ for $0<i<n$.  These critical points are the only points in the
 interval $]-1,1[$ where $T_n$ reaches its extrema.  A direct computation
-shows that $T_n(s_i) = \cos(i\pi) = (-1)^i$.
+shows that $\displaystyle T_n(s_i) = \cos(i\pi) = (-1)^i$.
 
 The other two possible points where $T_n$ may reach its extrema are at the
-endpoints $-1$ and $1$.  Since $T_n(-1) = \cos(n\pi) = (-1)^n$ and
+endpoints $-1$ and $1$.  Since $\displaystyle T_n(-1) = \cos(n\pi) = (-1)^n$ and
 $T_n(1) = \cos(0) = 1$, the endpoints are also two points where $T_n$
 reaches its extrema.
 \end{proof}
@@ -187,8 +187,8 @@ and
 $\displaystyle \tilde{T}_{n+1}(x) = x \tilde{T}_n(x) - \frac{1}{4}
 \tilde{T}_{n-1}(x)$ for $n>1$.  Using these relations, it follows by
 induction on the degree of the polynomials that the coefficient of
-$x^n$ in $\tilde{T}_n(x)$ is $1$, hence the name monic given to the
-polynomials $\tilde{T}_n$.
+$\displaystyle x^n$ in $\tilde{T}_n(x)$ is $1$, hence the name monic
+given to the polynomials $\tilde{T}_n$.
 
 The roots of $\tilde{T}_n$ are the roots $r_i$ of $T_n$.
 $\tilde{T}_n$ and $T_n$ reach their extrema at the same points;
@@ -246,8 +246,8 @@ error is given by
 \prod_{i=0}^n (x-x_i)
 \]
 for $-1 \leq x \leq 1$, where $\xi:[-1,1]\rightarrow [-1,1]$.  If we
-assume that $f^{(n+1)}$ is (almost) constant on the interval $[-1,1]$,
-then we have to minimize
+assume that $\displaystyle f^{(n+1)}$ is (almost) constant on the
+interval $[-1,1]$, then we have to minimize
 $\displaystyle p(x) = \prod_{i=0}^n (x-x_i)$ for $-1 \leq x \leq 1$
 to minimize the error.  Note that $p$ is a monic polynomial of degree
 $n+1$, hence
@@ -322,7 +322,7 @@ therefore take $p = q - a_n \tilde{T}_n$.  For this choice,
 \begin{question}
 Consider $f(x) = x -\sin(x)$.  Find a small value of $n$ such that the
 truncation error of the Taylor polynomial $p_n(x)$ of degree $n$ of
-$f$ about the origin for does not exceeding $10^{-9}$ for $|x|<1$.
+$f$ about the origin for does not exceeding $\displaystyle 10^{-9}$ for $|x|<1$.
 \label{approxBQ1}
 \end{question}
 
@@ -330,14 +330,14 @@ $f$ about the origin for does not exceeding $10^{-9}$ for $|x|<1$.
 Consider $\displaystyle f(x) = \frac{1}{1-x}$.  Give the Taylor
 polynomial $p_n$ of degree $n$ of $f$ about the origin as well as the
 truncation formula for this polynomial.  Find a small value of $n$
-such that $p_n$ uniformly approximates $f$ to within $10^{-6}$ on the
-interval $[0,1/4]$.
+such that $p_n$ uniformly approximates $f$ to within
+$\displaystyle 10^{-6}$ on the interval $[0,1/4]$.
 \label{approxBQ2}
 \end{question}
 
 \begin{question}
 Find the Taylor polynomial $p_2(x)$ of degree two about the origin for
-the function $f(x)=e^x\cos(x)$.  Approximate $f(0.5)$ using
+the function $\displaystyle f(x)=e^x\cos(x)$.  Approximate $f(0.5)$ using
 $p_2(x)$.  Find an upper bound on the error $|f(0,5)-p_2(0.5)|$ using
 the truncation formula for the Taylor polynomial of degree two.
 Compare this bound with the real error.

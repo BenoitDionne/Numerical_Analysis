@@ -28,7 +28,7 @@ because $\displaystyle p(x) = \sum_{j=0}^n p(x_j)\, \ell_j(x)$.
 \solution{\SOL}{\ref{intAQ2}}{
 Our theory of interpolation does not apply here because $p(\xi)$ is not
 fixed.  We have to find the coefficients of the polynomial
-$p(x)=a + b\,x+c\,x^2$ such that
+$\displaystyle p(x)=a + b\,x+c\,x^2$ such that
 $p(0) = a = \alpha$, $p(1) = a+b+c = \beta$ and
 $p'(\xi) = b + 2c\,\xi = \gamma$.
 The first equation gives the value for $a$ which is substituted into
@@ -80,17 +80,17 @@ The Lagrange's form of the polynomial $p$ is
 p(x) = \sum_{i=0}^n f(x_i) \prod_{\substack{j=0\\i\neq j}}^n \left(
 \frac{x-x_j}{x_i-x_j} \right) \ .
 \]
-The coefficient of $x^n$ in
+The coefficient of $\displaystyle x^n$ in
 $\displaystyle f(x_i) \prod_{\substack{j=0\\i\neq j}}^n \left(
 \frac{x-x_j}{x_i-x_j} \right)$ is
 $\displaystyle f(x_i) \prod_{\substack{j=0\\i\neq j}}^n \left(
 \frac{1}{x_i-x_j} \right) = f(x_i) \ell_i$.  The sum of these
-coefficients gives the coefficient of $x^n$ in $p$.
+coefficients gives the coefficient of $\displaystyle x^n$ in $p$.
 
 If $f$ is a polynomial of degree less than $n$, the interpolating
 polynomial $p$ of $f$ of degree at most $n$ at $x_0$, $x_1$, \ldots,
-$x_n$ is $f$ itself by uniqueness.  The coefficient of $x^n$ in
-$p = f$ is therefore $0$.  Since the coefficient of $x^n$ is
+$x_n$ is $f$ itself by uniqueness.  The coefficient of $\displaystyle x^n$ in
+$p = f$ is therefore $0$.  Since the coefficient of $\displaystyle x^n$ is
 $\displaystyle \sum_{i=0}^n f(x_i) \ell_i$, we have that
 $\displaystyle \sum_{i=0}^n f(x_i) \ell_i=0$.
 }
@@ -103,19 +103,22 @@ $\displaystyle \sum_{i=0}^n f(x_i) \ell_i=0$.
 \ \underbrace{(x_k-x_{k+1}) \ldots (x_k-x_n)}_{n-k \text{ negative factors}}
 \ .
 \]
-Hence $\sgn(\ell_k) = (-1)^{n-k}$.
+Hence $\displaystyle \sgn(\ell_k) = (-1)^{n-k}$.
 
-\subQ{b} To prove (\ref{sgnEQ1}), we consider $f(x) = x^n$.  Since the
-interpolating polynomial $p$ of $f(x) = x^n$ of degree at most $n$ at
-the points $x_0$, $x_1$, \ldots, $x_n$ is $f$ itself by uniqueness,
-the coefficient of $x^n$ in $f(x) = p(x) = x^n$ is
+\subQ{b} To prove (\ref{sgnEQ1}), we consider
+$\displaystyle f(x) = x^n$.  Since the
+interpolating polynomial $p$ of $\displaystyle f(x) = x^n$ of degree
+at most $n$ at the points $x_0$, $x_1$, \ldots, $x_n$ is $f$ itself by
+uniqueness, the coefficient of $\displaystyle x^n$ in
+$\displaystyle f(x) = p(x) = x^n$ is
 $\displaystyle f[x_0,x_1,\ldots, x_n] = \sum_{j=0}^n x_i^n \ell_j = 1$
 according to (\ref{sgnEQ0}).
 
 To prove (\ref{sgnEQ2}), we consider $f(x) = 1$ for all $x$.  The
 interpolating polynomial $p$ of $f$ of degree at most $n$ at the
 points $x_0$, $x_1$, \ldots, $x_n$ is $p(x)=f(x)=1$ for all $x$ by
-uniqueness. Hence, the coefficient of $x^n$ in $f(x) = p(x) = 1$ is
+uniqueness. Hence, the coefficient of $\displaystyle x^n$ in
+$f(x) = p(x) = 1$ is 
 \[
 f[x_0,x_1,\ldots, x_n] = \sum_{j=0}^n \ell_j
 = \begin{cases} 1 & \quad \text{if} \quad n=0 \\
@@ -238,8 +241,8 @@ f(1.35) & \approx p(1.35)
 }
 
 \solution{\SOL}{\ref{intAQ8}}{
-\subQ{a} We have $f(x) = e^{x/2}$, $f'(x) = e^{x/2}/2$ and
-$f''(x)=e^{x/2}/4$.  The table of divided differences is
+\subQ{a} We have $\displaystyle f(x) = e^{x/2}$, $f'(x) = e^{x/2}/2$ and
+$\displaystyle f''(x)=e^{x/2}/4$.  The table of divided differences is
 {
 \small
 \[
@@ -290,13 +293,14 @@ for all $x\in[0,2]$.  Hence,
 \approx 0.113261743 \ .
 \]
 
-We have use the upper bound $2^4$ for $|x(x-2)^3|$.  A better
+We have use the upper bound $\displaystyle 2^4$ for
+$\displaystyle |x(x-2)^3|$.  A better
 (i.e.\ smaller) bound could be found by maximizing
-$g(x) = |x(x-2)^3| = x(2-x)^3$ on the interval $[0,2]$.
-Since $g'(x) = (2-x)^2(2-4x)=0$, the critical points of $g$ on $[0,2]$
-are $x=1/2$ and $x=2$.  It follows from the Extremum Theorem,
+$\displaystyle g(x) = |x(x-2)^3| = x(2-x)^3$ on the interval $[0,2]$.
+Since $\displaystyle g'(x) = (2-x)^2(2-4x)=0$, the critical points of
+$g$ on $[0,2]$ are $x=1/2$ and $x=2$.  It follows from the Extremum Theorem,
 Theorem~\ref{Th2}, that the maximum of $g$ on $[0,2]$ is the maximum
-of $g(0) = 0$, $g(2)=0$ and $g(1/2) = 3^3/2^4$. 
+of $g(0) = 0$, $g(2)=0$ and $\displaystyle g(1/2) = 3^3/2^4$. 
 Hence,
 \[
 | f(x) - p(x) | \leq \frac{e}{2^4\,4!} \left| x (x-2)^3 \right|
@@ -360,8 +364,8 @@ Hence
 \leq \frac{e}{30}
 \]
 for $0\leq x \leq 2$.  We have use the conservative upper bound
-$|x(x-1)^3 (x-2)| \leq 4$ for $0\leq x \leq 2$ provided by
-$|x|\leq 2$, $|(x-1)^3|\leq 1$ and $|x-2|\leq 2$ for
+$\displaystyle |x(x-1)^3 (x-2)| \leq 4$ for $0\leq x \leq 2$ provided by
+$\displaystyle |x|\leq 2$, $|(x-1)^3|\leq 1$ and $|x-2|\leq 2$ for
 $0 \leq x \leq 2$.
 }
 
@@ -434,7 +438,8 @@ The relative error is
 \approx 0.0000220865 \ .
 \]
 Since $k=5$ is the largest positive integer such that
-$0.0000220865 < 5 \times 10^{-k}$, there are $5$ significant digits.
+$\displaystyle 0.0000220865 < 5 \times 10^{-k}$, there are $5$
+significant digits.
 }
 
 \solution{\SOL}{\ref{intAQ12}}{

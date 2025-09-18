@@ -1,7 +1,7 @@
 \nonumsection{Chapter~\ref{chaptSeqC} : Algebraic Methods for Systems of Linear Equations}
 
 \solution{\SOL}{\ref{solvCQ4}}{
-From $\Id = A\,A^{-1}$, we get
+From $\displaystyle \Id = A\,A^{-1}$, we get
 $\displaystyle 1 = \|\Id\| = \|A\,A^{-1}\| \leq \|A\|\,\|A^{-1}\| = K(A)$.
 }
 
@@ -15,7 +15,7 @@ If we subtract $1.00001$ times the first equation from the second
 equation, we get $-0.00002 x_2 = -0.00001$.  Hence $x_2= 0.5$.
 If we substitute this value of $x_2$ in the first equation, we get
 $x_1 = 2.00001.$.  The solution of the perturbed system is
-$\VEC{x}_p = \begin{pmatrix} 2.00001 & 0.5 \end{pmatrix}^\top$.
+$\displaystyle \VEC{x}_p = \begin{pmatrix} 2.00001 & 0.5 \end{pmatrix}^\top$.
 
 The relative error is
 \[
@@ -31,8 +31,8 @@ A^{-1} = \begin{pmatrix}
 \end{pmatrix} \ .
 \]
 We find that the condition number is
-$K(A) = \|A\|_\infty\,\|A^{-1}\|_\infty = 3.00001 \times 2 \times 10^5
-= 6.00002\times 10^5$.  The matrix $A$ is ill-conditioned.
+$\displaystyle K(A) = \|A\|_\infty\,\|A^{-1}\|_\infty = 3.00001 \times
+2 \times 10^5 = 6.00002\times 10^5$.  The matrix $A$ is ill-conditioned.
 }
 
 \solution{\SOL}{\ref{solvCQ6}}{
@@ -54,7 +54,8 @@ for $1 \leq j \leq n$ and $2 \leq k \leq n$; namely,
 $\displaystyle b_{k,j} = \delta_{k,j} + \sum_{i=1}^{k-1} b_{i,j}$
 for $1 \leq j \leq n$ and $2 \leq k \leq n$.  In plain English, the
 first row of $B$ is the first row of the identity matrix $\Id_n$ and
-the $k^{th}$ row of $B$ is the sum of the $k^{th}$ row of $\Id_n$ with
+the $\displaystyle k^{th}$ row of $B$ is the sum of the
+$\displaystyle k^{th}$ row of $\Id_n$ with
 the previous $k-1$ rows of $B$ for $2 \leq k \leq n$.
 
 Again, the norm $\|B\|_\infty$ is given by the sum in absolute value
@@ -67,8 +68,8 @@ The sum in the previous expression is given by the formula
 $\displaystyle \sum_{i=1}^k r^i = \frac{1-r^{k+1}}{1-r}$ with $r=2$
 and $k=n-2$. 
 
-Hence, $K(A) = n 2^{n-1}$.  For large matrices $A$ (i.e.\ $n$ large),
-the matrix is not well conditioned.
+Hence, $\displaystyle K(A) = n 2^{n-1}$.  For large matrices $A$
+(i.e.\ $n$ large), the matrix is not well conditioned.
 }
 
 \solution{\SOL}{\ref{solvCQ7}}{

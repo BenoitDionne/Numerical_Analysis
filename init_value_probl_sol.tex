@@ -2,7 +2,8 @@
 
 \solution{\SOL}{\ref{initQ1}}{
 \subQ{a}
-Let $f(t,y) = t^2 \sin(y) + y$.  The function $f$ is obviously continuous.
+Let $\displaystyle f(t,y) = t^2 \sin(y) + y$.  The function $f$ is
+obviously continuous.
 
 According to the Mean Value Theorem, given any $y_1,y_2 \in \RR$, 
 there exists $\xi$ between $y_1$ and $y_2$ such that
@@ -10,7 +11,7 @@ there exists $\xi$ between $y_1$ and $y_2$ such that
   f(t,y_1)-f(t,y_2) = \pdydx{f}{y}(t,\xi)\, (y_1 - y_2)
   = (t^2 \cos(\xi) + 1)\,(y_1-y_2) \ .
 \]
-Since $|t^2 \cos(y) + 1| \leq 2$ for all
+Since $\displaystyle |t^2 \cos(y) + 1| \leq 2$ for all
 $(t,y)\in D = \{ (t,y) : 0\leq t \leq 1 \ \text{and} \ y \in \RR\}$, we get
 \[
 |f(t,y_1)-f(t,y_2)| \leq 2 |y_1-y_2|
@@ -70,7 +71,7 @@ $|y''(t)| = |1/t| \leq 1$.  Thus, we may take $M=1$.
 We have to minimize
 $\displaystyle g(h) = \frac{h}{2} + \frac{10^{-8}}{h}$
 for $h>0$.  We deduce from the following information about $g$ that it
-has a global minimum for $h>0$ at $h=\sqrt{2}/10^4$.
+has a global minimum for $h>0$ at $\displaystyle h=\sqrt{2}/10^4$.
 \[
 \begin{array}{c|c|c|c}
 h & 0<h< \sqrt{2}/10^4 & \sqrt{2}/10^4 & \sqrt{2}/10^4 < h \\    
@@ -79,12 +80,12 @@ g'(h) & - & 0 & + \\
  & \text{decreases} & \text{global min.} & \text{increases}
 \end{array}
 \]
-Thus, $h = \sqrt{2}/10^4$ minimizes the error bound for the Euler
+Thus, $\displaystyle h = \sqrt{2}/10^4$ minimizes the error bound for the Euler
 Method.
 
 \subQ{c} We use the Euler Method with $t_0=1$, $t_f= 2$,
 $y_0 = 0$ and $f(t,y) = 1 + y/t$.  Since
-$(t_f-t_0)/h = 10^4/\sqrt{2} \approx 7071.0678$
+$\displaystyle (t_f-t_0)/h = 10^4/\sqrt{2} \approx 7071.0678$
 is an irrational number, we round up to the next integer to get
 $N = 7072$.   Hence, $h = 1/7072$ and $t_i = t_0 + ih$ for
 $0\leq i \leq 7072$.  The approximation $w_i$ of $y_i = y(t_i)$ is
@@ -114,7 +115,7 @@ with $i=7072$ and $h=1/7072$.  Hence $t_i = t_{7072} = 2$, $t_0=1$ and
 
 Since $u_{7072} \approx 1.3862237$ and
 $y_{7072} = y(2) \approx 1.3862944$, the actual error is
-$|e_{7072}| = |u_{7072} - y_{7072}| \approx 0.707 \times 10^{-4}$.
+$\displaystyle |e_{7072}| = |u_{7072} - y_{7072}| \approx 0.707 \times 10^{-4}$.
 Our predicted error bound is fairly conservative.
 }
 
@@ -130,7 +131,8 @@ $\displaystyle u(t) = \frac{1}{t-1}$ for $t\neq 1$.  Thus, the
 solution of (\ref{rgktquest1}) is
 $\displaystyle y(t) = t - \frac{1}{t-1}$ for $t\neq 1$.
 
-We have $t_0=2$, $t_f= t_{10} =3$, $y_0=1$ and $f(t,y) = 1 +(t-y)^2$.
+We have $t_0=2$, $t_f= t_{10} =3$, $y_0=1$ and
+$\displaystyle f(t,y) = 1 +(t-y)^2$.
 Since $h = (t_f-t_0)/N = 1/N = 0.1$, we get $N=10$.
 Thus $t_j = t_0 + h i =1 + 0.1 i$ for $0\leq i \leq 10$.  The
 approximations $w_i$ of $y_i = y(t_i)$ are given by
@@ -138,10 +140,10 @@ $\displaystyle
 w_{i+1} = w_i + \frac{h}{6}(K_1 + 2\,K_2+2\,K_3 + K_4)$ for
 $i\geq 0$ with  $w_0  = 1$,
 where
-$K_1 = 1 +(t_i-w_i)^2$,
-$K_2 = 1 +\big((t_i+0.05) - (w_i +0.05 K_1)\big)^2$,
-$K_3 = 1 +\big((t_i + 0.05) - (w_i+ 0.05 K_2)\big)^2$ and
-$K_4 = 1 +\big(t_{i+1}- (w_i + 0.1 K_3) \big)^2$.
+$\displaystyle K_1 = 1 +(t_i-w_i)^2$,
+$\displaystyle K_2 = 1 +\big((t_i+0.05) - (w_i +0.05 K_1)\big)^2$,
+$\displaystyle K_3 = 1 +\big((t_i + 0.05) - (w_i+ 0.05 K_2)\big)^2$ and
+$\displaystyle K_4 = 1 +\big(t_{i+1}- (w_i + 0.1 K_3) \big)^2$.
 
 The results are listed in the table below.
 {
@@ -301,7 +303,7 @@ and
 + h A^2 (\Id - \beta h A)^{-1}\right) \VEC{w}_i
 \end{align*}
 because
-$ (\Id - \beta h A)^{-1} A = A (\Id - \beta h A)^{-1}$.
+$\displaystyle (\Id - \beta h A)^{-1} A = A (\Id - \beta h A)^{-1}$.
 Thus
 \begin{align*}
 \VEC{w}_{i+1} &= \VEC{w}_i + h\left(\frac{1}{2} + \beta\right)
@@ -348,7 +350,7 @@ If $\displaystyle M= \max_{t_0 \leq t \leq t_f} | y'''(t) |$, we get
 \leq \frac{5}{12} M h^2
 \]
 for $0 \leq i \leq N = (t_f-t_0)/h$.  The method is of order $2$ because
-$\tau_{i+1}(h) = O(h^2)$.  The method is consistent because
+$\displaystyle \tau_{i+1}(h) = O(h^2)$.  The method is consistent because
 \[
 \max_{0\leq i \leq N} | \tau_{i+1}(h) | \leq \frac{5}{12} M h^2
 \rightarrow 0
@@ -488,8 +490,8 @@ it follows from Theorem~\ref{RKcollOrder} that the Runge-Kutta Method
 given by the Butcher array above is of order two.
 
 If $\alpha_1$ and $\alpha_2$ are the roots of the Legendre polynomial
-$t^2 - t + 1/6$, then the $2$-stage Runge-Kutta Method given by the
-collocation method is of order $4$.  More details are given in
+$\displaystyle t^2 - t + 1/6$, then the $2$-stage Runge-Kutta Method
+given by the collocation method is of order $4$.  More details are given in
 Examples~\ref{Gauss_Leg_RK} and \ref{Gauss_Leg_RKcontinued}.
 }
 
@@ -502,7 +504,8 @@ method.  It follows from Remark~\ref{RKcolInterpol} that
 \int_0^1 q(t) \dx{t} = \sum_{j=1}^k \gamma_j\, q(a_j)
 \end{equation}
 for all polynomial of degree less than $k$ and $1\leq i \leq k$.
-If $q(t) = t^{n-1}$ with $1 \leq n \leq k$, then (\ref{GradQ7A}) yields
+If $\displaystyle q(t) = t^{n-1}$ with $1 \leq n \leq k$, then
+(\ref{GradQ7A}) yields
 \[
 \sum_{j=1}^k \beta_{i,j}\, a_j^{n-1} = \int_0^{\alpha_i} t^{n-1} \dx{t} = 
 \frac{\alpha_i^n}{n}
@@ -561,19 +564,19 @@ Let $A$ be the \nm{k}{k} matrix with the components
 $\displaystyle a_{n+1,j} = \alpha_j^n$ for $0 \leq n < k$ and
 $1 \leq j \leq k$.  Since the $\alpha_j$ are distinct, $A$ is a
 non-singular matrix.  In fact, $A$ is a invertible Vandermonde matrix.
-For $1 \leq i \leq k$, Let $\VEC{w}^{[i]}$ be
+For $1 \leq i \leq k$, Let $\displaystyle \VEC{w}^{[i]}$ be
 the vector with components
 $\displaystyle w^{[i]}_j = \beta_{i,j} - \int_0^{\alpha_i} \ell_j(t) \dx{t}$
-for $1 \leq j \leq k$.  Moreover, let $\VEC{w}^{[k+1]}$ be the vector
-with the components 
+for $1 \leq j \leq k$.  Moreover, let $\displaystyle \VEC{w}^{[k+1]}$
+be the vector with the components 
 $\displaystyle w^{[k+1]}_j = \gamma_j - \int_0^1 \ell_j(t) \dx{t}$
 for $1 \leq j \leq k$.
 
-We have that (\ref{GradQ7C}) with $q(t) = t^n$ for $0 \leq n < k$
-yields the linear equations $A \VEC{w}^{[i]}  = \VEC{0}$ for
-$0 \leq i \leq k$.  Similarly, (\ref{GradQ7D}) with $q(t) = t^n$ for
-$0 \leq n < k$ yields the
-linear equations $A \VEC{w}^{[k+1]}  = \VEC{0}$.  Since $A$ is
+We have that (\ref{GradQ7C}) with $\displaystyle q(t) = t^n$ for $0 \leq n < k$
+yields the linear equations $\displaystyle A \VEC{w}^{[i]}  = \VEC{0}$ for
+$0 \leq i \leq k$.  Similarly, (\ref{GradQ7D}) with
+$\displaystyle q(t) = t^n$ for $0 \leq n < k$ yields the
+linear equations $\displaystyle A \VEC{w}^{[k+1]}  = \VEC{0}$.  Since $A$ is
 non-singular, the only solution of $A \VEC{w} = \VEC{0}$ is
 $\VEC{w} = \VEC{0}$.  Thus, we get
 \[
@@ -606,7 +609,7 @@ Since
 \[
 (\Id-zB)^{-1} = \frac{1}{\det(\Id-zB)}\,\text{adj}(\Id-zB) \ ,
 \]
-we have that $\VEC{c}^\top(\Id-zA)^{-1}\VEC{u}$ is the quotient
+we have that $\displaystyle \VEC{c}^\top(\Id-zA)^{-1}\VEC{u}$ is the quotient
 of two polynomials.  The numerator is a polynomial of degree $k-1$ given
 by a linear combination of the components of $\text{adj}(\Id-zB)$.
 The denominator is $\det(\Id-zB)$, a polynomial of degree $k$.  Since $B$
@@ -618,15 +621,16 @@ $\displaystyle \det(\Id-zB) = \prod_{j=1}^k (1- z \beta_{j,j})$.
 The Runge-Kutta method of this question is given by the collocation
 method associated to the nodes $\alpha_1 = (3- \sqrt{3})/6$ and
 $\alpha_2 = (3 + \sqrt{3})/6$ which are the roots of the Legendre
-polynomial $q(t) = t^2 -t + 1/6$.  See Example~\ref{Gauss_Leg_RK}.  It
-follows from Theorem~\ref{RKcolAstable} that the method is A-stable.
+polynomial $\displaystyle q(t) = t^2 -t + 1/6$.  See
+Example~\ref{Gauss_Leg_RK}.  It follows from
+Theorem~\ref{RKcolAstable} that the method is A-stable.
 
 However, the question states that we cannot use this approach.  According
 to Corollary~\ref{RKstabReg}, we have to prove that
 \[
   \{ z \in \CC : |r(z)| <1 \} \supset \{ z \in \CC : \IM z < 0 \} \ ,
 \]
-where $r(z) = 1 + z\VEC{c}^\top (\Id - zB)^{-1} \VEC{u}$ with
+where $\displaystyle r(z) = 1 + z\VEC{c}^\top (\Id - zB)^{-1} \VEC{u}$ with
 \[
 B = \begin{pmatrix} 1/4 & (3-2\sqrt{3})/12 \\
 (3+2\sqrt{3})/12 & 1/4  
@@ -659,7 +663,8 @@ z(3+2\sqrt{3})/12 & 1 - z/4
 \end{align*}
 
 The poles of $r(z)$ are the roots of the denominator
-$12 - 6z + z^2$; namely, $z_{\pm} = 3 \pm \sqrt{3} \, i$.  Thus, there is
+$\displaystyle 12 - 6z + z^2$; namely,
+$z_{\pm} = 3 \pm \sqrt{3} \, i$.  Thus, there is
 no pole in the region $\{ z \in \CC : \RE z \leq 0 \}$.  Moreover,
 if $z = s i$, we get
 \[
@@ -682,19 +687,20 @@ for $i \in \NN$.
 
 \subQ{b} First, we find the general solution of the linear difference
 equation $w_{i+1} = w_i$ for $i \in \NN$.  If we substitute
-$w_i = r^i$, we get $r^{i+1} = r^i$.  The nontrivial solution is $r = 1$.
-Thus, the general solution of the linear difference equation is
-$w_i = C$, a constant, for all $i$.
+$\displaystyle w_i = r^i$, we get $\displaystyle r^{i+1} = r^i$.  The
+nontrivial solution is $r = 1$.  Thus, the general solution of the
+linear difference equation is $w_i = C$, a constant, for all $i$.
 
-We now seek a particular solution of the form $w_i = Ai^2 + Bi$ for
+We now seek a particular solution of the form
+$\displaystyle w_i = Ai^2 + Bi$ for
 the difference equation in (a).  We get
 \[
 A(i+1)^2 + B(i+1) = Ai^2 + Bi + \frac{h^2}{12}\left( 12 i + 5\right)
 \Rightarrow (2A - h^2)i + \left( A + B - \frac{5h^2}{12}\right) = 0
 \]
-for all $i$.  Thus, $2A-h^2 = 0$ and
+for all $i$.  Thus, $\displaystyle 2A-h^2 = 0$ and
 $\displaystyle A + B - 5h^2/12 = 0$.  Solving for $A$ and $B$,
-we find $A = h^2/2$ and $B = -h^2/12$.  Hence,
+we find $\displaystyle A = h^2/2$ and $\displaystyle B = -h^2/12$.  Hence,
 $\displaystyle w_i = \frac{h^2 i^2}{2} - \frac{h^2i}{12}$ for all $i$.
 
 The general solution of (a) is
@@ -708,7 +714,7 @@ all $i$.
 $\displaystyle w_i = \frac{t_i^2}{2} - \frac{h t_i}{12}$.
 
 The solution of the initial value problem (\ref{GradQ2}) is
-$y(t) = t^2/2$.  Hence,
+$\displaystyle y(t) = t^2/2$.  Hence,
 \[
 \lim_{h\to 0}\, \max_{0\leq i \leq N} |y_i - w_i|
 = \lim_{h\to 0}\, \max_{0\leq i \leq N} |y(t_)) - w_i |
@@ -721,7 +727,7 @@ $w_i$ instead of $u_i$, but it is the definition of convergence
 as given in Remark~\ref{ConvAltern}.  See also (f) below.
 
 \subQ{e} The characteristic polynomial is
-$p(w) = \lambda^2 - \lambda$.  It has two roots, $\lambda = 0$ and
+$\displaystyle p(w) = \lambda^2 - \lambda$.  It has two roots, $\lambda = 0$ and
 $\lambda =1$ with the root $\lambda =1$ being simple.  So, the root
 condition is satisfied.
   
@@ -767,7 +773,7 @@ Theorem~\ref{Dahl_conv}.  See Remark~\ref{DahlquistWOdelta}.
 We use the method presented in Section~\ref{AAMM} to answer
 this question.
 
-\subQ{a} We consider $p(w) = w^3-1$ and set $m=3$.  Using the
+\subQ{a} We consider $\displaystyle p(w) = w^3-1$ and set $m=3$.  Using the
 substitution $w=v+1$, we get
 \begin{align*}
 \frac{p(w)}{\ln(w)} &= \frac{w^3-1}{\ln(w)}
@@ -786,7 +792,7 @@ w_{i+1} &= w_{i-2} + h\left(\frac{3}{4}\, f(t_{i-2},w_{i-2}) +
 w_i &= y_i \quad \text{for} \quad i=0,1,2
 \end{align*}
 
-\subQ{b} We consider $p(w) = w^3-1$ and set $m=3$.  Using the
+\subQ{b} We consider $\displaystyle p(w) = w^3-1$ and set $m=3$.  Using the
 substitution $w=v+1$, we get
 \begin{align*}
 \frac{p(w)}{\ln(w)} &= \frac{w^3-1}{\ln(w)}
@@ -888,14 +894,14 @@ $\displaystyle \frac{1}{2} - \frac{a_1}{2} + b_1 = 0$
 (we set the coefficient of $y''(t_i)h$ to $0$).
 If we substitute this expression for $b_1$ in
 $\displaystyle \frac{1}{6} + \frac{a_1}{6} - \frac{b_1}{2} = 0$
-(we set the coefficient of ($y^{(3)}(t_i) h^2$ to $0$), we
-get $\displaystyle a_1 = 5$.
+(we set the coefficient of $\displaystyle y^{(3)}(t_i) h^2$ to $0$), we
+get that $\displaystyle a_1 = 5$.
 
-We have found that all the terms in $h^{k}$ for $k<3$ vanish if
-$a_0 = -4$, $a_1 = 5$. $b_0 = 4$ and $b_1 = 2$.   
+We have found that all the terms in $\displaystyle h^{k}$ for $k<3$ vanish if
+$a_0 = -4$, $a_1 = 5$. $b_0 = 4$ and $b_1 = 2$.
 With these values of $a_1$ and $b_1$, we have that
 $\displaystyle \frac{1}{24} - \frac{a_1}{24} + \frac{b_1}{6}
-= \frac{1}{6} \neq 0$ (the coefficient of $y^{(4)}h^3$).  Hence,
+= \frac{1}{6} \neq 0$ (the coefficient of $\displaystyle y^{(4)}h^3$).  Hence,
 \begin{equation}\label{TroncQuest21}
   \tau_{i+1}(h) = \frac{1}{6}\, y^{(4)}(t_i)\, h^3 + O(h^4) \ .
 \end{equation}

@@ -277,7 +277,8 @@ p_i(x) = \left(\left(\alpha_i(x-x_i) + \beta_i\right)(x-x_i)
 on $[x_i,x_{i+1}]$ for $0\leq i \leq 3$, where $x_0=0$, $x_1=1$,
 $x_2=2$, $x_3=3$ and $x_4=5$.
 
-Let $\VEC{w} \in \RR^3$ be the solution of $A\VEC{w} = \VEC{b}$, where
+Let $\displaystyle \VEC{w} \in \RR^3$ be the solution of
+$A\VEC{w} = \VEC{b}$, where
 \[
 A = \begin{pmatrix}
 2 (x_2-x_0) & x_2-x_1 & 0 \\
@@ -434,7 +435,8 @@ p_i(x) = \left(\left(\alpha_i(x-x_i) + \beta_i\right)(x-x_i)
 on $[x_i,x_{i+1}]$ for $i=0$ and $1$, where $x_0 = 0$, $x_1 = 0.3$ and
 $x_2=1$.
 
-Let $\VEC{z} \in \RR^3$ be the solution of $A\VEC{z} = \VEC{b}$, where
+Let $\displaystyle \VEC{z} \in \RR^3$ be the solution of
+$A\VEC{z} = \VEC{b}$, where
 \[
 A = \begin{pmatrix}
 2 (x_1-x_0) & x_1-x_0 & 0 \\
@@ -697,7 +699,7 @@ true for clamped cubic splines with $A$ given in (\ref{ccs1}).
 
 \begin{theorem}
 If $p$ is the natural cubic spline interpolant for a function $f$ of
-class $C^2$ on the nodes $a = x_0 < x_1 < \ldots < x_n=b$, then
+class $\displaystyle C^2$ on the nodes $a = x_0 < x_1 < \ldots < x_n=b$, then
 \[
 \int_a^b (p''(x))^2 \dx{x} \leq \int_a^b (f''(x))^2 \dx{x} \ .
 \]
@@ -938,7 +940,7 @@ Example~\ref{egg_clamped}.
 \section{Parametric Curves: Bézier Curves} \label{BEZIER}
 
 A general curves $C$ in the plane is the image of a vector valued
-function $\phi:[a,b] \rightarrow \RR^2$.  The function $\phi$ is
+function $\displaystyle \phi:[a,b] \rightarrow \RR^2$.  The function $\phi$ is
 called a
 {\bfseries parametric representation}\index{Bézier Curves!Parametric
 Representation} of the curve $C$.  The parametric representation of a
@@ -946,8 +948,8 @@ curve is not unique.
 
 It is not always possible to describe a curve $C$ by the graph of a
 function $y=f(x)$ for $a\leq x \leq b$.  When it is possible,
-$\phi:[a,b]\to \RR^2$ defined by $\phi(x) = (x,f(x))$ is a parametric
-representation of the curve $C$.
+$\displaystyle \phi:[a,b]\to \RR^2$ defined by $\phi(x) = (x,f(x))$ is
+a parametric representation of the curve $C$.
 
 \begin{egg}
 The circle $C$ of radius $1$ centred at the origin has the following
@@ -961,14 +963,14 @@ circle as the graph of a function $y=f(x)$.
 
 Given $n+1$ points $\VEC{p}_0 = (x_0,y_0)$, $\VEC{p}_1 = (x_1,y_1)$,
 \ldots, $\VEC{p}_n = (x_n,y_n)$, the goal is to find polynomial
-maps of degree three $\phi_i:[0,1] \rightarrow \RR^2$ such
+maps of degree three $\displaystyle \phi_i:[0,1] \rightarrow \RR^2$ such
 that $\phi_i(0) = \VEC{p}_i$ and $\phi_i(1) = \VEC{p}_{i+1}$ for $0\leq i <n$.
 By pasting all the mappings $\phi_i$ together, we hope to get a
 nice parametric representation of a curve.
 
 The curves that we are going to describe are called
 {\bfseries cubic Bézier curves}\index{Bézier Curves!Cubic Bézier Curves}.
-The mapping $\phi_i:[0,1]\to \RR^2$ between
+The mapping $\displaystyle \phi_i:[0,1]\to \RR^2$ between
 the points $\VEC{p}_i = (x_i,y_i)$ and $\VEC{p}_{i+1} = (x_{i+1},y_{i+1})$,
 is defined by
 \begin{enumerate}
@@ -1195,7 +1197,7 @@ curve is given below.
 
 \begin{rmk}
 The {\bfseries Bernstein polynomial}\index{Bernstein Polynomial} of
-degree $m \in \NN^+$ for a function $f:[0,1]\rightarrow \RR$ is the
+degree $\displaystyle m \in \NNp$ for a function $f:[0,1]\rightarrow \RR$ is the
 polynomial
 \begin{equation} \label{bernstein1}
 B_m(t; f) = \sum_{k=0}^m f\left(\frac{k}{m}\right) \binom{m}{k}
@@ -1211,7 +1213,7 @@ polynomial
 \[
 \phi_i(t) = \sum_{k=0}^3 \VEC{c}_{i,k} \binom{3}{k} t^k(1-t)^{3-k}
 \]
-for $0 \leq i < n$, where $\VEC{c}_{i,k} \in \RR^2$ satisfies
+for $0 \leq i < n$, where $\displaystyle \VEC{c}_{i,k} \in \RR^2$ satisfies
 \[
 \binom{3}{k} \VEC{c}_{i,k} =
 \begin{cases}
@@ -1297,7 +1299,8 @@ We sketch in Figure~\ref{Bsplines} a B-spline of degree $0$ and a
 B-spline of degree $1$.
 
 \pdfF{interpolation_B/b-splines}{The B-spline of degree $0$, $1$ and $2$.}
-{Clockwise from the top left corner: $B_i^0$, $B_i^1$ and $B_i^2$.}{Bsplines}
+{Clockwise from the top left corner: $\displaystyle B_i^0$,
+$\displaystyle B_i^1$ and $\displaystyle B_i^2$.}{Bsplines}
 
 The next propositions state some of the properties of the B-splines.
 We give some of the proofs and refer the reader to \cite{KC} for the
@@ -1306,13 +1309,13 @@ missing proofs and more information.
 \begin{prop}
 The B-splines of degree $0$ are piecewise constant functions which are
 continuous from the right.  For $k>0$, the B-splines of degree $k$ are
-piecewise polynomials of degree $k$ and class $C^{k-1}$.
+piecewise polynomials of degree $k$ and class $\displaystyle C^{k-1}$.
 \label{BSplineCkm1}
 \end{prop}
 
 That the B-splines of degree $k>0$ are piecewise polynomials of degree
 $k$ is proved by induction using (\ref{Bsplinerecurence}).   To proof
-that they are of class $C^{k-1}$ requires induction and tedious
+that they are of class $\displaystyle C^{k-1}$ requires induction and tedious
 computations to show that
 \begin{equation}\label{derBspline}
   \dfdx{B_i^k(t)}{t} =
@@ -1326,9 +1329,10 @@ A simple proof by induction based on (\ref{Bsplinerecurence}) gives
 the following result.
 
 \begin{prop}
-$B_i^0(t) > 0$ for $t_i \leq t < t_{i+1}$ and $B_i^0(t) = 0$ otherwise.
-For $k>0$, $B_i^k(t) > 0$ for $t_i < t < t_{i+k+1}$ and $B_i^k(t) = 0$
-otherwise.
+$\displaystyle B_i^0(t) > 0$ for $t_i \leq t < t_{i+1}$ and
+$\displaystyle B_i^0(t) = 0$ otherwise.
+For $k>0$, $\displaystyle B_i^k(t) > 0$ for $t_i < t < t_{i+k+1}$
+and $\displaystyle B_i^k(t) = 0$ otherwise.
 \label{Bsplienonneg}
 \end{prop}
 
@@ -1357,7 +1361,7 @@ C_{j-k+1}^k(t) & C_{j-k+1}^{k-1}(t) & & & \\[0.5em]
 C_{j-k}^k(t) & & & & 
 \end{array}
 \]
-then $p(t) = C_j^0(t)$.
+then $\displaystyle p(t) = C_j^0(t)$.
 \end{prop}
 
 \begin{proof}
@@ -1388,7 +1392,8 @@ of the form
 \[
   p(t) = \sum_{i=-\infty}^\infty  c_i^k B_i^k(t)
 \]
-for some constants $c_i^k$.  If we set $C_i^r(t) = c_i^r$, we can use
+for some constants $\displaystyle c_i^k$.  If we set
+$\displaystyle C_i^r(t) = c_i^r$, we can use
 the method presented in the proposition above to compute $p(t)$.
 \end{rmk}
 
@@ -1399,18 +1404,19 @@ and $k\geq 0$.
 \end{prop}
 
 \begin{proof}
-We use the previous proposition with $C_i^k(t) = 1$ for all $i$.  We
-have
+We use the previous proposition with $\displaystyle C_i^k(t) = 1$ for
+all $i$.  We have that
 \[
 C_i^{k-1}(t) = C_i^k(t) v_i^k(t) + C_{i-1}^k \left( 1- v_i^k(t)\right)
 =  v_i^k(t) + \left( 1-  v_i^k(t)\right) = 1
 \]
 for all $i$.   A simple proof by induction shows that
-$C_i^r(t) = 1$ for all $i$ and all $r$ with $0 \leq r \leq k$.  Thus,
+$\displaystyle C_i^r(t) = 1$ for all $i$ and all $r$ with
+$0 \leq r \leq k$.  Thus,
 \[
   \sum_{i=-\infty}^\infty B_i^k(t) = \sum_{i=-\infty}^\infty B_i^0(t) \ .
 \]
-For $t\in [t_j,t_{j+1}[$, we get
+For $t\in [t_j,t_{j+1}[$, we get that
 \[
   \sum_{i=-\infty}^\infty B_i^k(t) = \sum_{i=-\infty}^\infty B_i^0(t)
   = B_j^0(t) = 1 \ .  \qedhere
@@ -1423,25 +1429,26 @@ $\displaystyle \left\{ B_j^k, B_{j+1}^k, \ldots , B_{j+k}^k \right\}$
 is linearly independent on $]t_{j+k},t_{j+k+1}[$.
 \end{prop}
 
-We note that the only B-splines $B_i^k$ that are not trivially null on
-$]t_{j+k},t_{j+k+1}[$ are those for $j \leq i \leq j+k$.  The proof of
+We note that the only B-splines $\displaystyle B_i^k$ that are not
+trivially null on $]t_{j+k},t_{j+k+1}[$ are those for
+$j \leq i \leq j+k$.  The proof of
 this proposition is by induction and requires the formula for the
-derivative of the B-splines $B_i^k$ that was required for the proof
-of Proposition~\ref{BSplineCkm1}.
+derivative of the B-splines $\displaystyle B_i^k$ that was required
+for the proof of Proposition~\ref{BSplineCkm1}.
 
 \begin{prop}
 The set of B-splines
 $\displaystyle \left\{ B_{-k}^k, B_{-k+1}^k, \ldots , B_{n-1}^k \right\}$
-is a basis for the space $S_n^k$ of functions $p$ of class $C^{k-1}$ on
-$[t_0,t_n]$ such that
+is a basis for the space $\displaystyle S_n^k$ of functions $p$ of
+class $\displaystyle C^{k-1}$ on $[t_0,t_n]$ such that
 $\displaystyle p\big|_{[t_i,t_{i+1}]}$ is a polynomials of degree at most
 $k$ for $0\leq i < n$.
 \label{BSplineLinInd}
 \end{prop}
 
 \begin{proof}
-We note that the only B-splines $B_i^k$ that are not trivially null on
-$]t_0,t_n[$ are those for $-k \leq i \leq n-1$.
+We note that the only B-splines $\displaystyle B_i^k$ that are not
+trivially null on $]t_0,t_n[$ are those for $-k \leq i \leq n-1$.
 
 \subI{Linear Independence}
 Suppose that $\displaystyle \sum_{i=-k}^{n-1} c_i B_i^k = 0$ on $[t_0,t_n]$.
@@ -1459,31 +1466,33 @@ $t \in [t_j,t_j+1[$, we have
  0 = \sum_{i=-k}^{n-1} c_i B_i^k(t) = \sum_{i=j}^{n-1} c_i B_i^k(t) =
   c_j B_j^k(t) \ .
 \]
-Since $B_j^k(t) > 0$, we get $c_j = 0$.  This is a contradiction that
-$c_j \neq 0$.  So, there is no such $j$ between $0$ and $n$ such
-$c_j \neq 0$.
+Since $\displaystyle B_j^k(t) > 0$, we get $c_j = 0$.  This is a
+contradiction that $c_j \neq 0$.  So, there is no such $j$ between $0$
+and $n$ such $c_j \neq 0$.
 
-In particular, this proves that $S_n^k$ is at least of dimension
+In particular, this proves that $\displaystyle S_n^k$ is at least of dimension
 $n+k$. 
 
 \subI{Generating set}
-We prove that all functions $p \in S_n^k$ can be expressed as a linear
-combination over $\RR$ of the following $n+k$ functions in $S_n^k$:
-$t^j$ for $0\leq j \leq k$ and $H(t-t_j)(t-t_j)^k$ for
+We prove that all functions $\displaystyle p \in S_n^k$ can be
+expressed as a linear combination over $\RR$ of the following $n+k$
+functions in $\displaystyle S_n^k$:
+$\displaystyle t^j$ for $0\leq j \leq k$ and
+$\displaystyle H(t-t_j)(t-t_j)^k$ for
 $1\leq j \leq n-1$, where $H$ is the Heavyside function defined by
 \[
   H(x) = \begin{cases} 1 & \quad \text{if} \quad x \geq 0 \\
     0 & \quad \text{if} \quad x < 0
   \end{cases}
 \]
-This will prove that $S_n^k$ is at most of dimension $n+k$.  Combined
-with what we proved in the first part of the proof, this shows that
-$S_n^k$ is of dimension $n+k$ and that\\
+This will prove that $\displaystyle S_n^k$ is at most of dimension
+$n+k$.  Combined with what we proved in the first part of the proof,
+this shows that $\displaystyle S_n^k$ is of dimension $n+k$ and that\\
 $\displaystyle \left\{ B_{-k}^k, B_{-k+1}^k, \ldots , B_{n-1}^k \right\}$
-is a basis of $S_n^k$.
+is a basis of $\displaystyle S_n^k$.
 
-Given $p \in S_n^k$, we have that $p_0 = p\big|_{[t_0,t_1]}$ is a polynomial
-of degree at most $k$.  So
+Given $\displaystyle p \in S_n^k$, we have that
+$p_0 = p\big|_{[t_0,t_1]}$ is a polynomial of degree at most $k$.  So
 $\displaystyle p_0(t) = \sum_{i=0}^k a_i t^i$ for some $a_i \in \RR$.
 
 We prove by induction that there exist constants $a_{k+i}$ such that
@@ -1493,7 +1502,7 @@ We prove by induction that there exist constants $a_{k+i}$ such that
 for $t_0 \leq t \leq t_{j+1}$ with $1 \leq j\ < n$.
 
 We have that $P_1 = p\big|_{[t_1,t_2]}$ is a polynomial of degree at
-most $k$.  Since $p$ is of class $C^{k-1}$, we have that
+most $k$.  Since $p$ is of class $\displaystyle C^{k-1}$, we have that
 \[
   \dfdxn{(p_1 - p_0)(t_1)}{t}{m} = 0
 \]
@@ -1515,7 +1524,7 @@ p_j = p\big|_{[t_j,t_{j+1}]} = \left( \sum_{i=0}^k a_i t^i
 + \sum_{i=1}^j a_{k+i}H(t-t_i)(t-t_i)^k\right)\bigg|_{[t_j,t_{j+1}]}
 \]
 is a polynomial of degree at most $k$.  Since $p$ is of class
-$C^{k-1}$, we have that
+$\displaystyle C^{k-1}$, we have that
 \[
   \dfdxn{(p_{j+1} - p_j)}{t}{m}(t_{j+1}) = 0
 \]
@@ -1531,7 +1540,7 @@ for $t_0 \leq t \leq t_{j+2}$.  This proves (\ref{Snkbasis}) for $j$
 replaced by $j+1$.
 
 (\ref{Snkbasis}) with $j=n-1$ shows that $f$ is a linear combination
-of the $n+k$ functions $t^j$ for $0\leq j \leq k$ and
+of the $n+k$ functions $\displaystyle t^j$ for $0\leq j \leq k$ and
 $H(t-t_j)(t-t_j)^k$ for $1\leq j \leq n-1$ as claimed.
 \end{proof}
 
@@ -1555,20 +1564,22 @@ The answer to this question is a consequence of the following result.
 
 \begin{theorem}[Schoemberg-Whitney]
 Given $q \in \ZZ$ and $x_1 < x_2 < \ldots < x_m$, consider the
-\nm{m}{m} matrix $Q$ with the entries $Q_{j,i} = B_{i+q}^k(x_j)$ for
+\nm{m}{m} matrix $Q$ with the entries
+$\displaystyle Q_{j,i} = B_{i+q}^k(x_j)$ for
 $1 \leq i,j \leq m$.  Then, $Q$ is invertible if and only if
 $Q_{j,j} \neq 0$ for $1 \leq j \leq m$.
 \end{theorem}
 
-To find the $c_i^k$ required to satisfy (\ref{BsplineFormCoeff}), we
+To find the $\displaystyle c_i^k$ required to satisfy
+(\ref{BsplineFormCoeff}), we
 have to solve the linear system $Q \VEC{z} = \VEC{y}$, where
-$Q_{j,i} = B_{i-k-1}^k(x_j)$ and $z_i = c_{i-k-1}$ 
+$\displaystyle Q_{j,i} = B_{i-k-1}^k(x_j)$ and $z_i = c_{i-k-1}$ 
 for $1\leq i,j \leq n+k$.  We get the following result from
 Schoemberg-Whitney Theorem and Proposition~\ref{Bsplienonneg}.
 
 \begin{prop}
 The system $Q\VEC{z} = \VEC{y}$ defined above has a solution if and
-only if $Q_{j,j} = B_{j-k-1}^k(x_j) \neq 0$ for $1\leq j \leq n+k$;
+only if $\displaystyle Q_{j,j} = B_{j-k-1}^k(x_j) \neq 0$ for $1\leq j \leq n+k$;
 namely, if $t_{j-k-1} < x_j < t_j$ for $1\leq j \leq n+k$.
 \end{prop}
 
@@ -1614,7 +1625,8 @@ We have $k=3$ and we select the knots $t_i$ such that $x_j = t_{j-1}$ for
 $1\leq j \leq n$.   The spline interpolant $p$ that we are
 looking for will be determined by the points
 $(x_j,y_j) = (t_{j-1},f(t_{j-1}))$ for $1\leq j \leq n$.
-We need $j-4 \leq i < j$ to possibly have that $B_i^3(x_j)$ is non null.
+We need $j-4 \leq i < j$ to possibly have that
+$\displaystyle B_i^3(x_j)$ is non null.
 
 The spline interpolant $p$ is of the form
 \[
@@ -1627,8 +1639,8 @@ p(x_j) = \sum_{i=-3}^{n-2} c_i B_i^3(x_j)
 \end{equation}
 for $1\leq j \leq n$.  We have dropped the term for
 $i\not\in \{-3,-2,\ldots,n-2\}$ from the
-summation because $B_i^3(x_j) = B_i^3(t_{j-1}) = 0$ for these values of
-$i$.  There are $n$ equations with $n+2$ variables $c_i$ for
+summation because $\displaystyle B_i^3(x_j) = B_i^3(t_{j-1}) = 0$ for
+these values of $i$.  There are $n$ equations with $n+2$ variables $c_i$ for
 $-3\leq i \leq n-2$.  We use the two extra variables to
 satisfy the conditions for a natural cubic spline interpolant; namely,
 $p''(x_1) = p''(x_n) = 0$.
@@ -1656,7 +1668,7 @@ These give two extra equations,
 + (t_{n+1}-t_{n-2})c_{n-4} = 0 \ ,
 \end{align*}
 to combine with the $n$ equations in (\ref{BsplieCubiccoeff}) to
-determine the $n+2$ variables $c_i^3$ for $-3 \leq i \leq n-2$.
+determine the $n+2$ variables $\displaystyle c_i^3$ for $-3 \leq i \leq n-2$.
 \end{egg}
 
 Consider a function $f:I \to \RR$, where $I$ is a sub-interval
@@ -1737,8 +1749,8 @@ statement of the theorem.  We have used the second one because the
 statement was nicer.
 \end{proof}
 
-Since every element of $S_n^k$ is a linear combination of
-$B_{j}^k$ for $-k \leq j <n$, we get the following result from the
+Since every element of $\displaystyle S_n^k$ is a linear combination of
+$\displaystyle B_{j}^k$ for $-k \leq j <n$, we get the following result from the
 previous theorem.
 
 \begin{cor}

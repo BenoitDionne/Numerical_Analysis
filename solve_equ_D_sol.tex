@@ -44,15 +44,15 @@ for all $\VEC{x}$ and $\VEC{y}$ in $S$ with $K <1$.
 
 \subQ{d}  If we start with $\VEC{x}_0 = \VEC{0}$ and compute
 $\VEC{x}_{n+1} = g(\VEC{x}_n)$ for $n\geq 0$, we find that
-$\|\VEC{x}_n - \VEC{x}_{n-1}\|_\infty < 10^{-5}$ for the first time when
-$n=6$.  We get
+$\displaystyle \|\VEC{x}_n - \VEC{x}_{n-1}\|_\infty < 10^{-5}$ for the
+first time when $n=6$.  We get
 $\displaystyle
 \VEC{x}_6 \approx \begin{pmatrix} 0.266078 & 0.211797 \end{pmatrix}^\top$,
 where we have rounded the values to $6$ significant digits.
 
 \subQ{e} We use the formula
 \[
-\| \VEC{x}_n - \VEC{p} \| \leq \frac{K^n}{1-K}\;
+\| \VEC{x}_n - \VEC{p} \| \leq \frac{K^n}{1-K}\,
 \| \VEC{x}_1 - \VEC{x}_0 \| < 10^{-5}
 \]
 to determine the value of $n$.  If $\VEC{x}_0= \VEC{0}$, we get
@@ -78,8 +78,8 @@ g(\VEC{x}) = \begin{pmatrix} (x_2+5)/4 \\ (1+\sqrt{x_1})^{1/3} - 1
 \]
 Let
 $S = \{\VEC{x} : 1 \leq x_1 \leq 2 \text{ and } 1/4 \leq x_2 \leq 3/4\}$.
-We have that $g:\RR^2 \to \RR^2$ satisfies the two hypotheses of the
-Fixed Point Theorem, Theorem~\ref{FixedPTinRN}.
+We have that $\displaystyle g:\RR^2 \to \RR^2$ satisfies the two
+hypotheses of the Fixed Point Theorem, Theorem~\ref{FixedPTinRN}.
 \begin{enumerate}
 \item Since 
 $\displaystyle (x_2+5)/4 \leq \big((3/4) + 5\big)/4 = 23/16 < 2$,
@@ -107,7 +107,7 @@ J_g(\VEC{x}) = \begin{pmatrix}
 \displaystyle \frac{1}{6\sqrt{x_1}\,(1+\sqrt{x_1})^{2/3}} & 0
 \end{pmatrix} \ ,
 \]
-we get
+we get that
 \[
 \max_{\VEC{x} \in S} \|J_g(\VEC{x})\|_\infty
 = \max\left\{\frac{1}{4} , \frac{1}{6\,(2^{2/3})} \right\}
@@ -122,9 +122,9 @@ $\displaystyle K = \max_{\VEC{x} \in S} \|J_g(\VEC{x})\|_\infty < 1$.
 Starting with
 $\displaystyle \VEC{x}_0 = \begin{pmatrix} 1.5 & 0.5 \end{pmatrix}^\top$,
 we compute $\VEC{x}_{k+1} = g(\VEC{x}_k)$ until
-$\|\VEC{x}_{k+1} - \VEC{x}_k\|_\infty < 10^{-5}$.
+$\displaystyle \|\VEC{x}_{k+1} - \VEC{x}_k\|_\infty < 10^{-5}$.
 It takes $7$ iterations to get the first approximation
-$\VEC{x}_7 \approx \begin{pmatrix} 1.32266994 & 0.29067777
+$\displaystyle \VEC{x}_7 \approx \begin{pmatrix} 1.32266994 & 0.29067777
 \end{pmatrix}^\top$ of the fixed point in $S$ that satisfies the
 required accuracy.
 }
@@ -149,14 +149,15 @@ e^{x_1} & e^{x_2} & -1 \\
 -2x_3 & 2 x_2 & -2x_1
 \end{pmatrix} \ .
 \]
-Starting with $\VEC{x}_0 = \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}^\top $,
+Starting with
+$\displaystyle \VEC{x}_0 = \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}^\top $,
 we compute
 \[
 \VEC{x}_{k+1}=\VEC{x}_k- (J_f(\VEC{x}_k))^{-1} \, f(\VEC{x}_k)
 \]
-until $\| \VEC{x}_{k+1} - \VEC{x}_k \| < 10^{-6}$.  It takes $12$
+until $\displaystyle \| \VEC{x}_{k+1} - \VEC{x}_k \| < 10^{-6}$.  It takes $12$
 iterations to get the first approximation\\
-$\VEC{x}_{12} \approx \begin{pmatrix}
+$\displaystyle \VEC{x}_{12} \approx \begin{pmatrix}
 -1.95629521 & -0.131795995 & 1.017901033 \end{pmatrix}^\top$
 of a solution of $f(\VEC{x}) = \VEC{0}$ that satisfies the required
 accuracy.
