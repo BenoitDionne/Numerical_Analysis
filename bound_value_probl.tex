@@ -207,8 +207,8 @@ $y' - A(t) = f(f)$ with $B_a y(a) + B_b y(b) = y_c$  for $a \leq t \leq b$.
 The classical fourth order Runga-Kutta is use to solve initial value
 problems in the algorithm.  For $N$ given, the step size is $h = (b-a)/N$ and
 $t_i = a + i h $ for  $0 \leq i \leq N$.\\
-\subI{Input} The vector valued function $f:[a,b] \to \RR^n$ (f in the
-code below).\\
+\subI{Input} The vector valued function
+$\displaystyle f:[a,b] \to \RR^n$ (f in the code below).\\
 The \nn matrix valued function $A$ defined on $[a,b]$ (A in the code below).\\
 The \nn matrix $B_a$ (Ba in the code below).\\
 The \nn matrix $B_b$ (Bb in the code below).\\
@@ -1317,7 +1317,8 @@ We consider the boundary value problem
 g(\VEC{y}(a), \VEC{y}(b)) &= \VEC{0}
 \end{split}
 \end{equation}
-This problem can be reformulated as follows.  Find $\VEC{s} \in \RR^n$
+This problem can be reformulated as follows.  Find
+$\displaystyle \VEC{s} \in \RR^n$
 such that the solution $\VEC{u}(t,\VEC{s})$ of
 \begin{equation} \label{RNLBVP}
 \begin{split}
@@ -2419,8 +2420,8 @@ L(Y^{[\nu]}(t)) &= 0 \quad , \quad a \leq t \leq b \\
 B_a^{[\nu]}Y^{[\nu]}(a) + B_b^{[\nu]}Y^{[\nu]}(b) &= \Id
 \end{split}
 \end{equation}
-has a unique solution $Y^{[\nu]}(t)$ if and only if (\ref{TBVP}) has a
-unique solution.
+has a unique solution $\displaystyle Y^{[\nu]}(t)$ if and only if
+(\ref{TBVP}) has a unique solution.
 \item Moreover, if (\ref{TBVP}) for $\nu =0$ has a unique
 solution, then (\ref{TBVP}) for $\nu =1$ has a unique solution if and
 only if $\displaystyle B_a^{[1]} Y^{[0]}(a) + B_b^{[1]}Y^{[0]}(b)$ is
@@ -2440,8 +2441,8 @@ is the (fundamental) solution of $L(Y)=0$ with $Y(a) = \Id$.
 Moreover, it follows from the second step in Algorithm~\ref{AlgoSimpleSM}
 with $\VEC{y}_c = 0$ and $\VEC{y}_0(t) = 0$ for all $t$ that 
 the solution of (\ref{TBVPsyst}) is of the form
-$\displaystyle Y^{[\nu]}(t) = Y(t) R^{[\nu]}$, where $R^{[\nu]}$ is a constant
-matrix satisfying
+$\displaystyle Y^{[\nu]}(t) = Y(t) R^{[\nu]}$, where
+$\displaystyle R^{[\nu]}$ is a constant matrix satisfying
 \[
 \Id = B_a^{[\nu]}Y^{[\nu]}(a) + B_b^{[\nu]}Y^{[\nu]}(b) =
 \left( B_a^{[\nu]} + B_b^{[\nu]} Y(b) \right)R^{[\nu]} = Q^{[\nu]}
@@ -3652,7 +3653,8 @@ $J+1$ such that
 0 < i < N \label{coll_3}
 \end{align}
 
-Condition (\ref{coll_3}) implies that $\VEC{p}:[a,b]\to \RR^n$ defined by
+Condition (\ref{coll_3}) implies that
+$\displaystyle \VEC{p}:[a,b]\to \RR^n$ defined by
 $\VEC{p}(t) = \VEC{p}_i(t)$ for $t_i \leq t \leq t_{i+1}$ is a
 piecewise continuous polynomial mapping.
 

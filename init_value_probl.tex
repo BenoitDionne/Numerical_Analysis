@@ -3834,9 +3834,10 @@ O(h^{\tilde{p}+2}) \nonumber \\
 &= h \tilde{b}_{-1} \,\pdydx{f}{y}(t_{i+s},\eta_i)
 \left( y(t_{i+s}) - w_{i+s}^{[k]} \right)
 + \tilde{D}_{\tilde{p}} h^{\tilde{p}+1} y^{(\tilde{p}+1)}(t_i) + O(h^{\tilde{p}+2})
-\label{LE_Corr} 
+\label{LE_Corr}
 \end{align}
-for some $\eta_{i,k}$ between $y(t_{i+1})$ and $w_{i+1}^{[k]}$, where
+for some $\eta_{i,k}$ between $y(t_{i+1})$ and
+$\displaystyle w_{i+1}^{[k]}$, where
 \[
 \tilde{D}_{\tilde{p}} = \frac{1}{(\tilde{p}+1)!}\,\bigg( 1
 + (-1)^{\tilde{p}} \sum_{j=0}^{\tilde{m}}\,\tilde{a}_j\,j^{\tilde{p}+1}
@@ -5975,7 +5976,7 @@ w_{i+1} &= w_i + h\left( \gamma_1 \mu\, w_i
 (\mu\,h)^2 \right) w_i \ .
 \end{split}
 \end{equation}
-If we substitute $\lambda^i$ for $w_i$, we get
+If we substitute $\displaystyle \lambda^i$ for $w_i$, we get
 \[
 \lambda^{i+1} = \left( 1 + (\gamma_1 + \gamma_2)\mu\, h + \gamma_2
 \beta_{2,1} (\mu\, h)^2 \right) \lambda^i
@@ -6067,7 +6068,7 @@ where $\det(\Id-zB)$ is a polynomial in $z$ of degree at most $s$, and
 $\text{adj}(\Id-zB)$ is an \nm{s}{s} matrix whose $(i,j)$ entry is
 the {\bfseries cofactor} $\displaystyle (-1)^{i+j} \det A_{i,j}$,
 where $A_{i,j}$ is obtained from $\Id - zB$ by removing the
-$\displaystyle i^{th}$ row and $j^{th}$ column.
+$\displaystyle i^{th}$ row and $\displaystyle j^{th}$ column.
 The cofactors are polynomials in $z$ of degree at most $s-1$.
 Hence, $\displaystyle \VEC{c}^\top(\Id-zA)^{-1}\VEC{u}$ is the quotient
 of a polynomial of degree at most $s-1$ by a polynomial of degree at
@@ -6348,7 +6349,7 @@ by the Runge-Kutta method is
 $\displaystyle w_i = (r(h\lambda))^iw_0$ for $i\geq 0$,
 where $r(z)$ is the quotient of two polynomials of degree at most $k$.
 From Lemma~\ref{exp_approx}, $r(z)$ is a ``Pad\'e approximation'' of
-$e^z$ of order $2k$.  From Wanner-Hairer-Norsett
+$\displaystyle e^z$ of order $2k$.  From Wanner-Hairer-Norsett
 theorem\footnote{Roughly, this theorem states that a $r(z) = p(z)/q(z)$,
 a ``Pad\'e approximante to the exponential function'', is
 A-acceptable if and only if the $p$ and $q$ have a specific form and
@@ -6673,7 +6674,7 @@ convergent according to Theorem~\ref{Dahl_conv}.  However, we saw in the
 numerical experiment of Example~\ref{Roundoff_effect} that this
 Adams-Bashforth method of order two does not converge.  Is there
 anything wrong with Theorem~\ref{Dahl_conv}?  No, there is nothing wrong
-mathematically but the theory assumes that $\delta_i(h) = O(h^2)$
+mathematically but the theory assumes that $\displaystyle \delta_i(h) = O(h^2)$
 which is rarely satisfied by round off errors (round off errors
 do not generally go to $0$ as $h$ decreases).  Moreover, the theory
 does not take into account the information provided by the stability

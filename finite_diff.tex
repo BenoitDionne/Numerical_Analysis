@@ -2084,7 +2084,7 @@ We have used the relation $\displaystyle e^x \geq 1 + x$ for all $x \in \RR$.
 \begin{prop}[von Neumann] \label{vonNNo1}
 If a finite difference scheme of the form $g_{j+1} = Q_\alpha(g_j)$
 with $\displaystyle g_j \in \ell^2(\ZZ)$ for all
-$\displaystyle j \geq 0$ is $\ell^2$-stable, then
+$\displaystyle j \geq 0$ is $\displaystyle \ell^2$-stable, then
 there exists a constant $C_\alpha$ such that
 $\rho(Q_\alpha) \leq 1 + C_\alpha/M$ for all $M$.
 \end{prop}
@@ -2126,8 +2126,8 @@ $\displaystyle \ell^2$ stability.
 Consider a finite difference scheme of the form $g_{j+1} = Q_\alpha(g_j)$
 with $\displaystyle g_j \in \ell^2(\ZZ)$ for all $j \geq 0$.
 If $Q_\alpha$ is a normal operator, then the finite difference scheme is
-$\ell^2$-stable if and only if there exists a constant $C_\alpha$ such
-that $\rho(Q_\alpha) \leq 1 + C_\alpha/M$ for all $M$.
+$\displaystyle \ell^2$-stable if and only if there exists a constant
+$C_\alpha$ such that $\rho(Q_\alpha) \leq 1 + C_\alpha/M$ for all $M$.
 \end{prop}
 
 \begin{proof}
@@ -2162,7 +2162,8 @@ The main result of this section is the following.
 \begin{theorem} \label{ell2StabConstConv}
 Consider a finite difference scheme of the form $g_{j+1} = Q_\alpha(g_j)$
 where $\displaystyle g_j \in \ell^2$.   If this finite difference scheme is
-$\displaystyle \ell^2$-stable and consistent, then it is $\ell^2$-convergent. 
+$\displaystyle \ell^2$-stable and consistent, then it is
+$\displaystyle \ell^2$-convergent. 
 \end{theorem}
 
 A proof of this result is given in \cite{WH} (Theorem~6.22).  They
@@ -2257,7 +2258,8 @@ that the eigenvalues of $Q_\alpha$ are less or equal to $1$ in absolute
 value may not be trivial.
 
 We need a detailed description of the action of $Q_\alpha$ and
-$\check{Q}_\alpha$ to be able to determine the $\ell^2$ stability of
+$\check{Q}_\alpha$ to be able to determine the
+$\displaystyle \ell^2$ stability of
 the finite difference scheme.  As we have seen in a previous example,
 we can express $g_{j+1} = Q_\alpha(g_j)$ as
 \[
@@ -2468,7 +2470,7 @@ Thus
 for all $x$.  Since
 $\displaystyle \left\|\tilde{Q}_\alpha(x)\right\|_\infty \leq 1$
 independently of the value of $\alpha$, we have that the
-Crank-Nicolson scheme is unconstrained $\ell^2$-stable.
+Crank-Nicolson scheme is unconstrained $\displaystyle \ell^2$-stable.
 \label{CNell2StableNo2}
 \end{egg}
 
@@ -3040,10 +3042,11 @@ convergence and stability may be preferable.
 
 There is also the issue of proving stability.  Proving stability for
 uniform approximation is far from trivial when possible.
-Using Definition~\ref{fdmStableDefNo4} to determine $\displaystyle
-\ell^2$ stability may seem to be the next reasonable option but that
-requires a nice matrix (usually ``near'' diagonal) to be able to determine the
-eigenvalues of $Q_\alpha$.  Using Definitions~\ref{fdmStableDefNo1}
+Using Definition~\ref{fdmStableDefNo4} to determine
+$\displaystyle \ell^2$ stability may seem to be the next reasonable
+option but that requires a nice matrix (usually ``near'' diagonal) to
+be able to determine the eigenvalues of $Q_\alpha$.  Using
+Definitions~\ref{fdmStableDefNo1}
 and \ref{fdmStableDefNo2} may be the best options.  They may not be
 considering partial differential equation with boundary conditions but
 may be good enough to ensure stability.  That is our ultimate goal to
@@ -3620,9 +3623,9 @@ w_{i,j} = \sum_{m=1}^\infty \beta_m
 We choose a positive integer $S$ such that
 $\displaystyle c^2T/L^2\leq S < 2c^2T/L^2$, where we
 assume that $\displaystyle 2c^2 T/ L^2 > 1$.
-If $N = 2^k$ and $M= 2^{2k}S$ for $k>0$ arbitrary, then
-$\dtx{x} = L/2^k$ and $\dtx{t} = T/(S2^{2k})$.
-We have that
+If $\displaystyle N = 2^k$ and $\displaystyle M= 2^{2k}S$ for $k>0$
+arbitrary, then $\displaystyle \dtx{x} = L/2^k$ and
+$\displaystyle \dtx{t} = T/(S2^{2k})$.  We have that
 \[
 \alpha = \frac{c^2\dtx{t}}{(\dtx{x})^2}
 = \frac{ c^2 T /(S2^{2k})}{L^2/2^{2k}}
@@ -3693,12 +3696,12 @@ We have that
 \end{align*}
 
 Let us now be a little more specific and assume for instance that
-$\beta_m = e^{-2^m} >0$ \footnote{Any sequence
+$\displaystyle \beta_m = e^{-2^m} >0$ \footnote{Any sequence
 $\displaystyle \{\beta_m\}_{m=0}^\infty$ that preserves the convergence of
 $\displaystyle \sum_{m=1}^\infty|\beta_m|$ and
 $\displaystyle \sum_{m=1}^\infty\beta_m^2$, and such that
-$|\beta_k| e^{2^{2k} S t_j/T} \to \infty$ as $k \to \infty$ can be
-used.}.  We have that
+$\displaystyle |\beta_k| e^{2^{2k} S t_j/T} \to \infty$ as $k \to
+\infty$ can be used.}.  We have that
 $\displaystyle \sum_{m=1}^\infty|\beta_m|$ and
 $\displaystyle \sum_{m=1}^\infty\beta_m^2$ converge as required.
 
@@ -3717,12 +3720,13 @@ approach $u(x_i,y_j)$ as $\min \{N,M\} \to \infty$.
 
 \subsection{Crank-Nicolson Scheme}
 
-We study the $\ell^2$ convergence according to
+We study the $\displaystyle \ell^2$ convergence according to
 Definition~\ref{ell2ConvDefN2} of Algorithm~\ref{fdm_sch11S} which is
 used to approximate the solution of the heat equation with forcing.
 
 As was mentioned in Remark~\ref{rmk_consist_defN2}, we will get
-$\ell^2$ consistency according to Definition~\ref{fdm_consist_defN2}
+$\displaystyle \ell^2$ consistency according to
+Definition~\ref{fdm_consist_defN2}
 if we prove consistency according to Definition~\ref{fdm_consist_def}.
 This is what we now do.
 
@@ -3864,26 +3868,27 @@ The reader is asked to proof a limited version of this stability in
 Question~\ref{fdmQ1} at the end of this chapter.
 
 We have proved in Example~\ref{CNell2StableNo2} that the
-Crank-Nicolson scheme is $\ell^2$-stable according to
+Crank-Nicolson scheme is $\displaystyle \ell^2$-stable according to
 Definition~\ref{fdmStableDefNo2}.  Hence, it follows from
 Theorem~\ref{ell2StabConstConv}, that the Crank-Nicolson scheme is
-$\ell^2$-convergent according to Definition~\ref{ell2ConvDefN1}.
+$\displaystyle \ell^2$-convergent according to Definition~\ref{ell2ConvDefN1}.
 
 We could stop here but, since we want to demonstrate how to use
 several definition of stability, we will prove that the Crank-Nicolson
-scheme is $\ell^2$-stable according to Definition~\ref{fdmStableDefNo4}.
+scheme is $\displaystyle \ell^2$-stable according to
+Definition~\ref{fdmStableDefNo4}.
 
 \begin{prop}
 The Crank-Nicolson scheme in Algorithm~\ref{fdm_sch11S} is
-$\ell^2$-stable without constraints on $\dtx{t}$ and $\dtx{x}$.
+$\displaystyle \ell^2$-stable without constraints on $\dtx{t}$ and $\dtx{x}$.
 \end{prop}
 
 \begin{proof}
 As we have seen in Section~\ref{Moreell2Stab}, the finite difference
 scheme given by Algorithm~\ref{fdm_sch1S} can be expressed as
 $\VEC{U}_{j+1} = Q_\beta\VEC{U}_j + \VEC{B}_j$ for $j\geq 0$, where
-$Q_\beta = -J^{-1}K$ for $K$ given in (\ref{fdm_K}) and $J$ given in
-(\ref{fdm_J}), and 
+$\displaystyle Q_\beta = -J^{-1}K$ for $K$ given in (\ref{fdm_K}) and
+$J$ given in (\ref{fdm_J}), and 
 \[
 \VEC{B}_j = J^{-1} \begin{pmatrix}
 \alpha \left( w_{0,j+1} + w_{0,j} \right)
@@ -3926,7 +3931,7 @@ of $J$ associated to the eigenvalue
 $\displaystyle 1 + 4 \alpha \sin^2\left(k\,\pi/(2N)\right)$ are
 also the eigenvectors of $K$ associated to the eigenvalue
 $\displaystyle 1 - 4 \alpha \sin^2\left(k\,\pi/(2N)\right)$.
-Thus the eigenvalues of $J^{-1} K$ are
+Thus the eigenvalues of $\displaystyle J^{-1} K$ are
 \[
 \frac{1 - 4 \alpha \sin^2\left(k\,\pi/(2N)\right)}
 {1 + 4 \alpha \sin^2\left(k\,\pi/(2N)\right)}
@@ -3937,18 +3942,18 @@ $N$.
 \end{proof}
 
 Since we have not stated a theorem equivalent to
-Theorem~\ref{StabConstConv} for $\ell^2$-convergence
+Theorem~\ref{StabConstConv} for $\displaystyle \ell^2$-convergence
 according to Definition~\ref{ell2ConvDefN2}, though one exists
 \footnote{The proof of Proposition~\ref{CKell2NConv} can be slightly
 modified to prove this result for a large class of finite difference
 schemes.  The requirement is that the linear operator in front of
 $\VEC{\tau}_j$ be uniformly bounded for all $N$ as it is the case
-for $J^{-1}$ in the proof of Proposition~\ref{CKell2NConv}}, we
+for $\displaystyle J^{-1}$ in the proof of Proposition~\ref{CKell2NConv}}, we
 will prove the following proposition.
 
 \begin{prop} \label{CKell2NConv}
 The Crank-Nicolson scheme given in Algorithm~\ref{fdm_sch11S}
-is $\ell^2$-convergent according to Definition~\ref{ell2ConvDefN2}
+is $\displaystyle \ell^2$-convergent according to Definition~\ref{ell2ConvDefN2}
 without any constrain on $\dtx{x}$ and $\dtx{t}$.
 \end{prop}
 
@@ -3963,7 +3968,8 @@ $u(0,t) = h_0(t)$ and $u(L,t) = h_L(t)$ for $0\leq t \leq T$.
 
 Suppose that the scheme $\VEC{w}_{j+1} = Q\VEC{w}_j + \VEC{B}_j$ is
 the matrix representation of the Crank-Nicolson scheme given in
-Algorithm~\ref{fdm_sch11S}.  We have that $Q = -J^{-1}K$ for $K$ given
+Algorithm~\ref{fdm_sch11S}.  We have that
+$\displaystyle Q = -J^{-1}K$ for $K$ given
 in (\ref{fdm_K}) and $J$ given in (\ref{fdm_J}), and 
 \[
 \VEC{B}_j = J^{-1} \begin{pmatrix}
@@ -5340,7 +5346,7 @@ Algorithm~\ref{fdm_sch3S} which is considered in the present section,
 if we substitute $\displaystyle w_{s,j} = \lambda^j e^{(2\pi k x_s/L) i}$
 in (\ref{fdm_sch3S}) \footnote{Where the index $i$ is replaced by $s$
 because $i$ is presently used as the complex number such that
-$i^2=-1$.}, we get
+$\displaystyle i^2=-1$.}, we get
 \begin{align*}
 0 & = \lambda^{j+1} e^{(2\pi k x_s/L) i}
 - 2 \lambda^j e^{(2\pi k x_s/L) i} + \lambda^{j-1} e^{(2\pi k x_s/L) i} \\
@@ -5358,7 +5364,7 @@ If we divide by $\displaystyle \lambda^{j-1} e^{(2\pi k x_s/L) i}$, we get
 This is $p_k(\lambda) = 0$ with $p_k$ defined in (\ref{fdmgfL2Cext})
 because the substitution $z = 2\pi x /L$ yields
 $\displaystyle \dtx{z} =  2 \pi \dtx{x}/L$.
-\item Finally, we may study the $\ell^2$ stability as presented in
+\item Finally, we may study the $\displaystyle \ell^2$ stability as presented in
 Section~\ref{ell2Theory}.  More precisely, we may use the content of
 Remark~\ref{ell2TheoryMsteps}.  The finite difference scheme in
 Algorithm~\ref{fdm_sch3S} is of the form (\ref{fdml2gfImplext}) with
