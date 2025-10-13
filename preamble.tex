@@ -370,13 +370,18 @@
   {\bfseries Question \arabic{chapter}.\arabic{questNBR}}%
   \ifthenelse{\equal{TTT}{#1}}{}{\ ({\bfseries #1})} \\ \noindent}{}
 
-\newenvironment{SOLUTION}{}{}
-\newcommand{\solution}[3]{%
-  \ifthenelse{\equal{#1}{show}}{%
-    \begin{SOLUTION}%
-      {\bfseries\noindent Question~#2}\\ #3%
-    \end{SOLUTION}%
-  }{}}
+\newenvironment{SOLUTION}{\noindent{\bfseries Solution}:\\%
+\noindent \normalfont}{\hspace*{\fill} $\heartsuit$}
+\newcommand{\sol}[2]{\ifthenelse{\equal{#1}{show}}{%
+\begin{SOLUTION} #2 \end{SOLUTION}}{}}
+
+% \newenvironment{SOLUTION}{}{}
+% \newcommand{\solution}[3]{%
+%   \ifthenelse{\equal{#1}{show}}{%
+%     \begin{SOLUTION}%
+%       {\bfseries\noindent Question~#2}\\ #3%
+%     \end{SOLUTION}%
+%   }{}}
 
 \newcommand{\SOL}{hide}
 \newcommand{\setSOL}{\renewcommand{\SOL}{show}}
