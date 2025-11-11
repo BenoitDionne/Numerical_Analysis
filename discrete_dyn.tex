@@ -7,7 +7,8 @@ of the form
 x_{i+1} = f(x_i)  \; ,
 \]
 where $f:\RR\rightarrow \RR$ is a continuous function, can be.  The
-complexity is even greater if $f:\RR^k \rightarrow \RR^k$ with $k>1$.
+complexity is even greater if
+$\displaystyle f:\RR^k \rightarrow \RR^k$ with $k>1$.
 Discrete dynamical systems show up in many numerical algorithms.
 For instance, the Newton's Method to find zeros of functions yields
 discrete dynamical systems, some numerical methods to solve ordinary
@@ -59,7 +60,8 @@ the orbit $\displaystyle \OO_p$ is called a
 \end{defn}
 
 \begin{egg}
-Consider the {\bfseries logistic map}\index{Logistic Map}
+Consider the {\bfseries logistic mapping}\index{Logistic Mapping}
+$f_\mu:[0,1] \to \RR$ defined by
 \[
 f_\mu(x) = \mu x(1-x)
 \]
@@ -68,11 +70,12 @@ $f_\mu:[0,1]\rightarrow [0,1]$.  Moreover, $f_\mu$ has two fixed
 points: $p_0 = 0$ and
 $\displaystyle p_{\mu} = \frac{\mu-1}{\mu}$ for $\mu > 0$.
 
-For $\mu=3.4$, $p_{3.4} = 0.45195878844045\ldots$ is a periodic point of
+For $\mu=3.4$, we have that
+$p_{3.4} = 0.45195878844045\ldots$ is a periodic point of
 $f_\mu$ of period $2$.  The orbit of period two is
 \[
 \left\{ 0.45195878844045, 0.84215476876273, 0.45195878844045,
-0.84215476876273, \ldots \right\} \; ,
+0.84215476876273, \ldots \right\} \ ,
 \]
 where the values have been chopped
 to $14$ digits after the decimal point.  This can be easily seen from the
@@ -96,14 +99,18 @@ $[0,1]$ and $10,000$ iterations is given in Figure~\ref{figHG}.
 \mathF{discrete_dyn/histogram1}{7cm}{Histogram for $f_{3.4}$}
 {Histogram for $f_{3.4}$}{figHG}
 
-For $\mu=3.5$, $p_{3.5} = 0.87499726360246\ldots$ is a periodic point of
+For $\mu=3.5$, we have that
+$p_{3.5} = 0.87499726360246\ldots$ is a periodic point of
 $f_\mu$ of period $4$.  The orbit of period four is
 \[
-\left\{0.87499726360246, 0.38281968301732, 0.82694070659144,
-0.50088421030722, \ldots \right\} \; ,
+\begin{split}
+\big\{ & 0.87499726360246, 0.38281968301732, 0.82694070659144,
+  0.50088421030722, \\
+& 0.87499726360246, \ldots \big\} \ ,
+\end{split}
 \]
 where the values have been chopped
-to $14$ digits after the decimal point (see Figure~\ref{figPF}).
+to $14$ digits after the decimal point (Figure~\ref{figPF}).
 
 \mathF{discrete_dyn/logistic2}{7cm}{Period Four}{Period Four}{figPF}
 \label{EggLogMap1}
@@ -207,8 +214,8 @@ $\left|f'(p)\right|<1$, then $p$ is asymptotically stable
 However, if $\left|f'(p)\right|>1$, then there exists an open
 interval $I$ containing $p$ such that, for each $x \in I$ with
 $x \neq p$, one can find $j \in \NN$ such that $f^j(x) \not\in I$.
-This implies that $f^j(x) \not\in I$ for infinitely many values of $j$.
-\label{fp_stability}
+This implies that $\displaystyle f^j(x) \not\in I$ for infinitely many
+values of $j$. \label{fp_stability}
 \end{prop}
 
 \begin{defn}
@@ -223,8 +230,9 @@ $\left|f'(p)\right|>1$, then $p$ is called a
 \end{defn}
 
 \begin{egg}
-For the logistic map $f_\mu(x) = \mu x(1-x)$, the origin is a source
-if $\mu>1$, and $\displaystyle p_\mu  = \frac{\mu-1}{\mu}$ is a sink
+For the logistic mapping $f_\mu$ defined by $f_\mu(x) = \mu x(1-x)$,
+the origin is a source if $\mu>1$, and
+$\displaystyle p_\mu  = \frac{\mu-1}{\mu}$ is a sink
 if $1<\mu<3$.  This follows from
 $\displaystyle \pdfdx{f_\mu(x)}{x}\bigg|_{x=0} = \mu$ and
 $\displaystyle \pdfdx{f_\mu(x)}{x}\bigg|_{x=p_\mu} = 2-\mu$.
@@ -248,7 +256,7 @@ $f$ is replaced by $\displaystyle f^n$.
 
 \begin{egg}
 To study the stability of the periodic points of period $2$ for the
-logistic map $f_\mu$ with $\mu = 3.4$, we consider the iterative system
+logistic mapping $f_\mu$ with $\mu = 3.4$, we consider the iterative system
 $\displaystyle x_{i+1} = f_\mu^2(x_i) = f_\mu(f_\mu(x_i))$ for
 $i=0$, $1$, $2$, \ldots
 
@@ -330,8 +338,8 @@ can be used to determine if the curve $\mu=p(x)$ is
 Figure~\ref{figSNBDM}) or {\bfseries subcritical}\index{Subcritical}
 (namely, $q''(x)<0$).
 
-\pdfF{discrete_dyn/saddle_node}{Fold bifurcation of discrete maps}
-{A typical fold bifurcation diagram for a discrete map}{figSNBDM}
+\pdfF{discrete_dyn/saddle_node}{Fold bifurcation of discrete mappings}
+{A typical fold bifurcation diagram for a discrete mapping.}{figSNBDM}
 
 \begin{theorem}[Period doubling or flip bifurcation]  \label{ThePDTforM}
 Let $\displaystyle f:\RR^2 \rightarrow \RR$ be a smooth function and let
@@ -373,8 +381,8 @@ Figure~\ref{figPDB}) or {\bfseries subcritical}\index{Subcritical}
 (namely, $q''(x)<0$).
 
 \pdfF{discrete_dyn/period_doubling}{Period doubling bifurcation for
-discrete maps}{A typical period doubling bifurcation diagram for a
-discrete map}{figPDB}
+discrete mappings}{A typical period doubling bifurcation diagram for a
+discrete mapping.}{figPDB}
 
 \begin{rmk}
 In the previous theorem, the condition $f_{\mu}(0)=0$ for all $\mu$
@@ -510,8 +518,8 @@ in Examples~\ref{EggLogMap1} and \ref{EggLogMap2}.  We have also
 looked at period points of period $2$ for $f_\mu$ in
 Example~\ref{EggLogMap3}.  To illustrate the complex behaviour that
 this discrete dynamical systems may have, we now present some results
-about the logistic map $f_\mu$ without giving the proofs.  A good
-reference is \cite{D}.  Most of the results about the logistic map
+about the logistic mapping $f_\mu$ without giving the proofs.  A good
+reference is \cite{D}.  Most of the results about the logistic mapping
 $f_\mu$ that we present in this section are true for mappings having a
 graph ``similar'' to the graph of $f_\mu$ on $I=[0,1]$.
 
@@ -521,8 +529,8 @@ $f_\mu$.  Namely, for ``each'' value of $\mu$ we plot the fixed
 points, periodic points, \ldots of $f_\mu$.
 
 \mathF{discrete_dyn/route_to_chaos}{9cm}
-{Bifurcation diagram for the logistic map}
-{Bifurcation diagram for the logistic map}{figBDLM}
+{Bifurcation diagram for the logistic mapping}
+{Bifurcation diagram for the logistic mapping.}{figBDLM}
 
 To produce this figure, we have chosen a large number
 of equally spaced values of $\mu$.  For each of these values of $\mu$,
@@ -570,19 +578,22 @@ corresponding histogram with 300 subintervals and 10 millions
 iterations is given in Figure~\ref{figHLPO}.
 
 \mathF{discrete_dyn/logistic8}{7cm}{Cobweb of a periodic orbit with a large
-period}{Cobweb of a periodic orbit of the logistic map for $\mu = 3.6$.
-The period of this stable periodic orbit is very large.}{figLPO}
+period}{Cobweb of a periodic orbit of the logistic mapping $f_{\mu}$
+for $\mu = 3.6$. The period of this stable periodic orbit is very
+large.}{figLPO}
 
 \mathF{discrete_dyn/histogram2}{7cm}{Histogram of a periodic orbit with a
-large period}{Histogram of a periodic orbit of the logistic map for
-$\mu = 3.6$.  The period of this stable periodic orbit is very large.}{figHLPO}
+large period}{Histogram of a periodic orbit of the logistic mapping
+$f_{\mu}$ for $\mu = 3.6$.  The period of this stable periodic orbit
+is very large.}{figHLPO}
 
 Period doubling accumulates to $\mu = 3.5699456\ldots$.  This number
-is known as the {\bfseries Feigenbaum point}\index{Feigenbaum Point}.  Moreover, let $\mu_0=3$,
-$\mu_1=3.236\ldots$, $\mu_2$, $\mu_3$, \ldots be the values of $\mu$
-for which the logistic mapping undergoes period doubling and let
-$d_j = \mu_{j+1}-\mu_j$.  It has been showed that
-$\displaystyle \lim_{j\rightarrow \infty} \frac{d_j}{d_{j+1}} =
+is known as the {\bfseries Feigenbaum point}\index{Feigenbaum Point}.
+Moreover, let $\mu_0=3$, $\mu_1=3.236\ldots$, $\mu_2 =\ldots$, and so
+on be the values of $\mu$ for which the logistic mapping undergoes
+period doubling and let $d_j = \mu_{j+1}-\mu_j$ for $j \geq 0$.
+It has been shown that
+$\displaystyle \lim_{j\rightarrow \infty} d_j/d_{j+1} =
 4.6692016091029\ldots$.  This number is called the
 {\bfseries Feigenbaum constant}\index{Feigenbaum Constant}.
 Feigenbaum discovered this number in
@@ -610,8 +621,11 @@ a periodic orbit of period $m$ for all $m \ll k$.
 \end{theorem}
 
 \begin{egg}
-For $\mu = 3.839\ldots$,
-$\left\{0.14988539433432, 0.48917380192271, 0.95930024021836 \right\}$
+For $\mu = 3.839\ldots$, we have that
+\[  
+\left\{0.14988539433432, 0.48917380192271, 0.95930024021836,
+  0.14988539433432, \ldots \right\}
+\]
 is an attracting periodic orbit of period $3$ of $f_\mu$, where all
 value have been chopped to $14$ digits after the decimal point
 (Figure~\ref{figPTLC}).
@@ -718,7 +732,7 @@ properties of a chaotic function.  Moreover, it has been proved in
 \end{rmk}
 
 \begin{egg}
-The logistic map $f_4:I \to I$, where $I=[0,1]$, is chaotic. 
+The logistic mapping $f_4:I \to I$, where $I=[0,1]$, is chaotic. 
 \end{egg}
 
 We may expand our definition of attracting and repelling periodic
@@ -742,11 +756,11 @@ $\displaystyle \left| \dydx{f^n}{x}(x)  \right| < 1$
 
 \begin{egg}
 It can be proved that for $\mu>2+\sqrt{5}$, $\Delta_\mu$ is a repelling
-hyperbolic set for the logistic map $f_\mu$.  The behaviour of
+hyperbolic set for the logistic mapping $f_\mu$.  The behaviour of
 $f_\mu:\Delta_\mu \to \Delta_\mu$ is a lot more complex than we may
 imagine.  $f_\mu$ has a dense orbit in $\Delta_\mu$.  Moreover,
 $f_\mu:\Delta_\mu \to \Delta_\mu$ is choatic \footnote{The definition
-of choatic map can be extended to any topological space $I$, not just
+of choatic mapping can be extended to any topological space $I$, not just
 intervals.}.
 \end{egg}
 
