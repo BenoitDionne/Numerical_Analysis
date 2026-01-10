@@ -693,16 +693,16 @@ For $\mu > 4$, $\Delta_\mu$ is a cantor set.
 The next two definitions are the bases for the definition of chaos.
 
 \begin{defn}
-Let $I$ be an interval of $\RR$ and $f:I\rightarrow I$ be a
-continuous function.  $f$ is
+Let $I$ be a closed subset of $\RR$ and $f:I\rightarrow I$ be a
+continuous function.  The function $f$ is
 {\bfseries topologically transitive}\index{Topologically Transitive} if
 for any open sets $V$ and $W$ in $I$ there exist $k>0$ such that
 $\displaystyle f^k(V) \cap W \neq \emptyset$.
 \end{defn}
 
 \begin{defn}
-Let $I$ be an interval of $\RR$ and $f:I\rightarrow I$ be a
-continuous function.  $f$ has
+Let $I$ be a closed subset of $\RR$ and $f:I\rightarrow I$ be a
+continuous function.  The function $f$ has
 {\bfseries sensitive dependence on initial conditions}\index{Sensitive
 Dependence on Initial Conditions} if there exists
 $\delta>0$ such that, for any $x \in I$ and neighbourhood $N \subset I$
@@ -711,8 +711,8 @@ $\displaystyle \left| f^k(x) - f^k(y) \right| > \delta$.
 \end{defn}
 
 \begin{defn}[Chaos]
-Let $I$ be an interval of $\RR$ and $f:I\rightarrow I$ be a
-continuous function.  $f$ is said to be
+Let $I$ be a closed subset of $\RR$ and $f:I\rightarrow I$ be a
+continuous function.  The function $f$ is said to be
 {\bfseries chaotic}\index{Chaotic} on $I$ if
 \begin{enumerate}
 \item $f$ has sensitive dependence on initial conditions.
@@ -732,7 +732,9 @@ properties of a chaotic function.  Moreover, it has been proved in
 \end{rmk}
 
 \begin{egg}
-The logistic mapping $f_4:I \to I$, where $I=[0,1]$, is chaotic. 
+The logistic mapping $f_{\mu}: \Delta_\mu\to \Delta_\mu$ is chaotic
+for $\mu > 4$.  It can also be proved that $f_\mu$ has a dense orbit in
+$\Delta_\mu$.
 \end{egg}
 
 We may expand our definition of attracting and repelling periodic
@@ -755,13 +757,8 @@ $\displaystyle \left| \dydx{f^n}{x}(x)  \right| < 1$
 \end{defn}
 
 \begin{egg}
-It can be proved that for $\mu>2+\sqrt{5}$, $\Delta_\mu$ is a repelling
-hyperbolic set for the logistic mapping $f_\mu$.  The behaviour of
-$f_\mu:\Delta_\mu \to \Delta_\mu$ is a lot more complex than we may
-imagine.  $f_\mu$ has a dense orbit in $\Delta_\mu$.  Moreover,
-$f_\mu:\Delta_\mu \to \Delta_\mu$ is choatic \footnote{The definition
-of choatic mapping can be extended to any topological space $I$, not just
-intervals.}.
+It can be proved that $\Delta_\mu$ is a repelling hyperbolic set for
+the logistic mapping $f_\mu$ for $\mu>2+\sqrt{5}$. 
 \end{egg}
 
 %%% Local Variables: 
