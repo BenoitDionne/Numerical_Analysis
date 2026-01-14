@@ -1,46 +1,46 @@
-\chapter{Least Square Approximation (in $\displaystyle L^2$)}\label{chaptApproxA}
+\chapter{Least Square Approximation (in $\DS L^2$)}\label{chaptApproxA}
 
 To understand the foundation of least square approximation, we first 
-need to briefly review $\displaystyle L^2$ spaces.  The reader will notice many
-similarities with linear algebra in $\displaystyle \RR^n$.
+need to briefly review $\DS L^2$ spaces.  The reader will notice many
+similarities with linear algebra in $\DS \RR^n$.
 
-\section{$\displaystyle L^2$ spaces}
+\section{$\DS L^2$ spaces}
 
 Readers who have not studied measure theory and functional analysis
 before may skip the review of the theory and only read the examples in
 this sections.
 
 Suppose that $\mu$ is a measure on a measurable space $\Omega$.  Let
-$\displaystyle L^2(\Omega)$ be the space of measurable functions
+$\DS L^2(\Omega)$ be the space of measurable functions
 $f:\Omega \rightarrow \CC$ such that
-$\displaystyle \int_\Omega f^2 \dx{\mu}$ is finite.  We can define
-a scalar product on $\displaystyle L^2(\Omega)$ by
+$\DS \int_\Omega f^2 \dx{\mu}$ is finite.  We can define
+a scalar product on $\DS L^2(\Omega)$ by
 \[
 \ps{f}{g} = \int_\Omega f\, \overline{g} \dx{\mu} \quad , \quad
 f, g \in L^2(\Omega) \ .
 \]
-The associated $\displaystyle L^2$-norm is
+The associated $\DS L^2$-norm is
 \[
 \| f \|_2 = \sqrt{\ps{f}{f}} = \left(\int_\Omega |f|^2 \dx{\mu}\right)^{1/2}
 \quad , \quad  f \in L^2(\Omega) \ .
 \]
-Equipped with this norm, $\displaystyle L^2(\Omega)$ is a
+Equipped with this norm, $\DS L^2(\Omega)$ is a
 {\bfseries Hilbert space}\index{Hilbert Space}.
 
 \begin{defn}
 A set of functions
-$\displaystyle \{ \phi_\alpha \}_{\alpha \in A} \subset L^2(\Omega)$, where
+$\DS \{ \phi_\alpha \}_{\alpha \in A} \subset L^2(\Omega)$, where
 $A$ is some index set, is
 {\bfseries linearly independent}\index{$L^2$-Spaces!Linearly Independent}
 if, for any finite subset
-$\displaystyle \left\{ \alpha_i \right\}_{i=1}^n \subset A$,
-$\displaystyle \sum_{i=1}^n c_i \phi_{\alpha_i} = 0$ with $c_i \in \CC$
+$\DS \left\{ \alpha_i \right\}_{i=1}^n \subset A$,
+$\DS \sum_{i=1}^n c_i \phi_{\alpha_i} = 0$ with $c_i \in \CC$
 implies that $c_1=c_2 = \ldots = c_n = 0$.
 \end{defn}
 
 \begin{defn}
 A set of functions
-$\displaystyle S=\{ \phi_\alpha \}_{\alpha \in A} \subset L^2(\Omega)$, where
+$\DS S=\{ \phi_\alpha \}_{\alpha \in A} \subset L^2(\Omega)$, where
 $A$ is some index set, is
 {\bfseries orthonormal}\index{$L^2$-Spaces!Orthonormal} if
 \[
@@ -50,9 +50,9 @@ $A$ is some index set, is
 1 & \quad \text{if} \quad \alpha_1 = \alpha_2
 \end{cases}
 \]
-If instead of $\displaystyle \ps{\phi_{\alpha_1}}{\phi_{\alpha_2}} = 1$ for
+If instead of $\DS \ps{\phi_{\alpha_1}}{\phi_{\alpha_2}} = 1$ for
 $\alpha_1 \neq \alpha_2$, we have
-$\displaystyle \ps{\phi_{\alpha_1}}{\phi_{\alpha_2}} \neq 0$ for
+$\DS \ps{\phi_{\alpha_1}}{\phi_{\alpha_2}} \neq 0$ for
 $\alpha_1 = \alpha_2$, we say that $S$ is an
 {\bfseries orthogonal set}\index{$L^2$-Spaces!Orthogonal Set}.
 \end{defn}
@@ -64,9 +64,9 @@ A {\bfseries complete orthonormal set}\index{$L^2$-Spaces!Complete
 Orthonormal Set} or
 {\bfseries orthonormal basis}\index{$L^2$-Spaces!Orthonormal Basis} is an 
 orthonormal set
-$\displaystyle S= \{ \phi_\alpha : \alpha \in A \} \subset L^2(\Omega)$,
+$\DS S= \{ \phi_\alpha : \alpha \in A \} \subset L^2(\Omega)$,
 where $A$ is some index set, such that the set of all finite linear
-combinations of elements of $S$ is dense in $\displaystyle L^2(\Omega)$.
+combinations of elements of $S$ is dense in $\DS L^2(\Omega)$.
 If we replace ``orthonormal'' by ``orthogonal'' in the previous sentence,
 we get the definition of a
 {\bfseries complete orthogonal set}\index{$L^2$-Spaces!Complete Orthogonal Set}
@@ -75,16 +75,16 @@ and
 \end{defn}
 
 It is proved in Functional Analysis that an orthogonal (or orthonormal) set
-of functions $\displaystyle \{ \phi_\alpha : \alpha \in A\}$, where $A$
+of functions $\DS \{ \phi_\alpha : \alpha \in A\}$, where $A$
 is some index set, is complete if $\ps{f}{\phi_\alpha} = 0$
 for all $\alpha \in A$ implies that $f = 0$ almost everywhere on
 $\Omega$.
 
 \begin{defn}
-Let $\displaystyle S= \{ \phi_\alpha : \alpha \in A \}$, where $A$ is some
-index set, be a orthonormal basis of $\displaystyle L^2(\Omega)$.  The
+Let $\DS S= \{ \phi_\alpha : \alpha \in A \}$, where $A$ is some
+index set, be a orthonormal basis of $\DS L^2(\Omega)$.  The
 {\bfseries Fourier series}\index{$L^2$-Spaces!Fourier Series} of a function
-$\displaystyle f \in L^2(\Omega)$ with respect to the orthonormal basis $S$ is
+$\DS f \in L^2(\Omega)$ with respect to the orthonormal basis $S$ is
 \[
 f \sim \sum_{\alpha \in A} a_\alpha \phi_\alpha \ ,
 \]
@@ -97,7 +97,7 @@ a_\alpha = \ps{f}{\phi_\alpha}
 
 If $S$ is only an orthogonal basis, then the
 {\bfseries Fourier series}\index{$L^2$-Spaces!Fourier Series} of a
-function $\displaystyle f \in L^2(\Omega)$ with respect to the
+function $\DS f \in L^2(\Omega)$ with respect to the
 orthogonal basis $S$ is
 \[
 f \sim \sum_{\alpha \in A} a_\alpha \phi_\alpha \ ,
@@ -116,16 +116,16 @@ countable number of indices.  Moreover,
 \rightarrow 0 \quad \text{as} \quad
 J \rightarrow \infty
 \]
-whatever the ordering $\displaystyle \{ \alpha_j\}_{j=0}^\infty$ of the
+whatever the ordering $\DS \{ \alpha_j\}_{j=0}^\infty$ of the
 indices $\alpha \in A$ such that $a_\alpha \neq 0$.
 
 The following result gives the theoretical justification to the method of
 least square approximation of functions that we will present later.
 
 \begin{theorem}
-Let $\displaystyle S = \{\phi_j : 1 \leq j \leq J\}$ be a finite
-orthonormal subset of $\displaystyle L^2[a,b]$.  Given
-$\displaystyle f\in L^2[a,b]$, we have
+Let $\DS S = \{\phi_j : 1 \leq j \leq J\}$ be a finite
+orthonormal subset of $\DS L^2[a,b]$.  Given
+$\DS f\in L^2[a,b]$, we have
 \[
 \left\| f - \sum_{j=1}^J \ps{f}{\phi_j} \phi_j \right\|_2
 \leq \left\| f - \sum_{j=1}^J \lambda_j \phi_j \right\|_2
@@ -166,28 +166,28 @@ We give an example of how this theorem can be used, another example will be
 given in the next section.
 
 \begin{egg}
-Let $\displaystyle \phi_n(x) = e^{n x i}$ for $n \in \ZZ$, where $i$
-is the complex number satisfying $\displaystyle i^2=-1$.  Since
+Let $\DS \phi_n(x) = e^{n x i}$ for $n \in \ZZ$, where $i$
+is the complex number satisfying $\DS i^2=-1$.  Since
 \begin{align*}
 &\int_{-\pi}^\pi \phi_k(x) \overline{\phi_j(x)} \dx{x}
 = \int_{-\pi}^\pi e^{kx i} e^{-jx i} \dx{x}
 = \int_{-\pi}^\pi e^{(k-j)x i} \dx{x} \\
 & \qquad =
 \begin{cases}
-\displaystyle \frac{1}{(k-j)i} e^{(k-j)x i}\bigg|_{x=-\pi}^{\pi} =
+\DS \frac{1}{(k-j)i} e^{(k-j)x i}\bigg|_{x=-\pi}^{\pi} =
 \frac{1}{(k-j)i} \left( e^{(k-j)\pi i} - e^{-(k-j)\pi i}\right) = 0 &
 \quad \text{if} \quad k \neq j \\[1em]
-\displaystyle x\bigg|_{x=-\pi}^{\pi} = 2\pi & \quad \text{if} \quad k = j
+\DS x\bigg|_{x=-\pi}^{\pi} = 2\pi & \quad \text{if} \quad k = j
 \end{cases}
 \end{align*}
-The set $\displaystyle S = \{ e^{n x i} : n\in \ZZ\}$ is an orthogonal
-set in the space $\displaystyle L^2[-\pi,\pi]$ with the Lebesgue measure.  If we
-replace $\phi_n$ by $\displaystyle (2\pi)^{-1/2} \phi_n$, we get an
+The set $\DS S = \{ e^{n x i} : n\in \ZZ\}$ is an orthogonal
+set in the space $\DS L^2[-\pi,\pi]$ with the Lebesgue measure.  If we
+replace $\phi_n$ by $\DS (2\pi)^{-1/2} \phi_n$, we get an
 orthonormal set.  It can be shown that the set of all finite linear combinations
-of elements of $S$ is dense in $\displaystyle L^2[-\pi,\pi]$.  Hence, $S$ is a
-complete orthogonal set in $\displaystyle L^2[-\pi,\pi]$.
+of elements of $S$ is dense in $\DS L^2[-\pi,\pi]$.  Hence, $S$ is a
+complete orthogonal set in $\DS L^2[-\pi,\pi]$.
 
-For $\displaystyle f\in L^2[-\pi,\pi]$, we have that
+For $\DS f\in L^2[-\pi,\pi]$, we have that
 \begin{equation}\label{L2conv}
 \left( \int_{-\pi}^\pi \left( f(x) - \sum_{n=-N}^{N} a_n e^{nx i} \right)^2
 \dx{x} \right)^{1/2} \rightarrow 0 \quad \text{as} \quad
@@ -200,7 +200,7 @@ a_n = \frac{\ps{f}{\phi_n}}{\ps{\phi_n}{\phi_n}}
 = \frac{1}{2\pi} \int_{\pi}^\pi f(x) e^{-nx i} \dx{x}
 \quad , \quad n \in \ZZ \ .
 \end{equation}
-$\displaystyle \sum_{n\in \ZZ} a_n e^{nx i}$
+$\DS \sum_{n\in \ZZ} a_n e^{nx i}$
 is the
 {\bfseries (complex) Fourier series}\index{$L^2$-Spaces!Complex
 Fourier Series} of $f$.  We may write
@@ -229,10 +229,10 @@ $[a,b]$.  We consider only real valued functions.  The following
 discussion is also valid if we replace the interval $[a,b]$ by an open
 interval $]a,b[$, a semi-open interval $[a,b[$, or an unbounded interval.
 
-$\displaystyle L^2[a,b]$ is the space of measurable functions
+$\DS L^2[a,b]$ is the space of measurable functions
 $f:[a,b]\rightarrow \RR$ such
-that $\displaystyle \int_a^b f^2(x) w(x) \dx{x}$ is finite.  The scalar
-product on $\displaystyle L^2[a,b]$ is
+that $\DS \int_a^b f^2(x) w(x) \dx{x}$ is finite.  The scalar
+product on $\DS L^2[a,b]$ is
 \begin{equation} \label{appr_scp}
 \ps{f}{g} = \int_a^b f(x) g(x) w(x) \dx{x} \quad , \quad f, g \in L^2[a,b] \ .
 \end{equation}
@@ -241,13 +241,13 @@ The $L^2$-norm is
 \| f \|_2 = \sqrt{\ps{f}{f}} = \left(\int_a^b f^2(x) w(x) \dx{x}\right)^{1/2}
 \quad , \quad f \in L^2[a,b] \ .
 \end{equation}
-The space $\displaystyle L^2[a,b]$ has a countable orthonormal basis.
+The space $\DS L^2[a,b]$ has a countable orthonormal basis.
 Suppose that
 \[
 S = \{\phi_n : n \in \NN \} \subset L^2[a,b]
 \]
-is an orthonormal basis for $\displaystyle L^2[a,b]$, the Fourier
-series of a function $\displaystyle f \in L^2[a,b]$ with respect to
+is an orthonormal basis for $\DS L^2[a,b]$, the Fourier
+series of a function $\DS f \in L^2[a,b]$ with respect to
 this basis is
 \[
 f \sim \sum_{n=0}^{\infty} a_{n} \phi_n \  ,
@@ -261,7 +261,7 @@ Sometime, we only have a complete orthogonal set of functions
 \[
 S = \{\phi_n : n \in \NN \} \subset L^2[a,b]
 \]
-In this case, the Fourier series of $\displaystyle f \in L^2[a,b]$
+In this case, the Fourier series of $\DS f \in L^2[a,b]$
 with respect to this set of functions is
 \[
 f \sim \sum_{n=0}^{\infty} a_{n} \phi_n \  ,
@@ -280,8 +280,8 @@ We have
 w(x) \dx{x} \right)^{1/2} \rightarrow 0 \quad \text{as} \quad
 N \rightarrow \infty \ .
 \]
-We say that $\displaystyle \sum_{n=0}^{N} a_n \phi_n$ converges in
-$\displaystyle L^2$ to $f$ as $N\rightarrow \infty$.
+We say that $\DS \sum_{n=0}^{N} a_n \phi_n$ converges in
+$\DS L^2$ to $f$ as $N\rightarrow \infty$.
 
 \begin{egg}
 There is a real form for the trigonometric polynomials of
@@ -301,13 +301,13 @@ for $j=1$, $2$, \ldots\  It is easy to verify that
 1 & \quad i = j
 \end{cases}
 \]
-Thus $\displaystyle S = \{ \phi_n : n \in \NN \}$ is a set of
-orthonormal functions in $\displaystyle L^2[-\pi,\pi]$, where the
+Thus $\DS S = \{ \phi_n : n \in \NN \}$ is a set of
+orthonormal functions in $\DS L^2[-\pi,\pi]$, where the
 weight function is $w(x) = 1$ for all $x$.  It is possible to show
 that the set of all linear combination of elements of $S$ is dense in
-$\displaystyle L^2[-\pi,\pi]$.
+$\DS L^2[-\pi,\pi]$.
 
-Hence, for $\displaystyle f\in L^2[-\pi,\pi]$, we have that
+Hence, for $\DS f\in L^2[-\pi,\pi]$, we have that
 \begin{equation} \label{ClassFSconv}
 \left( \int_{-\pi}^\pi \left( f(x) - a_0
 -\sum_{n=0}^{N} a_n \cos(nx) - \sum_{n=0}^{N} b_n \sin(nx) \right)^2 \dx{x}
@@ -333,7 +333,7 @@ This is the
 {\bfseries classical Fourier series}\index{$L^2$-Spaces!Classical
 Fourier Series} of $f$.  As for the 
 complex Fourier series, the equality in the expression above is in the
-sense of convergence in $\displaystyle L^2[-\pi,\pi]$; namely,
+sense of convergence in $\DS L^2[-\pi,\pi]$; namely,
 (\ref{ClassFSconv}) is satisfied.  We may not have pointwise
 convergence for all $x \in [a,b]$.
 
@@ -354,35 +354,35 @@ polynomials.
 \section{Bases of Polynomial} 
 
 For each $n \in \NN$, let
-$\displaystyle P_n(x) = \sum_{j=0}^n \alpha_{n,j}x^j$ be a
+$\DS P_n(x) = \sum_{j=0}^n \alpha_{n,j}x^j$ be a
 polynomial of degree exactly $n$; namely, $\alpha_{n,n} \neq 0$.
-These polynomials can be considered as elements of $\displaystyle L^2[a,b]$.
+These polynomials can be considered as elements of $\DS L^2[a,b]$.
 
 We now prove that for any finite subset $A$ of $\NN$, if
-$\displaystyle \sum_{n\in A} c_n P_n = 0$ with $c_n \in \RR$,
+$\DS \sum_{n\in A} c_n P_n = 0$ with $c_n \in \RR$,
 then $c_n =0$ for all $i$.  The proof is by induction on the
 cardinality of the set of indices $A$.
 
 If $A$ is of cardinality one, say $A = \{ n_1\} \subset \NN$,
-then $\displaystyle c_1 P_{n_1} = \sum_{j=0}^{n_1} c_1 \alpha_{n_1,j}x^j = 0$
+then $\DS c_1 P_{n_1} = \sum_{j=0}^{n_1} c_1 \alpha_{n_1,j}x^j = 0$
 implies that $c_a \alpha_{n_1,n_1} = 0$ with $\alpha_{n_1,n_1} \neq 0$.
 Thus $c_1 = 0$.
 
 Our hypothesis of induction is that for any set
 $A = \{ n_1, n_2, \ldots , n_k \} \subset \NN$ of
 cardinality $k$ (in particular, $n_j \neq n_i$ for $i\neq j$), we have that
-$\displaystyle \sum_{i=1}^k c_i P_{n_i} = 0$ with $c_i \in \RR$
+$\DS \sum_{i=1}^k c_i P_{n_i} = 0$ with $c_i \in \RR$
 implies that $c_i = 0$ for all $i$.  Suppose that
-$\displaystyle \sum_{i=1}^{k+1} c_i P_{n_i} = 0$ with $c_i \in \RR$ for
+$\DS \sum_{i=1}^{k+1} c_i P_{n_i} = 0$ with $c_i \in \RR$ for
 a set $A = \{ n_1, n_2, \ldots , n_k,n_{k+1} \} \subset \NN$ of
-cardinality $k+1$.  Let $\displaystyle n_j = \max_{1\leq i \leq k+1}\{ n_i\}$.
+cardinality $k+1$.  Let $\DS n_j = \max_{1\leq i \leq k+1}\{ n_i\}$.
 The only term of degree $n_j$ in
-$\displaystyle \sum_{i=1}^{k+1} c_i P_{n_i} = 0$
-is $\displaystyle c_j \alpha_{n_j,n_j} x^{n_j}$.  Hence
-$\displaystyle c_j \alpha_{n_j,n_j}x^{n_j} = 0$
+$\DS \sum_{i=1}^{k+1} c_i P_{n_i} = 0$
+is $\DS c_j \alpha_{n_j,n_j} x^{n_j}$.  Hence
+$\DS c_j \alpha_{n_j,n_j}x^{n_j} = 0$
 with $\alpha_{n_j,n_j} \neq 0$.  Thus $c_j=0$.  We
 therefore get
-$\displaystyle \sum_{\substack{i=1\\i\neq j}}^{k+1} c_i P_{n_i} = 0$ with
+$\DS \sum_{\substack{i=1\\i\neq j}}^{k+1} c_i P_{n_i} = 0$ with
 $c_i \in \RR$.
 Since the set of indices in this sum is of cardinality $k$, we get by
 induction that $c_i = 0$ for all $i$.
@@ -399,9 +399,9 @@ We assume by induction that all polynomials of degree less then or
 equal to $k$ can be expressed as a linear combination of $P_0$, $P_1$,
 $P_2$, \ldots, $P_k$.  Consider $p$, a 
 polynomial of degree $k+1$.  Suppose that $c$ is the coefficient of
-$\displaystyle x^{k+1}$ in $p(x)$.  Since $p$ and $P_{k+1}$ are of
+$\DS x^{k+1}$ in $p(x)$.  Since $p$ and $P_{k+1}$ are of
 degree $k+1$, we have that $c\neq 0$ and $\alpha_{k+1,k+1} \neq 0$.  Thus,
-$\displaystyle p - (c/\alpha_{k+1,k+1}) P_{k+1}$ is a polynomial of
+$\DS p - (c/\alpha_{k+1,k+1}) P_{k+1}$ is a polynomial of
 degree $k$.  By induction, we may write
 \[
 p - \frac{c}{\alpha_{k+1,k+1}} P_{k+1} = \sum_{j=0}^k c_j P_j
@@ -413,23 +413,23 @@ p = \sum_{j=0}^{k+1} c_j P_j
 with $c_{k+1} = c/\alpha_{k+1,k+1}$ and the other $c_j$ as before.
 
 Using Stone-Weierstrass Theorem, Theorem~\ref{SWtheorem}, and the
-density of continuous functions in $\displaystyle L^2[a,b]$, we may
+density of continuous functions in $\DS L^2[a,b]$, we may
 show that the set of all finite linear combinations of elements of the set
-$P = \displaystyle \{ P_n : n \in \NN \}$ is dense in
-$\displaystyle L^2[a,b]$.   Combined with the linear independence of
-$P$, this shows that $P$ is a basis of $\displaystyle L^2[a,b]$.
+$P = \DS \{ P_n : n \in \NN \}$ is dense in
+$\DS L^2[a,b]$.   Combined with the linear independence of
+$P$, this shows that $P$ is a basis of $\DS L^2[a,b]$.
 
 \begin{rmk}
 A more direct proof of the linear independence of $P$ can also be given.
 Suppose that
-$\displaystyle \sum_{i=1}^k c_i P_{n_i} = 0$ with $c_i \in \RR$.
+$\DS \sum_{i=1}^k c_i P_{n_i} = 0$ with $c_i \in \RR$.
 
 Without loss of generality, we may assume that $n_1 < n_2 < \ldots < n_k$.
 The previous equation can be written
 \[
 \sum_{i=0}^k \left( \sum_{j=0}^{n_i} c_i \alpha_{n_i,j} x^j\right) = 0 \ .
 \]
-If we consider only the terms in $\displaystyle x^{n_j}$, we get the following
+If we consider only the terms in $\DS x^{n_j}$, we get the following
 system of linear equations.
 \begin{align}
 0 &= c_k\, \alpha_{n_k,n_k} \ ,\label{appr_lip1} \\
@@ -460,7 +460,7 @@ can be expressed as a linear combination of $P_0$, $P_1$, $P_2$,
 \ldots, $P_k$ is as it follows.  Since $P_0$, $P_1$, \ldots , $P_k$
 are $k+1$ linearly independent elements of the space of polynomials of degree
 less than or equal to $k$, and since this space is of dimension $k+1$, we have
-that $\displaystyle \left\{ P_0, P_1, \ldots , P_k\right\}$ is a
+that $\DS \left\{ P_0, P_1, \ldots , P_k\right\}$ is a
 basis of the space of polynomials of degree less than or equal to $k$.
 \end{rmk}
 
@@ -474,24 +474,24 @@ polynomials on $[a,b]$ with respect to a weight function $w$.
 Moreover, suppose that $P_k$ is of degree exactly $k$ for all $k$.  Then,
 \begin{enumerate}
 \item Any polynomial $p(x)$ of degree at most $n$ can be expressed as
-a linear combination $\displaystyle p=\sum_{k=0}^n c_k\,P_k$
+a linear combination $\DS p=\sum_{k=0}^n c_k\,P_k$
 for some constants $c_0$, $c_1$, \ldots, $c_n$.
 \item If $p$ is a polynomial of degree less than $k$, then $p$ is
 orthogonal to $P_k$.
 \item For each positive integer $k$, $P_k$ has exactly $k$
 distinct real roots in $]a,b[$.
-\item If the coefficient of $\displaystyle x^k$ in $P_k$ is
+\item If the coefficient of $\DS x^k$ in $P_k$ is
 $\alpha_{k,k}$, then
 \[
 P_{k+1}(x) = A_k(x-B_k)P_k(x) - C_k P_{k-1}(x)
 \]
 for $k \geq 0$, where $P_{-1} = 0$,
-$\displaystyle A_k = \frac{\alpha_{k+1,k+1}}{\alpha_{k,k}}$ for $k \geq 0$,\\
-$\displaystyle B_k = \frac{\displaystyle \int_a^b xP_k^2(x)w(x) \dx{x}}
-{\displaystyle \int_a^b P_k^2(x)w(x)\dx{x}}$ for $k\geq 0$,\\
-$C_0 = 0$ and $\displaystyle
-C_k = \frac{\displaystyle A_k\int_a^b P_k^2(x)w(x) \dx{x}}
-{\displaystyle A_{k-1} \int_a^b P_{k-1}^2(x)w(x) \dx{x}}$
+$\DS A_k = \frac{\alpha_{k+1,k+1}}{\alpha_{k,k}}$ for $k \geq 0$,\\
+$\DS B_k = \frac{\DS \int_a^b xP_k^2(x)w(x) \dx{x}}
+{\DS \int_a^b P_k^2(x)w(x)\dx{x}}$ for $k\geq 0$,\\
+$C_0 = 0$ and $\DS
+C_k = \frac{\DS A_k\int_a^b P_k^2(x)w(x) \dx{x}}
+{\DS A_{k-1} \int_a^b P_{k-1}^2(x)w(x) \dx{x}}$
 for $k>0$.
 \end{enumerate}
 \label{orthpoly}
@@ -508,9 +508,9 @@ Hence, $p = a_0 P_0$ with $a_0 = b/\alpha_{0,0}$.
 Assume that every polynomial of degree less than $n$ can be expressed
 as a linear combination of $P_0$, $P_1$, \ldots, $P_{n-1}$.  Let $p$
 be a polynomial of degree exactly $n$.  Let $b$ be the coefficient
-of $\displaystyle x^n$ in $p$.  The constant $b$ is non-null because $p$ is of
+of $\DS x^n$ in $p$.  The constant $b$ is non-null because $p$ is of
 degree exactly $n$.  Similarly, the coefficient $\alpha_{n,n}$ of
-$\displaystyle x^n$ in $P_n$ is non null because $P_n$ is of degree
+$\DS x^n$ in $P_n$ is non null because $P_n$ is of degree
 exactly $n$.  Hence, $p - a_n P_n$ with $a_n = b/\alpha_{n,n}$ is a
 polynomial of degree $n-1$ that can therefore be expressed as a linear
 combination of the polynomials $P_i$ for $0\leq i < n$ by the
@@ -534,7 +534,7 @@ for some constants $b_0$, $b_1$, \ldots, $b_{k-1}$.  Then
 = \int_a^b \left(\sum_{j=0}^{k-1}b_j P_j(x)\right) P_k(x) w(x)\dx{x}
 = \sum_{j=0}^{k-1} b_j  \int_a^b P_j(x) P_k(x) w(x)\dx{x} = 0
 \]
-because $\displaystyle \int_a^b P_j(x) P_k(x) w(x)\dx{x} =0$ for
+because $\DS \int_a^b P_j(x) P_k(x) w(x)\dx{x} =0$ for
 all $j<k$ by hypothesis.
 
 \stage{3} We note that a consequence of the
@@ -554,8 +554,8 @@ $x\in]a,b[\setminus \{x_1,x_2,\ldots,x_r\}$.  Hence,
 \]
 contradicts the orthogonality result of (2).
 
-\stage{4}  We write $\displaystyle P_{k+1}(x) = A_k x P_k(x) + q(x)$, where
-$\displaystyle A_k = \alpha_{k+1.k+1}/\alpha_{k,k}$ and $q(x)$ is
+\stage{4}  We write $\DS P_{k+1}(x) = A_k x P_k(x) + q(x)$, where
+$\DS A_k = \alpha_{k+1.k+1}/\alpha_{k,k}$ and $q(x)$ is
 a polynomial of degree at most $k$.  From 1, we may write $q$ as a linear
 combination
 \[
@@ -624,11 +624,11 @@ Substituting (\ref{poly_proof3}), (\ref{poly_proof4}) and
 \begin{egg}
 Find the first three polynomials of the orthogonal set
 $\left\{ P_0,P_1,P_2,\ldots \right\}$ if the interval is
-$[a,b]=[-1,1]$, the weight function is $\displaystyle w(x)=\sqrt{1-x^2}$,
-and the coefficient $\alpha_{k,k}$ of $\displaystyle x^k$ in the
+$[a,b]=[-1,1]$, the weight function is $\DS w(x)=\sqrt{1-x^2}$,
+and the coefficient $\alpha_{k,k}$ of $\DS x^k$ in the
 polynomial $P_k$ is $1$ for all $k$.
 
-Due to our assumption on the coefficient of $\displaystyle x^i$ in
+Due to our assumption on the coefficient of $\DS x^i$ in
 $P_i$, we have that $P_0(x) = 1$ for all $x$.  For the sake of the
 computations. we let $P_{-1}(x)=0$ for all $x$ and $C_0=0$.
 We have
@@ -690,8 +690,8 @@ $b=1$, $w(x) = 1$, $\alpha_{0,0} = 1$ and
 \alpha_{k+1,k+1} = \frac{2k+1}{k+1}\, \alpha_{k,k}
 \]
 for $k \geq 0$, we get $P_0(x) = 1$, $P_1(x) = x$,
-$\displaystyle P_2(x) = \frac{3}{2}\left(x^2- \frac{1}{3}\right)$,
-$\displaystyle P_3(x) = \frac{5}{2}\left(x^3 -\frac{3}{5} x\right)$,
+$\DS P_2(x) = \frac{3}{2}\left(x^2- \frac{1}{3}\right)$,
+$\DS P_3(x) = \frac{5}{2}\left(x^3 -\frac{3}{5} x\right)$,
 and in general
 \[
   P_{k+1}(x) = \frac{1}{k+1}\big( (2k+1)xP_k(x) -k P_{k-1}(x) \big)
@@ -715,10 +715,10 @@ polynomials is \cite{GS}.
 
 \begin{egg}[Normalized Chebyshev Polynomials]
 If, in the fourth item of Theorem~\ref{orthpoly}, we take $a=-1$,
-$b=1$, $\displaystyle w(x)=(1-x^2)^{-1/2}$, $\alpha_{0,0} = 1$ and
-$\displaystyle \alpha_{k,k} = 2^{k-1}$ for
-$k\geq 1$, we get $P_0(x) = 1$, $P_1(x) = x$, $\displaystyle P_2(x) = 2x^2 -1$,
-$\displaystyle P_3(x) = 4x^3 -3x$, and in general
+$b=1$, $\DS w(x)=(1-x^2)^{-1/2}$, $\alpha_{0,0} = 1$ and
+$\DS \alpha_{k,k} = 2^{k-1}$ for
+$k\geq 1$, we get $P_0(x) = 1$, $P_1(x) = x$, $\DS P_2(x) = 2x^2 -1$,
+$\DS P_3(x) = 4x^3 -3x$, and in general
 \[
   P_{k+1}(x) = 2x\,P_k(x) - P_{k-1}(x)
 \]
@@ -744,9 +744,9 @@ A good reference on the subject of Chebyshev polynomials is \cite{GS}.
 There are many more sets of orthogonal polynomials. 
 \begin{enumerate}
 \item If, in the fourth item of Theorem~\ref{orthpoly}, we take
-$a=-1$, $b=1$ and $\displaystyle w(x) = (1-x)^\alpha (1+x)^\beta$ with
+$a=-1$, $b=1$ and $\DS w(x) = (1-x)^\alpha (1+x)^\beta$ with
 $\alpha,\beta>-1$, we get the Jacobi polynomials
-$\displaystyle P_k^{[\alpha,\beta]}$ for $k=0$, $1$, $2$, \ldots\   For each
+$\DS P_k^{[\alpha,\beta]}$ for $k=0$, $1$, $2$, \ldots\   For each
 value of $\alpha$ and $\beta$, we get a different sets of orthogonal
 polynomials.   The sets of orthogonal polynomials that we have
 seen in the two previous examples are associated to particular values
@@ -754,10 +754,10 @@ of $\alpha$ and $\beta$.  For $\alpha = \beta = 0$, we have the
 Legendre polynomials.  For $\alpha = \beta = -1/2$, we have the
 Chebyshev polynomials.
 \item If, in the fourth item of Theorem~\ref{orthpoly}, we take $a=0$,
-$b=\infty$ and $\displaystyle w(t) = x^\alpha e^{-x}$ with $\alpha > -1$,
-we get the Laguerre polynomials $\displaystyle l_k^{[\alpha]}$. 
+$b=\infty$ and $\DS w(t) = x^\alpha e^{-x}$ with $\alpha > -1$,
+we get the Laguerre polynomials $\DS l_k^{[\alpha]}$. 
 \item If, in the fourth item of Theorem~\ref{orthpoly}, we take
-$a=-\infty$, $b=+\infty$ and $\displaystyle w(x) = e^{-x^2}$, we get the 
+$a=-\infty$, $b=+\infty$ and $\DS w(x) = e^{-x^2}$, we get the 
 Hermite polynomials $H_k$.
 \end{enumerate}
 Note that these orthogonal polynomials are not normalized.
@@ -775,12 +775,12 @@ context of differential equations.
 
 For $n\in \NN$, let $P_n:\RR\rightarrow \RR$ be polynomials of degree
 exactly $n$.  These polynomials can be considered as elements of
-$\displaystyle L^2[a,b]$.
+$\DS L^2[a,b]$.
 
 We want to find the ``best approximation'' of
-$\displaystyle f\in L^2[a,b]$ by a finite
+$\DS f\in L^2[a,b]$ by a finite
 linear combination of the polynomials $P_n$.  More precisely, let
-$\displaystyle S = \{ P_n : 0 \leq n \leq k \}$.  We are looking for 
+$\DS S = \{ P_n : 0 \leq n \leq k \}$.  We are looking for 
 real values $a_0$, $a_1$, $a_2$, \ldots, $a_k$ that minimize
 \[
 I(a_0,a_1,\ldots, a_k) = \left\| f - \sum_{i=0}^k a_i P_i \right\|_2^2
@@ -788,7 +788,7 @@ I(a_0,a_1,\ldots, a_k) = \left\| f - \sum_{i=0}^k a_i P_i \right\|_2^2
 \]
 The good old calculus will help us to solve this problem,  If $I$ has a
 minimum at
-$\displaystyle \VEC{a} = \begin{pmatrix}
+$\DS \VEC{a} = \begin{pmatrix}
 a_0 & a_1 & \ldots & a_k \end{pmatrix}^\top$,
 then $\nabla I (\VEC{a}) = \VEC{0}$.  Assuming that we may differentiate
 under the integral sign (e.g.\ if $f$ is continuous on the close interval
@@ -815,7 +815,7 @@ $k+1$ unknowns.
 
 For general polynomials $P_n$, this system may be hard to solve.  For
 instance, suppose that the weight function is $w(x) \equiv 1$ and the
-polynomials are $\displaystyle P_n(x) = x^n$ for all $n\in \NN$.  Then
+polynomials are $\DS P_n(x) = x^n$ for all $n\in \NN$.  Then
 \[
 d_{j,i} = \int_a^b x^i x^j \dx{x} = \frac{b^{i+j+1} - a^{i+j+1}}{i+j+1}
 \]
@@ -825,7 +825,7 @@ The matrix $D$ in (\ref{appr_gpoly}) is then a
 This type of matrices is ill-conditioned.  In particular, no pivoting
 technique can be used to get a good approximation of the solution if the
 matrix is large.  For this reason, we must choose a good set
-$\displaystyle S = \{ P_n :n \in \NN \}$ of polynomials, where
+$\DS S = \{ P_n :n \in \NN \}$ of polynomials, where
 we still have that $P_n$ is a polynomial of degree exactly $n$ for $n\in\NN$.
 The obvious choice is an orthogonal (or even an orthonormal) set $S$ of
 polynomials.  With this choice, $D$ in (\ref{appr_gpoly}) is a diagonal
@@ -842,21 +842,21 @@ for $0 \leq i \leq k$ as predicted by Theorem~\ref{appr_finiteS}.
 Suppose that $w:[a,b] \rightarrow [0,\infty[$ is a weight function.
 Without referring to Theorem~\ref{orthpoly}, prove that we cannot have
 two distinct orthogonal families of monic polynomials
-$\displaystyle \{ P_k \}_{k=0}^\infty$ such that $P_k$ is of degree $k$ and
+$\DS \{ P_k \}_{k=0}^\infty$ such that $P_k$ is of degree $k$ and
 \[
   \ps{p}{P_k} = \int_a^b p(x)\,P_k(x) \,w(x)\dx{x} = 0
 \]
 for all polynomial $p$ of degree less than $k$.  Recall that a monic
 polynomial $p(x)$ of degree $n$ is a polynomial where the coefficient
-of the term in $\displaystyle x^n$ is $1$.
+of the term in $\DS x^n$ is $1$.
 \end{question}
 
 \sol{\SOL}{
-Suppose that $\displaystyle \{ P_k^{[i]} \}_{k=0}^\infty$ for $i=1$ and
+Suppose that $\DS \{ P_k^{[i]} \}_{k=0}^\infty$ for $i=1$ and
 $2$ are two orthogonal families of monic polynomials such that
-$\displaystyle \ps{p}{P_k^{[i]}}=0$ for all polynomial $p$ of degree
+$\DS \ps{p}{P_k^{[i]}}=0$ for all polynomial $p$ of degree
 less than $k$. Given $k > 0$, we have that
-$\displaystyle P_k^{[1]} - P_k^{[2]}$ is a polynomial
+$\DS P_k^{[1]} - P_k^{[2]}$ is a polynomial
 of degree $k-1$ because both polynomials are monic, such that
 \[
   \ps{p}{P_k^{[1]} - P_k^{[2]}}
@@ -867,24 +867,24 @@ for all polynomial $p$ of degree less than $k$.  In particular,
   \ps{P_k^{[1]} - P_k^{[2]}}{P_k^{[1]} - P_k^{[2]}}
   = \int_a^b (P_k^{[1]} - P_k^{[2]})^2 w(x) \dx{x} = 0 \ .
 \]
-Since $\displaystyle P_k^{[1]} - P_k^{[2]}$ is continuous on $[a,b]$,
-we get that $\displaystyle P_k^{[1]}(x) = P_k^{[2]}(x)$ for all $x \in [a,b]$.
+Since $\DS P_k^{[1]} - P_k^{[2]}$ is continuous on $[a,b]$,
+we get that $\DS P_k^{[1]}(x) = P_k^{[2]}(x)$ for all $x \in [a,b]$.
 }
 
 \begin{question}
 Let $\left\{ P_0,P_1,P_2,\ldots \right\}$ be an orthonornal set of
 polynomials on $[a,b]$ with respect to a weight function $w$.
-Suppose that $\displaystyle P_k(x) = \sum_{j=0}^k a_{k,j}x^j$ with
+Suppose that $\DS P_k(x) = \sum_{j=0}^k a_{k,j}x^j$ with
 $a_{k,k} \neq 0$ for all $k$.
 Prove that
 \begin{equation} \label{apprAQ2equ1}
 P_{k+1}(x) = A_k(x-B_k)P_k(x) - C_k P_{k-1}(x)
 \end{equation}
 for $k=0$, $1$, $2$, \ldots\ where $P_{-1} = 0$,
-$\displaystyle A_k = \frac{a_{k+1,k+1}}{a_{k,k}}$,
-$\displaystyle B_k = \frac{a_{k,k-1}}{a_{k,k}}- \frac{a_{k+1,k}}{a_{k+1,k+1}} $
+$\DS A_k = \frac{a_{k+1,k+1}}{a_{k,k}}$,
+$\DS B_k = \frac{a_{k,k-1}}{a_{k,k}}- \frac{a_{k+1,k}}{a_{k+1,k+1}} $
 and
-$\displaystyle C_k = \frac{a_{k+1,k+1}a_{k-1,k-1}}{a_{k,k}^2}$
+$\DS C_k = \frac{a_{k+1,k+1}a_{k-1,k-1}}{a_{k,k}^2}$
 for $k\geq 0$ if we set $a_{-1,-1} = a_{0,-1} = 0$.
 \label{apprAQ2}
 \end{question}
@@ -893,13 +893,13 @@ for $k\geq 0$ if we set $a_{-1,-1} = a_{0,-1} = 0$.
 We have from Theorem~\ref{orthpoly} that (\ref{apprAQ2equ1}) is true
 for some constants $A_k$, $B_k$ and $C_k$.  We only have to prove that
 they have the form suggested in the question.  We also have from this
-theorem that $\displaystyle A_k = \frac{a_{k+1,k+1}}{a_{k,k}}$ for
-$k\geq 0$ and $\displaystyle C_k = \frac{A_k}{A_{k-1}}
+theorem that $\DS A_k = \frac{a_{k+1,k+1}}{a_{k,k}}$ for
+$k\geq 0$ and $\DS C_k = \frac{A_k}{A_{k-1}}
 = \frac{a_{k+1,k+1}a_{k-1,k-1}}{a_{k,k}^2}$ for $k >0$.  Because of
 our choice for $a_{-1,-1}$, we also have $C_0 = 0$ as required.
-Note that $\displaystyle A_k = \frac{a_{k+1,k+1}}{a_{k,k}}$ can
+Note that $\DS A_k = \frac{a_{k+1,k+1}}{a_{k,k}}$ can
 be easily proved by comparing the coefficient of
-$\displaystyle x^{k+1}$ on both sides of (\ref{apprAQ2equ1}).
+$\DS x^{k+1}$ on both sides of (\ref{apprAQ2equ1}).
 
 It remains only to prove that
 \[

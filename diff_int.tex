@@ -78,7 +78,7 @@ for some $\eta$ between $a-h$ and $a+h$.
 
 \begin{rmk}
 If $h$ is small, $f'(a) \approx (f(a + h) - f(a - h))/(2h)$ and the 
-truncation error is the term $\displaystyle -\frac{1}{6}f^{(3)}(\eta)\,h^2$.
+truncation error is the term $\DS -\frac{1}{6}f^{(3)}(\eta)\,h^2$.
 \end{rmk}
 
 \begin{proof}
@@ -143,7 +143,7 @@ We have assumed that the subtraction and division in (\ref{compform})
 can be performed without rounding error to simplify the discussion.
 
 We may assume that $E_-$ and $E_+$ have the same (small) magnitude.
-Moreover, if we assume that $\displaystyle f^{(3)}$ is almost constant near $a$,
+Moreover, if we assume that $\DS f^{(3)}$ is almost constant near $a$,
 then we see from (\ref{errorform}) that $|R(h)|$ increases as $h$
 decreases.  For instance, if $f(x) = \ln(x)$ and $a=2$, we have
 \begin{equation} \label{CDFapprox}
@@ -154,7 +154,7 @@ with error
 R(h) =  \frac{E_- - E_+ }{2h} + \frac{h^2}{3\eta^3}
 \]
 for some $\eta$ between $2-h$ and $2+h$.  If we assume that
-$\displaystyle |E_- - E_+| \approx 10^{-8}$ and $\eta \approx 2$, then
+$\DS |E_- - E_+| \approx 10^{-8}$ and $\eta \approx 2$, then
 \[
 |R(h)| \approx \frac{10^{-8}}{2h} + \frac{h^2}{3\times 2^3}
 = \frac{10^{-8}}{2h} + \frac{h^2}{24} \ .
@@ -167,7 +167,7 @@ $f'(2) \approx 0.50000064$ which is a good approximation of $f'(2) = 0.5$.
 
 \mathF{diff_int/diff_error}{9cm}{Graph of $|R(h)|$ where
 $R(y)=10^{-8}/(2h) + h^2/24$.}{Graph of $|R(h)|$ where
-$\displaystyle R(y)=10^{-8}/(2h) + h^2/24$.}{errorgraph}
+$\DS R(y)=10^{-8}/(2h) + h^2/24$.}{errorgraph}
 
 \section{Richardson Extrapolation}\label{RichardsonSect}
 
@@ -176,7 +176,7 @@ Richardson extrapolation is also called
 
 Let $f:\RR \rightarrow \RR$ be a sufficiently continuously
 differentiable function and $L(f) = f'(c)$
-for some $c \in \RR$ (or $\displaystyle L(f) = \int_a^b f(x) \dx{x}$
+for some $c \in \RR$ (or $\DS L(f) = \int_a^b f(x) \dx{x}$
 as we will see later).  Suppose that $L_h(f)$ is an approximation of $L(f)$
 satisfying
 \begin{equation} \label{oneone}
@@ -186,7 +186,7 @@ for $h$ near the origin.  We now describe a procedure that generates better
 approximations of $L(f)$ than $L_h(f)$ from a truncation point of
 view.
 
-If we replace $h$ in (\ref{oneone}) by $h/2$ and $\displaystyle h/2^2$, we
+If we replace $h$ in (\ref{oneone}) by $h/2$ and $\DS h/2^2$, we
 respectively get
 \begin{align}
 L(f) &= L_{h/2}(f)+ \sum_{j=1}^\infty
@@ -212,13 +212,13 @@ where
 L_{h/2}^1(f) = \frac{4L_{h/2}(f) -L_h(f)}{4-1}
 \]
 is an approximation of $L(f)$ with truncation error
-$\displaystyle - K_2\,h^4/4 + O(h^6)$.  Recall that the expression
-$\displaystyle O(h^k)$ replaces a function $g(h)$ for which there
-exists a constant $M$ such that $\displaystyle |g(h)| \leq M h^k$ for
+$\DS - K_2\,h^4/4 + O(h^6)$.  Recall that the expression
+$\DS O(h^k)$ replaces a function $g(h)$ for which there
+exists a constant $M$ such that $\DS |g(h)| \leq M h^k$ for
 $h$ closed to the origin.
-In theory, $\displaystyle L_{h/2}^1(f)$ is a better approximation of
+In theory, $\DS L_{h/2}^1(f)$ is a better approximation of
 $L(f)$ than $L_{h/2}(f)$ because, for $h<1$ given, the truncation error for
-$\displaystyle L_{h/2}^1(f)$ in (\ref{twotwo}) is generally smaller than the
+$\DS L_{h/2}^1(f)$ in (\ref{twotwo}) is generally smaller than the
 truncation error for $L_{h/2}(f)$ in (\ref{twoone}).
 
 If we subtract (\ref{twoone}) from 4 times (\ref{threeone}) and divide
@@ -238,7 +238,7 @@ where
 L_{h/2^2}^1(f) = \frac{4L_{h/2^2}(f)-L_{h/2}(f)}{4-1}
 \]
 is an approximation of $L(f)$ with truncation error
-$\displaystyle - K_2\,h^4/4^3 + O(h^6)$.
+$\DS - K_2\,h^4/4^3 + O(h^6)$.
 
 In the spirit of the discussion above, we can easily prove by
 induction that
@@ -250,10 +250,10 @@ where
 \[
 L_{h/2^k}^1(f) = \frac{4L_{h/2^k}(f)-L_{h/2^{k-1}}(f)}{4-1}
 \]
-is an approximation of $L(f)$ with truncation error $\displaystyle O(h^4)$.
+is an approximation of $L(f)$ with truncation error $\DS O(h^4)$.
 
-If we subtract (\ref{twotwo}) from $\displaystyle 4^2$ times
-(\ref{threetwo}) and divide the result by $\displaystyle 4^2-1$, we get
+If we subtract (\ref{twotwo}) from $\DS 4^2$ times
+(\ref{threetwo}) and divide the result by $\DS 4^2-1$, we get
 \begin{align}
 L(f) &= L_{h/2^2}^2(f) + \frac{1}{4^2-1}\left(
 4^2 \sum_{j=2}^\infty \frac{4 - 4^j}{4-1} K_j\,
@@ -274,11 +274,11 @@ L_{h/2^2}^2(f) = \frac{4^2L_{h/2^2}^1(f)
   -L_{h/2}^1(f)}{4^2-1}
 \]
 is an approximation of $L(f)$ with truncation error
-$\displaystyle K_3 h^6/64 + O(h^8)$.  We may assume 
-that $\displaystyle L_{h/2^2}^2(f)$ is the best approximation of
+$\DS K_3 h^6/64 + O(h^8)$.  We may assume 
+that $\DS L_{h/2^2}^2(f)$ is the best approximation of
 $L_h(f)$ that we have found so far in this section.  For small $h<1$,
 the truncation error is generally smaller for
-$\displaystyle L_{h/2^2}^2(f)$ than for the other
+$\DS L_{h/2^2}^2(f)$ than for the other
 approximations.
 
 In general, we generate the following table:
@@ -303,7 +303,7 @@ L_{h/8}^0(f)
 \multicolumn{1}{c}{\vdots}
 \end{array}
 \]
-where $\displaystyle L_{h/2^k}^0(f) = L_{h/2^k}(f)$.  The general formula is
+where $\DS L_{h/2^k}^0(f) = L_{h/2^k}(f)$.  The general formula is
 \begin{equation} \label{Richform}
 L_{h/2^k}^n(f) = \frac{4^n L_{h/2^k}^{n-1}(f) -
   L_{h/2^{k-1}}^{n-1}(f)}{4^n -1}
@@ -321,12 +321,12 @@ where
 \hat{K}_{j,n} = 
 \begin{cases}
 K_j & \quad \text{if} \quad n=0 \\[1em]
-\displaystyle\frac{(4^n-4^j)(4^{n-1} - 4^j) \ldots (4 - 4^j)}
+\DS\frac{(4^n-4^j)(4^{n-1} - 4^j) \ldots (4 - 4^j)}
 {(4^n-1)(4^{n-1}-1)\ldots (4-1)} K_j  & \quad \text{if} \quad n>0
 \end{cases}
 \]
 for $j\geq n$.  The $K_n$ are defined in (\ref{oneone}).
-In particular, $\displaystyle L(f) = L_{h/2^k}^n + O(h^{2n+2})$.
+In particular, $\DS L(f) = L_{h/2^k}^n + O(h^{2n+2})$.
 \end{prop}
 
 \begin{proof}
@@ -334,7 +334,7 @@ The proof is by induction on $n$.  From (\ref{oneone}), we have that
 \[
 L(f) = L^0_h(f)+ \sum_{j=1}^\infty K_j\,h^{2j}
 \]
-for all $h$.  Replacing $h$ by $\displaystyle h/2^k$ with
+for all $h$.  Replacing $h$ by $\DS h/2^k$ with
 $k\geq 0$ gives (\ref{Richard_series}) for $n=0$.  The case $n=1$ is
 (\ref{ntwo}).
 
@@ -373,7 +373,7 @@ induction.
 
 \begin{rmkList}
 \begin{enumerate}
-\item Before using $\displaystyle L_{h/2^k}^n$ as a good approximation
+\item Before using $\DS L_{h/2^k}^n$ as a good approximation
 of $L(f)$, we should verify that
 \begin{equation} \label{checkRich}
 \frac{L_{h/2^k}^{n-1}(f) -L_{h/2^{k-1}}^{n-1}(f)}
@@ -382,18 +382,18 @@ of $L(f)$, we should verify that
 This rule is motivated by the following observation.  From the previous
 proposition,
 \begin{align*}
-\frac{\displaystyle L_{h/2^k}^{n-1}(f) -L_{h/2^{k-1}}^{n-1}(f)}
-{\displaystyle L_{h/2^{k+1}}^{n-1}(f) -L_{h/2^k}^{n-1}(f)}
-&= \frac{\displaystyle \sum_{j=n}^\infty \hat{K}_{j,n-1}
+\frac{\DS L_{h/2^k}^{n-1}(f) -L_{h/2^{k-1}}^{n-1}(f)}
+{\DS L_{h/2^{k+1}}^{n-1}(f) -L_{h/2^k}^{n-1}(f)}
+&= \frac{\DS \sum_{j=n}^\infty \hat{K}_{j,n-1}
 \left( \left(\frac{h}{2^k}\right)^{2j} -
 \left(\frac{h}{2^{k-1}}\right)^{2j} \right)}
-{\displaystyle \sum_{j=n}^\infty \hat{K}_{j,n-1}
+{\DS \sum_{j=n}^\infty \hat{K}_{j,n-1}
 \left( \left(\frac{h}{2^{k+1}}\right)^{2j} -
  \left(\frac{h}{2^k}\right)^{2j} \right)} \\
-&= \frac{\displaystyle \sum_{j=n}^\infty \hat{K}_{j,n-1}
+&= \frac{\DS \sum_{j=n}^\infty \hat{K}_{j,n-1}
 \left( \left(\frac{h}{2^k}\right)^{2j} -
 \left(\frac{h}{2^{k-1}}\right)^{2j}\right)}
-{\displaystyle \sum_{j=n}^\infty \hat{K}_{j,n-1} 2^{-2j}
+{\DS \sum_{j=n}^\infty \hat{K}_{j,n-1} 2^{-2j}
 \left( \left(\frac{h}{2^k}\right)^{2j} -
 \left(\frac{h}{2^{k-1}}\right)^{2j}\right)} \ .
 \end{align*}
@@ -402,7 +402,7 @@ If we assume that terms for $j>n$ are negligible and drop them, we get
 concrete computations, this criterion has a big weakness that limits
 its usefulness as shown in Question~\ref{diffQ13}.
 Since we may expect that
-$\displaystyle L_{h/2^{k+1}}^{n-1}(f) \approx L_{h/2^k}^{n-1}(f)$,
+$\DS L_{h/2^{k+1}}^{n-1}(f) \approx L_{h/2^k}^{n-1}(f)$,
 the formula in (\ref{checkRich}) involves a division by a number
 closed to $0$.  Thus, there is a large round off error in the
 computation of (\ref{checkRich}).
@@ -451,7 +451,7 @@ L(f) &= f'(1) \\
 \intertext{and}
 L_h(f) &= \frac{\sin(1+h) - \sin(1-h)}{2h} \ .
 \end{align*}
-With $\displaystyle h=1.6/2^n$ for $0 \leq n \leq 7$, we give the values of
+With $\DS h=1.6/2^n$ for $0 \leq n \leq 7$, we give the values of
 (\ref{Richform}) and (\ref{checkRich}) in Table~\ref{rich_comp}.
 
 \begin{table}
@@ -503,7 +503,7 @@ $x=1$}\label{rich_comp}
 \end{table}
 
 A good approximation of $f'(1)$ is given by
-$\displaystyle L_{0.05}^4(f) \approx 0.54030230587$.  The exact value is
+$\DS L_{0.05}^4(f) \approx 0.54030230587$.  The exact value is
 $f'(1) = \cos(1) = 0.54030230586814\ldots$.
 \end{egg}
 
@@ -543,8 +543,8 @@ end
 
 Let $f:[a,b]\rightarrow \RR$ be a sufficiently continuously
 differentiable function on $[a,b]$.  An approximation of
-$\displaystyle \int_a^b\,f(x) \dx{x}$ is given by
-$\displaystyle \int_a^b\,p(x) \dx{x}$,
+$\DS \int_a^b\,f(x) \dx{x}$ is given by
+$\DS \int_a^b\,p(x) \dx{x}$,
 where $p$ is an interpolating polynomial of $f$ at some notes
 $x_0 < x_1 < \ldots x_n$.
 The
@@ -614,10 +614,10 @@ Theorem~\ref{InterpTh} for some $\xi$ between $a$ and $b$.
 \begin{enumerate}
 \item The trapezoidal rule is a closed Newton-Cotes formula.
 \item If $|a-b|$ is small,
-$\displaystyle \int_a^b f(x)\dx{x} \approx
+$\DS \int_a^b f(x)\dx{x} \approx
 \frac{f(a) + f(b)}{2}(b-a)$
 with the truncation error\\
-$\displaystyle -f''(\xi)\frac{(b-a)^3}{2}$.
+$\DS -f''(\xi)\frac{(b-a)^3}{2}$.
 \end{enumerate}
 \end{rmkList}
 
@@ -671,13 +671,13 @@ R = \int_a^b f\left[a,\frac{a+b}{2},b,x\right]
 \]
 We cannot use the Mean Value Theorem for Integrals to
 evaluate this integral because
-$\displaystyle (x-a)\left(x-\frac{a+b}{2}\right)(x-b)$ changes
+$\DS (x-a)\left(x-\frac{a+b}{2}\right)(x-b)$ changes
 same sign on $[a,b]$.  But, from
 \[
 f\left[\frac{a+b}{2},a,\frac{a+b}{2},b,x\right] =
-\frac{\displaystyle f\left[a,\frac{a+b}{2},b,x\right] -
+\frac{\DS f\left[a,\frac{a+b}{2},b,x\right] -
 f\left[\frac{a+b}{2},a,\frac{a+b}{2},b\right]}
-{\displaystyle x - \frac{a+b}{2}} \ ,
+{\DS x - \frac{a+b}{2}} \ ,
 \]
 we get
 \begin{align*}
@@ -687,11 +687,11 @@ R &= \int_a^b f\left[\frac{a+b}{2},a,\frac{a+b}{2},b\right]
 (x-a)\left(x-\frac{a+b}{2}\right)^2(x-b)\dx{x} \ .
 \end{align*}
 The first integral is $0$ because
-$\displaystyle (x-a)\left(x-\frac{a+b}{2}\right)(x-b)$ is like an odd
-function with respect to the line $\displaystyle x= \frac{a+b}{2}$.  We can
+$\DS (x-a)\left(x-\frac{a+b}{2}\right)(x-b)$ is like an odd
+function with respect to the line $\DS x= \frac{a+b}{2}$.  We can
 use the Mean Value Theorem for Integrals for the second
 integral because
-$\displaystyle (x-a)\left(x-\frac{a+b}{2}\right)^2(x-b)$ does not
+$\DS (x-a)\left(x-\frac{a+b}{2}\right)^2(x-b)$ does not
 change sign on $[a,b]$.  Hence, there exists $\eta$ between $a$ and $b$
 such that
 \begin{align*}
@@ -710,10 +710,10 @@ $\xi$ between $a$ and $b$.
 \begin{enumerate}
 \item The Simpson's rule is also a closed Newton-Cotes formula.
 \item If $|a-b|$ is small,
-$\displaystyle \int_a^b  f(x)\dx{x} \approx
+$\DS \int_a^b  f(x)\dx{x} \approx
 \frac{1}{2}\left(f(a) +f\left(\frac{a+b}{2}\right) +f(b)\right)(b-a)$
 and the truncation error is
-$\displaystyle -\frac{f^{(4)}(\xi)}{2880}\,(b-a)^5$.
+$\DS -\frac{f^{(4)}(\xi)}{2880}\,(b-a)^5$.
 \end{enumerate}
 \end{rmkList}
 
@@ -730,9 +730,9 @@ for some $\xi$ between $a$ and $b$.
 \begin{proof}
 We consider the interpolating polynomial $p$ of $f$ at
 the point
-$\displaystyle x_0=\frac{a+b}{2}$; namely,
-$\displaystyle p(x) = f\left(\frac{a+b}{2}\right)$.  We have that
-$\displaystyle f(x) = f\left(\frac{a+b}{2}\right)
+$\DS x_0=\frac{a+b}{2}$; namely,
+$\DS p(x) = f\left(\frac{a+b}{2}\right)$.  We have that
+$\DS f(x) = f\left(\frac{a+b}{2}\right)
 + f\left[\frac{a+b}{2},x\right]\left(x-\frac{a+b}{2}\right)$.
 Thus
 \[
@@ -752,13 +752,13 @@ R = \int_a^b f\left[\frac{a+b}{2},x\right]
 \]
 We cannot use the Mean Value Theorem for Integrals to
 evaluate this integral because
-$\displaystyle \left(x-\frac{a+b}{2}\right)$ changes same sign on
+$\DS \left(x-\frac{a+b}{2}\right)$ changes same sign on
 $[a,b]$.  But, from
 \[
 f\left[\frac{a+b}{2},\frac{a+b}{2},x\right] =
-\frac{\displaystyle f\left[\frac{a+b}{2},x\right] -
+\frac{\DS f\left[\frac{a+b}{2},x\right] -
 f\left[\frac{a+b}{2},\frac{a+b}{2}\right]}
-{\displaystyle x - \frac{a+b}{2}} \ ,
+{\DS x - \frac{a+b}{2}} \ ,
 \]
 we get
 \[
@@ -768,10 +768,10 @@ R = \int_a^b f\left[\frac{a+b}{2},\frac{a+b}{2}\right]
 \left(x-\frac{a+b}{2}\right)^2\dx{x} \ .
 \]
 The first integral is $0$ because
-$\displaystyle \left(x-\frac{a+b}{2}\right)$ is like an odd function
-with respect to the line $\displaystyle x=\frac{a+b}{2}$.  We can use
+$\DS \left(x-\frac{a+b}{2}\right)$ is like an odd function
+with respect to the line $\DS x=\frac{a+b}{2}$.  We can use
 the Mean Value Theorem for Integrals in the second integral
-because $\displaystyle \left(x-\frac{a+b}{2}\right)^2$ does not change
+because $\DS \left(x-\frac{a+b}{2}\right)^2$ does not change
 sign on $[a,b]$.  Hence, there exists $\eta$ between $a$ and $b$
 such that
 \begin{align*}
@@ -779,7 +779,7 @@ R &= f\left[\frac{a+b}{2},\frac{a+b}{2},\eta\right]
 \int_a^b \left(x-\frac{a+b}{2}\right)^2\dx{x}
 = \frac{f''(\xi)}{2!}\int_a^b \left(x-\frac{a+b}{2}\right)^2\dx{x} \\
 &= \frac{f''(\xi)}{2!}\,
-\frac{\displaystyle \left(x -\frac{a+b}{2}\right)^3}{3}\bigg|_a^b
+\frac{\DS \left(x -\frac{a+b}{2}\right)^3}{3}\bigg|_a^b
 = \frac{f''(\xi)}{24}\,(b-a)^3 \ .
 \end{align*}
 The second equality follows from Theorem~\ref{InterpTh} for some
@@ -790,9 +790,9 @@ $\xi$ between $a$ and $b$.
 \begin{enumerate}
 \item The midpoint rule is an open Newton-Cotes formula.
 \item If $|a-b|$ is small,
-$\displaystyle \int_a^b  f(x)\dx{x} \approx
+$\DS \int_a^b  f(x)\dx{x} \approx
 f\left(\frac{a+b}{2}\right)(b-a)$ and the truncation error is
-$\displaystyle \frac{f''(\xi)}{24}\,(b-a)^3$.
+$\DS \frac{f''(\xi)}{24}\,(b-a)^3$.
 \end{enumerate}
 \end{rmkList}
 
@@ -802,39 +802,39 @@ $\displaystyle \frac{f''(\xi)}{24}\,(b-a)^3$.
 Let $f:[a,b] \rightarrow \RR$ be a sufficiently continuously
 differentiable function.  The trapezoidal, Simpson's and midpoint
 rules do not give good approximations of
-$\displaystyle \int_a^b f(x)\dx{x}$ if the
+$\DS \int_a^b f(x)\dx{x}$ if the
 interval $[a,b]$ is large.  To get better approximations of
-$\displaystyle \int_a^b f(x) \dx{x}$, we divide the interval $[a,b]$
+$\DS \int_a^b f(x) \dx{x}$, we divide the interval $[a,b]$
 into small subintervals of equal lengths and apply the trapezoidal,
 Simpson's and midpoint rules on each subintervals.
 
 \begin{enumerate}
 \item Let $x_0=a < x_1 < \ldots < x_n =b$.  Since
-$\displaystyle \int_a^b f(x) \dx{x} =
+$\DS \int_a^b f(x) \dx{x} =
 \sum_{i=1}^n\, \int_{x_{i-1}}^{x_i} f(x)\dx{x}$, the sum of the
 approximation of
-$\displaystyle \int_{x_{i-1}}^{x_i} f(x) \dx{x}$ for $1 \leq i \leq n$
+$\DS \int_{x_{i-1}}^{x_i} f(x) \dx{x}$ for $1 \leq i \leq n$
 gives an approximation of
-$\displaystyle \int_a^b f(x) \dx{x}$.
+$\DS \int_a^b f(x) \dx{x}$.
 If a linear interpolating polynomial of $f$ at the two endpoints $x_{i-1}$ and
 $x_i$ is used on each subinterval $[x_{i-1},x_i]$ to approximate $f$, we get
 the composite trapezoidal rule.
 \item Let $x_0=a < x_1 < \ldots < x_{n=2m} =b$.  Since
-$\displaystyle \int_a^b f(x) \dx{x} =
+$\DS \int_a^b f(x) \dx{x} =
 \sum_{i=1}^m\, \int_{x_{2i-2}}^{x_{2i}} f(x)\dx{x}$, the sum of the
 approximation of
-$\displaystyle \int_{x_{2i-2}}^{x_{2i}} f(x) \dx{x}$ for $1 \leq i \leq m$
-gives an approximation of $\displaystyle \int_a^b f(x) \dx{x}$.
+$\DS \int_{x_{2i-2}}^{x_{2i}} f(x) \dx{x}$ for $1 \leq i \leq m$
+gives an approximation of $\DS \int_a^b f(x) \dx{x}$.
 If a quadratic interpolating polynomial of $f$ at the three points $x_{2i-2}$,
 $x_{2i-1}$ and $x_{2i}$ is used on each subinterval $[x_{2i-2},x_{2i}]$ to
 approximate $f$, we get the composite Simpson's rule.
 \item Let $x_0=a < x_1 < \ldots < x_{n=2m} =b$.  Since
-$\displaystyle \int_a^b f(x) \dx{x} =
+$\DS \int_a^b f(x) \dx{x} =
 \sum_{i=1}^m\, \int_{x_{2i-2}}^{x_{2i}} f(x) \dx{x}$, the sum of
 the approximation of
-$\displaystyle \int_{x_{2i-2}}^{x_{2i}} f(x) \dx{x}$ for
+$\DS \int_{x_{2i-2}}^{x_{2i}} f(x) \dx{x}$ for
 $1 \leq i \leq m$ gives an approximation of
-$\displaystyle \int_a^b f(x) \dx{x}$.
+$\DS \int_a^b f(x) \dx{x}$.
 If a constant interpolating polynomial of $f$ at the middle point $x_{2i-1}$
 is used on each subinterval $[x_{2i-2},x_{2i}]$ to approximate $f$,
 namely $f(x)$ is approximated by $f(x_{2i-1})$ for all
@@ -895,29 +895,29 @@ because $h = (b-a)/n$.
 \pdfF{diff_int/trapezoid}{Trapezoidal Rule}{Trapezoidal Rule}{trapezoid2}
 
 \begin{rmk}
-We have $\displaystyle \int_a^b f(x)\dx{x} \approx
+We have $\DS \int_a^b f(x)\dx{x} \approx
 \frac{h}{2} \left( f(x_0)+2\,\sum_{j=1}^{n-1}\,f(x_j)+f(x_n)\right)$
 and the truncation error is\\
-$\displaystyle -\frac{f''(\xi)\,(b-a)}{12}\,h^2$.
+$\DS -\frac{f''(\xi)\,(b-a)}{12}\,h^2$.
 \end{rmk}
 
 \begin{egg}
 Use the composite trapezoidal rule to approximate
-$\displaystyle \int_0^1 e^{x^2}\dx{x}$.
+$\DS \int_0^1 e^{x^2}\dx{x}$.
 Choose the number of subintervals such that the magnitude of the
-truncation error is smaller than $\displaystyle 10^{-4}$.
+truncation error is smaller than $\DS 10^{-4}$.
 
 We first choose $n$ such that the magnitude of the truncation error in
 the composite trapezoidal rule (Theorem~\ref{CTR}) is smaller than
-$\displaystyle 10^{-4}$; namely,
+$\DS 10^{-4}$; namely,
 \[
 \left| \frac{f''(\xi)\,(b-a)}{12}\,h^2 \right| < 10^{-4} \ .
 \]
-We have $\displaystyle f(x)=e^{x^2}$, $a=0$, $b=1$, $x_j = jh$ and
-$h = 1/n$.  Since $\displaystyle |f''(x)|=(2+4x^2)e^{x^2}$,
+We have $\DS f(x)=e^{x^2}$, $a=0$, $b=1$, $x_j = jh$ and
+$h = 1/n$.  Since $\DS |f''(x)|=(2+4x^2)e^{x^2}$,
 we have that $|f''(x)|\leq 6e$ for $x \in [0,1]$.  The magnitude of
-the truncation error is at most $\displaystyle \frac{e}{2n^2}$.  We
-choose $n$ such that $\displaystyle \frac{e}{2n^2} <10^{-4}$; namely, 
+the truncation error is at most $\DS \frac{e}{2n^2}$.  We
+choose $n$ such that $\DS \frac{e}{2n^2} <10^{-4}$; namely, 
 $n> 116.5821991\ldots$.  With $n=117$, we get $h=1/117$ and
 \begin{align*}
 &\int_{a}^{b}f(x)\dx{x} \approx
@@ -989,32 +989,32 @@ because $h = (b-a)/(2m)$.
 
 \begin{rmk}
 We have
-$\displaystyle \int_a^b f(x)\dx{x} \approx
+$\DS \int_a^b f(x)\dx{x} \approx
 \frac{h}{3} \left(f(x_0) + 2\sum_{j=1}^{m-1}\,f(x_{2j}) +
 4 \sum_{j=0}^{m-1}\,f(x_{2j+1}) + f(x_n) \right)$ with the\\ truncation
-error $\displaystyle -\frac{f^{(4)}(\xi)\,(b-a)}{180}\,h^4$.
+error $\DS -\frac{f^{(4)}(\xi)\,(b-a)}{180}\,h^4$.
 \end{rmk}
 
 \begin{egg}
 Use the composite Simpson's rule to approximate
-$\displaystyle \int_0^1\,e^{x^2}\dx{x}$.  Choose
+$\DS \int_0^1\,e^{x^2}\dx{x}$.  Choose
 the number of subintervals such that the magnitude of the truncation
-error is smaller than $\displaystyle 10^{-4}$.
+error is smaller than $\DS 10^{-4}$.
 
 We first choose $m$ such that the magnitude of the truncation error in
 the composite Simpson's rule (Theorem~\ref{CSR}) is smaller than
-$\displaystyle 10^{-4}$; namely,
+$\DS 10^{-4}$; namely,
 \[
 \left| \frac{f^{(4)}(\xi)\,(b-a)}{180}\,h^4 \right| < 10^{-4} \ .
 \]
-We have $\displaystyle f(x)=e^{x^2}$, $a=0$, $b=1$, $x_j = jh$ and
+We have $\DS f(x)=e^{x^2}$, $a=0$, $b=1$, $x_j = jh$ and
 $h = 1/n$ where $n=2m$.  Since
-$\displaystyle |f^{(4)}(x)|=
+$\DS |f^{(4)}(x)|=
 4e^{x^2}\left( 3 + 12\,x^2 + 4\,x^4 \right)$, we have 
-that $\displaystyle |f^{(4)}(x)| \leq 76e$ on $[0,1]$.  Thus, the
+that $\DS |f^{(4)}(x)| \leq 76e$ on $[0,1]$.  Thus, the
 magnitude of the truncation error is at most
-$\displaystyle \frac{76e}{180(2m)^4} = \frac{19e}{720 m^4}$.  We
-choose $m$ such that $\displaystyle \frac{19e}{720 m^4} < 10^{-4}$;
+$\DS \frac{76e}{180(2m)^4} = \frac{19e}{720 m^4}$.  We
+choose $m$ such that $\DS \frac{19e}{720 m^4} < 10^{-4}$;
 namely, $m > 5.175220955\ldots$.  With $m=6$, we get $h=1/12$
 and
 \begin{align*}
@@ -1112,30 +1112,30 @@ because $h = (b-a)/(2m)$.
 
 \begin{rmk}
 We have that
-$\displaystyle \int_a^b f(x)\dx{x} \approx
+$\DS \int_a^b f(x)\dx{x} \approx
 2h \sum_{j=1}^m\,f(x_{2j-1})$ and the truncation error is
-$\displaystyle \frac{f''(\xi)\,(b-a)}{6}\,h^2$.
+$\DS \frac{f''(\xi)\,(b-a)}{6}\,h^2$.
 \end{rmk}
 
 \begin{egg}
 Use the composite midpoint rule to approximate
-$\displaystyle \int_0^1 e^{x^2}\dx{x}$.
+$\DS \int_0^1 e^{x^2}\dx{x}$.
 Choose the number of subintervals such that the magnitude of the
-truncation error is smaller than $\displaystyle 10^{-4}$.  Compare with
+truncation error is smaller than $\DS 10^{-4}$.  Compare with
 Examples~\ref{S1} and \ref{T1}.
 
 We first choose $m$ such that the magnitude of the truncation error in
 the composite midpoint rule (Theorem~\ref{CMR}) is smaller than
-$\displaystyle 10^{-4}$; namely,
+$\DS 10^{-4}$; namely,
 \[
 \left| \frac{f''(\xi)\,(b-a)}{6}\,h^2 \right| < 10^{-4}  \ .
 \]
-We have $\displaystyle f(x)=e^{x^2}$, $a=0$, $b=1$, $x_j = j\,h$ and
+We have $\DS f(x)=e^{x^2}$, $a=0$, $b=1$, $x_j = j\,h$ and
 $h = 1/n$ where $n=2m$.  Since
-$\displaystyle |f''(x)|=(2+4x^2)e^{x^2}$, we have that
+$\DS |f''(x)|=(2+4x^2)e^{x^2}$, we have that
 $|f''(x)|\leq 6e$ for $x \in [0,1]$.  The magnitude of the
-truncation error is at most $\displaystyle \frac{e}{(2m)^2}$.  We
-choose $m$ such that $\displaystyle \frac{e}{(2m)^2} < 10^{-4}$;
+truncation error is at most $\DS \frac{e}{(2m)^2}$.  We
+choose $m$ such that $\DS \frac{e}{(2m)^2} < 10^{-4}$;
 namely, $m > 82.436\ldots$.  With $m=83$, we get $h=1/166$
 and
 \begin{align*}
@@ -1183,7 +1183,7 @@ can be performed without rounding error to simplify the discussion.
 
 Suppose that the rounding errors $e_i$ are uniformly bounded by
 $r$, namely $|e_i| < r$ for all $i$, and
-$\displaystyle M = \sup_{x \in [a,b]}\,|f^{(4)}(x)|$.  Then
+$\DS M = \sup_{x \in [a,b]}\,|f^{(4)}(x)|$.  Then
 \begin{align*}
 |R(h)| &\leq \frac{h}{3} \left(r + 2\sum_{j=1}^{m-1}\,r + 4
 \sum_{j=0}^{m-1}\,r + r \right) + \frac{M\,(b-a)}{180}\,h^4 \\
@@ -1197,7 +1197,7 @@ $R(h)$ does not blow up as $h$ gets smaller.
 \section{Romberg Integration}
 
 Romberg integration is nothing else than Richardson extrapolation
-with $\displaystyle L(f) = \int_{a}^{b} f(x)\dx{x}$ and
+with $\DS L(f) = \int_{a}^{b} f(x)\dx{x}$ and
 \begin{equation} \label{Rombform}
 L_h(f) = \frac{h}{2} \left( f(x_0) + 2\,\sum_{j=1}^{n-1}\,f(x_j)
 + f(x_n)\right) \ ,
@@ -1216,7 +1216,7 @@ operations in the computation of $L_{h/2}(f)$.
 
 Suppose that $L_h(f)$ is given by (\ref{Rombform}).  Let
 $\tilde{n} = 2n$,
-$\displaystyle \tilde{h} = \frac{b-a}{\tilde{n}} = \frac{h}{2}$ and
+$\DS \tilde{h} = \frac{b-a}{\tilde{n}} = \frac{h}{2}$ and
 $\tilde{x}_j = a + j\,\tilde{h}$.  Then, because
 $\tilde{x}_{2j} = x_j$ for all $j$, we get
 \begin{align*}
@@ -1251,15 +1251,15 @@ k \rightarrow \infty \ .
 \begin{proof}
 The proof of (\ref{convRich}) is by induction on $n$.
 
-We rewrite $\displaystyle L_{h/2^k}^0(f)$ as
+We rewrite $\DS L_{h/2^k}^0(f)$ as
 \[
 L_{h/2^k}^0(f) = \frac{1}{2} \left( \sum_{j=0}^{2^k-1} f(x_j) h +
 \sum_{j=1}^{2^k} f(x_j) h \right) \ ,
 \]
-where $x_j = a + j\,h$ and $\displaystyle h=\frac{b-a}{2^k n}$.  The
+where $x_j = a + j\,h$ and $\DS h=\frac{b-a}{2^k n}$.  The
 two sums are Riemann sums (the left and right sums) that converge to
 the value of the integral
-$\displaystyle \int_a^b f(x)\dx{x}$ as $k\to \infty$.
+$\DS \int_a^b f(x)\dx{x}$ as $k\to \infty$.
 Hence,
 \[
 \lim_{k\to \infty} L_{h/2^k}^0(f) =
@@ -1269,15 +1269,15 @@ Hence,
 This proves (\ref{convRich}) for $n=0$.
 
 We assume that (\ref{convRich}) is true for $n$: that is
-$\displaystyle L_{h/2^k}^{n}(f) \rightarrow L(f)$ as
+$\DS L_{h/2^k}^{n}(f) \rightarrow L(f)$ as
 $k\rightarrow \infty$.
 Then,
 \begin{align*}
 \lim_{k\rightarrow \infty} L_{h/2^k}^{n+1}(f) &=
-\frac{\displaystyle 4^{n+1} \lim_{k\rightarrow \infty}L_{h/2^k}^n(f)
+\frac{\DS 4^{n+1} \lim_{k\rightarrow \infty}L_{h/2^k}^n(f)
 - \lim_{k\rightarrow \infty}L_{h/2^{k-1}}^n(f) }
 {4^{n+1} - 1} \\
-&= \frac{\displaystyle 4^{n+1} \int_a^b f(x) \dx{x} - \int_a^b f(x) \dx{x}}
+&= \frac{\DS 4^{n+1} \int_a^b f(x) \dx{x} - \int_a^b f(x) \dx{x}}
 {4^{n+1} - 1}
 = \int_a^b f(x) \dx{x} \ .
 \end{align*}
@@ -1312,7 +1312,7 @@ $x_i$ may not be equally spaced.  We compute two approximations of
 I_i = \int_{x_{i-1}}^{x_i} f(x) \dx{x}
 \]
 using the composite Simpson's rule.  With $m=1$, $a=x_{i-1}$,
-$b=x_i$ and $\displaystyle h = h_i = (x_i-x_{i-1})/2$
+$b=x_i$ and $\DS h = h_i = (x_i-x_{i-1})/2$
 in Theorem~\ref{CSR}, we get $I_i = S_i + R_i$, where
 \begin{align*}
 S_i &= \frac{h_i}{3} \left( f(x_{i-1}) + 4f(x_{i-1}+h_i) + f(x_i) \right)
@@ -1322,7 +1322,7 @@ R_i &= -\frac{ f^{(4)}(\eta_i)\,(x_i-x_{i-1}) }{180}\,h_i^4 =
 \end{align*}
 for $\eta_i$ between $x_{i-1}$ and $x_i$.
 With $m=2$, $a=x_{i-1}$, $b=x_i$ and
-$\displaystyle h = h_i/2 = (x_i-x_{i-1})/4$ in Theorem~\ref{CSR}, we get
+$\DS h = h_i/2 = (x_i-x_{i-1})/4$ in Theorem~\ref{CSR}, we get
 $I_i = \tilde{S}_i + \tilde{R}_i$, where
 \begin{align*}
 \tilde{S}_i &= \frac{h_i}{6} \left( f(x_{i-1})
@@ -1333,18 +1333,18 @@ $I_i = \tilde{S}_i + \tilde{R}_i$, where
 \left(\frac{h_i}{2}\right)^4
 = -\frac{f^{(4)}(\mu_i)}{90 \times 16}\,h_i^5 \ ,
 \end{align*}
-for $\displaystyle h_i = (x_i-x_{i-1})/2$ and $\mu_i$ between
+for $\DS h_i = (x_i-x_{i-1})/2$ and $\mu_i$ between
 $x_{i-1}$ and $x_i$.
 
-If we assume that $\displaystyle f^{4}(x)$ is almost constant on
+If we assume that $\DS f^{4}(x)$ is almost constant on
 $[x_{i-1},x_i]$, we may suppose that
-$\displaystyle f^{4}(\eta_i) \approx f^{4}(\mu_i)$.  Hence
-$\displaystyle R_i \approx 16 \tilde{R}_i$.
+$\DS f^{4}(\eta_i) \approx f^{4}(\mu_i)$.  Hence
+$\DS R_i \approx 16 \tilde{R}_i$.
 
 If we subtract $I_i = \tilde{S}_i + \tilde{R}_i$ from
-$\displaystyle I_i = S_i + R_i = \approx S_i + 16 \tilde{R}_i$, we get
-$\displaystyle 0 \approx (S_i - \tilde{S}_i) + 15\tilde{R}_i$.  Thus
-$\displaystyle \tilde{R}_i \approx
+$\DS I_i = S_i + R_i = \approx S_i + 16 \tilde{R}_i$, we get
+$\DS 0 \approx (S_i - \tilde{S}_i) + 15\tilde{R}_i$.  Thus
+$\DS \tilde{R}_i \approx
 \frac{1}{15}\left( \tilde{S}_i - S_i \right)$.
 
 In summary,
@@ -1354,7 +1354,7 @@ I_i \approx \tilde{S}_i + \frac{1}{15}
 \]
 Thus $\tilde{S}_i$ is an approximation of $I_i$ with truncation error
 almost equals to
-$\displaystyle \frac{1}{15}\left( \tilde{S}_i-S_i \right)$.
+$\DS \frac{1}{15}\left( \tilde{S}_i-S_i \right)$.
 
 Suppose that $x_0$, $x_1$, \ldots, $x_n$ is a partition of $[a,b]$
 such that
@@ -1369,7 +1369,7 @@ for $1 \leq i \leq n$.  Then
 \approx \sum_{i=1}^n \tilde{S}_i
 \]
 and the approximation
-$\displaystyle \sum_{i=1}^n \frac{1}{15}\left( \tilde{S}_i-S_i\right)$ of the
+$\DS \sum_{i=1}^n \frac{1}{15}\left( \tilde{S}_i-S_i\right)$ of the
 truncation error satisfies
 \[
 \left| \sum_{i=1}^n \frac{1}{15}\left( \tilde{S}_i-S_i \right) \right|
@@ -1449,7 +1449,7 @@ Use the adaptive quadrature method defined above to approximate
 with an accuracy of $0.0005$.
 
 For this purpose and to simplify the discussion, let $S(a,b,h)$ is the
-approximation of $\displaystyle \int_a^b \sqrt{x}\dx{x}$ given by the
+approximation of $\DS \int_a^b \sqrt{x}\dx{x}$ given by the
 composite Simpson's rule, Theorem~\ref{CSR}, with $m = (b-a)/(2h)$.
 The values displayed in the following computations have been rounded
 to at least $6$ significant digits though the computations have been
@@ -1466,7 +1466,7 @@ x_i & 0 & 1/4 & 1/2 & 3/4 & 1
 $h=0.5$, $T=0.0005$, $S_{[0,1]} = S(0,1,0.5) = 0.63807119$,\\
 $S_1 = S(0,0.5,0.25) = 0.22559223$, $S_2 = S(0.5,1,0.25) = 0.43093403$,\\
 $\tilde{S}_{[0,1]} = S(0,1,0.25) = S_1+S_2$ and
-$\displaystyle \tilde{R}_{[0,1]} \approx \frac{1}{15}\left|
+$\DS \tilde{R}_{[0,1]} \approx \frac{1}{15}\left|
 \tilde{S}_{[0,1]} -  S_{[0,1]}\right|
 \approx 0.123034 \times 10^{-2} \not< 0.0005$.
 
@@ -1483,7 +1483,7 @@ $S_{[0,0.5]} = S(0,0.5,0.25) = 0.22559223$,\\
 $S_1 = S(0,0.25, 0.125) = 0.07975890$,
 $S_2 = S(0.25,0.5,0.125) = 0.15235819$,\\
 $\tilde{S}_{[0,0.5]} = S(0,0.5,0.125) = S_1+S_2$ and\\
-$\displaystyle \tilde{R}_{[0,0.5]} \approx \frac{1}{15}\left|
+$\DS \tilde{R}_{[0,0.5]} \approx \frac{1}{15}\left|
 \tilde{S}_{[0,0.5]} - S_{[0,0.5]}\right|
 \approx 0.43499 \times 10^{-3} \not< 0.00025$.
 
@@ -1500,7 +1500,7 @@ $S_{[0,0.25]} = S(0,0.25,0.125) = 0.07975890$,\\
 $S_1 = S(0,0.125, 0.0625) = 0.02819903$,
 $S_2 = S(0.125, 0.25, 0.0625)= 0.05386675$,\\
 $\tilde{S}_{[0,0.25]} = S(0,0.25,0.0625) = S_1+S_2$ and\\
-$\displaystyle \tilde{R}_{[0,0.25]} \approx \frac{1}{15}\left|
+$\DS \tilde{R}_{[0,0.25]} \approx \frac{1}{15}\left|
 \tilde{S}_{[0,0.25]} - S_{[0,0.25]} \right|
 \approx 0.153792 \times 10^{-3} \not< 0.000125$.
 
@@ -1517,12 +1517,12 @@ $S_{[0,0.125]} = S(0,0.125, 0.0625) = 0.02819903$,\\
 $S_1 = S(0,0.0625, 0.03125) = 0.00996986$,
 $S_2 = S(0.0625, 0.125, 0.03125) = 0.01904477$,\\
 $\tilde{S}_{[0,0.125]} = S(0,0.125,0.03125) = S_1+S_2$ and\\
-$\displaystyle \tilde{R}_{[0,0.125]} \approx \frac{1}{15}\left|
+$\DS \tilde{R}_{[0,0.125]} \approx \frac{1}{15}\left|
 \tilde{S}_{[0,0.125]} - S_{[0,0.125]}\right|
 \approx 0.5437 \times 10^{-4} < 0.0000625$.\\
 So, we accept $\tilde{S}_{[0,0.125]}$ as an approximation of
-$\displaystyle \int_0^{1/8} \sqrt{x}\dx{x}$; namely,\\
-$\displaystyle \int_0^{1/8} \sqrt{x}\dx{x} \approx
+$\DS \int_0^{1/8} \sqrt{x}\dx{x}$; namely,\\
+$\DS \int_0^{1/8} \sqrt{x}\dx{x} \approx
 \tilde{S}_{[0,0.125]} = 0.02901464$.
 
 \subI{Level 3}
@@ -1539,15 +1539,15 @@ $S_1 = S(0.125, 0.1875, 0.03125) = 0.02466359$,
 $S_2 = S(0.1875, 0.25, 0.03125) = 0.02920668$,\\
 $\tilde{S}_{[0.125,0.25]} = S(0.125,0.25,0.03125) = S_1+S_2$
 and\\
-$\displaystyle \tilde{R}_{[0.125,0.25]} \approx \frac{1}{15}\left|
+$\DS \tilde{R}_{[0.125,0.25]} \approx \frac{1}{15}\left|
   \tilde{S}_{[0.125,0.25]} - S_{[0.125,0.25]}\right|
 \approx 0.2347 \times 10^{-6} < 0.0000625$.\\
 So, we accept $\tilde{S}_{[0.125,0.25]}$ as an approximation of
-$\displaystyle \int_{1/8}^{1/4} \sqrt{x}\dx{x}$; namely,\\
-$\displaystyle \int_{1/8}^{1/4} \sqrt{x}\dx{x} \approx \tilde{S}_{[0.125,0.25]}
+$\DS \int_{1/8}^{1/4} \sqrt{x}\dx{x}$; namely,\\
+$\DS \int_{1/8}^{1/4} \sqrt{x}\dx{x} \approx \tilde{S}_{[0.125,0.25]}
 = 0.05387027$.\\
 Hence,
-$\displaystyle \int_0^{1/4} \sqrt{x}\dx{x} =
+$\DS \int_0^{1/4} \sqrt{x}\dx{x} =
 \int_0^{1/8} \sqrt{x}\dx{x} + \int_{1/8}^{1/4} \sqrt{x}\dx{x} \approx
 0.08288491$.
 
@@ -1564,16 +1564,16 @@ $S_{[0.25,0.5]} = S(0.25, 0.5, 0.125) = 0.15235819$,\\
 $S_1 = S(0.25, 0.375, 0.06125) = 0.06975918$,
 $S_2 = S(0.375, 0.5, 0.0615) = 0.08260897$,\\
 $\tilde{S}_{[0.25,0.5]} = S(0.25,0.5,0.06125) = S_1+S_2$ and\\
-$\displaystyle \tilde{R}_{[0.25,0.5]} \approx \frac{1}{15}\left|
+$\DS \tilde{R}_{[0.25,0.5]} \approx \frac{1}{15}\left|
   \tilde{S}_{[0.25,0.5]} - S_{[0.25,0.5]}\right|
 \approx 0.664 \times 10^{-6} < 0.000125$.\\
 So, we accept $\tilde{S}_{[0.25,0.5]}$ as an
-approximation of $\displaystyle \int_{1/4}^{1/2} \sqrt{x}\dx{x}$;
+approximation of $\DS \int_{1/4}^{1/2} \sqrt{x}\dx{x}$;
 namely,\\
-$\displaystyle \int_{1/4}^{1/2} \sqrt{x}\dx{x} \approx \tilde{S}_{[0.25,0.5]}
+$\DS \int_{1/4}^{1/2} \sqrt{x}\dx{x} \approx \tilde{S}_{[0.25,0.5]}
 = 0.15236815$.\\
 Hence,
-$\displaystyle \int_0^{1/2} \sqrt{x}\dx{x} =
+$\DS \int_0^{1/2} \sqrt{x}\dx{x} =
 \int_0^{1/4} \sqrt{x}\dx{x} + \int_0^{1/4} \sqrt{x}\dx{x} \approx = 0.23525305$.
 
 \subI{Level 1}
@@ -1589,15 +1589,15 @@ $S_{[0.5,1]} = S(0.5,1,0.25) = 0.43093403$,\\
 $S_1 = S(0.5, 0.75, 0.125) = 0.19730874$,
 $S_2 = S(0.75, 1, 0.125) = 0.23365345$,\\
 $\tilde{S}_{[0.5,1]} = S(0.5,1,0.125) = S_1+S_2$ and\\
-$\displaystyle \tilde{R}_{[0.5,1]} \approx \frac{1}{15}\left|
+$\DS \tilde{R}_{[0.5,1]} \approx \frac{1}{15}\left|
 \tilde{S}_{[0.5,1]} - S_{[0.5,1]}\right|
 \approx 0.18773 \times 10^{-5} < 0.00025$.\\
 So, we accept $\tilde{S}_{[0.5,1]}$ as an
-approximation of $\displaystyle \int_{1/2}^{1} \sqrt{x}\dx{x}$; namely,\\
-$\displaystyle \int_{1/2}^{1} \sqrt{x}\dx{x} \approx \tilde{S}_{[0.5,1]} = 
+approximation of $\DS \int_{1/2}^{1} \sqrt{x}\dx{x}$; namely,\\
+$\DS \int_{1/2}^{1} \sqrt{x}\dx{x} \approx \tilde{S}_{[0.5,1]} = 
 0.43096219$.\\
 Hence,
-$\displaystyle \int_0^1 \sqrt{x}\dx{x} =
+$\DS \int_0^1 \sqrt{x}\dx{x} =
 \int_0^{1/2} \sqrt{x}\dx{x} + \int_{1/2}^1 \sqrt{x}\dx{x} = 0.66621525$.
 
 \subI{Level 0}
@@ -1613,7 +1613,7 @@ The exact answer is $2/3 = 0.\overline{6}$.
 Let $f:]a,b[ \rightarrow \RR$ be an integrable function on $]a,b[$.
 $f$ may not be a nice function to integrate.  For instance, $f$ may
 not be bounded at the endpoints, thus
-$\displaystyle \int_a^b f(x) \dx{x}$ is in improper integral.
+$\DS \int_a^b f(x) \dx{x}$ is in improper integral.
 
 In this section, we assume that we can write $f$ as the product of two
 functions $g$ and $w$, where $g$ is a nice function on $]a,b[$
@@ -1664,9 +1664,9 @@ Find $x_1$ and $c_1$ such that
 \]
 is exact for polynomial of degree less than $2$.  The node $x_1$ and
 the weight $c_1$ must satisfy
-$\displaystyle \int_a^b\, 1 \dx{x} = c_1$ and
-$\displaystyle \int_a^b\, x \dx{x} = c_1 x_1$; namely,
-$a+b = c_1$ and $\displaystyle \frac{b^2}{2} - \frac{a^2}{2} = c_1 x_1$.
+$\DS \int_a^b\, 1 \dx{x} = c_1$ and
+$\DS \int_a^b\, x \dx{x} = c_1 x_1$; namely,
+$a+b = c_1$ and $\DS \frac{b^2}{2} - \frac{a^2}{2} = c_1 x_1$.
 The values of $c_1$ and $x_1$ satisfying these two equations are $c_1
 = b - a$ and $x_1 = (b+a)/2$.  The quadrature formula is therefore
 \[
@@ -1677,7 +1677,7 @@ This is the Midpoint rule.  The truncation error for $f(x) = x^2$ is
 \int_a^b \, x^2 \dx{x} - (b-a) \left( \frac{b+a}{2} \right)^2 =
 \frac{b^3-a^3}{3} - \frac{(b-a)(b+a)^2}{4} = - \frac{(b-a)^3}{12} \ .
 \]
-This is $\displaystyle -f''(\xi) (b-a)^3/24$.
+This is $\DS -f''(\xi) (b-a)^3/24$.
 \end{egg}
 
 \begin{egg}
@@ -1687,19 +1687,19 @@ Find $x_1$, $x_2$, $c_1$ and $c_2$ such that
 \]
 is exact for polynomial of degree less than $4$.   The nodes $x_1$,
 $x_2$ and the weights $c_1$, $c_2$ must satisfy
-$\displaystyle \int_a^b\, 1 \dx{x} = c_1 + c_2$,
-$\displaystyle \int_a^b\, x \dx{x} = c_1 x_1 + c_2 x_2$,
-$\displaystyle \int_a^b\, x^2 \dx{x} = c_1 x_1^2 + c_2 x_2^2$ and
-$\displaystyle \int_a^b\, x^3 \dx{x} = c_1 x_1^3 + c_2 x_2^3$;
+$\DS \int_a^b\, 1 \dx{x} = c_1 + c_2$,
+$\DS \int_a^b\, x \dx{x} = c_1 x_1 + c_2 x_2$,
+$\DS \int_a^b\, x^2 \dx{x} = c_1 x_1^2 + c_2 x_2^2$ and
+$\DS \int_a^b\, x^3 \dx{x} = c_1 x_1^3 + c_2 x_2^3$;
 Namely, $b-a = c_1 + c_2$,
-$\displaystyle \frac{b^2-a^2}{2} = c_1 x_1 + c_2 x_2$,
-$\displaystyle \frac{b^3-a^3}{3} = c_1 x_1^2 + c_2 x_2^2$ and
-$\displaystyle \frac{b^4-a^4}{4} = c_1 x_1^3 + c_2 x_2^3$.
+$\DS \frac{b^2-a^2}{2} = c_1 x_1 + c_2 x_2$,
+$\DS \frac{b^3-a^3}{3} = c_1 x_1^2 + c_2 x_2^2$ and
+$\DS \frac{b^4-a^4}{4} = c_1 x_1^3 + c_2 x_2^3$.
 The values of $c_1$, $c_2$, $x_1$ and $x_2$ satisfying these four
 nonlinear equations are 
-$\displaystyle c_1 = c_2 = \frac{b-a}{2}$, $x_1 = z$ and
+$\DS c_1 = c_2 = \frac{b-a}{2}$, $x_1 = z$ and
 $x_2 = a+b-z$, where $z$ is the positive root of
-$\displaystyle 6z^2 - 6(a+b)z + a^2 + b^2 + 4ab$.
+$\DS 6z^2 - 6(a+b)z + a^2 + b^2 + 4ab$.
 
 If $a=-1$ and $b=1$, we get $c_1 = c_2 = 1$ and
 $x_1 = -x_2 = 1/\sqrt{3}$.
@@ -1718,7 +1718,7 @@ is exact for polynomials of degree less than $2n$.
 
 \begin{rmk}
 Using the polynomial
-$\displaystyle p(x) = \prod_{i=1}^n (x-x_i)^2$, we ask the reader in
+$\DS p(x) = \prod_{i=1}^n (x-x_i)^2$, we ask the reader in
 Question~\ref{diffQ40} to show that $2n$ is the largest value $k$ such
 that (\ref{GG}) is exact for polynomials of degree less than $k$.
 \end{rmk}
@@ -1768,7 +1768,7 @@ If we divide $p$ by $P_n$, we get $p = q P_n + r$, where $q$ and $r$
 are polynomials of degree less than $n$.
 
 From the first conclusion of Theorem~\ref{orthpoly}, we have that
-$\displaystyle q= \sum_{i=0}^{n-1} \, \alpha_i P_i$ for some constants
+$\DS q= \sum_{i=0}^{n-1} \, \alpha_i P_i$ for some constants
 $\alpha_0$, $\alpha_1$, $\alpha_2$, \ldots, $\alpha_{n-1}$.  Hence,
 \begin{align}
 \int_a^b p(x)w(x) \dx{x} &= \int_a^b q(x)P_n(x)w(x)\dx{x} +
@@ -1795,7 +1795,7 @@ If we substitute $g(x) = 1$ in a Gaussian quadrature formula
 \]
 which is exact for polynomials of degree less than $2n$, we find
 that
-$\displaystyle \int_a^b w(x)\dx{x} = \sum_{j=1}^n c_j$.
+$\DS \int_a^b w(x)\dx{x} = \sum_{j=1}^n c_j$.
 \label{sumCoeff}
 \end{rmk}
 
@@ -1805,8 +1805,8 @@ If we use the Legendre polynomials and $w(x) = 1$ for $-1\leq x\leq 1$
 in Theorem~\ref{Gaussquadr}, we get the
 {\bfseries Gauss-Legendre quadrature}\index{Integration!Gauss-Legendre
 Quadrature}.  The integral 
-$\displaystyle \int_{-1}^1 f(x) \dx{x}$ is approximately equal to
-$\displaystyle \sum_{j=1}^n c_j f(x_j)$, where the $x_j$'s are the
+$\DS \int_{-1}^1 f(x) \dx{x}$ is approximately equal to
+$\DS \sum_{j=1}^n c_j f(x_j)$, where the $x_j$'s are the
 roots of the Legendre polynomial $P_n$ and the $c_j$'s are given by
 Theorem~\ref{Gaussquadr} with $a=-1$, $b=1$ and $w(x) = 1$ for
 $-1\leq x\leq1$.  The values of $c_j$ and $x_j$ for $n=2$, $3$, $4$
@@ -1857,9 +1857,9 @@ Using the change of variable $t = x - 2$, we get
 
 \begin{rmk}
 In general, to transform an integral of the form
-$\displaystyle \int_a^b f(x) \dx{x}$ into an integral of the form
-$\displaystyle \int_{-1}^1 g(t) \dx{t}$, one uses the substitution
-$\displaystyle t = \frac{x - (a+b)/2}{(b-a)/2}$,
+$\DS \int_a^b f(x) \dx{x}$ into an integral of the form
+$\DS \int_{-1}^1 g(t) \dx{t}$, one uses the substitution
+$\DS t = \frac{x - (a+b)/2}{(b-a)/2}$,
 where $(a+b)/2$ is the middle of the interval $[a,b]$ and
 $(b-a)/2$ is half the length of $[a,b]$.
 \end{rmk}
@@ -1867,15 +1867,15 @@ $(b-a)/2$ is half the length of $[a,b]$.
 \subsection{Gauss-Chebyshev quadrature}
 
 If we use the Chebyshev polynomials and
-$\displaystyle w(x) = 1/\sqrt{1-x^2}$ for
+$\DS w(x) = 1/\sqrt{1-x^2}$ for
 $-1<x<1$ in Theorem~\ref{Gaussquadr}, we get the
 {\bfseries Gauss-Chebyshev quadrature}\index{Integration!Gauss-Chebyshev
 Quadrature}.  The integral 
-$\displaystyle \int_{-1}^1 \frac{g(x)}{\sqrt{1-x^2}}\dx{x}$ is
-approximately equal to $\displaystyle \sum_{j=1}^n c_j g(x_j)$, where the
+$\DS \int_{-1}^1 \frac{g(x)}{\sqrt{1-x^2}}\dx{x}$ is
+approximately equal to $\DS \sum_{j=1}^n c_j g(x_j)$, where the
 $x_j$'s are the roots of the Chebyshev polynomial $T_n$ and the
 $c_j$'s are given by Theorem~\ref{Gaussquadr} with $a = -1$, $b=1$ and
-$\displaystyle w(x) = 1/\sqrt{1-x^2}$ for $-1<x<1$.  So, 
+$\DS w(x) = 1/\sqrt{1-x^2}$ for $-1<x<1$.  So, 
 $x_j= \cos((2j-1)\pi/(2n))$ for $1 \leq j \leq n$, and one can prove that
 $c_j = \pi/n$ for all $j$.
 
@@ -1894,7 +1894,7 @@ We use Gauss-Chebyshev quadrature with $n=2$.  We have that
 \]
 because Gauss-Chebyshev quadrature with $n=2$ is exact for polynomial
 of degree less than $2n = 4$.  In general,
-$\displaystyle \int_{-1}^1 \frac{p(x)}{\sqrt{1-x^2}}\dx{x}
+$\DS \int_{-1}^1 \frac{p(x)}{\sqrt{1-x^2}}\dx{x}
 = c_1 p(x_1) + c_2 p(x_2)$
 for any polynomial $p(x)$ of degree less than $4$.
 \end{egg}
@@ -1921,7 +1921,7 @@ Given $\epsilon > 0$, Stone-Weierstrass Theorem,
 Theorem~\ref{SWtheorem}, gives a polynomial $p$ such that
 \[
 \max_{a\leq x \leq b} | g(x) - p(x) | <
-\frac{\epsilon}{\displaystyle 2\int_a^b w(x) \dx{x}} \ .
+\frac{\epsilon}{\DS 2\int_a^b w(x) \dx{x}} \ .
 \]
 Hence, since the Gaussian quadrature formula is exact for polynomials
 of degree less than $2n$, we have for $2n$ greater than the degree of
@@ -1932,7 +1932,7 @@ $p$ that
 + \sum_{j=1}^n c_j p(x_j) - \sum_{j=1}^n c_j g(x_j) \right| \\
 &\qquad \leq \int_a^b \left|g(x) - p(x)\right| w(x) \dx{x}
 + \sum_{j=1}^n c_j \left| p(x_j) - g(x_j) \right| \\
-&\qquad \leq \frac{\epsilon}{\displaystyle 2 \int_a^b w(x) \dx{x}} \left(
+&\qquad \leq \frac{\epsilon}{\DS 2 \int_a^b w(x) \dx{x}} \left(
 \int_a^b w(x) \dx{x} + \sum_{j=1}^n c_j \right )
 = \epsilon \ .
 \end{align*}
@@ -1988,11 +1988,11 @@ Hence,
 \end{align*}
 The last sum of the first equality is zero because the divided
 differences \\
-$\displaystyle g[x_1,x_2,\ldots,x_n,x_1,x_2,\ldots,x_n,x_j]$
+$\DS g[x_1,x_2,\ldots,x_n,x_1,x_2,\ldots,x_n,x_j]$
 are well defined and
-$\displaystyle \prod_{i=1}^n (x_j-x_i)^2 = 0$ for all $j$.
+$\DS \prod_{i=1}^n (x_j-x_i)^2 = 0$ for all $j$.
 
-Since $\displaystyle \prod_{i=1}^n (x-x_i)^2 w(x) \geq 0$ for
+Since $\DS \prod_{i=1}^n (x-x_i)^2 w(x) \geq 0$ for
 $x \in [a,b]$, we get from the Mean Value Theorem for
 Integrals that
 \[
@@ -2027,26 +2027,26 @@ for $n=0$, $1$, $2$, \ldots\ are the
 
 \begin{rmk}
 The first four Bernoulli polynomials are $B_0(x) = 1$,
-$\displaystyle B_1(x) = x - \frac{1}{2}$,
-$\displaystyle B_2(x) = x^2 - x + \frac{1}{6}$ and
-$\displaystyle B_3(x) = x^3 - \frac{3}{2}x^2 + \frac{1}{2}x$.
+$\DS B_1(x) = x - \frac{1}{2}$,
+$\DS B_2(x) = x^2 - x + \frac{1}{6}$ and
+$\DS B_3(x) = x^3 - \frac{3}{2}x^2 + \frac{1}{2}x$.
 \end{rmk}
 
 \begin{prop}
 The Bernoulli polynomials satisfy the following properties.
 \begin{enumerate}
 \item $B_n'(x) = n B_{n-1}(x)$ for $n\geq 1$.
-\item $\displaystyle B_n(x+1) - B_n(x) = n x^{n-1}$ for $n\geq 1$.
-\item $\displaystyle B_n(x) = \sum_{j=0}^n \binom{n}{j} B_j(0) x^{n-j}$
+\item $\DS B_n(x+1) - B_n(x) = n x^{n-1}$ for $n\geq 1$.
+\item $\DS B_n(x) = \sum_{j=0}^n \binom{n}{j} B_j(0) x^{n-j}$
 for $n \geq 0$.
-\item $\displaystyle B_n(1-x) = (-1)^n B_n(x)$ for $n \geq 0$.
+\item $\DS B_n(1-x) = (-1)^n B_n(x)$ for $n \geq 0$.
 \end{enumerate}
 \label{BePoProp}
 \end{prop}
 
 \begin{proof}
 \stage{1} We prove (1) by induction.  The case $n=1$ is a consequence of
-$B_0(x) = 1$ and $\displaystyle B_1(x) = x - \frac{1}{2}$.  We assume
+$B_0(x) = 1$ and $\DS B_1(x) = x - \frac{1}{2}$.  We assume
 that $B_j'(x) = j B_{j-1}(x)$ for $1 \leq j < n$.  The derivative on both
 side of (\ref{BePo}) yields
 \begin{equation} \label{BePo1}
@@ -2074,7 +2074,7 @@ B_n'(x) + \sum_{j=0}^{n-2} \binom{n}{j} B_{j}(x)
 = \sum_{j=0}^{n-1} \binom{n}{j} B_j(x) \ .
 \]
 After cancelling the terms that are equal from both sides, we get
-$\displaystyle B_n'(x) = \binom{n}{n-1} B_{n-1}(x) = nB_{n-1}(x)$
+$\DS B_n'(x) = \binom{n}{n-1} B_{n-1}(x) = nB_{n-1}(x)$
 which proved (1).
 
 \stage{2}  From (1), we have that
@@ -2116,7 +2116,7 @@ for $n>0$.  Hence,
 \begin{equation}\label{BePo3}
 (-1)^n B_n(x+1) - B_n(-x)  = (-1)^n B_n(x) - B_n(1-x) \ .
 \end{equation}
-If $\displaystyle F(x) = (-1)^n B_n(x) - B_n(1-x)$ for all $x$,
+If $\DS F(x) = (-1)^n B_n(x) - B_n(1-x)$ for all $x$,
 then (\ref{BePo3}) shows that $F(x+1)=F(x)$ for all $x$.  Thus, $F$ is
 a periodic function of period $1$.  Since $F$ is also a polynomial, we
 must have that $F(x) = C_n$, a constant, for all $x$.
@@ -2141,7 +2141,7 @@ From (2) of Proposition~\ref{BePoProp} with $x=0$, we get that
 $B_j(0) = B_j(1)$ for $j\geq 2$.  Thus $G_n(0)= G_n(1)= 0$ for $n>0$.
 
 Moreover, from (2) and (4) of Proposition~\ref{BePoProp} with $x=0$, we get
-$\displaystyle B_j(0) = B_j(1) = (-1)^j B_j(0)$ for all $j\geq 2$.
+$\DS B_j(0) = B_j(1) = (-1)^j B_j(0)$ for all $j\geq 2$.
 Thus, $B_{2j-1}(0) = B_{2j-1}(1) = 0$ for $j=2$, $3$, \ldots
 
 We may assume that $n>1$.  Since $G_1(x) = B_2(x) - B_2(0)$ is a
@@ -2155,7 +2155,7 @@ always two distinct zeros in $]0,1[$ for $k=n$, $n-1$, \ldots, $2$.
 Since $G_n(0) = G_n(1) = 0$, the Mean Value Theorem on $[0,\eta]$ and
 $[\eta,1]$ yields two distinct zeros, $\eta_1 \in ]0,\eta[$ and
 $\eta_2 \in ]\eta,1[$, of
-$\displaystyle G_n'(x) = B_{2n}'(x) = 2nB_{2n-1}(x)$ in $]0,1[$.
+$\DS G_n'(x) = B_{2n}'(x) = 2nB_{2n-1}(x)$ in $]0,1[$.
 Thus $B_{2n-1}$ has two distinct zeros $\eta_1 < \eta_2$ in
 $]0,1[$.  The induction hypothesis is thus true for $k=n$.
 
@@ -2163,14 +2163,14 @@ Suppose that $B_{2k-1}$ for $2 < k \leq n$ has two distinct
 zeros $\eta_1 < \eta_2$ in $]0,1[$.  Since $B_{2k-1}$ vanishes also at
 $0$ and $1$, the Mean value Theorem on the intervals $[0,\eta_1]$,
 $[\eta_1,\eta_2]$ and $[\eta_2,1]$ yields three distinct zeros of
-$\displaystyle B_{2k-1}'(x) = (2k-1)B_{2k-2}(x)$ in $]0,1[$.
+$\DS B_{2k-1}'(x) = (2k-1)B_{2k-2}(x)$ in $]0,1[$.
 Let $\eta_3 \in ]0,\eta_1[$, $\eta_4\in ]\eta_1,\eta_2[$ and
 $\eta_5 \in ]\eta_2,1[$ be these three distinct zeros.
 Thus $B_{2n-2}$ has three distinct zeros $\eta_3 < \eta_4 < \eta_5$ in
 $]0,1[$.  The Mean Value Theorem on the intervals $[\eta_3,\eta_4]$ and
 $[\eta_4,\eta_5]$ yields two distinct zeros,
 $\eta_6 \in ]\eta_3,\eta_4[$ and $\eta_7\in ]\eta_4,\eta_5[$, of
-$\displaystyle B_{2k-2}'(x) = (2k-2)B_{2k-3}(x)$ in $]0,1[$.
+$\DS B_{2k-2}'(x) = (2k-2)B_{2k-3}(x)$ in $]0,1[$.
 Thus $B_{2k-3}$ has two distinct zeros $\eta_6 < \eta_7$ in $]0,1[$.
 The induction hypothesis  is true for $k-1$ instead of $k$.  This
 completes the proof by induction.
@@ -2364,11 +2364,11 @@ f'(x) &= f[x_0,x_1] + f[x_0,x_1,x_2]\,\big((x-x_0)+(x-x_1)\big) \\
 &\qquad + f[x_0,x_1,x_2,x,x]\,(x-x_0)(x-x_1)(x-x_2) \ ,
 \end{align*}
 where we have used the formula
-$\displaystyle \dfdx{f[x_0,x_1,x_2,x]}{x} = f[x_0,x_1,x_2,x,x]$.
+$\DS \dfdx{f[x_0,x_1,x_2,x]}{x} = f[x_0,x_1,x_2,x,x]$.
 Since
-$\displaystyle f[x_0,x_1,x_2,x] = \frac{1}{3!}\dydxn{f}{x}{3}(\xi)$
+$\DS f[x_0,x_1,x_2,x] = \frac{1}{3!}\dydxn{f}{x}{3}(\xi)$
 and
-$\displaystyle f[x_0,x_1,x_2,x,x] = \frac{1}{4!}\dydxn{f}{x}{4}(\eta)$
+$\DS f[x_0,x_1,x_2,x,x] = \frac{1}{4!}\dydxn{f}{x}{4}(\eta)$
 for some $\xi$ and $\eta$ in the smallest interval containing $x_0$,
 $x_1$, $x_2$ and $x$, we get
 \begin{align*}
@@ -2386,14 +2386,14 @@ equation becomes
 f'(a) &= f[a+2h,a+h] + f[a+2h,a+h,a]\,\big((-2h)+(-h)\big)
 + \frac{1}{3!}\dydxn{f}{x}{3}(\xi)\,\big((-2h)(-h)\big) \\
 &= \frac{f(a+h)-f(a+2h)}{-h} +
-\left(\frac{\displaystyle \frac{f(a)-f(a+h)}{-h}
+\left(\frac{\DS \frac{f(a)-f(a+h)}{-h}
 - \frac{f(a+h)-f(a+2h)}{-h}}{-2h}\right)(-3h) \\
 &\qquad + \frac{1}{3}\dydxn{f}{x}{3}(\xi)\,h^2 \\
 &=\frac{-f(a+2h)+4f(a+h)-3f(a)}{2h} 
 + \frac{1}{3}\dydxn{f}{x}{3}(\xi)\,h^2 \ .
 \end{align*}
 We get (\ref{dfapproxA}) with the truncation error
-$\displaystyle \frac{1}{3}\dydxn{f}{x}{3}(\xi)\,h^2$.
+$\DS \frac{1}{3}\dydxn{f}{x}{3}(\xi)\,h^2$.
 }
 
 \begin{question}
@@ -2431,12 +2431,12 @@ f''(x) &= 2\,f[x_0,x_1,x_2]
 &\quad + 2\,f[x_0,x_1,x_2,x,x,x]\,(x-x_0)(x-x_1)(x-x_2) \ ,
 \end{align*}
 where we have used (\ref{fddderf}) and the formula
-$\displaystyle \dfdx{f[x_0,x_1,x_2,x,x]}{x} = 2\,f[x_0,x_1,x_2,x,x,x]$.
+$\DS \dfdx{f[x_0,x_1,x_2,x,x]}{x} = 2\,f[x_0,x_1,x_2,x,x,x]$.
 Since
-$\displaystyle f[x_0,x_1,x_2,x] = \frac{1}{3!}\dydxn{f}{x}{3}(\xi)$,
-$\displaystyle f[x_0,x_1,x_2,x,x] = \frac{1}{4!}\dydxn{f}{x}{4}(\eta)$
+$\DS f[x_0,x_1,x_2,x] = \frac{1}{3!}\dydxn{f}{x}{3}(\xi)$,
+$\DS f[x_0,x_1,x_2,x,x] = \frac{1}{4!}\dydxn{f}{x}{4}(\eta)$
 and
-$\displaystyle f[x_0,x_1,x_2,x,x,x] = \frac{1}{5!}\dydxn{f}{x}{5}(\nu)$
+$\DS f[x_0,x_1,x_2,x,x,x] = \frac{1}{5!}\dydxn{f}{x}{5}(\nu)$
 for some $\xi$, $\eta$ and $\nu$ in the smallest interval containing
 $x_0$, $x_1$, $x_2$ and $x$, we get
 \begin{align*}
@@ -2451,14 +2451,14 @@ We take $x_0=a$, $x_1 = a+h$ and $x_2 = a+2h$.  Hence, for $x=a$,  we get
 f''(a) &= 2\,f[a,a+h,a+2h]
 + \frac{2}{3!}\dydxn{f}{x}{3}(\xi)\,\big((-h) + (-2h)\big)
 + \frac{2}{4!}\dydxn{f}{x}{4}(\eta)\,(-h)(-2h) \\
-&= 2\,\left(\frac{\displaystyle\frac{f(a+2h)-f(a+h)}{h} -
+&= 2\,\left(\frac{\DS\frac{f(a+2h)-f(a+h)}{h} -
 \frac{f(a+h)-f(a)}{h}}{2h}\right) - \dydxn{f}{x}{3}(\xi)\,h
 +\frac{1}{3!}\dydxn{f}{x}{4}(\eta)\,h^2 \\
 &= \frac{ f(a)-2f(a+h)+f(a+2h)}{h^2} -\dydxn{f}{x}{3}(\xi)\,h
 +\frac{1}{3!}\dydxn{f}{x}{4}(\eta)\,h^2 \ .
 \end{align*}
 We get (\ref{ddfapprox}) with the truncation error
-$\displaystyle
+$\DS
 -\dydxn{f}{x}{3}(\xi)\,h+\frac{1}{3!}\dydxn{f}{x}{4}(\eta)\,h^2$.
 }
 
@@ -2472,7 +2472,7 @@ L(f) = L_h(f) + \sum_{j=1}^\infty a_j h^{2j-1} \ .
 \end{question}
 
 \sol{\SOL}{
-Let $\displaystyle L^0_h(f) = L_h(f)$.  We prove by induction on $n$ that
+Let $\DS L^0_h(f) = L_h(f)$.  We prove by induction on $n$ that
 \begin{equation}\label{Binduct1}
 L(f) = L_{h/2^k}^n(f) + \sum_{j=n+1}^\infty
 \frac{(2^{2n-1}-2^{2j-1}) \ldots (2^3-2^{2j-1})(2-2^{2j-1})}
@@ -2525,8 +2525,8 @@ L(f) &= L_{h/2^{k+1}}^m(f) + \sum_{j=m+1}^\infty
 \end{align}
 for $k\geq m$.
 
-If we subtract (\ref{questB3}) from $\displaystyle 2^{2m+1}$
-times (\ref{questB4}) and divide by $\displaystyle 2^{2m+1}-1$, we get that
+If we subtract (\ref{questB3}) from $\DS 2^{2m+1}$
+times (\ref{questB4}) and divide by $\DS 2^{2m+1}-1$, we get that
 \begin{align*}
 L(f) &= L_{h/2^{k+1}}^{m+1}(f) \\
 &\quad + \frac{1}{2^{2m+1}-1}
@@ -2570,7 +2570,7 @@ The general formula is
 L_{h/2^k}^n(f) = \frac{2^{2n-1} L_{h/2^k}^{n-1}(f) -
   L_{h/2^{k-1}}^{n-1}(f)}{2^{2n-1} -1}
 \]
-for $k \geq n > 0$ with a truncation error of $\displaystyle O(h^{2n+1})$.
+for $k \geq n > 0$ with a truncation error of $\DS O(h^{2n+1})$.
 }
 
 \begin{question}
@@ -2583,7 +2583,7 @@ L(f) = L_h(f) + \sum_{j=1}^\infty a_j h^{3j} \ .
 \end{question}
 
 \sol{\SOL}{
-Let $\displaystyle L^0_h(f) = L_h(f)$.  We prove by induction on $n$ that
+Let $\DS L^0_h(f) = L_h(f)$.  We prove by induction on $n$ that
 \begin{equation}\label{Cinduct1}
 L(f) = L_{h/2^k}^n(f) + \sum_{j=n+1}^\infty
 \frac{(2^{3n}-2^{3j}) \ldots (2^6-2^{3})(2^3-2^{3j})}
@@ -2601,8 +2601,8 @@ If we replace $h$ by $h/2$ in (\ref{questC1}), we get
 \begin{equation}\label{questC2}
 L(f) = L_{h/2}(f)+ \sum_{j=1}^\infty a_j\,\left(\frac{h}{2}\right)^{3j} \ .
 \end{equation}
-If we subtract (\ref{questC1}) from $\displaystyle 2^3$ times
-(\ref{questC2}) and divide by $\displaystyle 2^3-1$, we get that
+If we subtract (\ref{questC1}) from $\DS 2^3$ times
+(\ref{questC2}) and divide by $\DS 2^3-1$, we get that
 \begin{align*}
   L(f) &= L_{h/2}^1(f) + \frac{1}{2^3-1}\left(
 2^3 \sum_{j=1}^\infty a_j\,\left(\frac{h}{2}\right)^{3j}
@@ -2637,8 +2637,8 @@ L(f) &= L_{h/2^{k+1}}^m(f) + \sum_{j=m+1}^\infty
 \end{align}
 for $k\geq m$.
 
-If we subtract (\ref{questC3}) from $\displaystyle 2^{3m+3}$ times
-(\ref{questC4}) and divide by $\displaystyle 2^{3m+3}-1$, we get that
+If we subtract (\ref{questC3}) from $\DS 2^{3m+3}$ times
+(\ref{questC4}) and divide by $\DS 2^{3m+3}-1$, we get that
 \begin{align*}
 &L(f) = L_{h/2^{k+1}}^{m+1}(f) \\
 &\quad + \frac{1}{2^{3m+3}-1}
@@ -2679,13 +2679,13 @@ The general formula is
 L_{h/2^k}^n(f) = \frac{2^{3n} L_{h/2^k}^{n-1}(f) -
   L_{h/2^{k-1}}^{n-1}(f)}{2^{3n} -1}
 \]
-for $k \geq n > 0$ with a truncation error of $\displaystyle O(h^{3n+3})$.
+for $k \geq n > 0$ with a truncation error of $\DS O(h^{3n+3})$.
 }
 
 \begin{question}
 Use Richardson extrapolation with the centrale difference formula to
 approximate the derivative of $f(x)=\sin(\ln(x))$ at $x=3$ with an
-accuracy of $\displaystyle 10^{-7}$.  Start with $h=0.8$.
+accuracy of $\DS 10^{-7}$.  Start with $h=0.8$.
 \end{question}
 
 \sol{\SOL}{
@@ -2722,13 +2722,13 @@ h & L_h(f) & & L_h^1(f) & & L_h^2(f) \\
 }
 All the values in the table have been rounded.
 We stop the procedure as soon as
-$\displaystyle |L_h^i(f) - L_{2h}^{i-1}(f)|$ gets
-smaller than $\displaystyle 10^{-7}$ and take
-$\displaystyle L_h^i(f)$ as our approximation of
+$\DS |L_h^i(f) - L_{2h}^{i-1}(f)|$ gets
+smaller than $\DS 10^{-7}$ and take
+$\DS L_h^i(f)$ as our approximation of
 $f'(3)$.  We have also included the ratios defined in
 (\ref{checkRich}) to ensure that the approximating values
-$\displaystyle L_h^i(h)$ can be trusted.  We have that
-$\displaystyle f'(3) \approx L_{0.05}^4(f) \approx 0.15161081$ meets
+$\DS L_h^i(h)$ can be trusted.  We have that
+$\DS f'(3) \approx L_{0.05}^4(f) \approx 0.15161081$ meets
 our criterion of accuracy.
 }
 
@@ -2737,9 +2737,9 @@ Use the composite midpoint rule to approximate
 \[
 \int_0^{\pi/2}\,\sin(x)\dx{x}
 \]
-with an accuracy of $\displaystyle 10^{-5}$.  You have to find a number of
+with an accuracy of $\DS 10^{-5}$.  You have to find a number of
 subintervals of $[1,3]$ (and so a step size $h$) such that the local
-truncation error is smaller than $\displaystyle 10^{-5}$.
+truncation error is smaller than $\DS 10^{-5}$.
 \end{question}
 
 % error <= |h^2 (b-a)|/6  max_{a<=x<=b} |f''(x)|
@@ -2752,9 +2752,9 @@ Use the composite midpoint rule to approximate
 \[
 \int_1^3 \left( x \ln(x) + \frac{x^3}{24} - 5x^2 \right) \dx{x}
 \]
-with an accuracy of $\displaystyle 10^{-5}$.  You have to find a number of
+with an accuracy of $\DS 10^{-5}$.  You have to find a number of
 subintervals of $[1,3]$ (and so a step size $h$) such that the local
-truncation error is smaller than $\displaystyle 10^{-5}$.
+truncation error is smaller than $\DS 10^{-5}$.
 \end{question}
 
 \sol{\SOL}{
@@ -2762,16 +2762,16 @@ Let $a=1$, $b=3$, $h=(b-a)/2m = 1/m$ and
 $x_i = 1 + i\,h$ for $i=0$, $1$, $2$, \ldots, $n=2m$.
 
 The local truncation error for the composite midpoint rule is
-$\displaystyle - \frac{f''(\xi)(b-a)}{6}\,h^2$ for some
+$\DS - \frac{f''(\xi)(b-a)}{6}\,h^2$ for some
 $\xi \in [a,b]$.  We seek a small $m$ for which this 
-truncation error will be smaller in absolute value than $\displaystyle 10^{-5}$.
+truncation error will be smaller in absolute value than $\DS 10^{-5}$.
 We have
 \[
 f''(x) = \frac{1}{x} + \frac{x}{4} -10 \ .
 \]
 We use the Extremum Theorem to find the maximum of $f''(x)|$ on
 $[1,3]$.  We have that $x=2$ is the only critical point of
-$\displaystyle f^{(3)}(x) = -1/x^2 + 1/4$ in the interval $[1,3]$.  Since
+$\DS f^{(3)}(x) = -1/x^2 + 1/4$ in the interval $[1,3]$.  Since
 $f''(2) = -9 < f''(3) = -107/12 < f''(1) = -35/4$, we have that
 $-9 \leq f''(x) \leq -35/4$ for $1 \leq x \leq 3$.  Thus,
 $|f''(x)| \leq 9$ for $1\leq x \leq 3$.  Hence,
@@ -2780,8 +2780,8 @@ $|f''(x)| \leq 9$ for $1\leq x \leq 3$.  Hence,
 = \frac{|f''(\xi)|}{3m^2} \leq \frac{3}{m^2}
 \]
 because $1 \leq \xi \leq 3$.  We chose $m$ that satisfies
-$\displaystyle \frac{3}{m^2} < 10^{-5}$; namely,
-$\displaystyle m > \sqrt{ 3 \times 10^5} \approx 547.72$.
+$\DS \frac{3}{m^2} < 10^{-5}$; namely,
+$\DS m > \sqrt{ 3 \times 10^5} \approx 547.72$.
 
 With $m=548$, we get
 \begin{align*}
@@ -2798,9 +2798,9 @@ integral
 \[
 \int_2^4\, (x+1)^{1/3} \dx{x}
 \]
-with an accuracy of $\displaystyle 10^{-5}$.  You have to find a number of
+with an accuracy of $\DS 10^{-5}$.  You have to find a number of
 subintervals of $[2,4]$ (and so a step size $h$) such that the local
-truncation error is smaller than $\displaystyle 10^{-5}$.
+truncation error is smaller than $\DS 10^{-5}$.
 \end{question}
 
 \sol{\SOL}{
@@ -2808,10 +2808,10 @@ Let $a=2$, $b=4$, $h=(b-a)/2m = 1/m$ and
 $x_i = 2 + i\,h$ for $i=0$, $1$, $2$, \ldots, $n=2m$.
 
 The local truncation error for the composite Simpson rule is
-$\displaystyle - \frac{h^4(b-a)}{180}\,f^{(4)}(\xi)$
+$\DS - \frac{h^4(b-a)}{180}\,f^{(4)}(\xi)$
 for some $\xi \in [a,b]$.  We seek a small $m$ for which this
 truncation error will be smaller in absolute value than
-$\displaystyle 10^{-5}$.
+$\DS 10^{-5}$.
 We have that
 \[
 f^{(4)}(x) = -\frac{80}{81} \, (x+1)^{-11/3} \ .
@@ -2823,8 +2823,8 @@ Hence,
 \leq \frac{8}{3^6\,m^4} \, 3^{-11/3} = \frac{8}{3^{29/3}\,m^4}
 \]
 because $2 \leq \xi \leq 4$.  We chose $m$ that satisfies
-$\displaystyle \frac{8}{3^{29/3}\,m^4} < 10^{-5}$; namely,\\
-$\displaystyle m > \left( 8 \times 10^5 / 3^{29/3}\right)^{1/4}
+$\DS \frac{8}{3^{29/3}\,m^4} < 10^{-5}$; namely,\\
+$\DS m > \left( 8 \times 10^5 / 3^{29/3}\right)^{1/4}
 \approx 2.102468339$\ .
 
 With $m=3$, we get that
@@ -2843,7 +2843,7 @@ value of $n$ (and $h$) that will give an approximation of
 \[
 \int_1^3 x^2 \ln(x) \dx{x}
 \]
-to within $\displaystyle 10^{-5}$ and compute the approximation with
+to within $\DS 10^{-5}$ and compute the approximation with
 this value of $n$.\\
 \subQ{a} The composite midpoint rule.\\
 \subQ{b} The composite trapezoidal rule.\\
@@ -2854,8 +2854,8 @@ Compare with the exact answer.   \label{diffQ9}
 
 \sol{\SOL}{
 Before answering this question, we note that $f'(x) = 2x\ln(x) + x$,
-$f''(x) = 2\ln(x)+3$, $\displaystyle f^{(3)}(x) = 2/x$ and
-$\displaystyle f^{(4)}(x) = -2/x^2$.
+$f''(x) = 2\ln(x)+3$, $\DS f^{(3)}(x) = 2/x$ and
+$\DS f^{(4)}(x) = -2/x^2$.
 
 Moreover, a simple integration by parts gives
 \[
@@ -2867,7 +2867,7 @@ the composite methods.
 
 \subQ{a} For the midpoint rule, we choose $n = 2m$ and
 $h = (b-a)/n = 1/m$ such that the truncation error
-$\displaystyle \left| \frac{f''(\eta)(b-a)}{6} \, h^2  \right|$ for
+$\DS \left| \frac{f''(\eta)(b-a)}{6} \, h^2  \right|$ for
 some $\eta \in [1,3]$ satisfies
 \[
 \left| \frac{f''(\eta)(b-a)}{6} \, h^2  \right|
@@ -2885,11 +2885,11 @@ We take $m=417$.  It follows that $h=1/417$ and
 \sum_{j=1}^{417} f(x_{2j-1}) \approx 6.99861347 \ ,
 \]
 where $x_j = 1 + j\,h = 1 + j/417$.  The absolute error is
-about $\displaystyle 0.82348266 \times 10^{-5}$.
+about $\DS 0.82348266 \times 10^{-5}$.
 
 \subQ{b} For the trapezoidal rule, we choose $n$ and
 $h = (b-a)/n = 2/n$ such that the truncation error
-$\displaystyle \left| \frac{f''(\eta)(b-a)}{12} \, h^2 \right|$ for
+$\DS \left| \frac{f''(\eta)(b-a)}{12} \, h^2 \right|$ for
 some $\eta \in [1,3]$ satisfies
 \[
 \left| \frac{f''(\eta)(b-a)}{12} \, h^2 \right|
@@ -2909,11 +2909,11 @@ We take $n= 589$.  It follows that $h=2/589$ and
 \approx 6.99862996 \ ,
 \]
 where $x_j = 1 + j\,h = 1 + 2j/589$.  The absolute error is
-about $\displaystyle 0.82551686 \times 10^{-5}$.
+about $\DS 0.82551686 \times 10^{-5}$.
 
 \subQ{c} For the Simpson rule, we choose $n = 2m$ and
 $h = (b-a)/n = 1/m$ such that the truncation error
-$\displaystyle \left| \frac{f^{(4)}(\eta)(b-a)}{180} \, h^4  \right|$
+$\DS \left| \frac{f^{(4)}(\eta)(b-a)}{180} \, h^4  \right|$
 for some $\eta \in [1,3]$ satisfies
 \[
 \left| \frac{f^{(4)}(\eta)(b-a)}{180} \, h^4  \right|
@@ -2932,7 +2932,7 @@ We take $m=7$.  It follows that $h=1/7$ and
 + f(x_{14}) \right) \approx 6.99861865 \ ,
 \]
 where $x_j = 1 + j\,h = 1 + j/7$.    The absolute error is
-about $\displaystyle 0.30640240 \times 10^{-5}$.
+about $\DS 0.30640240 \times 10^{-5}$.
 }
 
 \begin{question}
@@ -2948,13 +2948,13 @@ There are two ways to answer this question.  We could use the formula
 \]
 for some $\xi$ between $a$ and $b$.  The truncation error will be $0$
 for all polynomials of degree less than $4$ because
-$\displaystyle f^{(4)}(x)=0$ for
+$\DS f^{(4)}(x)=0$ for
 all polynomials $f$ of degree less than $4$.
 
 The other way to answer the question is to proceed directly.  By
 linearity of the integral, it is enough to show that Simpson's rule is
-exact for $\displaystyle x^i$ with $i=0$, $1$, $2$ and $3$.  For
-$\displaystyle f(x) = x^i$, Simpson's rule becomes
+exact for $\DS x^i$ with $i=0$, $1$, $2$ and $3$.  For
+$\DS f(x) = x^i$, Simpson's rule becomes
 \begin{equation} \protect\label{SimpsonQ10}
 \int_a^b x^i \dx{x} \approx \frac{b-a}{6} \left(a^i + 4
 \left(\frac{a+b}{2}\right)^i + b^i\right) \ .
@@ -3008,7 +3008,7 @@ Use Romberg integration to approximate the integral
 \[
 \int_2^4 (x+1)^{1/3} \dx{x}
 \]
-with an accuracy of $\displaystyle 10^{-5}$.  Start with two subdivisions of the
+with an accuracy of $\DS 10^{-5}$.  Start with two subdivisions of the
 interval $[2,4]$.
 \end{question}
 
@@ -3053,15 +3053,15 @@ n & h & L_h^0(f) & & L^1_h(f) & L^2_h(f) \\
 \]
 }
 Note that
-$\displaystyle L_{1/2}^1(f) = (4L_{1/2}^0(f)-L_1^0(f))/(4-1)$,
-$\displaystyle L_{1/4}^1(f) = (4L_{1/4}^0(f)-L_{1/2}^0(f))/(4-1)$
+$\DS L_{1/2}^1(f) = (4L_{1/2}^0(f)-L_1^0(f))/(4-1)$,
+$\DS L_{1/4}^1(f) = (4L_{1/4}^0(f)-L_{1/2}^0(f))/(4-1)$
 and
-$\displaystyle L_{1/4}^2(f) = (4^2L_{1/4}^1(f)-L_{1/2}^1(f))/(4^2-1)$.
+$\DS L_{1/4}^2(f) = (4^2L_{1/4}^1(f)-L_{1/2}^1(f))/(4^2-1)$.
 
 The requested approximation is $3.16734826$ because
-$\displaystyle \left| L_{1/2}^1(f) - L_1^0(f) \right| \approx 0.0038295
+$\DS \left| L_{1/2}^1(f) - L_1^0(f) \right| \approx 0.0038295
 > 10^{-5}$ and
-$\displaystyle \left| L_{1/4}^2(f) - L_{1/2}^1(f) \right| \approx
+$\DS \left| L_{1/4}^2(f) - L_{1/2}^1(f) \right| \approx
 0,49139 \times 10^{-5}  < 10^{-5}$.
 }
 
@@ -3070,7 +3070,7 @@ Use Romberg integration to approximate the integral
 \[
 \int_3^5 (x-2)^{1/4} \dx{x}
 \]
-with an accuracy of $\displaystyle 10^{-5}$.  Start with one subdivision of the
+with an accuracy of $\DS 10^{-5}$.  Start with one subdivision of the
 interval $[3,5]$.
 \end{question}
 
@@ -3112,16 +3112,16 @@ h & L_h^0(f) & & L_h^1(f) & & L_h^2(f) \\
 }
 All the values in the table have been rounded.
 
-We stopped the procedure when $\displaystyle |L_h^i(f) - L_{2h}^{i-1}(f)|$ got
-smaller than $\displaystyle 10^{-5}$ and took
-$\displaystyle L_h^i(f)$ as our approximation of the integral.  We have that
+We stopped the procedure when $\DS |L_h^i(f) - L_{2h}^{i-1}(f)|$ got
+smaller than $\DS 10^{-5}$ and took
+$\DS L_h^i(f)$ as our approximation of the integral.  We have that
 \[
 \int_3^5 (x-2)^{1/4} \dx{x} \approx L_{0.125}^4 \approx 2.35857763
 \]
 with the required accuracy.
 
 We have also included the ratios defined in (\ref{checkRich}) to check
-if the values of $\displaystyle L_h^i(h)$ can be trusted.  However, we
+if the values of $\DS L_h^i(h)$ can be trusted.  However, we
 have ignored this information.
 }
 
@@ -3131,7 +3131,7 @@ Use Romberg integration to approximate the integral
 \int_1^3 x^2 \ln(x) \dx{x} \ .
 \]
 Stop when the difference between two successive iterations on the
-diagonal line is smaller than $\displaystyle 10^{-5}$.
+diagonal line is smaller than $\DS 10^{-5}$.
 \label{diffQ13}
 \end{question}
 
@@ -3172,9 +3172,9 @@ h & L_h^0(f) & & L_h^1(f) & & L_h^2(f) \\
 \]
 }
 All the values in the table have been rounded.
-We stopped the procedure when $\displaystyle |L_h^i(f) - L_{2h}^{i-1}(f)|$ got
-smaller than $\displaystyle 10^{-7}$ and took
-$\displaystyle L_h^i(f)$ as our approximation of
+We stopped the procedure when $\DS |L_h^i(f) - L_{2h}^{i-1}(f)|$ got
+smaller than $\DS 10^{-7}$ and took
+$\DS L_h^i(f)$ as our approximation of
 the integral.  We have that
 \[
 \int_1^3 x^2\,\ln(x) \dx{x} \approx L_{0.125}^4 \approx 6.99862171
@@ -3187,16 +3187,16 @@ In question~\ref{diffQ9}, we found that
 6.99862170912\ldots
 \]
 So, the absolute error of our approximation $6.99862171$ is about
-$\displaystyle -0.88 \times 10^{-9}$.  This is better than expected.
+$\DS -0.88 \times 10^{-9}$.  This is better than expected.
 
 We have also included the ratios defined in (\ref{checkRich}) to check
-if the values of $\displaystyle L_h^i(h)$ can be trusted.  However, we
+if the values of $\DS L_h^i(h)$ can be trusted.  However, we
 have ignored this information.  The approximation of the value of the integral
 suggested by the ratios defined in (\ref{checkRich}) is
-$\displaystyle L_{0.25}^2(f) \approx 6.99862022$ associated to the ratio
+$\DS L_{0.25}^2(f) \approx 6.99862022$ associated to the ratio
 $15.17336693$.  The absolute error for this approximation is about
-$\displaystyle 0.14891 \times 10^{-5}$.  Despite the fact that the
-ratios were not respecting the rule of $\displaystyle 4^i$, we did the
+$\DS 0.14891 \times 10^{-5}$.  Despite the fact that the
+ratios were not respecting the rule of $\DS 4^i$, we did the
 right thing by proceeding with the computations.  The problem with the
 computations of the ratios defined in (\ref{checkRich}) is that they
 have to be done with very high precision because we are dividing by
@@ -3242,7 +3242,7 @@ the integral
 \[
 \int_3^5 (x-2)^{1/4} \dx{x}
 \]
-with an accuracy of $\displaystyle 10^{-5}$.  Start with one subdivision of the
+with an accuracy of $\DS 10^{-5}$.  Start with one subdivision of the
 interval $[3,5]$.
 \end{question}
 
@@ -3252,10 +3252,10 @@ Section~\ref{SectAdaptQMethod} to approximate
 \[
 \int_3^5 (x-2)^{1/4} \dx{x}
 \]
-with an accuracy of $\displaystyle 10^{-5}$.  For this purpose and to
+with an accuracy of $\DS 10^{-5}$.  For this purpose and to
 simplify the discussion, let $S(a,b,h)$ be the result of the composite
 Simpson's Rule, Theorems~\ref{SimpsonRule} and \ref{CSR}, for
-$\displaystyle \int_a^b (x-2)^{1/4} \dx{x}$ with $m = (b-a)/(2h)$.
+$\DS \int_a^b (x-2)^{1/4} \dx{x}$ with $m = (b-a)/(2h)$.
 The values displayed in the following computations have been rounded
 to $12$ significant digits though the computations have been
 done with as many digits as possible.
@@ -3268,12 +3268,12 @@ i & 1 & 2 & 3 & 4 & 5 \\
 x_i & 3 & 7/2 & 4 & 9/2 & 5
 \end{array}
 \]
-$h=1$, $\displaystyle T=10^{-5}$,
+$h=1$, $\DS T=10^{-5}$,
 $S_{[3,5]} = S(3,5,1) \approx 2.35763415765$,\\
 $S_1 = S(3,4,0.5) \approx 1.10265579897$,
 $S_2 = S(4,5,0.5) \approx 1.25583580778$,\\
 $\tilde{S}_{[3,5]} = S(3,5,0.5) \approx S_1+S_2 = 2.35849160675$ and\\
-$\displaystyle \tilde{R}_{[3,5]} \approx
+$\DS \tilde{R}_{[3,5]} \approx
 \frac{1}{15}\left| \tilde{S}_{[3,5]} - S_{[3,5]}\right|
 \approx 0.571633 \times 10^{-4} \not< 10^{-5}$.
 
@@ -3285,16 +3285,16 @@ i & 1 & 2 & 3 & 4 & 5 \\
 x_i & 3 & 13/4 & 7/2 & 15/4 & 4
 \end{array}
 \]
-$h=0.5$, $\displaystyle T=0.5\times 10^{-5}$ (store for $[4, 5]$),
+$h=0.5$, $\DS T=0.5\times 10^{-5}$ (store for $[4, 5]$),
 $S_{[3,4]} = S(3,4,0.5) \approx 1.10265579897$,\\
 $S_1 = S(3,3.5,0.25) \approx 0.528013914455$,
 $S_2 = S(3.5,4,0.25) \approx 0.574711858524$,\\
 $\tilde{S}_{[3,4]} = S(3,4,0.25) = S_1+S_2 \approx 1.10272577298$ and\\
-$\displaystyle \tilde{R}_{[3,4]} \approx
+$\DS \tilde{R}_{[3,4]} \approx
 \frac{1}{15}\left| \tilde{S}_{[3,4]} - S_{[3,4]}\right|
 \approx 0.466493 \times 10^{-5} < 0.5 \times 10^{-5}$.\\
 We accept $\tilde{S}_{[3,4]} \approx 1.10272577298$ as an approximation of
-$\displaystyle \int_3^4 (x-2)^{1/4} \dx{x}$.
+$\DS \int_3^4 (x-2)^{1/4} \dx{x}$.
 
 \subI{Level 1}
 \[
@@ -3304,16 +3304,16 @@ i & 1 & 2 & 3 & 4 & 5 \\
 x_i & 4 & 17/4 & 9/2 & 19/4 & 5
 \end{array}
 \]
-$h=0.5$, $\displaystyle T=0.5\times 10^{-5}$,
+$h=0.5$, $\DS T=0.5\times 10^{-5}$,
 $S_{[4,5]} = S(4,5,0.5) \approx 1.25583580778$,\\
 $S_1 = S(4,4.5,0.25) \approx 0.612135002521$,
 $S_2 = S(4.5, 5, 0.25) \approx 0.643710549703$,\\
 $\tilde{S}_{[4,5]} = S(4,5,0.25) = S_1+S_2 \approx 1.25584555222$ and\\
-$\displaystyle \tilde{R}_{[4,5]} \approx
+$\DS \tilde{R}_{[4,5]} \approx
 \frac{1}{15}\left| \tilde{S}_{[4,5]} - S_{[4,5]}\right|
 \approx 0.649630 \times 10^{-6} < 0.5 \times 10^{-5}$.\\
 We accept $\tilde{S}_{[4,5]}\approx 1.25584555222$ as an approximation of
-$\displaystyle \int_4^5 (x-2)^{1/4} \dx{x}$.
+$\DS \int_4^5 (x-2)^{1/4} \dx{x}$.
 
 \subI{Level 0} We are done.  We have found that
 \begin{align*}
@@ -3332,15 +3332,15 @@ less than or equal to $4$.
   12\,f(1/2) + 32\,f(3/4) + 7\,f(1)\right) \ .
 \end{equation}
 Use this formula to deduce a formula for the integral
-$\displaystyle \int_a^b f(x)\dx{x}$, where $a$ and $b$ are any real
+$\DS \int_a^b f(x)\dx{x}$, where $a$ and $b$ are any real
 numbers.
 \end{question}
 
 \sol{\SOL}{
 Since (\ref{NF01}) is a linear functional with respect to $f$ and
 since all polynomial of degree at most $4$ are linear combinations of
-the monomials $\displaystyle x^i$ for $0 \leq i \leq 4$, it is enough to show
-that (\ref{NF01}) is true for $\displaystyle f(x) = x^i$ with
+the monomials $\DS x^i$ for $0 \leq i \leq 4$, it is enough to show
+that (\ref{NF01}) is true for $\DS f(x) = x^i$ with
 $0\leq i \leq 4$ to
 prove that (\ref{NF01}) is true for all polynomials of degree less
 than or equal to $4$.  For instance, for $i=4$, we get
@@ -3357,7 +3357,7 @@ We leave to the reader the task of verifying the equality for the
 other monomials.
 
 If we substitute $y = (b-a)x + a$ in
-$\displaystyle \int_a^b\,f(y)\dx{y}$, we get
+$\DS \int_a^b\,f(y)\dx{y}$, we get
 \begin{align*}
 \int_a^b\,f(y)\dx{y} &= \int_0^1 f\big( (b-a)x+a\big)\, (b-a)\dx{x} \\
 &= \frac{b-a}{90}\bigg(7\,f(a)+32\,f\left(\frac{3a+b}{4}\right) +
@@ -3375,20 +3375,20 @@ that is exact for polynomials of degree less or equal to $2$.
 \end{question}
 
 \sol{\SOL}{
-For $\displaystyle f(x) = x^i$, the formula is
+For $\DS f(x) = x^i$, the formula is
 \[
 \int_0^1 x^i \dx{x} \approx A\, \left( x_0^i + x_1^i \right) \ .
 \]
-For $i=0$, we have $\displaystyle 1 = \int_0^1 \dx{x} = 2\,A$.
+For $i=0$, we have $\DS 1 = \int_0^1 \dx{x} = 2\,A$.
 Thus, $A = 1/2$.  For $i=1$, we have
-$\displaystyle
+$\DS
 \frac{1}{2} = \int_0^1 x\dx{x} = A \,(x_0+x_1) =
 \frac{1}{2}(x_0-x_1)$.  Thus
 \begin{equation} \label{Q17equ1}
   1 = x_0+x_1 \ .
 \end{equation}
 For $i=2$, we have
-$\displaystyle
+$\DS
 \frac{1}{3} = \int_0^1 x^2 \dx{x} = A\, (x_0^2+x_1^2)
 = \frac{1}{2} (x_0^2+x_1^2)$.  Thus,
 \begin{equation} \label{Q17equ2}
@@ -3396,10 +3396,10 @@ $\displaystyle
 \end{equation}
 If we solve the system of equations given by (\ref{Q17equ1}) and
 (\ref{Q17equ2}) for $x_0$ and $x_1$, we get two solutions
-$\displaystyle x_0= \frac{1}{2} + \frac{1}{2\sqrt{3}}$ and
-$\displaystyle x_1= \frac{1}{2} - \frac{1}{2\sqrt{3}}$, and
-$\displaystyle x_0= \frac{1}{2} - \frac{1}{2\sqrt{3}}$ and
-$\displaystyle x_1= \frac{1}{2} + \frac{1}{2\sqrt{3}}$.
+$\DS x_0= \frac{1}{2} + \frac{1}{2\sqrt{3}}$ and
+$\DS x_1= \frac{1}{2} - \frac{1}{2\sqrt{3}}$, and
+$\DS x_0= \frac{1}{2} - \frac{1}{2\sqrt{3}}$ and
+$\DS x_1= \frac{1}{2} + \frac{1}{2\sqrt{3}}$.
 Hence, we find that the formula
 \[
 \int_0^1 x^i \dx{x} \approx \frac{1}{2}\left(
@@ -3418,7 +3418,7 @@ is exact for polynomials of degree as high as possible.
 \end{question}
 
 \sol{\SOL}{
-For $\displaystyle f(x) = x^i$, the formula is
+For $\DS f(x) = x^i$, the formula is
 \[
 \int_0^2 x^{i+1} \dx{x} \approx A\,x^i\big|_{x=0} + B\,x^i\big|_{x=1}
 + C\,x^i\big|_{x=2}
@@ -3462,9 +3462,9 @@ f(x) = \sum_{k=0}^n \left(a_k\,\cos((2k+1)x) + b_k\sin(k\,x)\right) \ .
 \end{question}
 
 \sol{\SOL}{
-We get $\displaystyle A + B = \int_0^{2\pi} \dx{x} = 2\pi$ when $k=0$
+We get $\DS A + B = \int_0^{2\pi} \dx{x} = 2\pi$ when $k=0$
 and
-$\displaystyle A \cos(0) + B \cos(\pi) = \int_0^{2\pi} \cos(x) \dx{x}
+$\DS A \cos(0) + B \cos(\pi) = \int_0^{2\pi} \cos(x) \dx{x}
 = \sin(x)\Big|_{x=0}^{2\pi} = 0$ when $k=1$.
 Thus $A+B=2\pi$ and $A-B=0$.  We find $A=B=\pi$.
 The requested formula is
@@ -3539,7 +3539,7 @@ Hence,
 + \int_a^b f[x_0,x_1,x] \left(x-x_0\right)\left(x-x_1\right) \dx{x} \ .
 \]
 
-Since $\displaystyle f[x_0]= f(x_0) = f\left(\frac{2a+b}{2}\right)$
+Since $\DS f[x_0]= f(x_0) = f\left(\frac{2a+b}{2}\right)$
 and
 \[
 f[x_0,x_1] = 
@@ -3592,7 +3592,7 @@ To simplify the computation, we use integration by parts to get
 \end{align*}
 for some constants $C_1$ and $C_2$.  It is interesting to note that if
 we subtract the second integral from the first integral, we find
-that $\displaystyle C_2 - C_1 = (x_1-x_0)^3/6$.
+that $\DS C_2 - C_1 = (x_1-x_0)^3/6$.
 \begin{align*}
 &\int_a^b \left| \left(x-x_0\right)\left(x-x_1\right) \right| \dx{x} \\
 &\quad = \int_a^{x_0} \left(x-x_0\right)\left(x-x_1\right) \dx{x}
@@ -3631,7 +3631,7 @@ Use polynomial interpolation to derive a formula of the form
 + C\,f\left(a+\frac{3(b-a)}{4}\right) \ .
 \]
 Find a bound on the truncation error if there exists a constant $M$
-such that $\displaystyle |f^{(3)}(x)|<M$ for all $x\in[a,b]$.
+such that $\DS |f^{(3)}(x)|<M$ for all $x\in[a,b]$.
 \end{question}
 
 \sol{\SOL}{
@@ -3753,7 +3753,7 @@ $x=(a+b)/2$, we have
 \end{align*}
 Using integration by parts with $u(x) = (x-x_0)(x-x_1)$ and
 $v'(x) = x-x_2$, we get $u'(x) = (x-x_0) + (x-x_1)$,
-$\displaystyle v(x) = (x-x_2)^2/2$ and
+$\DS v(x) = (x-x_2)^2/2$ and
 \begin{align*}
 &\int (x-x_0)(x-x_1)(x-x_2) \dx{x}
 = u(x)v(x) - \int u'(x) v(x) \dx{x} \\  
@@ -3762,9 +3762,9 @@ $\displaystyle v(x) = (x-x_2)^2/2$ and
 - \frac{1}{2} \int (x-x_1)(x-x_2)^2\dx{x} \ .
 \end{align*}
 Again, using integration by parts with $u(x) = (x-x_0)$ and
-$\displaystyle v'(x) = (x-x_2)^2$ for the first integral on the right hand side
+$\DS v'(x) = (x-x_2)^2$ for the first integral on the right hand side
 of the equation above, and $u(x) = (x-x_0)$ and
-$\displaystyle v'(x) = (x-x_2)^2$
+$\DS v'(x) = (x-x_2)^2$
 for the second integral on the right hand side of the equation above,
 we get
 \begin{align*}
@@ -3812,7 +3812,7 @@ of the form
 \]
 with its truncation error.\\
 \subQ{b} Use the formula in (a) to deduce a formula for the integral
-$\displaystyle \int_a^b f(x)\dx{x}$ and its truncation error.\\
+$\DS \int_a^b f(x)\dx{x}$ and its truncation error.\\
 \subQ{c} Use the formula that you have found in (b) to approximate the
 value of the solution of the differential equation $y' = f(x,y)$ at
 $a+h$ if you know the values of $y(a)$, $y(a-h)$ and $y(a-2h)$.
@@ -3856,7 +3856,7 @@ The formula to approximate the integral is
 f[-2h]\,h + \frac{5}{2} f[-2h,-h]\,h^2 + \frac{23}{6}f[-2h,-h,0]\,h^3  \\
 &\quad = f(-2h)\,h + \frac{5}{2} \left(\frac{f(-h)-f(-2h)}{-h-(-2h)}\right) h^2
 + \frac{23}{6}
-\left( \frac{\displaystyle \frac{f(0)-f(-h)}{0-(-h)}
+\left( \frac{\DS \frac{f(0)-f(-h)}{0-(-h)}
  - \frac{f(-h)-f(-2h)}{-h-(-2h)}}{0-(-2h)}\right)h^3 \\
 &\quad = \left(\frac{23}{12}\,f(0) - \frac{4}{3} \, f(-h) + \frac{5}{12} \,
 f(-2h)\right) h \ .
@@ -3886,7 +3886,7 @@ Hence
 \end{equation}
 for some $\xi \in [-2h,h]$.
 
-\subQ{b} To obtain a formula for $\displaystyle \int_a^b f(x)\dx{x}$ from
+\subQ{b} To obtain a formula for $\DS \int_a^b f(x)\dx{x}$ from
 (\ref{formula1}), we use the substitution $x= a + t$ with $h=b-a$ to get
 \begin{align*}
 \int_a^b f(x)\dx{x} &= \int_0^h f(a+t) \dx{t}
@@ -3962,7 +3962,7 @@ The formula to approximate the integral is
 2\,f[-2h]\,h + 4 f[-2h,-h]\,h^2 + \frac{14}{3}f[-2h,-h,0]\,h^3  \\
 & \quad = 2\,f(-2h)\,h + 4 \left(\frac{f(-h)-f(-2h)}{-h-(-2h)}\right) h^2
  + \frac{14}{3}
-\left(\frac{\displaystyle \frac{f(0)-f(-h)}{0-(-h)}
+\left(\frac{\DS \frac{f(0)-f(-h)}{0-(-h)}
 - \frac{f(-h)-f(-2h)}{-h-(-2h)}}{0-(-2h)}\right) h^3\\
 &\quad = \left(\frac{7}{3}\,f(0) - \frac{2}{3}\,f(-h)
 + \frac{1}{3}\,f(-2h)\right)h \ .
@@ -3988,7 +3988,7 @@ Hence,
 +f[-2h,-h,0,0] \int_{-h}^h (x+2h)(x+h)x \dx{x} \ .
 \end{align*}
 The second integral can be easily computed.  For the first integral,
-Since $\displaystyle (x+2h)(x+h)x^2$ is non-negative on the interval
+Since $\DS (x+2h)(x+h)x^2$ is non-negative on the interval
 $[-h,h]$, we may use the Mean Value Theorem for Integrals to get $\eta
 \in [-h,h]$ such that
 \[
@@ -4004,9 +4004,9 @@ Hence,
 \end{align*}
 Moreover, from the theory on divided difference formulas, there exists
 $\xi_1, \xi_2 \in [-2h,h]$ such that
-$\displaystyle f[-2h,-h,0,0,\eta] = \frac{1}{4!} f^{(4)}(\xi_1)$
+$\DS f[-2h,-h,0,0,\eta] = \frac{1}{4!} f^{(4)}(\xi_1)$
 and
-$\displaystyle f[-2h,-h,0,0] = \frac{1}{3!} f^{(3)}(\xi_2)$.
+$\DS f[-2h,-h,0,0] = \frac{1}{3!} f^{(3)}(\xi_2)$.
 The truncation error is therefore
 \begin{align*}
 \int_{-h}^h f[-2h,-h,0,x] (x+2h)(x+h)x \dx{x} 
@@ -4022,9 +4022,9 @@ Hence,
 + \frac{13}{180} \, f^{(4)}(\xi_1)\,h^5 + \frac{1}{3} f^{(3)}(\xi_2)\,h^4 \ .
 \end{equation}
 
-\subQ{b} To obtain a formula for $\displaystyle \int_a^b f(x)\dx{x}$ from
+\subQ{b} To obtain a formula for $\DS \int_a^b f(x)\dx{x}$ from
 (\ref{Questformula1}), we use the substitution
-$\displaystyle x= \frac{b+a}{2} + t$ with $\displaystyle h = \frac{b-a}{2}$
+$\DS x= \frac{b+a}{2} + t$ with $\DS h = \frac{b-a}{2}$
 to get
 \begin{align*}
 &\int_a^b f(x)\dx{x} = \int_{-h}^h
@@ -4060,7 +4060,7 @@ for all polynomials $p$ of degree less than $k$.
 
 \sol{\SOL}{
 It suffices to show that there exist $c_1$, $c_2$, \ldots, $c_k$ such
-that (\ref{G_quadr}) is true for $\displaystyle p(x) = x^m$ with
+that (\ref{G_quadr}) is true for $\DS p(x) = x^m$ with
 $0 \leq m <k$.  Namely, 
 \[
 \int_a^b x^m\,w(x)\dx{x} = \sum_{j=1}^k\,c_j\,x_j^m
@@ -4083,7 +4083,7 @@ x_1^{k-1} & x_2^{k-1} & \ldots & x_k^{k-1} \\
 \]
 This system has a unique solution because $A$ is an invertible
 Vandermonde matrix.  In fact, one can show that the determinant of the
-matrix $A$ above is $\displaystyle \prod_{0<i<j\leq k} (x_j - x_i)$.
+matrix $A$ above is $\DS \prod_{0<i<j\leq k} (x_j - x_i)$.
 }
 
 \begin{question}
@@ -4098,7 +4098,7 @@ Let $c_1$, $c_2$, \ldots, $c_k$ be the coefficients given in
 (\ref{GquadrCoeff}).  Show that (\ref{G_quadr}) is
 exact for all polynomials of degree less than $k+m$.
 
-Moreover, if $\displaystyle \ps{x^m}{P} \neq 0$, show that (\ref{G_quadr}) is
+Moreover, if $\DS \ps{x^m}{P} \neq 0$, show that (\ref{G_quadr}) is
 not true for all polynomials of degree equal to $k+m$.
 \label{diffQ25}
 \end{question}
@@ -4136,10 +4136,10 @@ for any polynomial of degree less than $k+m$.
 
 We now prove that the quadrature formula is not true for all
 polynomial of degree $k+m$.  Let
-$\displaystyle p(x) = x^m P(x) + r(x)$, where $r$
+$\DS p(x) = x^m P(x) + r(x)$, where $r$
 is a polynomial of degree less than $m$.  The equations
 (\ref{ord_2k_2}) and (\ref{ord_2k_3}) are still true if we replace
-$q(x)$ by $\displaystyle x^m$.  So
+$q(x)$ by $\DS x^m$.  So
 \[
   \int_a^b r(x)\,w(x)\dx{x} = \sum_{j=1}^k c_j\,p(x_j) \ .
 \]
@@ -4396,7 +4396,7 @@ the scalar product
 To generate the family of orthogonal polynomials, we use
 Theorem~\ref{orthpoly} with $\alpha_{k,k}=1$ for all $k$ and $w(x) =x$ for
 $0\leq x\leq 1$.  Let $P_0(x) = 1$ for all $x$.  Since $A_0=1$ and
-$\displaystyle
+$\DS
 B_0 = \frac{\int_0^1 x^2 \dx{x}}{\int_0^1 x \dx{x}} = \frac{2}{3} \ ,
 $
 we get
@@ -4404,10 +4404,10 @@ we get
 P_1(x) = (x-B_0)P_0(x) = x - \frac{2}{3} \ .
 \]
 Since $A_1=1$,
-$\displaystyle
+$\DS
 B_1 = \frac{\int_0^1 x^2(x-2/3)^2 \dx{x}}{\int_0^1 x(x-2/3)^2\dx{x}}
 = \frac{8}{15}$ and
-$\displaystyle
+$\DS
 C_1 = \frac{\int_0^1 x(x-2/3)^2 \dx{x}}{\int_0^1 x\dx{x}}
 =\frac{1}{18}$, we get
 \[
@@ -4455,18 +4455,18 @@ the scalar product
 \]
 To generate the family of orthogonal polynomials, we use
 Theorem~\ref{orthpoly} with $\alpha_{k,k}=1$ for all $k$ and
-$\displaystyle w(x) =x^2$ for
+$\DS w(x) =x^2$ for
 $0\leq x\leq 1$.  Let $P_0(x) = 1$ for all $x$.  Since $A_0=1$ and
-$\displaystyle
+$\DS
 B_0 = \frac{\int_{-1}^1 x^3 \dx{x}}{\int_{-1}^1 x^2 \dx{x}} = 0$,
 we get
 \[
 P_1(x) = (x-B_0)P_0(x) = x \ .
 \]
 Since $A_1=1$,
-$\displaystyle B_1 = \frac{\int_{-1}^1 x^5 \dx{x}}{\int_{-1}^1 x^4 \dx{x}}
+$\DS B_1 = \frac{\int_{-1}^1 x^5 \dx{x}}{\int_{-1}^1 x^4 \dx{x}}
 = 0$ and
-$\displaystyle C_1 = \frac{\int_{-1}^1 x^4 \dx{x}}{\int_{-1}^1 x^2\dx{x}}
+$\DS C_1 = \frac{\int_{-1}^1 x^4 \dx{x}}{\int_{-1}^1 x^2\dx{x}}
 =\frac{3}{5}$, we get
 \[
 P_2(x) = (x-B_1)P_1(x)-C_1P_0(x) = x^2 - \frac{3}{5} \ .
@@ -4496,7 +4496,7 @@ polynomials of degree up to $3$.
 \begin{question}
 Let $f:[a,b]\rightarrow \RR$ be a sufficiently differentiable
 function.  If
-$\displaystyle \max_{a\leq x \leq b} |f^{(n+1)}(x)| < M$ for some
+$\DS \max_{a\leq x \leq b} |f^{(n+1)}(x)| < M$ for some
 constant $M$, find a bound for the truncation error of
 the Gauss-Chebyshev quadrature with $n>0$.
 \end{question}
@@ -4515,7 +4515,7 @@ x_j = \frac{a+b}{2} + \frac{b-a}{2}\cos\left(\frac{(2j-1)\pi}{2(n+1)}\right)
 \]
 for $j=1$, $2$, \ldots , $n+1$.
 
-If we substitute $\displaystyle x= \frac{a+b}{2} + \frac{b-a}{2}\,t$
+If we substitute $\DS x= \frac{a+b}{2} + \frac{b-a}{2}\,t$
 in the integrals in (\ref{GCquestA}), we get
 \begin{align*}
 \int_a^b f(x) \dx{x} &=
@@ -4525,11 +4525,11 @@ in the integrals in (\ref{GCquestA}), we get
 \frac{b-a}{2}  \int_{-1}^1 p\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right)
 \dx{t} \ .
 \end{align*}
-$\displaystyle p\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right)$ is the
+$\DS p\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right)$ is the
 interpolating polynomial of
-$\displaystyle f\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right)$ at the
+$\DS f\left(\frac{a+b}{2} + \frac{b-a}{2}\,t\right)$ at the
 Chebyshev points
-$\displaystyle t_i = \cos\left( \frac{(2i-1)\pi}{2(n+1)}\right)$
+$\DS t_i = \cos\left( \frac{(2i-1)\pi}{2(n+1)}\right)$
 for $1\leq i \leq n+1$.
 From Proposition~\ref{ChebyshevTrancMax}, we have that
 \begin{align*}
@@ -4570,13 +4570,13 @@ If the formula
 \int_a^b f(x)\,w(x)\dx{x} \approx \sum_{i=1}^n a_i \,f(x_i)
 \]
 is exact for all polynomials of degree less than $2n$, show that
-$\displaystyle \prod_{j=1}^n (x-x_j)$ is orthogonal to all polynomials
+$\DS \prod_{j=1}^n (x-x_j)$ is orthogonal to all polynomials
 of degree less than $n$ with respect to the weight function $w$.
 \end{question}
 
 \sol{\SOL}{
 Let $q$ be any polynomial of degree less than $n$, then
-$\displaystyle f(x) = q(x)\,\prod_{j=1}^n (x-x_j)$
+$\DS f(x) = q(x)\,\prod_{j=1}^n (x-x_j)$
 is a polynomial of degree less than $2n$.  By hypothesis, we then have
 \[
 \int_a^b f(x)\,w(x)\dx{x} = \sum_{i=1}^n a_i \,f(x_i)
@@ -4596,7 +4596,7 @@ be exact for polynomial of degree $2n$?
 
 \sol{\SOL}{
 Consider the polynomial of degree $2n$ defined by
-$\displaystyle f(x) = \prod_{i=1}^n (x-x_i)^2$.  If
+$\DS f(x) = \prod_{i=1}^n (x-x_i)^2$.  If
 (\ref{2nQuadrQuestEqu}) is exact for polynomials of degree $2n$, we
 must have
 \[

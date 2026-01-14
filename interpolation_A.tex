@@ -101,11 +101,11 @@ $x_0$, $x_1$, \ldots , $x_n$.
 \begin{defn}
 Let $f: ]a,b[ \rightarrow \RR$ be a function sufficiently
 differentiable.  The
-{\bfseries $\displaystyle \mathbf{k^{th}}$ divided
+{\bfseries $\DS \mathbf{k^{th}}$ divided
 difference}\index{$k^{th}$ Divided Difference}
 of $f$ at $k+1$ not necessarily distinct points $x_0$, $x_1$, \ldots, $x_k$ in
 $]a,b[$, denoted $f[x_0,x_1,\ldots,x_k]$, is the coefficient of
-$\displaystyle x^k$
+$\DS x^k$
 in the unique polynomial of degree at most $k$ that agrees with $f$ at
 $x_0$, $x_1$, \ldots, $x_k$.
 \end{defn}
@@ -149,7 +149,7 @@ It is easy to deduce the first divided difference of $f$
 
 \stage{a}  The interpolating polynomial $p$ of $f$ of degree $0$ at
 $x_0$ is given by the constant function $p(x) = f(x_0)$ for all $x$.
-Hence, the coefficient $f[x_0]$ of $\displaystyle x^0$ is
+Hence, the coefficient $f[x_0]$ of $\DS x^0$ is
 \[
 f[x_0] = f(x_0) \ .
 \]
@@ -157,7 +157,7 @@ f[x_0] = f(x_0) \ .
 \stage{b} The interpolating polynomial $p$ of $f$ of degree at most
 $1$ at $x_0$, $x_1$ is given by
 \[
-p(x) = \begin{cases} \displaystyle
+p(x) = \begin{cases} \DS
 f(x_0) + \frac{f(x_1)-f(x_0)}{x_1-x_0} \, (x-x_0) & \quad \text{if} \quad
 x_0 \neq x_1 \\
 f(x_0) + f'(x_0)\, (x-x_0) & \quad \text{if} \quad x_0 = x_1
@@ -167,10 +167,10 @@ In the first case, it is the equation of the secant line through
 $(x_0,f(x_0))$ and $(x_1,f(x_1))$.  In the second case, it is the
 equation of the tangent line at $x_0$ because we must have
 $p(x_0)=f(x_0)$ and $p'(x_0) = f'(x_0)$.  Hence, the coefficient
-$f[x_0,x_1]$ of $\displaystyle x^1$ is
+$f[x_0,x_1]$ of $\DS x^1$ is
 \[
 f[x_0,x_1] = \begin{cases}
-\displaystyle \frac{f(x_1)-f(x_0)}{x_1-x_0} & \quad \text{if} \quad
+\DS \frac{f(x_1)-f(x_0)}{x_1-x_0} & \quad \text{if} \quad
 x_0 \neq x_1 \\
 f'(x_0) & \quad \text{if} \quad x_0 = x_1
 \end{cases}
@@ -209,7 +209,7 @@ C &= \frac{1}{(x_2-x_0)(x_2-x_1)} \left(f(x_2) - f(x_0) -
 \frac{f(x_1)-f(x_0)}{x_1-x_0}\right)\\
 &= \frac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0} \ .
 \end{align*}
-Hence, the coefficient $f[x_0,x_1,x_2]$ of $\displaystyle x^2$ is
+Hence, the coefficient $f[x_0,x_1,x_2]$ of $\DS x^2$ is
 \[
 f[x_0,x_1,x_2] = \frac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0}
 \]
@@ -225,7 +225,7 @@ p(x) = f(x_0) + f'(x_0)\,(x-x_0) + \frac{1}{2!}\,f''(x_0)\,(x-x_0)^2 \ .
 \]
 It is easy to check that $p(x_0)=f(x_0)$, $f'(x_0)=p'(x_0)$ and
 $f''(x_0) = p''(x_0)$.  Hence, the coefficient $f[x_0,x_1,x_2]$ of
-$\displaystyle x^2$
+$\DS x^2$
 is
 \[
 f[x_0,x_1,x_2] = \frac{1}{2!}\,f''(x_0)
@@ -240,7 +240,7 @@ with $f$ at the $n+1$ distinct points $x_0$, $x_1$, \ldots, $x_n$,
 \item Because the interpolating polynomial of degree at most $n$ of
 $f$ at $x_0$, $x_1$, $x_2$, \ldots, $x_n$ is independent of the order
 in which the $x_i$'s are listed, in particular the coefficient of
-$\displaystyle x^n$ is not going to change if the order of the $x_i$'s
+$\DS x^n$ is not going to change if the order of the $x_i$'s
 is changed, we have that
 \[
 f[x_0,x_1,\ldots,x_k] = f[x_{\sigma(0)},x_{\sigma(1)},\ldots,x_{\sigma(k)}]
@@ -299,7 +299,7 @@ We have
 \begin{align*}
 \dfdx{f[x_0,x]}{x} &= \dfdx{\left(\frac{f(x)-f(x_0)}{x-x_0}\right)}{x}
 = \frac{f'(x) (x-x_0) - ( f(x)- f(x_0) )}{(x-x_0)^2} \\
-&= \frac{\displaystyle  f'(x) - \frac{f(x)-f(x_0)}{x-x_0}}{x-x_0}
+&= \frac{\DS  f'(x) - \frac{f(x)-f(x_0)}{x-x_0}}{x-x_0}
 = \frac{f[x,x] - f[x_0,x]}{x-x_0} = f[x_0,x,x]
 \end{align*}
 at $x\neq x_0$ and
@@ -308,9 +308,9 @@ at $x\neq x_0$ and
 \frac{f'(x) (x-x_0) - ( f(x)- f(x_0) )}{(x-x_0)^2}\right)}{x} \\
 &= \frac{f''(x)(x-x_0)^3 - 2 f'(x) (x-x_0)^2 +  2(f(x)- f(x_0))(x-x_0)}
 {(x-x_0)^4}\\
-&= 2\, \frac{\displaystyle \frac{f''(x)}{2} -
+&= 2\, \frac{\DS \frac{f''(x)}{2} -
 \frac{1}{x-x_0}\left(f'(x) - \frac{f(x)- f(x_0)}{x-x_0}\right)}{x-x_0}\\
-&= 2\, \frac{\displaystyle f[x,x,x] -
+&= 2\, \frac{\DS f[x,x,x] -
 \frac{1}{x-x_0}\left(f[x,x] - f[x,x_0]\right)}{x-x_0}\\
 &= 2\, \frac{f[x,x,x] - f[x_0,x,x]}{x-x_0} = 2 f[x_0,x,x,x]
 \end{align*}
@@ -405,7 +405,7 @@ f[x_0,x_1] =\frac{f(x_1)-f(x_0)}{x_1-x_0} \quad
 f[x_0,x_1,x_2] =\frac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0} \ .
 \]
 Moreover, we need to compute
-$\displaystyle f[x_1,x_2] =\frac{f(x_2)-f(x_1)}{x_2-x_1}$ in the
+$\DS f[x_1,x_2] =\frac{f(x_2)-f(x_1)}{x_2-x_1}$ in the
 formula of $f[x_0,x_1,x_2]$.
 
 \begin{egg}
@@ -448,52 +448,52 @@ line of the table.
 \begin{tabular}{ccccc}
 \multicolumn{5}{l}{a) $x_0 < x_1 <x_2 < x_3$} \\
 &&&&\\
-$\displaystyle x_i$ & $\displaystyle f[\cdot] $ &
-$\displaystyle f[\cdot,\cdot]$ &
-$\displaystyle f[\cdot,\cdot,\cdot]$ &
-$\displaystyle f[\cdot,\cdot,\cdot,\cdot]$ \\
+$\DS x_i$ & $\DS f[\cdot] $ &
+$\DS f[\cdot,\cdot]$ &
+$\DS f[\cdot,\cdot,\cdot]$ &
+$\DS f[\cdot,\cdot,\cdot,\cdot]$ \\
 \hline
-\rule{0em}{2em} $\displaystyle x_0$ & \multicolumn{1}{|c}{$\displaystyle
+\rule{0em}{2em} $\DS x_0$ & \multicolumn{1}{|c}{$\DS
   f(x_0)$} &
-\multicolumn{1}{|c}{$\displaystyle f[x_1,x_0] =
+\multicolumn{1}{|c}{$\DS f[x_1,x_0] =
   \frac{f(x_1)-f(x_0)}{x_1-x_0}$} &
-\multicolumn{1}{|c}{$\displaystyle
+\multicolumn{1}{|c}{$\DS
   f[x_2,x_1,x_0]=\frac{f[x_2,x_1]-f[x_1,x_0]}{x_2-x_0}$} &
-\multicolumn{1}{|c|}{$\displaystyle f[x_3,x_2,x_1,x_0] =
+\multicolumn{1}{|c|}{$\DS f[x_3,x_2,x_1,x_0] =
 \frac{f[x_3,x_2,x_1]-f[x_2,x_1,x_0]}{x_3-x_0}$} \\[1em]
 \cline{2-5}
-\rule{0em}{2em} $\displaystyle x_1$ & $\displaystyle f(x_1)$ &
-$\displaystyle f[x_2,x_1] = \frac{f(x_2)-f(x_1)}{x_2-x_1}$ &
-$\displaystyle f[x_3,x_2,x_1] = \frac{f[x_3,x_2]-f[x_2,x_1]}{x_3-x_1}$
+\rule{0em}{2em} $\DS x_1$ & $\DS f(x_1)$ &
+$\DS f[x_2,x_1] = \frac{f(x_2)-f(x_1)}{x_2-x_1}$ &
+$\DS f[x_3,x_2,x_1] = \frac{f[x_3,x_2]-f[x_2,x_1]}{x_3-x_1}$
 & \\[1em]
-\rule{0em}{2em} $\displaystyle x_2$ & $\displaystyle f(x_2)$ &
-$\displaystyle f[x_3,x_2] = \frac{f(x_3)-f(x_2)}{x_3-x_2}$ & & \\[1em]
-$\displaystyle x_3$ & $\displaystyle f(x_3)$ & & & \\
+\rule{0em}{2em} $\DS x_2$ & $\DS f(x_2)$ &
+$\DS f[x_3,x_2] = \frac{f(x_3)-f(x_2)}{x_3-x_2}$ & & \\[1em]
+$\DS x_3$ & $\DS f(x_3)$ & & & \\
 &&&&\\
 &&&&\\
 \multicolumn{5}{l}{b) $x_0 < x_1 =x_2 = x_3$} \\
 &&&&\\
-$\displaystyle x_i$ & $\displaystyle f[\cdot] $ &
-$\displaystyle f[\cdot,\cdot]$ &
-$\displaystyle f[\cdot,\cdot,\cdot]$ &
-$\displaystyle f[\cdot,\cdot,\cdot,\cdot]$ \\
+$\DS x_i$ & $\DS f[\cdot] $ &
+$\DS f[\cdot,\cdot]$ &
+$\DS f[\cdot,\cdot,\cdot]$ &
+$\DS f[\cdot,\cdot,\cdot,\cdot]$ \\
 \hline
-\rule{0em}{2em} $\displaystyle x_0$ & \multicolumn{1}{|c}{$\displaystyle
+\rule{0em}{2em} $\DS x_0$ & \multicolumn{1}{|c}{$\DS
   f(x_0)$} &
-\multicolumn{1}{|c}{$\displaystyle f[x_1,x_0] =
+\multicolumn{1}{|c}{$\DS f[x_1,x_0] =
   \frac{f(x_1)-f(x_0)}{x_1-x_0}$} &
-\multicolumn{1}{|c}{$\displaystyle
+\multicolumn{1}{|c}{$\DS
   f[x_2,x_1,x_0]=\frac{f[x_2,x_1]-f[x_1,x_0]}{x_2-x_0}$} &
-\multicolumn{1}{|c|}{$\displaystyle f[x_3,x_2,x_1,x_0] =
+\multicolumn{1}{|c|}{$\DS f[x_3,x_2,x_1,x_0] =
 \frac{f[x_3,x_2,x_1]-f[x_2,x_1,x_0]}{x_3-x_0}$} \\[1em]
 \cline{2-5}
-\rule{0em}{2em} $\displaystyle x_1$ & $\displaystyle f(x_1)$ &
-$\displaystyle f[x_2,x_1] = f'(x_1)$ &
-$\displaystyle f[x_3,x_2,x_1] = \frac{1}{2} f''(x_1)$
+\rule{0em}{2em} $\DS x_1$ & $\DS f(x_1)$ &
+$\DS f[x_2,x_1] = f'(x_1)$ &
+$\DS f[x_3,x_2,x_1] = \frac{1}{2} f''(x_1)$
 & \\[1em]
-\rule{0em}{2em} $\displaystyle x_2$ & $\displaystyle f(x_2)$ &
-$\displaystyle f[x_3,x_2] = f'(x_2)$ & & \\[1em]
-$\displaystyle x_3$ & $\displaystyle f(x_3)$ & & &
+\rule{0em}{2em} $\DS x_2$ & $\DS f(x_2)$ &
+$\DS f[x_3,x_2] = f'(x_2)$ & & \\[1em]
+$\DS x_3$ & $\DS f(x_3)$ & & &
 \end{tabular}
 \end{sideways}
 \caption{Some tables of Newton divided differences}\label{TNDDFormulae}
@@ -575,7 +575,7 @@ at the points $x_i$ for $0 \leq i < n$.\\
   \end{pmatrix}
 \]
 (d in the code below), where $x_0 \leq x_1 \leq \ldots \leq x_{n-1}$ an
-$\displaystyle f_k = f^{(j)}(x_k)$ if
+$\DS f_k = f^{(j)}(x_k)$ if
 $x_{k-j-1} < x_{k-j} = x_{x-j+1} = \ldots = x_k$;
 namely, the point $x_k$ appears $j$ times before. \\
 \subI{Output} The table of divided difference and the coefficients 
@@ -699,7 +699,7 @@ $1$, \ldots, $7$.  The dashed-dotted green line is the graph of the
 interpolating polynomial $p_{15}$ of degree at most $15$ at
 $x_i = -1 + 2i/15$ for $i=0$, $1$, \ldots, $15$.}{EqualSpace}
 
-\item Consider the function $\displaystyle f(x) = 1/(1+x^2)$ on
+\item Consider the function $\DS f(x) = 1/(1+x^2)$ on
 $[-5,5]$.  Suppose that $p_n$ is the interpolating polynomial of $f$
 at the equally spaced points $x_i = -5 + (10i)/n$ for $i=0$, $1$, \ldots, $n$.
 The uniform distance
@@ -714,8 +714,8 @@ of $f(x)$ given by $p_n(x)$ is generally getting slowly better as $n$
 increases if $x$ is near the origin.
 
 \mathF{interpolation_A/interpol_1o1px2}{8cm}{Interpolating polynomial of
-$\displaystyle y=f(x)=1/(1+x^2)$}{The black line is the graph of
-$\displaystyle f(x)=1/(1+x^2)$
+$\DS y=f(x)=1/(1+x^2)$}{The black line is the graph of
+$\DS f(x)=1/(1+x^2)$
 and the blue line is the graph of the interpolating polynomial
 $p_{10}$ of $f$ at the $11$ equally spaced points
 $x_i = -5 + i$ for $i=0$, $1$, \ldots, $10$.}{Unifapprox}
@@ -743,7 +743,7 @@ Moreover, the approximation $p_n(x)$ of $f(x)$ is as good for $x$ near
 the endpoints of the interval $[a,b]$ as it is for $x$ near the middle of
 the interval $[a,b]$.
 
-For instance, let $\displaystyle f(x) = 1/(1+x^2)$ on $[-5,5]$ as before.
+For instance, let $\DS f(x) = 1/(1+x^2)$ on $[-5,5]$ as before.
 From Theorems~\ref{InterpTh} and \ref{InterpProp}, we have
 \[
 f(x) - p_n(x) =
@@ -757,13 +757,13 @@ We may assume that
 \]
 is almost constant on $[-5,5]$.   Hence, the behaviour of
 $|f(x)-p_n(x)|$ is roughly described by
-$\displaystyle \left|\prod_{i=0}^n\,(x-x_i)\right|$.
+$\DS \left|\prod_{i=0}^n\,(x-x_i)\right|$.
 We have in Figure~\ref{Chebpts} the graph of
-$\displaystyle \left|\prod_{i=0}^n\,(x-x_i)\right|$ for
+$\DS \left|\prod_{i=0}^n\,(x-x_i)\right|$ for
 $-5 \leq x \leq 5$, where
 \begin{description}
 \item[(i)]
-$\displaystyle
+$\DS
 x_i = -5\cos\left(\frac{2i+1}{16}\,\pi \right)$
 for $i=0$, $1$, \ldots, $7$ are the Chebyshev points adjusted to the
 interval $[-5,5]$ and
@@ -791,7 +791,7 @@ if there exist $\alpha>0$ and $\lambda \neq 0$ such that
 then $\alpha$ must be the {\bfseries golden ratio}\index{Golden Ratio}
 $(1+\sqrt{5})/2$.  Namely, the order of convergence of the sequence method
 must be $(1+\sqrt{5})/2$.  Obviously, we assume that the secant method
-yields a sequence $\displaystyle \{ x_n\}_{n=0}^\infty$ that converges
+yields a sequence $\DS \{ x_n\}_{n=0}^\infty$ that converges
 to a root $p$ of a function $f$ so that (\ref{secantGoldRatLim}) can
 be stated.
 
@@ -826,7 +826,7 @@ e_{n+1} = \frac{f[x_n,x_{n-1},p]}{f[x_n,x_{n-1}]} \, e_n e_{n-1} \ .
 \end{equation}
 
 We can rewrite (\ref{ecee}) as $e_{n+1} = c_n e_n e_{n-1}$, where
-$\displaystyle c_n = \left| \frac{f[x_n,x_{n-1},p]}{f[x_n,x_{n-1}]} \right|$.
+$\DS c_n = \left| \frac{f[x_n,x_{n-1},p]}{f[x_n,x_{n-1}]} \right|$.
 Hence,
 \[
 \frac{|e_{n+1}|}{|e_n|^\alpha} 
@@ -835,16 +835,16 @@ Hence,
 = c_n \left( \frac{|e_n|}{|e_{n-1}|^\alpha} \right)^\beta \ ,
 \]
 where $\beta$ satisfies $\beta=1-\alpha$ and $\alpha\beta=-1$.
-Thus, $\displaystyle -\alpha^2 + \alpha + 1 = 0$.  The roots of this
+Thus, $\DS -\alpha^2 + \alpha + 1 = 0$.  The roots of this
 polynomial are $(1\pm \sqrt{5})/2$.  We are only interested in the positive root
 $\alpha = (1 + \sqrt{5})/2$.   We then have that
 $\beta = -1/\alpha = (1 -\sqrt{5})/2$
 and $-1 < \beta <0$.
 
-If $\displaystyle y_n = \frac{|e_n|}{|e_{n-1}|^\alpha}$, we get
-$\displaystyle y_{n+1} = c_n y_n^\beta$.  Taking the limit
+If $\DS y_n = \frac{|e_n|}{|e_{n-1}|^\alpha}$, we get
+$\DS y_{n+1} = c_n y_n^\beta$.  Taking the limit
 $n\rightarrow \infty$ on
-both sides, we get $\displaystyle \lambda = c_\infty \lambda^\beta$, where
+both sides, we get $\DS \lambda = c_\infty \lambda^\beta$, where
 \[
 c_\infty = \lim_{n\rightarrow \infty} c_n = \frac{f''(p)}{2f'(p)} \neq 0 \ .
 \]
@@ -855,8 +855,8 @@ Thus,
 as expected.
 
 We have shown that, with
-$\displaystyle \alpha = \frac{1 + \sqrt{5}}{2}$, we have
-$\displaystyle
+$\DS \alpha = \frac{1 + \sqrt{5}}{2}$, we have
+$\DS
 \lim_{n\rightarrow \infty} \frac{|e_{n+1}|}{|e_n|^\alpha} =
 \lambda =  \left(\frac{f''(p)}{2f'(p)}\right)^{1/\alpha} \neq 0$.
 \label{bisOrderGold}
@@ -883,7 +883,7 @@ for $j=0$.
 
 \begin{lemma} \label{FactPolyRoot}
 If $z$ is a zero of order $k$ of a polynomial $p$ of degree
-$n\geq k$, then one can write $\displaystyle p(x) = (x-z)^k\,q(x)$,
+$n\geq k$, then one can write $\DS p(x) = (x-z)^k\,q(x)$,
 where $q$ is a polynomial of degree $n-k$ such that $q(z)\neq 0$.
 \end{lemma}
 
@@ -897,14 +897,14 @@ we get $p'(z) = q_1(z)$.
 If $k>1$, then $q_1(z) = p'(z) =0$.  Since $z$ is a root of
 $q_1$, Horner's Theorem yields $q_1(x) = (x-z)\,q_2(x)$, where $q_2$ is
 a polynomial of degree $n-2$.  Hence
-$\displaystyle p(x) = (x-z)^2\,q_2(x)$.  Since
-$\displaystyle p''(x) = 2\,q_2(x) + 4(x-z)\,q_2'(x) + (x-z)^2\, q_2''(x)$,
+$\DS p(x) = (x-z)^2\,q_2(x)$.  Since
+$\DS p''(x) = 2\,q_2(x) + 4(x-z)\,q_2'(x) + (x-z)^2\, q_2''(x)$,
 we get $p''(z) = 2 \,q_2(z)$.
 
 If $k>2$, then $q_2(z) = p''(z)/2 = 0$ and we can again use Horner's
 Theorem.  Since $z$ is a root of $q_2$, Horner's Theorem yields
 $q_2(x) = (x-z)q_3(x)$, where $q_3$ is a polynomial of degree $n-3$.
-Hence $\displaystyle p(x) = (x-z)^3q_3(x)$.
+Hence $\DS p(x) = (x-z)^3q_3(x)$.
 
 It becomes clear that the claim of the first paragraph of the remark
 can be proved by induction.  A shorter proof is given by the Taylor
@@ -912,7 +912,7 @@ polynomial of $p$ at $z$.
 
 \begin{proof}[Proof (of Lemma~\ref{FactPolyRoot})]
 The Taylor polynomial of degree $n$ of $p$ at $z$ is $p$ itself
-because $\displaystyle \dydxn{p}{x}{j} = 0$ for $j>n$.  Hence,
+because $\DS \dydxn{p}{x}{j} = 0$ for $j>n$.  Hence,
 \begin{align*}
 p(x) &= p(z) + \dydx{p}{x}(z)\,(x-z) +
 \frac{1}{2!}\,\dydxn{p}{x}{2}(z)\,(x-z)^2
@@ -928,9 +928,9 @@ p(x) &= p(z) + \dydx{p}{x}(z)\,(x-z) +
 + \ldots + \frac{1}{n!}\,\dydxn{p}{x}{n}(z)\,(x-z)^{n-m}\right)}_{=q(x)} \\
 &= (x-z)^k q(x) \ ,
 \end{align*}
-where we have used $\displaystyle \dydxn{p}{x}{j}(z)=0$ for $j=0$,
+where we have used $\DS \dydxn{p}{x}{j}(z)=0$ for $j=0$,
 $1$, \ldots, $k-1$.  Moreover,
-$\displaystyle q(z) = \frac{1}{k!} \dydxn{p}{x}{k}(z) \neq 0$.
+$\DS q(z) = \frac{1}{k!} \dydxn{p}{x}{k}(z) \neq 0$.
 \end{proof}
 
 \begin{proof}[Proof (of Theorem~\ref{unique})]
@@ -1079,7 +1079,7 @@ This complete the proof by induction.
 
 \begin{rmk}
 We have from (\ref{badP}) (after replacing $k$ by $n-1$) that the
-coefficient of $\displaystyle x^n$ in the interpolating polynomial of
+coefficient of $\DS x^n$ in the interpolating polynomial of
 $f$ at $x_0$, $x_1$, \ldots, $x_n$ is
 \begin{equation}\label{coeffA}
 f[x_0,x_1,\ldots,x_n] = \frac{1}{n!}\,\dydxn{f}{x}{n}(x_0)
@@ -1087,7 +1087,7 @@ f[x_0,x_1,\ldots,x_n] = \frac{1}{n!}\,\dydxn{f}{x}{n}(x_0)
 when $x_0 = x_1 = \ldots = x_n$.
 
 We have from (\ref{goodP}) (after replacing $k$ by $n-1$) that the
-coefficient of $\displaystyle x^n$ in the interpolating polynomial of
+coefficient of $\DS x^n$ in the interpolating polynomial of
 $f$ at $x_0$, $x_1$, \ldots, $x_n$ is
 \begin{align*}
 f[x_0,x_1,\ldots,x_n] &= \frac{1}{x_n-x_0}\,f[x_1,x_2,\ldots,x_n] -
@@ -1095,7 +1095,7 @@ f[x_0,x_1,\ldots,x_n] &= \frac{1}{x_n-x_0}\,f[x_1,x_2,\ldots,x_n] -
 &= \frac{f[x_1,x_2,\ldots,x_n]-f[x_0,x_1,\ldots,x_{n-1}]}{x_n-x_0} \ ,
 \end{align*}
 when $x_0 \neq x_n$, because $f[x_0,x_1,\ldots,x_{n-1}]$ (resp.\
-$f[x_1,x_2,\ldots,x_n]$) is the coefficient of $\displaystyle x^{n-1}$ in the
+$f[x_1,x_2,\ldots,x_n]$) is the coefficient of $\DS x^{n-1}$ in the
 interpolating polynomial of $f$ at
 $x_0$, $x_1$, \ldots, $x_{n-1}$ (resp.\ $x_1$, $x_2$, \ldots, $x_n$.)
 \label{rmkNDDF}
@@ -1129,7 +1129,7 @@ Let $p$ be the interpolating polynomial of degree at most $n$ of $f$
 at $x_0$, $x_1$, \ldots, $x_n$.  Let $g = f - p$.  The fonction $g$
 has $n+1$ distinct roots at $x_0$, $x_1$, \ldots, $x_n$.
 
-We prove by induction that $\displaystyle \dydxn{g}{x}{j}$
+We prove by induction that $\DS \dydxn{g}{x}{j}$
 has $n-j+1$ distinct roots between $x_0$ and $x_n$ for $j=1$, $2$,
 \ldots, $n$.
 
@@ -1144,7 +1144,7 @@ has therefore $n = n-1+1$ distinct roots between $x_0$ and $x_n$.  The
 hypothesis of induction is true if $j=1$.
 
 Suppose that the hypothesis of induction is true for $j=k$; namely,
-$\displaystyle \dydxn{g}{x}{k}$ has $n-k+1$ distinct roots
+$\DS \dydxn{g}{x}{k}$ has $n-k+1$ distinct roots
 at $\zeta_0$, $\zeta_1$, \ldots, $\zeta_{n-k}$ between $x_0$ and $x_n$.
 By the Mean Value Theorem, for each pair of points
 $\{ \zeta_i, \zeta_{i+1}\}$, where $i\in\{0,1,2,\ldots,n-k-1\}$, there
@@ -1153,16 +1153,16 @@ exists $\nu_i$ between $\zeta_i$ and $\zeta_{i+1}$ such that
 0 = \dydxn{g}{x}{k}(\zeta_{x+1}) - \dydxn{g}{x}{k}(\zeta_i)
 = \dydxn{g}{x}{k+1}(\nu_i)(\zeta_{i+1}-\zeta_i) \ .
 \]
-Hence $\displaystyle \dydxn{g}{x}{k+1}(\nu_i)=0$ for $i=0$, $1$,
-\ldots, $n-k-1$.  The function $\displaystyle \dydxn{g}{x}{k+1}$ has
+Hence $\DS \dydxn{g}{x}{k+1}(\nu_i)=0$ for $i=0$, $1$,
+\ldots, $n-k-1$.  The function $\DS \dydxn{g}{x}{k+1}$ has
 therefore $n-k = n-(k+1)+1$ distinct roots at $\nu_0$, $\nu_1$,
 \ldots, $\nu_{n-k-1}$ between $x_0$ and $x_n$.  This proves the
 hypothesis of induction.
 
-We have that $\displaystyle \dydxn{g}{x}{n}$
+We have that $\DS \dydxn{g}{x}{n}$
 has $n-n+1 = 1$ root between $x_0$ and $x_n$.  Let $\xi$ be this root,
 Since $p$ is a polynomial of degree at most $n$ whose coefficient for
-$\displaystyle x^n$ is $f[x_0,x_1,\ldots, x_n]$, we have
+$\DS x^n$ is $f[x_0,x_1,\ldots, x_n]$, we have
 \[
 \dydxn{g}{x}{n}(x) = \dydxn{f}{x}{n}(x) - n!\,f[x_0,x_1,\ldots,x_n] \ .
 \]
@@ -1182,7 +1182,7 @@ f[x_0,x_1,\ldots,x_n] = \frac{1}{n!}\,\dydxn{f}{x}{n}(\xi)
 for some $\xi$ in the smallest closed interval containing $x_0$,
 $x_1$, \ldots, $x_n$.
 
-Moreover, if $\displaystyle \{x_{i,j}\}_{j=0}^\infty$ are sequences such that
+Moreover, if $\DS \{x_{i,j}\}_{j=0}^\infty$ are sequences such that
 \[
 \lim_{j\rightarrow \infty} x_{i,j} = x_i
 \]
@@ -1225,9 +1225,9 @@ f[x_0,x_1,\ldots,x_k]}{x_{k+1} - x_0} \\
 &= f[x_0,x_1,x_2, \ldots, x_{k+1}]
 \end{align*}
 because
-$\displaystyle f[x_{1,j},x_{2,j},\ldots,x_{k+1,j}] \rightarrow
+$\DS f[x_{1,j},x_{2,j},\ldots,x_{k+1,j}] \rightarrow
 f[x_1,x_2,\ldots,x_{k+1}]$ and \\
-$\displaystyle f[x_{0,j},x_{1,j},\ldots,x_{k,j}] \rightarrow
+$\DS f[x_{0,j},x_{1,j},\ldots,x_{k,j}] \rightarrow
 f[x_0,x_1,\ldots,x_k]$
 as $j\rightarrow \infty$ by hypothesis of induction for $n=k$.
 
@@ -1235,7 +1235,7 @@ as $j\rightarrow \infty$ by hypothesis of induction for $n=k$.
 Second, we prove (\ref{propA}) with $n=k+1$.  If
 $x_0=x_1=\ldots=x_{k+1}$, then (\ref{propA}) with $n=k+1$ is just
 (\ref{coeffA}) with $n=k+1$.  If $x_0 < x_{k+1}$, we choose sequences
-$\displaystyle \{x_{i,j}\}_{j=0}^\infty$ in $]a,b[$ such that
+$\DS \{x_{i,j}\}_{j=0}^\infty$ in $]a,b[$ such that
 \[
 \lim_{j\rightarrow \infty} x_{i,j} = x_i
 \]
@@ -1263,8 +1263,8 @@ Consider
   x & \mapsto \frac{1}{(k+1)!}\dydxn{f}{x}{k+1}(x)
 \end{align*}
 We have
-$\displaystyle \lim_{j\rightarrow \infty} g(\xi_j) = f[x_0,x_1,\ldots, x_{k+1}] $.
-Since $\displaystyle
+$\DS \lim_{j\rightarrow \infty} g(\xi_j) = f[x_0,x_1,\ldots, x_{k+1}] $.
+Since $\DS
 \xi_j \in [x_{0,j}, x_{k+1,j}] \subset [x_0,x_{k+1}]$ for all
 $j$, we have that
 $g(\xi_j) \in g([x_0,x_{k+1}])$ for all $j$.
@@ -1273,7 +1273,7 @@ the image of a closed and bounded interval (a compact and connected
 set) by a continuous function like $g$ is a closed and bounded
 interval (another compact and connected set), it follows that
 $g([x_0,x_{k+1}])$ is closed and
-$\displaystyle \lim_{j\rightarrow \infty} g(\xi_j) \in g([x_0,x_{k+1}])$.
+$\DS \lim_{j\rightarrow \infty} g(\xi_j) \in g([x_0,x_{k+1}])$.
 Thus, there exists $\xi \in [x_0,x_{k+1}]$
 such that
 \[
@@ -1288,8 +1288,8 @@ This proves (\ref{propA}) for $n=k+1$.
 \subQ{III}
 Finally, we prove (\ref{propB}) with $n=k+1$ and
 $x_0 = x_1 = \ldots = x_{k+1}$.  Let
-$\displaystyle \{x_{i,j}\}_{j=0}^\infty$ be
-any sequences such that $\displaystyle \lim_{j\to \infty} x_{i,j} = x_i$
+$\DS \{x_{i,j}\}_{j=0}^\infty$ be
+any sequences such that $\DS \lim_{j\to \infty} x_{i,j} = x_i$
 for $i=0$, $1$, \ldots, $k+1$.   From (II),
 there exist $\xi_j \in [x_{0,j}, x_{k+1,j}]$ such that
 \[
@@ -1305,7 +1305,7 @@ and $x_{0,j} \leq \xi_j \leq x_{k+1,j}$ for all $j$, we have that
 \[
 \lim_{j\rightarrow \infty} \xi_j = x_0 \ .
 \]
-Hence, by continuity of $\displaystyle \dydxn{f}{x}{k+1}$,
+Hence, by continuity of $\DS \dydxn{f}{x}{k+1}$,
 \begin{align*}
 \lim_{j\rightarrow \infty}
 f[x_{0,j}, x_{1,j}, x_{2,j}, \ldots, x_{k+1,j}]
@@ -1335,7 +1335,7 @@ also true for $n=k+1$.
 
 Let $p$ be the interpolating polynomial of degree at most $k+1$ of $f$
 at $x_0$, $x_2$, \ldots, $x_{k+1}$.  By definition, the coefficient of
-$\displaystyle x^{k+1}$ is $f[x_0, x_1, x_2, \ldots, x_{k+1}]$.  Let
+$\DS x^{k+1}$ is $f[x_0, x_1, x_2, \ldots, x_{k+1}]$.  Let
 \[
 q(x) = p(x) - f[x_0, x_1, x_2, \ldots, x_{k+1}]
 (x-x_0)(x-x_1) \ldots (x-x_k) \ .
@@ -1505,7 +1505,7 @@ Hence
 = f(x)\,\sum_{j=0}^n \ell_j(x) - \sum_{j=0}^n p(x_j)\, \ell_j(x)
 = f(x) - p(x)
 \]
-because $\displaystyle p(x) = \sum_{j=0}^n p(x_j)\, \ell_j(x)$.
+because $\DS p(x) = \sum_{j=0}^n p(x_j)\, \ell_j(x)$.
 }
 
 \begin{question}
@@ -1520,7 +1520,7 @@ of the interpolating polynomial of $f$?
 \sol{\SOL}{
 Our theory of interpolation does not apply here because $p(\xi)$ is not
 fixed.  We have to find the coefficients of the polynomial
-$\displaystyle p(x)=a + b\,x+c\,x^2$ such that
+$\DS p(x)=a + b\,x+c\,x^2$ such that
 $p(0) = a = \alpha$, $p(1) = a+b+c = \beta$ and
 $p'(\xi) = b + 2c\,\xi = \gamma$.
 The first equation gives the value for $a$ which is substituted into
@@ -1582,11 +1582,11 @@ unique.
 \begin{question}
 If $p$ is the interpolating polynomial of $f$ of degree at most $n$ at
 the $n+1$ distinct points $x_0$, $x_1$, \ldots, $x_n$, show that the
-coefficient of $\displaystyle x^n$ in $p$ is
-$\displaystyle \sum_{i=0}^n f(x_i) \ell_i$, where
-$\displaystyle
+coefficient of $\DS x^n$ in $p$ is
+$\DS \sum_{i=0}^n f(x_i) \ell_i$, where
+$\DS
 \ell_i = \prod_{\substack{j=0\\i\neq j}}^n \left(\frac{1}{x_i-x_j} \right)$.
-Conclude that $\displaystyle \sum_{i=0}^n f(x_i) \ell_i = 0$ if $f$
+Conclude that $\DS \sum_{i=0}^n f(x_i) \ell_i = 0$ if $f$
 is a polynomial of degree less than $n$.
 \label{intAQ4}
 \end{question}
@@ -1597,24 +1597,24 @@ The Lagrange's form of the polynomial $p$ is
 p(x) = \sum_{i=0}^n f(x_i) \prod_{\substack{j=0\\i\neq j}}^n \left(
 \frac{x-x_j}{x_i-x_j} \right) \ .
 \]
-The coefficient of $\displaystyle x^n$ in
-$\displaystyle f(x_i) \prod_{\substack{j=0\\i\neq j}}^n \left(
+The coefficient of $\DS x^n$ in
+$\DS f(x_i) \prod_{\substack{j=0\\i\neq j}}^n \left(
 \frac{x-x_j}{x_i-x_j} \right)$ is
-$\displaystyle f(x_i) \prod_{\substack{j=0\\i\neq j}}^n \left(
+$\DS f(x_i) \prod_{\substack{j=0\\i\neq j}}^n \left(
 \frac{1}{x_i-x_j} \right) = f(x_i) \ell_i$.  The sum of these
-coefficients gives the coefficient of $\displaystyle x^n$ in $p$.
+coefficients gives the coefficient of $\DS x^n$ in $p$.
 
 If $f$ is a polynomial of degree less than $n$, the interpolating
 polynomial $p$ of $f$ of degree at most $n$ at $x_0$, $x_1$, \ldots,
-$x_n$ is $f$ itself by uniqueness.  The coefficient of $\displaystyle x^n$ in
-$p = f$ is therefore $0$.  Since the coefficient of $\displaystyle x^n$ is
-$\displaystyle \sum_{i=0}^n f(x_i) \ell_i$, we have that
-$\displaystyle \sum_{i=0}^n f(x_i) \ell_i=0$.
+$x_n$ is $f$ itself by uniqueness.  The coefficient of $\DS x^n$ in
+$p = f$ is therefore $0$.  Since the coefficient of $\DS x^n$ is
+$\DS \sum_{i=0}^n f(x_i) \ell_i$, we have that
+$\DS \sum_{i=0}^n f(x_i) \ell_i=0$.
 }
 
 \begin{question}
 We have seen in Question~\ref{intAQ4} that the coefficient of
-$\displaystyle x^n$ in the interpolating polynomial of $f$ of degree
+$\DS x^n$ in the interpolating polynomial of $f$ of degree
 at most $n$ at
 the $n+1$ distinct points $x_0$, $x_1$, $x_2$, \ldots, $x_n$ is
 \begin{equation}\label{sgnEQ0}
@@ -1644,21 +1644,21 @@ sign.\\
 \ \underbrace{(x_k-x_{k+1}) \ldots (x_k-x_n)}_{n-k \text{ negative factors}}
 \ .
 \]
-Hence $\displaystyle \sgn(\ell_k) = (-1)^{n-k}$.
+Hence $\DS \sgn(\ell_k) = (-1)^{n-k}$.
 
 \subQ{b} To prove (\ref{sgnEQ1}), we consider
-$\displaystyle f(x) = x^n$.  Since the
-interpolating polynomial $p$ of $\displaystyle f(x) = x^n$ of degree
+$\DS f(x) = x^n$.  Since the
+interpolating polynomial $p$ of $\DS f(x) = x^n$ of degree
 at most $n$ at the points $x_0$, $x_1$, \ldots, $x_n$ is $f$ itself by
-uniqueness, the coefficient of $\displaystyle x^n$ in
-$\displaystyle f(x) = p(x) = x^n$ is
-$\displaystyle f[x_0,x_1,\ldots, x_n] = \sum_{j=0}^n x_i^n \ell_j = 1$
+uniqueness, the coefficient of $\DS x^n$ in
+$\DS f(x) = p(x) = x^n$ is
+$\DS f[x_0,x_1,\ldots, x_n] = \sum_{j=0}^n x_i^n \ell_j = 1$
 according to (\ref{sgnEQ0}).
 
 To prove (\ref{sgnEQ2}), we consider $f(x) = 1$ for all $x$.  The
 interpolating polynomial $p$ of $f$ of degree at most $n$ at the
 points $x_0$, $x_1$, \ldots, $x_n$ is $p(x)=f(x)=1$ for all $x$ by
-uniqueness. Hence, the coefficient of $\displaystyle x^n$ in
+uniqueness. Hence, the coefficient of $\DS x^n$ in
 $f(x) = p(x) = 1$ is 
 \[
 f[x_0,x_1,\ldots, x_n] = \sum_{j=0}^n \ell_j
@@ -1673,13 +1673,13 @@ Prove that
 \begin{equation}\label{binewt}
 f[0,1,2,\ldots,m] = \frac{1}{m!} \sum_{j=0}^m (-1)^{m-j} \binom{m}{j} f(j) \ .
 \end{equation}
-Hint: $\displaystyle \binom{m}{j-1} + \binom{m}{j} = \binom{m+1}{j}$,
-where $\displaystyle \binom{p}{q} = 0$ for $q>p$ by convention.
+Hint: $\DS \binom{m}{j-1} + \binom{m}{j} = \binom{m+1}{j}$,
+where $\DS \binom{p}{q} = 0$ for $q>p$ by convention.
 \end{question}
 
 \sol{\SOL}{
 The proof is by induction.  (\ref{binewt}) is true when $m=0$ because
-$\displaystyle
+$\DS
 \frac{1}{0!} \sum_{j=0}^0 (-1)^{0-j} \binom{0}{j} f(j) = f(0)$ and
 $f[0] = f(0)$.
 
@@ -1726,7 +1726,7 @@ f[0,1,2,\ldots,k+1] &= \frac{1}{k+1} \left(
   \binom{k}{j-1} + \binom{k}{j}\right) f(j)
 \end{align*}
 where we have made used of the fact that
-$\displaystyle \binom{k}{-1}=0$ and $\displaystyle \binom{k}{k+1} =0$.
+$\DS \binom{k}{-1}=0$ and $\DS \binom{k}{k+1} =0$.
 Using the hint, we get
 \[
 f[0,1,2,\ldots,k+1] =
@@ -1813,7 +1813,7 @@ f(1.35) & \approx p(1.35)
 
 \begin{question}
 \subQ{a} Find the interpolating polynomial $p$ of degree at most $3$
-of $\displaystyle f(x) = e^{x/2}$ such that
+of $\DS f(x) = e^{x/2}$ such that
 $p(0) = f(0)$, $p(2) = f(2)$, $p'(2) = f'(2)$ and $p''(2) = f''(2)$.\\
 \subQ{b} Use the nested form of the interpolating polynomial that you
 have found in (a) to approximate $f(1)$.\\
@@ -1822,8 +1822,8 @@ polynomial $p$ of $f$ on $[0,2]$.
 \end{question}
 
 \sol{\SOL}{
-\subQ{a} We have $\displaystyle f(x) = e^{x/2}$, $f'(x) = e^{x/2}/2$ and
-$\displaystyle f''(x)=e^{x/2}/4$.  The table of divided differences is
+\subQ{a} We have $\DS f(x) = e^{x/2}$, $f'(x) = e^{x/2}/2$ and
+$\DS f''(x)=e^{x/2}/4$.  The table of divided differences is
 {
 \small
 \[
@@ -1874,14 +1874,14 @@ for all $x\in[0,2]$.  Hence,
 \approx 0.113261743 \ .
 \]
 
-We have use the upper bound $\displaystyle 2^4$ for
-$\displaystyle |x(x-2)^3|$.  A better
+We have use the upper bound $\DS 2^4$ for
+$\DS |x(x-2)^3|$.  A better
 (i.e.\ smaller) bound could be found by maximizing
-$\displaystyle g(x) = |x(x-2)^3| = x(2-x)^3$ on the interval $[0,2]$.
-Since $\displaystyle g'(x) = (2-x)^2(2-4x)=0$, the critical points of
+$\DS g(x) = |x(x-2)^3| = x(2-x)^3$ on the interval $[0,2]$.
+Since $\DS g'(x) = (2-x)^2(2-4x)=0$, the critical points of
 $g$ on $[0,2]$ are $x=1/2$ and $x=2$.  It follows from the Extremum Theorem,
 Theorem~\ref{Th2}, that the maximum of $g$ on $[0,2]$ is the maximum
-of $g(0) = 0$, $g(2)=0$ and $\displaystyle g(1/2) = 3^3/2^4$. 
+of $g(0) = 0$, $g(2)=0$ and $\DS g(1/2) = 3^3/2^4$. 
 Hence,
 \[
 | f(x) - p(x) | \leq \frac{e}{2^4\,4!} \left| x (x-2)^3 \right|
@@ -1909,7 +1909,7 @@ x & f(x) & f'(x) & f''(x) \\
 % f(x) = e^{1-x}
 \subQ{b} Use the nested form of the interpolating polynomial that you
 have found in (a) to approximate $f(1.1)$.\\
-\subQ{c} Knowing that $\displaystyle |f^{(5)}(x)| \leq e$ for
+\subQ{c} Knowing that $\DS |f^{(5)}(x)| \leq e$ for
 $0\leq x\leq 2$, find
 an upper bound on the truncation error of the interpolating polynomial
 of $f$ on $[0,2]$.
@@ -1966,8 +1966,8 @@ Hence
 \leq \frac{e}{30}
 \]
 for $0\leq x \leq 2$.  We have use the conservative upper bound
-$\displaystyle |x(x-1)^3 (x-2)| \leq 4$ for $0\leq x \leq 2$ provided by
-$\displaystyle |x|\leq 2$, $|(x-1)^3|\leq 1$ and $|x-2|\leq 2$ for
+$\DS |x(x-1)^3 (x-2)| \leq 4$ for $0\leq x \leq 2$ provided by
+$\DS |x|\leq 2$, $|(x-1)^3|\leq 1$ and $|x-2|\leq 2$ for
 $0 \leq x \leq 2$.
 }
 
@@ -2064,12 +2064,12 @@ The relative error is
 \approx 0.0000220865 \ .
 \]
 Since $k=5$ is the largest positive integer such that
-$\displaystyle 0.0000220865 < 5 \times 10^{-k}$, there are $5$
+$\DS 0.0000220865 < 5 \times 10^{-k}$, there are $5$
 significant digits.
 }
 
 \begin{question}
-Let $\displaystyle f(x) = 3x e^x - e^{2x}$.  Approximate $f(1.03)$
+Let $\DS f(x) = 3x e^x - e^{2x}$.  Approximate $f(1.03)$
 using the Hermite interpolating polynomial of degree at most five at the points
 $x_0 = x_1 = 1$, $x_2 = x_3 = 1.05$ and $x_4 = x_5 = 1.07$.
 \end{question}
@@ -2144,9 +2144,9 @@ system to assess the quality of the interpolating polynomial.
 \sol{\SOL}{
 \subQ{a} 
 We have
-$\displaystyle f(x) = \cos\left(\frac{\pi}{2}-x\right)$,
-$\displaystyle f'(x) = \sin\left(\frac{\pi}{2}-x\right)$ and
-$\displaystyle f''(x) = -\cos\left(\frac{\pi}{2}-x\right)$.
+$\DS f(x) = \cos\left(\frac{\pi}{2}-x\right)$,
+$\DS f'(x) = \sin\left(\frac{\pi}{2}-x\right)$ and
+$\DS f''(x) = -\cos\left(\frac{\pi}{2}-x\right)$.
 
 The table of divided differences is
 {
@@ -2213,7 +2213,7 @@ for all $x$.  Hence,
 \leq \frac{1}{5!} \left(\frac{\pi}{4}\right)^5
 \approx 0.0025
 \]
-because $\displaystyle \left|x (x-\pi/2) \right| \leq (\pi/4)^2$
+because $\DS \left|x (x-\pi/2) \right| \leq (\pi/4)^2$
 (the maximum is reached at $x = \pi/4$) and
 $\left|x-\pi/4\right|\leq \pi/4$ for $x \in [0,\pi/2]$.
 

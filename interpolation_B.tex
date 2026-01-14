@@ -213,14 +213,14 @@ l_2 & d_2  & u_2 & 0 & \ldots & \ldots & \ldots & \ldots & \ldots \\
 and
 \[
 \VEC{b} = \begin{pmatrix}
-\displaystyle - z_0 \dtx{x_0} + \frac{6}{\dtx{x_1}}\left(f(x_2)
+\DS - z_0 \dtx{x_0} + \frac{6}{\dtx{x_1}}\left(f(x_2)
   -f(x_1) \right) - \frac{6}{\dtx{x_0}} \left(f(x_1) - f(x_0) \right) \\[0.8em]
-\displaystyle \frac{6}{\dtx{x_2}}\left(f(x_3) -f(x_2) \right)
+\DS \frac{6}{\dtx{x_2}}\left(f(x_3) -f(x_2) \right)
 - \frac{6}{\dtx{x_1}} \left(f(x_2) - f(x_1) \right) \\[0.8em]
 \vdots \\
-\displaystyle \frac{6}{\dtx{x_{n-2}}}\left(f(x_{n-1}) -f(x_{n-2}) \right)
+\DS \frac{6}{\dtx{x_{n-2}}}\left(f(x_{n-1}) -f(x_{n-2}) \right)
 - \frac{6}{\dtx{x_{n-3}}} \left(f(x_{n-2}) - f(x_{n-3}) \right) \\[0.8em]
-\displaystyle - z_n \dtx{x_{n-1}}
+\DS - z_n \dtx{x_{n-1}}
 + \frac{6}{\dtx{x_{n-1}}}\left(f(x_n) -f(x_{n-1}) \right)
 - \frac{6}{\dtx{x_{n-2}}}\left(f(x_{n-1}) - f(x_{n-2}) \right)
 \end{pmatrix}
@@ -277,7 +277,7 @@ p_i(x) = \left(\left(\alpha_i(x-x_i) + \beta_i\right)(x-x_i)
 on $[x_i,x_{i+1}]$ for $0\leq i \leq 3$, where $x_0=0$, $x_1=1$,
 $x_2=2$, $x_3=3$ and $x_4=5$.
 
-Let $\displaystyle \VEC{w} \in \RR^3$ be the solution of
+Let $\DS \VEC{w} \in \RR^3$ be the solution of
 $A\VEC{w} = \VEC{b}$, where
 \[
 A = \begin{pmatrix}
@@ -294,11 +294,11 @@ x_2-x_1 & 2(x_3-x_1) & x_3-x_2 \\
 and
 \[
 \VEC{b} = \begin{pmatrix}
-\displaystyle 6\,\frac{f(x_2) - f(x_1)}{x_2-x_1} -
+\DS 6\,\frac{f(x_2) - f(x_1)}{x_2-x_1} -
 6\,\frac{f(x_1) - f(x_0)}{x_1-x_0} \\[0.8em]
-\displaystyle 6\,\frac{f(x_3) - f(x_2)}{x_3-x_2} -
+\DS 6\,\frac{f(x_3) - f(x_2)}{x_3-x_2} -
 6\,\frac{f(x_2) - f(x_1)}{x_2-x_1} \\[0.8em]
-\displaystyle 6\,\frac{f(x_4) - f(x_3)}{x_4-x_3} -
+\DS 6\,\frac{f(x_4) - f(x_3)}{x_4-x_3} -
 6\,\frac{f(x_3) - f(x_2)}{x_3-x_2}
 \end{pmatrix}
 = \begin{pmatrix}
@@ -393,18 +393,18 @@ l_1 & d_1  & u_1 & 0 & \ldots & \ldots & \ldots & \ldots & \ldots \\
 and
 \[
 \VEC{b} = \begin{pmatrix}
-\displaystyle - 6f'(x_0) + \frac{6}{\dtx{x_0}}\left(f(x_1)-f(x_0)\right)
+\DS - 6f'(x_0) + \frac{6}{\dtx{x_0}}\left(f(x_1)-f(x_0)\right)
 \\[0.8em]
-\displaystyle \frac{6}{\dtx{x_1}}\left(f(x_2) -f(x_1) \right)
+\DS \frac{6}{\dtx{x_1}}\left(f(x_2) -f(x_1) \right)
 - \frac{6}{\dtx{x_0}} \left(f(x_1) - f(x_0) \right) \\[0.8em]
-\displaystyle \frac{6}{\dtx{x_2}}\left(f(x_3) -f(x_2) \right)
+\DS \frac{6}{\dtx{x_2}}\left(f(x_3) -f(x_2) \right)
 - \frac{6}{\dtx{x_1}} \left(f(x_2) - f(x_1) \right) \\[0.8em]
 \vdots \\
-\displaystyle \frac{6}{\dtx{x_{n-2}}}\left(f(x_{n-1}) -f(x_{n-2}) \right)
+\DS \frac{6}{\dtx{x_{n-2}}}\left(f(x_{n-1}) -f(x_{n-2}) \right)
 - \frac{6}{\dtx{x_{n-3}}} \left(f(x_{n-2}) - f(x_{n-3}) \right) \\[0.8em]
-\displaystyle \frac{6}{\dtx{x_{n-1}}}\left(f(x_n) -f(x_{n-1}) \right)
+\DS \frac{6}{\dtx{x_{n-1}}}\left(f(x_n) -f(x_{n-1}) \right)
 - \frac{6}{\dtx{x_{n-2}}} \left(f(x_{n-1}) - f(x_{n-2}) \right) \\[0.8em]
-\displaystyle 6f'(x_n) - \frac{6}{\dtx{x_{n-1}}}\left(f(x_n)-f(x_{n-1})\right)
+\DS 6f'(x_n) - \frac{6}{\dtx{x_{n-1}}}\left(f(x_n)-f(x_{n-1})\right)
 \end{pmatrix}
 \]
 with $d_i$, $u_i$ and $l_i$ for $0 \leq i \leq n$ defined as for
@@ -435,7 +435,7 @@ p_i(x) = \left(\left(\alpha_i(x-x_i) + \beta_i\right)(x-x_i)
 on $[x_i,x_{i+1}]$ for $i=0$ and $1$, where $x_0 = 0$, $x_1 = 0.3$ and
 $x_2=1$.
 
-Let $\displaystyle \VEC{z} \in \RR^3$ be the solution of
+Let $\DS \VEC{z} \in \RR^3$ be the solution of
 $A\VEC{z} = \VEC{b}$, where
 \[
 A = \begin{pmatrix}
@@ -452,10 +452,10 @@ x_1-x_0 & 2(x_2-x_0) & x_2-x_1 \\
 and
 \[
 \VEC{b} = \begin{pmatrix}
-\displaystyle - 6f'(x_0) + 6\, \frac{f(x_1) - f(x_0)}{x_1-x_0}\\[0.8em]
-\displaystyle 6\,\frac{f(x_2) -f(x_1)}{x_2-x_1}
+\DS - 6f'(x_0) + 6\, \frac{f(x_1) - f(x_0)}{x_1-x_0}\\[0.8em]
+\DS 6\,\frac{f(x_2) -f(x_1)}{x_2-x_1}
 - 6\,\frac{f(x_1) - f(x_0)}{x_1-x_0}\\[0.8em]
-\displaystyle 6f'(x_2) - 6\,\frac{f(x_2)-f(x_1)}{x_2-x_1}
+\DS 6f'(x_2) - 6\,\frac{f(x_2)-f(x_1)}{x_2-x_1}
 \end{pmatrix}
 = \begin{pmatrix}
 2.976232722 \\
@@ -666,7 +666,7 @@ Let $k$ be an index such that
 \]
 We have $|x_k|>0$ because $\VEC{x}\neq \VEC{0}$.
 
-From $\displaystyle \sum_{j=1}^n b_{k,j}x_j = 0$, we get
+From $\DS \sum_{j=1}^n b_{k,j}x_j = 0$, we get
 \[
 b_{k,k} = \sum_{\substack{j=0\\j\neq k}}^n b_{k,j}
 \left(\frac{x_j}{x_k}\right)  \ .
@@ -699,7 +699,7 @@ true for clamped cubic splines with $A$ given in (\ref{ccs1}).
 
 \begin{theorem}
 If $p$ is the natural cubic spline interpolant for a function $f$ of
-class $\displaystyle C^2$ on the nodes $a = x_0 < x_1 < \ldots < x_n=b$, then
+class $\DS C^2$ on the nodes $a = x_0 < x_1 < \ldots < x_n=b$, then
 \[
 \int_a^b (p''(x))^2 \dx{x} \leq \int_a^b (f''(x))^2 \dx{x} \ .
 \]
@@ -713,7 +713,7 @@ Let $g = f - p$.  We have
 + 2\int_a^b g''(x) p''(x)\dx{x} \ .
 \end{align*}
 To prove the theorem, we show that
-$\displaystyle \int_a^b g''(x) p''(x)\dx{x} = 0$.
+$\DS \int_a^b g''(x) p''(x)\dx{x} = 0$.
 
 Using integration by parts and $p''_{n-1}(x_n)=p''_0(x_0) = 0$ for
 the natural cubic spline, we get
@@ -755,7 +755,7 @@ $x_1$,\ldots, $x_n$ in $]a,b[$, then
 
 It follows from the previous theorem that the clamped cubic spline
 polynomial $p$ can be a good fit for a function $f$ if
-$\displaystyle \max_{0\leq i < n} |\Delta x_i|$ is small enough.
+$\DS \max_{0\leq i < n} |\Delta x_i|$ is small enough.
 
 \subsection{Another Approach}
 
@@ -940,7 +940,7 @@ Example~\ref{egg_clamped}.
 \section{Parametric Curves: Bézier Curves} \label{BEZIER}
 
 A general curves $C$ in the plane is the image of a vector valued
-function $\displaystyle \phi:[a,b] \rightarrow \RR^2$.  The function $\phi$ is
+function $\DS \phi:[a,b] \rightarrow \RR^2$.  The function $\phi$ is
 called a
 {\bfseries parametric representation}\index{Bézier Curves!Parametric
 Representation} of the curve $C$.  The parametric representation of a
@@ -948,7 +948,7 @@ curve is not unique.
 
 It is not always possible to describe a curve $C$ by the graph of a
 function $y=f(x)$ for $a\leq x \leq b$.  When it is possible,
-$\displaystyle \phi:[a,b]\to \RR^2$ defined by $\phi(x) = (x,f(x))$ is
+$\DS \phi:[a,b]\to \RR^2$ defined by $\phi(x) = (x,f(x))$ is
 a parametric representation of the curve $C$.
 
 \begin{egg}
@@ -963,14 +963,14 @@ circle as the graph of a function $y=f(x)$.
 
 Given $n+1$ points $\VEC{p}_0 = (x_0,y_0)$, $\VEC{p}_1 = (x_1,y_1)$,
 \ldots, $\VEC{p}_n = (x_n,y_n)$, the goal is to find polynomial
-maps of degree three $\displaystyle \phi_i:[0,1] \rightarrow \RR^2$ such
+maps of degree three $\DS \phi_i:[0,1] \rightarrow \RR^2$ such
 that $\phi_i(0) = \VEC{p}_i$ and $\phi_i(1) = \VEC{p}_{i+1}$ for $0\leq i <n$.
 By pasting all the mappings $\phi_i$ together, we hope to get a
 nice parametric representation of a curve.
 
 The curves that we are going to describe are called
 {\bfseries cubic Bézier curves}\index{Bézier Curves!Cubic Bézier Curves}.
-The mapping $\displaystyle \phi_i:[0,1]\to \RR^2$ between
+The mapping $\DS \phi_i:[0,1]\to \RR^2$ between
 the points $\VEC{p}_i = (x_i,y_i)$ and $\VEC{p}_{i+1} = (x_{i+1},y_{i+1})$,
 is defined by
 \begin{enumerate}
@@ -1197,7 +1197,7 @@ curve is given below.
 
 \begin{rmk}
 The {\bfseries Bernstein polynomial}\index{Bernstein Polynomial} of
-degree $\displaystyle m \in \NNp$ for a function $f:[0,1]\rightarrow \RR$ is the
+degree $\DS m \in \NNp$ for a function $f:[0,1]\rightarrow \RR$ is the
 polynomial
 \begin{equation} \label{bernstein1}
 B_m(t; f) = \sum_{k=0}^m f\left(\frac{k}{m}\right) \binom{m}{k}
@@ -1213,7 +1213,7 @@ polynomial
 \[
 \phi_i(t) = \sum_{k=0}^3 \VEC{c}_{i,k} \binom{3}{k} t^k(1-t)^{3-k}
 \]
-for $0 \leq i < n$, where $\displaystyle \VEC{c}_{i,k} \in \RR^2$ satisfies
+for $0 \leq i < n$, where $\DS \VEC{c}_{i,k} \in \RR^2$ satisfies
 \[
 \binom{3}{k} \VEC{c}_{i,k} =
 \begin{cases}
@@ -1232,7 +1232,7 @@ curve with $m-1$ control points as the curve defined by
 \phi_i(t) = \sum_{k=0}^m \VEC{c}_{i,k} \binom{m}{k} t^k(1-t)^{m-k} \ .
 \end{equation}
 The control points are
-$\displaystyle \binom{m}{k} \VEC{c}_{i,k}$ for $k=1$, $2$,
+$\DS \binom{m}{k} \VEC{c}_{i,k}$ for $k=1$, $2$,
 \ldots, $m-1$.  In particular, if we assume that
 \[
 \binom{m}{k} \VEC{c}_{i,k} =
@@ -1272,8 +1272,8 @@ In this section, we consider an infinite sequence of knots
 \[
 \ldots < t_{-2} < t_{-1} < t_0 < t_1 < t_2 < \ldots
 \]
-such that $\displaystyle \lim_{i\rightarrow -\infty} t_i = -\infty$ and
-$\displaystyle \lim_{i\rightarrow \infty} t_i = +\infty$.
+such that $\DS \lim_{i\rightarrow -\infty} t_i = -\infty$ and
+$\DS \lim_{i\rightarrow \infty} t_i = +\infty$.
 
 \begin{defn}
 The {\bfseries B-splines of degree $0$}\index{B-Splines of Degree $0$}
@@ -1292,15 +1292,15 @@ B_i^k(t) = v_i^k(t) B_i^{k-1}(t)
 + \left( 1-v_{i+1}^k(t) \right) B_{i+1}^{k-1}(t)
 \end{equation}
 for $i\in \ZZ$, where
-$\displaystyle v_i^k(t) = \frac{t-t_i}{t_{i+k}-t_i}$.
+$\DS v_i^k(t) = \frac{t-t_i}{t_{i+k}-t_i}$.
 \end{defn}
 
 We sketch in Figure~\ref{Bsplines} a B-spline of degree $0$ and a
 B-spline of degree $1$.
 
 \pdfF{interpolation_B/b-splines}{The B-spline of degree $0$, $1$ and $2$.}
-{Clockwise from the top left corner: $\displaystyle B_i^0$,
-$\displaystyle B_i^1$ and $\displaystyle B_i^2$.}{Bsplines}
+{Clockwise from the top left corner: $\DS B_i^0$,
+$\DS B_i^1$ and $\DS B_i^2$.}{Bsplines}
 
 The next propositions state some of the properties of the B-splines.
 We give some of the proofs and refer the reader to \cite{KC} for the
@@ -1309,13 +1309,13 @@ missing proofs and more information.
 \begin{prop}
 The B-splines of degree $0$ are piecewise constant functions which are
 continuous from the right.  For $k>0$, the B-splines of degree $k$ are
-piecewise polynomials of degree $k$ and class $\displaystyle C^{k-1}$.
+piecewise polynomials of degree $k$ and class $\DS C^{k-1}$.
 \label{BSplineCkm1}
 \end{prop}
 
 That the B-splines of degree $k>0$ are piecewise polynomials of degree
 $k$ is proved by induction using (\ref{Bsplinerecurence}).   To proof
-that they are of class $\displaystyle C^{k-1}$ requires induction and tedious
+that they are of class $\DS C^{k-1}$ requires induction and tedious
 computations to show that
 \begin{equation}\label{derBspline}
   \dfdx{B_i^k(t)}{t} =
@@ -1329,10 +1329,10 @@ A simple proof by induction based on (\ref{Bsplinerecurence}) gives
 the following result.
 
 \begin{prop}
-$\displaystyle B_i^0(t) > 0$ for $t_i \leq t < t_{i+1}$ and
-$\displaystyle B_i^0(t) = 0$ otherwise.
-For $k>0$, $\displaystyle B_i^k(t) > 0$ for $t_i < t < t_{i+k+1}$
-and $\displaystyle B_i^k(t) = 0$ otherwise.
+$\DS B_i^0(t) > 0$ for $t_i \leq t < t_{i+1}$ and
+$\DS B_i^0(t) = 0$ otherwise.
+For $k>0$, $\DS B_i^k(t) > 0$ for $t_i < t < t_{i+k+1}$
+and $\DS B_i^k(t) = 0$ otherwise.
 \label{Bsplienonneg}
 \end{prop}
 
@@ -1361,7 +1361,7 @@ C_{j-k+1}^k(t) & C_{j-k+1}^{k-1}(t) & & & \\[0.5em]
 C_{j-k}^k(t) & & & & 
 \end{array}
 \]
-then $\displaystyle p(t) = C_j^0(t)$.
+then $\DS p(t) = C_j^0(t)$.
 \end{prop}
 
 \begin{proof}
@@ -1392,26 +1392,26 @@ of the form
 \[
   p(t) = \sum_{i=-\infty}^\infty  c_i^k B_i^k(t)
 \]
-for some constants $\displaystyle c_i^k$.  If we set
-$\displaystyle C_i^r(t) = c_i^r$, we can use
+for some constants $\DS c_i^k$.  If we set
+$\DS C_i^r(t) = c_i^r$, we can use
 the method presented in the proposition above to compute $p(t)$.
 \end{rmk}
 
 \begin{prop}
-$\displaystyle \sum_{i=-\infty}^{+\infty} B_i^k(t) = 1$ for all $t \in \RR$
+$\DS \sum_{i=-\infty}^{+\infty} B_i^k(t) = 1$ for all $t \in \RR$
 and $k\geq 0$.
 \label{Bsplinesum1}
 \end{prop}
 
 \begin{proof}
-We use the previous proposition with $\displaystyle C_i^k(t) = 1$ for
+We use the previous proposition with $\DS C_i^k(t) = 1$ for
 all $i$.  We have that
 \[
 C_i^{k-1}(t) = C_i^k(t) v_i^k(t) + C_{i-1}^k \left( 1- v_i^k(t)\right)
 =  v_i^k(t) + \left( 1-  v_i^k(t)\right) = 1
 \]
 for all $i$.   A simple proof by induction shows that
-$\displaystyle C_i^r(t) = 1$ for all $i$ and all $r$ with
+$\DS C_i^r(t) = 1$ for all $i$ and all $r$ with
 $0 \leq r \leq k$.  Thus,
 \[
   \sum_{i=-\infty}^\infty B_i^k(t) = \sum_{i=-\infty}^\infty B_i^0(t) \ .
@@ -1425,33 +1425,33 @@ For $t\in [t_j,t_{j+1}[$, we get that
 
 \begin{prop}
 The set
-$\displaystyle \left\{ B_j^k, B_{j+1}^k, \ldots , B_{j+k}^k \right\}$
+$\DS \left\{ B_j^k, B_{j+1}^k, \ldots , B_{j+k}^k \right\}$
 is linearly independent on $]t_{j+k},t_{j+k+1}[$.
 \end{prop}
 
-We note that the only B-splines $\displaystyle B_i^k$ that are not
+We note that the only B-splines $\DS B_i^k$ that are not
 trivially null on $]t_{j+k},t_{j+k+1}[$ are those for
 $j \leq i \leq j+k$.  The proof of
 this proposition is by induction and requires the formula for the
-derivative of the B-splines $\displaystyle B_i^k$ that was required
+derivative of the B-splines $\DS B_i^k$ that was required
 for the proof of Proposition~\ref{BSplineCkm1}.
 
 \begin{prop}
 The set of B-splines
-$\displaystyle \left\{ B_{-k}^k, B_{-k+1}^k, \ldots , B_{n-1}^k \right\}$
-is a basis for the space $\displaystyle S_n^k$ of functions $p$ of
-class $\displaystyle C^{k-1}$ on $[t_0,t_n]$ such that
-$\displaystyle p\big|_{[t_i,t_{i+1}]}$ is a polynomials of degree at most
+$\DS \left\{ B_{-k}^k, B_{-k+1}^k, \ldots , B_{n-1}^k \right\}$
+is a basis for the space $\DS S_n^k$ of functions $p$ of
+class $\DS C^{k-1}$ on $[t_0,t_n]$ such that
+$\DS p\big|_{[t_i,t_{i+1}]}$ is a polynomials of degree at most
 $k$ for $0\leq i < n$.
 \label{BSplineLinInd}
 \end{prop}
 
 \begin{proof}
-We note that the only B-splines $\displaystyle B_i^k$ that are not
+We note that the only B-splines $\DS B_i^k$ that are not
 trivially null on $]t_0,t_n[$ are those for $-k \leq i \leq n-1$.
 
 \subI{Linear Independence}
-Suppose that $\displaystyle \sum_{i=-k}^{n-1} c_i B_i^k = 0$ on $[t_0,t_n]$.
+Suppose that $\DS \sum_{i=-k}^{n-1} c_i B_i^k = 0$ on $[t_0,t_n]$.
 We therefore also have that
 \[
   \sum_{i=-k}^0 c_i B_i^k = \sum_{i=-k}^{n-1} c_i B_i^k = 0
@@ -1466,34 +1466,34 @@ $t \in [t_j,t_j+1[$, we have
  0 = \sum_{i=-k}^{n-1} c_i B_i^k(t) = \sum_{i=j}^{n-1} c_i B_i^k(t) =
   c_j B_j^k(t) \ .
 \]
-Since $\displaystyle B_j^k(t) > 0$, we get $c_j = 0$.  This is a
+Since $\DS B_j^k(t) > 0$, we get $c_j = 0$.  This is a
 contradiction that $c_j \neq 0$.  So, there is no such $j$ between $0$
 and $n$ such $c_j \neq 0$.
 
-In particular, this proves that $\displaystyle S_n^k$ is at least of dimension
+In particular, this proves that $\DS S_n^k$ is at least of dimension
 $n+k$. 
 
 \subI{Generating set}
-We prove that all functions $\displaystyle p \in S_n^k$ can be
+We prove that all functions $\DS p \in S_n^k$ can be
 expressed as a linear combination over $\RR$ of the following $n+k$
-functions in $\displaystyle S_n^k$:
-$\displaystyle t^j$ for $0\leq j \leq k$ and
-$\displaystyle H(t-t_j)(t-t_j)^k$ for
+functions in $\DS S_n^k$:
+$\DS t^j$ for $0\leq j \leq k$ and
+$\DS H(t-t_j)(t-t_j)^k$ for
 $1\leq j \leq n-1$, where $H$ is the Heavyside function defined by
 \[
   H(x) = \begin{cases} 1 & \quad \text{if} \quad x \geq 0 \\
     0 & \quad \text{if} \quad x < 0
   \end{cases}
 \]
-This will prove that $\displaystyle S_n^k$ is at most of dimension
+This will prove that $\DS S_n^k$ is at most of dimension
 $n+k$.  Combined with what we proved in the first part of the proof,
-this shows that $\displaystyle S_n^k$ is of dimension $n+k$ and that\\
-$\displaystyle \left\{ B_{-k}^k, B_{-k+1}^k, \ldots , B_{n-1}^k \right\}$
-is a basis of $\displaystyle S_n^k$.
+this shows that $\DS S_n^k$ is of dimension $n+k$ and that\\
+$\DS \left\{ B_{-k}^k, B_{-k+1}^k, \ldots , B_{n-1}^k \right\}$
+is a basis of $\DS S_n^k$.
 
-Given $\displaystyle p \in S_n^k$, we have that
+Given $\DS p \in S_n^k$, we have that
 $p_0 = p\big|_{[t_0,t_1]}$ is a polynomial of degree at most $k$.  So
-$\displaystyle p_0(t) = \sum_{i=0}^k a_i t^i$ for some $a_i \in \RR$.
+$\DS p_0(t) = \sum_{i=0}^k a_i t^i$ for some $a_i \in \RR$.
 
 We prove by induction that there exist constants $a_{k+i}$ such that
 \begin{equation}\label{Snkbasis}
@@ -1502,7 +1502,7 @@ We prove by induction that there exist constants $a_{k+i}$ such that
 for $t_0 \leq t \leq t_{j+1}$ with $1 \leq j\ < n$.
 
 We have that $P_1 = p\big|_{[t_1,t_2]}$ is a polynomial of degree at
-most $k$.  Since $p$ is of class $\displaystyle C^{k-1}$, we have that
+most $k$.  Since $p$ is of class $\DS C^{k-1}$, we have that
 \[
   \dfdxn{(p_1 - p_0)(t_1)}{t}{m} = 0
 \]
@@ -1524,7 +1524,7 @@ p_j = p\big|_{[t_j,t_{j+1}]} = \left( \sum_{i=0}^k a_i t^i
 + \sum_{i=1}^j a_{k+i}H(t-t_i)(t-t_i)^k\right)\bigg|_{[t_j,t_{j+1}]}
 \]
 is a polynomial of degree at most $k$.  Since $p$ is of class
-$\displaystyle C^{k-1}$, we have that
+$\DS C^{k-1}$, we have that
 \[
   \dfdxn{(p_{j+1} - p_j)}{t}{m}(t_{j+1}) = 0
 \]
@@ -1540,13 +1540,13 @@ for $t_0 \leq t \leq t_{j+2}$.  This proves (\ref{Snkbasis}) for $j$
 replaced by $j+1$.
 
 (\ref{Snkbasis}) with $j=n-1$ shows that $f$ is a linear combination
-of the $n+k$ functions $\displaystyle t^j$ for $0\leq j \leq k$ and
+of the $n+k$ functions $\DS t^j$ for $0\leq j \leq k$ and
 $H(t-t_j)(t-t_j)^k$ for $1\leq j \leq n-1$ as claimed.
 \end{proof}
 
 Our interpolation problem is as follows.   Given points
 $(x_1,y_1)$, $(x_2,y_2)$, \ldots, $(x_{n+k},y_{n+k})$
-such that $\displaystyle x_j < x_{j+1}$ for $1\leq j < n+k$, and
+such that $\DS x_j < x_{j+1}$ for $1\leq j < n+k$, and
 $ x_j \in[t_0,t_n]$ for $1\leq j \leq n+k$,
 can we find constants $c_i$ with $-k \leq i \leq n-1$ such that
 \begin{equation}\label{BsplineFormCoeff}
@@ -1565,26 +1565,26 @@ The answer to this question is a consequence of the following result.
 \begin{theorem}[Schoemberg-Whitney]
 Given $q \in \ZZ$ and $x_1 < x_2 < \ldots < x_m$, consider the
 \nm{m}{m} matrix $Q$ with the entries
-$\displaystyle Q_{j,i} = B_{i+q}^k(x_j)$ for
+$\DS Q_{j,i} = B_{i+q}^k(x_j)$ for
 $1 \leq i,j \leq m$.  Then, $Q$ is invertible if and only if
 $Q_{j,j} \neq 0$ for $1 \leq j \leq m$.
 \end{theorem}
 
-To find the $\displaystyle c_i^k$ required to satisfy
+To find the $\DS c_i^k$ required to satisfy
 (\ref{BsplineFormCoeff}), we
 have to solve the linear system $Q \VEC{z} = \VEC{y}$, where
-$\displaystyle Q_{j,i} = B_{i-k-1}^k(x_j)$ and $z_i = c_{i-k-1}$ 
+$\DS Q_{j,i} = B_{i-k-1}^k(x_j)$ and $z_i = c_{i-k-1}$ 
 for $1\leq i,j \leq n+k$.  We get the following result from
 Schoemberg-Whitney Theorem and Proposition~\ref{Bsplienonneg}.
 
 \begin{prop}
 The system $Q\VEC{z} = \VEC{y}$ defined above has a solution if and
-only if $\displaystyle Q_{j,j} = B_{j-k-1}^k(x_j) \neq 0$ for $1\leq j \leq n+k$;
+only if $\DS Q_{j,j} = B_{j-k-1}^k(x_j) \neq 0$ for $1\leq j \leq n+k$;
 namely, if $t_{j-k-1} < x_j < t_j$ for $1\leq j \leq n+k$.
 \end{prop}
 
 If we consider the set of B-splines
-$\displaystyle \left\{ B_{-k}^k, B_{-k+1}^k, \ldots , B_{n-1}^k \right\}$,
+$\DS \left\{ B_{-k}^k, B_{-k+1}^k, \ldots , B_{n-1}^k \right\}$,
 then Schoemberg-Whitney Theorem not only gives a condition for the
 existence of a solution to $Q\VEC{z} = \VEC{y}$ but it also shows that
 this solution is unique.  However, there is no obligation to specify
@@ -1626,7 +1626,7 @@ $1\leq j \leq n$.   The spline interpolant $p$ that we are
 looking for will be determined by the points
 $(x_j,y_j) = (t_{j-1},f(t_{j-1}))$ for $1\leq j \leq n$.
 We need $j-4 \leq i < j$ to possibly have that
-$\displaystyle B_i^3(x_j)$ is non null.
+$\DS B_i^3(x_j)$ is non null.
 
 The spline interpolant $p$ is of the form
 \[
@@ -1639,7 +1639,7 @@ p(x_j) = \sum_{i=-3}^{n-2} c_i B_i^3(x_j)
 \end{equation}
 for $1\leq j \leq n$.  We have dropped the term for
 $i\not\in \{-3,-2,\ldots,n-2\}$ from the
-summation because $\displaystyle B_i^3(x_j) = B_i^3(t_{j-1}) = 0$ for
+summation because $\DS B_i^3(x_j) = B_i^3(t_{j-1}) = 0$ for
 these values of $i$.  There are $n$ equations with $n+2$ variables $c_i$ for
 $-3\leq i \leq n-2$.  We use the two extra variables to
 satisfy the conditions for a natural cubic spline interpolant; namely,
@@ -1668,7 +1668,7 @@ These give two extra equations,
 + (t_{n+1}-t_{n-2})c_{n-4} = 0 \ ,
 \end{align*}
 to combine with the $n$ equations in (\ref{BsplieCubiccoeff}) to
-determine the $n+2$ variables $\displaystyle c_i^3$ for $-3 \leq i \leq n-2$.
+determine the $n+2$ variables $\DS c_i^3$ for $-3 \leq i \leq n-2$.
 \end{egg}
 
 Consider a function $f:I \to \RR$, where $I$ is a sub-interval
@@ -1684,13 +1684,13 @@ $\omega(f; \delta,I)$ as small as we want by taking $\delta$ small
 enough.
 
 \begin{theorem}
-Let $\displaystyle q(t) = \sum_{i=-\infty}^\infty f(t_{i+2}) B_i^k(t)$ for
+Let $\DS q(t) = \sum_{i=-\infty}^\infty f(t_{i+2}) B_i^k(t)$ for
 $t\in \RR$ and $k\geq 2$.  If $f:[t_{-k},t_{n+1}] \to \RR$, then 
 \[
   \sup_{t_0 \leq t\leq t_n} |f(t) - q(t)|
   \leq k \omega(f; \delta, [t_{-k},t_{n+1}])
 \]
-for $\displaystyle \delta = \max_{-k\leq i \leq n+1} |t_i - t_{i-1}|$.
+for $\DS \delta = \max_{-k\leq i \leq n+1} |t_i - t_{i-1}|$.
 \label{SplineApprox}
 \end{theorem}
 
@@ -1749,8 +1749,8 @@ statement of the theorem.  We have used the second one because the
 statement was nicer.
 \end{proof}
 
-Since every element of $\displaystyle S_n^k$ is a linear combination of
-$\displaystyle B_{j}^k$ for $-k \leq j <n$, we get the following result from the
+Since every element of $\DS S_n^k$ is a linear combination of
+$\DS B_{j}^k$ for $-k \leq j <n$, we get the following result from the
 previous theorem.
 
 \begin{cor}
@@ -1787,13 +1787,13 @@ representation
 \VEC{\phi}_i(t) = \sum_{j=-1}^2 b_j(t) \VEC{p}_{i+j} \  ,
 \end{equation}
 where
-$\displaystyle
+$\DS
 b_{-1}(t) = -\frac{t^3}{6} + \frac{t^2}{2} - \frac{t}{2} + \frac{1}{6}$,
-$\displaystyle b_0(t) = \frac{t^3}{2} - t^2 + \frac{2}{3}$,
-$\displaystyle
+$\DS b_0(t) = \frac{t^3}{2} - t^2 + \frac{2}{3}$,
+$\DS
 b_1(t) = -\frac{t^3}{2} + \frac{t^2}{2} + \frac{t}{2} + \frac{1}{6}$
 and
-$\displaystyle b_2(t) = \frac{t^3}{6}$
+$\DS b_2(t) = \frac{t^3}{6}$
 for $0 \leq t \leq 1$.  Each component of the parametric representation
 is a polynomial of degree three in $t$.
 
@@ -1802,7 +1802,7 @@ $\VEC{\phi}_i(t)$ with $0\leq t \leq 1$ is in the convex hull of the
 points $\VEC{p}_j$ for $j=i-1$, $i$, $i+1$ and $i+2$.  The coordinates
 of $\VEC{\phi}_i(t)$ are the weighted sums of the coordinates of
 $\VEC{p}_j$ for $j=i-1$, $i$, $i+1$ and $i+2$ because
-$\displaystyle \sum_{j=-1}^2 b_j(t) = 1 $ for all $t$.
+$\DS \sum_{j=-1}^2 b_j(t) = 1 $ for all $t$.
 
 The parametric representations $\VEC{\phi}_i(t)$ satisfy the following
 properties:
@@ -1877,16 +1877,16 @@ A &= \begin{pmatrix}
 and
 \[
 \VEC{b} = \begin{pmatrix}
-\displaystyle - 6f'(x_0) + 6\, \frac{f(x_1) - f(x_0)}{x_1-x_0}\\[0.8em]
-\displaystyle 6\,\frac{f(x_2) -f(x_1)}{x_2-x_1}
+\DS - 6f'(x_0) + 6\, \frac{f(x_1) - f(x_0)}{x_1-x_0}\\[0.8em]
+\DS 6\,\frac{f(x_2) -f(x_1)}{x_2-x_1}
 - 6\,\frac{f(x_1) - f(x_0)}{x_1-x_0}\\[0.8em]
-\displaystyle 6\,\frac{f(x_3) -f(x_2)}{x_3-x_2}
+\DS 6\,\frac{f(x_3) -f(x_2)}{x_3-x_2}
 - 6\,\frac{f(x_3) - f(x_1)}{x_2-x_1}\\[0.8em]
-\displaystyle 6\,\frac{f(x_4) -f(x_3)}{x_4-x_3}
+\DS 6\,\frac{f(x_4) -f(x_3)}{x_4-x_3}
 - 6\,\frac{f(x_3) - f(x_2)}{x_3-x_2}\\[0.8em]
-\displaystyle 6\,\frac{f(x_5) -f(x_4)}{x_5-x_4}
+\DS 6\,\frac{f(x_5) -f(x_4)}{x_5-x_4}
 - 6\,\frac{f(x_4) - f(x_3)}{x_4-x_3}\\[0.8em]
-\displaystyle 6f'(x_5) - 6\,\frac{f(x_5)-f(x_4)}{x_5-x_4}
+\DS 6f'(x_5) - 6\,\frac{f(x_5)-f(x_4)}{x_5-x_4}
 \end{pmatrix}
 = \begin{pmatrix}
 6 \\

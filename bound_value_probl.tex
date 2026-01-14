@@ -1,5 +1,5 @@
-\chapter[Boundary Value Problems]
-{Boundary Value Problems for Ordinary Differential Equations}
+\chapter[Boundary Value Problems] {Boundary Value Problems for
+  Ordinary Differential Equations}
 \label{chapBoundValProbl}
 
 The content of this chapter is based in great part on \cite{K}.
@@ -97,8 +97,8 @@ P(\VEC{y}(t)) \equiv \VEC{y}'(t) - A(t) \VEC{y}(t) &= f(t)
 B_a\VEC{y}(a) + B_b\VEC{y}(b) &= \VEC{y}_c
 \end{split}
 \end{equation}
-where $\displaystyle \VEC{y} : [a,b] \rightarrow \RR^n$,
-$\displaystyle A:[a,b] \rightarrow \GL{n}$ and $f:[a,b]\rightarrow \RR^n$
+where $\DS \VEC{y} : [a,b] \rightarrow \RR^n$,
+$\DS A:[a,b] \rightarrow \GL{n}$ and $f:[a,b]\rightarrow \RR^n$
 are sufficiently differentiable functions, and
 $B_a, B_b \in \GL{n}$.
 
@@ -122,19 +122,19 @@ P(\VEC{y}_j(t)) &= \VEC{0} \quad , \quad a \leq t \leq b \\
 \end{equation}
 for $j=1$, $2$, \ldots, $n$.  Any other vector than $\VEC{y}_c$ would
 have been acceptable.
-\item The general solution $\displaystyle \VEC{y}_g:[a,b]\to \RR^n$ of the
+\item The general solution $\DS \VEC{y}_g:[a,b]\to \RR^n$ of the
 differential equation in (\ref{LinBVP}) is of the form
 \[
 \VEC{y}_g(t) = \VEC{y}_0(t) + \sum_{j=1}^n d_j \VEC{y}_j(t) =
 \VEC{y}_0(t) + Y(t) \VEC{d} \ ,
 \]
 where
-$\displaystyle Y(t) = \begin{pmatrix}
+$\DS Y(t) = \begin{pmatrix}
 \VEC{y}_1(t) & \VEC{y}_2(t) & \ldots & \VEC{y}_n(t) \end{pmatrix}$
-and $\displaystyle \VEC{d} =
+and $\DS \VEC{d} =
 \begin{pmatrix} d_1 & d_2 & \ldots & d_n \end{pmatrix}^\top \in \RR^n$.
 \item $\VEC{y}_g$ will be the solution of the boundary value
-problem (\ref{LinBVP}) if there exists $\displaystyle \VEC{d} \in \RR^n$
+problem (\ref{LinBVP}) if there exists $\DS \VEC{d} \in \RR^n$
 such that
 \begin{equation} \label{BVcond}
 \VEC{y}_c - B_a\VEC{y}_0(a) - B_b\VEC{y}_0(b) = Q\VEC{d} \ ,
@@ -147,28 +147,28 @@ that $B_a\VEC{y}_g(a) + B_b\VEC{y}_g(b) = \VEC{y}_c$.  \label{ShootStep3}
 \begin{egg}[Example~\ref{egg_BVP} continued]
 The boundary value problem of Example~\ref{egg_BVP} can be restated in
 the format (\ref{LinBVP}) with $a=0$, $b=\pi/2$,
-$\displaystyle \VEC{y}(t) = \begin{pmatrix} x(t) \\ x'(t) \end{pmatrix}$, 
-$\displaystyle A = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$,
-$\displaystyle f(t) = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$,
-$\displaystyle B_a = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$,
-$\displaystyle B_b = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$ and
-$\displaystyle \VEC{y}_c = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$.
+$\DS \VEC{y}(t) = \begin{pmatrix} x(t) \\ x'(t) \end{pmatrix}$, 
+$\DS A = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$,
+$\DS f(t) = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$,
+$\DS B_a = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$,
+$\DS B_b = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$ and
+$\DS \VEC{y}_c = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$.
 
 Since the general solution of
-$\displaystyle P(\VEC{y}(t)) = \VEC{y}'(t) - A(t) \VEC{y}(t) = \VEC{0}$ is
+$\DS P(\VEC{y}(t)) = \VEC{y}'(t) - A(t) \VEC{y}(t) = \VEC{0}$ is
 \[
 \VEC{y}(t) = e^{tA} \VEC{y}(0) =
 \begin{pmatrix} \cos(t) & \sin(t) \\ -\sin(t) & \cos(t) \end{pmatrix}
 \VEC{y}(0) \ ,
 \]
 we get
-$\displaystyle \VEC{y}_0(t) =
+$\DS \VEC{y}_0(t) =
 \begin{pmatrix} \sin(t) \\ \cos(t) \end{pmatrix}$,
-$\displaystyle \VEC{y}_1(t) =
+$\DS \VEC{y}_1(t) =
 \begin{pmatrix} \cos(t) \\ -\sin(t) \end{pmatrix}$,
-$\displaystyle \VEC{y}_2(t) =
+$\DS \VEC{y}_2(t) =
 \begin{pmatrix} \sin(t) \\ \cos(t) \end{pmatrix}$ and\\
-$\displaystyle Y(t) = \begin{pmatrix}
+$\DS Y(t) = \begin{pmatrix}
 \cos(t) & \sin(t) \\  -\sin(t) & \cos(t) \end{pmatrix}$.  Thus
 \[
 \VEC{y}_g(t) =
@@ -176,17 +176,17 @@ $\displaystyle Y(t) = \begin{pmatrix}
 + \begin{pmatrix} \cos(t) & \sin(t) \\ -\sin(t) & \cos(t) \end{pmatrix}
 \begin{pmatrix} d_1 \\ d_2 \end{pmatrix}
 \]
-and $\displaystyle Q = \Id$.  Since
-$\displaystyle \VEC{y}_c - B_a\VEC{y}_0(a) - B_b\VEC{y}_0(b) = \VEC{0}$
+and $\DS Q = \Id$.  Since
+$\DS \VEC{y}_c - B_a\VEC{y}_0(a) - B_b\VEC{y}_0(b) = \VEC{0}$
 and $Q$ is non-singular, the only solution of
 (\ref{BVcond}) is $\VEC{d} = \VEC{0}$.  We find the solution
 $\VEC{y}_g(t) = \VEC{y}_0(t)$ as expected.
 \end{egg}
 
 \begin{theorem}
-If $A:[a,b]\to \GL{n}$ and $\displaystyle f:[a,b]\to \RR^n$ are functions of
-class $\displaystyle C^r$, then the boundary value problem
-(\ref{LinBVP}) has a unique solution of class $\displaystyle C^{r+1}$
+If $A:[a,b]\to \GL{n}$ and $\DS f:[a,b]\to \RR^n$ are functions of
+class $\DS C^r$, then the boundary value problem
+(\ref{LinBVP}) has a unique solution of class $\DS C^{r+1}$
 if and only if $Q$ defined in step~\ref{ShootStep3} above is
 invertible.  \label{BVPCdiff}
 \end{theorem}
@@ -208,7 +208,7 @@ The classical fourth order Runga-Kutta is use to solve initial value
 problems in the algorithm.  For $N$ given, the step size is $h = (b-a)/N$ and
 $t_i = a + i h $ for  $0 \leq i \leq N$.\\
 \subI{Input} The vector valued function
-$\displaystyle f:[a,b] \to \RR^n$ (f in the code below).\\
+$\DS f:[a,b] \to \RR^n$ (f in the code below).\\
 The \nn matrix valued function $A$ defined on $[a,b]$ (A in the code below).\\
 The \nn matrix $B_a$ (Ba in the code below).\\
 The \nn matrix $B_b$ (Bb in the code below).\\
@@ -259,7 +259,7 @@ end
 
 We could have used one of the ``ode'' solvers in Matlab.  However, we
 have chosen to use our own implementation of Runage-Kutta in
-$\displaystyle \RR^n$.  It is basically the same code that we have presented in
+$\DS \RR^n$.  It is basically the same code that we have presented in
 Code~\ref{rgkt4}.  We give it below.
 
 \begin{code}[Runge-Kutta of Order Four]
@@ -307,12 +307,12 @@ y_1(0) = 1 \quad , \quad y_2(1) = e
 This problem can be restated as
 $\VEC{y}'(t) = A(t) \VEC{y}(t) + f(t)$ with
 $B_a \VEC{y}(0) + B_b\VEC{y}(1) = \VEC{y}_c$, where
-$\displaystyle \VEC{y} = \begin{pmatrix} y_1(t) \\ y_2(t) \end{pmatrix}$,
-$\displaystyle A(t) = \begin{pmatrix} 0 & 1 \\ 4 & 0 \end{pmatrix}$,
-$\displaystyle f(t) = \begin{pmatrix} 0 \\ -3 e^t \end{pmatrix}$,
-$\displaystyle B_a = \begin{pmatrix} 1 & 0 \\  0 & 0 \end{pmatrix}$,
-$\displaystyle B_b = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$
-and $\displaystyle \VEC{y}_c = \begin{pmatrix} 1 \\ e \end{pmatrix}$.
+$\DS \VEC{y} = \begin{pmatrix} y_1(t) \\ y_2(t) \end{pmatrix}$,
+$\DS A(t) = \begin{pmatrix} 0 & 1 \\ 4 & 0 \end{pmatrix}$,
+$\DS f(t) = \begin{pmatrix} 0 \\ -3 e^t \end{pmatrix}$,
+$\DS B_a = \begin{pmatrix} 1 & 0 \\  0 & 0 \end{pmatrix}$,
+$\DS B_b = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$
+and $\DS \VEC{y}_c = \begin{pmatrix} 1 \\ e \end{pmatrix}$.
 If we use the code above with $N=25$, we find the following approximations of
 the solution.
 \[
@@ -334,7 +334,7 @@ i & t_i & w_{1,i} & w_{2,i} & & i & t_i & w_{1,i} & w_{2,i} \\
 where $w_{1,i} \approx y_{1,i} = y_1(t_i)$ and
 $w_{2,i} \approx y_{2,i} = y_2(t_i)$ for all $i$.
 All the approximations have at least $6$-digit accuracy.  The exact solution is
-$\displaystyle \VEC{y}(t) = \begin{pmatrix} e^t \\ e^t \end{pmatrix}$.
+$\DS \VEC{y}(t) = \begin{pmatrix} e^t \\ e^t \end{pmatrix}$.
 
 For the sake of completeness, here is the code used to call the
 shooting method.
@@ -371,17 +371,17 @@ with
 This problem can be rewritten as
 $\VEC{y}'(t) = A(t) \VEC{y}(t) + f(t)$ with
 $B_a \VEC{y}(0) + B_b\VEC{y}(1) = \VEC{y}_c$, where
-$\displaystyle \VEC{y}
+$\DS \VEC{y}
 = \begin{pmatrix} y_1(t) \\ y_2(t) \\ y_3(t) \\ y_4(t) \end{pmatrix}$,
-$\displaystyle A(t) = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\
+$\DS A(t) = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 1 \\ -400 & 0 & 401 & 0 \end{pmatrix}$,
-$\displaystyle f(t) = \begin{pmatrix} 0 \\ 0 \\ 0 \\ -1 + 200
+$\DS f(t) = \begin{pmatrix} 0 \\ 0 \\ 0 \\ -1 + 200
 t^2 \end{pmatrix}$,
-$\displaystyle B_a = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\
+$\DS B_a = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\
  0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}$,
-$\displaystyle B_b = \begin{pmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\
+$\DS B_b = \begin{pmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\
  1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \end{pmatrix}$ and
-$\displaystyle \VEC{y}_c = \begin{pmatrix} 1 \\ 1 \\ 3/2 + \sinh(1) \\
+$\DS \VEC{y}_c = \begin{pmatrix} 1 \\ 1 \\ 3/2 + \sinh(1) \\
  1 + \cosh(1) \end{pmatrix}$.
 
 If we use the code above with $N=25$, we find the following approximations of
@@ -404,7 +404,7 @@ i & t_i & w_{1,i} & & i & t_i & w_{1,i} & & i & t_i & w_{1,i} \\
 where $w_{1,i} \approx y_i = y(t_i)$ for all $i$ because $y_1(t) = y(t)$
 for all $t$.   All the approximations have at least $7$-digit
 accuracy.  The exact solution is
-$\displaystyle \VEC{y}(t) = 1 + t^2/2 + \sinh(t)$.
+$\DS \VEC{y}(t) = 1 + t^2/2 + \sinh(t)$.
 
 It is interesting to note how much more accurate our results are then
 those in \cite{CSD}.  The difference is not in the algorithm used
@@ -424,17 +424,17 @@ The reader is invited to numerically solve the
 initial value problem $\VEC{y}'(t) = A(t) \VEC{y}(t) + f(t)$ with
 $\VEC{y}(0) = \VEC{y}_c$ using the classical fourth order Runge-Kutta
 methods.  The solution obtained is not even remotely closed to
-$\displaystyle \VEC{y}(t) = 1 + t^2/2 + \sinh(t)$.  The part of the 
+$\DS \VEC{y}(t) = 1 + t^2/2 + \sinh(t)$.  The part of the 
 general solution associated to the eigenvalue $20$ dominates.
 \label{eggShootCode2}
 \end{egg}
 
 \subsection{Numerical Aspect of the Shooting Method}
 
-Let $\displaystyle \{t_i\}_{i=0}^N$ be a partition of $[a,b]$.  More
+Let $\DS \{t_i\}_{i=0}^N$ be a partition of $[a,b]$.  More
 precisely, $t_0 = a$, $t_N = b$ , $t_{i+1} = t_i + h_i$ with $h_i > 0$
 for $0\leq i < N$ and
-$\displaystyle h = \max_{0\leq i < N} h_i \leq \theta \min_{0\leq i < N} h_i$
+$\DS h = \max_{0\leq i < N} h_i \leq \theta \min_{0\leq i < N} h_i$
 for some constant $\theta$.
 
 \begin{rmk}[Important]
@@ -456,17 +456,17 @@ Suppose that
 for $0\leq j \leq n$.
 
 If we set $Q_T = B_a + B_b W_N$, where
-$\displaystyle W_i = \begin{pmatrix}
+$\DS W_i = \begin{pmatrix}
 \VEC{w}_{1,i} & \VEC{w}_{2,i} & \ldots & \VEC{w}_{n,i} \end{pmatrix}
 \in \GL{n}$ for $0 \leq i \leq N$, then (\ref{BVcond}) becomes
 \begin{equation} \label{BVcondN}
 \VEC{y}_c - B_a \VEC{w}_{0,0} - B_b \VEC{w}_{0,N} = Q_T\VEC{d}_T
 \end{equation}
-for some $\displaystyle \VEC{d}_T \in \RR^n$.
-Since $\displaystyle \| Q - Q_T \| = O(h^p)$ from (\ref{bigO}) and $Q$ is
+for some $\DS \VEC{d}_T \in \RR^n$.
+Since $\DS \| Q - Q_T \| = O(h^p)$ from (\ref{bigO}) and $Q$ is
 invertible, we get from Banach Lemma that $Q_T$ is invertible for $h$
 small enough.  To be more precise, if $h$ is small enough to have
-$\displaystyle \|Q - Q_T\| < 1/\|Q^{-1}\|$, then $Q_T$ is invertible.  Thus
+$\DS \|Q - Q_T\| < 1/\|Q^{-1}\|$, then $Q_T$ is invertible.  Thus
 (\ref{BVcondN}) has a unique solution.  Note that (\ref{BVcondN}) is a
 system of linear equations which is not necessarily easy to solve.
 
@@ -481,10 +481,10 @@ the solution given by the shooting method also satisfies
 \[
 \| \VEC{w}_i - \VEC{y}(t_i) \| = O(h^p) \ .
 \]
-Since $\displaystyle \| Q - Q_T \| = O(h^p)$, we have that $\|Q_T\|$
+Since $\DS \| Q - Q_T \| = O(h^p)$, we have that $\|Q_T\|$
 is uniformly bounded for $h$ small enough.  To prove this, choose
 $h_0$ such that
-$\displaystyle \|Q - Q_T\| < 1/(2\|Q^{-1}\|) $ for $h < h_0$ and note that
+$\DS \|Q - Q_T\| < 1/(2\|Q^{-1}\|) $ for $h < h_0$ and note that
 \[
 \|Q_T^{-1}\| - \|Q^{-1}\| \leq \|Q_T^{-1} - Q^{-1}\|
 = \| Q_T^{-1} (Q - Q_T) Q^{-1} \|
@@ -557,22 +557,22 @@ matrix $R_b$ (built from operations on the rows of $B_b$) such that
 \[
 R_b B_b = \begin{pmatrix} 0 \\ B_b^{[b]} \end{pmatrix} \ ,
 \]
-where $\displaystyle B_b^{[b]}$ is a \nm{q}{n} matrix of rank $q$.
+where $\DS B_b^{[b]}$ is a \nm{q}{n} matrix of rank $q$.
 
 We define
 \[
 \begin{pmatrix} \VEC{y}_{c}^{[a]} \\ \VEC{y}_{c}^{[b]} \end{pmatrix} = R_b
 \VEC{y}_c \ ,
 \]
-where $\displaystyle \VEC{y}_{c}^{[b]} \in \RR^q$ and
-$\displaystyle \VEC{y}_{c}^{[a]} \in \RR^{n-q}$, and
+where $\DS \VEC{y}_{c}^{[b]} \in \RR^q$ and
+$\DS \VEC{y}_{c}^{[a]} \in \RR^{n-q}$, and
 \[
 \begin{pmatrix} B_a^{[a]} \\ B_a^{[b]} \end{pmatrix} = R_b B_a \; ,
 \]
-where $\displaystyle B_a^{[a]}$ is an \nm{(n-q)}{n} matrix and
-$\displaystyle B_a^{[b]}$ is a \nm{q}{n} matrix.  We have applied the
+where $\DS B_a^{[a]}$ is an \nm{(n-q)}{n} matrix and
+$\DS B_a^{[b]}$ is a \nm{q}{n} matrix.  We have applied the
 operations on the rows of $B_b$ above to the rows of $B_a$.   Note
-that $\displaystyle B_a^{[a]}$ is of rank $n-q$ because of (\ref{RankCond}).
+that $\DS B_a^{[a]}$ is of rank $n-q$ because of (\ref{RankCond}).
 
 The boundary conditions in (\ref{LinBVP}) can then be rewritten as 
 \begin{equation}\label{LinBVPpartSep}
@@ -584,17 +584,17 @@ B_a^{[b]} \VEC{y}(a) + B_b^{[b]} \VEC{y}(b) &= \VEC{y}_{c}^{[b]}
 
 The boundary conditions are
 {\bfseries separable}\index{Boundary Conditions!Separable} if
-$\displaystyle B_a^{[b]} = 0$ and
+$\DS B_a^{[b]} = 0$ and
 {\bfseries partially separable}\index{Boundary Conditions!Partially
-Separable} if $\displaystyle B_a^{[b]} \neq 0$.
+Separable} if $\DS B_a^{[b]} \neq 0$.
 
 We now explain how to solve the boundary value problem (\ref{LinBVP}).
 Let $D_a$ be a \nm{q}{n} matrix such that
 \[
 M_a = \begin{pmatrix} B_a^{[a]} \\ D_a \end{pmatrix}
 \]
-is invertible. This is possible because $\displaystyle B_a^{[a]}$ is
-of rank $n-q$ and thus the rows of $\displaystyle B_a^{[a]}$ are
+is invertible. This is possible because $\DS B_a^{[a]}$ is
+of rank $n-q$ and thus the rows of $\DS B_a^{[a]}$ are
 linearly independent.  Let $F_a$ be the \nm{n}{q} matrix defined by 
 \[
 M_a^{-1} = \begin{pmatrix} E_a & F_a \end{pmatrix} \ .
@@ -615,21 +615,21 @@ and
 P(\VEC{y}_j(t)) &= \VEC{0} \quad , \quad a \leq t \leq b \\
 \VEC{y}_j(a) &= F_a\VEC{e}_j
 \end{align*}
-for $\displaystyle \VEC{e}_j \in \RR^q$ and $j=1$, $2$, \ldots, $q$.
+for $\DS \VEC{e}_j \in \RR^q$ and $j=1$, $2$, \ldots, $q$.
 Since $q < n$, there are less initial value problems to solve.
-\item The general solution $\displaystyle \VEC{y}_g:[a,b]\to \RR^n$ of
+\item The general solution $\DS \VEC{y}_g:[a,b]\to \RR^n$ of
 the differential equation in (\ref{LinBVP}) is of the form
 \[
 \VEC{y}_g(t) = \VEC{y}_0(t) + \sum_{j=1}^q d_j \VEC{y}_j(t) =
 \VEC{y}_0(t) + V(t) \VEC{d} \ ,
 \]
 where
-$\displaystyle V(t) = \begin{pmatrix}
+$\DS V(t) = \begin{pmatrix}
 \VEC{y}_1(t) & \VEC{y}_2(t) & \ldots & \VEC{y}_q(t) \end{pmatrix}$
-and $\displaystyle \VEC{d} =
+and $\DS \VEC{d} =
 \begin{pmatrix} d_1 & d_2 & \ldots & d_q \end{pmatrix}^\top \in \RR^q$.
 \item $\VEC{y}_g$ above will be a solution of the boundary value
-problem (\ref{LinBVP}) if there exists $\displaystyle \VEC{d} \in \RR^q$
+problem (\ref{LinBVP}) if there exists $\DS \VEC{d} \in \RR^q$
 such that
 \begin{equation} \label{RForm}
 B_a^{[b]} \VEC{y}_g(a) + B_b^{[b]} \VEC{y}_g(b) = \VEC{y}_{c}^{[b]} \ .
@@ -643,8 +643,8 @@ B_a^{[a]} \VEC{y}_g(a) = B_a^{[a]} \VEC{y}_0(a) + B_a^{[a]} F_a \VEC{d}
  = B_a^{[a]} \VEC{y}_0(a) = \VEC{y}_{c}^{[a]} \ .
 \]
 The second equality in the previous equation comes from
-$\displaystyle B_a^{[a]} F_a=0$ because
-$\displaystyle M_a\,M_a^{-1} = \Id$ and the last equality comes from
+$\DS B_a^{[a]} F_a=0$ because
+$\DS M_a\,M_a^{-1} = \Id$ and the last equality comes from
 (\ref{FiYccond1}).
 
 Using the general form of $\VEC{y}_g$ and $V(a) = F_a \Id_q$, we get
@@ -662,13 +662,13 @@ given in (\ref{genS}), the equation in (\ref{RFormExpand}) can be rewritten
 \[
 Q_b \VEC{d} = \VEC{y}_c^{[b]} - B_a^{[b]}\VEC{y}_0(a) - B_b^{[b]}\VEC{y}_0(b) \ ,
 \]
-where $\displaystyle Q_b = \left( B_a^{[b]} + B_b^{[b]} Y(b) \right) F_a$
+where $\DS Q_b = \left( B_a^{[b]} + B_b^{[b]} Y(b) \right) F_a$
 because $V(b) = Y(b) F_a$.  The matrix $Q_b$
 is an invertible \nm{q}{q} matrix if and only if
 $Q = \tilde{B}_a + \tilde{B}_b Y(b)$
-with $\displaystyle \tilde{B}_a = \begin{pmatrix} B_a^{[a]} \\ B_a^{[b]}
+with $\DS \tilde{B}_a = \begin{pmatrix} B_a^{[a]} \\ B_a^{[b]}
 \end{pmatrix}$
-and $\displaystyle \tilde{B}_b = \begin{pmatrix} 0 \\ B_b^{[b]}
+and $\DS \tilde{B}_b = \begin{pmatrix} 0 \\ B_b^{[b]}
 \end{pmatrix}$ is invertible.  To prove the last sentence, it suffices
 to note that
 \[
@@ -676,7 +676,7 @@ Q M_a^{-1} = \begin{pmatrix} B_a^{[a]} \\ B_a^{[b]} + B_b^{[b]}Y(b) \end{pmatrix
 \begin{pmatrix} E_a & F_a \end{pmatrix}
 = \begin{pmatrix} Id & 0 \\ * & Q_b \end{pmatrix}
 \]
-because $\displaystyle M_a M_a^{-1} = \Id$.
+because $\DS M_a M_a^{-1} = \Id$.
 
 \begin{rmk}
 Similarly, if $\rank B_a = p < n$, we can rewrite the boundary
@@ -685,9 +685,9 @@ conditions in (\ref{LinBVP}) as
 B_a^{[a]} \VEC{y}(a) + B_b^{[a]} \VEC{y}(b) &= \VEC{y}_c^{[a]} \\
 B_b^{[b]} \VEC{y}(b) &= \VEC{y}_c^{[b]}
 \end{align*}
-where $\displaystyle B_a^{[a]}$ is a \nm{p}{n} matrix of rank $p$,
-$\displaystyle B_b^{[b]}$ is a \nm{(n-p)}{n} matrix of rank $n-p$, and
-$\displaystyle B_b^{[a]}$ is a \nm{p}{n} matrix.
+where $\DS B_a^{[a]}$ is a \nm{p}{n} matrix of rank $p$,
+$\DS B_b^{[b]}$ is a \nm{(n-p)}{n} matrix of rank $n-p$, and
+$\DS B_b^{[a]}$ is a \nm{p}{n} matrix.
 
 Obviously, there is also the alternative to reorder the coordinates
 of $\VEC{y}$ to reduce this case to the previous case.
@@ -717,10 +717,10 @@ regions of the interval $[a,b]$.  The basic idea is to apply the
 shooting method on each interval  $[t_{i-1},t_i]$.
 
 We consider the boundary value problem (\ref{LinBVP}).  As usual, we
-let $\displaystyle \{ t_i \}_{i=0}^N$ be a partition of $[a,b]$
+let $\DS \{ t_i \}_{i=0}^N$ be a partition of $[a,b]$
 with $t_0 = a$, $t_N = b$ , $t_{i+1} = t_i + h_i$ with $h_i > 0$
 for $0\leq i < N$ and
-$\displaystyle h = \max_{0\leq i < N} h_i \leq \theta \min_{0\leq i < N} h_i$
+$\DS h = \max_{0\leq i < N} h_i \leq \theta \min_{0\leq i < N} h_i$
 for some constant $\theta$.
 
 On each subinterval $[t_i,t_{i+1}]$, we solve the initial value
@@ -738,22 +738,22 @@ P(\VEC{y}_{i,j}(t)) &= \VEC{0} \quad , \quad t_i \leq t \leq t_{i+1} \\
 \VEC{y}_{i,j}(t_i) &= F_i\VEC{e}_j
 \end{split}
 \end{equation}
-for the canonical vectors $\displaystyle \VEC{e}_j \in \RR^n$ and
+for the canonical vectors $\DS \VEC{e}_j \in \RR^n$ and
 $1 \leq j \leq n$.
 The matrices $F_i$ of rank $n$ and the vector $\VEC{y}_{c,i}$ will be
 defined in Section~\ref{Fiyci} below.
 
-We look for a solution $\displaystyle \VEC{y}_g:[a,b]\to \RR^n$ of the boundary
+We look for a solution $\DS \VEC{y}_g:[a,b]\to \RR^n$ of the boundary
 value problem (\ref{LinBVP}) defined on each interval $[t_i,t_{i+1}]$ by
 \[
 \VEC{y}_g(t) = \VEC{y}_i(t) = \VEC{y}_{i,0}(t) + V_i(t) \VEC{d}_i
 \quad , \quad t_i \leq t \leq t_{i+1} \ ,
 \]
-where $\displaystyle V_i(t) =
+where $\DS V_i(t) =
 \begin{pmatrix}
 \VEC{y}_{i,1}(t) & \VEC{y}_{i,2}(t) & \ldots & \VEC{y}_{i,n}(t)  
 \end{pmatrix}$ for $t_i \leq t \leq t_{i+1}$ and
-$\displaystyle \VEC{d}_i \in \RR^n$.
+$\DS \VEC{d}_i \in \RR^n$.
 
 To get a continuous solution $\VEC{y}$ at the points $t_i$ for
 $0 < i < N$, we impose the condition
@@ -844,10 +844,10 @@ $A_S \VEC{d} = B_S$.
 \item If we have separated or partially separated end-conditions, then
 we may assume that the row operations (i.e.\ $R_b$ in
 Section~\ref{SepPartSep}) have been performed to get
-$\displaystyle \VEC{y}_c = \begin{pmatrix} \VEC{y}_c^{[a]} \\ \VEC{y}_c^{[b]}
+$\DS \VEC{y}_c = \begin{pmatrix} \VEC{y}_c^{[a]} \\ \VEC{y}_c^{[b]}
 \end{pmatrix}$, 
-$\displaystyle B_a = \begin{pmatrix} B_a^{[a]} \\ B_a^{[b]}\end{pmatrix}$ and
-$\displaystyle B_b = \begin{pmatrix} 0 \\ B_b^{[b]} \end{pmatrix}$.
+$\DS B_a = \begin{pmatrix} B_a^{[a]} \\ B_a^{[b]}\end{pmatrix}$ and
+$\DS B_b = \begin{pmatrix} 0 \\ B_b^{[b]} \end{pmatrix}$.
 The matrices $F_i$ in (\ref{parshootFi}) are now \nm{n}{q}
 matrices of rank $q$.  We can then repeat the reasoning in this
 section to get a system of linear equations $A_S \VEC{d} = B_S$ with $A_S$,
@@ -877,8 +877,8 @@ B_S = \begin{pmatrix}
 \]
 The first $n-q$ rows of $A_S$ above are the first $n-q$ rows of $A_S$
 in (\ref{MFPSBVPa}), and the last $q$ rows of $A_S$ above are
-the $q$ rows from the $\displaystyle (n-q+1)^{th}$ to the
-$\displaystyle n^{th}$ row inclusively
+the $q$ rows from the $\DS (n-q+1)^{th}$ to the
+$\DS n^{th}$ row inclusively
 of $A_S$ in (\ref{MFPSBVPa}).  We have a similar statement for $B_S$
 above and $B_S$ in (\ref{MFPSBVPb}).
 
@@ -925,7 +925,7 @@ some \nm{q}{q} upper-triangular matrix $P_{i-1}$.  Usually, the
 Gram-Schmidt method seen in linear algebra is used for this purpose.
 \item $\VEC{y}_{c,i}$ is the projection of $\VEC{y}_{i-1,0}(t_i)$ on
 the orthogonal complement of the column span of $F_i$.  Therefore,
-$\displaystyle \VEC{y}_{c,i} = (\Id - F_iF_i^\top) \VEC{y}_{i-1,0}(t_i)$.
+$\DS \VEC{y}_{c,i} = (\Id - F_iF_i^\top) \VEC{y}_{i-1,0}(t_i)$.
 \end{enumerate}
 
 We now explain how to compute the $\VEC{d}_i$ for $0\leq i < N$
@@ -953,10 +953,10 @@ for $i=N-1$, $N-2$, \ldots, $1$.
 Since $V_{i-1}(t_i)$ has rank $q$ because the columns of $V_{i-1}$
 are $q$ linearly independent solutions of $P(\VEC{y}(t)) = \VEC{0}$
 \footnote{We use the uniqueness of solutions for ordinary differential
-equations to conclude that if $\displaystyle \{y_{i,j}(t)\}_{j=1}^q$
+equations to conclude that if $\DS \{y_{i,j}(t)\}_{j=1}^q$
 is a linearly independent set of solutions, then
-$\displaystyle \{y_{i,j}(s)\}_{j=1}^q$ is a linear independent set of
-vectors in $\displaystyle \RR^n$ for every $s\in [t_i,t_{i+1}]$.},
+$\DS \{y_{i,j}(s)\}_{j=1}^q$ is a linear independent set of
+vectors in $\DS \RR^n$ for every $s\in [t_i,t_{i+1}]$.},
 we can simplify the previous equation to get
 \begin{equation} \label{defFy}
 \VEC{d}_{i-1} = P_{i-1} \left( \VEC{d}_i - F_i^\top\VEC{y}_{i-1,0}(t_i)
@@ -974,11 +974,11 @@ from the first $n-q$ rows of (\ref{EndsCond})
 (Item~\ref{ParShootPartSepRmkItem3} of
 Remark~\ref{ParShootPartSepRmk}) is automatically 
 satisfied by construction.  We have that (\ref{FiYccond2}) is equivalent
-to $\displaystyle B_a^{[a]} \VEC{y}_{c,0} = \VEC{y}_c^{[a]}$ because
-$F_0 = F_a$ and $\displaystyle B_a^{[a]} F_a = 0$ since
-$\displaystyle M M^{-1} = \Id$.  Moreover, it follows from
+to $\DS B_a^{[a]} \VEC{y}_{c,0} = \VEC{y}_c^{[a]}$ because
+$F_0 = F_a$ and $\DS B_a^{[a]} F_a = 0$ since
+$\DS M M^{-1} = \Id$.  Moreover, it follows from
 (\ref{FiYccond1}) that
-$\displaystyle B_a^{[a]} \VEC{y}_{c,0} = \VEC{y}_c^{[a]}$ is
+$\DS B_a^{[a]} \VEC{y}_{c,0} = \VEC{y}_c^{[a]}$ is
 satisfied because we assume that $\VEC{y}_{c,0} = \VEC{y}_0(a)$.
 
 We now consider the condition
@@ -1046,7 +1046,7 @@ $\ps{\VEC{a}}{\VEC{a}} / (\|\VEC{a}\|\,\|\VEC{b}\|)$.  Unfortunately,
 even this method is kind of computer time intensive.
 
 The method could also be improved by appropriately choosing the mesh
-points $\displaystyle \{t_i\}_{i=0}^N$ such that $t_{i+1}-t_i$ is
+points $\DS \{t_i\}_{i=0}^N$ such that $t_{i+1}-t_i$ is
 ``small'' when the solution is ``rapidly'' increasing.  We select the
 mesh points as $i$ increases to ensure that $V_{i-1}(t_i)$ does not
 get too ``large.''
@@ -1062,13 +1062,13 @@ Runge-Kutta on each interval $[t_i,t_{i+1}]$ with the step size
 $h = (t_i - t_{i+1})/M$ to solve initial value problems.\\
 Let $t_{i,j} = t_i + j h$ for $0\leq i < N$ and $0 \leq j \leq M$.\\
 \subI{Input} The vector valued function
-$\displaystyle f:[a,b] \to \RR^n$ (f in the code below).\\
+$\DS f:[a,b] \to \RR^n$ (f in the code below).\\
 The \nn matrix valued function $A$ defined on $[a,b]$ (A in the code
 below).\\
-The \nm{(n-q)}{n} matrix $\displaystyle B_a^{[a]}$ (Baa in the code below).\\
-The \nm{q}{n} matrix $\displaystyle B_a^{[b]}$ (Bab in the code below).\\
-The \nm{q}{n} matrix $\displaystyle B_b^{[b]}$ (Bbb in the code below).\\
-The (column) vector $\displaystyle y_c \in R^n$ (yc in the code below).\\
+The \nm{(n-q)}{n} matrix $\DS B_a^{[a]}$ (Baa in the code below).\\
+The \nm{q}{n} matrix $\DS B_a^{[b]}$ (Bab in the code below).\\
+The \nm{q}{n} matrix $\DS B_b^{[b]}$ (Bbb in the code below).\\
+The (column) vector $\DS y_c \in R^n$ (yc in the code below).\\
 The number $N$ of partitions of $[a,b]$.\\
 The number $M$ of partitions of each $[t_i,t_{i+1}]$.\\
 The endpoints $a$ and $b$ of the interval of integration $[a,b]$.\\
@@ -1318,7 +1318,7 @@ g(\VEC{y}(a), \VEC{y}(b)) &= \VEC{0}
 \end{split}
 \end{equation}
 This problem can be reformulated as follows.  Find
-$\displaystyle \VEC{s} \in \RR^n$
+$\DS \VEC{s} \in \RR^n$
 such that the solution $\VEC{u}(t,\VEC{s})$ of
 \begin{equation} \label{RNLBVP}
 \begin{split}
@@ -1354,11 +1354,11 @@ T_\delta(\VEC{y}) = \{ (t,\VEC{v}) \in \RR\times \RR^n : a \leq t \leq b
 \text{ and } \| \VEC{y}(t) - \VEC{v} \| \leq \delta \} \ .
 \]
 (Figure~\ref{DomBVPNM})
-If $\displaystyle \VEC{s} \in \{ \VEC{s}\in\RR^n : \| \VEC{y}(a) - \VEC{s}\|
+If $\DS \VEC{s} \in \{ \VEC{s}\in\RR^n : \| \VEC{y}(a) - \VEC{s}\|
 \leq \delta e^{-K(b-a)} \}$, then there exists a unique solution
 $\VEC{u}$ of (\ref{RNLBVP}).  Moreover, if
 $f$ is continuously differentiable on $T_\delta(\VEC{y})$, then
-$\displaystyle U(t,\VEC{s}) = \diff_{\VEC{s}} \VEC{u}(t,\VEC{s})$
+$\DS U(t,\VEC{s}) = \diff_{\VEC{s}} \VEC{u}(t,\VEC{s})$
 exists for $a \leq t \leq b$ and is the fundamental solution of
 \begin{equation} \label{EforFS}
 U'(t) = \diff_{\VEC{y}} f(t,\VEC{u}(t,\VEC{s})) U(t) \quad , \quad
@@ -1411,10 +1411,10 @@ and that there exist $\rho_\ast>0$, $\beta$ and $\gamma$ such that
 \end{align*}
 for all $\VEC{s}, \tilde{\VEC{s}} \in S_{\rho_\ast}(\VEC{s}_\ast) =
 \{ \VEC{s} : \| \VEC{s} - \VEC{s}_\ast \| \leq \rho_\ast \}$,
-and $\displaystyle \rho_\ast \beta \gamma < \frac{2}{3}$.
+and $\DS \rho_\ast \beta \gamma < \frac{2}{3}$.
 
-Then, for all $\displaystyle \VEC{s}^{[0]} \in S_{\rho_\ast}(\VEC{s}_\ast)$, the
-sequence $\displaystyle \{\VEC{s}^{[j]}\}_{j=0}^\infty$ given by the
+Then, for all $\DS \VEC{s}^{[0]} \in S_{\rho_\ast}(\VEC{s}_\ast)$, the
+sequence $\DS \{\VEC{s}^{[j]}\}_{j=0}^\infty$ given by the
 iterative method defined in (\ref{NewtonBVP}) stays in
 $S_{\rho_\ast}(\VEC{s}_\ast)$
 and converge to $\VEC{s}_\ast$.  The convergence is quadratic; namely,
@@ -1422,7 +1422,7 @@ and converge to $\VEC{s}_\ast$.  The convergence is quadratic; namely,
 \| \VEC{s}^{[j+1]} - \VEC{s}_\ast \| \leq \alpha \|
 \VEC{s}^{[j]} - \VEC{s}_\ast \|^2 \ ,
 \end{equation}
-where $\displaystyle \alpha = \frac{\beta\gamma}{2(1-\rho_\ast \beta\gamma)}$.
+where $\DS \alpha = \frac{\beta\gamma}{2(1-\rho_\ast \beta\gamma)}$.
 \label{CforNewton}
 \end{theorem}
 
@@ -1443,7 +1443,7 @@ Since
 for all $\VEC{s} \in S_{\rho_\ast}(\VEC{s}_\ast)$, it follows from
 the Banach Lemma (Proposition~\ref{Banach} and
 Corollary~\ref{Banach_cor}) that
-$\displaystyle \Id - Q^{-1}(\VEC{s}_\ast) \left( Q(\VEC{s}_\ast) -
+$\DS \Id - Q^{-1}(\VEC{s}_\ast) \left( Q(\VEC{s}_\ast) -
 Q(\VEC{s}) \right)$ is invertible for all
 $\VEC{s} \in S_{\rho_\ast}(\VEC{s}_\ast)$.  Thus $Q(\VEC{s})$ is
 invertible and
@@ -1457,13 +1457,13 @@ Q(\VEC{s}_\ast) - Q(\VEC{s}) \right) \right)^{-1} \| \,
 for all $\VEC{s} \in S_{\rho_\ast}(\VEC{s}_\ast)$.
 
 We prove that
-$\displaystyle \VEC{s}^{[j]} \in S_{\rho_\ast}(\VEC{s}_\ast)$ for all $j$
+$\DS \VEC{s}^{[j]} \in S_{\rho_\ast}(\VEC{s}_\ast)$ for all $j$
 by induction.  We also have that
-$\displaystyle \VEC{s}^{[0]} \in S_{\rho_\ast}(\VEC{s}_\ast)$.
-We assume that $\displaystyle \VEC{s}^{[j]} \in S_{\rho_\ast}(\VEC{s}_\ast)$
+$\DS \VEC{s}^{[0]} \in S_{\rho_\ast}(\VEC{s}_\ast)$.
+We assume that $\DS \VEC{s}^{[j]} \in S_{\rho_\ast}(\VEC{s}_\ast)$
 and show that this implies that
-$\displaystyle \VEC{s}^{[j+1]} \in S_{\rho_\ast}(\VEC{s}_\ast)$.
-Since $\phi(\VEC{s}_\ast) = \VEC{0}$ and $\displaystyle Q^{-1}(\VEC{s})$
+$\DS \VEC{s}^{[j+1]} \in S_{\rho_\ast}(\VEC{s}_\ast)$.
+Since $\phi(\VEC{s}_\ast) = \VEC{0}$ and $\DS Q^{-1}(\VEC{s})$
 exists for all $\VEC{s} \in S_{\rho_\ast}(\VEC{s}_\ast)$, we get
 from (\ref{NewtonBVP}) that
 \begin{align*}
@@ -1485,7 +1485,7 @@ Q(\theta \VEC{s} + (1-\theta)\tilde{\VEC{s}})
 \left(\VEC{s} - \tilde{\VEC{s}} \right) =
 \dfdx{\phi(\theta \VEC{s} + (1-\theta)\tilde{\VEC{s}})}{\theta}
 \]
-since $\displaystyle Q(\VEC{s}) = \diff_{\VEC{s}}\phi(\VEC{s})$.
+since $\DS Q(\VEC{s}) = \diff_{\VEC{s}}\phi(\VEC{s})$.
 Hence,
 \begin{align}
 \| \VEC{s}^{[j+1]} - \VEC{s}_\ast \|
@@ -1522,11 +1522,11 @@ It follows from (\ref{Pcontract}) that
 \]
 because $\alpha < 3\beta\gamma/2 < 1/\rho_\ast$
 which is a consequence of $\rho_\ast \beta \gamma < 2/3$.
-Thus $\displaystyle \VEC{s}^{[j]} \in S_{\rho_\ast}(\VEC{s}_\ast)$ for
+Thus $\DS \VEC{s}^{[j]} \in S_{\rho_\ast}(\VEC{s}_\ast)$ for
 all $j$ by induction.
 
 Since $S_{\rho_\ast}(\VEC{s}_\ast)$ is complete, there is a subsequence of
-$\displaystyle \{\VEC{s}^{[j]}\}_{j=0}^\infty$ that converges.
+$\DS \{\VEC{s}^{[j]}\}_{j=0}^\infty$ that converges.
 However, we also have from (\ref{Pcontract}) that
 \begin{equation} \label{CforNewtonFP}
 \| \VEC{s}^{[j+1]} - \VEC{s}_\ast \|
@@ -1536,7 +1536,7 @@ However, we also have from (\ref{Pcontract}) that
 \end{equation}
 again because $\rho_\ast \beta \gamma < 2/3$.  As we have done in the
 proof of the Fixed Point Theorem, Theorem~\ref{FxPtTh}, we can show
-that $\displaystyle \{\VEC{s}^{[j]}\}_{j=0}^\infty$ converges to
+that $\DS \{\VEC{s}^{[j]}\}_{j=0}^\infty$ converges to
 $\VEC{s}_\ast$.
 
 Finally, we also have from (\ref{Pcontract}) that
@@ -1544,9 +1544,9 @@ Finally, we also have from (\ref{Pcontract}) that
 \end{proof}
 
 \begin{rmk}
-To compute $\displaystyle \VEC{s}^{[j+1]}$, we must solve
+To compute $\DS \VEC{s}^{[j+1]}$, we must solve
 (\ref{RNLBVP}) and compute the fundamental solution of (\ref{EforFS}),
-where $\VEC{s}$ is replaced by $\displaystyle \VEC{s}^{[j]}$.
+where $\VEC{s}$ is replaced by $\DS \VEC{s}^{[j]}$.
 \end{rmk}
 
 \subsection{Error Analysis}
@@ -1565,7 +1565,7 @@ Q(\tilde{\VEC{s}}^{[j]}) \left( \tilde{\VEC{s}}^{[j+1]}
 for  $j \geq 0$, where $h$ is the maximum step size of the partition
 of $[a,b]$ for the converging and stable numerical method used to
 solve the differential equation.  We assume that, for all $j$,
-$\displaystyle \| \delta_j(h) \| \leq M h^p$ for some constant $M$ and positive
+$\DS \| \delta_j(h) \| \leq M h^p$ for some constant $M$ and positive
 integer $p$.
 
 \begin{theorem}
@@ -1584,13 +1584,13 @@ and
 \frac{2\beta M h^p}{1-2\tilde{\rho}\beta\gamma} \right)
 \leq \delta_\ast \ . 
 \end{equation}
-Then, if $\displaystyle \VEC{s}^{[0]} \in S_{\rho_\ast}(\VEC{s}_\ast)$ satisfies
-$\displaystyle \| \VEC{s}^{[1]} - \VEC{s}^{[0]} \| \leq \rho_\ast$, the
-sequences $\displaystyle \{ \VEC{s}^{[j]} \}_{j=0}^\infty$ of
+Then, if $\DS \VEC{s}^{[0]} \in S_{\rho_\ast}(\VEC{s}_\ast)$ satisfies
+$\DS \| \VEC{s}^{[1]} - \VEC{s}^{[0]} \| \leq \rho_\ast$, the
+sequences $\DS \{ \VEC{s}^{[j]} \}_{j=0}^\infty$ of
 (\ref{NewtonBVP}) and
-$\displaystyle \{ \tilde{\VEC{s}}^{[j]} \}_{j=0}^\infty$ of
+$\DS \{ \tilde{\VEC{s}}^{[j]} \}_{j=0}^\infty$ of
 (\ref{NBVPtrunc}) with
-$\displaystyle \tilde{\VEC{s}}^{[0]} = \VEC{s}^{[0]}$ satisfy
+$\DS \tilde{\VEC{s}}^{[0]} = \VEC{s}^{[0]}$ satisfy
 \[
 \| \VEC{s}^{[j]} - \tilde{\VEC{s}}^{[j]} \|  \leq \sigma
 \quad \text{and} \quad
@@ -1611,23 +1611,23 @@ invertible and
 \]
 for all $\VEC{s} \in S_{\tilde{\rho}}(\VEC{s}_\ast)$.  Moreover, as in
 Theorem~\ref{CforNewton}, we can show that
-$\displaystyle \VEC{s}^{[j]} \in S_{\rho_\ast}(\VEC{s}_\ast)$ and
+$\DS \VEC{s}^{[j]} \in S_{\rho_\ast}(\VEC{s}_\ast)$ and
 \begin{equation}\label{succs}
 \| \VEC{s}^{[j+1]} - \VEC{s}^{[j]} \| \leq \rho_\ast
 \end{equation}
 for $j\geq 0$ if $\VEC{s}_0 \in S_{\rho_\ast}(\VEC{s}_\ast)$
 because $\rho_\ast \beta \gamma \leq \tilde{\rho} \beta \gamma < 1/2 < 2/3$.
 In particular, (\ref{succs}) follows from the hypothesis that
-$\displaystyle \| \VEC{s}^{[1]} - \VEC{s}^{[0]} \| \leq \rho_\ast$ and
+$\DS \| \VEC{s}^{[1]} - \VEC{s}^{[0]} \| \leq \rho_\ast$ and
 \[
 \| \VEC{s}^{[j+1]} - \VEC{s}^{[j]}\| \leq \lambda \|
 \VEC{s}^{[j]} - \VEC{s}^{[j-1]} \|
 \]
-with $\displaystyle \lambda =
+with $\DS \lambda =
 \frac{\rho_\ast \beta \gamma}{2(1-\rho_\ast \beta\gamma)} < 1$
 that can be proved as (\ref{CforNewtonFP}) was proved.
 
-Let $\displaystyle \VEC{r}^{[j]} = \VEC{s}^{[j]} - \tilde{\VEC{s}}^{[j]}$.
+Let $\DS \VEC{r}^{[j]} = \VEC{s}^{[j]} - \tilde{\VEC{s}}^{[j]}$.
 If we subtract 
 (\ref{NBVPtrunc}) from (\ref{NewtonBVP}), we get
 \begin{equation} \label{smx}
@@ -1639,10 +1639,10 @@ Q(\VEC{s}^{[j]},\tilde{\VEC{s}}^{[j]}) \right) \VEC{r}^{[j]} \\
 \end{split}
 \end{equation}
 
-\stage{A} If $\displaystyle \tilde{\VEC{s}}^{[j]} \in
+\stage{A} If $\DS \tilde{\VEC{s}}^{[j]} \in
 S_{\tilde{\rho}}(\VEC{s}_\ast)$, we show that
-$\displaystyle \| \VEC{r}^{[j]} \| < \sigma$ and
-$\displaystyle \tilde{\VEC{s}}^{[j+1]} \in S_{\tilde{\rho}}(\VEC{s}_\ast)$.
+$\DS \| \VEC{r}^{[j]} \| < \sigma$ and
+$\DS \tilde{\VEC{s}}^{[j+1]} \in S_{\tilde{\rho}}(\VEC{s}_\ast)$.
 From (\ref{smx}), we get that
 \begin{align}
 \| \VEC{r}^{[j+1]} \| & \leq
@@ -1677,14 +1677,14 @@ because
   = \frac{2\tilde{\rho}\beta\gamma -1}{\beta} \ .
 \]
 
-Since $\displaystyle ((1-2\tilde{\rho}\beta\gamma)/\beta)^2 - 2\gamma Mh^p > 0$
+Since $\DS ((1-2\tilde{\rho}\beta\gamma)/\beta)^2 - 2\gamma Mh^p > 0$
 from (\ref{errorA}), and $(1-2\tilde{\rho}\beta\gamma)/\beta > 0$ because
 $\tilde{\rho}\beta\gamma < 1/2$,  the quadratic polynomial $q(z)$ has two
 positive roots $z_+ > z_-$.
-We show by induction that $\displaystyle \| \VEC{r}^{[j]} \| \leq z_-$
+We show by induction that $\DS \| \VEC{r}^{[j]} \| \leq z_-$
 for all $j$.  The result is true for $j=0$ because
-$\displaystyle \| \VEC{r}^{[0]} \| = 0$.  Suppose that
-$\displaystyle \| \VEC{r}^{[j]}\| \leq z_-$.  Since
+$\DS \| \VEC{r}^{[0]} \| = 0$.  Suppose that
+$\DS \| \VEC{r}^{[j]}\| \leq z_-$.  Since
 \[
   q'(z) = \frac{\beta}{1-\tilde{\rho}\beta\gamma} \left(
 \gamma z - \big( \frac{1-2\tilde{\rho}\beta\gamma}{\beta} \big)
@@ -1699,11 +1699,11 @@ for $0 \leq z \leq z_-$ and $q$ is concave up.  We get the following
 figure
 \pdfbox{bound_value_probl/error_anl}
 It follows that $z + q(z) < z_-$ for $0 \leq
-z \leq z_-$.  Therefore $\displaystyle \| \VEC{r}^{[j+1]} \| \leq z_-$ from
+z \leq z_-$.  Therefore $\DS \| \VEC{r}^{[j+1]} \| \leq z_-$ from
 (\ref{rjp1srj}).  This completes the proof by induction.
 
 We now show that $z_- \leq \sigma$.  Since
-$\displaystyle z_+ z_- = 2Mh^p/\gamma$ and
+$\DS z_+ z_- = 2Mh^p/\gamma$ and
 \[
 z_+ = \frac{1-2\tilde{\rho}\beta\gamma}{\beta \gamma}
 \left( 1 + \sqrt{1 -
@@ -1733,7 +1733,7 @@ Finally,
 \end{align*}
 where the last inequality comes from the
 hypothesis $\sigma < \delta_\ast$.  Thus,
-$\displaystyle \tilde{\VEC{s}}^{[j+1]} \in S_{\rho}(\VEC{s}_\ast)$.
+$\DS \tilde{\VEC{s}}^{[j+1]} \in S_{\rho}(\VEC{s}_\ast)$.
 
 \stage{B} By induction, we get from (\ref{contract}) that
 \[
@@ -1741,7 +1741,7 @@ $\displaystyle \tilde{\VEC{s}}^{[j+1]} \in S_{\rho}(\VEC{s}_\ast)$.
   \alpha^{2^j-1}\|\VEC{s}^{[0]}- \VEC{s}_\ast\|^{2^j} \ ,
 \]
 where
-$\displaystyle \alpha = \frac{\beta\gamma}{2(1-\rho_\ast \beta\gamma)}$.
+$\DS \alpha = \frac{\beta\gamma}{2(1-\rho_\ast \beta\gamma)}$.
 Hence,
 \[
 \| \tilde{\VEC{s}}^{[j]} - \VEC{s}_\ast \| \leq
@@ -1754,19 +1754,19 @@ Hence,
 \end{proof}
 
 It follows from the previous theorem that the accuracy of the
-approximation $\displaystyle \tilde{\VEC{s}}^{[j]}$ of $\VEC{s}_\ast$
+approximation $\DS \tilde{\VEC{s}}^{[j]}$ of $\VEC{s}_\ast$
 is limited by $\sigma$.  Moreover, recall that
-$\displaystyle \alpha \left\|\VEC{s}^{[0]} - \VEC{s}_\ast\right\|
+$\DS \alpha \left\|\VEC{s}^{[0]} - \VEC{s}_\ast\right\|
 \leq \alpha \rho_\ast < 2/3 < 1$.  Thus, the error
-$\displaystyle \left\| \tilde{\VEC{s}}^{[j]} - \VEC{s}_\ast \right\|$
+$\DS \left\| \tilde{\VEC{s}}^{[j]} - \VEC{s}_\ast \right\|$
 does not grow as $j$ increases.
 
 \subsection{Parallel Shooting for Non-Linear Boundary Value Problems}
 
-As usual, let $\displaystyle \{t_i\}_{i=0}^N$ be a partition of
+As usual, let $\DS \{t_i\}_{i=0}^N$ be a partition of
 $[a,b]$ such that $t_0 = a$, $t_N = b$ , $t_{i+1} = t_i + h_i$ with $h_i > 0$
 for $0\leq i < N$ and
-$\displaystyle h = \max_{0\leq i < N} h_i \leq \theta \min_{0\leq i < N} h_i$
+$\DS h = \max_{0\leq i < N} h_i \leq \theta \min_{0\leq i < N} h_i$
 for some constant $\theta$.
 
 Parallel Shooting Method applied to the boundary value problem
@@ -1778,7 +1778,7 @@ problems
 \VEC{y}_i(t_i,\VEC{s}_i) &= \VEC{s}_i
 \end{align*}
 for $0\leq i < N$, where the initial conditions $\VEC{s}_i$ are
-such that the function $\displaystyle \VEC{y}:[a,b]\to \RR^n$ defined by
+such that the function $\DS \VEC{y}:[a,b]\to \RR^n$ defined by
 \[
 \VEC{y}_g(t)= \VEC{y}_i(t,\VEC{s}_i) \quad , \quad t_i \leq t \leq t_{i+1}
 \]
@@ -1820,7 +1820,7 @@ g(\VEC{v}_1,\VEC{w}_N) \\
 \end{pmatrix}
 \end{align*}
 for $0 \leq \tau \leq 1$ and
-$\displaystyle \VEC{v}, \VEC{w} \in (\RR^n)^N \cong \RR^{nN}$.
+$\DS \VEC{v}, \VEC{w} \in (\RR^n)^N \cong \RR^{nN}$.
 
 The boundary value problem (\ref{NLBVP}) can be rewritten as
 \begin{equation}\label{NLBVPinnN}
@@ -1838,7 +1838,7 @@ We get the Shooting Method
 \VEC{u}(0,\VEC{s}) &= \VEC{s}
 \end{split}
 \end{equation}
-where $\displaystyle \VEC{s} \in \RR^{nN}$ is a solution of
+where $\DS \VEC{s} \in \RR^{nN}$ is a solution of
 \begin{equation} \label{LargeIter}
 \phi(\VEC{s}) \equiv G(\VEC{s},\VEC{u}(1,\VEC{s})) = \VEC{0}
 \end{equation}
@@ -1893,7 +1893,7 @@ It follows from the previous theorem that we only need to solve
 If Newton method is used to approximate the solution
 of $\phi(\VEC{s}) = \VEC{0}$ in (\ref{LargeIter}), then 
 the initial condition $\VEC{s}_0$ should be taken from
-the disk of radius $\displaystyle \delta e^{-Kh}$ centred at $\VEC{z}(0)$.
+the disk of radius $\DS \delta e^{-Kh}$ centred at $\VEC{z}(0)$.
 
 If we compare with the simple Shooting Method of
 Section~\ref{simpleShootM},  The dimension of the system for the 
@@ -1901,8 +1901,8 @@ Parallel Shooting Method (i.e.\ $nN$) is larger than the dimension of
 the system for the simple Shooting Method (i.e.\ $n$).  However,
 the initial condition $\VEC{s}_0$ for the Newton method can be chosen
 from a disk of larger radius for the Parallel Shooting Method
-(i.e.\ $\displaystyle \delta e^{-Kh}$) than for the simple Shooting Method
-(i.e.\ $\displaystyle \delta e^{-K(b-a)}$).  The integration time is
+(i.e.\ $\DS \delta e^{-Kh}$) than for the simple Shooting Method
+(i.e.\ $\DS \delta e^{-K(b-a)}$).  The integration time is
 also shorter for the Parallel Shooting Method (i.e.\ $h$) than for the simple
 Shooting Method (i.e.\ $b-a$) though repeated $n$ times.
 
@@ -1936,11 +1936,11 @@ for $1\leq i \leq N$.
 \subsection{Family of Solutions}
 
 One of the difficulty with the Shooting Method is to choose
-$\displaystyle \VEC{s}^{[0]}$ in the Newton Method.  If the boundary
+$\DS \VEC{s}^{[0]}$ in the Newton Method.  If the boundary
 value problem that we want to solve is ``closed'' to another boundary
 value problem for which we know how to choose
-$\displaystyle \VEC{s}^{[0]}$, we may perhaps use
-this information to guess $\displaystyle \VEC{s}^{[0]}$ for our boundary value
+$\DS \VEC{s}^{[0]}$, we may perhaps use
+this information to guess $\DS \VEC{s}^{[0]}$ for our boundary value
 problem.  For us, two ``closed'' boundary value problems will mean
 that they are two ``closed'' members of a family of boundary value
 problems.
@@ -1957,7 +1957,7 @@ g(\VEC{y}(a,\sigma),\VEC{y}(b,\sigma),\sigma) &= \VEC{0}
 \end{split}
 \end{equation}
 for $\sigma_a \leq \sigma \leq \sigma_b$.  Recall that
-$\displaystyle \VEC{y}'(t,\sigma) = \dydx{\VEC{y}}{t}(t,\sigma)$.
+$\DS \VEC{y}'(t,\sigma) = \dydx{\VEC{y}}{t}(t,\sigma)$.
 We generally assume that
 (\ref{familyBVP}) has a unique isolated solution
 $\VEC{y}(t,\sigma)$ for each $\sigma$ and that the dependence of
@@ -2001,7 +2001,7 @@ Suppose that:
 (\ref{familyShoot2}) for $\sigma = \sigma_\ast \in [\sigma_a,\sigma_b]$
 and $\VEC{s} = \VEC{s}_\ast$.
 \item There exist $\eta_1$ and $\eta_2$ such that $F(t,\VEC{w},\sigma)$ is of
-class $\displaystyle C^1$ in the tubular neighbourhood of
+class $\DS C^1$ in the tubular neighbourhood of
 $\{ (t,\VEC{u}(t,\VEC{s}_\ast,\sigma_\ast),\sigma_\ast) : a\leq t \leq b\}$
 defined by
 \[
@@ -2010,7 +2010,7 @@ a \leq t\leq b, |\sigma - \sigma_\ast|<\eta_1
 \text{ and } \|\VEC{w} - \VEC{u}(t,\VEC{s}_\ast,\sigma_\ast) \| <
 \eta_2 \right\} \ ,
 \]
-and $G(\VEC{r},\VEC{w}, \sigma)$ is of class $\displaystyle C^1$ in the
+and $G(\VEC{r},\VEC{w}, \sigma)$ is of class $\DS C^1$ in the
 neighbourhood of
 $(\VEC{s}_\ast,\VEC{u}(b,\VEC{s}_\ast,\sigma_\ast),\sigma_\ast)$ defined
 by
@@ -2020,11 +2020,11 @@ by
 \|\VEC{w} - \VEC{u}(b,\VEC{s}_\ast,\sigma_\ast)\| < \eta_2
 \text{ and } |\sigma - \sigma_\ast| < \eta_1 \right\} \ .
 \]
-\item $\displaystyle \diff_{\VEC{s}}\phi(\VEC{s}_\ast,\sigma_\ast)$ is
+\item $\DS \diff_{\VEC{s}}\phi(\VEC{s}_\ast,\sigma_\ast)$ is
 non-singular.
 \end{enumerate}
 Then, there exist $\delta>0$ and a continuously differentiable function
-$\displaystyle \VEC{s}:]\sigma_\ast -\delta,\sigma_\ast + \delta[ \to \RR^n$
+$\DS \VEC{s}:]\sigma_\ast -\delta,\sigma_\ast + \delta[ \to \RR^n$
 such that $s(\sigma_\ast) = \VEC{s}_\ast$ and
 $\VEC{u}(t,\VEC{s}(\sigma),\sigma)$ for $a\leq t \leq b$ is
 a solution of (\ref{familyShoot1}) and (\ref{familyShoot2}).
@@ -2037,7 +2037,7 @@ It follows from the implicit function theorem that all solutions
 of $\phi(\VEC{s},\sigma) = \VEC{0}$ in a sufficiently small
 open neighbourhood of $(\VEC{s}_\ast,\sigma_\ast)$ is of the form
 $(\VEC{s}(\sigma),\sigma)$ for a differentiable function
-$\displaystyle \VEC{s} : ]\sigma_\ast-\delta,\sigma_\ast+\delta[ \to \RR^n$ with
+$\DS \VEC{s} : ]\sigma_\ast-\delta,\sigma_\ast+\delta[ \to \RR^n$ with
 $\delta$ sufficiently small.  Moreover,
 $\VEC{s}(\sigma_\ast) = \VEC{s}_\ast$.
 
@@ -2049,7 +2049,7 @@ need $f$ to be continuously differentiable.
 \begin{rmkList}
 \begin{enumerate}
 \item Since $\VEC{s}:]\sigma_\ast -\delta,\sigma_\ast + \delta[ \to \RR^n$
-given by the previous theorem is of class $\displaystyle C^1$, we may derive
+given by the previous theorem is of class $\DS C^1$, we may derive
 $\phi(\VEC{s}(\sigma), \sigma) = \VEC{0}$ with respect to $\sigma$
 to get
 \[
@@ -2079,14 +2079,14 @@ V'(t,\VEC{s},\sigma) =
 \,V(t,\VEC{s},\sigma) +
 \pdydx{F}{\sigma}(t,\VEC{u}(t,\VEC{s},\sigma),\sigma) \ .
 \]
-\item From $\displaystyle \VEC{s}(\sigma_\ast+\delta) = \VEC{s}(\sigma_\ast) +
+\item From $\DS \VEC{s}(\sigma_\ast+\delta) = \VEC{s}(\sigma_\ast) +
 \VEC{s}'(\sigma_\ast)\, \delta + O(\delta^2)$, we may choose
 $\VEC{s}(\sigma_\ast) + \VEC{s}'(\sigma_\ast)\delta$ as initial value
 in the Newton iterative method for the boundary value problem
 (\ref{familyShoot1}) and (\ref{familyShoot2}) given by
 $\sigma = \sigma_\ast + \delta$.  Recursively, we may be able to
 ``find'' a branch of solutions
-$\displaystyle \VEC{s}:[\sigma_a,\sigma_b]\to \RR^n$
+$\DS \VEC{s}:[\sigma_a,\sigma_b]\to \RR^n$
 for the family of boundary value problems given by
 (\ref{familyShoot1}) and (\ref{familyShoot2}).  This subject of
 ``path following'' is another exciting subject of numerical analysis
@@ -2114,10 +2114,10 @@ g(\VEC{y}(a), \VEC{y}(b)) &= \VEC{0}
 \end{split}
 \end{equation}
 
-As usual, let $\displaystyle \{t_i\}_{i=0}^N$ be a partition of
+As usual, let $\DS \{t_i\}_{i=0}^N$ be a partition of
 $[a,b]$ such that $t_0 = a$, $t_N = b$ , $t_{i+1} = t_i + h_i$ with $h_i > 0$
 for $0\leq i < N$ and
-$\displaystyle h = \max_{0\leq i < N} h_i \leq \theta \min_{0\leq i < N} h_i$
+$\DS h = \max_{0\leq i < N} h_i \leq \theta \min_{0\leq i < N} h_i$
 for some constant $\theta$.
 
 The associated general form of a finite difference method to
@@ -2129,10 +2129,10 @@ P_{i,h}(\VEC{W}) &= \VEC{0}
 g(\VEC{w}_0, \VEC{w}_N) &= \VEC{0}
 \end{split}
 \end{equation}
-where $\displaystyle \VEC{W} =
+where $\DS \VEC{W} =
 \begin{pmatrix} \VEC{w}_0 \\ \VEC{w}_1 \\ \vdots \\
 \VEC{w}_N \end{pmatrix} \in (\RR^n)^{N+1}$.
-We hope that the solution $\displaystyle \{\VEC{w}_i\}_{i=0}^N$ of this finite
+We hope that the solution $\DS \{\VEC{w}_i\}_{i=0}^N$ of this finite
 difference equation (\ref{GFFDM}) will provide an approximation of the
 solution of (\ref{NLBVPreapeat}).  Namely, we hope that
 $\VEC{w}_i$ will be a good approximation of
@@ -2152,17 +2152,17 @@ where $h_i = t_{i+1}- t_i$.
 \end{egg}
 
 \begin{rmk}[Important]
-In this section, when we write $\displaystyle \lim_{h\to 0} E = 0$
+In this section, when we write $\DS \lim_{h\to 0} E = 0$
 for some expression $E$ that depends on $h$, we mean that for each
 $\epsilon >0$, there exist $h_\epsilon >0$ such that
-$|E| < \epsilon$ for all partition $\displaystyle \{t_i\}_{i=0}^N$ as defined
+$|E| < \epsilon$ for all partition $\DS \{t_i\}_{i=0}^N$ as defined
 above such that $h<h_\epsilon$.  If $N$ is included in the expression
 $E$, it is the $N$ associated to the partition with maximum step size
 $h$ under consideration in the expression $E$.
 
 The same consideration applies if we say that an expression $E$ that
 depends on $h$ is true for $h < h_0$.  Namely, it means that $E$ is
-true for all partition $\displaystyle \{t_i\}_{i=0}^N$ as defined
+true for all partition $\DS \{t_i\}_{i=0}^N$ as defined
 above such that $h<h_0$ and, if $N$ is included in the expression
 $E$, then $N$ is associated to the partition with maximum step size
 $h$ under consideration in the expression $E$.
@@ -2197,17 +2197,17 @@ as in (\ref{GFFDM}) is
 \[
 \VEC{\tau}_i(\VEC{y}) = P_{i,h}(\VEC{Y}) \quad , \quad 0 \leq i < N \ ,
 \]
-where $\displaystyle \VEC{Y} =
+where $\DS \VEC{Y} =
 \begin{pmatrix} \VEC{y}_0 \\ \VEC{y}_1 \\ \vdots \\
 \VEC{y}_N \end{pmatrix} \in (\RR^n)^{N+1}$.
 Recall that $\VEC{y}_i = \VEC{y}(t_i)$ for $0 \leq i \leq N$, where
-$\displaystyle \{t_i\}_{i=0}^N$ is any partition of $[a,b]$ with the
+$\DS \{t_i\}_{i=0}^N$ is any partition of $[a,b]$ with the
 maximum step-size $h$.
 
 The method (\ref{GFFDM}) is of
 {\bfseries order}\index{Finite Difference Methods!Orde} $p>0$ if there
-exist a function $\displaystyle \tau :\RR^n \to [0,\infty[$ such that
-$\displaystyle \| \VEC{\tau}_i(\VEC{y}) \| \leq \VEC{\tau}(\VEC{y})  = O(h^p)$
+exist a function $\DS \tau :\RR^n \to [0,\infty[$ such that
+$\DS \| \VEC{\tau}_i(\VEC{y}) \| \leq \VEC{\tau}(\VEC{y})  = O(h^p)$
 for $0 \leq i < N$.
 \end{defn}
 
@@ -2234,10 +2234,10 @@ K \max \Big\{ \| g(\VEC{u}_0,\VEC{u}_N) -
 \max_{1\leq i < N} \| P_{i,h}(\VEC{U}) - P_{i,h}(\VEC{V}) \| \Big\}
 \end{equation}
 for all
-$\displaystyle \VEC{U} =
+$\DS \VEC{U} =
 \begin{pmatrix} \VEC{u}_0 \\ \VEC{u}_1 \\ \vdots \\ \VEC{u}_N \end{pmatrix}$
 and
-$\displaystyle \VEC{V} =
+$\DS \VEC{V} =
 \begin{pmatrix} \VEC{v}_0 \\ \VEC{v}_1 \\ \vdots \\ \VEC{v}_N \end{pmatrix}$
 in
 \[
@@ -2285,7 +2285,7 @@ B_a\VEC{w}_0 + B_b\VEC{w}_N - \VEC{y}_c &= \VEC{0}
 \end{split}
 \end{equation}
 where
-$\displaystyle \VEC{W} =
+$\DS \VEC{W} =
 \begin{pmatrix} \VEC{w}_0 \\ \VEC{w}_1 \\ \vdots \\ \VEC{w}_N \end{pmatrix}
 \in (\RR^n)^{N+1}$ and
 $L_{i,h}(\VEC{W})$ is associated to the linear part
@@ -2304,11 +2304,11 @@ P_{i,h}(\VEC{W}) = L_{i,h}(\VEC{W}) - F_{i,h}(f) &= \VEC{0} \quad ,
 B_a\VEC{w}_0 + B_b\VEC{w}_N &= \VEC{y}_c
 \end{align*}
 where
-$\displaystyle L_{i,h}(\VEC{W})
+$\DS L_{i,h}(\VEC{W})
 = \frac{\VEC{w}_{i+1} - \VEC{w}_i}{h_i} - \frac{1}{2}
 A(t_i+h_i/2) \left( \VEC{w}_{i+1} + \VEC{w}_i\right)$
 and
-$\displaystyle F_{i,h}(f) = f(t_i+h_i/2)$.
+$\DS F_{i,h}(f) = f(t_i+h_i/2)$.
 \label{eggmidpointscheme}
 \end{egg}
 
@@ -2321,11 +2321,11 @@ P_{i,h}(\VEC{W}) = L_{i,h}(\VEC{W}) - F_{i,h}(f) &= \VEC{0} \quad ,
 B_a\VEC{w}_0 + B_b\VEC{w}_N &= \VEC{y}_c
 \end{align*}
 where
-$\displaystyle L_{i,h}(\VEC{W})
+$\DS L_{i,h}(\VEC{W})
 = \frac{\VEC{w}_{i+1} - \VEC{w}_i}{h} - \frac{1}{2}
 \left( A(t_i+h) \VEC{w}_{i+1} + A(t_i) \VEC{w}_i \right)$
 and \\
-$\displaystyle F_{i,h}(f) = \frac{1}{2}\left( f(t_i+h) + f(t_i) \right)$.
+$\DS F_{i,h}(f) = \frac{1}{2}\left( f(t_i+h) + f(t_i) \right)$.
 \label{eggtrapezSchemeLin}
 \end{egg}
 
@@ -2339,7 +2339,7 @@ linearity of $L_{i,h}$, the stability condition
 \right\} \quad , \quad 0 \leq i \leq N \ ,
 \end{equation}
 for all
-$\displaystyle \VEC{U} = \begin{pmatrix} 
+$\DS \VEC{U} = \begin{pmatrix} 
 \VEC{u}_0 \\ \VEC{u}_1 \\ \vdots \\ \VEC{u}_N \end{pmatrix}
 \in (\RR^n)^{N+1}$ and all $h < h_0$.
 
@@ -2353,7 +2353,7 @@ convergent.
 \begin{proof}
 To prove this result, 
 let $\VEC{r}_i = \VEC{y}(t_i) - \VEC{w}_i$ for $0\leq i \leq N$, and
-$\displaystyle \VEC{R} = \begin{pmatrix}
+$\DS \VEC{R} = \begin{pmatrix}
 \VEC{r}_0 \\ \VEC{r}_1 \\ \vdots \\ \VEC{r}_N \end{pmatrix}$.
 The local truncation error is
 \[
@@ -2367,7 +2367,7 @@ and $B_a\VEC{r}_0 + B_b\VEC{r}_N = \VEC{0}$ because
 $B_a\VEC{w}_0 + B_b\VEC{w}_N -\VEC{y}_c = \VEC{0}$ and
 $B_a\VEC{y}_0 + B_b\VEC{y}_N - \VEC{y}_c = \VEC{0}$.
 Since the method is consistent,
-$\displaystyle \lim_{h\to 0} \max_{0\leq i < N}\|\VEC{\tau}_i(\VEC{y}) \|= 0$.
+$\DS \lim_{h\to 0} \max_{0\leq i < N}\|\VEC{\tau}_i(\VEC{y}) \|= 0$.
 Finally, since the method is stable, we have from the remark before
 the statement of the proposition that
 \[
@@ -2420,11 +2420,11 @@ L(Y^{[\nu]}(t)) &= 0 \quad , \quad a \leq t \leq b \\
 B_a^{[\nu]}Y^{[\nu]}(a) + B_b^{[\nu]}Y^{[\nu]}(b) &= \Id
 \end{split}
 \end{equation}
-has a unique solution $\displaystyle Y^{[\nu]}(t)$ if and only if
+has a unique solution $\DS Y^{[\nu]}(t)$ if and only if
 (\ref{TBVP}) has a unique solution.
 \item Moreover, if (\ref{TBVP}) for $\nu =0$ has a unique
 solution, then (\ref{TBVP}) for $\nu =1$ has a unique solution if and
-only if $\displaystyle B_a^{[1]} Y^{[0]}(a) + B_b^{[1]}Y^{[0]}(b)$ is
+only if $\DS B_a^{[1]} Y^{[0]}(a) + B_b^{[1]}Y^{[0]}(b)$ is
 invertible.
 \end{enumerate}
 \label{BasicProp}
@@ -2441,31 +2441,31 @@ is the (fundamental) solution of $L(Y)=0$ with $Y(a) = \Id$.
 Moreover, it follows from the second step in Algorithm~\ref{AlgoSimpleSM}
 with $\VEC{y}_c = 0$ and $\VEC{y}_0(t) = 0$ for all $t$ that 
 the solution of (\ref{TBVPsyst}) is of the form
-$\displaystyle Y^{[\nu]}(t) = Y(t) R^{[\nu]}$, where
-$\displaystyle R^{[\nu]}$ is a constant matrix satisfying
+$\DS Y^{[\nu]}(t) = Y(t) R^{[\nu]}$, where
+$\DS R^{[\nu]}$ is a constant matrix satisfying
 \[
 \Id = B_a^{[\nu]}Y^{[\nu]}(a) + B_b^{[\nu]}Y^{[\nu]}(b) =
 \left( B_a^{[\nu]} + B_b^{[\nu]} Y(b) \right)R^{[\nu]} = Q^{[\nu]}
 R^{[\nu]} \ .
 \]
-Such a system has a unique solution $\displaystyle R^{[\nu]}$ if and only if
-$\displaystyle Q^{[\nu]}$ is non-singular.  In that case,
-$\displaystyle R^{[\nu]} = \left(Q^{[\nu]}\right)^{-1}$.
+Such a system has a unique solution $\DS R^{[\nu]}$ if and only if
+$\DS Q^{[\nu]}$ is non-singular.  In that case,
+$\DS R^{[\nu]} = \left(Q^{[\nu]}\right)^{-1}$.
 
 \stage{2} To prove this part of the theorem, suppose that
 (\ref{TBVP}) with $\nu =0$ has a unique solution.  Then
 (\ref{TBVPsyst}) with $\nu=0$ has a unique solution given by
-$\displaystyle Y^{[0]}(t) = Y(t) \left(Q^{[0]}\right)^{-1}$.  In particular, 
-$\displaystyle Q^{[0]}$ is invertible.  Since
+$\DS Y^{[0]}(t) = Y(t) \left(Q^{[0]}\right)^{-1}$.  In particular, 
+$\DS Q^{[0]}$ is invertible.  Since
 \[
 B_a^{[1]}Y^{[0]}(a) + B_b^{[1]}Y^{[0]}(b)
 = \left( B_a^{[1]} + B_b^{[1]} Y(b) \right)
 \left(Q^{[0]}\right)^{-1} = Q^{[1]}\left(Q^{[0]}\right)^{-1} \ ,
 \]
-we have that $\displaystyle Q^{[1]}$ is invertible if and only if
-$\displaystyle B_a^{[1]}Y^{[0]}(a) + B_b^{[1]}Y^{[0]}(b)$ is invertible.  Thus,
+we have that $\DS Q^{[1]}$ is invertible if and only if
+$\DS B_a^{[1]}Y^{[0]}(a) + B_b^{[1]}Y^{[0]}(b)$ is invertible.  Thus,
 (\ref{TBVPsyst}) with $\nu=1$ has a unique solution if and only if
-$\displaystyle B_a^{[1]}Y^{[0]}(a) + B_b^{[1]}Y^{[0]}(b)$ is invertible.  The
+$\DS B_a^{[1]}Y^{[0]}(a) + B_b^{[1]}Y^{[0]}(b)$ is invertible.  The
 conclusion from the first part for $\nu =1$.
 \end{proof}
 
@@ -2502,8 +2502,8 @@ we can rewrite (\ref{MFFDM}) as
 \begin{prop}
 The finite difference method (\ref{MFFDM}) is stable for the linear
 boundary value problem (\ref{LinBVPrepeat}) if and only if there exist
-two constants $K$ and $h_0$ such that $\displaystyle A^{-1}$ exists and
-$\displaystyle \| A^{-1} \|_\infty < K$ for $0< h < h_0$.
+two constants $K$ and $h_0$ such that $\DS A^{-1}$ exists and
+$\DS \| A^{-1} \|_\infty < K$ for $0< h < h_0$.
 \label{BasicFDM}
 \end{prop}
 
@@ -2511,23 +2511,23 @@ $\displaystyle \| A^{-1} \|_\infty < K$ for $0< h < h_0$.
 \stage{A} Suppose that (\ref{MFFDM}) is stable for the linear boundary
 value problem  (\ref{LinBVPrepeat}).   Thus, there exist $K>0$ and
 $h_0 >0$ such that (\ref{lin_form_FDMS}) is 
-satisfied for all $\displaystyle \VEC{U} \in (\RR^n)^{N+1}$ and $h < h_0$.  But
+satisfied for all $\DS \VEC{U} \in (\RR^n)^{N+1}$ and $h < h_0$.  But
 (\ref{lin_form_FDMS}) is another way of saying that
 $\| \VEC{U} \|_\infty \leq K \| A \VEC{U}\|_\infty$ for all
-$\displaystyle \VEC{U} \in (\RR^n)^{N+1}$ and $h < h_0$.   From this
+$\DS \VEC{U} \in (\RR^n)^{N+1}$ and $h < h_0$.   From this
 relation, we have that $A$ is one-to-one and therefore invertible.  We can then
-write that $\displaystyle \| A^{-1} \VEC{U} \|_\infty \leq K \|\VEC{U} \|_\infty$
-for all $\displaystyle \VEC{U} \in (\RR^n)^{N+1}$ and $h < h_0$; namely,
-$\displaystyle \| A^{-1} \|_\infty \leq K$ for $h < h_0$.
+write that $\DS \| A^{-1} \VEC{U} \|_\infty \leq K \|\VEC{U} \|_\infty$
+for all $\DS \VEC{U} \in (\RR^n)^{N+1}$ and $h < h_0$; namely,
+$\DS \| A^{-1} \|_\infty \leq K$ for $h < h_0$.
 
 \stage{B} Suppose that there exist two constants $K$ and $h_0$ such
-that $\displaystyle A^{-1}$ exists and
-$\displaystyle \| A^{-1} \|_\infty < K$ for
+that $\DS A^{-1}$ exists and
+$\DS \| A^{-1} \|_\infty < K$ for
 $0<h < h_0$.  From the definition of the norm of matrices, we get
-$\displaystyle \| A^{-1} \VEC{U} \|_\infty \leq K \|\VEC{U} \|_\infty$ for all
-$\displaystyle \VEC{U} \in (\RR^n)^{N+1}$ and $h < h_0$.  Thus,
+$\DS \| A^{-1} \VEC{U} \|_\infty \leq K \|\VEC{U} \|_\infty$ for all
+$\DS \VEC{U} \in (\RR^n)^{N+1}$ and $h < h_0$.  Thus,
 $\|\VEC{U} \|_\infty \leq K \| A \VEC{U} \|_\infty$ for all
-$\displaystyle \VEC{U} \in (\RR^n)^{N+1}$ and $h < h_0$.  This is
+$\DS \VEC{U} \in (\RR^n)^{N+1}$ and $h < h_0$.  This is
 exactly the statement of (\ref{lin_form_FDMS}); namely, (\ref{MFFDM})
 is stable for the linear boundary value problem  (\ref{LinBVPrepeat}).
 \end{proof}
@@ -2554,14 +2554,14 @@ consistent for (\ref{TBVP}) with $\nu=1$.
 Before proving this theorem, it will help to
 review some of the properties of the infinity norm.
 
-We have $\displaystyle \|\VEC{u} \|_\infty = \max_{1 \leq i \leq n} |u_i|$ for
-$\displaystyle \VEC{u}\in \RR^n$ and
-$\displaystyle \|\VEC{U}\|_\infty = \max_{0 \leq i \leq N} \| \VEC{u}_i \|_\infty$
+We have $\DS \|\VEC{u} \|_\infty = \max_{1 \leq i \leq n} |u_i|$ for
+$\DS \VEC{u}\in \RR^n$ and
+$\DS \|\VEC{U}\|_\infty = \max_{0 \leq i \leq N} \| \VEC{u}_i \|_\infty$
 for 
-$\displaystyle \VEC{U} = \begin{pmatrix}
+$\DS \VEC{U} = \begin{pmatrix}
 \VEC{u}_0 \\ \VEC{u}_1 \\ \vdots \\ \VEC{u}_N \end{pmatrix}
 \in (\RR^n)^{N+1}$.  The associated norm of the linear mapping
-from $\displaystyle (\RR^n)^{N+1}$ to itself defined by the matrix
+from $\DS (\RR^n)^{N+1}$ to itself defined by the matrix
 \[
 M = \begin{pmatrix}
 M_{0,0} & M_{0,1} & \ldots & M_{0,N} \\
@@ -2571,7 +2571,7 @@ M_{N,0} & M_{N,1} & \ldots & M_{N,N}
 \end{pmatrix} \ ,
 \]
 where the $M_{i,j}$ are \nn matrices, is given by
-$\displaystyle \| M \|_\infty = \max_{\substack{\VEC{U} \in (\RR^n)^{N+1}\\
+$\DS \| M \|_\infty = \max_{\substack{\VEC{U} \in (\RR^n)^{N+1}\\
 \VEC{U} \neq \VEC{0}}}
 \frac{\|M \VEC{U}\|_\infty}{\|\VEC{U}\|_\infty}$.
 
@@ -2589,7 +2589,7 @@ C_1 \max_{0\leq i \leq N} \sum_{j=0}^N \|M_{i,j}\|_\infty
 \|M_{i,j}\|_\infty
 \end{equation}
 because
-$\displaystyle \max_{0\leq i \leq N} \sum_{j=0}^N \|M_{i,j}\|_\infty$
+$\DS \max_{0\leq i \leq N} \sum_{j=0}^N \|M_{i,j}\|_\infty$
 is a norm on the space of \nm{n(N+1)}{n(N+1)} matrices.
 
 If (\ref{CannotPEquA}) is true with $C_1 \geq 1$, then it is obviously
@@ -2605,8 +2605,8 @@ We can take $C_2 = 1$ because
 = \max_{0\leq i \leq N} \left( \sum_{j=0}^N \| M_{i,j} \|_\infty \right)
 \| \VEC{U} \|_\infty
 \end{align*}
-for all $\displaystyle \VEC{U} \in (\RR^n)^{N+1}$.  Thus
-$\displaystyle \| M \|_\infty \leq
+for all $\DS \VEC{U} \in (\RR^n)^{N+1}$.  Thus
+$\DS \| M \|_\infty \leq
 \max_{0\leq i \leq N} \sum_{j=0}^N \|M_{i,j}\|_\infty$.
 \label{FDMrmkNorm}
 \end{rmk}
@@ -2614,7 +2614,7 @@ $\displaystyle \| M \|_\infty \leq
 \begin{proof}[Proof (of Theorem~\ref{Equ_0and1})]
 Since $P_{i,h}(\VEC{W}) = L_{i,h}(\VEC{W}) - F_{i,h}(f)$ is
 independent of $\nu$, the local truncation error
-$\displaystyle \VEC{\tau}_i(\VEC{y}^{[\nu]})$ for $0\leq i < N$ are
+$\DS \VEC{\tau}_i(\VEC{y}^{[\nu]})$ for $0\leq i < N$ are
 identical for both problems.  Hence the methods are either both
 consistent or both non-consistent.  Recall that the boundary
 conditions are exactly satisfied in both cases.
@@ -2644,10 +2644,10 @@ B_a^{[1]} - B_a^{[0]} & 0 & \ldots & B_b^{[1]} - B_b^{[0]} \\
 0 & 0 & \ldots &0
 \end{pmatrix} \ ,
 \]
-because $\displaystyle \left(A^{[0]}\right)^{-1}$ exists.  To be
+because $\DS \left(A^{[0]}\right)^{-1}$ exists.  To be
 precise, according to Proposition~\ref{BasicFDM}, there exist $K>0$
-and $h_0>0$ such that $\displaystyle \left(A^{[0]}\right)^{-1}$ exists and
-$\displaystyle \| \left(A^{[0]}\right)^{-1} \|_\infty \leq K$ if $0<h < h_0$.
+and $h_0>0$ such that $\DS \left(A^{[0]}\right)^{-1}$ exists and
+$\DS \| \left(A^{[0]}\right)^{-1} \|_\infty \leq K$ if $0<h < h_0$.
 
 Suppose that
 \[
@@ -2659,9 +2659,9 @@ Z_{N,0} & Z_{N,1} & \ldots & Z_{N,N}
 \end{pmatrix} \ ,
 \]
 where the matrices $Z_{i,j}$ are \nn matrices.
-Since $\displaystyle A^{[0]} \left(A^{[0]}\right)^{-1}= \Id$, we get
-$\displaystyle B_a^{[0]}Z_{0,j} + B_b^{[0]} Z_{N,j} = 0$ for $1\leq j \leq N$
-and $\displaystyle B_a^{[0]}Z_{0,0} + B_b^{[0]} Z_{N,0} = \Id$.  Therefore,
+Since $\DS A^{[0]} \left(A^{[0]}\right)^{-1}= \Id$, we get
+$\DS B_a^{[0]}Z_{0,j} + B_b^{[0]} Z_{N,j} = 0$ for $1\leq j \leq N$
+and $\DS B_a^{[0]}Z_{0,0} + B_b^{[0]} Z_{N,0} = \Id$.  Therefore,
 \[
 \Id - D \left(A^{[0]}\right)^{-1} = \begin{pmatrix}
 Q_{0,0} & Q_{0,1} & \ldots & Q_{0,N} \\
@@ -2676,12 +2676,12 @@ Q_{0,j} = B_a^{[1]} Z_{0,j} + B_b^{[1]}Z_{N,j}
 \]
 for $j=0$, $1$, \ldots, $N$.
 
-Moreover, $\displaystyle A^{[0]}\left(A^{[0]}\right)^{-1} = \Id$ implies that
-$\displaystyle B_a^{[0]} Z_{0,0} + B_b^{[0]} Z_{N,0} = \Id$ and
+Moreover, $\DS A^{[0]}\left(A^{[0]}\right)^{-1} = \Id$ implies that
+$\DS B_a^{[0]} Z_{0,0} + B_b^{[0]} Z_{N,0} = \Id$ and
 $L_{i,h}(Z_0) = 0$ for $1 \leq i < N$ where
-$\displaystyle Z_0 = \begin{pmatrix} Z_{0,0} \\ Z_{1,0} \\ \vdots \\
+$\DS Z_0 = \begin{pmatrix} Z_{0,0} \\ Z_{1,0} \\ \vdots \\
 Z_{N,0} \end{pmatrix}$.
-Thus $\displaystyle \{ Z_{i,0} \}_{i=0}^N$ is an
+Thus $\DS \{ Z_{i,0} \}_{i=0}^N$ is an
 approximation of the solution of
 \begin{align*}
 L(Y(t)) = Y'(t) - A(t)Y(t) &= 0 \quad ,
@@ -2693,7 +2693,7 @@ consistent and stable, it is convergent according to
 Proposition~\ref{FEMST_C}.  Therefore, if we use the method
 (\ref{TBVP_FDM}) for the linear boundary value problem
 (\ref{TBVP}) with $\nu =0$ and $f=0$, we get that
-$\displaystyle
+$\DS
 \lim_{h \to 0} \max_{0\leq i \leq N} \| Z_{i,0} - Y^{[0]}(t_i)\|_\infty = 0$.
 Hence
 \begin{equation}\label{TBVP_FDMp2}
@@ -2706,7 +2706,7 @@ Hence
 \end{equation}
 as $h \to 0$.  From Proposition~\ref{BasicProp} and our hypothesis
 about the uniqueness of the solutions, we have that
-$\displaystyle B_a^{[1]} Y^{[0]}(a) + B_b^{[1]} Y^{[0]}(b)$ is
+$\DS B_a^{[1]} Y^{[0]}(a) + B_b^{[1]} Y^{[0]}(b)$ is
 invertible.  Thus, if we select $\tilde{h}_0 < h_0$ small enough such that
 \[
 \left\| Q_{0,0} - B_a^{[1]}Y^{[0]}(a) -B_b^{[1]}Y^{[0]}(b) \right\|_\infty \\
@@ -2721,9 +2721,9 @@ $h < \tilde{h}_0$ and
 2 \left\| \big(B_a^{[1]} Y^{[0]}(a)
   + B_b^{[1]} Y^{[0]}(b)\big)^{-1}\right\|_\infty \ .
 \]
-Therefore, $\displaystyle \Id - D\left(A^{[0]}\right)^{-1}$
+Therefore, $\DS \Id - D\left(A^{[0]}\right)^{-1}$
 is invertible for $h < \tilde{h}_0$ and it follows from
-(\ref{TBVP_FDMp1}) that $\displaystyle A^{[1]}$ is invertible for
+(\ref{TBVP_FDMp1}) that $\DS A^{[1]}$ is invertible for
 $h < \tilde{h}_0$.  In fact, we have
 \begin{equation}\label{TBVP_FDMp3}
 \left(A^{[1]}\right)^{-1} = \left(A^{[0]}\right)^{-1} \begin{pmatrix}
@@ -2801,20 +2801,20 @@ say that the method is a one-step finite difference method.
 \begin{eggList}
 \begin{enumerate}
 \item For the midpoint scheme, we have
-$\displaystyle C_{i,i} = -\frac{1}{h_i}\,\Id -\frac{1}{2}\,A(t_i+h_i/2)$, \\
-$\displaystyle C_{i,i+1} = \frac{1}{h_i}\,\Id - \frac{1}{2}\,A(t_i+h_i/2)$
-and $\displaystyle F_{i,h}(f) = f(t_i+h_i/2)$ for $0 \leq i < N$.
+$\DS C_{i,i} = -\frac{1}{h_i}\,\Id -\frac{1}{2}\,A(t_i+h_i/2)$, \\
+$\DS C_{i,i+1} = \frac{1}{h_i}\,\Id - \frac{1}{2}\,A(t_i+h_i/2)$
+and $\DS F_{i,h}(f) = f(t_i+h_i/2)$ for $0 \leq i < N$.
 We also have that $C_{i,j} = 0$ otherwise.
 \item For the trapezoidal scheme, we have
-$\displaystyle C_{i,i} =  -\frac{1}{h_i}\,\Id -\frac{1}{2}\,A(t_i)$,
-$\displaystyle C_{i,i+1} = \frac{1}{h_i}\,\Id -\frac{1}{2}\,A(t_i+h)$
+$\DS C_{i,i} =  -\frac{1}{h_i}\,\Id -\frac{1}{2}\,A(t_i)$,
+$\DS C_{i,i+1} = \frac{1}{h_i}\,\Id -\frac{1}{2}\,A(t_i+h)$
 \text{and}
-$\displaystyle F_{i,h}(f) = \frac{1}{2}\,\left( f(t_i) + f(t_i+h) \right)$
+$\DS F_{i,h}(f) = \frac{1}{2}\,\left( f(t_i) + f(t_i+h) \right)$
 for $0 \leq i < N$.  We also have that $C_{i,j} = 0$ otherwise.
 \end{enumerate}
 \end{eggList}
 
-If the boundary conditions are separable, namely $\displaystyle B_a^{[b]}=0$ in
+If the boundary conditions are separable, namely $\DS B_a^{[b]}=0$ in
 (\ref{LinBVPpartSep}) of Section~\ref{SepPartSep}, we can rewrite $A$ as
 \begin{equation} \label{sepM}
 A = \begin{pmatrix}
@@ -2826,8 +2826,8 @@ C_{0,0} & C_{0,1} & \ldots & 0 & 0 \\
 0 & 0 & \ldots & 0 & B_b^{[b]}
 \end{pmatrix} \ ,
 \end{equation}
-where $\displaystyle B_a^{[a]}$ is a \nm{(n-q)}{n} matrix and
-$\displaystyle B_b^{[b]}$ is a \nm{q}{n} matrix.  We also rewrite
+where $\DS B_a^{[a]}$ is a \nm{(n-q)}{n} matrix and
+$\DS B_b^{[b]}$ is a \nm{q}{n} matrix.  We also rewrite
 $\VEC{F}$ to get that
 \[
 \VEC{F} = \begin{pmatrix} \VEC{y}_c^{[a]} \\ F_0(f) \\ \vdots \\
@@ -2886,29 +2886,29 @@ $0\leq i \leq N$.  We do that below for the case of the partially
 separable boundary conditions.  It is proved in \cite{K} that
 this decomposition can be obtained using row interchanges on the first
 $n-q$ rows, the last $q$ rows, and the $n$ rows between the
-$\displaystyle (jn-q+1)^{th}$ and $\displaystyle ((j+1)n-q)^{th}$ rows
+$\DS (jn-q+1)^{th}$ and $\DS ((j+1)n-q)^{th}$ rows
 for $1\leq j\leq N$.
 
-Let $\displaystyle \VEC{F} = \begin{pmatrix}
+Let $\DS \VEC{F} = \begin{pmatrix}
 \tilde{\VEC{f}}_0 \\ \tilde{\VEC{f}}_1 \\ \vdots \\
 \tilde{\VEC{f}}_N \end{pmatrix}$,
-where $\displaystyle \tilde{\VEC{f}}_j \in \RR^n$ for all $j$.
+where $\DS \tilde{\VEC{f}}_j \in \RR^n$ for all $j$.
 To solve
-$\displaystyle A \VEC{W} = \VEC{F}$ for $\VEC{W} \in (\RR^n)^{N+1}$,
+$\DS A \VEC{W} = \VEC{F}$ for $\VEC{W} \in (\RR^n)^{N+1}$,
 we first solve
-$\displaystyle L\VEC{V} = \tilde{\VEC{F}}$ for $\VEC{V} \in (\RR^n)^{N+1}$.
+$\DS L\VEC{V} = \tilde{\VEC{F}}$ for $\VEC{V} \in (\RR^n)^{N+1}$.
 Namely, we use the forward substitution
 $L_{0,0}\VEC{v}_0 = \tilde{\VEC{f}}_0$ and
 $L_{i,i}\VEC{v}_i = \tilde{\VEC{f}}_i - L_{i,i-1} \VEC{v}_{i-1}$ for $i=1$, $2$,
 \ldots, $N$.
 Then we solve $U \VEC{W} = \VEC{V}$ for
-$\displaystyle \VEC{W} \in (\RR^n)^{N+1}$.
+$\DS \VEC{W} \in (\RR^n)^{N+1}$.
 Namely, we use the backward substitution $U_{N,N} \VEC{w}_N = \VEC{v}_N$ and
 $U_{i,i} \VEC{w}_i = \VEC{v}_i - U_{i,i+1} \VEC{w}_{i+1}$ for $i=N-1$,
 $N-2$, \ldots, $0$.
 
 If the boundary condition are only partially separable, namely
-$\displaystyle B_a^{[b]} \neq 0$ in (\ref{LinBVPpartSep}) of
+$\DS B_a^{[b]} \neq 0$ in (\ref{LinBVPpartSep}) of
 Section~\ref{SepPartSep}, we can rewrite $A$ as
 \begin{equation} \label{part_sepM}
 A = \begin{pmatrix}
@@ -2920,8 +2920,8 @@ C_{0,0} & C_{0,1} & \ldots & 0 & 0 \\
 B_a^{[b]} & 0 & \ldots & 0 & B_b^{[b]}
 \end{pmatrix} \ ,
 \end{equation}
-where $\displaystyle B_a^{[a]}$ is a \nm{(n-q)}{n} matrix, and
-$\displaystyle B_b^{[b]}$ and $\displaystyle B_a^{[b]}$ are \nm{q}{n} matrices.
+where $\DS B_a^{[a]}$ is a \nm{(n-q)}{n} matrix, and
+$\DS B_b^{[b]}$ and $\DS B_a^{[b]}$ are \nm{q}{n} matrices.
 
 $A$ in (\ref{part_sepM}) is of the form
 \[
@@ -2976,15 +2976,15 @@ U_{N,N} &= A_N - L_{N,N-1} U_{N-1,N}
 \end{align*}
 
 To solve $A \VEC{W} = \VEC{F}$ for
-$\displaystyle \VEC{W} \in (\RR^n)^{N+1}$, we first solve
+$\DS \VEC{W} \in (\RR^n)^{N+1}$, we first solve
 $L\VEC{V} = \tilde{\VEC{F}}$ for
-$\displaystyle \VEC{V} \in (\RR^n)^{N+1}$ using forward
+$\DS \VEC{V} \in (\RR^n)^{N+1}$ using forward
 substitution as we did for the separable boundary conditions case
 above; the last substitution is now
-$\displaystyle \VEC{v}_N = \tilde{\VEC{f}}_N
+$\DS \VEC{v}_N = \tilde{\VEC{f}}_N
 -\sum_{j=0}^{N-1}\, L_{N,j} \VEC{v}_j$.
 The second step is to solve $U\VEC{W} =\VEC{V}$ for
-$\displaystyle \VEC{W} \in (\RR^n)^{N+1}$
+$\DS \VEC{W} \in (\RR^n)^{N+1}$
 using backward substitution as for the separable boundary conditions
 case above.
 
@@ -3015,16 +3015,16 @@ $y' - A(t) = f(f)$ with $B_a y(a) + B_b y(b) = y_c$  for $a \leq t \leq b$.
 We consider the intervals $[t_i,t_{i+1}]$ for $0 \leq i < N$ with
 $t_i = a + i h$ and $h = (b-a)/N$.\\
 \subI{Input} The vector valued function
-$\displaystyle F:[a,b] \times \RR \to \RR^n$
+$\DS F:[a,b] \times \RR \to \RR^n$
 (F in the code below).\\
 The \nn matrix valued function $C_{i,i}$ defined on $[a,b] \times \RR$
 (Ci in the code below).\\
 The \nn matrix valued function $C_{i,i+1}$ defined on $[a,b] \times
 \RR$ (Cii in the code below).\\
-The \nm{(n-q)}{n} matrix $\displaystyle B_a^{[a]}$ (Baa in the code below).\\
-The \nm{q}{n} matrix $\displaystyle B_a^{[b]}$ (Bab in the code below).\\
-The \nm{q}{n} matrix $\displaystyle B_b^{[b]}$ (Bbb in the code below).\\
-The (column) vector $\displaystyle y_c \in R^n$ (yc in the code below).\\
+The \nm{(n-q)}{n} matrix $\DS B_a^{[a]}$ (Baa in the code below).\\
+The \nm{q}{n} matrix $\DS B_a^{[b]}$ (Bab in the code below).\\
+The \nm{q}{n} matrix $\DS B_b^{[b]}$ (Bbb in the code below).\\
+The (column) vector $\DS y_c \in R^n$ (yc in the code below).\\
 The number $N>2$ of partitions of $[a,b]$.\\
 The endpoints $a$ and $b$ of the interval of integration $[a,b]$.\\
 \subI{Output} The \nm{n}{(N +1)} matrix ww that contains the approximations
@@ -3124,25 +3124,25 @@ end
 Recall that the boundary value problem was
 $\VEC{y}'(t) = A(t) \VEC{y}(t) + f(t)$ with
 $B_a \VEC{y}(0) + B_b\VEC{y}(1) = \VEC{y}_c$, where
-$\displaystyle \VEC{y} = \begin{pmatrix} y_1(t) \\ y_2(t) \end{pmatrix}$,
-$\displaystyle A(t) = \begin{pmatrix} 0 & 1 \\ 4 & 0 \end{pmatrix}$,
-$\displaystyle f(t) = \begin{pmatrix} 0 \\ -3 e^t \end{pmatrix}$,
-$\displaystyle B_a = \begin{pmatrix} 1 & 0 \\  0 & 0 \end{pmatrix}$,
-$\displaystyle B_b = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$
-and $\displaystyle \VEC{y}_c = \begin{pmatrix} 1 \\ e \end{pmatrix}$.
+$\DS \VEC{y} = \begin{pmatrix} y_1(t) \\ y_2(t) \end{pmatrix}$,
+$\DS A(t) = \begin{pmatrix} 0 & 1 \\ 4 & 0 \end{pmatrix}$,
+$\DS f(t) = \begin{pmatrix} 0 \\ -3 e^t \end{pmatrix}$,
+$\DS B_a = \begin{pmatrix} 1 & 0 \\  0 & 0 \end{pmatrix}$,
+$\DS B_b = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$
+and $\DS \VEC{y}_c = \begin{pmatrix} 1 \\ e \end{pmatrix}$.
 We use the previous code with the trapezoidal method to numerically
 solve the boundary value problem.  We need to set
-$\displaystyle C_{i,i} =  -\frac{1}{h}\,\Id -\frac{1}{2}\,A(t_i)
+$\DS C_{i,i} =  -\frac{1}{h}\,\Id -\frac{1}{2}\,A(t_i)
 = \begin{pmatrix} -1/h & -1/2 \\ -2 & -1/h \end{pmatrix}$,
-$\displaystyle C_{i,i+1} = \frac{1}{h}\,\Id -\frac{1}{2}\,A(t_i+h)
+$\DS C_{i,i+1} = \frac{1}{h}\,\Id -\frac{1}{2}\,A(t_i+h)
 = \begin{pmatrix} 1/h & -1/2 \\ -2 & 1/h \end{pmatrix}$,
-$\displaystyle F_{i,h}(f) = \frac{1}{2}\,\left( f(t_i) + f(t_i+h) \right)
+$\DS F_{i,h}(f) = \frac{1}{2}\,\left( f(t_i) + f(t_i+h) \right)
 = \begin{pmatrix} 0 \\ -3 \left(e^{t_1} + e^{t_i+h}\right)/2 \end{pmatrix}$,
-$\displaystyle B_a^{[a]} = \begin{pmatrix} 1 & 0 \end{pmatrix}$,
-$\displaystyle B_a^{[b]} = \begin{pmatrix} 0 & 0 \end{pmatrix}$,
+$\DS B_a^{[a]} = \begin{pmatrix} 1 & 0 \end{pmatrix}$,
+$\DS B_a^{[b]} = \begin{pmatrix} 0 & 0 \end{pmatrix}$,
 $B_b^{[b]} = \begin{pmatrix} 1 & 0 \end{pmatrix}$
 and
-$\displaystyle \VEC{y}_c = \begin{pmatrix} 1 \\ e^1 \end{pmatrix}$.
+$\DS \VEC{y}_c = \begin{pmatrix} 1 \\ e^1 \end{pmatrix}$.
 If we use the code above with $N=100$, we find the following approximations of
 the solution.
 \[
@@ -3238,34 +3238,34 @@ B_a(\VEC{W}) \,\VEC{u}_0 + B_b(\VEC{W})\,\VEC{u}_n &= \VEC{0}
 \end{split}
 \end{equation}
 where
-$\displaystyle C_{i,k}(\VEC{W}) = \diff_{\VEC{y}_k}
+$\DS C_{i,k}(\VEC{W}) = \diff_{\VEC{y}_k}
 P_{i,h}(\VEC{Y})\bigg|_{\VEC{Y}=\VEC{W}}$,
-$\displaystyle B_a(\VEC{W}) = \diff_{\VEC{y}_1}
+$\DS B_a(\VEC{W}) = \diff_{\VEC{y}_1}
 g(\VEC{y}_0,\VEC{y}_N)\bigg|_{\VEC{Y}=\VEC{W}}$,\\
-$\displaystyle B_b[\VEC{W}) = \diff_{\VEC{y}_2}
+$\DS B_b[\VEC{W}) = \diff_{\VEC{y}_2}
 g(\VEC{y}_0,\VEC{y}_N)\bigg|_{\VEC{Y}=\VEC{W}}$,
-$\displaystyle \VEC{W} = \begin{pmatrix} \VEC{w}_0 \\
+$\DS \VEC{W} = \begin{pmatrix} \VEC{w}_0 \\
 \VEC{w}_1 \\ \vdots \\ \VEC{w}_N \end{pmatrix} \in (\RR^n)^{N+1}$
 and
-$\displaystyle \VEC{U} = \begin{pmatrix} \VEC{u}_0 \\
+$\DS \VEC{U} = \begin{pmatrix} \VEC{u}_0 \\
 \VEC{u}_1 \\ \vdots \\ \VEC{u}_N \end{pmatrix} \in (\RR^n)^{N+1}$.
 
 let
-$\displaystyle
+$\DS
 A(\VEC{Z}) = \begin{pmatrix}
 B_a(\VEC{Z}) & 0 & \ldots & B_b(\VEC{Z}) \\
 C_{0,0}(\VEC{Z}) & C_{1,1}(\VEC{Z}) & \ldots & C_{0,N}(\VEC{Z}) \\
 \vdots & \vdots & \ddots & \vdots \\
 C_{N-1,0}(\VEC{Z}) & C_{N,1}(\VEC{Z}) & \ldots & C_{N-1,N}(\VEC{Z})
 \end{pmatrix}$ with
-$\displaystyle \VEC{Z} = \begin{pmatrix} \VEC{z}_0 \\ \VEC{z}_1\\
+$\DS \VEC{Z} = \begin{pmatrix} \VEC{z}_0 \\ \VEC{z}_1\\
 \vdots \\ \VEC{z}_N \end{pmatrix} \in (\RR^n)^{N+1}$.
 
 \begin{theorem}
 Suppose that $\VEC{y}$ is an isolate solution of (\ref{NLBVPreapeat}).
-Let $\displaystyle \{t_i\}_{i=0}^N$ be a partition of $[a,b]$ satisfying our
+Let $\DS \{t_i\}_{i=0}^N$ be a partition of $[a,b]$ satisfying our
 standard conditions, and let
-$\displaystyle \VEC{Y} = \begin{pmatrix} \VEC{y}_0 \\
+$\DS \VEC{Y} = \begin{pmatrix} \VEC{y}_0 \\
 \VEC{y}_1 \\ \vdots \\ \VEC{y}_N \end{pmatrix}$,
 where $\VEC{y}_i = \VEC{y}(t_i)$ for $0\leq i \leq N$.
 Suppose that the finite difference method
@@ -3282,7 +3282,7 @@ L^{[\VEC{y}]}(\VEC{u}(t)) &= \VEC{0} \quad , \quad a \leq t \leq b \\
 \VEC{u}(a) &= \VEC{y}_c \in \RR^n
 \end{split}
 \end{equation}
-Suppose that $\displaystyle L^{[\VEC{W}]}_{i,h}$ is Lipschitz continuous
+Suppose that $\DS L^{[\VEC{W}]}_{i,h}$ is Lipschitz continuous
 with respect to $\VEC{W}$ in a neighbourhood of $\VEC{Y}$; namely,
 there exist constants $\delta >0$, $K_L>0$ and $h_0 > 0$ such that
 \begin{equation} \label{LipFDM}
@@ -3323,8 +3323,8 @@ we get from Corollary~\ref{CorSC_FDM} that
 (\ref{LinGFFDM}) is stable and consistent for (\ref{LinGBVP}).
 It follows from
 Proposition~\ref{BasicFDM} that there exist $h_1 >0$ and $K>0$ such
-that $\displaystyle \left(A(\VEC{Y})\right)^{-1}$ exists and
-$\displaystyle \| \left(A(\VEC{Y})\right)^{-1} \| \leq K$ for
+that $\DS \left(A(\VEC{Y})\right)^{-1}$ exists and
+$\DS \| \left(A(\VEC{Y})\right)^{-1} \| \leq K$ for
 $h < h_1$.  We may assume that $h_0 < h_1$ by shrinking $h_0$ if
 necessary.
 
@@ -3333,10 +3333,10 @@ Hence, if $\VEC{Z}$ is closed enough to $\VEC{Y}$, (\ref{LipFDM}) and
 $A(\VEC{Z})$ is as closed as we want of the invertible matrix
 $A(\VEC{Y})$ independently of $h < h_0$.  If we choose $\delta_0$
 small enough to have
-$\displaystyle \left\|A(\VEC{Y}) - A(\VEC{Z})\right\|_\infty
+$\DS \left\|A(\VEC{Y}) - A(\VEC{Z})\right\|_\infty
 \, \left\| (A(\VEC{Y}))^{-1}\right\|_\infty < 1/2$ for $\delta < \delta_0$,
 then it follows from the Banach Lemma
-that $\displaystyle \left(A(\VEC{Z})\right)^{-1}$ exists.  Moreover, from
+that $\DS \left(A(\VEC{Z})\right)^{-1}$ exists.  Moreover, from
 \begin{align*}
 \| \left(A(\VEC{Z})\right)^{-1}\|_\infty
 - \|\left(A(\VEC{Y})\right)^{-1}\|_\infty
@@ -3360,7 +3360,7 @@ we get
 for all $\VEC{Z} \in S_\delta(\VEC{Y})$ with $h < h_0$ and
 $\delta < \delta_0$.  We could have used Corollary~\ref{Banach_corG}
 to directly draw the previous conclusion.  So
-$\displaystyle \left(A(\VEC{Z})\right)^{-1}$
+$\DS \left(A(\VEC{Z})\right)^{-1}$
 is uniformly bounded for $h$ and $\delta$ small enough.
 
 Let
@@ -3384,7 +3384,7 @@ A(s \VEC{Z} + (1-s)\tilde{\VEC{Z}})\,\dx{s}
 \]
 since $P_{i,h}$ and $g$ are assumed to be continuously
 differentiable, and
-$\displaystyle A(\VEC{W})
+$\DS A(\VEC{W})
 = \diff_{\VEC{Z}} \Psi(\VEC{Z})\big|_{\VEC{Z} = \VEC{W}}$.
 
 Moreover, from (\ref{LipFDM}) and (\ref{Cont_BC}), we get
@@ -3405,9 +3405,9 @@ $S_\delta(\VEC{Y})$ and $h<h_0$.  Thus, if $\delta$ is small enough to have
 \leq \delta K_L K < 1 \ ,
 \]
 then it follows from the Banach Lemma that
-$\displaystyle \left(A(\VEC{Z},\tilde{\VEC{Z}})\right)^{-1}$
+$\DS \left(A(\VEC{Z},\tilde{\VEC{Z}})\right)^{-1}$
 exists and, as we have shown above for
-$\displaystyle \left(A(\VEC{Z})\right)^{-1}$,
+$\DS \left(A(\VEC{Z})\right)^{-1}$,
 \[
 \| \left(A(\VEC{Z},\tilde{\VEC{Z}})\right)^{-1} \|_\infty \leq
 \frac{\|\left(A(\VEC{Y})\right)^{-1}\|_\infty}
@@ -3425,18 +3425,18 @@ The stability of (\ref{GFFDM}) follows from
 \left( \Psi(\VEC{Z}) - \Psi(\tilde{\VEC{Z}}) \right)
 \]
 by taking the norm on both sides and using the uniform upper bound on
-$\displaystyle \left(A(\VEC{Z},\tilde{\VEC{Z}})\right)^{-1}$ for 
+$\DS \left(A(\VEC{Z},\tilde{\VEC{Z}})\right)^{-1}$ for 
 $\VEC{Z}$ and $\tilde{\VEC{Z}}$ in $S_\delta(\VEC{Y})$
 with $\delta$ and $h$ small enough.
 \end{proof}
 
 We now show how we can use the Newton Method to find an approximation
 of the solution of (\ref{NLBVPreapeat}) if
-$\displaystyle \VEC{Z}^{[0]} \in S_\delta(\VEC{Y})$ is chosen
+$\DS \VEC{Z}^{[0]} \in S_\delta(\VEC{Y})$ is chosen
 appropriately, where $\delta$ is given in the previous theorem.
 More precisely, we show that if $h$ and $\delta_0 < \delta$ are small
-enough and $\displaystyle \VEC{Z}^{[0]} \in S_{\delta_0}(\VEC{Y})$,
-then the sequence $\displaystyle \{ \VEC{Z}^{[k]} \}_{k=0}^\infty$ defined by
+enough and $\DS \VEC{Z}^{[0]} \in S_{\delta_0}(\VEC{Y})$,
+then the sequence $\DS \{ \VEC{Z}^{[k]} \}_{k=0}^\infty$ defined by
 \begin{equation} \label{FDM_Newton}
 A(\VEC{Z}^{[k]}) \left( \VEC{Z}^{[k+1]}- \VEC{Z}^{[k]}\right)
 = - \Psi(\VEC{Z}^{[k]}) \quad , \quad k=0, 1, 2, \ldots
@@ -3458,7 +3458,7 @@ The following theorem will be useful shortly.  A proof of this theorem
 can be found in \cite{O}.
 
 \begin{theorem}[Newton-Kantorovich]
-Suppose that $\displaystyle \phi:\RR^n \rightarrow \RR^n$ is a sufficiently
+Suppose that $\DS \phi:\RR^n \rightarrow \RR^n$ is a sufficiently
 differentiable function and let
 $Q(\VEC{x}) = \diff_{\VEC{x}}\phi(\VEC{x})$.
 Suppose that there exists $\gamma$ such that
@@ -3466,8 +3466,8 @@ Suppose that there exists $\gamma$ such that
 \| Q(\VEC{x}) - Q(\tilde{\VEC{x}}) \|_\infty \leq
 \gamma \| \VEC{x} - \tilde{\VEC{x}} \|_\infty  
 \end{equation}
-for all $\displaystyle \VEC{x}, \tilde{\VEC{x}}$ in an open convex set
-$\displaystyle D \subset \RR^n$.  Suppose also that, for some $\VEC{x}_0 \in D$,
+for all $\DS \VEC{x}, \tilde{\VEC{x}}$ in an open convex set
+$\DS D \subset \RR^n$.  Suppose also that, for some $\VEC{x}_0 \in D$,
 there exist constants $\alpha$ and $\beta$ such that
 \begin{align}
 \| Q^{-1}(\VEC{x}_0) \|_\infty &\leq \beta \ , \label{inequ_2} \\
@@ -3481,7 +3481,7 @@ let
 \]
 If $S_{\delta_-}(\VEC{x}_0)
 = \{ \VEC{x} : \|\VEC{x} - \VEC{x_0}\|_\infty < \delta_- \} \subset D$,
-then, the sequence $\displaystyle \{ \VEC{x}_k \}_{k=0}^\infty$ generated by
+then, the sequence $\DS \{ \VEC{x}_k \}_{k=0}^\infty$ generated by
 \[
 Q(\VEC{x}_k)\left( \VEC{x}_{k+1} - \VEC{x}_k \right) =
 - \phi(\VEC{x}_k) \quad , \quad k=0, 1, 2, \ldots
@@ -3495,7 +3495,7 @@ If $D$ is very large so that $S_{\delta_-}(\VEC{x}_0) \subset D$ is
 ``almost'' always satisfied, then the previous theorem does
 not require the explicit knowledge of the exact root of $\phi$ to
 determine conditions to get a converging sequence
-$\displaystyle \{ \VEC{x}^{[k]}\}_{k=0}^\infty$ to a root of $\phi$.
+$\DS \{ \VEC{x}^{[k]}\}_{k=0}^\infty$ to a root of $\phi$.
 
 \begin{theorem}
 Suppose that all the hypothesis of Theorem~\ref{FDM_stable} are
@@ -3504,15 +3504,15 @@ with respect to (\ref{NLBVPreapeat}) is of order $p>0$.  Then, there exist
 $0 <\delta_0 < \delta$ ($\delta$ given Theorem~\ref{FDM_stable})
 and $h_0 >0$ such that (\ref{GFFDM}) has a solution $\VEC{W}$ in
 $S_\delta(\VEC{Y})$ if $h\leq h_0$.  The Newton Method
-(\ref{FDM_Newton}) with $\displaystyle \VEC{Z}^{[0]}$ such that
-$\displaystyle \VEC{Z}^{[0]} \in S_{\delta_0}(\VEC{Y})$
+(\ref{FDM_Newton}) with $\DS \VEC{Z}^{[0]}$ such that
+$\DS \VEC{Z}^{[0]} \in S_{\delta_0}(\VEC{Y})$
 can be used to approximate this solution.  The convergence is quadratic.
 \end{theorem}
 
 \begin{proof}
 We prove that the hypotheses of Newton-Kantorovich Theorem are
-satisfied.  We replace $\VEC{x}_k$ by $\displaystyle \VEC{Z}^{[k]}$, $\phi$
-by $\Psi$, $Q(\VEC{Z})$ by $\displaystyle A(\VEC{Z})
+satisfied.  We replace $\VEC{x}_k$ by $\DS \VEC{Z}^{[k]}$, $\phi$
+by $\Psi$, $Q(\VEC{Z})$ by $\DS A(\VEC{Z})
 = \diff_{\VEC{W}} \Psi(\VEC{W})\big|_{\VEC{W} = \VEC{Z}}$ and
 $D$ by
 $S_\delta(\VEC{Y}) = \{ \VEC{Z} : \|\VEC{Z} - \VEC{Y}\|_\infty < \delta \}$
@@ -3529,18 +3529,18 @@ for $\delta$ given in the statement of Theorem~\ref{FDM_stable}.
 So (\ref{inequ_3}) is satisfied with with $\gamma = K_L$.
 
 Suppose that $\delta_0 < \delta$.  We will precise the value of
-$\delta_0$ later.  Let $\displaystyle \VEC{Z}^{[0]}$ be any element in 
+$\delta_0$ later.  Let $\DS \VEC{Z}^{[0]}$ be any element in 
 $S_{\delta_0}(\VEC{Y})$.
 
 Proceeding as in the proof of Theorem~\ref{FDM_stable}, we have that
-$\displaystyle \| A_h^{-1}(\VEC{Z},\tilde{\VEC{Z}}) \|_\infty
+$\DS \| A_h^{-1}(\VEC{Z},\tilde{\VEC{Z}}) \|_\infty
 \leq K/(1-\delta_0 K_L K)$
 for $\VEC{Z} , \tilde{\VEC{Z}} \in S_{\delta_0}(\VEC{Y})$ if
 $h$ is small enough and $\delta_0 < \delta$.  Recall that
 $\delta K_L K < 1$.  If we take
-$\displaystyle \VEC{Z} = \tilde{\VEC{Z}} = \VEC{Z}^{[0]}$, we get that 
+$\DS \VEC{Z} = \tilde{\VEC{Z}} = \VEC{Z}^{[0]}$, we get that 
 (\ref{inequ_2}) is satisfies with $\beta = K/(1-\delta_0 K_L K)$;
-namely,  $\displaystyle \| A^{-1}(\VEC{Z}^{[0]}) \|_\infty \leq \beta$.
+namely,  $\DS \| A^{-1}(\VEC{Z}^{[0]}) \|_\infty \leq \beta$.
 
 Since
 \[
@@ -3553,7 +3553,7 @@ we get
 \| A^{-1}(\VEC{Z}^{[0]}) A(\VEC{Z}^{[0]},\VEC{Z}) \|_\infty
 \leq 1 + \left(\frac{K}{1-\delta_0 K_L K}\right) K_L \delta_0
 \]
-for $\displaystyle \VEC{Z}^{[0]} \in S_{\delta_0}(\VEC{Y})$.
+for $\DS \VEC{Z}^{[0]} \in S_{\delta_0}(\VEC{Y})$.
 Moreover, from (\ref{FDM_int}), we get
 \[
 A^{-1}(\VEC{Z}^{[0]}) \Psi(\VEC{Z}^{[0]}) =
@@ -3569,9 +3569,9 @@ Thus,
 \right) \delta_0
 \]
 for some constant $K_0$ and $h$ small enough.  The factor
-$\displaystyle K_0h^p$ comes from the assumption that the method is of
+$\DS K_0h^p$ comes from the assumption that the method is of
 order $p$.  Thus (\ref{inequ_1}) is satisfied with 
-$\displaystyle \alpha = \left(\frac{K}{1-\delta_0 K_L K} \right) K_0 h^p
+$\DS \alpha = \left(\frac{K}{1-\delta_0 K_L K} \right) K_0 h^p
 + \left( 1 + \left(\frac{K}{1-\delta_0 K_L K}\right)K_L\delta_0
 \right) \delta_0$.
 
@@ -3584,7 +3584,7 @@ We need to choose $\delta_0$ and $h$ small enough to satisfy
 < \frac{1}{2}
 \]
 We also need to choose $\delta_0$ small enough to have
-$\displaystyle S_{\delta_-}(\VEC{Z}^{[0]}) \subset B_\delta(\VEC{Y})$
+$\DS S_{\delta_-}(\VEC{Z}^{[0]}) \subset B_\delta(\VEC{Y})$
 to be able to apply Newton-Kantorovich Theorem.
 
 First, we may assume that $K K_L$ is large enough to have
@@ -3612,16 +3612,16 @@ satisfied.
 
 Finally, we choose $\delta_0$ small enough to have
 \[
-  2 \delta_0 K K_L < 1 - \sqrt{\displaystyle 1 - 2 K^2 K_L K_0 h^p} \ .
+  2 \delta_0 K K_L < 1 - \sqrt{\DS 1 - 2 K^2 K_L K_0 h^p} \ .
 \]
 We then have that
 \[
-\delta_0 < \frac{1 - \sqrt{\displaystyle 1 - 2 K^2 K_L K_0 h^p}}{2 K K_L}
+\delta_0 < \frac{1 - \sqrt{\DS 1 - 2 K^2 K_L K_0 h^p}}{2 K K_L}
 \leq \frac{1 - \sqrt{1 - 2\alpha\beta\gamma}}{\beta\gamma} = \delta_-\ .
 \]
 If follow from (\ref{NKappl2}) that $\delta_0 < \delta_- < \delta/2$.
-Thus for any $\displaystyle \VEC{Z}^{[0]} \in S_{\delta_0}(\VEC{Y})$, we have
-$\displaystyle S_{\delta_-}\left(\VEC{Z}^{[0]}\right) \subset
+Thus for any $\DS \VEC{Z}^{[0]} \in S_{\delta_0}(\VEC{Y})$, we have
+$\DS S_{\delta_-}\left(\VEC{Z}^{[0]}\right) \subset
 S_\delta(\VEC{Y})$ as required.
 \end{proof}
 
@@ -3654,7 +3654,7 @@ $J+1$ such that
 \end{align}
 
 Condition (\ref{coll_3}) implies that
-$\displaystyle \VEC{p}:[a,b]\to \RR^n$ defined by
+$\DS \VEC{p}:[a,b]\to \RR^n$ defined by
 $\VEC{p}(t) = \VEC{p}_i(t)$ for $t_i \leq t \leq t_{i+1}$ is a
 piecewise continuous polynomial mapping.
 
@@ -3847,7 +3847,7 @@ B_a(\lambda)\VEC{y}(a) + B_b(\lambda)\VEC{y}(b) &= \VEC{0}
 where $B_a(\lambda)$ and $B_b(\lambda)$ are analytic in $\lambda$, and
 $A(t,\lambda)$ is analytic in $\lambda$ uniformly in $t \in [a,b]$.
 Moreover, we assume that
-$\displaystyle \rank \begin{pmatrix} B_a(\lambda) &
+$\DS \rank \begin{pmatrix} B_a(\lambda) &
 B_b(\lambda) \end{pmatrix}= n$ for 
 all $\lambda$.  This is a necessary condition for the existence of a
 solution for (\ref{GEVP}).

@@ -3,7 +3,7 @@
 
 As in the previous chapter, our goal is to numerically solve the
 system of linear equations $A \VEC{x} = \VEC{b}$, where
-$A$ is an invertible \nn matrix and $\displaystyle \VEC{b} \in \RR^n$ is given.
+$A$ is an invertible \nn matrix and $\DS \VEC{b} \in \RR^n$ is given.
 However, we will only consider classical direct methods in this chapter.
 
 \section{Gaussian Elimination with Backward Substitution}
@@ -44,7 +44,7 @@ a_{2,1} & a_{2,2} & \ldots & a_{2,n} & b_2\\
 a_{n,1} & a_{n,2} & \ldots & a_{n,n} & b_n
 \end{pmatrix}  \ .
 \]
-Let $\displaystyle M(1) = \begin{bmatrix} A & \VEC{b} \end{bmatrix}$.
+Let $\DS M(1) = \begin{bmatrix} A & \VEC{b} \end{bmatrix}$.
 Suppose that, after several row operations, we have the matrix
 
 \[
@@ -63,15 +63,15 @@ a^{[k-1]}_{k-1,n} & | & b^{[k-1]}_{k-1}\\
 \end{pmatrix}  \ .
 \]
 We may assume that
-$\displaystyle a^{[k]}_{k,k}\not=0$.  If $a^{[k]}_{k,k} = 0$, there
-exists $i>k$ such that $\displaystyle a^{[k]}_{i,k}\not=0$ because $A$
-is invertible.  We interchange the $\displaystyle k^{th}$ and
-$\displaystyle i^{th}$ rows.
+$\DS a^{[k]}_{k,k}\not=0$.  If $a^{[k]}_{k,k} = 0$, there
+exists $i>k$ such that $\DS a^{[k]}_{i,k}\not=0$ because $A$
+is invertible.  We interchange the $\DS k^{th}$ and
+$\DS i^{th}$ rows.
 
 To get $M(k+1)$ from $M(k)$, we subtract
-$\displaystyle a^{[k]}_{i,k}/a^{[k]}_{k,k}$ times the
-$\displaystyle k^{th}$ row from the $\displaystyle i^{th}$ row
-and write the result back in the $\displaystyle i^{th}$ row for each
+$\DS a^{[k]}_{i,k}/a^{[k]}_{k,k}$ times the
+$\DS k^{th}$ row from the $\DS i^{th}$ row
+and write the result back in the $\DS i^{th}$ row for each
 $i > k$.  Namely,
 \begin{equation} \label{iminusk}
 a^{[k+1]}_{i,j} = a^{[k]}_{i,j} - \frac{a^{[k]}_{i,k}}{a^{[k]}_{k,k}} a^{[k]}_{k,j}
@@ -79,7 +79,7 @@ a^{[k+1]}_{i,j} = a^{[k]}_{i,j} - \frac{a^{[k]}_{i,k}}{a^{[k]}_{k,k}} a^{[k]}_{k
 b^{[k+1]}_i = b^{[k]}_i - \frac{a^{[k]}_{i,k}}{a^{[k]}_{k,k}} b^{[k]}_k
 \end{equation}
 for $i=k+1$, $k+2$, \ldots, $n$ and $j=k+1$, $k+2$, \ldots, $n$.
-We have $\displaystyle a^{[k+1]}_{i,k} = 0$ for $i>k$.  Repeating
+We have $\DS a^{[k+1]}_{i,k} = 0$ for $i>k$.  Repeating
 these operations from $k=1$ to $k=n-1$, we get
 \[
 M(n) = \begin{pmatrix}
@@ -162,12 +162,12 @@ end
 \end{code}
 
 \begin{rmk}
-If $\displaystyle |a^{[k]}_{i,k}| \gg |a^{[k]}_{k,k}|$, then
-$\displaystyle a^{[k]}_{i,k} / a^{[k]}_{k,k}$ is very large.  Hence,
+If $\DS |a^{[k]}_{i,k}| \gg |a^{[k]}_{k,k}|$, then
+$\DS a^{[k]}_{i,k} / a^{[k]}_{k,k}$ is very large.  Hence,
 when performing (\ref{iminusk}), we may magnify the rounding error.
 Moreover, when performing the backward substitution (\ref{backsubst}),
 we may also magnify the rounding error if we divide by a small number
-$\displaystyle a^{[k]}_{k,k}$.
+$\DS a^{[k]}_{k,k}$.
 
 A strategy to minimize the problem with rounding error is to use
 {\bfseries maximal column pivoting}\index{Pivoting!Maximal Column Pivoting}
@@ -177,18 +177,18 @@ that
 \[
 |a^{[k]}_{i,k}|=\max_{k\leq j \leq n}|a^{[k]}_{j,k}|
 \]
-and interchange the $\displaystyle i^{th}$ and $\displaystyle k^{th}$ rows.
+and interchange the $\DS i^{th}$ and $\DS k^{th}$ rows.
 
 Another strategy to minimize the problem with rounding error is to use
 {\bfseries scaled column pivoting}\index{Pivoting!Scaled Column Pivoting}.
 This time, before performing (\ref{iminusk}), we choose the index $i$
 such that
 \[
-\frac{|a^{[k]}_{i,k}|}{\displaystyle \max_{k\leq j \leq n}|a^{[k]}_{i,j}|} \geq
-\frac{|a^{[k]}_{s,k}|}{\displaystyle \max_{k\leq j \leq n}|a^{[k]}_{s,j}|}
+\frac{|a^{[k]}_{i,k}|}{\DS \max_{k\leq j \leq n}|a^{[k]}_{i,j}|} \geq
+\frac{|a^{[k]}_{s,k}|}{\DS \max_{k\leq j \leq n}|a^{[k]}_{s,j}|}
 \]
-for $k\leq s \leq n$, and interchange the $\displaystyle i^{th}$
-and $\displaystyle k^{th}$ rows.
+for $k\leq s \leq n$, and interchange the $\DS i^{th}$
+and $\DS k^{th}$ rows.
 
 There is another strategy which is better than the previous two but is
 not often used because of the number of operations needed to perform
@@ -198,9 +198,9 @@ performing (\ref{iminusk}), we choose the indices $i$ and $j$ such that
 |a^{[k]}_{i,j}|=\max_{\substack{k\leq s \leq n\\k\leq r \leq n}}
 |a^{[k]}_{s,r}|
 \]
-and interchange the $\displaystyle i^{th}$ and $\displaystyle k^{th}$
-rows and the $\displaystyle j^{th}$ and
-$\displaystyle k^{th}$ columns.  With this strategy, the indices of
+and interchange the $\DS i^{th}$ and $\DS k^{th}$
+rows and the $\DS j^{th}$ and
+$\DS k^{th}$ columns.  With this strategy, the indices of
 $\VEC{x}$ also have to be permuted.
 \end{rmk}
 
@@ -250,9 +250,9 @@ method does not require to interchange the rows.
 If we use scaled column pivoting, we have to interchange the rows
 because
 \[
-\frac{|a^{[1]}_{2,1}|}{\displaystyle \max_{1\leq j \leq 2}|a^{[1]}_{2,j}|}
+\frac{|a^{[1]}_{2,1}|}{\DS \max_{1\leq j \leq 2}|a^{[1]}_{2,j}|}
 = \frac{1727}{12180} > \frac{1}{5220}
-= \frac{|a^{[1]}_{1,1}|}{\displaystyle \max_{1\leq j \leq 2}|a^{[1]}_{1,j}|} \ .
+= \frac{|a^{[1]}_{1,1}|}{\DS \max_{1\leq j \leq 2}|a^{[1]}_{1,j}|} \ .
 \]
 Hence
 \[
@@ -416,7 +416,7 @@ Suppose that we can write $A$ as the product $PLU$ where $P$ is a
 permutation matrix, $L$ is an invertible lower-triangular matrix and
 $U$ is an invertible upper-triangular matrix.  It is then easy to
 solve (\ref{lin_syst}).  We first solve
-$\displaystyle L\VEC{y} = \VEC{c} = P^{-1}\VEC{b}$.  Note that $\VEC{c}$ is
+$\DS L\VEC{y} = \VEC{c} = P^{-1}\VEC{b}$.  Note that $\VEC{c}$ is
 obtained from $\VEC{b}$ by permuting the indices of $\VEC{b}$.  The
 solution of $A\VEC{x}=\VEC{b}$ is then the solution of $U\VEC{x} = \VEC{y}$.
 
@@ -470,9 +470,9 @@ end
 The matrices $P$, $L$ and $U$ are obtained from the Gaussian
 elimination procedure described in the previous section.  Using the
 same notation than in the previous section, the matrices $U$ and $L$ 
-are respectively given by $\displaystyle u_{i,j}= a^{[i]}_{i,j}$ and
-$\displaystyle \ell_{i,j} = a^{[j]}_{i,j}/a^{[j]}_{j,j}$.  Recall that
-$\displaystyle a^{[i]}_{i,j} = 0$ and $\ell_{i,j} = 0$ if $j<i$.
+are respectively given by $\DS u_{i,j}= a^{[i]}_{i,j}$ and
+$\DS \ell_{i,j} = a^{[j]}_{i,j}/a^{[j]}_{j,j}$.  Recall that
+$\DS a^{[i]}_{i,j} = 0$ and $\ell_{i,j} = 0$ if $j<i$.
 
 We prove that $A=LU$.  To simplify the discussion, we assume for now
 that no row-interchange has been used.  From (\ref{iminusk}), we get
@@ -522,16 +522,16 @@ $k=0$, $1$, \ldots, $n-1$, we get $A=LU$.
 
 If row interchanges are needed in Gaussian elimination, these row
 interchanges can be performed on $A$ and $\VEC{b}$ before starting
-Gaussian elimination.  Let $\displaystyle P^{-1}$ be the permutation matrix that
-performs all the needed row interchanges.  Note that $\displaystyle P=P^{-1}$.
+Gaussian elimination.  Let $\DS P^{-1}$ be the permutation matrix that
+performs all the needed row interchanges.  Note that $\DS P=P^{-1}$.
 From our previous discussion, we can write
-$\displaystyle P^{-1}A$ as $\displaystyle P^{-1}A=LU$
+$\DS P^{-1}A$ as $\DS P^{-1}A=LU$
 for a lower-triangular matrix $L$ and an upper-triangular matrix $U$.
-No row interchange is needed to reduce $\displaystyle P^{-1}A$ to an
+No row interchange is needed to reduce $\DS P^{-1}A$ to an
 upper-triangular matrix using Gaussian elimination.  Hence $A=PLU$.
 
 To solve $A\VEC{x} = \VEC{b}$, we only have to solve
-$\displaystyle LU \VEC{x} = P^{-1}A\VEC{x}=P^{-1}\VEC{b}$.
+$\DS LU \VEC{x} = P^{-1}A\VEC{x}=P^{-1}\VEC{b}$.
 From a computational point of view, the row interchanges do not cause
 any problem.  The formulae for $U$ and $L$ given above are still valid
 if we performed the same row interchanges on the vector $\VEC{b}$ than
@@ -683,7 +683,7 @@ matrix $A$ in (\ref{lin_syst}) is real, symmetric and strictly
 positive definite.  It can then be proved that $A$ has a LU
 factorization that does not need pivoting.  The proof is based on the
 fact that all the sub-matrices
-$\displaystyle
+$\DS
 \begin{pmatrix}
 a_{1,1} & \ldots & a_{1,k} \\
 \vdots & \ddots & \vdots \\
@@ -700,12 +700,12 @@ D = \begin{pmatrix}
 0 & 0 & \ldots & \sqrt{a^{[n]}_{n,n}}
 \end{pmatrix}  \ ,
 \]
-$M=LD$ and $\displaystyle N=D^{-1}U$.  Recall that the elements on the
+$M=LD$ and $\DS N=D^{-1}U$.  Recall that the elements on the
 diagonal of a strictly positive definite matrix are all positive
 numbers.  Then $A=MN$, where $M$ is lower-triangular and
-$\displaystyle N = M^\top$.
+$\DS N = M^\top$.
 
-To prove that $\displaystyle M=N^\top$, we use the relation $A=MN$ to get
+To prove that $\DS M=N^\top$, we use the relation $A=MN$ to get
 \begin{align}
 m_{k,k} &= n_{k,k} = \sqrt{a_{k,k} -
 \sum_{i=1}^{k-1} m_{k,i} n_{i,k}} \ , \label{Chol_0} \\
@@ -802,30 +802,30 @@ $\|\VEC{p} - \VEC{x}_a\|$ small?
 
 \begin{egg}
 Consider the system $A\VEC{x} = \VEC{b}$ where
-$\displaystyle
+$\DS
 A = \begin{pmatrix}
 3 & 6 \\
 2.9999 & 6
 \end{pmatrix}$ and
-$\displaystyle
+$\DS
 \VEC{b} = \begin{pmatrix}
 9 \\ 8.9999
 \end{pmatrix}
 $.
 The unique solution is
-$\displaystyle
+$\DS
 \VEC{p} = \begin{pmatrix}
 1 \\ 1
 \end{pmatrix}
 $.
 
 If
-$\displaystyle
+$\DS
 \VEC{x}_a = \begin{pmatrix}
 3 \\ 0
 \end{pmatrix}
 $, let
-$\displaystyle
+$\DS
 \VEC{r} = \VEC{b} - A\VEC{x}_a =
 \begin{pmatrix}
 0 \\ 0.0002
@@ -843,7 +843,7 @@ $\VEC{r} = \VEC{b} - A \VEC{x}_a$ is
 called the {\bfseries residual vector}\index{Residual Vector} for $\VEC{x}_a$.
 \item The {\bfseries condition number}\index{Matrices!Condition Number} of $A$
 is the number
-$\displaystyle K(A) = \| A \| \, \|A^{-1} \|$.
+$\DS K(A) = \| A \| \, \|A^{-1} \|$.
 \end{enumerate}
 \end{defn}
 
@@ -864,7 +864,7 @@ if $\VEC{p} \neq \VEC{0}$.
 
 \begin{proof}
 From $\VEC{r} = \VEC{b} - A\VEC{x}_a = A(\VEC{p} - \VEC{x}_a)$, we get
-$\displaystyle \VEC{p} - \VEC{x}_a = A^{-1}\VEC{r}$.  Thus
+$\DS \VEC{p} - \VEC{x}_a = A^{-1}\VEC{r}$.  Thus
 \begin{equation}\label{errorest}
 \| \VEC{p} - \VEC{x}_a \| \leq \| A^{-1} \| \|\VEC{r}\| =
 K(A) \frac{\|\VEC{r}\|} {\|A\|} \ .
@@ -905,18 +905,18 @@ respect to the vector $\VEC{b}$ is small.
 
 \begin{egg}
 In the previous example
-$\displaystyle A = \begin{pmatrix}
+$\DS A = \begin{pmatrix}
 3 & 6 \\
 2.9999 & 6
 \end{pmatrix}$.  Hence $\|A\|_\infty = 9$.
 
 Since
-$\displaystyle A^{-1} = \begin{pmatrix}
+$\DS A^{-1} = \begin{pmatrix}
 10^4 & -10^4 \\
 -4999.8\overline{3} & 5000
 \end{pmatrix}$, we have
-$\displaystyle \| A^{-1}\|_\infty = 2\times 10^4$.
-Thus $\displaystyle K(A) = 1.8\times 10^5$ is really large.  $A$ is
+$\DS \| A^{-1}\|_\infty = 2\times 10^4$.
+Thus $\DS K(A) = 1.8\times 10^5$ is really large.  $A$ is
 ill-conditioned.
 
 We have inequalities in Theorem~\ref{ResErrCondNbr} but we ``may'' in
@@ -934,14 +934,14 @@ is equivalent to solving exactly the perturbed system
 (A+\dtx{A})\VEC{x} = (\VEC{b} + \dtx{\VEC{b}}) \ ,
 \end{equation}
 where $\dtx{A}$ is an \nn matrix near the \nn null
-matrix and $\dtx{\VEC{b}}$ is a vector of $\displaystyle \RR^n$
-near $\displaystyle \VEC{0}\in \RR^n$.
+matrix and $\dtx{\VEC{b}}$ is a vector of $\DS \RR^n$
+near $\DS \VEC{0}\in \RR^n$.
 The next theorem gives an estimate of the difference between the exact
 solution of (\ref{unpertub}) and the exact solution of
 (\ref{pertub}).
 
 \begin{theorem}
-If $\displaystyle \|\dtx{A}\| < \|A^{-1}\|^{-1}$, we have that
+If $\DS \|\dtx{A}\| < \|A^{-1}\|^{-1}$, we have that
 the exact solution $\VEC{p}$ of (\ref{unpertub}) and the exact
 solution $\VEC{q}$ of (\ref{pertub}) satisfy
 \[
@@ -953,7 +953,7 @@ solution $\VEC{q}$ of (\ref{pertub}) satisfy
 \end{theorem}
 
 \begin{proof}
-From Proposition~\ref{Banach}, $\displaystyle \Id_n + A^{-1}\dtx{A}$
+From Proposition~\ref{Banach}, $\DS \Id_n + A^{-1}\dtx{A}$
 is invertible because
 \[
 \|A^{-1}\dtx{A}\| \leq \|\dtx{A}\| \, \|A^{-1}\| < 1
@@ -970,7 +970,7 @@ Multiplying both sides of
 (A+\dtx{A})\left(\VEC{p} + (\VEC{q}-\VEC{p})\right)
 = (\VEC{b} + \dtx{\VEC{b}})
 \]
-from the left by $\displaystyle A^{-1}$, we get
+from the left by $\DS A^{-1}$, we get
 \[
 \left(\Id_n + A^{-1} \dtx{A} \right) \left(\VEC{q}-\VEC{p}\right)
 +\VEC{p} + A^{-1}\dtx{A} \, \VEC{p} = \VEC{p} + A^{-1}\,\dtx{\VEC{b}}
@@ -1000,7 +1000,7 @@ Thus
 \left( \frac{\|\dtx{\VEC{b}}\|}{\|\VEC{b}\|}
 + \frac{\|\dtx{A}\|}{\|A\|} \right) \ ,
 \end{align*}
-where we have used $\displaystyle K(A) = \|A||\, \|A^{-1}\|$ and
+where we have used $\DS K(A) = \|A||\, \|A^{-1}\|$ and
 $\|\VEC{b}\| \leq \|A\|\, \|\VEC{p}\|$ from $\VEC{b}=A\VEC{p}$.
 \end{proof}
 
@@ -1026,7 +1026,7 @@ equation $A\VEC{x} = \VEC{r}$, then
 = 10^{-t} K(A) \|\VEC{x}_a\| \ .
 \]
 Thus
-$\displaystyle 10^t \frac{\|\VEC{y}\|}{\|\VEC{x}_a\|}$ may be used as
+$\DS 10^t \frac{\|\VEC{y}\|}{\|\VEC{x}_a\|}$ may be used as
 an rough approximation of $K(A)$.
 \item Let $A$ be an invertible matrix.  The method of
 {\bfseries iterative refinement}\index{Iterative Refinement}, to
@@ -1042,11 +1042,11 @@ computations involve many almost identical numbers.
 precision, find $\VEC{x_c}$ such that $A\VEC{x_c} \approx \VEC{r}$.
 The steps for this Gauss elimination are already known from (a).
 \item Let $\VEC{x}_b = \VEC{x}_a + \VEC{x_c}$.
-\item If $\displaystyle 10^t \|\VEC{x_c}\|/\|\VEC{x}_b\| < \epsilon$, the
+\item If $\DS 10^t \|\VEC{x_c}\|/\|\VEC{x}_b\| < \epsilon$, the
 requested accuracy, then the vector $\VEC{x}_b$ should be the desired
 approximation of the solution $\VEC{p}$ of $A\VEC{x}=\VEC{b}$ and
 hopefully a better approximation of $\VEC{p}$ than $\VEC{x}_a$.
-If $\displaystyle 10^t \|\VEC{x_c}\|/\|\VEC{x}_b\| \not< \epsilon$.
+If $\DS 10^t \|\VEC{x_c}\|/\|\VEC{x}_b\| \not< \epsilon$.
 replace $\VEC{x}_a$ by $\VEC{x}_b$, and repeat from step (b).
 \end{enumerate}
 \end{enumerate}
@@ -1063,7 +1063,7 @@ invertible, then $A$ and $B$ are invertible.\\
 upper-triangular) matrices is a lower-triangular
 (resp.\ upper-triangular) matrix.\\
 \subQ{c} Suppose that $A$ is a \nn invertible matrix.  Prove that
-$\displaystyle A^{-1}$ is lower-triangular (resp.\ upper-triangular) if
+$\DS A^{-1}$ is lower-triangular (resp.\ upper-triangular) if
 $A$ is lower-triangular (resp.\ upper-triangular).\\
 \subQ{d} Prove that the
 {\bfseries triangular factorization}\index{triangular factorization}
@@ -1074,7 +1074,7 @@ diagonal, and $U_1$ and $U_2$ are two upper-triangular matrices, then
 $L_1 = L_2$ and $U_1 = U_2$.\\
 \subQ{e} If $A$ is \nn symmetric matrix and $A = LU$, where $L$ is
 lower-triangular with $1$ as elements on its diagonal and $U$ is
-upper-triangular, prove that $\displaystyle U = DL^\top$, where $D$ is
+upper-triangular, prove that $\DS U = DL^\top$, where $D$ is
 a diagonal matrix whose diagonal is the diagonal of the matrix $U$.\\
 \subQ{f} A matrix $A$ is
 {\bfseries tridiagonal}\index{Matrices!Tridiagonal Matrices}
@@ -1108,7 +1108,7 @@ Use Gaussian elimination with backward substitution and scaled column
 pivoting to compute the inverse of $A$.  Use $5$-digit rounding
 arithmetic.  Compute the condition number of $A$.  Is $A$
 ill-conditioned?\\
-Hint: the $\displaystyle i^{th}$ column of $\displaystyle A^{-1}$
+Hint: the $\DS i^{th}$ column of $\DS A^{-1}$
 is the solution of $A\VEC{x} = \VEC{e}_i$.
 \end{question}
 
@@ -1118,8 +1118,8 @@ $K(A)$ satisfies $K(A)\geq 1$.
 \end{question}
 
 \sol{\SOL}{
-From $\displaystyle \Id = A\,A^{-1}$, we get
-$\displaystyle 1 = \|\Id\| = \|A\,A^{-1}\| \leq \|A\|\,\|A^{-1}\| = K(A)$.
+From $\DS \Id = A\,A^{-1}$, we get
+$\DS 1 = \|\Id\| = \|A\,A^{-1}\| \leq \|A\|\,\|A^{-1}\| = K(A)$.
 }
 
 \begin{question}
@@ -1134,12 +1134,12 @@ A = \begin{pmatrix}
 Use row operations and $7$-digit rounding arithmetic to compute the
 solution $\VEC{x}_p$ of the perturbed system $A\VEC{x} = \VEC{b}_p$,
 where
-$\displaystyle \VEC{b}_p = \begin{pmatrix} 3.00001 & 3.00003
+$\DS \VEC{b}_p = \begin{pmatrix} 3.00001 & 3.00003
 \end{pmatrix}^\top$.
 Compare $\VEC{x}_p$ with the solution
-$\displaystyle \VEC{x}_s = \begin{pmatrix} 1 & 1 \end{pmatrix}^\top$
+$\DS \VEC{x}_s = \begin{pmatrix} 1 & 1 \end{pmatrix}^\top$
 of the unperturbed system.  Compute the condition number using the
-$\displaystyle \ell^\infty$-norm.  Is the system ill-conditioned or
+$\DS \ell^\infty$-norm.  Is the system ill-conditioned or
 well-conditioned?
 \end{question}
 
@@ -1153,7 +1153,7 @@ If we subtract $1.00001$ times the first equation from the second
 equation, we get $-0.00002 x_2 = -0.00001$.  Hence $x_2= 0.5$.
 If we substitute this value of $x_2$ in the first equation, we get
 $x_1 = 2.00001.$.  The solution of the perturbed system is
-$\displaystyle \VEC{x}_p = \begin{pmatrix} 2.00001 & 0.5 \end{pmatrix}^\top$.
+$\DS \VEC{x}_p = \begin{pmatrix} 2.00001 & 0.5 \end{pmatrix}^\top$.
 
 The relative error is
 \[
@@ -1169,7 +1169,7 @@ A^{-1} = \begin{pmatrix}
 \end{pmatrix} \ .
 \]
 We find that the condition number is
-$\displaystyle K(A) = \|A\|_\infty\,\|A^{-1}\|_\infty = 3.00001 \times
+$\DS K(A) = \|A\|_\infty\,\|A^{-1}\|_\infty = 3.00001 \times
 2 \times 10^5 = 6.00002\times 10^5$.  The matrix $A$ is ill-conditioned.
 }
 
@@ -1184,7 +1184,7 @@ a_{i,j} =
 \end{cases}
 \]
 Compute the condition number
-$\displaystyle K(A) = \|A\|_\infty \, \|A^{-1}\|_\infty$.  Is $A$ well
+$\DS K(A) = \|A\|_\infty \, \|A^{-1}\|_\infty$.  Is $A$ well
 conditioned?
 \end{question}
 
@@ -1202,13 +1202,13 @@ b_{i,j} = \begin{cases}
 \]
 because $A B = \Id_n$ yields $b_{1,j} = \delta_{1,j}$ for
 $1\leq j \leq n$, and
-$\displaystyle - \sum_{i=1}^{k-1} b_{i,j} + b_{k,j} = \delta_{k,j}$
+$\DS - \sum_{i=1}^{k-1} b_{i,j} + b_{k,j} = \delta_{k,j}$
 for $1 \leq j \leq n$ and $2 \leq k \leq n$; namely,
-$\displaystyle b_{k,j} = \delta_{k,j} + \sum_{i=1}^{k-1} b_{i,j}$
+$\DS b_{k,j} = \delta_{k,j} + \sum_{i=1}^{k-1} b_{i,j}$
 for $1 \leq j \leq n$ and $2 \leq k \leq n$.  In plain English, the
 first row of $B$ is the first row of the identity matrix $\Id_n$ and
-the $\displaystyle k^{th}$ row of $B$ is the sum of the
-$\displaystyle k^{th}$ row of $\Id_n$ with
+the $\DS k^{th}$ row of $B$ is the sum of the
+$\DS k^{th}$ row of $\Id_n$ with
 the previous $k-1$ rows of $B$ for $2 \leq k \leq n$.
 
 Again, the norm $\|B\|_\infty$ is given by the sum in absolute value
@@ -1218,10 +1218,10 @@ of all the elements of the last row of $B$.  Thus
 = 2^{n-1} \ .
 \]
 The sum in the previous expression is given by the formula
-$\displaystyle \sum_{i=1}^k r^i = \frac{1-r^{k+1}}{1-r}$ with $r=2$
+$\DS \sum_{i=1}^k r^i = \frac{1-r^{k+1}}{1-r}$ with $r=2$
 and $k=n-2$. 
 
-Hence, $\displaystyle K(A) = n 2^{n-1}$.  For large matrices $A$
+Hence, $\DS K(A) = n 2^{n-1}$.  For large matrices $A$
 (i.e.\ $n$ large), the matrix is not well conditioned.
 }
 
@@ -1237,32 +1237,32 @@ A = \begin{pmatrix}
 \VEC{b} = \begin{pmatrix} 0.0601 \\ 0.302 \\ 11.03 \end{pmatrix} \ .
 \]
 Suppose that
-$\displaystyle
+$\DS
 \VEC{q} = \begin{pmatrix} 1.8 \\ 0.64 \\ 1.9 \end{pmatrix}$
 is an approximation of the solution
-$\displaystyle
+$\DS
 \VEC{p} = \begin{pmatrix} 1.83 \\ 0.66 \\ 1.97 \end{pmatrix}$.
-Without computing $\displaystyle A^{-1}$, can you determine if the system is
+Without computing $\DS A^{-1}$, can you determine if the system is
 ill-conditioned or well-conditioned?
 \end{question}
 
 \sol{\SOL}{
 We use the relation
-$\displaystyle \| \VEC{q} - \VEC{p} \|_1 \leq K(A) \,
+$\DS \| \VEC{q} - \VEC{p} \|_1 \leq K(A) \,
 \frac{\|\VEC{b}-A\VEC{q}\|_1}{\|A\|_1}$
 to get
-$\displaystyle \| \VEC{q} - \VEC{p} \|_1
+$\DS \| \VEC{q} - \VEC{p} \|_1
 \frac{\|A\|_1}{\|\VEC{b}-A\VEC{q}\|_1} \leq K(A)$.
 
 Since
-$\displaystyle \|A\|_1 = \sum_{i=1}^3 |a_{i,3}| = 4.21$, 
-$\displaystyle \| \VEC{q} - \VEC{p} \|_1
+$\DS \|A\|_1 = \sum_{i=1}^3 |a_{i,3}| = 4.21$, 
+$\DS \| \VEC{q} - \VEC{p} \|_1
 = \| \begin{pmatrix} 0.03 & 0.02 & 0.07 \end{pmatrix}^\top \|_1 = 0.12$
 and
-$\displaystyle \|\VEC{b}-A\VEC{q}\|_1 =
+$\DS \|\VEC{b}-A\VEC{q}\|_1 =
 \| \begin{pmatrix} 0.0007 & 0.002 & 0.35 \end{pmatrix}^\top \|_1 = 0.3527$,
 we get\\
-$\displaystyle K(A) \geq 0.12 \times 4.21 / 0.3527 \approx 1.43237879$.
+$\DS K(A) \geq 0.12 \times 4.21 / 0.3527 \approx 1.43237879$.
 This is an indication that the system may be well conditioned.  It
 does not prove that the system is well conditioned because the
 inequality is in the wrong direction.

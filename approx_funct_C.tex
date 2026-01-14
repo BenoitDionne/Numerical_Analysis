@@ -1,4 +1,4 @@
-\chapter{Least Square Approximation (in $\displaystyle \ell^2$)}
+\chapter{Least Square Approximation (in $\DS \ell^2$)}
 \label{ChaptApproxC}
 
 Consider the data provided in Figure~\ref{appr_DiscrLeastSqr}
@@ -21,16 +21,16 @@ methods to fit a line $y=p(x)=ax+b$ through this set of points are the
 following methods.
 \begin{description}
 \item[Minimax]: Find $a$ and $b$ that minimize
-$\displaystyle I(a,b) = \max_{1\leq i \leq n} \left| y_i - (ax_i+b) \right|$.
+$\DS I(a,b) = \max_{1\leq i \leq n} \left| y_i - (ax_i+b) \right|$.
 \item[Absolute Deviation]: Find $a$ and $b$ that minimize
-$\displaystyle I(a,b) = \sum_{i=1}^{n} \left| y_i - (ax_i+b)\right|$.
+$\DS I(a,b) = \sum_{i=1}^{n} \left| y_i - (ax_i+b)\right|$.
 \item[Least Square]: Find $a$ and $b$ that minimize
-$\displaystyle I(a,b) = \sum_{i=1}^{n} \left( y_i - (ax_i+b)\right)^2$.
+$\DS I(a,b) = \sum_{i=1}^{n} \left( y_i - (ax_i+b)\right)^2$.
 \end{description}
 
 Instead of a straight line, we may have assumed that the data in
 Figure~\ref{appr_DiscrLeastSqr} represent a parabola
-$\displaystyle y=p(x)= ax^2+bx+c$ or
+$\DS y=p(x)= ax^2+bx+c$ or
 some other functions.  We will say more on this later.  We have chosen a
 straight line to illustrate the discrete least square method.  The least
 square method is the most convenient method for the following reasons.
@@ -42,7 +42,7 @@ differentiable everywhere for the other two methods.
 far away (vertically) from the straight line that we try to fit.
 \item The method is statistically significant.
 \item The method is theoretically significant.  It is closely related to the
-notion of $\displaystyle L^2$ approximation that we will study in the
+notion of $\DS L^2$ approximation that we will study in the
 next sections.
 \end{enumerate}
 
@@ -61,31 +61,31 @@ To minimize $I$, we first find the critical points of $I$.
 This yields the system of linear equation 
 \[
 \begin{pmatrix}
-\displaystyle \sum_{i=1}^n x_i^2 & \displaystyle \sum_{i=1}^n x_i \\
-\displaystyle \sum_{i=1}^n x_i & \displaystyle n
+\DS \sum_{i=1}^n x_i^2 & \DS \sum_{i=1}^n x_i \\
+\DS \sum_{i=1}^n x_i & \DS n
 \end{pmatrix}
 \begin{pmatrix}
 a \\ b
 \end{pmatrix}
 =
 \begin{pmatrix}
-\displaystyle \sum_{i=1}^n x_i y_i \\ \displaystyle \sum_{i=1}^n y_i
+\DS \sum_{i=1}^n x_i y_i \\ \DS \sum_{i=1}^n y_i
 \end{pmatrix} \ .
 \]
 The solution of this system is
 \begin{align*}
-a &= \frac{\displaystyle  n \sum_{i=1}^n x_i y_i -
+a &= \frac{\DS  n \sum_{i=1}^n x_i y_i -
 \left(\sum_{i=1}^n x_i\right)\left( \sum_{i=1}^n y_i\right)}
-{\displaystyle n \left(\sum_{i=1}^n x_i^2\right) -
+{\DS n \left(\sum_{i=1}^n x_i^2\right) -
 \left(\sum_{i=1}^n x_i\right)^2}
 \intertext{and}
-b &= \frac{\displaystyle  \left(\sum_{i=1}^n x_i^2\right)
+b &= \frac{\DS  \left(\sum_{i=1}^n x_i^2\right)
 \left(\sum_{i=1}^n y_i\right) - \left(\sum_{i=1}^n x_i y_i\right)
 \left(\sum_{i=1}^n x_i\right)}
-{\displaystyle n \left(\sum_{i=1}^n x_i^2\right) -
+{\DS n \left(\sum_{i=1}^n x_i^2\right) -
 \left(\sum_{i=1}^n x_i\right)^2} \ .
 \end{align*}
-Since $\displaystyle I:\RR^2\rightarrow [0,\infty[$ is a quadratic polynomial
+Since $\DS I:\RR^2\rightarrow [0,\infty[$ is a quadratic polynomial
 function, its only critical point must be a local and absolute minimum.
 
 \section{Nonlinear Modelling}
@@ -96,14 +96,14 @@ topic very deeply.
 
 If instead of a line, we assume that the data
 $\left\{ (x_i,y_i) : i=1,2,\ldots, n\right\}$ represent a polynomial
-$\displaystyle p(x) = \sum_{j=0}^m a_j x^j$, then we must minimize
+$\DS p(x) = \sum_{j=0}^m a_j x^j$, then we must minimize
 \[
 I(\VEC{a}) = \sum_{i=1}^n \left( y_i - p(x_i)\right)^2
 = \sum_{i=1}^n y_i^2 -2 \sum_{j=0}^m a_j \left(\sum_{i=1}^n y_i x_i^j\right)
 + \sum_{j_1=0}^m\sum_{j_2=0}^m a_{j_1} a_{j_2}
 \left( \sum_{i=1}^n x_i^{j_1+j_2} \right) \ ,
 \]
-where $\displaystyle \VEC{a} = \begin{pmatrix}
+where $\DS \VEC{a} = \begin{pmatrix}
 a_0 & a_1 & \ldots & a_n \end{pmatrix}^\top$.
 The critical points are given by
 \[
@@ -122,8 +122,8 @@ This system has always a unique solution because the matrix $H$ is a
 
 As a final example, suppose that the data
 $\left\{ (x_i,y_i) : i=1,2,\ldots, n\right\}$ represent an exponential curve
-$\displaystyle p(x) = b e^{ax}$ (or
-$\displaystyle p(x) = b x^a = b e^{a\ln(x)}$).
+$\DS p(x) = b e^{ax}$ (or
+$\DS p(x) = b x^a = b e^{a\ln(x)}$).
 In theory, we have to minimize
 \[
 I(a,b) = \sum_{i=1}^n \left( y_i - b e^{ax_i}\right)^2 \ .
@@ -137,27 +137,27 @@ J(a,b) = \sum_{i=1}^n \left( \ln(y_i) -
 \]
 The unique critical point of $J$ is given by
 \begin{align*}
-a &= \frac{\displaystyle  n \sum_{i=1}^n x_i \ln(y_i) -
+a &= \frac{\DS  n \sum_{i=1}^n x_i \ln(y_i) -
 \left(\sum_{i=1}^n x_i\right)\left( \sum_{i=1}^n \ln(y_i)\right)}
-{\displaystyle n \left(\sum_{i=1}^n x_i^2\right) -
+{\DS n \left(\sum_{i=1}^n x_i^2\right) -
 \left(\sum_{i=1}^n x_i\right)^2}
 \intertext{and}
-\ln(b) &= \frac{\displaystyle  \left(\sum_{i=1}^n x_i^2\right)
+\ln(b) &= \frac{\DS  \left(\sum_{i=1}^n x_i^2\right)
 \left(\sum_{i=1}^n \ln(y_i)\right) - \left(\sum_{i=1}^n x_i \ln(y_i)\right)
 \left(\sum_{i=1}^n x_i\right)}
-{\displaystyle n \left(\sum_{i=1}^n x_i^2\right) -
+{\DS n \left(\sum_{i=1}^n x_i^2\right) -
 \left(\sum_{i=1}^n x_i\right)^2} \ .
 \end{align*}
 These values of $a$ and $b$ are not the values of $a$ and $b$ that minimize
-$I$.  Thus, $\displaystyle y= be^{ax}$ may not be a ``best fit'' for
+$I$.  Thus, $\DS y= be^{ax}$ may not be a ``best fit'' for
 the set of data as we will expect with the least square method.
 
 \section[Trigonometric Polynomial Approximation (Real Case)]{Trigonometric Polynomial Approximation (Real\\ Case)}
 
 Suppose that
-$\displaystyle \left\{ (x_n,y_n) : n=0,1,2,\ldots, 2N-1\right\}$ are $2N$
+$\DS \left\{ (x_n,y_n) : n=0,1,2,\ldots, 2N-1\right\}$ are $2N$
 data points, where
-$\displaystyle x_n = \frac{n \pi}{N}$ for $n=0$, $1$, $2$,\ldots, $2N-1$.
+$\DS x_n = \frac{n \pi}{N}$ for $n=0$, $1$, $2$,\ldots, $2N-1$.
 We suppose that these data come from (the approximation of) a
 $2\pi$-periodic function $f:\RR\rightarrow \RR$; namely, $y_n = f(x_n)$
 for all $n$.
@@ -196,39 +196,39 @@ Using complex notation, we have
 \sum_{n=0}^{2N-1} \cos(r x_n) + i \sum_{n=0}^{2N-1} \sin(r x_n) =
 \sum_{n=0}^{2N-1} e^{i r x_n}
 = \sum_{n=0}^{2N-1} e^{(r n \pi/N)i}
-= \left(\frac{\displaystyle 1- \left(e^{(r \pi/N)i}\right)^{2N}}
+= \left(\frac{\DS 1- \left(e^{(r \pi/N)i}\right)^{2N}}
 {1 - e^{(r \pi/N)i}}\right) = 0
 \]
-because $\displaystyle \left(e^{(r \pi/N)i}\right)^{2N} = e^{2 r \pi i} = 1$
-whatever $r$, and $\displaystyle e^{(r \pi/N)i} \neq 1$ since $r$ is
+because $\DS \left(e^{(r \pi/N)i}\right)^{2N} = e^{2 r \pi i} = 1$
+whatever $r$, and $\DS e^{(r \pi/N)i} \neq 1$ since $r$ is
 not a multiple of $2N$.  Thus (\ref{approx_trig_equ1}) follows from
 setting the real and imaginary parts of the right hand side of the
 previous relation to $0$.
 
 If $r$ is not a multiple of $N$, then $2r$ is not a multiple of $2N$
 and it follows from (\ref{approx_trig_equ1}) that
-$\displaystyle \sum_{n=0}^{2N-1} \cos(2r x_n) = 0$.  Hence
+$\DS \sum_{n=0}^{2N-1} \cos(2r x_n) = 0$.  Hence
 \[
 \sum_{n=0}^{2N-1} \cos^2(r x_n)
 = \sum_{n=0}^{2N-1} \frac{1}{2} \left( 1 + \cos(2r x_n)\right)
 = \frac{1}{2} \sum_{n=0}^{2N-1} 1 + \frac{1}{2} \sum_{n=0}^{2N-1} \cos(2r x_n)
 = N \ .
 \]
-A similar proof gives $\displaystyle \sum_{n=0}^{2N-1} \sin^2(r x_n) = 1$.
+A similar proof gives $\DS \sum_{n=0}^{2N-1} \sin^2(r x_n) = 1$.
 \end{proof}
 
 \begin{prop}
-Suppose that $K\leq N$.  Let $\displaystyle S_K =\{\phi_k\}_{k=0}^{2K}$,
-where $\displaystyle \phi_0(x) = 1/2$,
-$\displaystyle \phi_{2k}(x) = \cos(k x)$ and
-$\displaystyle \phi_{2k-1}(x) = \sin(k x)$ for $k=1$, $2$, \ldots, $K$.
+Suppose that $K\leq N$.  Let $\DS S_K =\{\phi_k\}_{k=0}^{2K}$,
+where $\DS \phi_0(x) = 1/2$,
+$\DS \phi_{2k}(x) = \cos(k x)$ and
+$\DS \phi_{2k-1}(x) = \sin(k x)$ for $k=1$, $2$, \ldots, $K$.
 The set $S_K$ is an orthogonal set of functions with respect to the
 {\bfseries pseudo scalar product}\index{Linear Spaces!Pseudo Scalar Product}
 \begin{equation} \label{approx_real_finiteSP}
 \pps{f}{g} = \sum_{n=0}^{2N-1} f(x_n)g(x_n) \quad, \quad
 f,g:[0,2\pi[\rightarrow \RR \ .
 \end{equation}
-Namely, $\displaystyle \pps{\phi_k}{\phi_j} = 0$ for $k\neq j$.
+Namely, $\DS \pps{\phi_k}{\phi_j} = 0$ for $k\neq j$.
 \label{approx_orth_trig}
 \end{prop}
 
@@ -333,7 +333,7 @@ Thus
 \]
 where we have used (\ref{approx_trig_equ1}) to get the last equality.
 
-Finally, since $\displaystyle I:\RR^{2N+1} \rightarrow [0,\infty[$ is a
+Finally, since $\DS I:\RR^{2N+1} \rightarrow [0,\infty[$ is a
 quadratic polynomial function with a single critical point, this
 critical point is a local and absolute minimum.
 \end{proof}
@@ -361,11 +361,11 @@ Chapter~\ref{chaptApproxA} that the trigonometric polynomials defined in
 Proposition~\ref{approx_orth_trig} form an orthogonal set of functions
 in the space of square integrable functions on the interval
 $[0,2\pi]$, where the scalar product is defined by the integral
-$\displaystyle \ps{f}{g} = \int_0^{2\pi} f(x)g(x) \dx{x}$ for $f$ and $g$
+$\DS \ps{f}{g} = \int_0^{2\pi} f(x)g(x) \dx{x}$ for $f$ and $g$
 two square integrable functions.  In the space of square integrable
 functions, the least square problem is to find $a_0$, $a_1$, \ldots, $a_K$,
 $b_1$, $b_2$, \ldots, $b_K$ that minimize
-$\displaystyle I(a_0, \ldots, b_K) = \int_{-\pi}^\pi (f(x)-p(x))^2 \dx{x}$,
+$\DS I(a_0, \ldots, b_K) = \int_{-\pi}^\pi (f(x)-p(x))^2 \dx{x}$,
 where $p$ is defined in (\ref{approx_trig_polyn}).  The values of $a_k$
 and $b_k$ that minimize $I$ are
 \[
@@ -400,17 +400,17 @@ Instead of limiting the theory to $2\pi$-periodic real value functions as we
 have done in the previous section, we now consider $2\pi$-periodic complex
 valued functions.  In the context of complex valued functions, the complex
 trigonometric polynomials are finite linear combinations of
-$\displaystyle e^{k x i}$ for $k\in \ZZ$, where $i$ is the complex number
-satisfying $\displaystyle i^2=-1$.  In particular, we will consider
+$\DS e^{k x i}$ for $k\in \ZZ$, where $i$ is the complex number
+satisfying $\DS i^2=-1$.  In particular, we will consider
 trigonometric polynomials of the form
 \begin{equation}\label{approx_complex_polyn}
 p(x) = \sum_{k=-K}^K r_k e^{k x i}
 \end{equation}
 for $r_k \in \CC$.
 
-Suppose that $\displaystyle \left\{ (x_n,y_n) : n=0,1,2,\ldots, N-1\right\}$
+Suppose that $\DS \left\{ (x_n,y_n) : n=0,1,2,\ldots, N-1\right\}$
 are $N$ data points, where
-$\displaystyle x_n = \frac{2n \pi}{N}$ for $n=0$, $1$, $2$,\ldots, $N-1$.
+$\DS x_n = \frac{2n \pi}{N}$ for $n=0$, $1$, $2$,\ldots, $N-1$.
 
 We suppose that these data comes from (the approximation of) a
 $2\pi$-periodic function $f:\RR\rightarrow \CC$; namely, $y_n = f(x_n)$ for
@@ -441,12 +441,12 @@ In the context of complex valued functions, the pseudo scalar product
 \pps{f}{g} = \sum_{n=0}^{N-1} f(x_n) \overline{g(x_n)} \quad , \quad
 f,g: [0,2\pi] \rightarrow \CC \ .
 \end{equation}
-The set $\displaystyle S = \{ e^{kx i}\}_{k\in \ZZ}$ is not
+The set $\DS S = \{ e^{kx i}\}_{k\in \ZZ}$ is not
 orthogonal with respect to this pseudo scalar product.  However, we
 have a result similar to orthogonality.
 
 \begin{prop}
-The set $\displaystyle S = \{ e^{kx i}\}_{k\in \ZZ}$ satisfies
+The set $\DS S = \{ e^{kx i}\}_{k\in \ZZ}$ satisfies
 \[
 \pps{e^{kx i}}{e^{j x i}} =
 \begin{cases}
@@ -463,12 +463,12 @@ For $k\not\equiv j \pmod{N}$, we have
 \[
 \pps{e^{kx i}}{e^{jx i}} = \sum_{n=0}^{N-1} e^{(k-j)x_n i} =
 \sum_{n=0}^{N-1} e^{(2n\pi(k-j)/N) i}
-= \frac{\displaystyle 1- \left(e^{(2\pi(k-j)/N)i}\right)^{N}}
+= \frac{\DS 1- \left(e^{(2\pi(k-j)/N)i}\right)^{N}}
 {1 - e^{(2\pi(k-j)/N)i}} = 0
 \]
 because
-$\displaystyle \left(e^{(2\pi(k-j)/N)i}\right)^{N} = e^{2(k-j)\pi i} = 1$
-and $\displaystyle e^{(2\pi(k-j)/N)i} \neq 1$ since
+$\DS \left(e^{(2\pi(k-j)/N)i}\right)^{N} = e^{2(k-j)\pi i} = 1$
+and $\DS e^{(2\pi(k-j)/N)i} \neq 1$ since
 $k-j$ is not a multiple of $N$.
 
 For $k \equiv j \pmod{N}$, we have
@@ -476,7 +476,7 @@ For $k \equiv j \pmod{N}$, we have
 \pps{e^{kx i}}{e^{jx i}} = \sum_{n=0}^{N-1} e^{(k-j)x_n i} =
 \sum_{n=0}^{N-1} e^{(2n\pi(k-j)/N) i} = \sum_{n=0}^{N-1} 1 = N
 \]
-because $\displaystyle e^{(2n\pi(k-j)/N)i} = 1$ since $k-j$ is a
+because $\DS e^{(2n\pi(k-j)/N)i} = 1$ since $k-j$ is a
 multiple of $N$.
 \end{proof}
 
@@ -496,7 +496,7 @@ r_{-K} = \frac{1}{2N} \sum_{n=0}^{N-1} f(x_n) e^{-Kx_n i}
 r_K = \frac{1}{2N} \sum_{n=0}^{N-1} f(x_n) e^{Kx_n i} \ .
 \end{equation}
 The reason for this exception comes from the fact that
-$\displaystyle \pps{f(x)}{e^{K x i}} = \pps{f(x)}{e^{-K x i}}$
+$\DS \pps{f(x)}{e^{K x i}} = \pps{f(x)}{e^{-K x i}}$
 for $K=N/2$ because
 \[
 e^{-Kx_n i} = e^{-n\pi i} = e^{n\pi i} = e^{Kx_n i} =
@@ -515,11 +515,11 @@ A proof similar to the proof of Theorem~\ref{approx_coeff_real_trig}
 could be given to show that the coefficients $r_k$ defined above for
 $K \leq N/2$ minimize (\ref{approx_cpl_ls}) (This is left to the reader).  We
 will proceed differently.  The proof that we will give requires some
-knowledge of Fourier series of complex valued functions in $\displaystyle L^2$.
+knowledge of Fourier series of complex valued functions in $\DS L^2$.
 This was the subject of Chapter~\ref{chaptApproxA}.  We only state the
 result that is needed from that chapter.  This approach has the
 advantage of linking the discrete least square method above to
-$\displaystyle L^2$
+$\DS L^2$
 approximation in the space of $2\pi$-periodic square integrable
 functions.  However, it has the disadvantage or requesting that $f$ be
 continuously differentiable.  This is an extra condition which is not
@@ -527,23 +527,23 @@ required to determine the coefficients $r_k$ minimizing
 (\ref{approx_cpl_ls}).
 
 We saw in Chapter~\ref{chaptApproxA} that if $f$ is an
-$\displaystyle L^2$-integrable
+$\DS L^2$-integrable
 function on $[0,2\pi]$, then we may write
 \[
 f = \sum_{k\in\ZZ} A_k e^{k x i} \ ,
 \]
-where the convergence is the $\displaystyle L^2$ convergence and
+where the convergence is the $\DS L^2$ convergence and
 \[
 A_k = \frac{1}{2\pi} \int_0^{2\pi} f(x) e^{-k x i} \quad , \quad k \in \ZZ \ .
 \]
 If $f$ is a $2\pi$-periodic differentiable function, then it can be
 proved \cite{R} that the series
-$\displaystyle \sum_{k\in \ZZ} A_k e^{k x i}$
+$\DS \sum_{k\in \ZZ} A_k e^{k x i}$
 converges absolutely to $f(x)$ for all $x$ and uniformly on $\RR$ to
 $f$.  In particular, this implies that
-$\displaystyle \sum_{k=0}^\infty A_{\alpha_k} e^{\alpha_k x i}$
+$\DS \sum_{k=0}^\infty A_{\alpha_k} e^{\alpha_k x i}$
 converges pointwise to $f(x)$ for any reordering
-$\displaystyle \{\alpha_k\}_{k=0}^\infty$ of the natural
+$\DS \{\alpha_k\}_{k=0}^\infty$ of the natural
 numbers\footnote{Namely, $k \mapsto \alpha_k$ is an injective and
   surjective mapping of $\ZZ$ to itself.}.
 Hence, we can change the order of the summation without changing the limit.
@@ -553,7 +553,7 @@ Let
 a_k = \frac{1}{N} \sum_{n=0}^{N-1} f(x_n) e^{-kx_n i} \quad , \quad k \in \ZZ \ .
 \end{equation}
 Before stating the relation between the $a_k$'s and the $A_k$'s, we show
-that $\displaystyle \pps{f}{e^{j_1 x i}} = \pps{f}{e^{j_2 x i}}$ for
+that $\DS \pps{f}{e^{j_1 x i}} = \pps{f}{e^{j_2 x i}}$ for
 $j_1 \equiv j_2 \pmod{N}$.  This is at the root of the relation that we will
 find between the $a_k$'s and $A_k$'s.  Suppose that $j_2 = sN +j_1$ with
 $s\in \ZZ$, then
@@ -562,7 +562,7 @@ e^{j_2 x_n i} = e^{(2\pi (sN+j_1)n/N)i} = e^{2\pi s n i}e^{(2\pi j_1 n/N)i}
 = e^{j_1 x_n i}
 \]
 for $n = 0$, $1$, $2$,\ldots, $N-1$ because
-$\displaystyle e^{2\pi s n i} = 1$ for all $n$.  Thus
+$\DS e^{2\pi s n i} = 1$ for all $n$.  Thus
 \[
 \pps{f}{e^{j_1 x i}} = \sum_{n=0}^{N-1} f(x_n) e^{j_1 x_n i}
 = \sum_{n=0}^{N-1} f(x_n) e^{j_2 x_n i} = \pps{f}{e^{j_2 x i}} \ .
@@ -586,10 +586,10 @@ a_k &= \frac{1}{N} \sum_{n=0}^{N-1} f(x_n) e^{-k x_n i}
 = \sum_{j\equiv k \pmod{N}} A_j \ .
 \end{align*}
 The third equality comes from the absolute convergence of the series
-$\displaystyle \sum_{k\in \ZZ} A_k e^{k x i}$ to $f(x)$ for all $x$.
+$\DS \sum_{k\in \ZZ} A_k e^{k x i}$ to $f(x)$ for all $x$.
 The last equality comes from
 Proposition~\ref{approx_no_orth_compl_trig} and the absolute
-convergence of the series $\displaystyle \sum_{k\in \ZZ} A_k$.
+convergence of the series $\DS \sum_{k\in \ZZ} A_k$.
 \end{proof}
 
 The result of the previous proposition is called
@@ -600,14 +600,14 @@ Assume that $f$ is a $2\pi$-periodic differentiable function and that
 $a_k$ is defined by (\ref{approx_a_coeff}) for all $k$.
 \begin{enumerate}
 \item If $K<N/2$, then
-$\displaystyle I(r_{-K},r_{-K+1}, \ldots, r_K)
+$\DS I(r_{-K},r_{-K+1}, \ldots, r_K)
 \leq I(b_{-K},b_{-K+1}, \ldots, b_K)$ for all $b_k \in \CC$ with
 $|k|\leq K$ if $r_k =a_k$ for $k)\leq K$.
 \item If $K=N/2$, then
-$\displaystyle I(r_{-K},r_{-K+1}, \ldots, r_K)
+$\DS I(r_{-K},r_{-K+1}, \ldots, r_K)
 \leq I(b_{-K},b_{-K+1}, \ldots, b_K)$ for all $b_k \in \CC$ with
 $|k|\leq K$ if $r_k = a_k$ for $|k|<K$ and
-$\displaystyle r_{-K}=r_K = \frac{1}{2} a_K$.
+$\DS r_{-K}=r_K = \frac{1}{2} a_K$.
 \end{enumerate}
 \label{approx_coeffs_comple_trig}
 \end{theorem}
@@ -628,7 +628,7 @@ e^{k x_n i} \right|^2 \\
 \left( a_k - b_k \right) e^{k x_n i} \right|^2 \ .
 \end{align*}
 To get the first equality,
-we have used $\displaystyle e^{jx_n i} =  e^{k x_n i}$ for
+we have used $\DS e^{jx_n i} =  e^{k x_n i}$ for
 $j \equiv k \pmod{N}$ and the absolute convergence of the series to
 rearrange the summation.  Hence
 \begin{align*}
@@ -642,7 +642,7 @@ rearrange the summation.  Hence
 \end{align*}
 because of Lemma~\ref{approx_no_orth_compl_trig}.
 Therefore, the minimum
-$\displaystyle N \bigg(\sum_{\substack{-N/2<k<-K\\K<k\leq N/2}}
+$\DS N \bigg(\sum_{\substack{-N/2<k<-K\\K<k\leq N/2}}
 \left|a_k \right|^2\bigg)$. 
 is reached at $b_k=a_k$ for $|k| \leq K$.
 
@@ -672,7 +672,7 @@ e^{Kx_n i}\right|^2\\
 \end{align*}
 because of Lemma~\ref{approx_no_orth_compl_trig}.
 Therefore, the minimum is $0$ when
-$b_k=a_k$ for $|k| < K$ and $\displaystyle b_{-K}=b_K = \frac{a_K}{2}$.
+$b_k=a_k$ for $|k| < K$ and $\DS b_{-K}=b_K = \frac{a_K}{2}$.
 
 Note that other choices of $b_{-K}$ and $b_K$ are possible as long as
 $a_K = b_{-K} +b_K$.
@@ -683,25 +683,25 @@ $a_K = b_{-K} +b_K$.
 \item There is another proof for the case $K<N/2$ in
 Theorem~\ref{approx_coeffs_comple_trig}.  According to
 Proposition~\ref{approx_no_orth_compl_trig}, the set
-$\displaystyle S_N= \left\{ e^{kx i} \right\}_{|k|\leq K}$ is a orthogonal set
+$\DS S_N= \left\{ e^{kx i} \right\}_{|k|\leq K}$ is a orthogonal set
 with respect to the pseudo scalar product
 (\ref{approx_complex_finiteSP}).  Hence, a theorem similar to
 Theorem~\ref{appr_finiteS} in Chapter~\ref{chaptApproxA} says that
-$\displaystyle I(r_{-K},r_{-K+1}, \ldots, r_K) = \pps{f-p}{f-p}$,
+$\DS I(r_{-K},r_{-K+1}, \ldots, r_K) = \pps{f-p}{f-p}$,
 where $p$ is defined in (\ref{approx_complex_polyn}), reaches its
 minimum if and only if $r_k$ is given by
 (\ref{approx_cpl_coeff_gen}) for $|k|\leq K$.
-\item Since $\displaystyle e^{-K x_n i} = e^{K x_n i}$ for all $n$
+\item Since $\DS e^{-K x_n i} = e^{K x_n i}$ for all $n$
 when $K=N/2$, it follows from the proof of the previous theorem that
 \[
 p(x) = \sum_{-N/2<k\leq N/2} a_k e^{k x i}
 \]
-minimizes $\displaystyle \sum_{n=0}^{N-1} \left| y_n - p(x_n) \right|^2$
+minimizes $\DS \sum_{n=0}^{N-1} \left| y_n - p(x_n) \right|^2$
 among all trigonometric polynomials of the form \\
-$\displaystyle \sum_{|k|\leq \intpt{N/2}} a_k e^{k x i}$,
+$\DS \sum_{|k|\leq \intpt{N/2}} a_k e^{k x i}$,
 where $\intpt{N/2}$ is the largest integer less than or equal to $N/2$.
 \item \label{approx_compl_rmks_lbl1} Let
-$\displaystyle p(x) = \sum_{|k|\leq K} r_k e^{k x i}$
+$\DS p(x) = \sum_{|k|\leq K} r_k e^{k x i}$
 be the polynomial given by
 Theorem~\ref{approx_coeffs_comple_trig} when $K=\intpt{N/2}$.
 Since
@@ -743,7 +743,7 @@ We considered in Example~\ref{appr_egg_complex_poly} of
 Chapter~\ref{chaptApproxA} the following least square problem.
 Let $f$ be a $2\pi$-periodic complex valued functions, find $r_k \in \CC$ for
 $-K\leq k \leq K$ that minimize
-$\displaystyle I(r_{-K}, r_{-K+1}, \ldots, r_K) =
+$\DS I(r_{-K}, r_{-K+1}, \ldots, r_K) =
 \int_0^{2\pi} (f(x)-p(x))^2 \dx{x}$,
 where $p$ is defined in (\ref{approx_complex_polyn}).  We showed in
 Example~\ref{appr_egg_complex_poly} that the choice of $r_k$ that minimize
@@ -757,7 +757,7 @@ It is interesting to approximate the coefficients $A_k$ using a numerical
 method like the composite trapezoidal rule given in Theorem~\ref{CTR}.
 Suppose that $g:\RR \rightarrow \CC$ is a $2\pi$-periodic function.
 If we use the partition of the interval $[0,2\pi]$ given by
-$\displaystyle x_n = \frac{2n \pi}{N}$ for $0 \leq n \leq N$, we get
+$\DS x_n = \frac{2n \pi}{N}$ for $0 \leq n \leq N$, we get
 \[
 \int_0^{2\pi} g(x) \dx{x} \approx \frac{\pi}{N}g(0) + \frac{2\pi}{N}
 \sum_{n=1}^{N-1} g\left(x_n\right) + \frac{\pi}{N}g(2\pi)
@@ -765,20 +765,20 @@ $\displaystyle x_n = \frac{2n \pi}{N}$ for $0 \leq n \leq N$, we get
 + \frac{2\pi}{N}\sum_{n=1}^{N-1} g\left(x_n\right)
 = \frac{2\pi}{N} \sum_{n=0}^{N-1} g\left(x_n\right) \ .
 \]
-In particular, if $\displaystyle g(x) = f(x) e^{-k x i}$ with $f$ a
+In particular, if $\DS g(x) = f(x) e^{-k x i}$ with $f$ a
 $2\pi$-periodic complex valued function, we get
 \[
 A_k = \frac{1}{2\pi} \int_0^{2\pi} f(x) e^{-k x i} \dx{x}
 \approx = \frac{1}{N} \sum_{n=0}^{N-1} f(x_n) e^{-k x_n i} = a_k \ .
 \]
 So $a_k$ is approximately $A_k$.  The terms other than $A_k$ in
-$\displaystyle a_k = \sum_{j\equiv k \pmod{N}} A_j$ are almost negligible.
+$\DS a_k = \sum_{j\equiv k \pmod{N}} A_j$ are almost negligible.
 \end{rmk}
 
 \begin{egg}
 Find the trigonometric polynomial
-$\displaystyle p(x) = \sum_{|k|\leq 1} b_k e^{kxi}$ that interpolates
-$\displaystyle f(x) = \sin^2(x)$ at $x_n = 2n\pi/3$ for $n=0$, $1$ and $2$.
+$\DS p(x) = \sum_{|k|\leq 1} b_k e^{kxi}$ that interpolates
+$\DS f(x) = \sin^2(x)$ at $x_n = 2n\pi/3$ for $n=0$, $1$ and $2$.
 
 According to Item~\ref{approx_compl_rmks_lbl1} of
 Remark~\ref{approx_compl_rmks}, the answer is given by
@@ -816,12 +816,12 @@ p(x) = \frac{1}{2} - \frac{1}{2} \cos(x) \ .
 \begin{rmk}
 Suppose that $N$ is odd and let $K = \intpt{N/2}$.  Let $\Pi_K$ be the
 space of all trigonometric polynomials of the form
-$\displaystyle p(x) = \sum_{|k|\leq K} b_k e^{kxi}$.  Suppose that
+$\DS p(x) = \sum_{|k|\leq K} b_k e^{kxi}$.  Suppose that
 $f$ is a $2\pi$-periodic continuous function and let
-$\displaystyle \dist{f}{\Pi_K} = \inf_{q\in \Pi_K} \|f - q\|_\infty$, where
-$\displaystyle \|h\|_\infty = \max_{0\leq x \leq 2\pi} |h(x)|$ for
+$\DS \dist{f}{\Pi_K} = \inf_{q\in \Pi_K} \|f - q\|_\infty$, where
+$\DS \|h\|_\infty = \max_{0\leq x \leq 2\pi} |h(x)|$ for
 all continuous function $h:[0,2\pi]\rightarrow \CC$.  If
-$\displaystyle p(x) = \sum_{|k|\leq K} r_k e^{kxi}$ is the
+$\DS p(x) = \sum_{|k|\leq K} r_k e^{kxi}$ is the
 trigonometric polynomial given by
 Theorem~\ref{approx_coeffs_comple_trig}, then one can prove that 
 \[
@@ -830,10 +830,10 @@ Theorem~\ref{approx_coeffs_comple_trig}, then one can prove that
 for some constant $C$ \cite{CdB}.
 
 Moreover, if $f$ is $j$-times differentiable with
-$\displaystyle f^{(j)}$ piecewise
+$\DS f^{(j)}$ piecewise
 continuous, one can prove that
-$\displaystyle |A_k| = O(|k|^{-j-1})$ and that this implies
-that $\displaystyle \dist{f}{\Pi_K} = O(K^{-j})$ \cite{CdB}.
+$\DS |A_k| = O(|k|^{-j-1})$ and that this implies
+that $\DS \dist{f}{\Pi_K} = O(K^{-j})$ \cite{CdB}.
 \end{rmk}
 
 \section{Fast Fourier Transform}
@@ -852,8 +852,8 @@ other applications.
 \begin{defn}
 Let $\Pi_N$ be the space of all periodic functions
 $\fct{z}:\ZZ \rightarrow \CC$
-of period $N$ and let $\omega_N$ be the $\displaystyle N^{th}$ root of
-unity defined by $\displaystyle \omega_N = e^{2\pi i/N}$.  The
+of period $N$ and let $\omega_N$ be the $\DS N^{th}$ root of
+unity defined by $\DS \omega_N = e^{2\pi i/N}$.  The
 {\bfseries Discrete Fourier Transform}\index{Discrete Fourier Transform}
 is the mapping $\FF_N: \Pi_N \rightarrow \Pi_N$ such that
 $\fct{y} = \FF_N \fct{x}$ is defined by
@@ -869,8 +869,8 @@ The Discrete Fourier Transform has the following property.
 \begin{prop}
 $\FF_N:\Pi_N \rightarrow \Pi_N$ is one-to-one and onto.  The inverse
 of $\FF_N$ is the mapping
-$\displaystyle \FF_N^{-1}: \Pi_N \rightarrow \Pi_N$ such
-that $\displaystyle \fct{x} = \FF_N^{-1} \fct{y}$ is defined by
+$\DS \FF_N^{-1}: \Pi_N \rightarrow \Pi_N$ such
+that $\DS \fct{x} = \FF_N^{-1} \fct{y}$ is defined by
 \[
 \fct{x}(n) \equiv \sum_{k=0}^{N-1} \, \omega_N^{nk} \fct{y}(k)
 \]
@@ -879,8 +879,8 @@ for $n \in \ZZ$.
 
 The functions $\fct{x}:\Pi_N\rightarrow \Pi_N$ and
 $\fct{y}: \Pi_N\rightarrow \Pi_N$ could also be written as
-the infinite sequences $\displaystyle \{x_n\}_{n\in\ZZ}$ and
-$\displaystyle \{y_n\}_{n\in\ZZ}$ respectively.  We do not use this
+the infinite sequences $\DS \{x_n\}_{n\in\ZZ}$ and
+$\DS \{y_n\}_{n\in\ZZ}$ respectively.  We do not use this
 notation to avoid complicated indices in the formulae that we will
 introduce later.
 
@@ -904,11 +904,11 @@ To simplify the notation, we consider
 \FF^\ast_N \fct{x} \equiv N \FF_N \fct{x}
 \]
 for $\fct{x}\in \Pi_N$.  Hence,
-$\displaystyle \fct{y}^\ast = \FF^\ast_N \fct{x}$ is given by
+$\DS \fct{y}^\ast = \FF^\ast_N \fct{x}$ is given by
 \[
 \fct{y}^\ast(n) \equiv \sum_{k=0}^{N-1} \omega_N^{-nk} \fct{x}(k)
 \]
-for $n \in \ZZ$.  In many books, $\displaystyle \FF^\ast_N$ is used as
+for $n \in \ZZ$.  In many books, $\DS \FF^\ast_N$ is used as
 the definition of the Discrete Fourier Transform.
 
 The idea behind the Fast Fourier Transforms is to construct a sequence
@@ -916,7 +916,7 @@ $\fctt{y}_m$, $\fctt{y}_{m-1}$, \ldots, $\fctt{y}_0$ of functions from
 $\ZZ\times \ZZ$ into $\RR$ such that $\fctt{y}_{j-1}$ is obtained from
 $\fctt{y}_j$ for $j=m$, $m-1$, \ldots , $2$, $1$.  Moreover,
 $\fctt{y}_m(\cdot,0)$ is $\fct{x}$ and $\fctt{y}_0(0,\cdot)$ is
-$\displaystyle \fct{y}^\ast = \FF^\ast_N \fct{x}$.
+$\DS \fct{y}^\ast = \FF^\ast_N \fct{x}$.
 
 \begin{defn}
 \begin{enumerate}
@@ -932,7 +932,7 @@ $B_k=P_{k+1} P_{k+2} \cdots P_m$.  If $k=0$, we set $P_k = 1$ and
 $A_k = 1$.  If $k=m$, we set $B_k=1$. 
 
 For each $q \in \ZZ$, we define the function
-$\displaystyle \fct{y}^\ast_{A_k P_k,q} \in \Pi_{B_k}$ by
+$\DS \fct{y}^\ast_{A_k P_k,q} \in \Pi_{B_k}$ by
 \[
 \fct{y}^\ast_{A_k P_k,q} = \FF^\ast_{B_k} \fct{x}_{A_k P_k,q} \ .
 \]
@@ -943,7 +943,7 @@ Namely,
 = \sum_{s=0}^{B_k-1}\, \fct{x}(q+A_k P_k s) \omega_{B_k}^{-s b}
 \end{equation}
 for $b \in \ZZ$.
-\item $\displaystyle \fct{y}^\ast_{A_k P_k, q}$ can be used to define
+\item $\DS \fct{y}^\ast_{A_k P_k, q}$ can be used to define
 the function 
 \begin{align*}
 \fctt{y}_k: \ZZ \times \ZZ & \rightarrow \RR \\
@@ -962,7 +962,7 @@ $P_k = P_m$ and $B_k=1$ in (\ref{FFTstep}).  Thus,
 \fct{y}^\ast_{A_m P_m,q}(0) = \FF^\ast_1 \fct{x}_{N, q}(n) \bigg|_{n=0}
 = \sum_{s=0}^{0}\, \fct{x}(q+Ns) \omega_1^{-ns}\bigg|_{n=0} = \fct{x}(q)
 \]
-for $q \in \NN$.  Namely, $\displaystyle \fctt{y}_m(q,0) = \fct{x}(q)$ for
+for $q \in \NN$.  Namely, $\DS \fctt{y}_m(q,0) = \fct{x}(q)$ for
 $q \in \NN$.
 \item For $k=0$, we have $A_k = P_k = 1$ and $B_k = N$ in
 (\ref{FFTstep}).  Thus,
@@ -973,7 +973,7 @@ $q \in \NN$.
 = \FF^\ast_N \fct{x}(n)\bigg|_{n=b}
 \]
 for $b \in \NN$.  Namely,
-$\displaystyle \fctt{y}_0(0,b) = \FF^\ast_N \fct{x}(b)$
+$\DS \fctt{y}_0(0,b) = \FF^\ast_N \fct{x}(b)$
 for $b \in \NN$.
 \end{enumerate}
 \end{rmkList}
@@ -1003,7 +1003,7 @@ We have
 \omega_{B_k P_k}^{-(s+rP_k)(b+B_k p)}  \\
 &= \FF^\ast_{P_kB_k}\fct{x}_{A_k,a} (b+B_k p)
 \end{align*}
-because $\displaystyle \omega_{P_kB_k}^{-mP_kB_k} = 1^{-m} = 1$ for
+because $\DS \omega_{P_kB_k}^{-mP_kB_k} = 1^{-m} = 1$ for
 all $m\in \ZZ$.  Thus
 \[
 \sum_{s=0}^{P_k-1} \fctt{y}_k(a+A_k s, b) \omega_{P_k B_k}^{-s(b+B_k p)}
@@ -1023,10 +1023,10 @@ $\fct{x}$ which are respectively denoted \verb!MP! and \verb!X! in the
 code below.  Since $\fct{x}$ is $N$-periodic, only the
 components $\fct{x}(j)$ for $0 \leq j < N$ are needed.\\
 \subI{Output} The Fast Fourier Transform
-$\displaystyle \fct{y}^\ast= \FF^\ast_N \fct{x}$ which is
+$\DS \fct{y}^\ast= \FF^\ast_N \fct{x}$ which is
 denoted \verb!Z! in the code below.  As for the input, only the
-components $\displaystyle \fct{y}^\ast(j)$ for $0 \leq j < N$ are returned
-because of the periodicity of $\displaystyle \fct{y}^\ast$.
+components $\DS \fct{y}^\ast(j)$ for $0 \leq j < N$ are returned
+because of the periodicity of $\DS \fct{y}^\ast$.
 \small
 \begin{verbatim}
 function Z = FFT(X,MP)
@@ -1090,7 +1090,7 @@ computed for all the values of $p$ at the same time using Matlab
 matrix operations.  We repeat this operation for $0\leq a < A_k$ and
 $0\leq b < B_k$ to get the full vector $\fctt{y}_{k-1}(a, b+B_k p)$.
 We have also used the nested form of the polynomial in
-$\displaystyle \omega_{P_k B_k}^{-(b+B_k p)}$ to evaluate the expression
+$\DS \omega_{P_k B_k}^{-(b+B_k p)}$ to evaluate the expression
 (\ref{recfft}) above.  To formulate (\ref{recfft}) in MATLAB, we have to
 note that
 \begin{itemize}
@@ -1101,13 +1101,13 @@ $\fctt{y}_k(a+A_k s, b)$
 \end{itemize}
 for $0\leq a < A_k$, $0\leq b<B_k$ and $0\leq p,s < P_k$.
 \item About $N(P_1+P_2+\ldots+P_m) = N \log(N)$ operations are needed
-in the code above to compute $\displaystyle \FF^\ast_N \fct{x}$.  The evaluation
+in the code above to compute $\DS \FF^\ast_N \fct{x}$.  The evaluation
 of omega and copying data has been ignored when computing the number
 of operations.  The number of operations to compute
-$\displaystyle \FF^\ast_N\fct{x}$ directly from the definition is
-about $\displaystyle N^2$.
+$\DS \FF^\ast_N\fct{x}$ directly from the definition is
+about $\DS N^2$.
 This is much larger than $N(P_1+P_2+\ldots+P_m)$ in general.
-\item When $\displaystyle N=2^m$, an efficient Fast Fourier Transform
+\item When $\DS N=2^m$, an efficient Fast Fourier Transform
 algorithm can be developed.  It is probably the must often used Fast Fourier
 Transform algorithm.
 \begin{align*}
@@ -1124,10 +1124,10 @@ Transform algorithm.
 \end{align*}
 where $\fct{x}_{e}(k) = \fct{x}(2k)$ and $\fct{x}_{o}(k) = \fct{x}(1+2k)$
 for $k \in \NN$.  We have used the relation
-$\displaystyle \omega_{2^m}^{2n} = \omega_{2^{m-1}}^n$ to
+$\DS \omega_{2^m}^{2n} = \omega_{2^{m-1}}^n$ to
 get the fourth equality.  Moreover, since
-$\displaystyle \omega_{2^m}^{-j-2^{m-1}} = -\omega_{2^m}^{-j}$ for
-$\displaystyle 0 \leq j < 2^{m-1}$, we get that
+$\DS \omega_{2^m}^{-j-2^{m-1}} = -\omega_{2^m}^{-j}$ for
+$\DS 0 \leq j < 2^{m-1}$, we get that
 \begin{align*}
 \FF^\ast_N \fct{x}(n)
 &= \FF^\ast_{2^{m-1}} \fct{x}_{e}(n) + \omega_{2^m}^{-n} \,
@@ -1140,23 +1140,23 @@ $\displaystyle 0 \leq j < 2^{m-1}$, we get that
 &= \FF^\ast_{2^{m-1}} \fct{x}_{e}(n) -
 \omega_{2^m}^{-n} \, \FF^\ast_{2^{m-1}} \fct{x}_{o}(n)
 \end{align*}
-for $\displaystyle 0 \leq n < 2^{m-1}$.  The last equality, comes from
-the fact that $\displaystyle \FF^\ast_{2^{m-1}} \fct{x}_{e}$ and
-$\displaystyle \FF^\ast_{2^{m-1}} \fct{x}_{o}$ are of period
-$\displaystyle 2^{m-1}$ because $\fct{x}_{e}$ and $\fct{x}_{o}$ are of
-period $\displaystyle 2^{m-1}$.  This gives the following simple algorithm.
+for $\DS 0 \leq n < 2^{m-1}$.  The last equality, comes from
+the fact that $\DS \FF^\ast_{2^{m-1}} \fct{x}_{e}$ and
+$\DS \FF^\ast_{2^{m-1}} \fct{x}_{o}$ are of period
+$\DS 2^{m-1}$ because $\fct{x}_{e}$ and $\fct{x}_{o}$ are of
+period $\DS 2^{m-1}$.  This gives the following simple algorithm.
 
 \begin{code}[Fast Fourier Transform]
 To compute the Fast Fourier Transform of $\fct{x}$ in $\Pi_N$, where
-$\displaystyle N=2^m$. \\
+$\DS N=2^m$. \\
 \subI{Input} The column vector $\fct{x}$ (denoted X in the code
 below).  Since $\fct{x}$ is $N$-periodic, only the
 components $\fct{x}(j)$ for $0 \leq j < N$ are needed.\\
 \subI{Output} The Fast Fourier Transform
-$\displaystyle \fct{y}^\ast= \FF^\ast_N \fct{x}$
+$\DS \fct{y}^\ast= \FF^\ast_N \fct{x}$
 (denoted Z in the code below).  As for the input, only the 
-components $\displaystyle \fct{z}^\ast(j)$ for $0 \leq j < N$ are
-returned because of the periodicity of $\displaystyle \fct{z}^\ast$.
+components $\DS \fct{z}^\ast(j)$ for $0 \leq j < N$ are
+returned because of the periodicity of $\DS \fct{z}^\ast$.
 \small
 \begin{verbatim}
 function Z = recursiveFFT(X)

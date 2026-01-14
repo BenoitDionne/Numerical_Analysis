@@ -8,7 +8,7 @@ x_{i+1} = f(x_i)  \; ,
 \]
 where $f:\RR\rightarrow \RR$ is a continuous function, can be.  The
 complexity is even greater if
-$\displaystyle f:\RR^k \rightarrow \RR^k$ with $k>1$.
+$\DS f:\RR^k \rightarrow \RR^k$ with $k>1$.
 Discrete dynamical systems show up in many numerical algorithms.
 For instance, the Newton's Method to find zeros of functions yields
 discrete dynamical systems, some numerical methods to solve ordinary
@@ -31,31 +31,31 @@ The {\bfseries forward orbit}\index{Orbit!Forward} of $x$ is the set
 \right\} \  .
 \]
 If $f$ has a continuous inverse
-$\displaystyle f^{-1}:\RR\rightarrow \RR$, then the
+$\DS f^{-1}:\RR\rightarrow \RR$, then the
 {\bfseries backward orbit}\index{Orbit!Backward} of $x$ is the set
 \[
 \OO_x^- = \left\{ x, f^{-1}(x), f^{-2}(x) = f^{-1}(f^{-1}(x)),
 f^{-3}(x)= f^{-1}(f^{-1}(f^{-1}(x))), \ldots \right\}
 \]
 and the {\bfseries orbit}\index{Orbit} of $x$ is
-$\displaystyle \OO_x = \OO_x^+ \cup \OO_x^-$.
+$\DS \OO_x = \OO_x^+ \cup \OO_x^-$.
 \end{defn}
 
 \begin{defn}
 Consider a continuous function $f:\RR \rightarrow \RR$.  The point
 $p \in \RR$ is a {\bfseries periodic point}\index{Periodic Point} of
 $f$ if there exists a positive integer $n$ such that
-$\displaystyle f^n(p) = p$.  If $n$ is the smallest positive integer
-such that $\displaystyle f^n(p)=p$, then we say that 
+$\DS f^n(p) = p$.  If $n$ is the smallest positive integer
+such that $\DS f^n(p)=p$, then we say that 
 $p$ is of {\bfseries period}\index{Period} $n$.  When $n=1$, the point
 $p$ is called a {\bfseries fixed point}\index{Fixed Point}.
 We denote by $\Per_n(f)$ the set of all periodic points of $f$ of
 period $n$.  In particular, $\Fix(f) = \Per_1(f)$ is the set of fixed
 points of $f$.  If $p$ is a periodic point of $f$, then the forward orbit
-$\displaystyle \OO_p^+$ is called a
+$\DS \OO_p^+$ is called a
 {\bfseries periodic orbit}\index{Periodic Orbit}.  If $f$ has a
-continuous inverse $\displaystyle f^{-1}:\RR\rightarrow \RR$, then
-the orbit $\displaystyle \OO_p$ is called a
+continuous inverse $\DS f^{-1}:\RR\rightarrow \RR$, then
+the orbit $\DS \OO_p$ is called a
 {\bfseries periodic orbit}\index{Periodic Orbit}.
 \end{defn}
 
@@ -68,7 +68,7 @@ f_\mu(x) = \mu x(1-x)
 for $0\leq x \leq 1$.  For $0 \leq \mu \leq 4$, we have that
 $f_\mu:[0,1]\rightarrow [0,1]$.  Moreover, $f_\mu$ has two fixed
 points: $p_0 = 0$ and
-$\displaystyle p_{\mu} = \frac{\mu-1}{\mu}$ for $\mu > 0$.
+$\DS p_{\mu} = \frac{\mu-1}{\mu}$ for $\mu > 0$.
 
 For $\mu=3.4$, we have that
 $p_{3.4} = 0.45195878844045\ldots$ is a periodic point of
@@ -130,34 +130,34 @@ point $q$ is
 p = \lim_{j\rightarrow \infty} f^{jn}(q) \  .
 \]
 The set of all points forward asymptotic to $p$ is denoted by
-$\displaystyle W^s(p)$.  There are similar definitions for
+$\DS W^s(p)$.  There are similar definitions for
 {\bfseries backward asymptotic}\index{Backward Asymptotic} when
-$f$ has a continuous inverse $\displaystyle f^{-1}:\RR\rightarrow \RR$.
+$f$ has a continuous inverse $\DS f^{-1}:\RR\rightarrow \RR$.
 \end{defn}
 
 \begin{defn}
 Consider a continuous function $f:\RR \rightarrow \RR$.
 A fixed point $p$ of $f$ is {\bfseries stable}\index{Stable} if, for any open
 neighbourhood $U$ of $p$, there exists an open neighbourhood $V$ of $p$
-such that $\displaystyle f^i(V) \subset U$ for all $i > 0$.  Fixed
+such that $\DS f^i(V) \subset U$ for all $i > 0$.  Fixed
 points that are not stable are called
 {\bfseries unstable}\index{Unstable}.   A fixed point $p$ of
 $f$ is {\bfseries asymptotically stable}\index{Asymptotically Stable} if it is
 stable and there exists an open neighbourhood $W$ of $p$ such that
-$\displaystyle \lim_{i\rightarrow \infty} f^{i}(x) = p$ for all
+$\DS \lim_{i\rightarrow \infty} f^{i}(x) = p$ for all
 $x\in W$.
 
 If $p$ is a period point of period $n$ for $f$, we say that the
-periodic orbit $\displaystyle \OO_p^+$ is
+periodic orbit $\DS \OO_p^+$ is
 {\bfseries stable}\index{Stable} if $p$ is a stable
-fixed point of $\displaystyle f^n$.  We say that the periodic orbit is
+fixed point of $\DS f^n$.  We say that the periodic orbit is
 {\bfseries asymptotically stable}\index{Asymptotically Stable} if $p$
-is an asymptotically stable fixed point of $\displaystyle f^n$.
+is an asymptotically stable fixed point of $\DS f^n$.
 \end{defn}
 
 \begin{rmk}
 If $f:\RR\to \RR$ is a continuous function with a continuous inverse
-$\displaystyle f^{-1}:\RR\to \RR$, then the previous definition of
+$\DS f^{-1}:\RR\to \RR$, then the previous definition of
 stability and asymptotic stability for a period orbit is independent
 of the point $p$ of the orbit used to determine the stability or the
 asymptotic stability \footnote{The result is also true if
@@ -165,26 +165,26 @@ $f:\RR\to \RR$ is differentiable and $f'(p) \neq 0$.  The proof is
 similar but a little bit more technical.}.
 
 Suppose that $p$ is a stable periodic point of period $n>1$
-for $\displaystyle f^n$ and let $\displaystyle q=f^k(p)$ be another
-point on the orbit $\displaystyle \OO_p^+$. 
+for $\DS f^n$ and let $\DS q=f^k(p)$ be another
+point on the orbit $\DS \OO_p^+$. 
 If $U_q$ is an open neighbourhood of $q$, then
-$\displaystyle f^{-k}(U_q)$ is an open neighbourhood of $p$.  Since
-$p$ is a stable fixed point for $\displaystyle f^n$, there exists an
+$\DS f^{-k}(U_q)$ is an open neighbourhood of $p$.  Since
+$p$ is a stable fixed point for $\DS f^n$, there exists an
 open neighbourhood $V_p$ of $p$ such that
-$\displaystyle f^{ni}(V_q) \subset f^{-k}(U_q)$ for all $i>0$. 
-Hence $\displaystyle f^{ni}(f^k(V_p)) = f^{ni+k}(V_q) \subset U_q$ for all $i>0$,
-where $\displaystyle f^k(V_p)$ is an open neighbourhood of $q$.  This
-proves that $q$ is a stable fixed point of $\displaystyle f^n$.
+$\DS f^{ni}(V_q) \subset f^{-k}(U_q)$ for all $i>0$. 
+Hence $\DS f^{ni}(f^k(V_p)) = f^{ni+k}(V_q) \subset U_q$ for all $i>0$,
+where $\DS f^k(V_p)$ is an open neighbourhood of $q$.  This
+proves that $q$ is a stable fixed point of $\DS f^n$.
 
 Suppose furthermore that $p$ is an asymptotically stable fixed point
-of $\displaystyle f^n$.  Then there exists an open neighbourhood $W_p$
-of $p$ such that $\displaystyle \lim_{i\to \infty}f^{ni}(x) = p$ for
+of $\DS f^n$.  Then there exists an open neighbourhood $W_p$
+of $p$ such that $\DS \lim_{i\to \infty}f^{ni}(x) = p$ for
 all $x \in W_p$.  Thus
-$\displaystyle \lim_{i\to \infty}f^{ni}(f^k(x)) = f^{k}(p) = q$
+$\DS \lim_{i\to \infty}f^{ni}(f^k(x)) = f^{k}(p) = q$
 for all $x \in W_p$; namely,
-$\displaystyle \lim_{i\to \infty}f^{ni}(y) = q$ for all
-$y$ in the open neighbourhood $\displaystyle f^k(W_p)$ of $q$.  This proves that
-$q$ is an asymptotically stable fixed point of $\displaystyle f^n$.
+$\DS \lim_{i\to \infty}f^{ni}(y) = q$ for all
+$y$ in the open neighbourhood $\DS f^k(W_p)$ of $q$.  This proves that
+$q$ is an asymptotically stable fixed point of $\DS f^n$.
 \end{rmk}
 
 \subsection{Qualitative Study}
@@ -214,7 +214,7 @@ $\left|f'(p)\right|<1$, then $p$ is asymptotically stable
 However, if $\left|f'(p)\right|>1$, then there exists an open
 interval $I$ containing $p$ such that, for each $x \in I$ with
 $x \neq p$, one can find $j \in \NN$ such that $f^j(x) \not\in I$.
-This implies that $\displaystyle f^j(x) \not\in I$ for infinitely many
+This implies that $\DS f^j(x) \not\in I$ for infinitely many
 values of $j$. \label{fp_stability}
 \end{prop}
 
@@ -232,10 +232,10 @@ $\left|f'(p)\right|>1$, then $p$ is called a
 \begin{egg}
 For the logistic mapping $f_\mu$ defined by $f_\mu(x) = \mu x(1-x)$,
 the origin is a source if $\mu>1$, and
-$\displaystyle p_\mu  = \frac{\mu-1}{\mu}$ is a sink
+$\DS p_\mu  = \frac{\mu-1}{\mu}$ is a sink
 if $1<\mu<3$.  This follows from
-$\displaystyle \pdfdx{f_\mu(x)}{x}\bigg|_{x=0} = \mu$ and
-$\displaystyle \pdfdx{f_\mu(x)}{x}\bigg|_{x=p_\mu} = 2-\mu$.
+$\DS \pdfdx{f_\mu(x)}{x}\bigg|_{x=0} = \mu$ and
+$\DS \pdfdx{f_\mu(x)}{x}\bigg|_{x=p_\mu} = 2-\mu$.
 \label{EggLogMap2}
 \end{egg}
 
@@ -244,32 +244,32 @@ We can expand the notion of hyperbolicity to periodic points.
 \begin{defn}
 A periodic point $p$ of period $n$ for $f$ is
 {\bfseries hyperbolic}\index{Hyperbolic Period Point}
-if $\displaystyle \left| \dydx{f^n}{x}(p) \right| \neq 1$.
+if $\DS \left| \dydx{f^n}{x}(p) \right| \neq 1$.
 \end{defn}
 
 A periodic point $p$ of $f$ of period $n$ is a fixed point of
-$\displaystyle f^n$.
+$\DS f^n$.
 The stability of the periodic point $p$ of $f$ is determined by the
-stability of the fixed point $p$ of $\displaystyle f^n$.
+stability of the fixed point $p$ of $\DS f^n$.
 Proposition~\ref{fp_stability} holds for a periodic point $p$ of period $n$ if
-$f$ is replaced by $\displaystyle f^n$.
+$f$ is replaced by $\DS f^n$.
 
 \begin{egg}
 To study the stability of the periodic points of period $2$ for the
 logistic mapping $f_\mu$ with $\mu = 3.4$, we consider the iterative system
-$\displaystyle x_{i+1} = f_\mu^2(x_i) = f_\mu(f_\mu(x_i))$ for
+$\DS x_{i+1} = f_\mu^2(x_i) = f_\mu(f_\mu(x_i))$ for
 $i=0$, $1$, $2$, \ldots
 
 \mathF{discrete_dyn/logistic3}{7cm}{Period Two}{Period Two}{figPT}
 
-From the graph of $\displaystyle f_\mu^2$ given in Figure~\ref{figPT},
+From the graph of $\DS f_\mu^2$ given in Figure~\ref{figPT},
 we see that the periodic point\\ $0.45195878844045\ldots$ of period
 $2$ is a sink.  \label{EggLogMap3}
 \end{egg}
 
 \subsection{Bifurcation}
 
-Consider a nice function $\displaystyle f:\RR^2 \rightarrow \RR$.  It defines a
+Consider a nice function $\DS f:\RR^2 \rightarrow \RR$.  It defines a
 one-parameter family of functions $f_\mu(x) = f(x,\mu)$.
 
 We say that $\mu = \mu_0$ is a
@@ -287,7 +287,7 @@ result is a simple consequence of the Implicit Function Theorem
 applied to the function $g(x,\mu) = f(x,\mu) - x$.
 
 \begin{theorem} \label{IFTforDS}
-Let $\displaystyle f:\RR^2 \rightarrow \RR$ be a smooth function and let
+Let $\DS f:\RR^2 \rightarrow \RR$ be a smooth function and let
 $f_\mu(x)= f(x,\mu)$.  Suppose that $f_{\mu_0}(x_0) = x_0$ and
 \[
 \pdfdx{f_{\mu}(x)}{x} \bigg|_{\mu=\mu_0,x=x_0}
@@ -304,19 +304,19 @@ Function Theorem}{figIFT}
 
 The next theorems describe two ``generic'' types of bifurcation.  We
 have bifurcation only when
-$\displaystyle \left| \pdfdx{f_{\mu}(x)}{x}\right| = 1$.  We use the
+$\DS \left| \pdfdx{f_{\mu}(x)}{x}\right| = 1$.  We use the
 word generic because the other conditions to classify these types of
 bifurcation require only that some derivatives be non-null.
 
 \begin{theorem}[Saddle-node, tangent or fold bifurcation]
-Let $\displaystyle f:\RR^2 \rightarrow \RR$ be a smooth function and let
+Let $\DS f:\RR^2 \rightarrow \RR$ be a smooth function and let
 $f_\mu(x)= f(x,\mu)$.  Suppose that
 \begin{enumerate}
-\item $\displaystyle f_{\mu_0}(0)=0$\ ,
-\item $\displaystyle \pdfdx{f_{\mu}(x)}{x}\bigg|_{\mu=\mu_0,x=0} = 1$ \ ,
-\item $\displaystyle \pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=0} \neq 0$
+\item $\DS f_{\mu_0}(0)=0$\ ,
+\item $\DS \pdfdx{f_{\mu}(x)}{x}\bigg|_{\mu=\mu_0,x=0} = 1$ \ ,
+\item $\DS \pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=0} \neq 0$
 \quad and
-\item $\displaystyle \pdfdx{f_\mu(x)}{\mu}\bigg|_{\mu=\mu_0,x=0} \neq 0$ \ .
+\item $\DS \pdfdx{f_\mu(x)}{\mu}\bigg|_{\mu=\mu_0,x=0} \neq 0$ \ .
 \end{enumerate}
 Then, there exist an interval $I$ about $0$ and a mapping
 $q:I\rightarrow \RR$ such that $q(0) = \mu_0$ and $f_{q(x)}(x) = x$
@@ -330,8 +330,8 @@ statement of the theorem above do not determine which branch of the
 curve is associated to sources and which branch is associated to
 sinks.  However,
 \[
-q''(0) = \frac{\displaystyle -\pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=0}}
-{\displaystyle \pdfdx{f_{\mu}(x)}{\mu}\bigg|_{\mu=\mu_0,x=0}}
+q''(0) = \frac{\DS -\pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=0}}
+{\DS \pdfdx{f_{\mu}(x)}{\mu}\bigg|_{\mu=\mu_0,x=0}}
 \]
 can be used to determine if the curve $\mu=p(x)$ is
 {\bfseries supercritical}\label{Supercritical} (namely, $q''(x)>0$ as in
@@ -342,22 +342,22 @@ Figure~\ref{figSNBDM}) or {\bfseries subcritical}\index{Subcritical}
 {A typical fold bifurcation diagram for a discrete mapping.}{figSNBDM}
 
 \begin{theorem}[Period doubling or flip bifurcation]  \label{ThePDTforM}
-Let $\displaystyle f:\RR^2 \rightarrow \RR$ be a smooth function and let
+Let $\DS f:\RR^2 \rightarrow \RR$ be a smooth function and let
 $f_\mu(x)= f(x,\mu)$.  Suppose that
 \begin{enumerate}
 \item $f_{\mu}(0)=0$ for all $\mu$ near $\mu_0$,
-\item $\displaystyle \pdfdx{f_{\mu}(x)}{x}\bigg|_{\mu=\mu_0,x=0} = -1$,
+\item $\DS \pdfdx{f_{\mu}(x)}{x}\bigg|_{\mu=\mu_0,x=0} = -1$,
 \item
-$\displaystyle \frac{1}{2}
+$\DS \frac{1}{2}
 \left(\pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=0}\right)^2
 +\frac{1}{3} \pdfdxn{f_{\mu}(x)}{x}{3}\bigg|_{\mu=\mu_0,x=0} \neq 0$
 and
-\item $\displaystyle \pdfdxnm{f_{\mu}^2(x)}{\mu}{x}{2}{}{}
+\item $\DS \pdfdxnm{f_{\mu}^2(x)}{\mu}{x}{2}{}{}
 \bigg|_{\mu=\mu_0,x=0} \not=0$,
 \end{enumerate}
-where $\displaystyle f^2_\mu(x) \equiv f(f(x,\mu),\mu)$.  Then, there exist
+where $\DS f^2_\mu(x) \equiv f(f(x,\mu),\mu)$.  Then, there exist
 an interval $I$ about $0$ and a mapping $q:I\rightarrow \RR$ such that
-$q(0) = \mu_0$ and $f_{q(x)}(x) \neq x$ but $\displaystyle f^2_{q(x)}(x) = x$
+$q(0) = \mu_0$ and $f_{q(x)}(x) \neq x$ but $\DS f^2_{q(x)}(x) = x$
 for $x \in I$.
 \end{theorem}
 
@@ -370,10 +370,10 @@ $x=0$ on the dashed straight line is a source.  For $\mu < \mu_0$,
 there are no periodic orbit of period $2$ and the fixed point $x=0$ on
 the continuous straight line is a sink.  Moreover,
 \[
-  q''(0) = \frac{\displaystyle
+  q''(0) = \frac{\DS
 \left(\pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=0}\right)^2
 +\frac{2}{3} \pdfdxn{f_{\mu}(x)}{x}{3}\bigg|_{\mu=\mu_0,x=0}}
-{\displaystyle \pdfdxnm{f^2_{\mu}(x)}{x}{\mu}{2}{}{}\bigg|_{\mu=\mu_0,x=0}}
+{\DS \pdfdxnm{f^2_{\mu}(x)}{x}{\mu}{2}{}{}\bigg|_{\mu=\mu_0,x=0}}
 \]
 can be used to determine if the curve $\mu=q(x)$ is
 {\bfseries supercritical}\index{Supercritical} (namely, $q''(x)>0$ as in
@@ -388,13 +388,13 @@ discrete mapping.}{figPDB}
 In the previous theorem, the condition $f_{\mu}(0)=0$ for all $\mu$
 near $\mu_0$ is not necessary.  Suppose that
 \begin{enumerate}
-\item $\displaystyle f_{\mu_0}(x_0) = x_0$\ ,
-\item $\displaystyle \pdfdx{f_{\mu}(x)}{x}\bigg|_{\mu=\mu_0,x=x_0} = -1$\ ,
-\item $\displaystyle \frac{1}{2}
+\item $\DS f_{\mu_0}(x_0) = x_0$\ ,
+\item $\DS \pdfdx{f_{\mu}(x)}{x}\bigg|_{\mu=\mu_0,x=x_0} = -1$\ ,
+\item $\DS \frac{1}{2}
 \left(\pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=\mu_0,x=x_0}\right)^2
 +\frac{1}{3} \pdfdxn{f_{\mu}(x)}{x}{3}\bigg|_{\mu=\mu_0,x=x_0} \neq 0$ \ 
 and
-\item $\displaystyle \pdfdxnm{f_{\mu}^2(x)}{\mu}{x}{2}{}{}
+\item $\DS \pdfdxnm{f_{\mu}^2(x)}{\mu}{x}{2}{}{}
 \bigg|_{\mu=\mu_0,x=x_0} \neq 0$ \ .
 \end{enumerate}
 From Theorem~\ref{IFTforDS}, there exists a function
@@ -461,7 +461,7 @@ and
 + \pdydxnm{f}{x}{\mu}{2}{}{}(x+p(\mu),\mu) \right) \ .
 \end{align*}
 Hence, using $p(\mu_0) = x_0$, $f(x_0,\mu_0)=x_0$ and
-$\displaystyle \pdydx{f}{x}(x_0,\mu_0) =
+$\DS \pdydx{f}{x}(x_0,\mu_0) =
 \pdfdx{f_{\mu}(x)}{x}\bigg|_{\mu=\mu_0,x=x_0} = -1$, we get
 \begin{align*}
 &\pdfdxnm{\hat{f}_{\mu}^2(x)}{\mu}{x}{2}{}{} \bigg|_{\mu=\mu_0,x=0}
@@ -492,7 +492,7 @@ Moreover,
 &\quad + \pdydx{f}{x}(f(x,\mu),\mu) \pdydxnm{f}{x}{\mu}{2}{}{}(x,\mu) \ .
 \end{align*}
 Hence, using $f(x_0,\mu_0)=x_0$ and
-$\displaystyle \pdydx{f}{x}(x_0,\mu_0) =
+$\DS \pdydx{f}{x}(x_0,\mu_0) =
 \pdfdx{f_{\mu}(x)}{x} \bigg|_{\mu=\mu_0,x=x_0} = -1$, we get
 \begin{align*}
 \pdfdxnm{f_{\mu}^2(x) }{\mu}{x}{2}{}{} \bigg|_{\mu=\mu_0,x=x_0} &= 
@@ -548,13 +548,13 @@ can be rigorously prove by showing that all hypothesis of
 Theorem~\ref{ThePDTforM} are satisfied.  Effectively, we have
 \begin{enumerate}
 \item $f_\mu(p_\mu) = p_\mu$ for all $\mu$ near $\mu=3$.
-\item $\displaystyle \pdfdx{f_\mu(x)}{x} \bigg|_{\mu=3,x=p_3} = -1$.
+\item $\DS \pdfdx{f_\mu(x)}{x} \bigg|_{\mu=3,x=p_3} = -1$.
 \item
-$\displaystyle \frac{1}{2}
+$\DS \frac{1}{2}
 \left(\pdfdxn{f_{\mu}(x)}{x}{2}\bigg|_{\mu=3,x=p_3}\right)^2
 +\frac{1}{3} \pdfdxn{f_{\mu}(x)}{x}{3}\bigg|_{\mu=3,x=p_3}
 = 2\mu^2 \bigg|_{\mu=3} = 18 \neq 0$
-\item $\displaystyle \pdfdxnm{f_\mu^2(x) }{\mu}{x}{2}{}{}\big|_{\mu=3,x=p_3} =
+\item $\DS \pdfdxnm{f_\mu^2(x) }{\mu}{x}{2}{}{}\big|_{\mu=3,x=p_3} =
 \left( 2\mu - 6\mu^2 x+18\mu^2 x^2 - 4\mu x -
 12\mu^2 x^3\right)\big|_{\mu=3,x=p_3}
 = 2 \not=0$.
@@ -569,9 +569,9 @@ $8$, And so on.  This is the best known example of a
 {\bfseries period doubling cascade}\index{Period Doubling Cascade}.
 
 For a constant value of $\mu$, if the attracting periodic orbit
-$\displaystyle \OO^+ \subset [0,1]$ of $f_\mu$ is of period $n$ with
+$\DS \OO^+ \subset [0,1]$ of $f_\mu$ is of period $n$ with
 $n$ very large, it is reasonable to expect that
-$\displaystyle \OO^+$ will ``almost cover'' some segments of the
+$\DS \OO^+$ will ``almost cover'' some segments of the
 interval $[0,1]$.  This explains the shaded area. Figure~\ref{figLPO}
 illustrates the attracting periodic orbit for $\mu=3.6$.  The
 corresponding histogram with 300 subintervals and 10 millions
@@ -593,7 +593,7 @@ Moreover, let $\mu_0=3$, $\mu_1=3.236\ldots$, $\mu_2 =\ldots$, and so
 on be the values of $\mu$ for which the logistic mapping undergoes
 period doubling and let $d_j = \mu_{j+1}-\mu_j$ for $j \geq 0$.
 It has been shown that
-$\displaystyle \lim_{j\rightarrow \infty} d_j/d_{j+1} =
+$\DS \lim_{j\rightarrow \infty} d_j/d_{j+1} =
 4.6692016091029\ldots$.  This number is called the
 {\bfseries Feigenbaum constant}\index{Feigenbaum Constant}.
 Feigenbaum discovered this number in
@@ -648,7 +648,7 @@ A_n = \left\{ x \in [0,1] : f_\mu^j(x) \in [0,1] \text{ for }
 0 \leq j \leq n \text{ and } f_\mu^j(x) \not\in [0,1] \text{ for }
 j > n \right\} \; .
 \]
-It can be shown that $A_n$ consists of $\displaystyle 2^n$ distinct
+It can be shown that $A_n$ consists of $\DS 2^n$ distinct
 open subintervals of $[0,1]$.  We have that any iteration that starts
 with $x_0 \in A_0$ (i.e.\ such that $f_\mu(x_0)>1$) eventually
 converges to $-\infty$ (Figure~\ref{figA0}).  We also have that any
@@ -667,7 +667,7 @@ Consider
 \Delta_\mu = [0,1] \setminus \bigcup_{n=0}^\infty \,A_n \; .
 \]
 $\Delta_\mu$ contains all the points $x$ such that
-$\displaystyle f_\mu^j(x)$ stay
+$\DS f_\mu^j(x)$ stay
 in $[0,1]$ for all $j\geq 0$.  In particular, $\Delta_\mu$ contains all
 the periodic points.
 
@@ -697,7 +697,7 @@ Let $I$ be a closed subset of $\RR$ and $f:I\rightarrow I$ be a
 continuous function.  The function $f$ is
 {\bfseries topologically transitive}\index{Topologically Transitive} if
 for any open sets $V$ and $W$ in $I$ there exist $k>0$ such that
-$\displaystyle f^k(V) \cap W \neq \emptyset$.
+$\DS f^k(V) \cap W \neq \emptyset$.
 \end{defn}
 
 \begin{defn}
@@ -707,7 +707,7 @@ continuous function.  The function $f$ has
 Dependence on Initial Conditions} if there exists
 $\delta>0$ such that, for any $x \in I$ and neighbourhood $N \subset I$
 of $x$, there exist $y\in N$ and $k>0$ satisfying
-$\displaystyle \left| f^k(x) - f^k(y) \right| > \delta$.
+$\DS \left| f^k(x) - f^k(y) \right| > \delta$.
 \end{defn}
 
 \begin{defn}[Chaos]
@@ -751,7 +751,7 @@ continuous function.  $V$ is an
 \item $V$ is {\bfseries invariant}\index{Invariant Set} under $f$
 (i.e.\ $f(V) \subset V$).
 \item There exists $N>0$ such that
-$\displaystyle \left| \dydx{f^n}{x}(x)  \right| < 1$
+$\DS \left| \dydx{f^n}{x}(x)  \right| < 1$
 (respectively $>1$) for all $n \geq N$ and $x \in V$.
 \end{enumerate}
 \end{defn}

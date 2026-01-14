@@ -16,7 +16,7 @@ We present some of the well know results in real analysis that will be
 used to justify the numerical methods presented in these lecture notes.
 
 \begin{theorem}
-If $\displaystyle \{x_n\}_{n=0}^\infty$ is a bounded and increasing
+If $\DS \{x_n\}_{n=0}^\infty$ is a bounded and increasing
 sequence of $\RR$, then it converges to
 $M = \sup \{x_n : n \geq 0 \} \in \RR$.
 \label{Th0}
@@ -67,7 +67,7 @@ f'(c)=\frac{f(b)-f(a)}{b-a} \ .
 \begin{theorem}[Taylor's Theorem]
 Let $a<b$ be two real numbers.  Suppose that $f:[a,b] \rightarrow \RR$
 is a $n$-time continuously differentiable function on $[a,b]$, that
-$\displaystyle f^{(n+1)}(x)$ exists for all $x \in ]a,b[$, and that
+$\DS f^{(n+1)}(x)$ exists for all $x \in ]a,b[$, and that
 $c \in ]a,b[$.  Then, for every $x \in [a,b]$, there exists $\xi(x,c)$
 between $x$ and $c$ such that
 \[
@@ -86,7 +86,7 @@ r_n(x) &= \frac{f^{(n+1)}(\xi(x,c))}{(n+1)!}(x-c)^{n+1} \ .
 \section{Bisection Method}
 
 The idea is to construct a sequence of nested intervals
-$\displaystyle \left\{ [a_n,b_n] \right\}_{n=0}^\infty$ of decreasing
+$\DS \left\{ [a_n,b_n] \right\}_{n=0}^\infty$ of decreasing
 length such that the sign of a function $f$ at $a_n$ is different than
 its sign at $b_n$.  Thus, $f$ must have a root at some point in the
 interval $[a_n,b_n]$ according to Corollary~\ref{Cor1}.
@@ -98,7 +98,7 @@ Suppose that $f$ is continue on $[a,b]$ and $f(a)\,f(b)<0$.
 \item Stop if $f(a_0)f(b_0) = 0$ because one of $a_0$ or $b_0$ is a
 root of $f$. \label{BisectAlgo2}
 \item Given $a_n$ and $b_n$ such that $f(a_n)\,f(b_n)<0$,
-let $\displaystyle x_{n+1}=\frac{a_n+b_n}{2}$.
+let $\DS x_{n+1}=\frac{a_n+b_n}{2}$.
 \item Stop if $f(x_{n+1})=0$ since $p=x_{n+1}$ is a root of $f$.
 \label{BisectAlgo4}
 \item If $f(x_{n+1})\,f(a_n) < 0$, set $a_{n+1}=a_n$ and
@@ -112,34 +112,34 @@ and $b_{n+1}=b_n$.
 
 \begin{prop}
 In the algorithm for the bisection method,
-$\displaystyle b_n - a_n = (b-a)/2^n$.
+$\DS b_n - a_n = (b-a)/2^n$.
 \label{bisecProp1}
 \end{prop}
 
 \begin{proof}
 We prove by induction that the interval $[a_n,b_n]$ is of length
-$\displaystyle (b-a)/2^n$.
+$\DS (b-a)/2^n$.
 
-We have $\displaystyle b_0 - a_0 = b - a = (b-a)/2^0$.  Hence, the interval
-$[a_0,b_0]$ is of length $\displaystyle (b-a)/2^0$.
+We have $\DS b_0 - a_0 = b - a = (b-a)/2^0$.  Hence, the interval
+$[a_0,b_0]$ is of length $\DS (b-a)/2^0$.
 
-Suppose that the interval $[a_n,b_n]$ is of length $\displaystyle (b-a)/2^n$;
-namely, $\displaystyle b_n-a_n = (b-a)/2^n$.  Since $[a_{n+1},b_{n+1}]$ is
+Suppose that the interval $[a_n,b_n]$ is of length $\DS (b-a)/2^n$;
+namely, $\DS b_n-a_n = (b-a)/2^n$.  Since $[a_{n+1},b_{n+1}]$ is
 half the length of $[a_n,b_n]$, we have
 \[
 b_{n+1} - a_{n+1} = (b_n-a_n)/2 = (b-a)/2^{n+1} \ ,
 \]
 where we have used the hypothesis of induction for the second
 equality.  Hence, the interval $[a_{n+1},b_{n+1}]$ is of length
-$\displaystyle (b-a)/2^{n+1}$.
+$\DS (b-a)/2^{n+1}$.
 
 By induction, we then have that $[a_n,b_n]$ is of length
-$\displaystyle (b-a)/2^n$ for all $n\geq 0$.
+$\DS (b-a)/2^n$ for all $n\geq 0$.
 \end{proof}
 
 \begin{cor}
 In the algorithm for the bisection method,, the approximation $x_{n}$
-is within $\displaystyle (b-a)/2^n$ of a root $r$ of $f$ in the
+is within $\DS (b-a)/2^n$ of a root $r$ of $f$ in the
 interval $[a,b]$.
 \label{bisectCor}
 \end{cor}
@@ -149,7 +149,7 @@ Since $f$ change sign in the interval $[a_{n-1},b_{n-1}]$, there is a
 root $r$ of $f$ in the interval $[a_{n-1},b_{n-1}]$.
 Since the approximation $x_n$ of $r$ is the middle point of the
 interval $[a_{n-1},b_{n-1}]$, the absolute error $|x_n - r |$ 
-satisfies $\displaystyle |x_n - r | < (b_{n-1} - a_{n-1})/2 = (b-a)/2^n$
+satisfies $\DS |x_n - r | < (b_{n-1} - a_{n-1})/2 = (b-a)/2^n$
 according to Proposition~\ref{bisecProp1}.
 \end{proof}
 
@@ -164,13 +164,13 @@ and this limit is a root of $f$.
 
 \begin{proof}
 Since $a_0 \leq a_1 \leq a_2 \leq \ldots \leq b$, the sequence
-$\displaystyle \{a_n\}_{n=0}^\infty$ is an increasing and bounded sequence.  It
-follows from Theorem~\ref{Th0} that $\displaystyle \{a_n\}_{n=0}^\infty$
+$\DS \{a_n\}_{n=0}^\infty$ is an increasing and bounded sequence.  It
+follows from Theorem~\ref{Th0} that $\DS \{a_n\}_{n=0}^\infty$
 converges.  Let $\alpha$ be this limit.
 
 Similarly, since $b_0 \geq b_1 \geq b_2 \geq \ldots \geq a$, the sequence
-$\displaystyle \{b_n\}_{n=0}^\infty$ is a decreasing and bounded sequence.  Thus
-$\displaystyle \{b_n\}_{n=0}^\infty$ converges.  Let $\beta$ be this limit.
+$\DS \{b_n\}_{n=0}^\infty$ is a decreasing and bounded sequence.  Thus
+$\DS \{b_n\}_{n=0}^\infty$ converges.  Let $\beta$ be this limit.
 
 Moreover,
 \[
@@ -181,7 +181,7 @@ Moreover,
 by Proposition~\ref{bisecProp1}.
 
 Since $a_n \leq x_{n+1} \leq b_n$ for all $n$, we have by the sandwich
-theorem that $\displaystyle \{x_n\}_{n=0}^\infty$ also converge to
+theorem that $\DS \{x_n\}_{n=0}^\infty$ also converge to
 $\alpha = \beta$.
 
 Finally, since $f(a_n)f(b_n)\leq 0$ for all $n$, we have
@@ -194,11 +194,11 @@ Hence $f(\alpha) = 0$ and $\alpha$ is a root of $f$.
 
 \begin{egg}
 Find an approximation of $\sqrt{2}$ using the bisection method.  Stop
-when the length of the interval is less than $\displaystyle 10^{-2}$.
+when the length of the interval is less than $\DS 10^{-2}$.
 Find a bound on the absolute error.
 
 The question is to find the positive root of
-$\displaystyle f(x) = x^2 -2 = 0$.  Let
+$\DS f(x) = x^2 -2 = 0$.  Let
 $a_0=1$ and $b_0=2$.  Since $f(1) = -1 < 0 < 2 = f(2)$, there is a
 root of $f$ in the interval $[1,2]$.  If
 \[
@@ -224,7 +224,7 @@ we get
 \]
 The answer is $\sqrt{2} \approx 1.4179688$.  There is a root in the
 interval $[1.4140625,1.421875]$.  So
-$\displaystyle (1.421875 - 1.4140625)/2 = 1/2^8 = 0.00390625$ is an
+$\DS (1.421875 - 1.4140625)/2 = 1/2^8 = 0.00390625$ is an
 upper-bound on the absolute error.
 \label{ExSqrt2}
 \end{egg}
@@ -232,11 +232,11 @@ upper-bound on the absolute error.
 \begin{egg}
 Using the formula provided by the bisection method, determine the
 smallest number of iterations in the previous example to get an
-absolute error lest than $\displaystyle 10^{-4}$\ ?
+absolute error lest than $\DS 10^{-4}$\ ?
 
 We choose $n$ such that
-$\displaystyle |b_n- a_n| = (b-a)/2^n < 10^{-4}$.  This is
-$\displaystyle 2^{-n}< 10^{-4}$.  Thus,
+$\DS |b_n- a_n| = (b-a)/2^n < 10^{-4}$.  This is
+$\DS 2^{-n}< 10^{-4}$.  Thus,
 \[
   \ln(2^{-n})< \ln(10^{-4}) \Rightarrow 
 -n\,\ln(2) < -4\,\ln(10) \Rightarrow n>4\,\ln(10)/\ln(2) \approx
@@ -397,7 +397,7 @@ This is a contradiction.
 
 Let $p$ be the unique fixed point of $g$ in $[a,b]$ and let $x_0$ be a
 point in $[a,b]$.  Since $g:[a,b] \rightarrow [a,b]$, the sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$ defined by $x_{n+1} = g(x_n)$ for
+$\DS \{x_n\}_{n=0}^\infty$ defined by $x_{n+1} = g(x_n)$ for
 $n \geq 0$ is a well defined sequence in $[a,b]$.  Hence,
 \[
 \begin{split}
@@ -461,23 +461,23 @@ because $\eta \in [a,b]$.
 \end{rmk}
 
 \begin{egg}
-Find an approximation to a root of $\displaystyle f(x)=x^3+9\,x-9$.
+Find an approximation to a root of $\DS f(x)=x^3+9\,x-9$.
 
 Because $f(0)\,f(1)=-9<0$, the function $f$ has a root between $0$ and
-$1$.  In Example~\ref{fixit}. we saw that $\displaystyle f(x)=x^3+9\,x-9=0$ is
-equivalent to $\displaystyle g(x)=(9-x^3)/9 =x$.  Thus, the problem is to
+$1$.  In Example~\ref{fixit}. we saw that $\DS f(x)=x^3+9\,x-9=0$ is
+equivalent to $\DS g(x)=(9-x^3)/9 =x$.  Thus, the problem is to
 approximate a fixed point of $g$ in $[0,1]$.
 
 We show that $g$ on the interval $[0,1]$ satisfies the hypotheses of
 the Fixed Point Theorem,  Because
-$\displaystyle g'(x) = -x^2/3 < 0$ for all $x>0$,
+$\DS g'(x) = -x^2/3 < 0$ for all $x>0$,
 the function $g$ is decreasing on $[0,1]$.  Hence,
 $8/9 =g(1) \leq g(x) \leq g(0) = 1$ for all $x \in [0,1]$.  We have
 shown that $g:[0,1]\rightarrow [0,1]$ and thus the first hypothesis of
 the Fixed Point Theorem is satisfied with $[a,b]=[0,1]$.  As mentioned
 in Remark~\ref{FxPtThDer}, the second hypothesis of the Fixed Point
 Theorem is satisfied with $K=1/3$ because
-$\displaystyle |g'(x)|=|-x^2/3|\leq1/3$ for all $x$ in $[0,1]$.
+$\DS |g'(x)|=|-x^2/3|\leq1/3$ for all $x$ in $[0,1]$.
 
 All conditions of the Fixed Point Theorem are satisfied.  So, we
 may use it to approximate a fixed point $p$ of $g$.  The following table
@@ -505,7 +505,7 @@ n & x_n & |x_n-p| & |x_n-p|/|p| & \text{number of} \\
 
 \begin{egg}
 Suppose that we want to approximate a root of
-$\displaystyle f(x) = x^3+4\,x^2-10$.
+$\DS f(x) = x^3+4\,x^2-10$.
 The function $f$ has a root in $[1,2]$ (show it).  The four functions
 \begin{align*}
 g_1(x) &= 10+x-4 x^2-{x^3} \ , \quad
@@ -542,7 +542,7 @@ will show in the next section why it is so.
 
 \section{Newton's Method}
 
-The idea is to construct a sequence $\displaystyle \{x_i\}_{i=0}^\infty$ which
+The idea is to construct a sequence $\DS \{x_i\}_{i=0}^\infty$ which
 converges to a root $p$ of a function $f$.
 
 \begin{algo}[Newton]
@@ -589,18 +589,18 @@ Theorem~\ref{newton_order}.
 
 \begin{rmk} The Newton's method is the fixed point method
 defined by $x_{n+1}=g(x_n)$ with
-$\displaystyle g(x)=x - \frac{f(x)}{f'(x)}$.  If $p$ is a fixed point
-of $g$, then $\displaystyle p = p - \frac{f(p)}{f'(p)}$ and we get
+$\DS g(x)=x - \frac{f(x)}{f'(x)}$.  If $p$ is a fixed point
+of $g$, then $\DS p = p - \frac{f(p)}{f'(p)}$ and we get
 $f(p) = 0$.
 \end{rmk}
 
 \begin{egg}
 Find an approximation of $\sqrt{2}$ using the Newton's method.
 Stop when the difference between two consecutive iterations is smaller
-than $\displaystyle 10^{-4}$.
+than $\DS 10^{-4}$.
 
 As in Example~\ref{ExSqrt2}, we find an approximation of the
-positive root of $\displaystyle f(x) = x^2 - 2$.  We have
+positive root of $\DS f(x) = x^2 - 2$.  We have
 \[
 x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
 = x_n - \frac{x_n^2-2}{2 x_n}
@@ -629,7 +629,7 @@ The answer we are looking for is $x_4 \approx 1.414214$.
 \begin{egg}
 Use Newton's method to find an approximation of
 a root of $f$ given in Example~\ref{Fix}.  Stop when the difference
-between two consecutive iterations is smaller than $\displaystyle 10^{-10}$.
+between two consecutive iterations is smaller than $\DS 10^{-10}$.
 
 We have that
 \[
@@ -660,7 +660,7 @@ $x_5 \approx 1.3652300134141$.
 \section{Secant Method}
 
 As for Newton's method, the idea is to construct a
-sequence $\displaystyle \{x_i\}_{i=0}^\infty$ that converges to a root $p$ of
+sequence $\DS \{x_i\}_{i=0}^\infty$ that converges to a root $p$ of
 $f$.  The convergence of the secant method is generally slower than
 the convergence of the Newton's method but this secant method does not
 use the derivative of $f$.  Moreover, only one evaluation of $f$ is
@@ -705,9 +705,9 @@ x_{n+1} = x_n - f(x_n) \left(\frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}\right)^{-1}
 
 \begin{rmk}
 It is preferable to use the formula
-$\displaystyle x_{n+1} = x_n -
+$\DS x_{n+1} = x_n -
 \frac{f(x_n)\,(x_n-x_{n-1})}{f(x_n)-f(x_{n-1})}$ instead of
-$\displaystyle x_{n+1} =
+$\DS x_{n+1} =
 x_n - f(x_n) \left(\frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}\right)^{-1}$
 to reduce the risk of divisions by numbers (i.e.\ $x_n-x_{n-1}$) almost
 equal to $0$.
@@ -715,7 +715,7 @@ equal to $0$.
 
 \begin{rmk}
 The secant method is the fixed point method defined by
-$\displaystyle
+$\DS
 \begin{pmatrix} x_n \\ x_{n+1} \end{pmatrix}
 = g\begin{pmatrix} x_{n-1}\\ x_n \end{pmatrix}$
 with
@@ -726,26 +726,26 @@ g:\RR^2 &\rightarrow \RR^2 \\
 &\mapsto
 \begin{pmatrix}
 y \\ 
-\displaystyle y - \frac{f(y)}{F(x,y)}
+\DS y - \frac{f(y)}{F(x,y)}
 \end{pmatrix} \ ,
 \end{align*}
 where $F$ is defined by
 \[
 F(x,y) = \begin{cases}
-\displaystyle \frac{f(x)-f(y)}{x-y} & \quad \text{if} \quad x\neq y \\
+\DS \frac{f(x)-f(y)}{x-y} & \quad \text{if} \quad x\neq y \\
 f'(x) & \quad \text{if} \quad x = y
 \end{cases}
 \]
 The point $p$ is a root of $f$ if and only if
-$\displaystyle \begin{pmatrix} p \\ p \end{pmatrix}$ is a fixed point
-of $g$,  The sequence $\displaystyle \{x_n\}_{n=0}^\infty$ converges
+$\DS \begin{pmatrix} p \\ p \end{pmatrix}$ is a fixed point
+of $g$,  The sequence $\DS \{x_n\}_{n=0}^\infty$ converges
 to a root $p$ of $f$ if and only if the sequence
-$\displaystyle \left\{ \begin{pmatrix} x_n \\
+$\DS \left\{ \begin{pmatrix} x_n \\
 x_{n+1} \end{pmatrix}\right\}_{n=0}^\infty$ 
 converges to a fixed point
-$\displaystyle \begin{pmatrix} p \\ p \end{pmatrix}$  of $g$.
+$\DS \begin{pmatrix} p \\ p \end{pmatrix}$  of $g$.
 
-We will study the fixed point method in $\displaystyle \RR^n$ in
+We will study the fixed point method in $\DS \RR^n$ in
 Chapter~\ref{chaptSeqD}.
 \label{secantFP}
 \end{rmk}
@@ -756,8 +756,8 @@ The following definition is used to determine the ``quality'' of an
 iterative method.
 
 \begin{defn}
-Suppose that the sequence $\displaystyle \{x_n\}_{n=0}^\infty$ converges to $p$.
-Let $e_n = x_n - p$.  We say that $\displaystyle \{x_n\}_{n=0}^\infty$
+Suppose that the sequence $\DS \{x_n\}_{n=0}^\infty$ converges to $p$.
+Let $e_n = x_n - p$.  We say that $\DS \{x_n\}_{n=0}^\infty$
 {\bfseries converges to $p$ of order $\alpha$}\index{Sequences!Order
 of Convergence} if there exists a non-zero real number $\lambda$
 such that
@@ -804,7 +804,7 @@ function $g$ satisfies all the hypothesis of the Fixed Point Theorem.
 From the Fixed Point Theorem, $p$ is the unique fixed point of $g$ in
 $[p-\delta, p + \delta]$.  Moreover, if
 $x_0 \in [p-\delta, p + \delta]$, the sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$
+$\DS \{x_n\}_{n=0}^\infty$
 defined by $x_{n+1} = g(x_n)$ for $n \geq 0$ converges to $p$.
 
 The Taylor series expansion of $g$ at $p$ yields
@@ -832,7 +832,7 @@ Let $f:[a,b] \rightarrow \RR$ be a twice continuously differentiable
 function.  Suppose that $p$ is a root of $f$ in $[a,b]$ and
 $f'(p) \neq 0$.  Then there exists $\delta > 0$ such that, for
 $x_0 \in [p-\delta, p + \delta]$, the sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$ produced by the
+$\DS \{x_n\}_{n=0}^\infty$ produced by the
 Newton's method defined by (\ref{formula2}) converges to $p$ at least
 quadratically as $n$ goes to $\infty$.
 \label{newton_order}
@@ -865,19 +865,19 @@ $f$.
 
 Suppose that $p$ is a {\bfseries zero of multiplicity $k> 1$ of
 $f$}\index{Functions!Multiplicity of Zeros};
-that is, $\displaystyle f(p) = f'(p) = \ldots = f^{(k-1)}(p) = 0$
-and $\displaystyle f^k(p) \neq 0$. 
+that is, $\DS f(p) = f'(p) = \ldots = f^{(k-1)}(p) = 0$
+and $\DS f^k(p) \neq 0$. 
 Instead of (\ref{formula2}), one uses the fixed point method
 with the function
 \[
 g(x) = \begin{cases}
-\displaystyle x - \frac{k\,f(x)}{f'(x)} & \quad \text{if} \quad x \neq p \\
+\DS x - \frac{k\,f(x)}{f'(x)} & \quad \text{if} \quad x \neq p \\
   p & \quad \text{if} \quad x = p
 \end{cases}
 \]
 Because $p$ is a zero of multiplicity $k$ of $f$, it is shown in
 Question~\ref{solvAQ29} that we can write $f$ as
-$\displaystyle f(x) = (x-p)^k\,q(x)$ for some function $q$ such that
+$\DS f(x) = (x-p)^k\,q(x)$ for some function $q$ such that
 $q(p) \neq 0$. Hence, for $x \neq p$,
 \[
 g(x) = x - \frac{k\,(x-p)^k\,q(x)}
@@ -909,7 +909,7 @@ Let $f:[a,b] \rightarrow \RR$ be a twice continuously differentiable
 function.  Suppose that $p$ is a root of $f$ in $[a,b]$,
 $f'(p) \neq 0$ and $f''(p) \neq 0$.  Then there exists $\delta > 0$
 such that, for $x_0$ and $x_1$ in $[p-\delta, p + \delta]$, the
-sequence $\displaystyle \{x_n\}_{n=0}^\infty$ produced by
+sequence $\DS \{x_n\}_{n=0}^\infty$ produced by
 the secant method defined by (\ref{formula3}) converges to $p$ of order
 $(1+\sqrt{5})/2 \approx 1.618\ldots$ as $n$ goes to $\infty$.
 \end{theorem}
@@ -931,14 +931,14 @@ $\alpha$ must be the {\bfseries golden ratio}\index{Golden Ratio}
 $(1+\sqrt{5})/2$.   To prove this, we use divide difference
 formulae that are presented in Chapter~\ref{chaptInterA}.
 
-\section{Aitken's $\displaystyle \Delta^2$ Process and Steffensen's Algorithm}
+\section{Aitken's $\DS \Delta^2$ Process and Steffensen's Algorithm}
 
 Suppose that $p_0$ is an initial approximation for a fixed point $p$
 of a function $g$.  Moreover, suppose that the sequence
-$\displaystyle \{p_n\}_{n=0}^\infty$ defined by $p_{n+1} = g(p_n)$
+$\DS \{p_n\}_{n=0}^\infty$ defined by $p_{n+1} = g(p_n)$
 for $n \geq 0$ converges linearly to $p$.  We give a procedure to build a new
-sequence $\displaystyle \{\hat{p}_n\}_{n=0}^\infty$ that converges
-``faster'' to $p$ than $\displaystyle \{p_n\}_{n=0}^\infty$.
+sequence $\DS \{\hat{p}_n\}_{n=0}^\infty$ that converges
+``faster'' to $p$ than $\DS \{p_n\}_{n=0}^\infty$.
 
 Let
 \begin{align*}
@@ -950,7 +950,7 @@ Let
 \end{align*}
 for $n \geq 0$.
 
-The sequence $\displaystyle \{\hat{p}_n\}_{n=0}^\infty$ defined by
+The sequence $\DS \{\hat{p}_n\}_{n=0}^\infty$ defined by
 \begin{equation} \label{Aitken}
 \begin{split}
 \hat{p}_n &= p_n - \frac{(\dtx{p_n})^2}{\dtxn{2}{p_n}}
@@ -958,10 +958,10 @@ The sequence $\displaystyle \{\hat{p}_n\}_{n=0}^\infty$ defined by
 \end{split}
 \end{equation}
 converges to $p$ and the order of convergence of
-$\displaystyle \{\hat{p}_n\}_{n=0}^\infty$ to $p$ is greater than 1.
-The procedure used to construct $\displaystyle \{\hat{p}_n\}_{n=0}^\infty$ is
+$\DS \{\hat{p}_n\}_{n=0}^\infty$ to $p$ is greater than 1.
+The procedure used to construct $\DS \{\hat{p}_n\}_{n=0}^\infty$ is
 called the
-{\bfseries Aitken's $\displaystyle \Delta^2$ process}\index{Aitken's
+{\bfseries Aitken's $\DS \Delta^2$ process}\index{Aitken's
 $\Delta^2$ process}.
 
 \[
@@ -1007,7 +1007,7 @@ Let $g:[a,b] \rightarrow \RR$ be a $3$-time continuously
 differentiable function.  Suppose that $p$ is a fixed point of $g$ in
 $[a,b]$ and $g'(p) \not= 0$.  Then there exists $\delta > 0$ such
 that, for $p_0 \in [p-\delta, p + \delta]$, the sequence
-$\displaystyle \{\hat{p}_n\}_{n=0}^\infty$ defined by (\ref{formula4})
+$\DS \{\hat{p}_n\}_{n=0}^\infty$ defined by (\ref{formula4})
 converges to $p$ of order two as $n$ goes to $\infty$.
 \end{theorem}
 
@@ -1017,7 +1017,7 @@ function
 \[
 G(x) =
 \begin{cases}
-\displaystyle x - \frac{(g(x)-x)^2}{g(g(x)) -2g(x) + x} & \quad
+\DS x - \frac{(g(x)-x)^2}{g(g(x)) -2g(x) + x} & \quad
 \text{if} \quad x \neq p \\
 p & \quad \text{if} \quad x = p
 \end{cases}  \qedhere
@@ -1052,7 +1052,7 @@ direct computation of $p(x_n)$ and $p'(x_n)$.
 
 \begin{theorem}[Horner]
 Let
-$\displaystyle p(x) = a_m\,x^m + a_{m-1}\,x^{m-1} + \ldots + a_1\,x + a_0$ and
+$\DS p(x) = a_m\,x^m + a_{m-1}\,x^{m-1} + \ldots + a_1\,x + a_0$ and
 \[
 \begin{split}
 b_m &= a_m \\
@@ -1065,7 +1065,7 @@ b_0 &= a_0 + b_1 \, \alpha
 \end{split}
 \]
 Then  $b_0 = f(\alpha)$ and $p(x) = (x - \alpha)\,q(x) + b_0$ where
-$\displaystyle q(x) = b_m\,x^{m-1} + b_{m-1}\,x^{m-2} + \ldots + b_2\,x + b_1$.
+$\DS q(x) = b_m\,x^{m-1} + b_{m-1}\,x^{m-2} + \ldots + b_2\,x + b_1$.
 Moreover $p'(\alpha) = q(\alpha)$.
 \label{HornerTh}
 \end{theorem}
@@ -1119,7 +1119,7 @@ The computation of $p(x_n)$ and $p'(x_n)$ are combined in the
 following algorithm.
 
 \begin{code}[Horner's Algorithm]
-To evaluate a polynomial $\displaystyle p(x) = \sum_{i=0}^n a_i x^i$
+To evaluate a polynomial $\DS p(x) = \sum_{i=0}^n a_i x^i$
 and its derivative at a point $\alpha$.\\
 \subI{Input} The coefficients $a_i$ (the vector a in the code below).
 The coefficient $a_n$ must be given even if it is zero.\\
@@ -1146,7 +1146,7 @@ If we combine Newton's method and Horner's Algorithm, we get
 
 \begin{code}[Newton's Method with Horner's Algorithm]
 To approximate a real root of a polynomial
-$\displaystyle p(x) = \sum_{i=0}^n a_i x^i$\\
+$\DS p(x) = \sum_{i=0}^n a_i x^i$\\
 \subI{Input} The coefficients $a_i$ (The vector a in the code below)
 The coefficient $a_n$ must be given even if it is zero.\\
 The initial approximation $x_0$ (x in the code below) of a root
@@ -1203,7 +1203,7 @@ approximate a root of multiplicity greater than one of a polynomial.
 See Remark~\ref{multiplicity}.
 \item A good initial approximation $x_0$ of a root $c$ of a polynomial
 $p$ must be given if we want the Newton's method to generate a
-sequence $\displaystyle \{x_n\}_{n=0}^\infty$ that converges to $c$.
+sequence $\DS \{x_n\}_{n=0}^\infty$ that converges to $c$.
 A bad choice for
 $x_0$ and the sequence may converge toward another root of $p$ or may
 not converge at all.
@@ -1221,7 +1221,7 @@ polynomial
 \tilde{p}(x) = x^7 - 28x^6 +322x^5 -1960x^4 + 6769x^3
 -13133x^2 +13068x -5040 \ ,
 \]
-where only the coefficient of $\displaystyle x^2$ has be changed from
+where only the coefficient of $\DS x^2$ has be changed from
 $13132$ to $13133$, has the roots (rounded to seven decimals) $1.0013976$,
 $1.9689208$, $3.3183233$, $3.5050604$, $5.5731849 \pm 0.2641298\, i$
 and $7.0599281$ which are quite different from those of the initial
@@ -1242,9 +1242,9 @@ $p$ to get an approximation of a new root (we hope) of $p$.
 \end{rmkList}
 
 \begin{egg}
-Let $\displaystyle p(x) = x^7 - 28x^6 +322x^5 - 1960x^4 + 6769x^3
+Let $\DS p(x) = x^7 - 28x^6 +322x^5 - 1960x^4 + 6769x^3
 - 13132x^2 +13068x - 5040$.  Approximate all the roots of $p$ within
-$\displaystyle 10^{-10}$.
+$\DS 10^{-10}$.
 
 In the following table
 \begin{enumerate}
@@ -1290,8 +1290,8 @@ We get the exact roots after rounding.
 \end{egg}
 
 \begin{egg}
-Let $\displaystyle p(x) = 5 -3x -4x^2+x^4$.  Approximate all the roots
-of $p$ within $\displaystyle 10^{-10}$.
+Let $\DS p(x) = 5 -3x -4x^2+x^4$.  Approximate all the roots
+of $p$ within $\DS 10^{-10}$.
 
 In the following table
 \begin{enumerate}
@@ -1356,15 +1356,15 @@ complex roots come in pair.
 
 \begin{question}
 Find small intervals containing the solutions (one solution per
-interval) of $\displaystyle 4x^2 - e^x = 0$.  Do not forget to justify
+interval) of $\DS 4x^2 - e^x = 0$.  Do not forget to justify
 your answer.
 \end{question}
 
 \sol{\SOL}{
-We will roughly sketch the graph of $\displaystyle f(x) = 4x^2 - e^x$.
+We will roughly sketch the graph of $\DS f(x) = 4x^2 - e^x$.
 This is not easy because even the critical points are hard to find.
 However, it is easier to determine the intervals of concavity of the function.
-Since $\displaystyle f''(x) = 8 -e^x$, a potential point of inflection is
+Since $\DS f''(x) = 8 -e^x$, a potential point of inflection is
 $x=\ln(8)$.  Since $f''(x) > 0$ for $x < \ln(8)$ and $f''(x)<0$ for
 $x>\ln(8)$, we have that $\ln(8)$ is a point of inflection, $f$ is
 concave up for $x<\ln(8)$ and concave down for $x>\ln(8)$.  To sketch
@@ -1379,11 +1379,11 @@ and $[4,5]$.  There is no other root.
 
 \begin{question}
 Use the bisection method to find an approximation of $\sqrt[3]{25}$
-correct to within $\displaystyle 10^{-4}$.
+correct to within $\DS 10^{-4}$.
 \end{question}
 
 \sol{\SOL}{
-$\sqrt[3]{25}$ is the unique root of $\displaystyle f(x) = x^3 -25$.
+$\sqrt[3]{25}$ is the unique root of $\DS f(x) = x^3 -25$.
 
 Since $f$ is a continuous function and
 $f(2) = -17 < 0 < 2 = f(3)$, it follows from the Intermediate Value
@@ -1391,7 +1391,7 @@ Theorem that $\sqrt[3]{25}$, the only root of $f$, is between $2$ and
 $3$.
 
 According to Corollary~\ref{bisectCor}, to get an approximation of
-$\sqrt[3]{25}$ with an accuracy of $\displaystyle 10^{-4}$, we need to
+$\sqrt[3]{25}$ with an accuracy of $\DS 10^{-4}$, we need to
 select the number of iterations $n$ such that
 \[
 \frac{3-2}{2^n} < 10^{-4}
@@ -1434,7 +1434,7 @@ if $a_0 >0$ and
 \begin{equation}\label{first}
 n \geq \frac{\ln(b_0-a_0)-\ln(\epsilon)-\ln(a_0)}{\ln(2)}
 \end{equation}
-Show that the $\displaystyle n^{th}$ iteration $x_n$ of the bisection method 
+Show that the $\DS n^{th}$ iteration $x_n$ of the bisection method 
 is an approximation of a root $r$ with a relative error smaller than
 $\epsilon$.
 \end{question}
@@ -1467,7 +1467,7 @@ $a_0/r < 1$.
 
 \begin{question}
 In the algorithm for the bisection method, Algorithm~\ref{BisectAlgo},
-show that $\displaystyle | x_n - x_{n+1}| = 2^{-n-1}(b_0 - a_0)$.
+show that $\DS | x_n - x_{n+1}| = 2^{-n-1}(b_0 - a_0)$.
 \end{question}
 
 \sol{\SOL}{
@@ -1478,7 +1478,7 @@ $[a_n,b_n]$, where one of the endpoints is $x_n$, we get
 = \frac{1}{2} \left(\frac{b_0-a_0}{2^n}\right) = \frac{b_0-a_0}{2^{n+1}} \ ,
 \]
 where we have used the property that the length of the interval
-$[a_n,b_n]$ is $\displaystyle (b_0-a_0)/2^n$.
+$[a_n,b_n]$ is $\DS (b_0-a_0)/2^n$.
 }
 
 \begin{question}
@@ -1497,17 +1497,17 @@ algorithm.  We suppose that $a_0 <a_1 < a_2 < \ldots$ and
 prove by contradiction that this is not possible.
 
 Since we have an infinite sequence of distinct values
-$\displaystyle \{a_n\}_{n=0}^\infty$, none of $a_n$ or $b_n$ for
+$\DS \{a_n\}_{n=0}^\infty$, none of $a_n$ or $b_n$ for
 $n \geq 0$ can be a root of $f$ because of (\ref{BisectAlgo2}) and
 (\ref{BisectAlgo4}) in Algorithm~\ref{BisectAlgo}.
 Moreover, since only $a_n$ varies, we must have $b_n = b_0$ and
 $a_n < r$ for all $n$.  But then $b_n - a_n \geq b_0-r$ for all $n$.  So
-$\displaystyle \{b_n - a_n \|_{n=0}^\infty$ cannot converge to $0$.
+$\DS \{b_n - a_n \|_{n=0}^\infty$ cannot converge to $0$.
 This is our contradiction.
 }
 
 \begin{question}
-Find a solution accurate to within $\displaystyle 10^{-4}$ for $x=\tan(x)$ on
+Find a solution accurate to within $\DS 10^{-4}$ for $x=\tan(x)$ on
 $\pi/2 < x < 3 \pi/2$.\\
 \subQ{a} Use the bisection method.\\
 \subQ{b} Use the fixed point method.\\
@@ -1515,8 +1515,8 @@ $\pi/2 < x < 3 \pi/2$.\\
 \end{question}
 
 \begin{question}
-Find the solutions accurate to within $\displaystyle 10^{-5}$ for
-$\displaystyle x^2 + 11\cos(x)=0$.\\
+Find the solutions accurate to within $\DS 10^{-5}$ for
+$\DS x^2 + 11\cos(x)=0$.\\
 \subQ{a} Use the bisection method.\\
 \subQ{b} Use the fixed point method.\\
 \subQ{c} Use Newton's method.
@@ -1537,7 +1537,7 @@ namely, such that
 \arctan(r) = \frac{2r}{1+r^2} \ .
 \]
 In the figure below, we draw the curves $y=\arctan(x)$ (in black) and
-$\displaystyle y=2x/(1+x^2)$ (in blue) on the same coordinate system.
+$\DS y=2x/(1+x^2)$ (in blue) on the same coordinate system.
 Note that the two functions are odd.  There is only one intersection for $x>0$
 between these two curves.  The $x$-coordinate of this point is the
 value of interest.
@@ -1565,12 +1565,12 @@ With $x_0=1$, the formula
 x_{n+1} = x_n - \frac{g(x_n)}{g'(x_n)}
 \]
 yields $r \approx 1.3917452002707$ after $5$ iterations with an
-accuracy of at least $\displaystyle 10^{-12}$.
+accuracy of at least $\DS 10^{-12}$.
 }
 
 \begin{question}
 For which functions $f$ is the iterative equation
-$\displaystyle  x_{n+1} = 2x_n - C x_n^2$
+$\DS  x_{n+1} = 2x_n - C x_n^2$
 the result of the formula for the Newton's method?  $C$ is a
 constant.
 \end{question}
@@ -1605,7 +1605,7 @@ for $E \neq 0$ in $\RR$.
 
 \begin{question}
 If $x_0 = 0$ and
-$\displaystyle x_{n+1} = x_n - \frac{\tan(x_n) - 1}{\sec^2(x_n)}$
+$\DS x_{n+1} = x_n - \frac{\tan(x_n) - 1}{\sec^2(x_n)}$
 for $n=0$, $1$, $2$, \ldots\  Without doing any computation, find the
 limit of this sequence.
 \end{question}
@@ -1622,12 +1622,12 @@ All tangents to the graph of $f$ at $(x,f(x))$ for
 $-\pi/2 < x < \pi/2$ intersect the $x$-axis between $-\pi/2$ and $\pi/2$
 because:
 \begin{enumerate}
-\item $\displaystyle f'(x) = \sec^2(x) > 1$ for
+\item $\DS f'(x) = \sec^2(x) > 1$ for
 $-\pi/2 < x < \pi/2$ with $x\neq 0$ and $f'(0) = 1$,
-\item $\displaystyle f''(x) = 2\sec^2(x)\tan(x) \geq 0$ for
+\item $\DS f''(x) = 2\sec^2(x)\tan(x) \geq 0$ for
 $0 \leq x < \pi/2$ and $f''(x) \leq 0$ for $-\pi/2<x\leq 0$, and
-\item $\displaystyle \lim_{x\to -pi/2^-} f(x) = -\infty$
-and $\displaystyle \lim_{x\to pi/2^+} f(x) = \infty$.
+\item $\DS \lim_{x\to -pi/2^-} f(x) = -\infty$
+and $\DS \lim_{x\to pi/2^+} f(x) = \infty$.
 \end{enumerate}
 Using curve sketching as seen in calculus, we get the following graph.
 \pdfbox{solve_equ_A/tanmone}
@@ -1639,7 +1639,7 @@ $x = \pi/4$.  The limit of the sequence above is therefore $\pi/4$.
 \begin{question}
 Use Newton's method to find an approximation of a root of
 $f(x) = \tan(x)$ in the interval $[4.8, 7.7]$ with an accuracy of
-$\displaystyle 10^{-8}$.
+$\DS 10^{-8}$.
 \end{question}
 
 \sol{\SOL}{
@@ -1673,9 +1673,9 @@ requested accuracy.
 
 \begin{question}
 Use the secant method to find an approximation of the first positive
-root of $\displaystyle f(x) = e^x - \tan(x)$ with an accuracy of
-$\displaystyle 10^{-8}$.\\
-Hint: To choose $x_0$ and $x_1$, draw the graph of $\displaystyle e^x$
+root of $\DS f(x) = e^x - \tan(x)$ with an accuracy of
+$\DS 10^{-8}$.\\
+Hint: To choose $x_0$ and $x_1$, draw the graph of $\DS e^x$
 and $\tan(x)$.
 \end{question}
 
@@ -1707,7 +1707,7 @@ The secant algorithm must be started with $x_0$ and $x_1$ really close
 to the first positive root of $f$, the root that we want to approximate,
 otherwise the secant algorithm will likely converge to a totally
 different root of $f$.   The first positive root of $f$ is the first
-intersection of $\tan(x)$ (in black) and $\displaystyle e^x$ (in blue) in the
+intersection of $\tan(x)$ (in black) and $\DS e^x$ (in blue) in the
 following figure.
 \figbox{solve_equ_A/exptanSecant}{8cm}
 Starting with $x_0 = 1.3$ and $x_1=1.35$, it took $5$ iterations to
@@ -1722,15 +1722,15 @@ negative root of $f$ instead of the first positive root.
 
 \begin{question}
 \subQ{a} Suppose that the Newton's method is used to generate a sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$ converging to a root $r$ of a function $f$. 
+$\DS \{x_n\}_{n=0}^\infty$ converging to a root $r$ of a function $f$. 
 Let $e_n = x_n-r$.  Show that
 \[
 e_{n+1} = \frac{f''(\xi_n)}{2f'(x_n)}\, e_n^2
 \]
 for some $\xi_n$ between $r$ and $x_n$.\\
-\subQ{b} Let $\displaystyle f(x) = x-e^{-x}$ and assume that the
+\subQ{b} Let $\DS f(x) = x-e^{-x}$ and assume that the
 Newton's method is used to generate a sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$ converging to the
+$\DS \{x_n\}_{n=0}^\infty$ converging to the
 root $r$ of $f$ in the interval $[0,1]$.  If $e_n =x_n-r$, show that 
 \begin{equation}\label{NMconvQuest}
 |e_n| \leq 2\left(\frac{e_0}{2}\right)^{2^n}
@@ -1738,14 +1738,14 @@ root $r$ of $f$ in the interval $[0,1]$.  If $e_n =x_n-r$, show that
 for $n \geq 0$ whenever $x_0\geq 0$.\\
 \subQ{c} If $x_0=1$ in (b), how many iterations of the Newton's method
 will be sufficient to get an approximation of the root $r$ of $f$ with
-an accuracy of $\displaystyle 10^{-5}$; namely, such that
-$\displaystyle |e_n| < 10^{-5}$.
+an accuracy of $\DS 10^{-5}$; namely, such that
+$\DS |e_n| < 10^{-5}$.
 \end{question}
 
 \sol{\SOL}{
 \subQ{a} The Taylor polynomial of $f$ of degree one about $x_n$ is
 $p(x) = f(x_n) + f'(x_n)(x-x_n)$.  We have that
-$\displaystyle f(x) = p(x) + \frac{1}{2}\,f''(\xi_n)(x-x_n)^2$
+$\DS f(x) = p(x) + \frac{1}{2}\,f''(\xi_n)(x-x_n)^2$
 for some $\xi_n$ between $x_n$ and $x$.  If $x=r$, the root of $f$ in
 the interval $[0,1]$, we get
 \begin{align*}
@@ -1772,7 +1772,7 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
 = \frac{(x_n+1)e^{x_n}}{1+e^{x_n}} > 0
 \]
 for $n=1$, $2$, $3$, \ldots\ by induction.  Moreover, we have
-$\displaystyle f'(x) = 1 + e^{-x}$ and $\displaystyle f''(x) = -e^{-x}$.  Hence,
+$\DS f'(x) = 1 + e^{-x}$ and $\DS f''(x) = -e^{-x}$.  Hence,
 \[
 \left| \frac{f''(\xi_n)}{f'(x_n)} \right|
  = \frac{e^{-\xi_n}}{1+e^{-x_n}} \leq 1
@@ -1804,7 +1804,7 @@ by induction.
 \]
 We do not know $r$ but we know that $r$ is between $0$ and $1$, so
 $|1-r|<1$.  It is therefore enough to find $n$ such that
-$\displaystyle 2\left(1/2\right)^{2^n} < 10^{-5}$.
+$\DS 2\left(1/2\right)^{2^n} < 10^{-5}$.
 Thus, $n$ satisfies
 \[
 2^{2^n-1} > 10^5
@@ -1818,7 +1818,7 @@ We choose $n=5$.
 
 \begin{question}
 Use Newton's method with Horner's Algorithm to approximate the
-three roots of $\displaystyle f(x) = x^3 -x$; namely, to approximate $p_1=-1$,
+three roots of $\DS f(x) = x^3 -x$; namely, to approximate $p_1=-1$,
 $p_2=0$ and $p_3=1$.  For each value of $i$, can you find a subinterval
 $I_i$ of $[-0.451,-0.446]$ such that the Newton's method with Horner's
 Algorithm converges to the root $p_i$ of $f(x)$?  For each $i$,
@@ -1829,13 +1829,13 @@ the Newton's method converges to $p_i$ form a Cantor type of set.
 \begin{question}
 Suppose that $g:[a,b] \rightarrow [a,b]$ satisfies the Fixed Point
 Theorem and $g'(x) < 0$ for all $x \in [a,b]$.  Describe the behaviour
-of the sequence $\displaystyle \{ x_n\}_{n=0}^\infty$ given by $x_{n+1} = g(x_n)$
+of the sequence $\DS \{ x_n\}_{n=0}^\infty$ given by $x_{n+1} = g(x_n)$
 for $x_0 \in [a,b]$ as it converges to the fixed point.  You may want
 to sketch a typical graph.
 \end{question}
 
 \begin{question}
-Let $\displaystyle g(x) = \frac{1}{x^2+1}$.\\
+Let $\DS g(x) = \frac{1}{x^2+1}$.\\
 \subQ{a} Show that $g$ has a unique fixed point in the interval $[0,1]$.\\
 \subQ{b} Show that we can use the Fixed Point Theorem to find the
 fixed point of $g$ in the interval $[0,1]$.\\
@@ -1847,7 +1847,7 @@ fixed point of $g$ in the interval $[0,1]$.\\
 and vice-versa.  Since $f$ is continuous and
 $f(0) = 1 > 0 > -1/2 = f(1)$, it follows from the Mean Value Theorem 
 that $f(x) = 0$ for some $x \in ]0,1[$.  Since
-$\displaystyle f'(x) = g'(x) - 1 = -2x/(1+x^2)^2 -1 < 0$
+$\DS f'(x) = g'(x) - 1 = -2x/(1+x^2)^2 -1 < 0$
 for $x \geq 0$, the function $f$ is strictly decreasing on
 $[0,1]$.  Thus, $f(x) = 0$ for a unique value of $x \in [0,1]$ and,
 therefore, $g(x) = x$ for a unique value of $x \in [0,1]$.
@@ -1856,14 +1856,14 @@ therefore, $g(x) = x$ for a unique value of $x \in [0,1]$.
 satisfied; namely, we show that $g([0,1]) \subset [0,1]$ and
 $|g(x) - g(y)| \leq K |x-y|$ for some $K<1$ and all $x,y \in [0,1]$.
 
-Since $\displaystyle g'(x) = -2x/(1+x^2)^2 < 0$ for $x>0$, 
+Since $\DS g'(x) = -2x/(1+x^2)^2 < 0$ for $x>0$, 
 the function $g$ is strictly decreasing on $]0,\infty[$.  Hence,
 $1 = g(0) \geq g(x) \geq g(1) = 1/2$ for all $x \in [0,1]$.  Thus,
 $g:[0,1] \rightarrow [0, 1/2] \subset [0,1]$..
 
 To prove that there exists a positive constant $K<1$ such that
 $|g(x)-g(y)| \leq K |x-y|$ for $x,y \in [0,1]$, we show that the
-maximum of $\displaystyle G(x) = |g'(x)| = 2x/(1+x^2)^2$ on $[0,1]$ is
+maximum of $\DS G(x) = |g'(x)| = 2x/(1+x^2)^2$ on $[0,1]$ is
 less than $1$ and use this maximum as our constant $K$ as explained in
 Remark~\ref{FxPtThDer}.
 
@@ -1872,7 +1872,7 @@ Namely, since $G$ is differentiable on $[0,1]$, the maximum of $G$ is
 either at the endpoints of the interval or at one of the critical
 points of $G$ in $[0,1]$ if there is one.  The critical
 points of $G$ are given by
-$\displaystyle G'(x) = 2(1-3x^2)/(1+x^2)^3 = 0$.
+$\DS G'(x) = 2(1-3x^2)/(1+x^2)^3 = 0$.
 There is only one critical point in $[0,1]$.  It is $x= 1/\sqrt{3}$.
 Since $G(0) = 0$, $G(1) = 1/2$ and
 $G(1/\sqrt{3}) = 3\sqrt{3}/8 <1$, we have that
@@ -1885,38 +1885,38 @@ Theorem~\ref{FPorder}.
 }
 
 \begin{question}
-Consider the function $\displaystyle g(x)=2^{-x}$.\\
+Consider the function $\DS g(x)=2^{-x}$.\\
 \subQ{a} Show that you can use the Fixed Point Theorem to approximate
 the fixed point of $g$ in the interval $[1/3,1]$.\\
 \subQ{b} Find a small value of $n$ ensuring to the approximation $x_n$
-of the fixed point of $g$ has an accuracy of $\displaystyle 10^{-4}$.  You may
+of the fixed point of $g$ has an accuracy of $\DS 10^{-4}$.  You may
 assume that $x_0=0.5$\ .\\
 \subQ{c} Use the Fixed Point Theorem to find an approximation
 $x_{n+1}$ to the fixed point of $g$ in the interval $[1/3,1]$ such
-that $\displaystyle |x_{n+1} - x_n| < 10^{-4}$.  As in (b), you may assume that
+that $\DS |x_{n+1} - x_n| < 10^{-4}$.  As in (b), you may assume that
 $x_0=0.5$.
 \end{question}
 
 \sol{\SOL}{
 \subQ{a} We show that $g$ satisfies all the hypothesis of the Fixed
 Point Theorem on the interval $[1/3,1]$.  Hence, from the Fixed Point
-Theorem, we will have that the sequence $\displaystyle \{x_n\}_{n=0}^\infty$
+Theorem, we will have that the sequence $\DS \{x_n\}_{n=0}^\infty$
 generated by $x_{n+1} = g(x_n)$ for $n\geq 0$ and $x_0\in [1/3,1]$
 converges to the unique fixed point $p$ of $g$ in the interval $[1/3,1]$.
 \begin{enumerate}
-\item Since $\displaystyle g'(x) = -2^{-x}\ln(2)<0$ for all $x$, the
+\item Since $\DS g'(x) = -2^{-x}\ln(2)<0$ for all $x$, the
 function $g$ is strictly decreasing on $[1/3,1]$.  Thus,
 \[
 1 > 2^{-1/3} = g(1/3) \geq g(x) \geq g(1) = 0.5 
 \]
 for all $x \in [1/3,1]$.  Hence, $g:[1/3,1]\rightarrow [1/3,1]$.
-\item Since $\displaystyle |g'(x)| = 2^{-x}\ln(2) < 2^{-1/3}\ln(2)$ for
+\item Since $\DS |g'(x)| = 2^{-x}\ln(2) < 2^{-1/3}\ln(2)$ for
 $x \in [1/3,1]$.  We have that 
 $|g(x)-g(y)| \leq K |x-y|$ for all $x,y\in [1/3,1]$ with
-$\displaystyle K= 2^{-1/3}\ln(2) < 1$ according to Remark~\ref{FxPtThDer}.
+$\DS K= 2^{-1/3}\ln(2) < 1$ according to Remark~\ref{FxPtThDer}.
 \end{enumerate}
 
-\subQ{b} Since $\displaystyle |x_n - p | \leq \frac{K^n}{1-K} |x_1-x_0|$,
+\subQ{b} Since $\DS |x_n - p | \leq \frac{K^n}{1-K} |x_1-x_0|$,
 we need to find $n$ such that
 \[
   \frac{K^n}{1-K} |x_1-x_0| < 10^{-4} \ ;
@@ -1934,28 +1934,28 @@ n > \frac{1}{-\ln(2^{-1/3}\ln(2))}\,
 Hence, $n=15$ iterations is enough to reach the accuracy requested. 
 
 \subQ{c} Starting with $x_0 = 0.5$, we compute $x_{n+1} = g(x_n)$
-until $\displaystyle |x_{n+1} - x_n| < 10^{-4}$.  The first time that
+until $\DS |x_{n+1} - x_n| < 10^{-4}$.  The first time that
 this happen is for $n=10$.  We get $x_{11} \approx 0.64120525$ as an
 approximation of the fixed point of $g$ in the interval $[1/3,1]$.
 }
 
 \begin{question}
-Consider the function $\displaystyle g(x) = 12 - \frac{20}{x}$.\\
+Consider the function $\DS g(x) = 12 - \frac{20}{x}$.\\
 \subQ{a} Explain why this function has two fixed points.\\
 \subQ{b} Using the Fixed Point Theorem, show that $g$ 
 has a unique fixed point $p$ in the interval $[9.5,11.5]$, and that
-the sequence $\displaystyle \{x_n\}_{n=0}^\infty$ generated by
+the sequence $\DS \{x_n\}_{n=0}^\infty$ generated by
 $x_{n+1} = g(x_n)$ converge to $p$ whatever the choice
 $x_0\in [9.5,11.5]$.\\
 \subQ{c} How many iterations are needed to get an approximation of the
 fixed point of $g$ in the interval $[9.5,11.5]$ with an accuracy of
-$\displaystyle 10^{-7}$?  You may assume that $x_0 = 9.5$.\\
+$\DS 10^{-7}$?  You may assume that $x_0 = 9.5$.\\
 \subQ{d} What is the order of convergence of the sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$ that is generated by
+$\DS \{x_n\}_{n=0}^\infty$ that is generated by
 $x_{n+1}= g(x_n)$ with $x_0$ in $[9.5,11.5]$.\\
 \subQ{e} Use Steffensen's Algorithm to find an
 approximation of the fixed point of $g$ in the interval $[9.5,11.5]$
-with an accuracy of $\displaystyle 10^{-7}$.  Use $x_0 = 9.5$.  Why does this
+with an accuracy of $\DS 10^{-7}$.  Use $x_0 = 9.5$.  Why does this
 method converge faster than the fixed point method?
 \end{question}
 
@@ -1969,24 +1969,24 @@ x^2 -12 x +20 = (x-10)(x-2) = 0 \iff x=2 \quad \text{or} \quad x=10 \ .
 \subQ{b} We show that $g$ satisfies all the hypothesis of the Fixed
 Point Theorem on the interval $[9.5,11.5]$.  Hence, from the Fixed
 Point Theorem, we will have that the sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$
+$\DS \{x_n\}_{n=0}^\infty$
 generated by $x_{n+1} = g(x_n)$ for $n\geq 0$ and $x_0\in [9.5,11.5]$
 converges to the unique fixed point of $g$ in the interval $[9.5,11.5]$.
 \begin{enumerate}
-\item Since $\displaystyle g'(x) = 20/x^2>0$ for all $x\in[9.5,11.5]$,
+\item Since $\DS g'(x) = 20/x^2>0$ for all $x\in[9.5,11.5]$,
 the function $g$ is strictly increasing.  Thus
 \[
 9.5 < \frac{188}{19} = g(9.5) \leq g(x) \leq g(11.5) =
 \frac{236}{23} < 10.5
 \]
 for all $x \in [9.5,10.5]$.  Hence, $g:[9.5,11.5]\rightarrow [9.5,11.5]$.
-\item Since $\displaystyle |g'(x)| = 20/x^2 < 20/9.5^2 = 80/361$ for
+\item Since $\DS |g'(x)| = 20/x^2 < 20/9.5^2 = 80/361$ for
 $x\in[9.5,11.5]$.  We have that 
 $|g(x)-g(y)| \leq K |x-y|$ for all $x,y\in [9.5,11.5]$ with $K=80/361 < 1$
 according to Remark~\ref{FxPtThDer}.
 \end{enumerate}
 
-\subQ{c} Since $\displaystyle |x_n - p | \leq \frac{K^n}{1-K} |x_1-x_0|$,
+\subQ{c} Since $\DS |x_n - p | \leq \frac{K^n}{1-K} |x_1-x_0|$,
 we need to find $n$ such that
 \[
   \frac{K^n}{1-K} |x_1-x_0| < 10^{-7} \ ;
@@ -2003,7 +2003,7 @@ n > \frac{1}{-\ln(80/361)}\,
 \]
 Hence, $n=11$ iterations is enough to reach the accuracy requested. 
 
-\subQ{d} Since $\displaystyle g'(x) = 20/x^2 > 0$ for $x\in [9.5,11.5]$, we
+\subQ{d} Since $\DS g'(x) = 20/x^2 > 0$ for $x\in [9.5,11.5]$, we
 have that $g'(p)\neq 0$ at the fixed point $p \in [9.5,11.5]$.  Thus,
 the method is of order one; the order of the first non-null derivative
 of $g$ at $p$.
@@ -2015,8 +2015,8 @@ Algorithm~\ref{SteffAlgo}.   Let $\hat{x}_{-1} = x_0 = 9.5$ and
   \hat{x}_n)^2}{g(g(\hat{x}_n)) -2 g(\hat{x}_n) + \hat{x}_n}
 \]
 for $n=-1$, $0$, $1$, \ldots until
-$\displaystyle |\hat{x}_{n+1} - \hat{x}_n|< 10^{-7}$.
-We get $\displaystyle |\hat{x}_{n+1} - \hat{x}_n|<10^{-7}$ for the
+$\DS |\hat{x}_{n+1} - \hat{x}_n|< 10^{-7}$.
+We get $\DS |\hat{x}_{n+1} - \hat{x}_n|<10^{-7}$ for the
 first time with $n=1$.  We have $\hat{x}_2 = 10$ to 16 significant digits.
 
 The Steffensen's Algorithm converge faster than the simple Fixed Point
@@ -2024,12 +2024,12 @@ Method applied to $g$ because it is of order two.
 }
 
 \begin{question}
-Let $\displaystyle f(x) = e^x -2x-1$.\\
+Let $\DS f(x) = e^x -2x-1$.\\
 \subQ{a} Show that $f$ has a unique root in the interval $[1,2]$.\\
 \subQ{b} Show that a root of $f$ is a fixed point of
 $g(x) = \ln(1+2x)$ and vice-versa.\\
 \subQ{c} Show that for any $x_0\in [1,2]$, the sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$ generated by $x_{n+1} = g(x_n)$
+$\DS \{x_n\}_{n=0}^\infty$ generated by $x_{n+1} = g(x_n)$
 for $n=0$, $1$, $2$, \ldots\ converges to the fixed point of $g$ in
 the interval $[1,2]$.\\
 \subQ{d} Determine the order of convergence of this fixed point method.
@@ -2037,10 +2037,10 @@ the interval $[1,2]$.\\
 
 \sol{\SOL}{
 \subQ{a} Since $f$ is a continuous function and
-$\displaystyle f(1) = e - 3 < 0 < f(2) = e^2-5$, it follows from the
+$\DS f(1) = e - 3 < 0 < f(2) = e^2-5$, it follows from the
 Intermediate Value Theorem that $f$ has at least one root in the
 interval $[1,2]$.  To prove that it is unique, we note that
-$\displaystyle f'(x) = e^x-2>0$ for all
+$\DS f'(x) = e^x-2>0$ for all
 $x\in[1,2]$.  So the function is strictly increasing and can therefore cross
 the $x$-axis only once.
 
@@ -2052,7 +2052,7 @@ for $x>-1/2$.
 
 \subQ{c} We show that $g$ satisfies all the hypothesis of the Fixed
 Point Theorem on the interval $[1,2]$.  Hence, from the Fixed Point
-Theorem, we will have that the sequence $\displaystyle \{x_n\}_{n=0}^\infty$
+Theorem, we will have that the sequence $\DS \{x_n\}_{n=0}^\infty$
 generated by $x_{n+1} = g(x_n)$ for $n\geq 0$ and $x_0\in [1,2]$
 converges to the unique fixed point of $g$ in the interval $[1,2]$.
 \begin{enumerate}
@@ -2076,28 +2076,28 @@ one; the order of the first non-null derivative of $g$ at $p$.
 Our goal is to approximate the value of $\sqrt[3]{25}$ using the Fixed
 Point Theorem.\\
 \subQ{a} Show that $\sqrt[3]{25}$ is the unique root of
-$\displaystyle f(x) = x^3-25$.\\
+$\DS f(x) = x^3-25$.\\
 \subQ{b} Show that $p>0$ is a root of $f$ if and only if $p$ is a
-fixed point of $\displaystyle g(x) = 5/\sqrt{x}$, and conclude that
+fixed point of $\DS g(x) = 5/\sqrt{x}$, and conclude that
 this fixed point $p$ is $\sqrt[3]{25}$. \\
 \subQ{c} Using the graph of $g$, give an interval $[a,b]$ with $a>0$
 such that $g$ satisfies the Fixed Point Theorem on $[a,b]$.  Verify
 that $g$ satisfies all the hypotheses of the Fixed Point Theorem.\\
 \subQ{d} Choose $x_0$ in the interval $[a,b]$ that you have found in (c).
 Without doing any iteration, find a small value of $n$ such that $x_n$,
-the $\displaystyle (n+1)^{th}$ term in the sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$ produced by
+the $\DS (n+1)^{th}$ term in the sequence
+$\DS \{x_n\}_{n=0}^\infty$ produced by
 the Fixed Point Theorem applied to the function $g$, is an approximation of 
-$p$ with an accuracy of $\displaystyle 10^{-5}$.\\ 
+$p$ with an accuracy of $\DS 10^{-5}$.\\ 
 \subQ{e} Use the Fixed Point Theorem to find an approximation $x_n$ to
 the fixed point of $g$ in the interval $[a,b]$ such that
-$\displaystyle |x_n - x_{n-1}| < 10^{-5}$.  Use the $x_0$ that you
+$\DS |x_n - x_{n-1}| < 10^{-5}$.  Use the $x_0$ that you
 have chosen in (d).
 \end{question}
 
 \sol{\SOL}{
 \subQ{a} $\sqrt[3]{25}$ is obviously the unique root of
-$\displaystyle f(x) = x^3 -25$ because
+$\DS f(x) = x^3 -25$ because
 \[
   x^3 - 25 = 0 \iff x^3 = 25 \iff x = \sqrt[3]{25} \ .
 \]
@@ -2120,7 +2120,7 @@ $p = \sqrt[3]{25}$ is closed to $3$.
 We consider the interval $[2,4]$ that contains $p$.  We show that $g$
 satisfies all the hypothesis of the Fixed Point Theorem on the
 interval $[2,4]$.  Hence, from the Fixed Point Theorem, we will have
-that the sequence $\displaystyle \{x_n\}_{n=0}^\infty$ generated by
+that the sequence $\DS \{x_n\}_{n=0}^\infty$ generated by
 $x_{n+1} = g(x_n)$ for $n\geq 0$ and $x_0\in [2,4]$ converges to the
 unique fixed point $p=\sqrt[3]{25}$ of $g$ in the interval $[2,4]$. 
 \begin{enumerate}
@@ -2130,13 +2130,13 @@ we have that $g$ is strictly decreasing for $x>0$.  Thus,
 4 > 5/\sqrt{2} = g(2) \geq g(x) \geq g(4) = 5/2 > 2
 \]
 for $x \in [2,4]$.  Hence, $g:[2,4]\rightarrow [2,4]$.
-\item Since $\displaystyle |g'(x)| = \frac{5}{2x^{3/2}} \leq \frac{5}{2^{5/2}}$
+\item Since $\DS |g'(x)| = \frac{5}{2x^{3/2}} \leq \frac{5}{2^{5/2}}$
 for $x\in[2,4]$.  We have that $|g(x)-g(y)| \leq K |x-y|$ for all
-$x,y\in [1,2]$ with $\displaystyle K= \frac{5}{2^{5/2}} < 1$
+$x,y\in [1,2]$ with $\DS K= \frac{5}{2^{5/2}} < 1$
 according to Remark~\ref{FxPtThDer}.
 \end{enumerate}
 
-\subQ{d} Since $\displaystyle |x_n - p | \leq \frac{K^n}{1-K} |x_1-x_0|$,
+\subQ{d} Since $\DS |x_n - p | \leq \frac{K^n}{1-K} |x_1-x_0|$,
 we need to find $n$ such that
 \[
 \frac{K^n}{1-K} |x_1-x_0| < 10^{-5} \ ;
@@ -2155,30 +2155,30 @@ n > \frac{1}{-\ln(5/2^{5/2})}\,
 Hence, $n=106$ iterations is enough to reach the accuracy requested. 
 
 \subQ{e} Starting with $x_0 = 3$, we compute $x_n = g(x_{n-1})$
-until $\displaystyle |x_n - x_{n-1}| < 10^{-5}$.  The first time that
+until $\DS |x_n - x_{n-1}| < 10^{-5}$.  The first time that
 this happen is for $n=15$.  We get $x_{15} \approx 2.924015$ as an
 approximation of the fixed point of $g$ in the interval $[2,4]$.
 
 As we can see, the value of $n$ estimated in (d) is a very large
 overestimation of the number of iterations needed to reach an accuracy
-of $\displaystyle 10^{-5}$ if we start with $x_0 = 3$.  The formula
+of $\DS 10^{-5}$ if we start with $x_0 = 3$.  The formula
 used in (d) to estimate $n$ will generally give a large
 overestimation.  However, we have to keep in mind that the value $n$
 obtained in (d) is valid for all $x_0$, not just for $x_0 = 3$.
 }
 
 \begin{question}
-Let $\displaystyle f(x) = e^{2-x} -x^2$.\\
+Let $\DS f(x) = e^{2-x} -x^2$.\\
 \subQ{a} Show that $f$ has a unique root $p$ in the interval $[1,2]$.\\
 \subQ{b} Find a function $g$ satisfying all the hypotheses of the Fixed
 Point Theorem such that a root of $f$ in the interval $[1,2]$ is a
 fixed point of $g$ in $[1,2]$.  Verify that your function $g$ satisfies
 the hypotheses of the Fixed Point Theorem.\\
 \subQ{c} Let $x_0= 1$.  Without doing any iteration, find a small value
-of $n$ such that $x_n$, the $\displaystyle (n+1)^{th}$ term in the sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$ produced by the Fixed Point
+of $n$ such that $x_n$, the $\DS (n+1)^{th}$ term in the sequence
+$\DS \{x_n\}_{n=0}^\infty$ produced by the Fixed Point
 Theorem applied to the function $g$, is an approximation of $p$ with
-an accuracy of $\displaystyle 10^{-5}$.\\
+an accuracy of $\DS 10^{-5}$.\\
 \subQ{d} Determine the order of convergence of this fixed point
 method.
 \end{question}
@@ -2190,16 +2190,16 @@ method.
 
 \begin{question}
 The first positive value $p$ such that $p=\tan(p)$ is between $\pi$
-and $3\pi/2$.  Let $\displaystyle g(x) = \pi + \arctan(x)$.\\
+and $3\pi/2$.  Let $\DS g(x) = \pi + \arctan(x)$.\\
 \subQ{a} Show graphically that $g$ has a unique fixed point in
 $[\pi,3\pi/2]$ and that it is the point $p$ above.\\
 \subQ{b} Show that $g$ satisfies the hypotheses of the Fixed Point
 Theorem on the interval $[\pi,3\pi/2]$.\\
 \subQ{c} Without doing any iteration, find a small value
-of $n$ such that $x_n$, the $\displaystyle (n+1)^{th}$ term in the sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$ produced by the Fixed Point
+of $n$ such that $x_n$, the $\DS (n+1)^{th}$ term in the sequence
+$\DS \{x_n\}_{n=0}^\infty$ produced by the Fixed Point
 Theorem applied to the function $g$, is an approximation of $p$ with
-an accuracy of $\displaystyle 10^{-5}$.
+an accuracy of $\DS 10^{-5}$.
 \end{question}
 
 \sol{\SOL}{
@@ -2208,9 +2208,9 @@ curve in the graph on the right).
 
 \pdfbox{solve_equ_A/arctan_quest1a}
 
-\subQ{b} We have $\displaystyle g'(x) = 1/(1+x^2)$.  Hence $g$ is strictly
+\subQ{b} We have $\DS g'(x) = 1/(1+x^2)$.  Hence $g$ is strictly
 increasing on $[\pi,3\pi/2]$ and
-$\displaystyle |g'(x)| \leq g'(\pi) = 1/(1+\pi^2) < 1$ on
+$\DS |g'(x)| \leq g'(\pi) = 1/(1+\pi^2) < 1$ on
 $[\pi,3\pi/2]$.  We can then say that:
 
 \begin{enumerate}
@@ -2221,7 +2221,7 @@ g(3\pi/2) = \pi + \arctan(3\pi/2) < 3\pi/2
 \]
 for all $x\in[\pi,3\pi/2]$ since $g$ is increasing.  We have used the fact that
 $0<\arctan(x)<\pi/2$ for all $x>0$.
-\item With $\displaystyle K=1/(1+\pi^2)$, we have
+\item With $\DS K=1/(1+\pi^2)$, we have
 \[
 |g'(x)| \leq K <1
 \]
@@ -2231,7 +2231,7 @@ according to Remark~\ref{FxPtThDer}.
 \end{enumerate}
 
 \subQ{c} From the Fixed Point Theorem, we have that the sequence
-$\displaystyle \{x_i\}_{i=0}^\infty$ defined by $x_0\in [\pi,3\pi/2]$ and
+$\DS \{x_i\}_{i=0}^\infty$ defined by $x_0\in [\pi,3\pi/2]$ and
 $x_{i+1} = g(x_i)$ converges to $p$.  Since
 \[
 |x_n - p | \leq \frac{K^n}{1-K} |x_1-x_0|
@@ -2259,11 +2259,11 @@ Let $a$ be a positive number and
 \begin{equation}\label{classicAnal}
 g(x) = \frac{x}{2} + \frac{a}{2x} \ .
 \end{equation}
-Given $x_0>0$, let $\displaystyle \{x_n\}_{n=0}^{\infty}$ be the
+Given $x_0>0$, let $\DS \{x_n\}_{n=0}^{\infty}$ be the
 sequence generated by $x_{n+1} = g(x_n)$ for $n=0$, $1$, $2$, \ldots\\
 \subQ{a} Show that the positive fixed point of $g$ is $\sqrt{a}$.\\
 \subQ{b} Use the Fixed Point Theorem to prove that for any $x_0 > 0$
-the sequence $\displaystyle \{x_n\}_{n=0}^{\infty}$ converges to the
+the sequence $\DS \{x_n\}_{n=0}^{\infty}$ converges to the
 unique positive fixed point of $f$.\\
 Hint: Show first that if $0<x_0<\sqrt{a}$, then $x_1 \geq \sqrt{a}$.
 Then show that $g$ satisfies the Fixed Point Theorem on any interval
@@ -2276,12 +2276,12 @@ of the form $[\sqrt{a},m]$.
 p = \frac{p}{2} + \frac{a}{2p} \ .
 \]
 If we multiply both sides of the equality by $2$ and subtract $p$ from
-both sides, we get $p = a/p$.  Thus $\displaystyle p^2=a$ or
+both sides, we get $p = a/p$.  Thus $\DS p^2=a$ or
 $p=\sqrt{a}$ since we assume that $a>0$.
 
-\subQ{b} Suppose that $x>0$.  Since $\displaystyle (x-\sqrt{a})^2 >0$, we get
-that $\displaystyle x^2 -2\sqrt{a} x + a >0$.  Thus
-$\displaystyle x^2 + a > 2\sqrt{a} x$ and,
+\subQ{b} Suppose that $x>0$.  Since $\DS (x-\sqrt{a})^2 >0$, we get
+that $\DS x^2 -2\sqrt{a} x + a >0$.  Thus
+$\DS x^2 + a > 2\sqrt{a} x$ and,
 after division by $2x$ on both side of the inequality, we have
 \[
 g(x) = \frac{x}{2} + \frac{a}{2x} > \sqrt{a} \ .
@@ -2312,25 +2312,25 @@ for all $x\in [\sqrt{a},m]$.
 |g'(x)| = \left| \frac{1}{2} - \frac{a}{2x^2} \right|
 = \frac{1}{2} - \frac{a}{2x^2} \leq \frac{1}{2}
 \]
-because $\displaystyle x^2 \geq a$.  Hence,
+because $\DS x^2 \geq a$.  Hence,
 $|f(x) - f(y) \leq K |x-y|$ for all $x,y \in [\sqrt{a},m]$ with
 $K = 1/2 <1$ according to Remark~\ref{FxPtThDer}.
 \end{enumerate}
 
 For any $m>\sqrt{a}$, we have from the Fixed Point Theorem that the
 function $g$ has an unique fixed point in $[\sqrt{a},m]$ and the
-sequence $\displaystyle \{x_n\}_{n=0}^{\infty}$ converge to this fixed
+sequence $\DS \{x_n\}_{n=0}^{\infty}$ converge to this fixed
 point for any $x_0 \in [\sqrt{a},m]$.   Thus, since $\sqrt{a}$ is a
 unique fixed point for $x>0$, the sequence
-$\displaystyle \{x_n\}_{n=0}^{\infty}$
+$\DS \{x_n\}_{n=0}^{\infty}$
 converges to the fixed point $\sqrt{a}$ whatever $x_0\geq \sqrt{a}$.
 
 Since $x_1 = g(x_0) \geq \sqrt{a}$ for all $x_0>0$,
-the sequence $\displaystyle \{x_n\}_{n=0}^{\infty}$
+the sequence $\DS \{x_n\}_{n=0}^{\infty}$
 converges to the fixed point $\sqrt{a}$ whatever $x_0>0$
 because the sequences
-$\displaystyle \{x_n\}_{n=0}^{\infty}$ and
-$\displaystyle \{x_n\}_{n=1}^{\infty}$ have the same limit.
+$\DS \{x_n\}_{n=0}^{\infty}$ and
+$\DS \{x_n\}_{n=1}^{\infty}$ have the same limit.
 }
 
 \begin{question}
@@ -2338,7 +2338,7 @@ $\displaystyle \{x_n\}_{n=1}^{\infty}$ have the same limit.
 $f(a)f(b)<0$, prove that $f$ has a unique zero in the open interval
 $]a,b[$.\\
 \subQ{b} Find $\lambda$ such that the sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$ generated by the iteration
+$\DS \{x_n\}_{n=0}^\infty$ generated by the iteration
 $x_{n+1} = x_n +\lambda f(_n)$ for $n=0$, $1$, $2$, \ldots\ converges
 to a zero of $f$.
 \end{question}
@@ -2399,7 +2399,7 @@ Suppose that $g$ is a continuously differentiable function on an
 interval $[a,b]$.  Let $m=(a+b)/2$ be the middle point of the interval
 $[a,b]$.  If $|g'(x)| < 1$ for all $x\in [a,b]$ and
 $g(m)=m$, prove or disprove that the sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$
+$\DS \{x_n\}_{n=0}^\infty$
 defined by $x_{n+1} = g(x_n)$ converges to the fixed point $m$ of $g$ in
 $[a,b]$ whatever the choice of $x_0 \in[a,b]$.
 \end{question}
@@ -2431,19 +2431,19 @@ according to Remark~\ref{FxPtThDer}.
 Suppose that $g:\RR\rightarrow \RR$ is a continuously differentiable
 function and that $p$ is a fixed point of $g$ such that $|g'(p)| > 1$.
 Prove or disprove that for all $x_0\in \RR$ the sequence
-$\displaystyle \{x_n\}_{n=0}^\infty$ does not converge to $p$.  If there are
-sequences $\displaystyle \{x_n\}_{n=0}^\infty$ that converge to $p$,
+$\DS \{x_n\}_{n=0}^\infty$ does not converge to $p$.  If there are
+sequences $\DS \{x_n\}_{n=0}^\infty$ that converge to $p$,
 describe all of them.
 \end{question}
 
 \sol{\SOL}{
-It is clear that if $\displaystyle \{x_n\}_{n=0}^\infty$ is a sequence
+It is clear that if $\DS \{x_n\}_{n=0}^\infty$ is a sequence
 defined by $x_{n+1} = g(x_n)$ for $n \geq 0$ such that
 $x_N = p$ for some $N$, then $x_n = p$ for all $n \geq N$ because
-$g(p) =p$.  Thus, $\displaystyle \{x_n\}_{n=0}^\infty$ converges to
+$g(p) =p$.  Thus, $\DS \{x_n\}_{n=0}^\infty$ converges to
 $p$ in a finite number of iterations.
 
-Are there other sequences $\displaystyle \{x_n\}_{n=0}^\infty$ that
+Are there other sequences $\DS \{x_n\}_{n=0}^\infty$ that
 converge to $p$?  To show that there are no other sequence converging
 to $p$ requires a little bit of work.
 
@@ -2463,7 +2463,7 @@ $[p-\delta, p+\delta]$, such that
 \geq K|x-p| > |x-p| \ .
 \]
 
-Suppose that $\displaystyle \{x_n\}_{n=0}^\infty$ is a sequence defined by
+Suppose that $\DS \{x_n\}_{n=0}^\infty$ is a sequence defined by
 $x_{n+1} = g(x_n)$ for $n \geq 0$ such that $x_n \neq p$ for all $n$.
 Suppose also that this sequence also converges to the fixed point $p$
 of $g$.  By definition of convergence, there exists $N>0$ such that
@@ -2475,15 +2475,15 @@ $x_n \in [p-\delta, p+\delta]$ for all $n>N$ implies that
 for all $n>N$ as we have shown above.  It follows by induction that
 $|x_n - p| \geq |x_{N+1}-p| > 0$ for $n>N$.   The distance between $x_n$
 and $p$ does not go to zero.  This is a contradiction that
-$\displaystyle \{x_n\}_{n=0}^\infty$ is a sequence converging to the
+$\DS \{x_n\}_{n=0}^\infty$ is a sequence converging to the
 fixed point $p$.
 }
 
 \begin{question}
 Suppose that $|g'(x)| \leq \lambda < 1$ for all
 $x \in [x_0-\rho,x_0+\rho]$, where
-$\displaystyle \rho = \frac{|g(x_0)-x_0|}{1-\lambda}$.
-Prove that the sequence $\displaystyle \{x_n\}_{n=0}^\infty$ defined by
+$\DS \rho = \frac{|g(x_0)-x_0|}{1-\lambda}$.
+Prove that the sequence $\DS \{x_n\}_{n=0}^\infty$ defined by
 $x_{n+1} = g(x_n)$ for $n \geq 0$ converges to a fixed point of $g$ in
 the interval $[x_0-\rho,x_0+\rho]$.
 \end{question}
@@ -2515,7 +2515,7 @@ $g(x) \in [x_0 -\rho, x_0+\rho]$ for all $x \in [x_0-\rho, x_0+\rho]$.
 \begin{question}
 Prove or disprove that if $f$ is a contraction on $[a,b]$, then $f$
 has a unique fixed point and the iterative system $x_{n+1} = f(x_n)$
-for $n \geq 0$ yields a sequence $\displaystyle \{x_n\}_{n=0}^\infty$
+for $n \geq 0$ yields a sequence $\DS \{x_n\}_{n=0}^\infty$
 that converges toward this root whatever the choice of $x_0 \in [a,b]$. 
 \end{question}
 
@@ -2535,9 +2535,9 @@ the Fixed Point Theorem (verify this).  The fixed point is $2\in[1,3]$.
 
 \begin{question}
 Suppose that $f$ is $m$ times continuously differentiable.  Show that
-$\displaystyle f(x) = (x-p)^m q(x)$ with $q(p) \neq 0$  if and only if
-$\displaystyle f(p) = f'(p) = ... = f^{(m-1)}(p) = 0$ and
-$\displaystyle f^{(m)}(p) \neq 0$; namely,
+$\DS f(x) = (x-p)^m q(x)$ with $q(p) \neq 0$  if and only if
+$\DS f(p) = f'(p) = ... = f^{(m-1)}(p) = 0$ and
+$\DS f^{(m)}(p) \neq 0$; namely,
 if and only if $f$ has a zero of multiplicity $m$ at $p$.
 \label{solvAQ29}
 \end{question}
@@ -2553,24 +2553,24 @@ r_{m-1}(x) = \frac{1}{m!}\,f^{(m)}(\xi)\,(x-p)^m
 \]
 for $\xi(x)$ in the interval with endpoints $x$ and $p$.  Since,
 $f^{(j)}(p) = 0$ for $0 \leq j < m$, we have that $p_{m-1}(x) = 0$ for
-all $x$.  Thus $\displaystyle f(x) = r_{m-1}(x) = q(x) \, (x-p)^m$ with
-$\displaystyle q(x) = \frac{1}{m!}\,f^{(m)}(\xi(x))$.
+all $x$.  Thus $\DS f(x) = r_{m-1}(x) = q(x) \, (x-p)^m$ with
+$\DS q(x) = \frac{1}{m!}\,f^{(m)}(\xi(x))$.
 
 Since $\xi(x)$ is between $x$ and $p$, we have
-that $\displaystyle \lim_{x\to p} \xi(x) = p$.  Therefore, since
-$\displaystyle f^{(m)}$ is continuous, we have
+that $\DS \lim_{x\to p} \xi(x) = p$.  Therefore, since
+$\DS f^{(m)}$ is continuous, we have
 \[
   \lim_{x\to p} q(x) = \frac{1}{m!}\,f^{(m)}(p) \neq 0 \ .
 \]
 Note that $q$ is a continuous function on $\RR\setminus \{p\}$
-because $\displaystyle q(x) = \frac{f(x)}{(x-p)^m}$ for $x \neq p$,
-where $f$ and $\displaystyle (x-p)^m$ are continuous functions of $x$.
+because $\DS q(x) = \frac{f(x)}{(x-p)^m}$ for $x \neq p$,
+where $f$ and $\DS (x-p)^m$ are continuous functions of $x$.
 The function $q$ is also continuous at $p$ because
-$\displaystyle \lim_{x\to p} \frac{f(x)}{(x-p)^m} =
+$\DS \lim_{x\to p} \frac{f(x)}{(x-p)^m} =
 \frac{1}{m!}\, f^{(m)}(p) = q(p)$ according to l'Hospital Rule. 
 
 \stage{$\mathbf{\Rightarrow}$}
-From $\displaystyle f(x) = (x-p)^m q(x)$, we have by induction that
+From $\DS f(x) = (x-p)^m q(x)$, we have by induction that
 \begin{equation} \label{solveA29eq1} 
 f^{(k)}(x) = \sum_{j=0}^k \binom{k}{j} C_j (x-p)^{m-j} q^{(k-j)}(x)
 \end{equation}
@@ -2581,7 +2581,7 @@ C_j = \begin{cases}
 m(m-1)\ldots(m-j+1) & \qquad \text{if} \quad j>0
 \end{cases}
 \]
-Hence, $\displaystyle f^{(k)}(p) = 0$ for $0\leq k <m$ because each term in
+Hence, $\DS f^{(k)}(p) = 0$ for $0\leq k <m$ because each term in
 (\ref{solveA29eq1}) has a factor $(x-p)$.  For $k=m$, we get
 \[
 f^{(m)}(p) = \binom{m}{m} C_m q(p)
@@ -2644,29 +2644,29 @@ From $F'(r) = 0$, we get that
 \[
 0 = 1 +f'(r)g(r) + f(r)g'(r) = 1 + f'(r)g(r)
 \]
-because $f(r)=0$.  Hence $\displaystyle g(r) = -\frac{1}{f'(r)}$.
+because $f(r)=0$.  Hence $\DS g(r) = -\frac{1}{f'(r)}$.
 From $F''(r) = 0$, we get that
 \[
 0 = f''(r)g(r) + 2f'(r)g'(r) + f(r)g''(r)
 = -\frac{f''(r)}{f'(r)} + 2f'(r)g'(r)
 \]
-because $f(r)=0$ and $\displaystyle g(r) = -\frac{1}{f'(r)}$.  Hence
-$\displaystyle g'(r) = \frac{f''(r)}{2(f'(r))^2}$.  From $F'''(r) \neq 0$,
+because $f(r)=0$ and $\DS g(r) = -\frac{1}{f'(r)}$.  Hence
+$\DS g'(r) = \frac{f''(r)}{2(f'(r))^2}$.  From $F'''(r) \neq 0$,
 we get that
 \begin{align*}
 0 &\neq f'''(r)g(r) + 3 f''(r)g'(r) + 3 f'(r)g''(r) + f(r)g'''(r) \\
 &= -\frac{f'''(x)}{f'(r)} + \frac{3(f''(r))^2}{2(f'(r))^2}
 + 3 f'(r) g''(r)
 \end{align*}
-because $f(r)=0$, $\displaystyle g(r) = -\frac{1}{f'(r)}$ and
-$\displaystyle g'(r) = \frac{f''(r)}{2(f'(r))^2}$.  Hence
-$\displaystyle g''(r) \neq
+because $f(r)=0$, $\DS g(r) = -\frac{1}{f'(r)}$ and
+$\DS g'(r) = \frac{f''(r)}{2(f'(r))^2}$.  Hence
+$\DS g''(r) \neq
 \frac{f'''(x)}{3(f'(r))^2} - \frac{(f''(r))^2}{2(f'(r))^3}$.
 
 The conditions on $g$ are 
-$\displaystyle g(r) = -\frac{1}{f'(r)}$,
-$\displaystyle g'(r) = \frac{f''(r)}{2(f'(r))^2}$ and
-$\displaystyle g''(r) \neq
+$\DS g(r) = -\frac{1}{f'(r)}$,
+$\DS g'(r) = \frac{f''(r)}{2(f'(r))^2}$ and
+$\DS g''(r) \neq
 \frac{f'''(x)}{3(f'(r))^2} - \frac{(f''(r))^2}{2(f'(r))^3}$.
 }
 
@@ -2674,11 +2674,11 @@ $\displaystyle g''(r) \neq
 Which of the following sequences converge quadratically?
 \begin{center}
 \begin{tabular}{*{2}{l@{\hspace{1em}}l@{\hspace{2.5em}}}l@{\hspace{1em}}l}
-\subQ{a} & $\displaystyle \left\{\frac{1}{n^2}\right\}_{n=1}^\infty$ &
-\subQ{b} & $\displaystyle \left\{\frac{1}{2^{2^n}}\right\}_{n=0}^\infty$ &
-\subQ{c} & $\displaystyle \left\{\frac{1}{\sqrt{n}}\right\}_{n=1}^\infty$ \\
-\subQ{d} & $\displaystyle \left\{\frac{1}{e^n}\right\}_{n=0}^\infty$ &
-\subQ{e} & $\displaystyle \left\{\frac{1}{n^n}\right\}_{n=1}^\infty$ & &
+\subQ{a} & $\DS \left\{\frac{1}{n^2}\right\}_{n=1}^\infty$ &
+\subQ{b} & $\DS \left\{\frac{1}{2^{2^n}}\right\}_{n=0}^\infty$ &
+\subQ{c} & $\DS \left\{\frac{1}{\sqrt{n}}\right\}_{n=1}^\infty$ \\
+\subQ{d} & $\DS \left\{\frac{1}{e^n}\right\}_{n=0}^\infty$ &
+\subQ{e} & $\DS \left\{\frac{1}{n^n}\right\}_{n=1}^\infty$ & &
 \end{tabular}
 \end{center}
 \end{question}
@@ -2744,14 +2744,14 @@ Only the sequence in (b) converges quadratically.
 
 \begin{question}
 \subQ{a} Show that the convergence of the sequence
-$\displaystyle p_n = 10^{-k^n}$ to $0$ is of order $k$.\\
-\subQ{b} Show that the sequence $\displaystyle p_n = 10^{-n^k}$ does
+$\DS p_n = 10^{-k^n}$ to $0$ is of order $k$.\\
+\subQ{b} Show that the sequence $\DS p_n = 10^{-n^k}$ does
 not converge to $0$ quadratically regardless of the size of the
 exponent $k > 1$.
 \end{question}
 
 \sol{\SOL}{
-\subQ{a} Let $\displaystyle e_n = 10^{-k^n} - 0$.  We have
+\subQ{a} Let $\DS e_n = 10^{-k^n} - 0$.  We have
 \[
 \frac{|e_{n+1}|}{|e_n|^\alpha}
 = \frac{10^{-k^{n+1}}}{\left(10^{-k^n}\right)^\alpha}
@@ -2768,7 +2768,7 @@ Hence,
 \]
 The order of convergence is $\alpha = k$.
 
-\subQ{b} Let $\displaystyle e_n = 10^{-n^k}-0$.  We have
+\subQ{b} Let $\DS e_n = 10^{-n^k}-0$.  We have
 \[
 \frac{|e_{n+1}|}{|e_n|^\alpha}
 = \frac{10^{-(n+1)^k}}{\left(10^{-n^k}\right)^\alpha}
@@ -2776,7 +2776,7 @@ The order of convergence is $\alpha = k$.
 \ ,
 \]
 where \mbox{l.o.t.} stands for the terms in
-$\displaystyle n^j$ with $0 \leq j < n-1$.
+$\DS n^j$ with $0 \leq j < n-1$.
 Hence,
 \[
 \lim_{n\rightarrow \infty} \frac{|e_{n+1}|}{|e_n|^\alpha} =
@@ -2794,8 +2794,8 @@ There is nothing in between.  Recall that according to the binomial theorem,
 }
 
 \begin{question}
-Solve $\displaystyle x - 2^{-x} = 0$ for $x \in [0,1]$ with an
-accuracy of $\displaystyle 10^{-4}$ using Steffensen's Algorithm.
+Solve $\DS x - 2^{-x} = 0$ for $x \in [0,1]$ with an
+accuracy of $\DS 10^{-4}$ using Steffensen's Algorithm.
 \end{question}
 
 \begin{question}
@@ -2803,7 +2803,7 @@ Use the method of deflation to approximate all the roots of
 \[
 p(x) = x^3 - 5.974925987\,x^2 + 9.734512519\,x -2.617993878
 \]
-with an accuracy of $\displaystyle 10^{-10}$.  Do not used any formula
+with an accuracy of $\DS 10^{-10}$.  Do not used any formula
 to computer the roots of a polynomial of degree two.
 \end{question}
 
@@ -2813,18 +2813,18 @@ All the results of the computations below will be displayed using
 the end.
 
 Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
-with $x_0=1$ and a tolerance of $\displaystyle 10^{-10}$, we find
+with $x_0=1$ and a tolerance of $\DS 10^{-10}$, we find
 $r_0 = 0.333333333308985$ as an approximation of a root of $p$.
 
 The deflated polynomial $q_1$ such that $p(x) = (x-r_0) q_1(x)$ is\\
-$\displaystyle q_1(x) = x^2 -5.641592653691014 x + 7.853981634573692$\ .
+$\DS q_1(x) = x^2 -5.641592653691014 x + 7.853981634573692$\ .
 
 Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
-with $x_0=1$ and a tolerance of $\displaystyle 10^{-10}$, we find
+with $x_0=1$ and a tolerance of $\DS 10^{-10}$, we find
 $r_1 = 2.500000000539526$ as an approximation of a root of $q_1$.
 
 Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
-with $x_0=r_1$ and a tolerance of $\displaystyle 10^{-10}$, we find
+with $x_0=r_1$ and a tolerance of $\DS 10^{-10}$, we find
 $c_1 = 2.500000000539525$ as an approximation of a root of $p$.
 
 The deflated polynomial $q_2$ such that $q_1(x) = (x-r_1) q_2(x)$ is\\
@@ -2834,7 +2834,7 @@ we have that $r_2 = 3.141592653151490$ as an approximation of a
 root of $q_2$.
 
 Finally, using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
-with $x_0=r_2$ and a tolerance of $\displaystyle 10^{-10}$, we find
+with $x_0=r_2$ and a tolerance of $\DS 10^{-10}$, we find
 $c_2 = 3.141592653151491$ as an approximation of a root of $p$.
 
 If $c_0 = r_0$, the approximations of the roots of $p$ are
@@ -2845,8 +2845,8 @@ only the last digit of $c_1$ and $c_2$ is wrong.
 
 \begin{question}
 Use the method of deflation to approximate all the roots of
-$\displaystyle p(x) = x^4 -2 x^3 -12 x^2 + 16 x -40$ with an accuracy
-of $\displaystyle 10^{-9}$. 
+$\DS p(x) = x^4 -2 x^3 -12 x^2 + 16 x -40$ with an accuracy
+of $\DS 10^{-9}$. 
 You must use Newton's method with Horner's Algorithm.
 \end{question}
 
@@ -2856,30 +2856,30 @@ All the results of the computations below will be displayed using
 the end.
 
 Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
-with $x_0=1$ and a tolerance of $\displaystyle 10^{-9}$, we find
+with $x_0=1$ and a tolerance of $\DS 10^{-9}$, we find
 $r_0 = -3.548232897979703$ as an approximation of a root of $p$.
 
 The deflated polynomial $q_1$ such that $p(x) = (x-r_0) q_1(x)$ is\\
-$\displaystyle q_1(x) = x^3 -5.548232897979703 x^2 + 7.686422494264843 x
+$\DS q_1(x) = x^3 -5.548232897979703 x^2 + 7.686422494264843 x
 -11.273217161921718$\ .
 
 Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
-with $x_0=1$ and a tolerance of $\displaystyle 10^{-9}$, we find
+with $x_0=1$ and a tolerance of $\DS 10^{-9}$, we find
 $r_1 = 4.381113440995944$ as an approximation of a root of $q_1$.
 
 Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
-with $x_0=r_1$ and a tolerance of $\displaystyle 10^{-9}$, we find
+with $x_0=r_1$ and a tolerance of $\DS 10^{-9}$, we find
 $c_1 = 4.381113440995943$ as an approximation of a root of $p$.
 
 The deflated polynomial $q_2$ such that $q_1(x) = (x-r_1) q_2(x)$ is\\
-$\displaystyle q_2(x) =  x^2 -1.167119456983760 x + 2.573139754025407$\ .
+$\DS q_2(x) =  x^2 -1.167119456983760 x + 2.573139754025407$\ .
 
 The polynomial $q_2$ has two complex roots that can be found with the
 formula to find the roots of a quadratic polynomial.  They are
 $r_2 = 0.583559728491880 + 1.494188006011255\, i$ and
 $r_3 = 0.583559728491880 - 1.494188006011255\, i$.
 Using Newton's Method with Horner's Algorithm, Code~\ref{NRHorner},
-with $x_0=r_2$ and a tolerance of $\displaystyle 10^{-9}$, we find
+with $x_0=r_2$ and a tolerance of $\DS 10^{-9}$, we find
 $c_2 = 0.583559728491880 + 1.494188006011255\,i$ as an approximation of
 a root of $p$.  Similarly, with $x_0 = r_3$, we find
 $c_3 = 0.583559728491880 - 1.494188006011255\,i$ as an approximation of
@@ -2893,8 +2893,8 @@ for the $c_i$, we have that all the $9$ digits are right.
 
 \begin{question}
 Use the method of deflation to approximate all the roots of
-$\displaystyle x^3 - 53 x^2 + 151 x - 3$ with an accuracy of
-$\displaystyle 10^{-3}$.
+$\DS x^3 - 53 x^2 + 151 x - 3$ with an accuracy of
+$\DS 10^{-3}$.
 You must use Newton's method with Horner's Algorithm.
 \end{question}
 
@@ -2909,7 +2909,7 @@ Use the method of deflation to approximate all the roots of
 \[
 x^4-10.07251864 x^3+34.83068793 x^2-44.63745043 x+11.36978427
 \]
-with an acuracy of $\displaystyle 10^{-5}$.
+with an acuracy of $\DS 10^{-5}$.
 You must use Newton's method with Horner's Algorithm.
 \end{question}
 

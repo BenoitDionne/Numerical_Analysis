@@ -206,7 +206,7 @@ Euler's method.}{eulergraph}
 equally spaced.  However, the mesh points $t_i$ do not have to be 
 equally spaced.  We may simply require that $h_i = t_{i+1} - t_i$ for
 $0\leq i < N$ satisfy
-$\displaystyle \max_{0\leq i <N}\,|h_i| < K \min_{0\leq i <N}\,|h_i|$
+$\DS \max_{0\leq i <N}\,|h_i| < K \min_{0\leq i <N}\,|h_i|$
 for a constant $K$.
 \item The Euler's method can be justified as follows.  Suppose that $f$
 is continuously differential with respect to both variables.
@@ -222,13 +222,13 @@ the previous equation, we get
 y_{i+1} = y_i + f(t_i,y_i)\,h + \frac{y''(\xi_i)}{2}\,h^2
 \end{equation}
 for some $\xi_i$ between $t_i$ and $t_{i+1}$.  If we assume that
-$\displaystyle y''(\xi_i)h^2/2$ is much smaller than
+$\DS y''(\xi_i)h^2/2$ is much smaller than
 $y_i + f(t_i,y_i)\,h$ for all
 $i$ and for $h$ small enough, we get the Euler's method by removing this
 term from (\ref{Eulerexact}).
 \item The
 {\bfseries local discretization error}\index{Initial Value Problems!Local
-Discretization Error} for the Euler's method is $\displaystyle y''(\xi_i)h^2/2$.
+Discretization Error} for the Euler's method is $\DS y''(\xi_i)h^2/2$.
 \end{enumerate}
 \end{rmkList}
 
@@ -264,7 +264,7 @@ i & t_i & w_i & y_i & \text{absolute} & \text{relative} \\
 \end{array}
 \]
 Since the differential equation in (\ref{ODE_EX1}) is separable, it is
-easy to find the exact solution $\displaystyle y(t) = e^{0.1t^2 -0.1}$ of
+easy to find the exact solution $\DS y(t) = e^{0.1t^2 -0.1}$ of
 (\ref{ODE_EX1}).  We have used this formula to compute $y_i$.
 Our approximation $w_5$ of $y_5$ has a relative error of about $0.64$
 \%.  This is good.
@@ -303,7 +303,7 @@ i & t_i & w_i & y_i & \text{absolute} & \text{relative} \\
 \end{array}
 \]
 Since the differential equation in (\ref{ODE_EX2}) is separable, it is
-easy to find the exact solution $\displaystyle y(t) = e^{t^2 -1}$ of
+easy to find the exact solution $\DS y(t) = e^{t^2 -1}$ of
 (\ref{ODE_EX2}).  We have used this formula to compute $y_i$.
 Our approximation $w_5$ of $y_5$ has a relative error of about $16.12$ \%.
 This is not good.  The Euler's method does not give good
@@ -432,7 +432,7 @@ Hence,
 &= \frac{1}{L}\left(\frac{Mh}{2} + \frac{\delta}{h} \right)\left(
 e^{L(t_i-t_0)} - 1 \right) + |\delta_0|\,e^{L(t_i-t_0)} \ ,
 \end{align*}
-where we have used $\displaystyle (1+x)^n \leq e^{nx}$ for $x > 0$ in the second
+where we have used $\DS (1+x)^n \leq e^{nx}$ for $x > 0$ in the second
 inequality, and $ih = t_i -t_0$ in the last equality.
 \end{proof}
 
@@ -455,7 +455,7 @@ to rounding error.  Theorem~\ref{Eulererrorbound} suggests that
 e^{L(t_i-t_0)} - 1 \right) + |\delta_0|\,e^{L(t_i-t_0)} \ ,
 \]
 where the factor
-$\displaystyle \frac{Mh}{2} + \frac{\delta}{h}$ goes to infinity as
+$\DS \frac{Mh}{2} + \frac{\delta}{h}$ goes to infinity as
 $h$ goes to $0$.
 \end{enumerate}
 \end{rmkList}
@@ -487,7 +487,7 @@ with $y_i = y(t_i)$ for $i=0$, $1$, $2$,\ldots, $N$.
 If there exist a function $\tau:\RR\to\RR$ such that
 $|\tau_{i+1}(h) | \leq \tau(h)$ for all $i$, and a positive
 integer $k$ (as large as possible) such that
-$\displaystyle \tau(h) = O(h^k)$ near
+$\DS \tau(h) = O(h^k)$ near
 the origin, then we say that the method (\ref{Taylormethod}) is of
 {\bfseries order k}\index{Initial Value Problems!Order of a Method}.
 \label{localTruncErrorDef}
@@ -507,7 +507,7 @@ $|\tau_{i+1}(h)| \leq \tau(h) \equiv M|h|/2$ for all $i$ and
 $\tau(h) = O(h)$ near the origin.  So, the Euler's method is of order $1$.
 \end{egg}
 
-\begin{rmk} Since $\displaystyle |h^p|$ is a decreasing function of
+\begin{rmk} Since $\DS |h^p|$ is a decreasing function of
 $p$ for $|h|<1$ fixed, the local truncation error is generally smaller
 for high order methods than for low order methods.
 \end{rmk}
@@ -552,7 +552,7 @@ y''(t) &= \dfdx{f(t,y(t))}{t}
 y^{(3)}(t) &= \ldots
 \end{align*}
 Since $h=t_{i+1} -t_i$, $y_i = y(t_i)$, $y'(t_i) = f(t_i,y_i)$,
-$\displaystyle y''(t_i) =
+$\DS y''(t_i) =
 \pdydx{f}{t}(t_i,y_i) + \pdydx{f}{y}(t_i,y_i)\, f(t_i,y_i)$, \ldots, we get
 \begin{equation}\label{HigherMethexact}
 \begin{split}
@@ -563,7 +563,7 @@ y_{i+1} &= y_i + h\underbrace{\left( f(t_i,y_i) + \frac{h}{2} \left(
 \end{split}
 \end{equation}
 for some $\xi_i$ between $t_i$ and $t_{i+1}$.  If we assume that
-$\displaystyle \frac{y^{(n+1)}(\xi_i)}{(n+1)!}\,h^{n+1}$ is small
+$\DS \frac{y^{(n+1)}(\xi_i)}{(n+1)!}\,h^{n+1}$ is small
 for all $i$, we get the Taylor method of order $n$ by removing this
 term from (\ref{HigherMethexact}).
 \item The
@@ -579,9 +579,9 @@ of order $n$ is
 \frac{y^{(n+1)}(\xi_i)}{(n+1)!}h^n
 \]
 for $\xi_i \in [t_i,t_{i+1}]$.  If there exists a constant $M$ such
-that $\displaystyle |y^{(n+1)}(t)| \leq M$ for all $t\in [t_0,t_f]$, then
-$\displaystyle |\tau_{i+1}(h)| \leq \tau(h) \equiv M|h|^n/(n+1)!$ for
-all $i$ and $\displaystyle \tau(h)  = O(h^n)$ near the origin.  This
+that $\DS |y^{(n+1)}(t)| \leq M$ for all $t\in [t_0,t_f]$, then
+$\DS |\tau_{i+1}(h)| \leq \tau(h) \equiv M|h|^n/(n+1)!$ for
+all $i$ and $\DS \tau(h)  = O(h^n)$ near the origin.  This
 justifies the name Taylor method of order $n$.
 \item From a numerical point of view, the Taylor methods of order
 $n>1$ are not very useful.  We may use these methods only when 
@@ -687,8 +687,8 @@ $t_i + \alpha_2 h$ and $t_i + \alpha_3 h$.
 \end{itemize}
 Hence, $K_j$ is an approximation
 of $y'(t)$ at $t_i+\alpha_jh$ for $1\leq j \leq s$ and
-$\displaystyle w_{i+1} = w_i + h \sum_{k=1}^s\,\gamma_k K_k$, where
-$\displaystyle \sum_{k=1}^s\,\gamma_k K_k$ is a weighted average of
+$\DS w_{i+1} = w_i + h \sum_{k=1}^s\,\gamma_k K_k$, where
+$\DS \sum_{k=1}^s\,\gamma_k K_k$ is a weighted average of
 these approximations.
 
 \begin{rmk}
@@ -755,7 +755,7 @@ Its Butcher array is
 \item The motivation for the Runge-Kutta methods of order two is as
 follows.  We assume that all the mixed partial derivatives of
 $f:[t_0,t_f]\times \RR \rightarrow \RR$ exist and are continuous up to
-order two.  Up to $\displaystyle O(h^2)$, we replace the function
+order two.  Up to $\DS O(h^2)$, we replace the function
 $\phi(t,y)$ in the
 Taylor method of order $2$ (Definition~\ref{Tayloralgo}) by an
 expression of the form $\gamma_1 K_1 + \gamma_2 K_2$, where
@@ -777,8 +777,8 @@ Hence
 \end{split}
 \end{equation}
 If we match the coefficients of $f(t,y)$,
-$\displaystyle h\, \pdydx{f}{t}(t,y)$ and 
-$\displaystyle h f(t,y)\, \pdydx{f}{y}(t,y)$ in 
+$\DS h\, \pdydx{f}{t}(t,y)$ and 
+$\DS h f(t,y)\, \pdydx{f}{y}(t,y)$ in 
 (\ref{RKmatch}) with those in
 \[
 \phi(t,y) = f(t,y) + \frac{1}{2} h \, \pdydx{f}{t}(t,y) + \frac{1}{2}
@@ -790,7 +790,7 @@ $\beta_{2,1} \gamma_2 = 1/2$.
 $f:[t_0,t_f]\times \RR \rightarrow \RR$ exist and are continuous up to
 order two, then the local truncation errors of the Runge-Kutta methods
 in Definition~\ref{RK2} are bounded by a function $\tau$ (found for the
-Taylor method of order $2$) such that $\displaystyle \tau(h) = O(h^2)$ near the
+Taylor method of order $2$) such that $\DS \tau(h) = O(h^2)$ near the
 origin as their name suggests.
 \end{enumerate}
 \end{rmkList}
@@ -839,10 +839,10 @@ w_{i+1} & = w_i + \frac{h}{6}(K_1 + 2\,K_2+2\,K_3 + K_4) \quad, \quad
 0 \leq i < N \\
 w_0 & = y_0
 \end{align*}
-where $\displaystyle K_1 = f(t_i,w_i)$,
-$\displaystyle K_2 = f(t_i+ h/2,w_i+ h K_1/2)$,
-$\displaystyle K_3 = f(t_i+h/2,w_i+ h K_2/2)$ and
-$\displaystyle K_4 = f(t_{i+1},w_i+ h K_3)$.
+where $\DS K_1 = f(t_i,w_i)$,
+$\DS K_2 = f(t_i+ h/2,w_i+ h K_1/2)$,
+$\DS K_3 = f(t_i+h/2,w_i+ h K_2/2)$ and
+$\DS K_4 = f(t_{i+1},w_i+ h K_3)$.
 \end{defn}
 
 This method is often called the
@@ -870,7 +870,7 @@ above.}{RKclassic}
 \item The motivation for the Runge-Kutta methods of order four is as
 follows.  We assume that all the mixed partial derivatives of
 $f:[t_0,t_f]\times \RR \rightarrow \RR$ exist and are continuous up to
-order four.  Up to $\displaystyle O(h^4)$, we replace the function
+order four.  Up to $\DS O(h^4)$, we replace the function
 $\phi(t,y)$ in the Taylor method of order $4$
 (Definition~\ref{Tayloralgo}) by an
 expression of the form $\gamma_1 K_1 + \gamma_2 K_2 + \gamma_3 K_3 +
@@ -905,8 +905,8 @@ Runge-Kutta methods.
 \item If we assume that all the mixed partial derivatives of
 $f:[t_0,t_f]\times \RR \rightarrow \RR$ exist and are continuous up to
 order four, then the local truncation error of the Runge-Kutta method
-in the previous definition is $\displaystyle O(h^4)$ as its name suggests.
-\item Note that $\displaystyle \sum_{j=1}^s \gamma_j = 1$ is a
+in the previous definition is $\DS O(h^4)$ as its name suggests.
+\item Note that $\DS \sum_{j=1}^s \gamma_j = 1$ is a
 necessary condition for the s-stage Runge-Kutta method to be of
 order $s$.
 \item There is no explicit Runge-Kutta method of order $s$ for
@@ -1143,20 +1143,20 @@ $\beta_{i,m}$ and $\gamma_m$ are uniquely determined by
 \end{rmkList}
 
 We state the next proposition in the context of an initial value
-problem in $\displaystyle \RR^n$; namely,
-$\displaystyle f:[t_0,t_f]\times \RR^n \to \RR^n$ with
+problem in $\DS \RR^n$; namely,
+$\DS f:[t_0,t_f]\times \RR^n \to \RR^n$ with
 $n>1$.  The statement of this proposition is more interesting in this
 context despite the fact that we will only use it for $n=1$. 
 
 \begin{prop}[Alekseev-Gr\"{o}bner Lemma]
-Let $\displaystyle \VEC{y}:[a,b] \rightarrow \RR^n$ be the solution of
+Let $\DS \VEC{y}:[a,b] \rightarrow \RR^n$ be the solution of
 \begin{align*}
 \VEC{y}'(t) &= f(t,\VEC{y}(t)) \quad, \quad t_0 \leq t \leq t_f \\
 \VEC{y}(t_0) & = \VEC{y}_0
 \end{align*}
-where the function $\displaystyle f:[t_0,t_f]\times \RR^n \to \RR^n$
+where the function $\DS f:[t_0,t_f]\times \RR^n \to \RR^n$
 is continuously differentiable.  Suppose that
-$\displaystyle \VEC{v}:[t_0,t_f]\rightarrow \RR^n$ is
+$\DS \VEC{v}:[t_0,t_f]\rightarrow \RR^n$ is
 a continuously differentiable function and $\VEC{v}(t_0) = \VEC{y}_0$.
 Then $\VEC{v}$ satisfies
 \[
@@ -1182,7 +1182,7 @@ Consider the initial value problem
 y'(t) &= a y(t) \quad , \quad t_0 \leq t \leq t_f\\
 y(t_0) &= y_0
 \end{align*}
-Its solution is $\displaystyle y(t) = e^{a(t-t_0)}y_0$ for $t_0 \leq t \leq t_f$.
+Its solution is $\DS y(t) = e^{a(t-t_0)}y_0$ for $t_0 \leq t \leq t_f$.
 
 Suppose that $v:[t_0,t_f]\rightarrow \RR$ is a continuously
 differentiable function such that $v(t_0) = y_0$.  Consider the
@@ -1191,7 +1191,7 @@ initial value problem
 u'(t) &= a u(t) \quad , \quad t \geq s\\
 u(s) &= w
 \end{align*}
-Its solution is $\displaystyle u(t) = e^{a(t-s)}w$ for $t \geq s$.
+Its solution is $\DS u(t) = e^{a(t-s)}w$ for $t \geq s$.
 
 According to Alekseev-Gr\"{o}bner Lemma, we have
 \begin{equation}\label{AlekGrobegg}
@@ -1209,7 +1209,7 @@ where $g(t) = v'(t) - av(t)$ for $t_0 \leq t \leq t_f$, is given by
 \end{egg}
 
 \begin{theorem}
-Let $\displaystyle q(t) = \prod_{j=1}^k\,(t-\alpha_j)$, where the
+Let $\DS q(t) = \prod_{j=1}^k\,(t-\alpha_j)$, where the
 $\alpha_j$ are the nodes given in Definition~\ref{RK_coll}.  Suppose
 that $m$ is the largest integer such that $0 < m \leq k$ and
 \begin{equation} \label{coll_ord_cond} 
@@ -1262,7 +1262,7 @@ that there exist a constant $K = K(k,m,\gamma_j)$ such that
 \leq K h^{k+m}\,\max_{a\leq t \leq b}\, \left| g^{(k+m)}(t) \right|
 \end{align*}
 for $0\leq i <N$.  Let
-$\displaystyle \phi(t_i,w_i) = \sum_{j=1}^k\gamma_j K_j$ be the
+$\DS \phi(t_i,w_i) = \sum_{j=1}^k\gamma_j K_j$ be the
 formula for the Runge-Kutta method provided by the collocation method.
 Then
 \begin{align*}
@@ -1275,13 +1275,13 @@ Then
 for some $\xi_i$ between $w_i$ and $w_i - E_{i-1}$ is we assume that
 $|h|\leq 1$.
 
-Since $\displaystyle E_i = O(h^{k+m})$ near the origin for all $i$, we
+Since $\DS E_i = O(h^{k+m})$ near the origin for all $i$, we
 may assume that there exists an interval $[c,d]$ such that $w_i$ and
 $w_i-E_i$ are in $[c,d]$ for all $i$ and all small $h$ (i.e.\ for all
 partitions $a \leq t_0 < t_1 < \dots < t_N = b$ with $t_{i+1}-t_i=h$ small
 enough).  Since $\phi$ is composed of $f$ and some of its partial
 derivatives, there exists a constant $M$ such that
-$\left|\displaystyle \pdydx{\phi}{w}(t,w)\right| \leq M$ for all
+$\left|\DS \pdydx{\phi}{w}(t,w)\right| \leq M$ for all
 $(t,w) \in [a,b]\times [c,d]$.
 Hence
 \[
@@ -1301,7 +1301,7 @@ y(0) &= 0  \qedhere
 \end{proof}
 
 \begin{cor}
-Let $\displaystyle q(t) = \prod_{j=1}^k\,(t-\alpha_j)$, where the
+Let $\DS q(t) = \prod_{j=1}^k\,(t-\alpha_j)$, where the
 $\alpha_j$ are the nodes used in the collocation method given in
 Definition~\ref{RK_coll}.  Suppose that
 \[ 
@@ -1330,7 +1330,7 @@ empty sum is defined to be $0$, the neutral element for the addition.}
 \]
 This is the Implicit Midpoint Rule.
 
-Suppose that $\displaystyle q(t) = t^2 -t + 1/6$, the Gauss-Legendre
+Suppose that $\DS q(t) = t^2 -t + 1/6$, the Gauss-Legendre
 polynomial of degree $2$.  $q(t) = (t-\alpha_1)(t-\alpha_2)$, where
 $\alpha_1 = (3- \sqrt{3})/6$ and $\alpha_2 = (3 + \sqrt{3})/6$.  The
 previous Corollary is satisfied with $k=2$.  From
@@ -1353,7 +1353,7 @@ In this section, we will use trees to derive Runge-Kutta methods.
 None of the results from graph theory will be proved.  There are many
 excellent introductory books on graph theory that the reader may consult.
 Moreover, we will consider initial value problems like (\ref{ODE}) where
-$\displaystyle f:[t_o,t_f]\times \RR^n \to \RR^n$ with $n>1$.  Namely, we will
+$\DS f:[t_o,t_f]\times \RR^n \to \RR^n$ with $n>1$.  Namely, we will
 consider the initial value problem
 
 \begin{equation} \label{ODEndim}
@@ -1363,15 +1363,15 @@ consider the initial value problem
 \VEC{y}(t_0) & = \VEC{y}_0 \in \RR^n
 \end{split}
 \end{equation}
-where $\displaystyle f:[t_0,t_f]\times\RR^n \rightarrow \RR^n$ and $n>1$.
+where $\DS f:[t_0,t_f]\times\RR^n \rightarrow \RR^n$ and $n>1$.
 
 It is true that most of what we have said for initial value problems
 with $f:[t_0,t_f]\times \RR \to \RR$ is also true for initial value
-problems with $\displaystyle f:[t_0,t_f]\times \RR^n \to \RR^n$ and
+problems with $\DS f:[t_0,t_f]\times \RR^n \to \RR^n$ and
 $n>1$.  But there are some differences.  One property that is influenced by the
 dimension of the space is the order of the method.  As we will show
 later in this section, some Runge-Kutta methods do not have the same
-order in $\RR$ than in $\displaystyle \RR^n$ with $n>1$.
+order in $\RR$ than in $\DS \RR^n$ with $n>1$.
 
 Some good references on the subject of this section are
 \cite{B,I,La,Lb}.  The proof of many of the results stated in this
@@ -1383,34 +1383,34 @@ references to the publications on the rooted tree approach.
 For simplicity and without too much lost of generality, we assume that
 $f$ in (\ref{ODEndim}) is independent of $t$.
 
-Let $\displaystyle \LL^{m}(\RR^n,\RR^n)$ be the space of multilinear
+Let $\DS \LL^{m}(\RR^n,\RR^n)$ be the space of multilinear
 mappings from
-$\displaystyle \RR^n \times \RR^n \times \cdots \times \RR^n$ ($m$
-times) to $\displaystyle \RR^n$.
+$\DS \RR^n \times \RR^n \times \cdots \times \RR^n$ ($m$
+times) to $\DS \RR^n$.
 
 \begin{defn}
 The {\bfseries Frechet derivative}\index{Frechet Derivative}
-of degree $n$ of $\displaystyle f:\RR^n \rightarrow \RR^n$ is the mapping
-$\displaystyle \fdiff{f}{m} : \RR^n \to \LL^{m}(\RR^n,\RR^n)$ defined by
+of degree $n$ of $\DS f:\RR^n \rightarrow \RR^n$ is the mapping
+$\DS \fdiff{f}{m} : \RR^n \to \LL^{m}(\RR^n,\RR^n)$ defined by
 \begin{align*}
 &\fdiff{f}{m}(\VEC{y})(\VEC{k}_1,\VEC{k}_2,\ldots,\VEC{k}_m) \\
 & \qquad = \sum_{i=1}^n \left( \sum_{j_1=1}^n \, \sum_{j_2=1}^n \ldots
 \sum_{j_m=1}^n \pdydxdots{f}{y_{j_1}}{y_{j_2}}{y_{j_m}}{m}{}{}{}
 (\VEC{y}) \, k_{1,j_1}\,k_{2,j_2}\ldots k_{m,j_m}  \right) \VEC{e}_i\ ,
 \end{align*}
-where $\displaystyle \VEC{k}_i = \begin{pmatrix}
+where $\DS \VEC{k}_i = \begin{pmatrix}
 k_{i,1} & k_{i,2} & \ldots&\ k_{1,n} \end{pmatrix}^\top$.
 \end{defn}
 
 \begin{egg}
-If $\displaystyle f:\RR^2 \rightarrow \RR^2$,
+If $\DS f:\RR^2 \rightarrow \RR^2$,
 \[
 \fdiff{f}{2}(\VEC{y})(\VEC{k}_1, \VEC{k_2}) =
 \begin{pmatrix}
-\displaystyle
+\DS
 \sum_{j_1=1}^2 \sum_{j_2=1}^2 \pdydxnm{f_1}{y_{j_1}}{y_{j_2}}{2}{}{}(\VEC{y})
 \, k_{1,j_1}\,k_{2,j_2} \\[1em]
-\displaystyle
+\DS
 \sum_{j_1=1}^2 \sum_{j_2=1}^2 \pdydxnm{f_2}{y_{j_1}}{y_{j_2}}{2}{}{}(\VEC{y})
 \, k_{1,j_1}\,k_{2,j_2}
 \end{pmatrix} \ .
@@ -1420,18 +1420,18 @@ If $\displaystyle f:\RR^2 \rightarrow \RR^2$,
 \begin{defn}
 The
 {\bfseries elementary differentials}\index{Runge-Kutta!Elementary Differentials}
-of $\displaystyle f:\RR^n \rightarrow \RR^n$ and their
+of $\DS f:\RR^n \rightarrow \RR^n$ and their
 {\bfseries order}\index{Runge-Kutta!Order of Elementary Differentials}
 are defined recursively.
 \begin{enumerate}
-\item $\displaystyle f:\RR^n \rightarrow \RR^n$ is the only elementary
+\item $\DS f:\RR^n \rightarrow \RR^n$ is the only elementary
 differential of order $1$.
-\item if $\displaystyle g_1:\RR^n\rightarrow \RR^n$,
-$\displaystyle g_2:\RR^n\rightarrow \RR^n$, \ldots,
-$\displaystyle g_r:\RR^n\rightarrow \RR^n$
+\item if $\DS g_1:\RR^n\rightarrow \RR^n$,
+$\DS g_2:\RR^n\rightarrow \RR^n$, \ldots,
+$\DS g_r:\RR^n\rightarrow \RR^n$
 are $r$ elementary differentials of $f$ of order $m_1$, $m_2$,
 \ldots, $m_r$ respectively, then 
-$\displaystyle \fdiff{f}{r}(\cdot)(g_1(\cdot),g_2(\cdot), \ldots,g_r(\cdot))
+$\DS \fdiff{f}{r}(\cdot)(g_1(\cdot),g_2(\cdot), \ldots,g_r(\cdot))
 :\RR^n\rightarrow \RR^n$,
 defined by
 \begin{align*}
@@ -1441,8 +1441,8 @@ defined by
 (\VEC{y}) \, g_{1,j_1}(\VEC{y})\,g_{2,j_2}(\VEC{y}), \ldots
 g_{r,j_r}(\VEC{y})  \right) \VEC{e}_i
 \end{align*}
-for $\displaystyle \VEC{y} \in \RR^n$, is an elementary differential of order
-$\displaystyle 1 +\sum_{i=1}^r\,m_i$ of $\VEC{f}$.
+for $\DS \VEC{y} \in \RR^n$, is an elementary differential of order
+$\DS 1 +\sum_{i=1}^r\,m_i$ of $\VEC{f}$.
 \end{enumerate}
 For simplicity, $\fdiff{f}{r}(\cdot)(g_1(\cdot),g_2(\cdot),\ldots,g_r(\cdot))$
 is denoted $\{g_1\ g_2\ \ldots\ g_r\}$.
@@ -1453,7 +1453,7 @@ of the Frechet derivatives of $f$ that are used in the definition of the
 elementary differential.
 
 \begin{egg}
-The elementary differential of $\displaystyle f:\RR^n \to \RR^n$ of order $2$ is
+The elementary differential of $\DS f:\RR^n \to \RR^n$ of order $2$ is
 $\{f\} = \fdiff{f}{}(\cdot) (f(\cdot))$ defined by
 \[
 \fdiff{f}{}(\VEC{y})( f(\VEC{y})) =
@@ -1467,7 +1467,7 @@ but it is associated to the second order derivative of $\VEC{y}$ when
 $\VEC{y}'(t) = f(\VEC{y}(t))$.  Note that $\fdiff{f}{} \equiv \fdiff{f}{1}$.
 
 Here are two elementary differentials of
-$\displaystyle f:\RR^n \to \RR^n$ of order $2$:\\
+$\DS f:\RR^n \to \RR^n$ of order $2$:\\
 $\{\{f\}\} = \fdiff{f}{}(\cdot)\big( \fdiff{f}{}(\cdot) (f(\cdot)) \big)$
 defined by
 \[
@@ -1476,7 +1476,7 @@ defined by
 \pdydx{f_i}{y_k}(\VEC{y}) \left(\sum_{j=1}^n\,
 \pdydx{f_k}{y_j}(\VEC{y}) f_j(\VEC{y}) \right) \right) \VEC{e}_i
 \]
-for $\displaystyle \VEC{y} \in \RR^n$, and
+for $\DS \VEC{y} \in \RR^n$, and
 $\{f \ f \} = \fdiff{f}{2}(\cdot)\big( f(\cdot) , f(\cdot) \big)$
 defined by
 \[
@@ -1485,7 +1485,7 @@ defined by
 \pdydxnm{f_i}{y_{j_1}}{y_{j_1}}{2}{}{}(\VEC{y}) f_{j_1}(\VEC{y})\,
 f_{j_2}(\VEC{y}) \right) \VEC{e}_i
 \]
-for $\displaystyle \VEC{y} \in \RR^n$.
+for $\DS \VEC{y} \in \RR^n$.
 
 From now on, we will ignore the dependent variable $\VEC{y}$ and write
 $\{\{f\}\} = \fdiff{f}{}\,(\fdiff{f}{}\,(f))$ and
@@ -1911,7 +1911,7 @@ We associate to this rooted tree the rooted tree
 Let $\tau$ be the rooted tree of order one.  Then
 $\tau_f = [[[\tau\ [\tau \ \tau]]]]$ and the elementary
 differential of $f$ associate to 
-$\displaystyle \tau_f = $ is $\{\{\{f\ \{f\ f\}\}\}\} = f^2_{yy} \,f^2_y\,f^3$.
+$\DS \tau_f = $ is $\{\{\{f\ \{f\ f\}\}\}\} = f^2_{yy} \,f^2_y\,f^3$.
 We only have to multiply the derivatives that appear in the second
 rooted tree.
 \end{rmk}
@@ -1923,7 +1923,7 @@ Runge-Kutta methods.
 
 \begin{theorem}
 We consider the initial value problem (\ref{ODEndim}) where $f$ does
-not depend on the time.  Thus, $\displaystyle f:\RR^n \to \RR^n$ and
+not depend on the time.  Thus, $\DS f:\RR^n \to \RR^n$ and
 $\VEC{y}'(t) = f(\VEC{y}(t))$.  We have
 that
 \[
@@ -1968,7 +1968,7 @@ function $\psi_{s+1}$ is defined recursively as follows.
 Let $\beta_{s+1,j} = \gamma_j$ for $1 \leq j \leq s$.
 \begin{enumerate}
 \item If $\tau$ is the rooted tree of order $1$,  then
-$\displaystyle \psi_j(\tau) \equiv \sum_{k=1}^s\,\beta_{j,k}$
+$\DS \psi_j(\tau) \equiv \sum_{k=1}^s\,\beta_{j,k}$
 for $1\leq j \leq s+1$.
 \item If $\tau = [\tau_1\ \tau_2\ \ldots\ \tau_q]$ , where $\tau_1$,
 $\tau_2$, \ldots , $\tau_q$ are rooted trees, then
@@ -2003,7 +2003,7 @@ $\tau$ &  &  $\Psi(\tau)$ \\
 \put(1.1,0){$j$}
 \end{picture}
 &
-$\displaystyle \sum_{j=1}^s\,\beta_{s+1,j} = \sum_{j=1}^s\,\gamma_j = 1$
+$\DS \sum_{j=1}^s\,\beta_{s+1,j} = \sum_{j=1}^s\,\gamma_j = 1$
 \\
 \begin{picture}(2,1)
 \put(1,0){\circle*{0.1}}
@@ -2181,7 +2181,7 @@ assumption $\VEC{y}_i = \VEC{w}_i$.
 
 Hence, if $\gamma(\tau)\,\Psi(\tau) = 1$ for all rooted trees of order
 less than or equal to $p$, then the series expansions of $\VEC{Y}_i$
-and $\VEC{W}_i$ have identical terms in $\displaystyle z^q$ for $q\leq p$.
+and $\VEC{W}_i$ have identical terms in $\DS z^q$ for $q\leq p$.
 We thus have that
 \[
 \VEC{Y}(z) = \VEC{W}_i(z) + \sum_{q=p+1}^\infty\bigg(
@@ -2215,11 +2215,11 @@ We look for methods of order at least $3$.
 
 For the rooted tree $\tau$ of order one, we get from
 $\Psi(\tau) = 1/\gamma(\tau)$ that
-$\displaystyle 1 = \sum_{j=1}^3 \gamma_j$.
+$\DS 1 = \sum_{j=1}^3 \gamma_j$.
 
 For the rooted tree $\tau$ of order two, we get from
 $\Psi(\tau) = 1/\gamma(\tau)$ that
-$\displaystyle \frac{1}{2} = \sum_{j=2}^3\,\alpha_j\,\gamma_j$ since
+$\DS \frac{1}{2} = \sum_{j=2}^3\,\alpha_j\,\gamma_j$ since
 $\alpha_1 = 0$.
 
 For the tree $\tau =$
@@ -2261,7 +2261,7 @@ $\Psi(\tau) = 1/\gamma(\tau)$ that
 since $\alpha_1 = 0$ and $\beta_{i,j} = 0$ for $j\geq i$.
 
 Two possible Butcher arrays that satisfy
-$\displaystyle \gamma_1 + \gamma_2 + \gamma_3 = 1$,
+$\DS \gamma_1 + \gamma_2 + \gamma_3 = 1$,
 $\alpha_2 \gamma_2 + \alpha_3 \gamma_3 = 1/2$ and
 $\gamma_3 \beta_{3,2} \alpha_2 = 1/6$ are:
 
@@ -2306,21 +2306,21 @@ Theorem~\ref{OrdRel}, we also have the following relations.
 From the rooted tree of order one, we get $1 = \gamma_1 + \gamma_2$.
 
 From the rooted tree of order two, we get
-$\displaystyle \frac{1}{2} = \sum_{j=1}^2 \gamma_j \alpha_j$.
+$\DS \frac{1}{2} = \sum_{j=1}^2 \gamma_j \alpha_j$.
 
 From the two rooted trees of order three, we get
-$\displaystyle \frac{1}{3} = \sum_{j=1}^2 \gamma_j \alpha_j^2$
+$\DS \frac{1}{3} = \sum_{j=1}^2 \gamma_j \alpha_j^2$
 and
-$\displaystyle \frac{1}{6}
+$\DS \frac{1}{6}
 = \sum_{j=1}^2 \sum_{k=1}^2 \gamma_j\beta_{j,k} \alpha_k$.
 
 From the four rooted trees of order four, we get
-$\displaystyle \frac{1}{4} = \sum_{j=1}^2 \gamma_j \alpha_j^3$,
-$\displaystyle \frac{1}{8}
+$\DS \frac{1}{4} = \sum_{j=1}^2 \gamma_j \alpha_j^3$,
+$\DS \frac{1}{8}
 = \sum_{j=1}^2 \sum_{k=1}^2 \gamma_j\alpha_j\beta_{j,k} \alpha_k$,
-$\displaystyle \frac{1}{12}
+$\DS \frac{1}{12}
 = \sum_{j=1}^2 \sum_{k=1}^2 \gamma_j\beta_{j,k} \alpha_k^2$ and
-$\displaystyle \frac{1}{24}
+$\DS \frac{1}{24}
 = \sum_{j=1}^2 \sum_{k=1}^2 \sum_{l=1}^2 \gamma_j\beta_{j,k} \beta_{k,l}\alpha_l$.
 
 Miraculously, there is a unique solution (modulo conjugacy) of all
@@ -2352,7 +2352,7 @@ Butcher array
 \end{array}
 \]
 is of order $4$ if $f:\RR \rightarrow \RR$ and of order $3$ if
-$\displaystyle f:\RR^n\rightarrow\RR^n$ with $n>1$.
+$\DS f:\RR^n\rightarrow\RR^n$ with $n>1$.
 
 In the proof of Theorem~\ref{OrdRel}, we use the conditions
 $\Psi(\tau)\gamma(\tau) = 1$ for all rooted trees $\tau$ of order
@@ -2362,8 +2362,8 @@ $q \leq p$ to ensure that
 = \sum_{r(\tau)=q}\,\alpha(\tau)\,\gamma(\tau)\,\Psi(\tau)\,F(\tau)
 \end{equation}
 for $q \leq p$.  This was sufficient to ensure that the coefficient of 
-coefficient of $\displaystyle z^q$ in $\VEC{Y}_i(z)$ was equal to the
-coefficient of $\displaystyle z^q$ in $\VEC{W}_i(z)$.  However, for
+coefficient of $\DS z^q$ in $\VEC{Y}_i(z)$ was equal to the
+coefficient of $\DS z^q$ in $\VEC{W}_i(z)$.  However, for
 $n=1$, the condition $\Psi(\tau)\gamma(\tau) = 1$ for all rooted trees
 $\tau$ of order $q$ is not always necessary to satisfy (\ref{YWorderCond}).
 
@@ -2396,9 +2396,9 @@ $\Psi(\tau_j)\gamma(\tau_j) = 1$ for $j=1$ and $2$ by
 \alpha(\tau_1)
 \]
 with $\Psi(\tau)\gamma(\tau) = 1$ for the other rooted trees $\tau$ of
-order four.  This ensures that the coefficient of $\displaystyle z^4$ in
+order four.  This ensures that the coefficient of $\DS z^4$ in
 $\VEC{Y}_i$ is still equal to the coefficient of
-$\displaystyle z^4$ in $\VEC{W}_i$.
+$\DS z^4$ in $\VEC{W}_i$.
 
 The condition $\alpha(\tau_1)\gamma(\tau_1)\Psi(\tau_1) +
 \alpha(\tau_2)\gamma(\tau_2)\Psi(\tau_2) = \alpha(\tau_1) +
@@ -2408,13 +2408,13 @@ obtain the $4$-stage Runge-Kutta method above.  We leave it to the
 reader to verify that the $4$-stage Runge-Kutta method above verify this
 condition.
 
-When $\displaystyle f:\RR^n \rightarrow \RR^n$ with $n>1$, the relation
+When $\DS f:\RR^n \rightarrow \RR^n$ with $n>1$, the relation
 $F(\tau_1)= F(\tau_2)$ is not necessary true and so the condition
 $\alpha(\tau_1)\gamma(\tau_1)\Psi(\tau_1) +
 \alpha(\tau_2)\gamma(\tau_2)\Psi(\tau_2) = \alpha(\tau_1) +
 \alpha(\tau_1)$ may not guarantee that the coefficient of
-$\displaystyle z^4$ in $\VEC{Y}_i$ is equal to the coefficient of
-$\displaystyle z^4$ in $\VEC{W}_i$.
+$\DS z^4$ in $\VEC{Y}_i$ is equal to the coefficient of
+$\DS z^4$ in $\VEC{W}_i$.
 
 As a simple example for $F(\tau_1) \neq F(\tau_2)$, consider the
 initial value problem
@@ -2424,16 +2424,16 @@ y'(t) & = f(t,y(t)) \quad , \quad  t_0 \leq t \leq t_f \\
 y(t_0) &= y_0
 \end{split}
 \end{equation}
-where $\displaystyle f:\RR^2 \rightarrow \RR$.   We can rewrite this
+where $\DS f:\RR^2 \rightarrow \RR$.   We can rewrite this
 initial value problem as a system
 \begin{align*}
 \VEC{z}'(t) & = \tilde{f}(\VEC{z}(t)) \quad , \quad  t_0 \leq s \leq t_f \\
 \VEC{z}(t_0) &= \VEC{z}_0
 \end{align*}
 where
-$\displaystyle \tilde{f}(\VEC{z}) = \begin{pmatrix}
+$\DS \tilde{f}(\VEC{z}) = \begin{pmatrix}
 f(z_2,z_1) \\ 1 \end{pmatrix}$ and
-$\displaystyle \VEC{z}_0 = \begin{pmatrix}
+$\DS \VEC{z}_0 = \begin{pmatrix}
 y_0 \\ t_0 \end{pmatrix}$.
 Hence,
 \begin{align*}
@@ -2462,7 +2462,7 @@ Consider the following three statements about a fixed Runge-Kutta
 method applied to the initial value problem (\ref{ODEndim}).
 \begin{description}
 \item[$A$] The method is of order $p$ with
-$\displaystyle f:\RR^n \rightarrow \RR^n$ and $n>1$.  Note that $f$ does
+$\DS f:\RR^n \rightarrow \RR^n$ and $n>1$.  Note that $f$ does
 not depend on time.
 \item[$B$] The method is of order $p$ with $f:\RR \times \RR \rightarrow \RR$.
 Note that $f$ depends on time. 
@@ -2563,11 +2563,11 @@ second approximation $\tilde{w}_{i+1}$ of $y_{i+1}$ using
 \item If $|(\tilde{w}_{i+1} - w_{i+1})/h| < \epsilon $, accept $w_{i+1}$
 as an approximation of $y_{i+1}= y(t_i+h)$.  Substitute $h$ by
 $qh$ where
-$\displaystyle q = \left|\epsilon h /(\tilde{w}_{i+1} - w_{i+1})\right|^{1/4}$.
+$\DS q = \left|\epsilon h /(\tilde{w}_{i+1} - w_{i+1})\right|^{1/4}$.
 \item If $|(\tilde{w}_{i+1} - w_{i+1})/h| \geq \epsilon $, reject
 $w_{i+1}$ as an approximation of $y(t_i+h)$.  Substitute
 $h$ by $qh$ where
-$\displaystyle q=\left|\epsilon\,h/(\tilde{w}_{i+1}-w_{i+1})\right|^{1/4}$.
+$\DS q=\left|\epsilon\,h/(\tilde{w}_{i+1}-w_{i+1})\right|^{1/4}$.
 \item If $h > t_f -t_i$, replace $h$ by $t_f - t_i$.
 \item If $w_{i+1}$ has been accepted, go back to 2 with $i$ replaced
 by $i+1$ and the new value of $h$.  If $w_{i+1}$ has been rejected, go
@@ -2643,8 +2643,8 @@ Hence,
 \approx \tilde{\tau}_{i+1}(h) +
  \frac{1}{h}\left( \tilde{w}_{i+1} -w_{i+1} \right) \ .
 \end{align*}
-Since $\displaystyle \tau_{i+1}(h) = O(h^4)$ and
-$\displaystyle \tilde{\tau}_{i+1}(h) = O(h^5)$,
+Since $\DS \tau_{i+1}(h) = O(h^4)$ and
+$\DS \tilde{\tau}_{i+1}(h) = O(h^5)$,
 $(\tilde{w}_{i+1} - w_{i+1})/h$ is the dominant term on the right hand
 side for $h$ small.  Thus, we may assume that
 \begin{equation} \label{approx_tau}
@@ -2665,8 +2665,8 @@ step-size.
 How do we select a new step-size $h$ to go from $t_i$ to $t_{i+1}$?
 Formula (\ref{approx_tau}) is used to find a new value of $h$ such
 that $\left|(\tilde{w}_{i+1} - w_{i+1})/h\right| < \epsilon$.
-Since $\displaystyle \tau_{i+1}(h) = O(h^4)$, we may assume that
-$\displaystyle \tau_{i+1}(h)\approx Ch^4$ for some constant $C$ and
+Since $\DS \tau_{i+1}(h) = O(h^4)$, we may assume that
+$\DS \tau_{i+1}(h)\approx Ch^4$ for some constant $C$ and
 $h$ small.  Let $q$ be a positive constant and suppose that
 (\ref{RKMfour}) is used to approximate $y(t_i+qh)$.
 The local truncation error in this case is
@@ -2675,7 +2675,7 @@ The local truncation error in this case is
 \frac{q^4}{h}\left( \tilde{w}_{i+1} - w_{i+1} \right) \ .
 \]
 If we require $|\tau_{i+1}(qh)| < \epsilon$, then
-$\displaystyle q^4\left| (\tilde{w}_{i+1} - w_{i+1})/h \right| < \epsilon$ or
+$\DS q^4\left| (\tilde{w}_{i+1} - w_{i+1})/h \right| < \epsilon$ or
 \begin{equation} \label{q_value}
 q < \left|\frac{\epsilon h}{\tilde{w}_{i+1} - w_{i+1}} \right|^{1/4} \ .
 \end{equation}
@@ -2830,7 +2830,7 @@ Truncation Error} is defined by
 \end{align*}
 If, for all well-posed initial value problems (\ref{ODE}), there
 exists a function $\tau:\RR\to\RR$ such that
-$\displaystyle |\tau_{i+1}(h) | \leq \tau(h) = O(h^p)$ near the origin
+$\DS |\tau_{i+1}(h) | \leq \tau(h) = O(h^p)$ near the origin
 for all $i$, we say that the
 {\bfseries method is of order}\index{Multistep Methods!Order of a Method} $p$.
 \label{local_trunc_error_def}
@@ -2892,9 +2892,9 @@ for some $\xi_i$ and $\eta_i$ between $t_i$ and $t_{i+1}$, where
 -\frac{1}{4}\,y^{(3)}(\eta) \right) \ .
 \]
 If $f$ is twice continuously differentiable on $[t_0,t_f]\times\RR$, then
-$\displaystyle |y^{(3)}(t)|$ is continuous on $[t_0,t_f]$ and reaches
+$\DS |y^{(3)}(t)|$ is continuous on $[t_0,t_f]$ and reaches
 is maximum at a point on the interval $[t_0,t_f]$.  Let $K$ be the
-maximum of $\displaystyle |y^{(3)}(t)|$ on $[t_0,t_f]$, then
+maximum of $\DS |y^{(3)}(t)|$ on $[t_0,t_f]$, then
 \[
 |\tau_{i+1}(h)| \leq \tau(h) \equiv
 \left(\frac{1}{6}+\frac{1}{4} \right) K h^2
@@ -2939,10 +2939,10 @@ y^{(3)}(\xi_i)\,h^3/6 \big) - y(t_i)}{h} \\
 \end{align*}
 for some $\xi_i$ and $\eta_i$ between $t_i$ and $t_{i+1}$.
 If we assume that $f$ is twice continuously differentiable on
-$[t_0,t_f]\times \RR$, then $|y''(t)|$ and $\displaystyle |y^{(3)}(t)|$ are
+$[t_0,t_f]\times \RR$, then $|y''(t)|$ and $\DS |y^{(3)}(t)|$ are
 continuous on $[t_0,t_f]$ and reaches their maximum at a point on the
 interval $[t_0,t_f]$.  Let $M_2$ be the maximum of $|y''(t)|$ on
-$[t_0,t_f]$ and $M_3$ be the maximum of $\displaystyle |y^{(3)}(t)|$
+$[t_0,t_f]$ and $M_3$ be the maximum of $\DS |y^{(3)}(t)|$
 on $[t_0,t_f]$.  For $\theta = 1/2$, we have
 \[
 |\tau_{i+1}(h)|
@@ -2999,11 +2999,11 @@ where $g_k = g(t_k)$ for $0 \leq k \leq N$,
 \[
 \binom{r}{j} = \begin{cases}
   1 & \text{ if $j=0$} \\
-\displaystyle \frac{r(r-1)(r-2)\ldots(r-j+1)}{j!} & \text{ if $j>0$}
+\DS \frac{r(r-1)(r-2)\ldots(r-j+1)}{j!} & \text{ if $j>0$}
   \end{cases}
 \]
-for $r \in \RR$, and $\displaystyle \nabla^k g_i$ for $k \in \NN$ is
-the $\displaystyle k^{th}$
+for $r \in \RR$, and $\DS \nabla^k g_i$ for $k \in \NN$ is
+the $\DS k^{th}$
 {\bfseries backward difference}\index{Backward Difference} of $g_i$ defined by
 \begin{align*}
 \nabla g_i &= g_i - g_{i-1} \ , \\
@@ -3059,7 +3059,7 @@ f(t_{i-1},y_{i-1}) + 37\, f(t_{i-2},y_{i-2}) - 9 \,f(t_{i-3},y_{i-3})
 for some $\xi_i \in [t_{i-3},t_{i+1}]$ and $3 \leq i < N$.
 We had to use the Mean Value Theorem for Integrals, Theorem~\ref{Th4},
 to get the discretization error
-$\displaystyle (251/720)\,y^{(5)}(\xi_i)\,h^5$; namely,
+$\DS (251/720)\,y^{(5)}(\xi_i)\,h^5$; namely,
 \begin{align*}
 &\int_0^1 (-1)^4 \binom{-s}{4} g^{(4)}(t_i+\eta_i(s)h) \dx{s} \\
 &\qquad =
@@ -3072,7 +3072,7 @@ y^{(5)}(t_i+\eta_i(s)h) \dx{s} \\
 \end{align*}
 for some $\tilde{\eta}_i \in [-3,1]$.
 If we let $\xi_i = t_i+\tilde{\eta}_i h$ and compute the integral, we get\\
-$\displaystyle (251/720)\,y^{(5)}(\xi_i)\,h^5$.
+$\DS (251/720)\,y^{(5)}(\xi_i)\,h^5$.
 
 We get the following famous explicit method.
 
@@ -3088,7 +3088,7 @@ f(t_{i-1},w_{i-1}) + 37\, f(t_{i-2},w_{i-2}) \right. \\
 w_i & =y_i \quad, \quad 0\leq i < 4
 \end{align*}
 The local truncation error $\tau_{i+1}(h)$ is
-$\displaystyle (251/720)\,y^{(5)}(\xi_i)\,h^4$ for some
+$\DS (251/720)\,y^{(5)}(\xi_i)\,h^4$ for some
 $\xi_i \in [t_{i-3},t_{i+1}]$ and $3 \leq i < N$.
 \label{ABFSM}
 \end{defn}
@@ -3158,7 +3158,7 @@ f(t_i.y_i) - 5 \,f(t_{i-1},y_{i-1}) + f(t_{i-2},y_{i-2})\right) \\
 for some $\xi_i \in [t_{i-2},t_{i+1}]$ and $2 \leq i < N$.
 As for the previous explicit method, we had to use the Mean Value
 Theorem for Integrals to get the discretization error
-$\displaystyle -(19/720) \,y^{(5)}(\xi_i)\,h^5$.
+$\DS -(19/720) \,y^{(5)}(\xi_i)\,h^5$.
 
 We get the following famous implicit method.
 
@@ -3173,7 +3173,7 @@ f(t_i.w_i)  - 5 \,f(t_{i-1},w_{i-1}) \right . \\
 w_i &= y_i \quad, \quad 0 \leq i < 3
 \end{align*}
 The local truncation error $\tau_{i+1}(h)$ is
-$\displaystyle -(19/720) \,y^{(5)}(\xi_i)\,h^4$ for some
+$\DS -(19/720) \,y^{(5)}(\xi_i)\,h^4$ for some
 $\xi_i \in [t_{i-2},t_{i+1}]$ and $2 \leq i < N$.
 \label{AMTSM}
 \end{defn}
@@ -3203,7 +3203,7 @@ which cannot be solved explicitly for $w_{i+1}$.
 \item Iterations are used to find the approximation $w_{i+1}$ of
 $y_{i+1}$ in the implicit multistep methods (\ref{MULTISTEP}).
 Suppose that a first approximation
-$\displaystyle w_{i+1}^{[0]}$ of $w_{i+1}$ is given
+$\DS w_{i+1}^{[0]}$ of $w_{i+1}$ is given
 --- We will provide in the next section a method to obtain a first
 approximation.  The solution $w_{i+1}$ of (\ref{MULTISTEP}) is
 approximated using the iterative system
@@ -3219,7 +3219,7 @@ for $k=0$, $1$, \ldots
 We now show that if $h$ is small enough such that $|b_{-1}h| L <1$,
 where $L$ is the Lipschitz constant associated to $f$ as in
 (\ref{Lipschitz}), then
-$\displaystyle \left\{ w_{i+1}^{[k]}\right\}_{k=0}^\infty$ converges
+$\DS \left\{ w_{i+1}^{[k]}\right\}_{k=0}^\infty$ converges
 to the unique solution $w_{i+1}$ of (\ref{MULTISTEP}).  The reader
 will recognize that the following proof is ``basically identical'' to
 the proof of the Fixed Point Theorem, Theorem~\ref{FxPtTh}.
@@ -3234,14 +3234,14 @@ where
   F_i = \sum_{j=0}^m b_j f(t_{i-j}.w_{i-j})
 \]
 are constant, and
-$\displaystyle G_i\left(w_{i+1}^{[k]}\right)
+$\DS G_i\left(w_{i+1}^{[k]}\right)
 = f\left(t_{i+1},w_{i+1}^{[k]}\right)$.
 
 We first prove that if there is a solution to
 \begin{equation} \label{MultistepSFsol}
 w = A_i + h b_{-1} G_i(w) + h F_i \ ,
 \end{equation}
-then it is unique.  Suppose that $w$ and $\displaystyle w^\ast$ are two distinct
+then it is unique.  Suppose that $w$ and $\DS w^\ast$ are two distinct
 solutions of (\ref{MultistepSFsol}); namely, if
 \begin{align*}
 w &= A_i + b_{-1} h G_i(w) + h F_i\\
@@ -3256,11 +3256,11 @@ Then
 This is a contradiction.
 
 We prove that the sequence
-$\displaystyle \left\{ w_{i+1}^{[k]} \right\}_{k=0}^\infty$
+$\DS \left\{ w_{i+1}^{[k]} \right\}_{k=0}^\infty$
 defined by (\ref{MultistepSF}) converges.  In fact, we prove that it
 is a Cauchy sequence.  Let $\epsilon$ be a small number.  We find a
 positive integer $N$  such that
-$\displaystyle \left|w_{i+1}^{[r]} - w_{i+1}^{[s]} \right|< \epsilon$ whenever 
+$\DS \left|w_{i+1}^{[r]} - w_{i+1}^{[s]} \right|< \epsilon$ whenever 
 $r,s \geq N$.
 
 First, we prove by induction that
@@ -3307,7 +3307,7 @@ we have
 \end{align*}
 
 Finally, let $w_{i+1}$ be the limit of
-$\displaystyle \left\{ w_{i+1}^{[k]} \right\}_{k=0}^\infty$.  We show that
+$\DS \left\{ w_{i+1}^{[k]} \right\}_{k=0}^\infty$.  We show that
 $w_{i+1}$ is a solution of (\ref{MultistepSFsol}).  Since $G$ is a
 continuous function, if we take the limit with respect to $k$ on both
 sides of (\ref{MultistepSF}), we get
@@ -3460,7 +3460,7 @@ In this case, we have that
 h\,\tau_{i+1}(h) = c\, \frac{y^{(p+1)}(t_i)}{(p+1)!}\,h^{p+1} + O(h^{p+2}) \ .
 \]
 
-Moreover, if we set $\displaystyle w=e^x$, we get
+Moreover, if we set $\DS w=e^x$, we get
 \begin{align*}
 &\frac{p(w)-q(w)\,\ln(w)}{e^m} = e^x
 -\sum_{j=0}^m\,a_j\,e^{-jx} - x\,\sum_{j=-1}^m\,b_j\,e^{-jx} \\
@@ -3486,7 +3486,7 @@ p(w)-q(w)\,\ln(w) = c\,x^{p+1} + O(x^{p+2})
 = c\,(w-1)^{p+1} + O((w-1)^{p+2})
 \]
 if and only if (\ref{cond_order_p1}) and (\ref{cond_order_p2}) are
-satisfied.  Recall that $\displaystyle x = \ln(w) = (w-1) + O((w-1)^2)$
+satisfied.  Recall that $\DS x = \ln(w) = (w-1) + O((w-1)^2)$
 for $w$ near $1$.
 \end{proof}
 
@@ -3510,7 +3510,7 @@ The multistep method
 \quad, \quad 0 \leq i < N
 \]
 is of order $3$.  We use the previous theorem with $m=2$ to prove this
-statement.  We have $\displaystyle p(w) = w^3-w^2$ and
+statement.  We have $\DS p(w) = w^3-w^2$ and
 \[
 q(w) = \frac{23}{12} w^2 - \frac{4}{3} w + \frac{5}{12} \ .
 \]
@@ -3532,7 +3532,7 @@ We can use Theorem~\ref{link_order_char} to construct multistep
 methods of any order.
 
 To construct an explicit multistep method of order $p$, choose a
-polynomial $\displaystyle p(w)= w^{m+1} - \sum_{j=0}^m\,a_j\,w^{m-j}$
+polynomial $\DS p(w)= w^{m+1} - \sum_{j=0}^m\,a_j\,w^{m-j}$
 such that $p(1)=0$.  The polynomial $q(w)$ is the polynomial of degree
 $m$ (if such polynomial exists) given by the relation 
 \[
@@ -3546,11 +3546,11 @@ p(w) - q(w)\,\ln(w) = O((w-1)^{p+1}) \ .
 \]
 
 As we will realize in the next examples, it is useful to note that
-$\displaystyle \frac{v}{\ln(v+1)}$ can be defined at $v=0$ by the
+$\DS \frac{v}{\ln(v+1)}$ can be defined at $v=0$ by the
 extension
 \[
 g(v) = \begin{cases}
-\displaystyle \frac{v}{\ln(v+1)} & \quad \text{if} \quad v \neq 0 \\
+\DS \frac{v}{\ln(v+1)} & \quad \text{if} \quad v \neq 0 \\
 1 & \quad \text{if} \quad v = 0  
 \end{cases}
 \]
@@ -3561,7 +3561,7 @@ g(v) = 1 + \frac{v}{2} - \frac{v^2}{12} + \frac{v^3}{24} + O(v^4) \ .
 
 \begin{egg}
 To construct an implicit method of order $4$ from
-$\displaystyle p(w) = w^3- w^2$, let $v=w-1$.  Then
+$\DS p(w) = w^3- w^2$, let $v=w-1$.  Then
 \begin{align*}
 \frac{p(w)}{\ln(w)}
 &= \frac{w^2(w-1)}{\ln(w)} = (v+1)^2\, \frac{v}{\ln(v+1)} \\
@@ -3589,7 +3589,7 @@ This is our famous Adams-Moulton method of order four.
 
 \begin{egg}
 To construct an explicit method of order $1$ from
-$\displaystyle p(w) = w^2-w$, let $v=w-1$.  Then
+$\DS p(w) = w^2-w$, let $v=w-1$.  Then
 \begin{align*}
 \frac{p(w)}{\ln(w)} &= \frac{w(w-1)}{\ln(w)}
 = (v+1)\, \frac{v}{\ln(v+1)}
@@ -3597,7 +3597,7 @@ $\displaystyle p(w) = w^2-w$, let $v=w-1$.  Then
 &= 1 + \frac{3}{2}\,v + O(v^2)
 = -\frac{1}{2} + \frac{3}{2} w + O(|w-1|^2) \ .
 \end{align*}
-Thus $\displaystyle q(w) = -\frac{1}{2} + \frac{3}{2} w$ and
+Thus $\DS q(w) = -\frac{1}{2} + \frac{3}{2} w$ and
 the multistep method is
 \[
 w_{i+1} = w_i + h \left( \frac{3}{2} f(t_i,w_i)
@@ -3606,7 +3606,7 @@ w_{i+1} = w_i + h \left( \frac{3}{2} f(t_i,w_i)
 \end{egg}
 
 \begin{rmk}
-If we consider $\displaystyle p(w) = w^{m-1}(w-1)$,
+If we consider $\DS p(w) = w^{m-1}(w-1)$,
 we get the {\bfseries Adams methods}\index{Multistep Methods!Adams Methods}.
 The implicit methods are called 
 {\bfseries Adams-Moulton methods}\index{Multistep Methods!Adams-Moulton
@@ -3614,7 +3614,7 @@ Methods} and the explicit methods are called
 {\bfseries Adams-Bashforth methods}\index{Multistep Methods!Adams-Bashforth
 Methods}.
 
-If we consider $\displaystyle p(w) = w^{m-2}(w^2-1)$, the explicit
+If we consider $\DS p(w) = w^{m-2}(w^2-1)$, the explicit
 methods (of order $m$) are called
 {\bfseries Nystron methods}\index{Multistep Methods!Nystron Methods}
 and the implicit methods (of order $m+1$) are called
@@ -3633,21 +3633,21 @@ if $b_{-1} \neq 0$ and $b_j=0$ for $0 \leq j \leq m$.
 
 \begin{prop}
 For a Backward Difference Formula, we have
-$\displaystyle b_{-1} = \left(\sum_{j=1}^{m+1}\,\frac{1}{j} \right)^{-1}$
+$\DS b_{-1} = \left(\sum_{j=1}^{m+1}\,\frac{1}{j} \right)^{-1}$
 and the characteristic polynomial is
-$\displaystyle p(w) = b_{-1}\sum_{j=1}^{m+1}\,\frac{1}{j}\,w^{m+1-j}(w-1)^j$.
+$\DS p(w) = b_{-1}\sum_{j=1}^{m+1}\,\frac{1}{j}\,w^{m+1-j}(w-1)^j$.
 \end{prop}
 
 \begin{proof}
 We will use Theorem~\ref{link_order_char}.  We have by hypothesis that
-$\displaystyle q(w) = b_{-1} w^{m+1}$ for some non-zero constant
+$\DS q(w) = b_{-1} w^{m+1}$ for some non-zero constant
 $b_{-1} \in \RR$.  
 Since the Backward Difference Formula is of order $m+1$, we have
 \begin{equation} \label{backwardParg}
 p(w) - b_{-1} w^{m+1} \ln(w) = O((w-1)^{m+2})
 \end{equation}
 for $w$ near $1$.  If we substitute $w=1/v$ in this equation and
-multiply it by $\displaystyle v^{m+1}$, we get
+multiply it by $\DS v^{m+1}$, we get
 \[
 v^{m+1}p\left(\frac{1}{v}\right) = b_{-1} \ln(v) + O((v-1)^{m+2})
 \]
@@ -3669,14 +3669,14 @@ O((w-1)^{m+2}) \\
 O((w-1)^{m+2})  \ .
 \end{align*}
 Since $p(w)$ is a polynomial of degree $m+1$ and any extra terms
-of the form $\displaystyle (w-1)^k$ with $k\geq m+2$ will not affect
+of the form $\DS (w-1)^k$ with $k\geq m+2$ will not affect
 (\ref{backwardParg}), we may assume that
 \[
 p(w) = b_{-1} \sum_{j=1}^{m+1}\,\frac{1}{j}\,(w-1)^j\,w^{m+1-j} \ .
 \]
 To get $p$ of the form
-$\displaystyle p(w) = w^{m+1} - \sum_{j=0}^m a_j w^{m-j}$, we need
-$\displaystyle 1 = b_{-1} \sum_{j=1}^{m+1}\,\frac{1}{j}$.
+$\DS p(w) = w^{m+1} - \sum_{j=0}^m a_j w^{m-j}$, we need
+$\DS 1 = b_{-1} \sum_{j=1}^{m+1}\,\frac{1}{j}$.
 \end{proof}
 
 \begin{egg}
@@ -3727,7 +3727,7 @@ approximation
 w_{i+1}^{[1]} = w_i + \frac{h}{24} \left( 9\, f\left(t_{i+1},w_{i+1}^{[0]}\right)
 + 19 \,f(t_i.w_i)  - 5 \,f(t_{i-1},w_{i-1}) + f(t_{i-2},w_{i-2})\right)
 \]
-of $y_{i+1}$.  Accept $\displaystyle w_{i+1}^{[1]}$ as the
+of $y_{i+1}$.  Accept $\DS w_{i+1}^{[1]}$ as the
 approximation $w_{i+1}$ of $y_{i+1}$.
 \item Go back to (\ref{PredictStep}) if $i<N$.
 \end{enumerate}
@@ -3776,7 +3776,7 @@ follows.
 \begin{equation} \label{Pred0}
 w_{i+1}^{[0]} = \sum_{j=0}^m\,a_j\,w_{i-j} + h \sum_{j=0}^m\,b_j\,f_{i-j}
 \end{equation}
-\item[$\displaystyle \mathrm{EC}^{\nu}$:] Evaluation and correction
+\item[$\DS \mathrm{EC}^{\nu}$:] Evaluation and correction
 for $k=0$, $1$, \ldots $\nu-1$. 
 \begin{align}
 f_{i+1}^{[k+1]} &= f(t_{i+1},w_{i+1}^{[k]}) \nonumber \\
@@ -3791,7 +3791,7 @@ f_{i+1} = f(t_{i+s},w_{i+s})
 \]
 \end{description}
 This predictor-corrector method is named
-$\displaystyle \mathrm{P(EC)}^{\nu}\mathrm{E}$.
+$\DS \mathrm{P(EC)}^{\nu}\mathrm{E}$.
 In general, the number of iterations $\nu$ should be small.
 
 In the proof of Theorem~\ref{link_order_char}, we have shown that a
@@ -3837,7 +3837,7 @@ O(h^{\tilde{p}+2}) \nonumber \\
 \label{LE_Corr}
 \end{align}
 for some $\eta_{i,k}$ between $y(t_{i+1})$ and
-$\displaystyle w_{i+1}^{[k]}$, where
+$\DS w_{i+1}^{[k]}$, where
 \[
 \tilde{D}_{\tilde{p}} = \frac{1}{(\tilde{p}+1)!}\,\bigg( 1
 + (-1)^{\tilde{p}} \sum_{j=0}^{\tilde{m}}\,\tilde{a}_j\,j^{\tilde{p}+1}
@@ -3931,7 +3931,7 @@ of $y(t)$ at $t_{i+1}=t_i+h$.
 \frac{19}{270} \left| \frac{w_{i+1}^{[1]} - w_{i+1}^{[0]}}{h} \right|
 < \epsilon \  ,
 \]
-we accept $\displaystyle w_{i+1} = w_{i+1}^{[1]}$, $w_i$, $w_{i-1}$
+we accept $\DS w_{i+1} = w_{i+1}^{[1]}$, $w_i$, $w_{i-1}$
 and $w_{i-2}$ as approximations of $y(t)$ at $t_{i+1}=t_i+h$, $t_i$,
 $t_{i-1} = t_0- h$, and $t_{i-2}=t_0-2h$ respectively.
 \begin{enumerate}
@@ -3993,7 +3993,7 @@ denotes the local truncation error for the Adams-Bashforth method of
 order four.
 
 If we also assume that
-$\displaystyle y(t_{i+1}) \approx w_{i+1}^{[0]}$, we get
+$\DS y(t_{i+1}) \approx w_{i+1}^{[0]}$, we get
 from Definition~\ref{AMTSM} that
 \begin{equation} \label{AMTSM_tau}
 \frac{y(t_{i+1}) -w_{i+1}^{[1]}}{h} \approx
@@ -4003,18 +4003,18 @@ for some $\xi$ between $t_{i-2}$ and $t_{i+1}$, where
 $\tilde{\tau}_{i+1}(h)$ denotes the local truncation error for the
 Adams-Moulton method of order four.
 
-Finally, if we assume that $\displaystyle y^{(5)}(t)$ is almost constant on
+Finally, if we assume that $\DS y^{(5)}(t)$ is almost constant on
 $[t_{i-3},t_{i+1}]$ and subtract (\ref{AMTSM_tau}) from
 (\ref{ABFSM_tau}), we get
 \[
 \frac{w_{i+1}^{[1]} - w_{i+1}^{[0]}}{h} \approx
 \frac{270}{720}\,Y \,h^4 = \frac{3}{8}\, Y \,h^4 \ ,
 \]
-where $\displaystyle Y \approx y^{(5)}(\xi) \approx y^{(5)}(\eta)$.
+where $\DS Y \approx y^{(5)}(\xi) \approx y^{(5)}(\eta)$.
 
-Thus $\displaystyle Y \approx
+Thus $\DS Y \approx
 \frac{8}{3}\left(\frac{w_{i+1}^{[1]} - w_{i+1}^{[0]}}{h^5}\right)$.
-If we substitute $\displaystyle y^{(5)}(\xi)$ by $Y$ in
+If we substitute $\DS y^{(5)}(\xi)$ by $Y$ in
 (\ref{AMTSM_tau}), we get that
 \[
 \left| \tilde{\tau}_{i+1}(h) \right| \approx
@@ -4023,7 +4023,7 @@ If we substitute $\displaystyle y^{(5)}(\xi)$ by $Y$ in
 \frac{19}{270}\,\left|\frac{w_{i+1}^{[1]} - w_{i+1}^{[0]}}{h}\right| \ .
 \]
 
-If $\displaystyle \frac{19}{270}\,
+If $\DS \frac{19}{270}\,
 \left| \frac{w_{i+1}^{[1]} - w_{i+1}^{[0]}}{h}\right| < \epsilon$,
 we may expect that
 $\left| \tilde{\tau}_{i+1}(h) \right| < \epsilon$.
@@ -4247,9 +4247,9 @@ y(t_{i+1}) - \tilde{w}_{i+1} = \tilde{D}_p h^{p+1} y^{(p+1)}(t_i) + O(h^{p+2})
 - (-1)^p (p+1) \sum_{j=-1}^{\tilde{m}}\,b_j\, j^p\bigg) \ .
 \]
 
-If we assume that $\displaystyle y^{(p+1)}(t)$ is almost constant on an interval
+If we assume that $\DS y^{(p+1)}(t)$ is almost constant on an interval
 $[t_{i-m},t_{i+1}]$, we may choose $K$ such that
-$\displaystyle y^{(p+1)}(t_i) \approx K$.  Hence,
+$\DS y^{(p+1)}(t_i) \approx K$.  Hence,
 \[
 y(t_{i+1}) - w_{i+1} \approx C_p K h^{p+1} + O(h^{p+2})
 \quad\text{and} \quad
@@ -4261,10 +4261,10 @@ expression, we get
 \tilde{w}_{i+1} - w_{i+1} \approx
 (C_p - \tilde{C}_p) K h^{p+1} + O(h^{p+2}) \ .
 \]
-If we ignore the small error of order $\displaystyle h^{p+2}$, we get
+If we ignore the small error of order $\DS h^{p+2}$, we get
 \[
-K h^{p+1} \approx \frac{\displaystyle \tilde{w}_{i+1} - w_{i+1}}
-{\displaystyle C_p - \tilde{C}_p}
+K h^{p+1} \approx \frac{\DS \tilde{w}_{i+1} - w_{i+1}}
+{\DS C_p - \tilde{C}_p}
 \]
 if $ C_p \neq \tilde{C}_p$.  If we substitute this expression into
 \[
@@ -4278,7 +4278,7 @@ y(t_{i+s}) - w_{i+s} \approx \frac{C_p}{C_p-\tilde{C}_p}
 
 Let $\delta$ be a small number.  We may require
 \[
-\bigg| \frac{\displaystyle C_p}{\displaystyle C_pc-\tilde{D}_p}
+\bigg| \frac{\DS C_p}{\DS C_pc-\tilde{D}_p}
 \left( \tilde{w}_{_i+s} - w_{i+s} \right)  \bigg| < \delta
 \]
 at each step.  This is called
@@ -4286,7 +4286,7 @@ at each step.  This is called
 Control per Step}.  If the requirement is not satisfied, we reduce the
 step-size $h$.  We may instead require
 \[
-\bigg| \frac{\displaystyle C_p}{\displaystyle C_pc-\tilde{C}_p}
+\bigg| \frac{\DS C_p}{\DS C_pc-\tilde{C}_p}
 \left( \tilde{w}_{_i+s} - w_{i+s} \right)  \bigg| < \delta h
 \]
 at each step.  This is called
@@ -4316,10 +4316,10 @@ w_i &= y(t_i) \quad, \quad 0 \leq i \leq m
 \end{split}
 \end{equation}
 where $a_m \neq 0$,
-$\displaystyle \VEC{t}
+$\DS \VEC{t}
 =\begin{pmatrix} t_{i-m} & \ldots & t_{i-1} & t_i & t_{i+1} \end{pmatrix}^\top$
 and 
-$\displaystyle \VEC{w}
+$\DS \VEC{w}
 =\begin{pmatrix} w_{i-m} & \ldots & w_{i-1} & w_i & w_{i+1} \end{pmatrix}^\top$.
 We assume that
 \begin{equation} \label{Fzero}
@@ -4360,7 +4360,7 @@ the domain of $f$.  We have that
 \sum_{j=-1}^m \left| w_{i-j}^{[1]} - w_{i-j}^{[2]} \right|
 = R \, \left\|\VEC{w}^{[1]}-\VEC{w}^{[2]} \right\|_1
 \end{align*}
-for $\displaystyle R = L \max_{-1 \leq j \leq m} |b_j|$.
+for $\DS R = L \max_{-1 \leq j \leq m} |b_j|$.
 \item The Runge-Kutta methods defined in Definition~\ref{GFRKM} are also
 of the form (\ref{MSM_GF}), and satisfy (\ref{Fzero}) and (\ref{FDP_Lip}).
 
@@ -4444,7 +4444,7 @@ Finally, we have that
 &= 2 L s \left| w_i^{[1]} - w_i^{[2]} \right|
 = R \left| w_i^{[1]} - w_i^{[2]} \right|
 \end{align*}
-for $\displaystyle R = 2 L s$.
+for $\DS R = 2 L s$.
 \end{enumerate}
 
 To define the stability of a numerical method, we consider a perturbation
@@ -4476,11 +4476,11 @@ where $u_i$ is the numerical approximation of $w_i$.
 
 \begin{rmk}
 To prove convergence of a multistep method, we will require that
-$\displaystyle \max_{0\leq i \leq N} |\delta_i(h)| \to 0$ as $h\to 0$.
+$\DS \max_{0\leq i \leq N} |\delta_i(h)| \to 0$ as $h\to 0$.
 Obviously, in practice, this is not realistic.  We do not expect
 round off errors to go to $0$ as $h$ goes to $0$.  However, our
 theoretical result shows that by having 
-$\displaystyle \max_{0\leq i \leq N} |\delta_i(h)|$ very small,
+$\DS \max_{0\leq i \leq N} |\delta_i(h)|$ very small,
 we may hope that our numerical approximation of the solution be
 very accurate.  To decrease round off errors (by choosing
 the right algorithm, by efficiently programming it, ...) is one of
@@ -4509,7 +4509,7 @@ converging in this weak sense.  Unfortunately, this does not
 prove that the Euler's method is convergent according to
 Definition~\ref{methodConv}.  In fact, we will need to assume
 (the unrealistic assumption) that
-$\displaystyle \max_{0\leq i \leq N} |\delta_i(h)| = O(h^2)$ to be
+$\DS \max_{0\leq i \leq N} |\delta_i(h)| = O(h^2)$ to be
 able to show that Euler's method is converging in the sense of
 Definition~\ref{methodConv}.
 
@@ -4539,7 +4539,7 @@ f(t_i,y(t_i)) + f(t_{i+1},w_{i+1}) - f(t_{i+1},y(t_{i+1})) \bigg)
 As we have seen when computing the order of the Trapezoidal Method
 if we assume that $f$ is twice continuously differentiable on
 $[t_0,t_f]\times\RR$, then $| M(\xi_i, \eta_i)| \leq Q$ for all $i$, where
-$Q = 5K/12$ and $K$ is the maximum of $\displaystyle y^{(3)}(t)$ on $[t_0,t_f]$.
+$Q = 5K/12$ and $K$ is the maximum of $\DS y^{(3)}(t)$ on $[t_0,t_f]$.
 If we use this property and the assumption that $f$ satisfies the
 Lipschitz condition (\ref{Lipschitz}), we get from (\ref{trap_conv1}) that
 \begin{equation} \label{trap_conv2}
@@ -4612,7 +4612,7 @@ a multistep method of the form (\ref{MSM_GF}) is defined by
 - F(h,\VEC{t},\VEC{y}, h) \quad , \quad 0 \leq i < N \ ,
 \]
 where
-$\displaystyle \VEC{y}
+$\DS \VEC{y}
 = \begin{pmatrix} y_{i-m} & \ldots & y_{i-1} & y_i & y_{i+1}
 \end{pmatrix}^\top$ and $y_i = y(t_i)$ for all $i$ as usual.
 
@@ -4693,7 +4693,7 @@ for some number $\xi_i$ and $\nu_i$ between $t_{i-1}$ and $t_{i+1}$, and
 $f(t_i,y_i) = y'(t_i)$, we get
 \begin{align*}
 &\tau_{i+1}(h) = \frac{y_{i+1}-y_{i-1}}{h} - 2 f(t_i,y_i) \\
-&\quad = \frac{\displaystyle \big(y(t_i) + h y'(t_i) + \frac{h^2}{2} y''(t_i) +
+&\quad = \frac{\DS \big(y(t_i) + h y'(t_i) + \frac{h^2}{2} y''(t_i) +
 \frac{h^3}{3!} y'''(\xi_i)\big) - \big(y(t_i) - h y'(t_i)
 +\frac{h^2}{2} y''(t_i) - \frac{h^3}{3!} y'''(\nu_i)\big)}{h} \\
 & \qquad\qquad - 2y'(t_i) \\
@@ -4706,7 +4706,7 @@ Hence,
 \quad, \quad 1 \leq i < N \ ,
 \]
 where
-$\displaystyle M = \max_{t_0 \leq t \leq t_f} |y'''(t)|$.
+$\DS M = \max_{t_0 \leq t \leq t_f} |y'''(t)|$.
 Therefore, the method is of order two and
 $| \tau_{i+1}(h) | \leq \tau(h) \rightarrow 0$ as $h \rightarrow 0$.
 The method is therefore consistent.
@@ -4720,14 +4720,14 @@ A multistep method of the form (\ref{MSM_GF}) is
 {\bfseries zero-stable}\index{Zero-Stable Method} if,
 for any well-posed initial value problems (\ref{ODE}), there exist
 $S$ and $h_0$ such that for any partition of $[t_0,t_f]$ with
-$h < h_0$, any solution $\displaystyle \{u_i^{[j]}\}_{i=0}^N$
+$h < h_0$, any solution $\DS \{u_i^{[j]}\}_{i=0}^N$
 of (\ref{MSM_GFpertub}) with
-$\displaystyle \delta_i = \delta_i^{[j]}$ for $j=1$ and $2$, then
+$\DS \delta_i = \delta_i^{[j]}$ for $j=1$ and $2$, then
 \[
 | u_i^{[1]} - u_i^{[2]} | < S \epsilon
 \]
 for $i = 0$, $1$, \ldots, $N$ whenever
-$\displaystyle | \delta_i^{[1]} - \delta_i^{[2]}  | < \epsilon$ for
+$\DS | \delta_i^{[1]} - \delta_i^{[2]}  | < \epsilon$ for
 $i = 0$, $1$, \ldots, $N$.
 \end{defn}
 
@@ -4780,7 +4780,7 @@ if and only if
 \end{proof}
 
 So, all our Runge-Kutta methods are consistent since we require
-$\displaystyle \sum_{j=1}^s \gamma_j = 1$.
+$\DS \sum_{j=1}^s \gamma_j = 1$.
 
 \begin{prop} \label{cond_consistency}
 If the multistep method given in Definition~\ref{GFMSM} is consistent,
@@ -4803,11 +4803,11 @@ Definition~\ref{methodCons}, we get
 + \sum_{k=0}^m\,a_k\,(k+1)y'(\xi_{i-k})
 - \sum_{k=-1}^m b_k f(t_{i-k},y_{i-k}) \ .
 \end{equation}
-Choose an increasing sequence $\displaystyle \{N_j\}_{j=1}^\infty$ of positive
+Choose an increasing sequence $\DS \{N_j\}_{j=1}^\infty$ of positive
 integers converging to $\infty$ such that there always is a value
 $i_j$ of $i$ such that $t_{i_j+1} = c$, a constant value, when $N= N_j$.
 We have that $i_j \to \infty$,
-$\displaystyle h = h_j \equiv \frac{t_f-t_0}{N_j} \to 0$,
+$\DS h = h_j \equiv \frac{t_f-t_0}{N_j} \to 0$,
 $t_{i_j-k} \rightarrow c$ and $\xi_{i-k} \rightarrow c$ for all
 $0 \leq k \leq m$ as $N_j\to \infty$ because
 $t_{i+1}-t_{i-m} = (m+1)h_j \to 0$ as $h_j \to 0$.  If we assume that
@@ -4818,7 +4818,7 @@ the multistep method is consistent, then $h = h_j \to 0$ in
 \text{and} \quad
 0 = \sum_{k=0}^m\,a_k\,(k+1)y'(c) - \sum_{k=-1}^m b_m f(c,y(c)) \ .
 \]
-We get $\displaystyle 1-\sum_{k=0}^m\,a_k  = 0$ from the first equation and,
+We get $\DS 1-\sum_{k=0}^m\,a_k  = 0$ from the first equation and,
 because $y'(t)=f(t,y(t))$, we get
 \[
 0 = \sum_{k=0}^m\,a_k\,(k+1) - \sum_{k=-1}^m \,b_k
@@ -4829,8 +4829,8 @@ from the second equation.
 \begin{rmk}
 We can easily show that if a consistent multistep method is converging
 according to the definition given Remark~\ref{ConvAltern}; namely 
-$\displaystyle \max_{0\leq i \leq N} |w_i -y_i| \to 0$ as $h \to 0$, then
-$\displaystyle 1 = \sum_{i=0}^m\,a_i$.
+$\DS \max_{0\leq i \leq N} |w_i -y_i| \to 0$ as $h \to 0$, then
+$\DS 1 = \sum_{i=0}^m\,a_i$.
 \end{rmk}
 
 \subsection{Finite Difference Equations}
@@ -4849,7 +4849,7 @@ u_i &= v_i \quad, \quad 0 \leq i < s
 \end{equation}
 where the constants $a_j$ for $0\leq j \leq s$, $v_j$ for
 $0 \leq j < s$, and $C_i$ for $i\geq s$ are given.
-A sequence $\displaystyle \{ u_i \}_{i=0}^\infty$ that satisfies
+A sequence $\DS \{ u_i \}_{i=0}^\infty$ that satisfies
 (\ref{basicFDP}) is called a
 {\bfseries solution}\index{Finite Difference Equations!Solution} of
 (\ref{basicFDP}).
@@ -4872,14 +4872,14 @@ u_i = -\frac{1}{a_0} \, \sum_{j=1}^s\,a_j\,u_{i-j}
 with $u_i = v_i$ for $0 \leq i < s$.
 
 Suppose that there are two solutions
-$\displaystyle \left\{ u_i^{[1]} \right\}_{i=0}^\infty$ and
-$\displaystyle \left\{u_i^{[2]} \right\}_{i=0}^\infty$ of
+$\DS \left\{ u_i^{[1]} \right\}_{i=0}^\infty$ and
+$\DS \left\{u_i^{[2]} \right\}_{i=0}^\infty$ of
 (\ref{basicFDP}).  Then,
-$\displaystyle \left\{ u_i \right\}_{i=0}^\infty$ with
-$\displaystyle u_i = u_i^{[1]} - u_i^{[2]}$ for all $i\geq 0$ is a solution of
+$\DS \left\{ u_i \right\}_{i=0}^\infty$ with
+$\DS u_i = u_i^{[1]} - u_i^{[2]}$ for all $i\geq 0$ is a solution of
 (\ref{basicFDP}) with $C_i = 0$ for $i\geq s$ and $u_i = 0$ for
 $0 \leq i < s$.  It follows from (\ref{solFDP}) that
-$\displaystyle u_i = u_i^{[1]} - u_i^{[2]} = 0$ for $i\geq 0$.
+$\DS u_i = u_i^{[1]} - u_i^{[2]} = 0$ for $i\geq 0$.
 \end{proof}
 
 Consider the {\bfseries homogeneous finite difference
@@ -4892,14 +4892,14 @@ of order $s$.
 It is clear that a linear combination of solutions of
 (\ref{homFDP}) is a solution of (\ref{homFDP}).  Moreover, it follows
 from (\ref{solFDP}) with $C_i = 0$ for all $i \geq s$ that the linear
-independence of solutions $\displaystyle \{ u_i^{[j]} \}_{i=0}^\infty$ of
+independence of solutions $\DS \{ u_i^{[j]} \}_{i=0}^\infty$ of
 (\ref{homFDP}) for $1 \leq j \leq k$ is completely determined by the
 linear independence of the vectors
-$\displaystyle \begin{pmatrix} u_0^{[j]} & u_1^{[j]} & \ldots &
+$\DS \begin{pmatrix} u_0^{[j]} & u_1^{[j]} & \ldots &
 u_{s-1}^{[j]} \end{pmatrix}^\top$ in $\RR^s$ for $1 \leq j \leq k$.
 It follows that (\ref{homFDP}) may have $s$ linearly independent
 solutions.  For instance, given $0 \leq k < s$, let
-$\displaystyle \left\{ u_i^{[k]} \right\}_{i=0}^\infty$ be the solution of
+$\DS \left\{ u_i^{[k]} \right\}_{i=0}^\infty$ be the solution of
 \begin{align*}
 \sum_{j=0}^s\,a_j\,u_{i-j} &= 0 \quad, \quad i \geq s \\
 u_i &= \delta_{k,i} \quad, \quad 0 \leq i < s
@@ -4912,9 +4912,9 @@ where
 \end{cases}
 \]
 is the well known Dirac Delta function.  The solutions
-$\displaystyle \left\{ u_i^{[0]} \right\}_{i=0}^\infty$,
-$\displaystyle \left\{ u_i^{[1]} \right\}_{i=0}^\infty$,
-\ldots, $\displaystyle \left\{ u_i^{[s-1]} \right\}_{i=0}^\infty$
+$\DS \left\{ u_i^{[0]} \right\}_{i=0}^\infty$,
+$\DS \left\{ u_i^{[1]} \right\}_{i=0}^\infty$,
+\ldots, $\DS \left\{ u_i^{[s-1]} \right\}_{i=0}^\infty$
 form a set of $s$ linearly independent solutions of (\ref{homFDP}).
 
 \begin{defn}
@@ -4925,7 +4925,7 @@ Equations!Fundamental Set of Solutions}.
 \end{defn}
 
 \begin{theorem}
-Let $\displaystyle \{ u_i^{[k]} \}_{i=0}^\infty$ for $0 \leq k < s$ be
+Let $\DS \{ u_i^{[k]} \}_{i=0}^\infty$ for $0 \leq k < s$ be
 a fundamental set of solutions of the homogeneous
 finite difference equation (\ref{homFDP}).  Then, the solution of
 \begin{align*}
@@ -4933,7 +4933,7 @@ finite difference equation (\ref{homFDP}).  Then, the solution of
 u_i &= v_i \quad, \quad 0 \leq i < s
 \end{align*}
 can be expressed uniquely as a linear combination of
-$\displaystyle \left\{ u_i^{[k]} \right\}_{i=0}^\infty$ for $0 \leq k < s$.
+$\DS \left\{ u_i^{[k]} \right\}_{i=0}^\infty$ for $0 \leq k < s$.
 \end{theorem}
 
 \begin{proof}
@@ -4965,23 +4965,23 @@ u_{s-1}
 \alpha_{s-1}
 \end{pmatrix} \ .
 \]
-Since $\displaystyle \{ u_i^{[k]} \}_{i=0}^\infty$ for $0\leq k < s$ are
+Since $\DS \{ u_i^{[k]} \}_{i=0}^\infty$ for $0\leq k < s$ are
 linearly independent, the columns of $A$ must also be linearly
 independent.  Thus the matrix $A$ is invertible.  Hence there is a
 unique solution to $A\VEC{\alpha} = \VEC{v}$.
 \end{proof}
 
-Suppose that $\displaystyle u_i = z^i$ for $i \geq 0$ is a solution of
+Suppose that $\DS u_i = z^i$ for $i \geq 0$ is a solution of
 the homogeneous finite difference equation (\ref{homFDP}).  If we
 substitute this formula for $u_i$ in (\ref{homFDP}) and factor out
-$\displaystyle z^{i-s}$, we get the
+$\DS z^{i-s}$, we get the
 {\bfseries characteristic polynomial}\index{Multistep
 Methods!Characteristic Polynomial} 
 \begin{equation}\label{charpolFDE}
 \sum_{j=0}^s \,a_j \, z^{s-j} = 0 \ .
 \end{equation}
 If $r$ is a real root of the characteristic polynomial, then
-$\displaystyle \{ u_i \}_{i=0}^\infty$ with $\displaystyle u_i = r^i$
+$\DS \{ u_i \}_{i=0}^\infty$ with $\DS u_i = r^i$
 is a solution for (\ref{homFDP}).  We note that $r \neq 0$ because we
 assume that $a_s \neq 0$.  If we could find $s$ distinct roots of the
 characteristic polynomial, then we will have $s$ solutions that
@@ -4993,8 +4993,8 @@ of (\ref{homFDP}).
 \begin{prop}
 If $r \in \CC$ is a root of algebraic multiplicity $m$ of the
 characteristic polynomial (\ref{charpolFDE}) with $a_s \neq 0$, then
-$\displaystyle \left\{ u_i^{[k]} \right\}_{i=0}^\infty$
-with $\displaystyle u_i = i^kr^i$ and $0\leq k <m$
+$\DS \left\{ u_i^{[k]} \right\}_{i=0}^\infty$
+with $\DS u_i = i^kr^i$ and $0\leq k <m$
 are $m$ linearly independent solutions for (\ref{homFDP}).
 \label{rootHO}
 \end{prop}
@@ -5006,15 +5006,15 @@ p(z) = \sum_{j=0}^s \,a_j \, z^{s-j}
 \]
 If $r$ is a root of $p$ of algebraic multiplicity $m$ (so a zero of
 order $m$ of $p$), we have that
-$\displaystyle p(r) = p'(r) = \ldots = p^{(m-1)}(r) = 0$ and
-$\displaystyle p^{(m)}(r) \neq 0$.
-Let $\displaystyle q(z) = z^{i-s}p(z)$ for some $i \geq s$.  We have
+$\DS p(r) = p'(r) = \ldots = p^{(m-1)}(r) = 0$ and
+$\DS p^{(m)}(r) \neq 0$.
+Let $\DS q(z) = z^{i-s}p(z)$ for some $i \geq s$.  We have
 \[
   q^{(k)}(z) = \sum_{j=0}^k \binom{k}{j}\left(\pdfdxn{z^{i-s}}{z}{j}\right)
   p^{(k-j)}(z) \ .
 \]
-Hence, $\displaystyle q(r) = q'(r) = \ldots = q^{(m-1)}(r) = 0$
-and $\displaystyle q^{(m)}(r) = r^{i-s} p^{(m)}(r) \neq 0$.  Therefore,
+Hence, $\DS q(r) = q'(r) = \ldots = q^{(m-1)}(r) = 0$
+and $\DS q^{(m)}(r) = r^{i-s} p^{(m)}(r) \neq 0$.  Therefore,
 \[
   q^{(k)}(r) = \sum_{j=0}^s \,a_j \, (i-j)(i-j-1)\ldots(i-j-k+1)r^{i-j-k}
   = 0
@@ -5025,8 +5025,8 @@ for $0<k<m$.  Hence
   = 0
 \]
 for $0<k<m$.  We have shown that
-$\displaystyle \{ v_i^{[k]} \}_{i=0}^\infty$ with
-$\displaystyle v_i = i(i-1)\ldots(i-k+1)r^i$ and
+$\DS \{ v_i^{[k]} \}_{i=0}^\infty$ with
+$\DS v_i = i(i-1)\ldots(i-k+1)r^i$ and
 $0 < k <m$ are solutions for (\ref{homFDP}).  Since
 \begin{align*}
 i \prod_{n=1}^N (i - a_n)
@@ -5040,14 +5040,14 @@ we have that
 i(i-1)\ldots(i-k+1) = i^k + \sum_{j=1}^{k-1}A_j i^{k-j}
 \]
 for $0<k<m$ and the appropriate definitions of the $A_j$; for
-instance, $\displaystyle A_1 = - \sum_{n=1}^{k-1} n$.
+instance, $\DS A_1 = - \sum_{n=1}^{k-1} n$.
 Using the fact that a linear combination of solutions of
 (\ref{homFDP}) is a solution of (\ref{homFDP}), we have that
-$\displaystyle \{ u_i^{[0]} \}_{i=0}^\infty$ with $\displaystyle u_i^{(0)} = r^i$,
-$\displaystyle \{ u_i^{[1]} \}_{i=0}^\infty$ with
-$\displaystyle u_i^{[1]} = v_i^{[1]} = i r^i$,
+$\DS \{ u_i^{[0]} \}_{i=0}^\infty$ with $\DS u_i^{(0)} = r^i$,
+$\DS \{ u_i^{[1]} \}_{i=0}^\infty$ with
+$\DS u_i^{[1]} = v_i^{[1]} = i r^i$,
 and in general
-$\displaystyle \{ u_i^{[k]} \}_{i=0}^\infty$ with $1<k<m$ and
+$\DS \{ u_i^{[k]} \}_{i=0}^\infty$ with $1<k<m$ and
 \[
 u_i^{[k]} = v_i^{[k]} - \sum_{j=1}^{k-1} A_j u_i^{[j]} = i^k r^i
 \]
@@ -5058,13 +5058,13 @@ Suppose that $z_1$, $z_2$, \ldots, $z_q$ are the
 roots of the characteristic polynomial of multiplicities $k_1$, $k_2$,
 \ldots, $k_q$ respectively.  It follows from the previous proposition
 that the general solution
-$\displaystyle \{ u_i \}_{i=0}^\infty$ of (\ref{homFDP}) is given by
+$\DS \{ u_i \}_{i=0}^\infty$ of (\ref{homFDP}) is given by
 \[
 u_i = \sum_{j=1}^q \left( \sum_{m=0}^{k_j-1}\,c_{j,m}\,i^m \right) z_j^i 
 \]
 for $i \geq 0$, where the constants $c_{j,m}$ are determined by the
 initial conditions $u_0$, $u_1$, \ldots, $u_{s-1}$.  We note that
-$\displaystyle s = \sum_{j=1}^q k_j$.
+$\DS s = \sum_{j=1}^q k_j$.
 
 \begin{egg}
 Consider the finite difference equation
@@ -5073,7 +5073,7 @@ u_{i+3} -9\,u_{i+2} +24\,u_{i+1} -20\,u_i = 0
 \]
 for $i\geq 0$ with initial conditions $u_0 = u_1 = 0$ and $u_2 = 1$.
 The characteristic polynomial is
-$\displaystyle z^3 -9z^2 +24z -20 = (z-2)^2(z-5)$.
+$\DS z^3 -9z^2 +24z -20 = (z-2)^2(z-5)$.
 There are two distinct roots: $2$ of multiplicity $2$ and $5$ of
 multiplicity $1$.  The general solution is
 \[
@@ -5088,28 +5088,28 @@ u_2 &= 1 \Rightarrow (c_{1,0}+ 2 c_{1,1})\,2^2 + c_{2,0}\,5^2 = 1
 Solving, we find $c_{1,0} = -1/9$, $c_{2,0} = 1/9$ and
 $c_{1,1} = -1/6$.
 
-The solution $\displaystyle \{u_i\}_{i=0}^\infty$ is given by
-$\displaystyle u_i = -\left(\frac{1}{9}+\frac{1}{6}\,i\right)2^i +
+The solution $\DS \{u_i\}_{i=0}^\infty$ is given by
+$\DS u_i = -\left(\frac{1}{9}+\frac{1}{6}\,i\right)2^i +
 \frac{1}{9}\,5^i$ for $i=0$, $1$, $2$, \ldots
 \end{egg}
 
 \begin{theorem}
 Suppose that (\ref{basicFDP}) is of order $s$ and let
-$\displaystyle \{ u_i^{[k]} \}_{i=0}^\infty$ be the solution of the
+$\DS \{ u_i^{[k]} \}_{i=0}^\infty$ be the solution of the
 homogeneous finite difference equation 
 \begin{align*}
 \sum_{j=0}^s\,a_j\,u_{i-j} &= 0 \quad, \quad i \geq s \\
 u_i &= \delta_{k,i} \quad, \quad 0 \leq i < s
 \end{align*}
 for $0 \leq k < s$.  Then, the solution
-$\displaystyle \{ u_i \}_{i=0}^\infty$ of (\ref{basicFDP}) is given by
+$\DS \{ u_i \}_{i=0}^\infty$ of (\ref{basicFDP}) is given by
 \begin{equation} \label{non_hom_solA}
 u_i = \sum_{k=0}^{s-1}\,v_i\,u_i^{[k]} + w_i \quad, \quad i \geq 0 \ ,
 \end{equation}
 where
 \begin{equation} \label{non_hom_solB}
 w_i =  \begin{cases}
-\displaystyle \frac{1}{a_0}\,\sum_{k=0}^{i-s}\,C_{s+k}\,u_{i-k-1}^{[s-1]} &
+\DS \frac{1}{a_0}\,\sum_{k=0}^{i-s}\,C_{s+k}\,u_{i-k-1}^{[s-1]} &
 \quad \text{if} \quad i\geq s \\
 0 & \quad \text{if} \quad 0 \leq i < s
 \end{cases}
@@ -5139,8 +5139,8 @@ $w_i$.  We have that
 \sum_{j=0}^s\,a_j\left(\sum_{k=0}^{i-s}\,C_{s+k}\,u_{i-j-k-1}^{[s-1]}\right)
 \]
 because $i-j-k-1 < s-1$ for $k>i-j-s$ implies that
-$\displaystyle u_{i-j-k-1}^{[s-1]} = 0$.  To simplify the notation, we
-assume that $\displaystyle u_i^{[s-1]} = 0$ for $i<0$.  Hence,
+$\DS u_{i-j-k-1}^{[s-1]} = 0$.  To simplify the notation, we
+assume that $\DS u_i^{[s-1]} = 0$ for $i<0$.  Hence,
 \[
 \sum_{j=0}^s\,a_j\,w_{i-j} =
 \frac{1}{a_0}\,\sum_{k=0}^{i-s}\,C_{s+k}
@@ -5150,9 +5150,9 @@ assume that $\displaystyle u_i^{[s-1]} = 0$ for $i<0$.  Hence,
 for $i\geq s$.   We note that
 $s-1 \leq i-k-1 \leq i-1$ for $0\leq k \leq i-s$.  Hence, the second
 equality comes from 
-$\displaystyle \sum_{j=0}^s\,a_j\,u_{(i-k-1)-j}^{(s-1)} = 0$ 
+$\DS \sum_{j=0}^s\,a_j\,u_{(i-k-1)-j}^{(s-1)} = 0$ 
 for $i-k-1 \geq s$ because
-$\displaystyle \{ u_i^{(s-1)} \}_{i=0}^\infty$ is a solution of the homogeneous
+$\DS \{ u_i^{(s-1)} \}_{i=0}^\infty$ is a solution of the homogeneous
 difference equation.  The last equality, for $i-k-1 = s-1$, comes from
 \[
   u_{(i-k-1)-j}^{(s-1)} = u_{s-j-1}^{(s-1)}
@@ -5169,17 +5169,17 @@ Our study of the convergence of multistep methods will use the notion of
 "root condition" that we first define.
 
 If $F \equiv 0$ in (\ref{MSM_GF}), we get
-$\displaystyle w_{i+1} = \sum_{k=0}^m a_k w_{i-k}$.
-If we substitute $\displaystyle \lambda^i$ for $w_i$ in this expression, we get
-$\displaystyle \lambda^{i+1} = \sum_{k=0}^m a_k \lambda^{i-k}$. 
+$\DS w_{i+1} = \sum_{k=0}^m a_k w_{i-k}$.
+If we substitute $\DS \lambda^i$ for $w_i$ in this expression, we get
+$\DS \lambda^{i+1} = \sum_{k=0}^m a_k \lambda^{i-k}$. 
 If we multiply both sides of this equation by
-$\displaystyle \lambda^{m-i}$, we get $p(\lambda) = 0$ for
-$\displaystyle p(\lambda) = - \lambda^{m+1} + \sum_{k=0}^m a_k \lambda^{m-k}$.
+$\DS \lambda^{m-i}$, we get $p(\lambda) = 0$ for
+$\DS p(\lambda) = - \lambda^{m+1} + \sum_{k=0}^m a_k \lambda^{m-k}$.
 
 \begin{defn}
 The {\bfseries characteristic polynomial}\index{Characteristic Polynomial}
 of the multistep method (\ref{MSM_GF}) is the polynomial
-$\displaystyle p(\lambda) = - \lambda^{m+1} + \sum_{k=0}^m a_k \lambda^{m-k}$.
+$\DS p(\lambda) = - \lambda^{m+1} + \sum_{k=0}^m a_k \lambda^{m-k}$.
 \end{defn}
 
 \begin{defn}
@@ -5203,12 +5203,12 @@ not satisfy the root condition.
 \begin{enumerate}
 \item The characteristic polynomial of
 Adams-Bashforth method of order four is
-$\displaystyle p(\lambda) = - \lambda^4 + \lambda^3$.  $1$ is a root of 
+$\DS p(\lambda) = - \lambda^4 + \lambda^3$.  $1$ is a root of 
 multiplicity one and $0$ is a root of multiplicity three.  The method
 is strongly stable.
 \item The characteristic polynomial of the
 Adams-Bashforth method of order two from Example~\ref{comp_order} is
-$\displaystyle p(\lambda) = -\lambda^2 + 1$.  $1$ and $-1$  are the
+$\DS p(\lambda) = -\lambda^2 + 1$.  $1$ and $-1$  are the
 two roots of this polynomial.  The method is weakly stable.
 \end{enumerate}
 \end{eggList}
@@ -5257,19 +5257,19 @@ h \left( c^i + \bar{c}^i \right) & \quad \text{if}\quad c \in \CC \setminus \RR
 \end{cases}
 \]
 for $0\leq i \leq N$, where $h = (t_f-t_0)/N$ as usual.
-We have that $\displaystyle \{u_i\}_{i=0}^N$ is a solution of
+We have that $\DS \{u_i\}_{i=0}^N$ is a solution of
 (\ref{zzFDP}) if we set $\delta_i = u_i$ for $0\leq i \leq m$.
 For $c \in \CC \setminus \RR$,
-$\displaystyle \{u_i\}_{i=0}^N$ is linear combination of the two solutions,
-$\displaystyle \{c^i\}_{i=0}^N$ and
-$\displaystyle \{\overline{c}^i\}_{i=0}^N$.
+$\DS \{u_i\}_{i=0}^N$ is linear combination of the two solutions,
+$\DS \{c^i\}_{i=0}^N$ and
+$\DS \{\overline{c}^i\}_{i=0}^N$.
 However,
 \[
 |u_N| =
 \begin{cases}
-\displaystyle
+\DS
 \frac{t_f-t_0}{N} |c^N| & \quad \text{if} \quad c \in \RR \\[0.8em]
-\displaystyle \frac{t_f-t_0}{N} |c^N + \bar{c}^N| &
+\DS \frac{t_f-t_0}{N} |c^N + \bar{c}^N| &
 \quad \text{if} \quad c \in \CC \setminus \RR
 \end{cases}
 \]
@@ -5286,19 +5286,19 @@ h i \left( c^i + \bar{c}^i \right) & \quad \text{if}\quad  c \in \CC
 \end{cases}
 \]
 for $0 \leq i \leq N$, where $h = (t_f-t_0)/N$.
-Again, $\displaystyle \{u_i\}_{i=0}^N$ is a solution of (\ref{zzFDP}) if we set
+Again, $\DS \{u_i\}_{i=0}^N$ is a solution of (\ref{zzFDP}) if we set
 $\delta_i = u_i$ for $0\leq i \leq m$.
-For $c \in \CC \setminus \RR$, $\displaystyle \{u_i\}_{i=0}^N$ is linear
+For $c \in \CC \setminus \RR$, $\DS \{u_i\}_{i=0}^N$ is linear
 combination of the two solutions: 
-$\displaystyle \{i c^i\}_{i=0}^N$ and
-$\displaystyle \{i \overline{c}^i\}_{i=0}^N$ (Proposition~\ref{rootHO}).
+$\DS \{i c^i\}_{i=0}^N$ and
+$\DS \{i \overline{c}^i\}_{i=0}^N$ (Proposition~\ref{rootHO}).
 However,
 \[
 |u_N| =
 \begin{cases}
-\displaystyle
+\DS
 (t_f-t_0) |c^N| & \quad \text{if} \quad c \in \RR \\
-\displaystyle
+\DS
 (t_f-t_0) |c^N + \bar{c}^N| & \quad \text{if} \quad c \in \CC \setminus \RR
 \end{cases}
 \]
@@ -5320,7 +5320,7 @@ or, stated differently,
 \]
 We have that $i(N) = C N$ with $C = (t-t_0)/(t_f-t_0)$.
 If we select an increasing sequence
-$\displaystyle \{N_j\}_{j=0}^\infty$ of positive
+$\DS \{N_j\}_{j=0}^\infty$ of positive
 integers (e.g.\ $N_{j+1} = 2 N_j$) such that $C N_j$ reminds an
 integer, then $t = t_{i(N_j)}$ is always one of the nodes of the
 partition of $[t_0,t_f]$ and $i(N_j)$ increase proportionally to $N_j$
@@ -5331,32 +5331,32 @@ converge to $0$ as $j \to \infty$.
 \item In the proof of the previous proposition, we have used the
 following claims:
 \begin{enumerate}  
-\item $\displaystyle \{|c^j|/j\}_{j=1}^\infty$ does not converge to $0$ if
+\item $\DS \{|c^j|/j\}_{j=1}^\infty$ does not converge to $0$ if
 $c\in \RR$ satisfies $|c|>1$.
-\item $\displaystyle \{|c^j+\bar{c}^j|/j\}_{j=1}^\infty$ does not
+\item $\DS \{|c^j+\bar{c}^j|/j\}_{j=1}^\infty$ does not
 converge to $0$ if $c\in \CC \setminus \RR$ satisfies $|c|>1$.
-\item $\displaystyle \{|c^j|\}_{j=1}^\infty$ does not converge to $0$
+\item $\DS \{|c^j|\}_{j=1}^\infty$ does not converge to $0$
 if $c\in \RR$ satisfies $|c| = 1$.
-\item $\displaystyle \{|c^j+\bar{c}^j|\}_{j=1}^\infty$ does not
+\item $\DS \{|c^j+\bar{c}^j|\}_{j=1}^\infty$ does not
 converge to $0$ if $c\in \CC \setminus \RR$ satisfies $|c|=1$.
 \end{enumerate}
 
 The two cases where $c \in \RR$ are easy to prove because
-$\displaystyle |c|^j/j \to \infty$ as $j \to \infty$ when $|c| >1$, and
-$\displaystyle |c|^j = 1$ for all $j$ when $|c|=1$.
+$\DS |c|^j/j \to \infty$ as $j \to \infty$ when $|c| >1$, and
+$\DS |c|^j = 1$ for all $j$ when $|c|=1$.
 
 If $c \in \CC \setminus \RR$, we have
-$\displaystyle c = |c| e^{i\theta}$ for some
+$\DS c = |c| e^{i\theta}$ for some
 $\theta \neq n\pi$ for $n \in \ZZ$.  Thus,
 \[
  c^j+\bar{c}^j = |c|^j e^{j \theta\,i} + |c|^j e^{-j \theta\,i}
  = 2|c|^j \cos(j \theta) \ .
 \]
 We now show that there exists a strictly increasing sequence
-$\displaystyle \{j_k\}_{k=1}^\infty$ of positive integers and a constant $C>0$
+$\DS \{j_k\}_{k=1}^\infty$ of positive integers and a constant $C>0$
 depending on $\theta$ such that $|\cos(j_k \theta)|\geq C$ for all $k$.
 
-If $\displaystyle \theta = \frac{m \pi}{n}$ for two positive integer
+If $\DS \theta = \frac{m \pi}{n}$ for two positive integer
 $m$ and $n$ such that $m/n$ is in its reduced form and $n\neq 2$, then
 we can take $j_k = 2 k n +1$ and $C = |\cos(\theta)|$.  We have
 \[
@@ -5365,7 +5365,7 @@ we can take $j_k = 2 k n +1$ and $C = |\cos(\theta)|$.  We have
 \]
 for all $k$.
 
-If $\displaystyle \theta = \frac{m \pi}{2}$ for $m=1$ or $3$, then
+If $\DS \theta = \frac{m \pi}{2}$ for $m=1$ or $3$, then
 we can take $j_k = 2k$ and $C = 1$.  We have
 \[
   |\cos(j_k \theta)| = |\cos( 2k\theta)| = |\cos(k m \pi)| = 1
@@ -5373,9 +5373,9 @@ we can take $j_k = 2k$ and $C = 1$.  We have
 for all $k$.
 
 If $\theta/\pi \in \RR \setminus \QQ$ with $0 < \theta < 2\pi$, we
-need to use the fact that $\displaystyle \{ e^{j\theta} \}_{j=0}^\infty$
+need to use the fact that $\DS \{ e^{j\theta} \}_{j=0}^\infty$
 is dense on the unit circle.  Thus, there exist an infinite strictly
-increasing sequence $\displaystyle \{j_k\}_{k=0}^\infty$ such that
+increasing sequence $\DS \{j_k\}_{k=0}^\infty$ such that
 $j_k \theta$ is between $\pi/6$ and $\pi/3$ modulo $2\pi$.  We then have
 \[
   |\cos(j_k \theta)|
@@ -5389,9 +5389,9 @@ Hence,
 = \frac{2|c|^{j_k} |\cos(j_k \theta)|}{j_k}
 \geq 2C\, \frac{|c|^{j_k}}{j_k} \ .
 \]
-Since $\displaystyle \lim_{k\to \infty} \frac{|c|^{j_k}}{j_k} = \infty$
+Since $\DS \lim_{k\to \infty} \frac{|c|^{j_k}}{j_k} = \infty$
 because $|c|>1$, we get that
-$\displaystyle \lim_{k\to \infty} \frac{|c^j_k+\bar{c}^j_k|}{j_k} = \infty$.
+$\DS \lim_{k\to \infty} \frac{|c^j_k+\bar{c}^j_k|}{j_k} = \infty$.
 
 Similarly,
 \[
@@ -5399,7 +5399,7 @@ Similarly,
   \geq 2C
 \]
 for $|c|=1$ and all $k$.  So
-$\displaystyle \{|c^{j_k}+\bar{c}^{j_k}|\}_{k=0}^\infty$ does not
+$\DS \{|c^{j_k}+\bar{c}^{j_k}|\}_{k=0}^\infty$ does not
 converge to $0$.
 \end{enumerate}
 \label{cjdiverges}
@@ -5441,7 +5441,7 @@ Moreover, we consider the perturbed finite difference problem given by
 \end{split}
 \]
 The solution of this perturbed finite difference problem is obviously
-$\displaystyle \{ \tilde{u}_i \}_{i=0}^N$, where $\tilde{u}_i = 0$ for
+$\DS \{ \tilde{u}_i \}_{i=0}^N$, where $\tilde{u}_i = 0$ for
 $0 \leq i \leq N$.
 
 We show that the multistep method is not zero-stable for our
@@ -5464,7 +5464,7 @@ c \in \CC \setminus \RR
 \end{cases}
 \]
 for $0 \leq i \leq N$.  We have that
-$\displaystyle \{u_i\}_{i=0}^N$ is a solution of
+$\DS \{u_i\}_{i=0}^N$ is a solution of
 (\ref{zzFDPtwo}) if we set $\delta_i = u_i$ for $0\leq i \leq m$.
 We select $\delta$ small enough to get
 $|\delta_i - \tilde{\delta}_i| = |u_i| < \epsilon$ for $0\leq i \leq m$.
@@ -5472,14 +5472,14 @@ However,
 \[
 |u_N| =
 \begin{cases}
-\displaystyle \delta\,|c|^N  & \quad \text{if}\quad c \in \RR \\
-\displaystyle \delta\,|c^N + \bar{c}^N| &
+\DS \delta\,|c|^N  & \quad \text{if}\quad c \in \RR \\
+\DS \delta\,|c^N + \bar{c}^N| &
 \quad \text{if}\quad c \in \CC\setminus \RR
 \end{cases}
 \]
 does not converge to $0$ as $N \to \infty$.  There are strictly
-increasing sequences $\displaystyle \{N_j\}_{j=0}^\infty$ of positive integers
-such that $\displaystyle \{|u_{N_j}|\}_{j=0}^\infty$ converges to  $\infty$
+increasing sequences $\DS \{N_j\}_{j=0}^\infty$ of positive integers
+such that $\DS \{|u_{N_j}|\}_{j=0}^\infty$ converges to  $\infty$
 (Remark~\ref{cjdiverges}).
 Thus, we can take $N_j$ large enough such that 
 $h = (t_f-t_0)/N_j < h_0$ and $|u_{N_j}| > S\epsilon$ for whatever $S$
@@ -5496,7 +5496,7 @@ u_i = \begin{cases}
 \end{cases}
 \]
 for $0 \leq i \leq N$.
-Again, $\displaystyle \{u_i\}_{i=0}^N$ is a solution of (\ref{zzFDP}) if we set
+Again, $\DS \{u_i\}_{i=0}^N$ is a solution of (\ref{zzFDP}) if we set
 $\delta_i = u_i$ for $0\leq i \leq m$.  We also can select $\delta$
 small enough to get
 $|\delta_i - \tilde{\delta}_i| = |u_i| < \epsilon$ for $0\leq i \leq m$.
@@ -5504,15 +5504,15 @@ However,
 \[
 |u_N| =
 \begin{cases}
-\displaystyle
+\DS
 \delta\,N |c|^N & \quad \text{if}\quad c \in \RR \\
-\displaystyle \delta\,N |c^N + \bar{c}^N| &
+\DS \delta\,N |c^N + \bar{c}^N| &
 \quad \text{if}\quad c \in \CC \setminus \RR
 \end{cases}
 \]
 does not converge to $0$ as $N \to \infty$.   There are strictly
-increasing sequences $\displaystyle \{N_j\}_{j=0}^\infty$ of positive integers
-such that $\displaystyle \{|u_{N_j}|\}_{j=0}^\infty$ converges to  $\infty$
+increasing sequences $\DS \{N_j\}_{j=0}^\infty$ of positive integers
+such that $\DS \{|u_{N_j}|\}_{j=0}^\infty$ converges to  $\infty$
 (Remark~\ref{cjdiverges}).
 Again, we can take $N_j$ large enough such that
 $h = (t_f-t_0)/N_j < h_0$ and $|u_{N_j}| > S\epsilon$ for whatever $S$
@@ -5522,7 +5522,7 @@ and $h_0$ that we choose.  Therefore, contradicting (\ref{test_S_RC}).
 \begin{theorem}[Dahlquist]
 Suppose that the finite difference method in (\ref{MSM_GF}) satisfies
 (\ref{Fzero}) and (\ref{FDP_Lip}), and that
-$\displaystyle \max_{0 \leq i \leq N} | \delta_i(h) | \leq
+$\DS \max_{0 \leq i \leq N} | \delta_i(h) | \leq
 \delta(h) = O(h^2)$ in (\ref{MSM_GFpertub}).
 If the finite difference problem (\ref{MSM_GF}) is consistent, then
 (\ref{MSM_GF}) is convergent if and only if it satisfies the root
@@ -5531,9 +5531,9 @@ condition.  \label{Dahl_conv}
 
 \begin{rmk}
 It is not too outrageous to require
-$\displaystyle \delta(h) = O(h^2)$ in the statement of Theorem~\ref{Dahl_conv}.
+$\DS \delta(h) = O(h^2)$ in the statement of Theorem~\ref{Dahl_conv}.
 
-Suppose that $\displaystyle \left\{u_i\right\}_{i=0}^N$ is a
+Suppose that $\DS \left\{u_i\right\}_{i=0}^N$ is a
 solution of
 \[
 \frac{1}{h} \left( u_{i+1} - \sum_{j=0}^m\,a_ju_{i-j}\right)
@@ -5545,7 +5545,7 @@ u_{i+1} - \sum_{j=0}^m\,a_ju_{i-j} + h  F(h,\VEC{t},\VEC{w},f)
 + h\sigma_{i+1}(h) \quad , \quad m\leq i < N \ .
 \]
 We may set $\delta_i(h) = h \sigma_i(h)$.  So, the real assumption that we
-make is that $\displaystyle \max_{0 \leq i \leq N} | \sigma_i(h) | \leq
+make is that $\DS \max_{0 \leq i \leq N} | \sigma_i(h) | \leq
 \sigma(h) = O(h)$ near the origin.
 \end{rmk}
 
@@ -5589,7 +5589,7 @@ e_i = h\sigma_i(h) & \quad \text{for} \quad 0 \leq i \leq m
 \end{split}
 \end{equation}
 
-Let $\displaystyle \left\{ u_i^{[k]} \right\}_{i=0}^\infty$ be the solution of
+Let $\DS \left\{ u_i^{[k]} \right\}_{i=0}^\infty$ be the solution of
 \begin{align*}
 \sum_{j=0}^{m+1}\,a_{j-1}\,u_{i-j} &= 0 \quad , \quad i > m \\
 u_i &= \delta_{k,i} \quad , \quad 0 \leq i \leq m
@@ -5601,14 +5601,14 @@ $a_{j-1}$, $C_i$ replaced by $C_{i-1}$ and $s=m+1$ in
 \begin{align}
 e_i &= \sum_{k=0}^m\,e_i\,u_i^{[k]}
 + \begin{cases}
-\displaystyle \frac{1}{a_{-1}}\,
+\DS \frac{1}{a_{-1}}\,
 \sum_{k=0}^{i-m-1}\,C_{k+m}\,u_{i-k-1}^{[m]} & \quad \text{if} \quad
 m<i \leq N \\
 0  & \quad \text{if} \quad 0\leq i \leq m 
 \end{cases} \nonumber  \\
 &= \sum_{k=0}^m\,e_i\,u_i^{[k]}
 - \begin{cases}
-\displaystyle
+\DS
 \sum_{k=0}^{i-m-1}\,C_{k+m}\,u_{i-k-1}^{[m]} & \quad \text{if} \quad
 m<i \leq N \\
 0  & \quad \text{if} \quad 0\leq i \leq m 
@@ -5616,13 +5616,13 @@ m<i \leq N \\
 \end{align}
 
 The root condition implies that there exist a constant $Q \geq 1$ such
-that $\displaystyle | u_i^{[k]} | \leq Q$ for all $i$ and $k$.  Recall that all
+that $\DS | u_i^{[k]} | \leq Q$ for all $i$ and $k$.  Recall that all
 solutions of the homogeneous difference equation
 \begin{equation} \label{Tthree}
 \sum_{j=0}^{m+1}\,a_{j-1}\,u_{i-j} = 0 \quad , \quad i > m \ ,
 \end{equation}
 are linear combinations of solutions with terms of the
-form $\displaystyle e_i = i^n c^i$, where $c$ is a root of the
+form $\DS e_i = i^n c^i$, where $c$ is a root of the
 characteristic polynomial
 \[
   \sum_{j=0}^{m+1}\, a_{j-1}\,z^{m+1-j} =
@@ -5644,18 +5644,18 @@ for  $0\leq k \leq i-m -1$.  Hence, from (\ref{Ttwo}), we get
 \begin{align}
 |e_i| & \leq
 \begin{cases}
-\displaystyle Q(m+1)\,\max_{0\leq j \leq m} |e_j| & \\
-\displaystyle \qquad + Q(i-m+1)\,h \bigg( R\,(m+2)\,\max_{0\leq j \leq i} |e_j|
+\DS Q(m+1)\,\max_{0\leq j \leq m} |e_j| & \\
+\DS \qquad + Q(i-m+1)\,h \bigg( R\,(m+2)\,\max_{0\leq j \leq i} |e_j|
 + \sigma(h) + \tau(h) \bigg) & \quad \text{if}\quad  m< i \leq N\\[1em]
-\displaystyle Q(m+1)\,\max_{0\leq j \leq m} |e_j| & \quad \text{if}
+\DS Q(m+1)\,\max_{0\leq j \leq m} |e_j| & \quad \text{if}
 \quad 0\leq i \leq m
 \end{cases}  \nonumber \\
 & \leq
 \begin{cases}
-\displaystyle Q(m+1)\,\max_{0\leq j \leq m} |e_j| & \\
-\displaystyle \qquad + Qih \bigg( R\,(m+2)\,\max_{0\leq j \leq i} |e_j|
+\DS Q(m+1)\,\max_{0\leq j \leq m} |e_j| & \\
+\DS \qquad + Qih \bigg( R\,(m+2)\,\max_{0\leq j \leq i} |e_j|
 + \sigma(h) + \tau(h) \bigg) & \quad \text{if}\quad  m< i \leq N\\[1em]
-\displaystyle Q(m+1)\,\max_{0\leq j \leq m} |e_j| & \quad \text{if}
+\DS Q(m+1)\,\max_{0\leq j \leq m} |e_j| & \quad \text{if}
 \quad 0\leq i \leq m
 \end{cases}  \label{Tfour}
 \end{align}
@@ -5678,7 +5678,7 @@ Q(m+1)\,\max_{0\leq j \leq m} |e_j| + \frac{1}{2}\,\max_{0\leq j \leq i} |e_j|
 + Q i h\left(\sigma(h) + \tau(h) \right)
 \]
 for $m < i \leq 1/(2 M h)$. If we isolate 
-$\displaystyle \max_{0\leq j \leq i} |e_j|$, we get
+$\DS \max_{0\leq j \leq i} |e_j|$, we get
 \begin{equation}\label{Tfive}
 \max_{0\leq j \leq i} |e_j| \leq
 2\,Q\left( (m+1)\,\max_{0\leq j \leq m} |e_j|
@@ -5692,9 +5692,9 @@ is the largest integer smaller than or equal to $a$.  Let
 $i_{-1} = 0$, $i_0=m$ and $i_{K+1} = N$.
 
 If we repeat the same argument on the interval
-$\displaystyle I_k = [t_0+k/(2M), t_0+(k+1)/(2M)]$ for $1 \leq k \leq K$
+$\DS I_k = [t_0+k/(2M), t_0+(k+1)/(2M)]$ for $1 \leq k \leq K$
 with the initial conditions at $t_j$ given by $e_j$ for
-$\displaystyle i_k-m \leq j \leq i_k$, we get
+$\DS i_k-m \leq j \leq i_k$, we get
 \begin{equation}\label{Tseven}
 \max_{i_k-m \leq j \leq i} |e_j| \leq 2 Q \left( (m+1)
 \max_{i_1-m\leq j \leq i_1} |e_j|
@@ -5702,7 +5702,7 @@ $\displaystyle i_k-m \leq j \leq i_k$, we get
 \end{equation}
 for $i_k < i \leq i_{k+1}$ and $1 \leq k \leq K$.
 
-Let $\displaystyle E_k = \max_{i_k \leq i \leq i_{k+1}} |e_i|$ for
+Let $\DS E_k = \max_{i_k \leq i \leq i_{k+1}} |e_i|$ for
 $-1 \leq k \leq K$.  We deduce from (\ref{Tfive}) that
 \[
 E_0 \leq 2\,Q\left( (m+1)\,E_{-1}
@@ -5730,7 +5730,7 @@ Therefore,
 \]
 as $h \rightarrow 0$ independently of $f$.  Recall that
 $E_{-1} \rightarrow 0$ as $h \rightarrow 0$ because
-$\displaystyle E_{-1} = \max_{0\leq j \leq m} |e_j|
+$\DS E_{-1} = \max_{0\leq j \leq m} |e_j|
 = \max_{0\leq j \leq m} |\delta_j(h)| = O(h^2)$.
 \end{proof}
 
@@ -5752,7 +5752,7 @@ There is no reference to perturbations $\delta_i$ in this statement.
 \begin{theorem}
 Suppose that the finite difference method in (\ref{MSM_GF}) satisfies
 (\ref{Fzero}) and (\ref{FDP_Lip}), and that
-$\displaystyle \max_{0 \leq i \leq N} | \delta_i(h) | \leq
+$\DS \max_{0 \leq i \leq N} | \delta_i(h) | \leq
 \delta(h) = O(h^2)$ in (\ref{MSM_GFpertub}).
 Then (\ref{MSM_GF}) is zero-stable if and only if it satisfies the
 root condition.
@@ -5777,7 +5777,7 @@ for $m \leq i < N$, we get
 \[
 \sum_{j=-1}^m\,a_j\,e_{i-j} = C_i \quad , \quad  m \leq i < N \ ,
 \]
-where $a_{-1} = -1$, $\displaystyle e_j = u_j^{[2]} - u_j^{[1]}$ for
+where $a_{-1} = -1$, $\DS e_j = u_j^{[2]} - u_j^{[1]}$ for
 $0 \leq j \leq N$ and
 \[
 C_i = -h \left( F(h,\VEC{t},\VEC{u}^{[2]},f)
@@ -5786,17 +5786,17 @@ C_i = -h \left( F(h,\VEC{t},\VEC{u}^{[2]},f)
 \quad , \quad m \leq i < N \ .
 \]
 
-Let $\displaystyle \delta_i^{[j]}(h) = h \sigma_i^{[j]}(h)$ for $j=1$ and $2$.
+Let $\DS \delta_i^{[j]}(h) = h \sigma_i^{[j]}(h)$ for $j=1$ and $2$.
 Moreover, let
 \[
 \sigma(h) = \max_{0\leq i \leq N} \left|\sigma_i^{[2]}(h)
 - \sigma_i^{[1]}(h)\right| \ .
 \]
 We then have that\footnote{Instead of requiring
-$\displaystyle \max_{0 \leq i \leq N} | \delta_i(h) | \leq
+$\DS \max_{0 \leq i \leq N} | \delta_i(h) | \leq
 \delta(h) = O(h^2)$ in the statement of the theorem, we could have only
 required
-$\displaystyle \max_{0 \leq i \leq N}
+$\DS \max_{0 \leq i \leq N}
 \left| \delta_i^{[2]}(h) - \delta_i^{[1]}(h) \right| \leq
 \delta(h) = O(h^2)$.}
 \[
@@ -5816,8 +5816,8 @@ E_{-1} = \max_{0 \leq i \leq m} \left| e_i\right|
 = \max_{0 \leq i \leq m} \left| h\sigma_i^{[2]} - h \sigma_i^{[1[} \right|
 \leq h \sigma(h)
 \]
-because $\displaystyle u_i^{[1]} = y(t_i) + \delta_i^{[1]}(h)$ and
-$\displaystyle u_i^{[2]} = y(t_i) + \delta_i^{[2]}(h)$ for
+because $\DS u_i^{[1]} = y(t_i) + \delta_i^{[1]}(h)$ and
+$\DS u_i^{[2]} = y(t_i) + \delta_i^{[2]}(h)$ for
 $0\leq i \leq m$.  Thus
 \[
 E_k \leq \left(
@@ -5936,7 +5936,7 @@ for $0\leq i <N$.
 The {\bfseries region of absolute stability}\index{Runge-Kutta!Region of
 Absolute Stability} of a Runge-Kutta method 
 is the set of all values $h\mu \in \CC$ such that
-$\displaystyle \lim_{i\rightarrow +\infty} w_i = 0$ for all solutions
+$\DS \lim_{i\rightarrow +\infty} w_i = 0$ for all solutions
 $\{w_i\}_{i=0}^\infty$ of the difference equation associated to the
 Runge-Kutta method given in Definition~\ref{GFRKM} applied to the initial
 value problem (\ref{RKThe_equ}).  \label{DefnABSAS}
@@ -5950,9 +5950,9 @@ stability contains the half-plane to the left of the imaginary axis
 \begin{rmk}
 In the previous definition, we have to remember that we assume that
 $\RE \mu <0$.  Hence, all solutions
-$\displaystyle y(t) = e^{\mu (t-t_0)}y_0$ of the
+$\DS y(t) = e^{\mu (t-t_0)}y_0$ of the
 differential equation (\ref{RKThe_equ}) satisfy
-$\displaystyle \lim_{t\to \infty} y(t) = 0$.
+$\DS \lim_{t\to \infty} y(t) = 0$.
 \end{rmk}
 
 \begin{egg}
@@ -5976,18 +5976,18 @@ w_{i+1} &= w_i + h\left( \gamma_1 \mu\, w_i
 (\mu\,h)^2 \right) w_i \ .
 \end{split}
 \end{equation}
-If we substitute $\displaystyle \lambda^i$ for $w_i$, we get
+If we substitute $\DS \lambda^i$ for $w_i$, we get
 \[
 \lambda^{i+1} = \left( 1 + (\gamma_1 + \gamma_2)\mu\, h + \gamma_2
 \beta_{2,1} (\mu\, h)^2 \right) \lambda^i
 \]
-and, after dividing by $\displaystyle \lambda^i$, we get the only non-null root
+and, after dividing by $\DS \lambda^i$, we get the only non-null root
 \[
 \lambda = \left( 1 + (\gamma_1 + \gamma_2)\mu\, h + \gamma_2
 \beta_{2,1} (\mu\, h)^2 \right) \ .
 \]
 Hence, the general solution of (\ref{RKAstabequ}) is
-$\displaystyle w_i = \lambda^i w_0$ for $i=0$, $1$, $2$, \ldots\ From
+$\DS w_i = \lambda^i w_0$ for $i=0$, $1$, $2$, \ldots\ From
 the condition $\gamma_1 + \gamma_2 = 1$ and $\beta_{2,1} \gamma_2 = 1/2$
 (Definition~\ref{RK2}), we get
 \begin{equation} \label{abs_stab_cond_RK2}
@@ -5998,18 +5998,18 @@ We need
 \left| \lambda \right| =
 \left| 1 + \mu\, h + \frac{1}{2} (\mu\, h)^2 \right| < 1
 \end{equation}
-to get $\displaystyle \lim_{i\to \infty} w_i = 0$.
+to get $\DS \lim_{i\to \infty} w_i = 0$.
 
 The region of absolute stability of the Runge-Kutta methods of order
 two is the set of all $h\mu \in \CC$ such that
 (\ref{stab_cond_RK2}) is satisfied.  The set of values
-$z \in \CC$ such that $\displaystyle 1 + z + z^2/2$ is on the unit circle
+$z \in \CC$ such that $\DS 1 + z + z^2/2$ is on the unit circle
 is the black curve shown in Figure~\ref{reg_abs_stab_RK2}.
 To draw this black curve, we may use the fact that
-$\displaystyle 1 + z + z^2/2 = e^{i\theta}$ is a quadratic equation whose
-solutions are given by $\displaystyle z = -1 \pm \sqrt{-1+2 e^{i \theta}}$.
+$\DS 1 + z + z^2/2 = e^{i\theta}$ is a quadratic equation whose
+solutions are given by $\DS z = -1 \pm \sqrt{-1+2 e^{i \theta}}$.
 The number $i$ in the previous sentence is the complex number such
-that $\displaystyle i^2 = -1$ and not the index $i$ in the Runge-Kutta method.
+that $\DS i^2 = -1$ and not the index $i$ in the Runge-Kutta method.
 As $\theta$ goes from $0$ to $2\pi$, we move along the (upper and
 lower branches of the) black curve.
 
@@ -6017,10 +6017,10 @@ The region of absolute stability is inside the black curve.
 To determine if the region of absolute stability is inside or outside
 the continuous curve, we have drawn the curve generated
 by the set of points $z$ such that
-$\displaystyle \left| 1 + z + z^2/2 \right| = 1.2$, the red curve in
+$\DS \left| 1 + z + z^2/2 \right| = 1.2$, the red curve in
 Figure~\ref{reg_abs_stab_RK2}, and the curve generated by the set of
 points $z$ such that
-$\displaystyle \left| 1 + z + z^2/2 \right| = 0.8$, the blue
+$\DS \left| 1 + z + z^2/2 \right| = 0.8$, the blue
 curve in Figure~\ref{reg_abs_stab_RK2}.  In the first case, the points
 $z$ correspond to values of $h\mu$ for which
 $| \lambda | > 1$, so they are outside the region of absolute
@@ -6037,14 +6037,14 @@ $p=2$ as we have just shown.
 Runge-Kutta method of order two}{Boundaries of the region
 of absolute stability for the Runge-Kutta method of order two (black
 curve) and the curve generated by the set of points $z \in \CC$ such that
-$\displaystyle \left|1 + z + z^2/2 \right|=1.2$ and $0.8$ (red and blue curves
+$\DS \left|1 + z + z^2/2 \right|=1.2$ and $0.8$ (red and blue curves
 respectively).  The region of absolute stability is inside the black
 curve.}{reg_abs_stab_RK2}
 
 \begin{prop}
 Consider the general Runge-Kutta method from Definition~\ref{GFRKM}.
 There exists a rational function $r:\CC \to \CC$ such that
-$\displaystyle w_i = (r(h\mu))^i w_0$ for $0 \leq i \leq N$.
+$\DS w_i = (r(h\mu))^i w_0$ for $0 \leq i \leq N$.
 If the Runge-Kutta method is explicit, $r$ is a polynomial.
 \label{rat_funct}
 \end{prop}
@@ -6059,18 +6059,18 @@ for $0\leq i \leq N$.  Thus, we have to show that
 r(z) = 1 + z\VEC{c}^\top (\Id - zB)^{-1} \VEC{u}
 \]
 is a rational function.
-It is enough to show that $\displaystyle \VEC{c}^\top(\Id-zB)^{-1}\VEC{u}$ is a
+It is enough to show that $\DS \VEC{c}^\top(\Id-zB)^{-1}\VEC{u}$ is a
 rational function in $z$.  This comes from
 \[
 (\Id-zB)^{-1} = \frac{1}{\det(\Id-zB)}\,(\text{adj}(\Id-zB))^\top \ ,
 \]
 where $\det(\Id-zB)$ is a polynomial in $z$ of degree at most $s$, and
 $\text{adj}(\Id-zB)$ is an \nm{s}{s} matrix whose $(i,j)$ entry is
-the {\bfseries cofactor} $\displaystyle (-1)^{i+j} \det A_{i,j}$,
+the {\bfseries cofactor} $\DS (-1)^{i+j} \det A_{i,j}$,
 where $A_{i,j}$ is obtained from $\Id - zB$ by removing the
-$\displaystyle i^{th}$ row and $\displaystyle j^{th}$ column.
+$\DS i^{th}$ row and $\DS j^{th}$ column.
 The cofactors are polynomials in $z$ of degree at most $s-1$.
-Hence, $\displaystyle \VEC{c}^\top(\Id-zA)^{-1}\VEC{u}$ is the quotient
+Hence, $\DS \VEC{c}^\top(\Id-zA)^{-1}\VEC{u}$ is the quotient
 of a polynomial of degree at most $s-1$ by a polynomial of degree at
 most $s$.
 
@@ -6150,7 +6150,7 @@ This is (\ref{RKstabMotivD}) with $i$ replaced by $i+1$.  Thus completing
 the proof by induction.
 
 Suppose that the Runge-Kutta method is consistent; namely,
-$\displaystyle \max_{0\leq i <N} |\tau_{i+1}(h)| \leq \tau(h) \to 0$
+$\DS \max_{0\leq i <N} |\tau_{i+1}(h)| \leq \tau(h) \to 0$
 as $h\to 0$.  Moreover, suppose that $|\delta_i| < \delta$ for all $i$.
 
 If $h\mu$ is in the region of absolute stability, then $|r(h\mu)|<1$.
@@ -6167,7 +6167,7 @@ Thus, the error of the approximation $u_i$ does not increase as $i$
 increases.
 
 If we consider the previous example for the Runge-Kutta method of
-order two, we have $\displaystyle r(h\mu) = 1 + h\mu + (h\mu)^2/2$.  Then
+order two, we have $\DS r(h\mu) = 1 + h\mu + (h\mu)^2/2$.  Then
 \begin{align*}
 1 - |r(h\mu)|
 &= 1 - \left( 1 - r(h\mu)\,\overline{r(h\mu)} \right)^{1/2}
@@ -6186,7 +6186,7 @@ approximations $u_i$ may not get better as $h \to 0$.  As for the
 Euler's method (see the remark after Theorem~\ref{Eulererrorbound}),
 we may suspect that there is an optimal value of $h$ to reduce
 round off errors.  This will require a thorough analysis of
-$\displaystyle \frac{h\tau(h)}{1-|r(h\mu)|} + \frac{\delta}{1-|r(h\mu)|}$.
+$\DS \frac{h\tau(h)}{1-|r(h\mu)|} + \frac{\delta}{1-|r(h\mu)|}$.
 \end{rmk}
 
 \begin{cor}
@@ -6213,10 +6213,10 @@ Consider the Runge-Kutta method given by the Butcher array
 \end{array}
 \]
 So
-$\displaystyle B= \begin{pmatrix} 1/4 & -1/4 \\ 1/4 & 5/12 \end{pmatrix}$
+$\DS B= \begin{pmatrix} 1/4 & -1/4 \\ 1/4 & 5/12 \end{pmatrix}$
 and
-$\displaystyle \VEC{c}= \begin{pmatrix} 1/4 \\ 3/4 \end{pmatrix}$.  Thus,
-$\displaystyle \Id-z B
+$\DS \VEC{c}= \begin{pmatrix} 1/4 \\ 3/4 \end{pmatrix}$.  Thus,
+$\DS \Id-z B
 = \begin{pmatrix} 1-z/4 & z/4 \\ -z/4 & 1-5z/12 \end{pmatrix}$
 and 
 \begin{align*}
@@ -6231,7 +6231,7 @@ z/4 & 1 - z/4
 = \frac{1+z/3}{1-2z/3+ z^2/6} \ .
 \end{align*}
 To show that this method is A-stable, we show that
-$|r(z)| < 1$ for $\displaystyle z=\rho e^{i\theta}$ with $\rho>0$ and
+$|r(z)| < 1$ for $\DS z=\rho e^{i\theta}$ with $\rho>0$ and
 $\pi/2 < \theta < 3\pi/2$.  We have
 \begin{align*}
 |r(z)| < 1 &\Leftrightarrow
@@ -6244,8 +6244,8 @@ $\pi/2 < \theta < 3\pi/2$.  We have
 \end{align*}
 Since the last inequality is always true for $\rho>0$ and
 $\pi/2 < \theta < 3\pi/2$ (because
-$\displaystyle 2\rho (1+\rho^2/9) >0$, $\cos(\theta) <0$ and
-$\displaystyle 2\rho^2 \cos^2(\theta)/3 + \rho^4/36 > 0$), the
+$\DS 2\rho (1+\rho^2/9) >0$, $\cos(\theta) <0$ and
+$\DS 2\rho^2 \cos^2(\theta)/3 + \rho^4/36 > 0$), the
 method is A-stable.  We will see shortly that this is typical for
 a large class of implicit Runge-Kutta methods.
 \label{AS_IRK}
@@ -6287,7 +6287,7 @@ The poles of
 \[
 r(z) = \frac{1+ z/3}{1-2z/3+z^2/6}
 \]
-are the roots of $\displaystyle 1-2z/3+z^2/6$; namely,
+are the roots of $\DS 1-2z/3+z^2/6$; namely,
 $z_{\pm} = 2\pm i\sqrt{2}$.  The poles of $r(z)$ are not in
 the half-plane $\{ z\in\CC : \RE z\leq 0\}$.
 
@@ -6312,13 +6312,13 @@ A-stable as we have already shown in example~\ref{AS_IRK}.
 \begin{lemma}
 Suppose that $r$ is the rational function associated to a Runge-Kutta
 method as in Proposition~\ref{rat_funct} and that the Runge-Kutta method is
-of order $p$, then $\displaystyle r(z) = e^z +O(z^{p+1})$ as $z \rightarrow 0$.
+of order $p$, then $\DS r(z) = e^z +O(z^{p+1})$ as $z \rightarrow 0$.
 \label{exp_approx}
 \end{lemma}
 
 \begin{proof}
 By definition of order,
-$\displaystyle y(t_{i+1}) = y(t_i) + h\,\phi(t_i,y(t_i)) + O(h^{p+1})$ where
+$\DS y(t_{i+1}) = y(t_i) + h\,\phi(t_i,y(t_i)) + O(h^{p+1})$ where
 $\phi(t_i,w_i)$ represents the right hand side summation in the
 Runge-Kutta method.  Thus, for $i=0$, we get
 \[
@@ -6327,7 +6327,7 @@ y(t_1) = y(t_0) + h\,\phi(t_0,y(t_0)) + O(h^{p+1})
 \]
 because $w_0 = y_0 = y(t_0)$.
 But $w_{i+1} = r(h\mu)w_i$ for $i\geq 0$ and the solution
-of (\ref{RKThe_equ}) is $\displaystyle y(t) = e^{t\mu}w_0$.  Thus,
+of (\ref{RKThe_equ}) is $\DS y(t) = e^{t\mu}w_0$.  Thus,
 \[
   e^{h\mu}w_0 = r(h\mu)w_0 + O(h^{p+1}) \ .
 \]
@@ -6346,10 +6346,10 @@ From Corollary~\ref{best_IRK}, the Runge-Kutta method is of order
 $2k$.  For the initial value problem (\ref{RKThe_equ}), we have from
 Proposition~\ref{rat_funct} that the approximation $w_j$ of $y(t_j)$ given
 by the Runge-Kutta method is
-$\displaystyle w_i = (r(h\lambda))^iw_0$ for $i\geq 0$,
+$\DS w_i = (r(h\lambda))^iw_0$ for $i\geq 0$,
 where $r(z)$ is the quotient of two polynomials of degree at most $k$.
 From Lemma~\ref{exp_approx}, $r(z)$ is a ``Pad\'e approximation'' of
-$\displaystyle e^z$ of order $2k$.  From Wanner-Hairer-Norsett
+$\DS e^z$ of order $2k$.  From Wanner-Hairer-Norsett
 theorem\footnote{Roughly, this theorem states that a $r(z) = p(z)/q(z)$,
 a ``Pad\'e approximante to the exponential function'', is
 A-acceptable if and only if the $p$ and $q$ have a specific form and
@@ -6364,13 +6364,13 @@ applied to (\ref{RKThe_equ}) becomes
 \[
 w_{i+1} = \sum_{k=0}^m a_k w_{i-k} + h \mu \sum_{k=-1}^m b_k w_{i-k}\   .
 \]
-If we substitute $\displaystyle \lambda^i$ for $w_i$, we get
+If we substitute $\DS \lambda^i$ for $w_i$, we get
 \[
   \lambda^{i+1} = \sum_{k=0}^m a_k \lambda^{i-k} + h \mu
   \sum_{k=-1}^m b_k \lambda^{i-k} \ .
 \]
-If we subtract $\displaystyle \lambda^{i+1}$ from both sides of this equality
-and multiply them by $\displaystyle \lambda^{m-i}$, we get
+If we subtract $\DS \lambda^{i+1}$ from both sides of this equality
+and multiply them by $\DS \lambda^{m-i}$, we get
 \[
 p(\lambda) +h\mu\, q(\lambda) = 0 \ ,
 \]
@@ -6394,7 +6394,7 @@ is the polynomial $p(\lambda) + h\mu\, q(\lambda)$.
 \begin{rmkList}
 \begin{enumerate}
 \item We have from Proposition~\ref{cond_consistency} that
-$\displaystyle 1 = \sum_{i=0}^m\,a_i$ (i.e.\ $p(1) = 0$) if the
+$\DS 1 = \sum_{i=0}^m\,a_i$ (i.e.\ $p(1) = 0$) if the
 multistep method is consistent.  Thus, a necessary condition for the
 consistency of a multistep method is the existence of $1$ has a root
 of its characteristic polynomial.
@@ -6405,7 +6405,7 @@ from a formula of the form
 y_{i+1} = \sum_{k=0}^m a_k y_{i-k} + h \sum_{k=-1}^m b_k
 f(t_{i-k},y_{i-k}) + h \tau_{i+1}(h)
 \]
-for $m \leq i < N$.  Since $\displaystyle y(t) = A e^{\mu\, t}$ is the
+for $m \leq i < N$.  Since $\DS y(t) = A e^{\mu\, t}$ is the
 general solution of $y' = \mu\,y$,
 \[
 y_i = A e^{\mu (t_0+ih)} = A e^{\mu t_0} \left( e^{\mu h}\right)^i
@@ -6423,7 +6423,7 @@ Thus
 \]
 If the multistep method is consistent for (\ref{RKThe_equ}), one of
 the roots of the stability polynomial must approximate
-$\displaystyle e^{\mu h}$ for $h$ small.  This root is called the
+$\DS e^{\mu h}$ for $h$ small.  This root is called the
 {\bfseries principal root}\index{Multistep Methods!Principal Root} of
 the stability polynomial. 
 \item Because the roots of the stability polynomial are continuous
@@ -6440,8 +6440,8 @@ multistep methods defined in Definition~\ref{GFMSM}.
 The {\bfseries region of absolute stability}\index{Multistep Method!Region of
 Absolute Stability} of a multistep method as defined in
 definition~\ref{GFMSM} is the set of all values $h\mu \in \CC$
-such that $\displaystyle \lim_{i\rightarrow +\infty} w_i = 0$ for all
-solutions $\displaystyle \{w_i\}_{i=0}^\infty$ of the difference
+such that $\DS \lim_{i\rightarrow +\infty} w_i = 0$ for all
+solutions $\DS \{w_i\}_{i=0}^\infty$ of the difference
 equation (\ref{MULTISTEP}) applied to the initial value problem
 (\ref{RKThe_equ}).
 
@@ -6457,8 +6457,8 @@ the imaginary axis (complex numbers with a negative real part.)
 \begin{rmk}
 As for the Runge-Kutta methods, we have to remember that $\RE \mu < 0$
 in the previous definition.  Hence, all solutions
-$\displaystyle y(t) = e^{\mu(t-t_0)}y_0$ of the differential equation
-(\ref{RKThe_equ}) satisfy $\displaystyle \lim_{t\to \infty} y(t) = 0$.
+$\DS y(t) = e^{\mu(t-t_0)}y_0$ of the differential equation
+(\ref{RKThe_equ}) satisfy $\DS \lim_{t\to \infty} y(t) = 0$.
 \end{rmk}
 
 The following example illustrates the crucial role played by
@@ -6474,7 +6474,7 @@ y(0) &= 1
 \end{equation}
 
 The exact general solution of $y'= 1-2y$ is
-$\displaystyle y(t) = c e^{-2t} +1/2$.
+$\DS y(t) = c e^{-2t} +1/2$.
 The initial condition $y(0)=1$ gives $c = 1/2$.
 
 \begin{table}
@@ -6617,10 +6617,10 @@ where
 \quad \text{and} \quad 
 \lambda_2 =-2h-\sqrt{1+4h^2} = -1-2h+O(h^2)
 \]
-are the roots of $\displaystyle \lambda^2 + 4h\lambda -1 =0$, and
+are the roots of $\DS \lambda^2 + 4h\lambda -1 =0$, and
 $c_1$ and $c_2$ are arbitrary constants.  Note that $w_i= 1/2$ for all
 $i$ is a solution of the non-homogeneous equation (\ref{finitdiffSOAB}) and
-$\displaystyle w_i =c_1\lambda^i + c_2\lambda_2^i$ is the general solution of
+$\DS w_i =c_1\lambda^i + c_2\lambda_2^i$ is the general solution of
 the homogeneous equation
 \[
   w_{i+1} + 4hw_i -w_{i-1} = 0 \ .
@@ -6650,10 +6650,10 @@ that
 \[
   (1-2h)^i = \left( (1-2h)^{-1/(2h)}\right)^{-2 i h} \ ,
 \]
-where $\displaystyle \lim_{h\to 0} (1-2h)^{-1/(2h)} = e$.  Thus, for
+where $\DS \lim_{h\to 0} (1-2h)^{-1/(2h)} = e$.  Thus, for
 $h$ very small, we may assume that
-$\displaystyle (1-2h)^i \approx e^{-2 i h} = e^{-2t_i}$.
-Similarly, $\displaystyle (1+2h)^i \approx e^{2 t_i}$ for $h$ very small.
+$\DS (1-2h)^i \approx e^{-2 i h} = e^{-2t_i}$.
+Similarly, $\DS (1+2h)^i \approx e^{2 t_i}$ for $h$ very small.
 
 From (\ref{diff_diff}) we may conclude that the first term in
 (\ref{sol_of_DE}) is associated to the solution of $y'=1-2y$ but the
@@ -6674,7 +6674,7 @@ convergent according to Theorem~\ref{Dahl_conv}.  However, we saw in the
 numerical experiment of Example~\ref{Roundoff_effect} that this
 Adams-Bashforth method of order two does not converge.  Is there
 anything wrong with Theorem~\ref{Dahl_conv}?  No, there is nothing wrong
-mathematically but the theory assumes that $\displaystyle \delta_i(h) = O(h^2)$
+mathematically but the theory assumes that $\DS \delta_i(h) = O(h^2)$
 which is rarely satisfied by round off errors (round off errors
 do not generally go to $0$ as $h$ decreases).  Moreover, the theory
 does not take into account the information provided by the stability
@@ -6699,9 +6699,9 @@ problem (\ref{RKThe_equ}) is the finite difference equation
 \sum_{k=-1}^m (a_k + h\mu\,b_k) w_{i-k} = 0 \quad , \quad i \geq m \ ,
 \]
 where $a_{-1} = -1$.  A solution
-$\displaystyle \{w_i\}_{i=0}^\infty$ of this finite difference
+$\DS \{w_i\}_{i=0}^\infty$ of this finite difference
 equation is a linear combination of solutions of the form
-$\displaystyle \{i^n\lambda^i\}_{i=0}^\infty$,
+$\DS \{i^n\lambda^i\}_{i=0}^\infty$,
 where $\lambda \in \CC$ is a root of multiplicity $s$ of the stability
 polynomial
 \begin{equation}\label{LinStable}
@@ -6709,9 +6709,9 @@ p(\lambda) + h\mu q(\lambda)
 = \sum_{k=-1}^m (a_k + h\mu\, b_k) \lambda^{m-k}
 \end{equation}
 and $0 \leq n <s$.  Hence, $|\lambda| <1$ for all roots of (\ref{LinStable})
-if and only if any non-trivial solution $\displaystyle \{w_i\}_{i=0}^\infty$ of
+if and only if any non-trivial solution $\DS \{w_i\}_{i=0}^\infty$ of
 the finite difference equation above
-satisfies $\displaystyle \lim_{i\rightarrow +\infty} w_i = 0$ .  Namely,
+satisfies $\DS \lim_{i\rightarrow +\infty} w_i = 0$ .  Namely,
 if and only if $h\mu$ is in the region of absolute stability.
 \end{proof}
 
@@ -6720,14 +6720,14 @@ We illustrate with the Euler's method why we should choose $h\mu$ in
 the region of absolute stability.
 
 Consider the initial value problem (\ref{RKThe_equ}).  The exact
-solution is $\displaystyle y(t) = y_0\,e^{\mu t}$.  The approximation $w_i$ of
+solution is $\DS y(t) = y_0\,e^{\mu t}$.  The approximation $w_i$ of
 $y_i$ given by the Euler's method (Definition~\ref{EulerMethod}) is
 the solution of
 \begin{align*}
 w_0 &= y_0 \\
 w_{i+1} &= w_i + h\mu\, w_i = (1+h\mu)w_i
 \end{align*}
-Thus, $\displaystyle w_i = (1+h\mu)^iy_0$ for $i\geq 0$.
+Thus, $\DS w_i = (1+h\mu)^iy_0$ for $i\geq 0$.
 
 Since $\RE \mu<0$, we have that $y(t) \rightarrow 0$ as $t \rightarrow 0$.
 To get the same behaviour for $w_i$
@@ -6736,8 +6736,8 @@ need  $|1+h\mu| < 1$.
 
 Suppose that an error $\delta_0$ is introduced in the initial
 condition; namely, $w_0 = y_0 + \delta_0$.  The new value of $w_i$ is
-$\displaystyle (1+h\mu)^i y_0 + (1+h\mu)^i \delta_0$ which differ from the
-unperturbed value of $w_i$ by $\displaystyle (1+h\mu)^i \delta_0$.  To have this
+$\DS (1+h\mu)^i y_0 + (1+h\mu)^i \delta_0$ which differ from the
+unperturbed value of $w_i$ by $\DS (1+h\mu)^i \delta_0$.  To have this
 difference decreases as $i \rightarrow \infty$, we need
 $|1+h\mu| < 1$.
 
@@ -6766,7 +6766,7 @@ from Example~\ref{comp_order} is
   p(\lambda) + h\mu q(\lambda) = -\lambda^2 + 1 + 2h\mu \lambda \ .
 \]
 If $\lambda$ is a root of this polynomial such that $|\lambda| = 1$,
-we may assume that $\displaystyle \lambda = e^{\theta i}$ for some
+we may assume that $\DS \lambda = e^{\theta i}$ for some
 $\theta \in [0,2\pi[$.  We get
 \[
 -e^{2\theta i} + 1 + 2h\mu e^{\theta i} = 0
@@ -6776,7 +6776,7 @@ $\theta \in [0,2\pi[$.  We get
 Thus, the boundary of the region of absolute stability is the segment
 $\{ r i : -1 \leq r \leq 1\}$ on the imaginary axis.  All points
 outside this segment are on curves given by
-$\displaystyle \lambda = r e^{\theta i}$
+$\DS \lambda = r e^{\theta i}$
 for both $r>1$ and $r<1$.  The region of absolute stability has no
 interior (Figure~\ref{stab_region6}).  Thus, the region 
 of absolute stability is empty.  This explains why this method
@@ -6787,10 +6787,10 @@ fails to converge in Example~\ref{Roundoff_effect}.
 the Adams-Bashforth method of order two}{Regions of absolute stability
 for the Adams-Bashforth method of order two of Example~\ref{comp_order}.
 We have drawn the curve $z = - p(\lambda)/q(\lambda)$ for
-$\displaystyle \lambda = e^{i\theta}$ (black curve), for
-$\displaystyle \lambda = 1.1 e^{i\theta}$
-and $\displaystyle \lambda = 1.5 e^{i\theta}$ (red curves) and
-$\displaystyle \lambda = 0.8 e^{i\theta}$ (blue curve).  The region of absolute
+$\DS \lambda = e^{i\theta}$ (black curve), for
+$\DS \lambda = 1.1 e^{i\theta}$
+and $\DS \lambda = 1.5 e^{i\theta}$ (red curves) and
+$\DS \lambda = 0.8 e^{i\theta}$ (blue curve).  The region of absolute
 stability is empty.}{stab_region6}
 
 \begin{egg}
@@ -6798,33 +6798,33 @@ The boundaries for the region of absolute stability for the
 Adams-Bashforth method of order four is drawn in
 Figure~\ref{stab_region1}.
 To produce this boundary, we drew the graph of
-$z = - p(\lambda)/q(\lambda)$ for $\displaystyle \lambda = e^{i\theta}$ with
+$z = - p(\lambda)/q(\lambda)$ for $\DS \lambda = e^{i\theta}$ with
 $0\leq \theta < 2\pi$.   For the Adams-Bashforth method
-of order four $\displaystyle p(\lambda) = -\lambda^4 + \lambda^3$ and
-$\displaystyle q(\lambda) = (55\lambda^3-59\lambda^2+37\lambda - 9)/24$.
+of order four $\DS p(\lambda) = -\lambda^4 + \lambda^3$ and
+$\DS q(\lambda) = (55\lambda^3-59\lambda^2+37\lambda - 9)/24$.
 
 The boundaries for the region of absolute stability for the
 Adams-Moulton method of order four is drawn in
 Figure~\ref{stab_region2}.  To produce this boundary, 
 we drew the graph of $z = - p(\lambda)/q(\lambda)$ for
-$\displaystyle \lambda = e^{i\theta}$ with $0\leq \theta < 2\pi$.
+$\DS \lambda = e^{i\theta}$ with $0\leq \theta < 2\pi$.
 For the Adams-Moulton method of order four
-$\displaystyle p(\lambda) = -\lambda^3 + \lambda^2$ and
-$\displaystyle q(\lambda) = (9\lambda^3+19\lambda^2-5\lambda + 1)/24$.
+$\DS p(\lambda) = -\lambda^3 + \lambda^2$ and
+$\DS q(\lambda) = (9\lambda^3+19\lambda^2-5\lambda + 1)/24$.
 
 The regions inside the boundary curves (the black curve) and to the
 left of the imaginary axis are the regions of absolute stability.
 The two lobes for the Adams-Bashforth method of order four do not
 represent regions of absolute stability.  To justify this, we have
 also drawn the curves $z = - p(\lambda)/q(\lambda)$ for
-$\displaystyle \lambda = 1.2 e^{i\theta}$ and
-$\displaystyle \lambda = 0.8 e^{i\theta}$ with
+$\DS \lambda = 1.2 e^{i\theta}$ and
+$\DS \lambda = 0.8 e^{i\theta}$ with
 $0\leq \theta < 2\pi$ for the two methods.  The points $z$ on the
-curves in red associated to $\displaystyle \lambda = 1.2 e^{i\theta}$ correspond
+curves in red associated to $\DS \lambda = 1.2 e^{i\theta}$ correspond
 to values of $h\mu$ for which the stability polynomial has a root
 $\lambda$ of absolute value $1.2$, these points are therefore outside
 the region of absolute stability, whereas the points $z$ on the curves
-in blue associated to $\displaystyle \lambda = 0.8 e^{i\theta}$ correspond to
+in blue associated to $\DS \lambda = 0.8 e^{i\theta}$ correspond to
 values of $h\mu$ for which the stability polynomial has a root
 $\lambda$ of absolute value $0.8$, these points are inside the region
 of absolute stability.
@@ -6833,18 +6833,18 @@ of absolute stability.
 \mathF{init_value_probl/stability_ex2}{8cm}{Absolute stability regions for
 the Adams-Bashforth method of order four}{Regions of absolute stability
 for the Adams-Bashforth method of order four.  We have drawn the curve
-$z = - p(\lambda)/q(\lambda)$ for $\displaystyle \lambda = e^{i\theta}$ (black
-curve), for $\displaystyle \lambda = 1.2 e^{i\theta}$ (red curve) and
-$\displaystyle \lambda = 0.8 e^{i\theta}$ (blue curve).  The region to
+$z = - p(\lambda)/q(\lambda)$ for $\DS \lambda = e^{i\theta}$ (black
+curve), for $\DS \lambda = 1.2 e^{i\theta}$ (red curve) and
+$\DS \lambda = 0.8 e^{i\theta}$ (blue curve).  The region to
 the left of the imaginary axis and inside the black curve is the
 region of absolute stability.}{stab_region1}
 
 \mathF{init_value_probl/stability_ex3}{8cm}{Absolute stability regions for
 the Adams-Moulton method of order four}{Regions of absolute stability
 for the Adams-Moulton method of order four.  We have drawn the curve
-$z = - p(\lambda)/q(\lambda)$ for $\displaystyle \lambda = e^{i\theta}$ (black
-curve), for $\displaystyle \lambda = 1.2 e^{i\theta}$ (red curve) and
-$\displaystyle \lambda = 0.8 e^{i\theta}$ (blue curve).  The region to
+$z = - p(\lambda)/q(\lambda)$ for $\DS \lambda = e^{i\theta}$ (black
+curve), for $\DS \lambda = 1.2 e^{i\theta}$ (red curve) and
+$\DS \lambda = 0.8 e^{i\theta}$ (blue curve).  The region to
 the left of the imaginary axis and inside the black curve is the
 region of absolute stability.}{stab_region2}
 
@@ -6855,8 +6855,8 @@ method is A-stable.
 
 The stability polynomial of the trapezoidal method is
 $p(\lambda) + h\mu\, q(\lambda)$ where
-$\displaystyle p(\lambda) = -\lambda^2 + \lambda$ and
-$\displaystyle q(\lambda) = (\lambda^2 + \lambda)/2$.
+$\DS p(\lambda) = -\lambda^2 + \lambda$ and
+$\DS q(\lambda) = (\lambda^2 + \lambda)/2$.
 We draw the graph of $z = - p(\lambda)/q(\lambda)$ for $\lambda$ on
 the unit circle in Figure~\ref{trap_stable}.
 
@@ -6896,9 +6896,9 @@ because
 \mathF{init_value_probl/stability_ex4}{8cm}{Absolute stability region for the
 trapezoidal method}{Regions of absolute stability for the trapezoidal
 method.  We have drawn the curve $z = - p(\lambda)/q(\lambda)$ for
-$\displaystyle \lambda = e^{i\theta}$ (black curve), for
-$\displaystyle \lambda = 1.2 e^{i\theta}$
-(red curve) and $\displaystyle \lambda = 0.8 e^{i\theta}$ (blue
+$\DS \lambda = e^{i\theta}$ (black curve), for
+$\DS \lambda = 1.2 e^{i\theta}$
+(red curve) and $\DS \lambda = 0.8 e^{i\theta}$ (blue
 curve).  The region to the left of the imaginary axis is the region of
 absolute stability.}{trap_stable}
 
@@ -6915,7 +6915,7 @@ y(0) &= y_0
 where $\mu$ is a differentiable function such that
 $\mu(t) < 0$ and $\mu'(t) > 0$ for all $t>0$.  All solutions $y$ of 
 this differential equation satisfy
-$\displaystyle \lim_{t\to \infty} y(t) =0$.
+$\DS \lim_{t\to \infty} y(t) =0$.
 
 The trapezoidal method gives
 \[
@@ -6927,7 +6927,7 @@ for $i \geq 0$.  Since $\mu(t) < 0$ for all $t>0$, we still need
 \]
 to ensure that $w_i \to 0$ as $i \to \infty$.  However, if
 $\mu(t) \to 0$ as $t \to \infty$, we will have that
-$\displaystyle \left| \frac{1+h\mu(t_i)/2}{1-h\mu(t_{i+1})/2}
+$\DS \left| \frac{1+h\mu(t_i)/2}{1-h\mu(t_{i+1})/2}
 \right| \to 1$ as $i \to \infty$.  Thus, the convergence of $w_i$ to
 $0$ will be really slow and taking $h$ smaller will further slow the
 convergence.
@@ -6965,7 +6965,7 @@ $y(1)$, we get the following results:
 \]
 
 The exact solution of (\ref{trapezoid_ex}) is
-$\displaystyle y(t) = 1-t^2+C e^{100t}$.  The initial condition $y(0)=1$ implies
+$\DS y(t) = 1-t^2+C e^{100t}$.  The initial condition $y(0)=1$ implies
 that $C=0$.  However, because of round off error, the solution that we
 compute is one with $C\not=0$ small.
 
@@ -6973,14 +6973,14 @@ We now use the trapezoidal method to approximate $y(1)$.  First, we
 have to explain how to implement the trapezoidal method.
 
 Given $w_i$, we have to solve
-$\displaystyle w_{i+1} =
+$\DS w_{i+1} =
 w_i + \frac{h}{2} \left( f(t_{i+1}.w_{i+1}) + f(t_i,w_i) \right)$
 for $w_{i+1}$.  This is an implicit equation for $w_{i+1}$.  In
 general, this equation cannot be solved explicitly for $w_{i+1}$.
 To compute $w_{i+1}$, we use Euler's method to get a first approximation
 of $w_{i+1}$ and then use Newton's Method to approximate a root
 of
-$\displaystyle
+$\DS
  0 = z - w_i - \frac{h}{2} \left( f(t_{i+1}.z) + f(t_i,w_i) \right)$.
 The root of this equation is the value of $w_{i+1}$.
 
@@ -6997,7 +6997,7 @@ an approximation of $y(t_{i+1})$ if $w_i = y_i$.
 
 The following code is an implementation of the trapezoidal method.
 Using this code with $t_0=0$, $t_f=1$, $y_0=1$, the
-number of subinterval $N=10$, the tolerance $\displaystyle T=10^{-5}$ and the
+number of subinterval $N=10$, the tolerance $\DS T=10^{-5}$ and the
 maximum number of iterations for the Newton's Method $M=10$, we get
 \[
 \begin{array}{c|ccccccccccc}
@@ -7092,11 +7092,11 @@ of the stability polynomial are less than or equal to $1$ in absolute value.
 \end{prop}
 
 \begin{lemma}[Cohn-Schur Criterion]
-Consider the quadratic equation $\displaystyle p(z) = az^2+bz+c$,
+Consider the quadratic equation $\DS p(z) = az^2+bz+c$,
 where $a,b,c \in \CC$ and $a\not=0$.  Then, the roots of $p$ are
 inside the closed disk of radius $1$ centred at the origin if and only if
 $|a| \geq|c|$ and
-$\displaystyle \big| |a|^2-|c|^2\big| \geq |a\overline{b}-b\overline{c}|$
+$\DS \big| |a|^2-|c|^2\big| \geq |a\overline{b}-b\overline{c}|$
 \label{CSCrit}
 \end{lemma}
 
@@ -7166,7 +7166,7 @@ There are multistep methods of order higher than $2$, though not
 A-stable, that are
 {\bfseries A($\alpha$)-stable}\index{Multistep Methods!A($\alpha$)-Stable};
 namely, the stability region contain the cone
-$\displaystyle \{ z \in \CC : z = \rho\,e^\theta \ \text{with}\ \rho>0
+$\DS \{ z \in \CC : z = \rho\,e^\theta \ \text{with}\ \rho>0
 \ \text{and}\ |\theta-\pi|<\alpha \}$.  For some multistep methods, $\alpha$ may
 be closed to $\pi/2$.
 \end{rmk}
@@ -7202,7 +7202,7 @@ We consider the initial value problem
 \VEC{y}(t_0) & = \VEC{y}_0
 \end{split}
 \end{equation}
-where $\displaystyle f:[t_0,t_f]\times\RR^n \rightarrow \RR^n$.
+where $\DS f:[t_0,t_f]\times\RR^n \rightarrow \RR^n$.
 
 As we will see, there are additional constraints on the step-size $h$
 than those needed to get a converging and stable Runge-Kutta or multistep
@@ -7233,22 +7233,22 @@ Consider the initial value problem
 \VEC{y}(0) &= \VEC{y}_0
 \end{split}
 \end{equation}
-where $\displaystyle \VEC{y}:\RR\rightarrow \RR^2$,
-$\displaystyle \VEC{y}_0 =  \begin{pmatrix} y_{0,1} \\ y_{0,2}
+where $\DS \VEC{y}:\RR\rightarrow \RR^2$,
+$\DS \VEC{y}_0 =  \begin{pmatrix} y_{0,1} \\ y_{0,2}
 \end{pmatrix} \in \RR^2$, and
-$\displaystyle A = \begin{pmatrix} -\lambda & 1 \\
+$\DS A = \begin{pmatrix} -\lambda & 1 \\
 0 & -0.1 \end{pmatrix}$ for a large positive number $\lambda$.
 
-Since $\displaystyle A = Q B Q^{-1}$, where
-$\displaystyle Q=\begin{pmatrix} 1 & 1 \\
+Since $\DS A = Q B Q^{-1}$, where
+$\DS Q=\begin{pmatrix} 1 & 1 \\
 0 & \lambda -0.1 \end{pmatrix}$ and
-$\displaystyle B=\begin{pmatrix} -\lambda & 0 \\
+$\DS B=\begin{pmatrix} -\lambda & 0 \\
 0 & -0.1 \end{pmatrix}$, the solution of (\ref{stiff_syst}) is
 \begin{equation}\label{sol_stiff_syst}
 \VEC{y} = e^{tA}\VEC{y}_0 = Q e^{tB} Q^{-1} \VEC{y}_0
 = \begin{pmatrix}
 e^{-\lambda t} &
-\displaystyle (e^{-0.1 t}-e^{-\lambda t})/(\lambda-0.1) \\
+\DS (e^{-0.1 t}-e^{-\lambda t})/(\lambda-0.1) \\
 0 & e^{-0.1 t}
 \end{pmatrix}
 \begin{pmatrix}
@@ -7269,7 +7269,7 @@ by
 \end{split}
 \end{equation}
 The solution
-$\displaystyle \{\VEC{w}_j\}_{j=0}^\infty$ of (\ref{stiff_Euler}) is
+$\DS \{\VEC{w}_j\}_{j=0}^\infty$ of (\ref{stiff_Euler}) is
 given by
 \begin{equation} \label{sol_stiff_Euler}
 \begin{split}
@@ -7283,11 +7283,11 @@ Q^{-1} \VEC{w}_0 \ .
 \end{equation}
 
 Suppose that
-$\displaystyle \VEC{y}_0 = \begin{pmatrix} 1 \\ \lambda-0.1
+$\DS \VEC{y}_0 = \begin{pmatrix} 1 \\ \lambda-0.1
 \end{pmatrix}$.  This is an eigenvector of $A$ associated to the
 eigenvalue $-0.1$.   The solution of (\ref{stiff_syst}) for
 $0\leq t \leq t_f$ is then given by
-$\displaystyle \VEC{y}(t) = e^{-0.1 t} \VEC{y}_0$.
+$\DS \VEC{y}(t) = e^{-0.1 t} \VEC{y}_0$.
 
 If $h$ is small enough such that
 \begin{align}
@@ -7314,8 +7314,8 @@ The differential equation (\ref{SODE}) is
 {\bfseries stiff}\index{Stiff Differential Equation}
 for $t_0 < t < t_f$ if, for all $t$ between $t_0$ and $t_f$,
 $\RE \lambda_i(t) < 0$ for all eigenvalues $\lambda_i(t)$
-of $\displaystyle \diff_{\VEC{y}} f(t,\VEC{y}(t))$ and
-$\displaystyle \max_i \{ \RE \lambda_i(t) \} \gg
+of $\DS \diff_{\VEC{y}} f(t,\VEC{y}(t))$ and
+$\DS \max_i \{ \RE \lambda_i(t) \} \gg
 \min_i \{ \RE \lambda_i(t) \}$.  The ratio
 \[
 \max_i \{ \text{Re }\lambda_i(t) \}/\min_i \{\text{Re }\lambda_i(t)\}
@@ -7346,10 +7346,10 @@ induction, we get that
 \VEC{w}_{i+1} = \left( \Id -\frac{h}{2}\,A \right)^{-i-i}
 \left( \Id +\frac{h}{2}\,A\right)^{i+1} \VEC{w}_0 \ .
 \]
-Since $\displaystyle A = Q B Q^{-1}$ for
-$\displaystyle Q=\begin{pmatrix} 1 & 1 \\
+Since $\DS A = Q B Q^{-1}$ for
+$\DS Q=\begin{pmatrix} 1 & 1 \\
 0 & \lambda -0.1 \end{pmatrix}$ and
-$\displaystyle B=\begin{pmatrix} -\lambda & 0 \\
+$\DS B=\begin{pmatrix} -\lambda & 0 \\
 0 & -0.1 \end{pmatrix}$, we get
 \[
 \VEC{w}_{i+1} = Q\left( \Id -\frac{h}{2}\,B \right)^{-i-i}
@@ -7375,10 +7375,10 @@ commute, we get
 \left( \Id +\frac{h}{2}\,B\right)\bigg)^{i+1}Q^{-1} \VEC{w}_0 \\
 &= Q
 \begin{pmatrix}
-\left(\displaystyle \frac{1-\lambda h/2}{1+\lambda h/2}\right)^{i+1}
+\left(\DS \frac{1-\lambda h/2}{1+\lambda h/2}\right)^{i+1}
 & 0 \\
 0 &                                                                     
-\left(\displaystyle \frac{1- h/20}{1+ h/20}\right)^{i+1}
+\left(\DS \frac{1- h/20}{1+ h/20}\right)^{i+1}
 \end{pmatrix}
 Q^{-1} \VEC{w}_0 \ .
 \end{align*}
@@ -7386,20 +7386,20 @@ We finally get
 \begin{align*}
 \VEC{w}_{i+1} &=
 \begin{pmatrix}
-\left(\displaystyle \frac{1-\lambda h/2}{1+\lambda h/2}\right)^{i+1}
-& \displaystyle
+\left(\DS \frac{1-\lambda h/2}{1+\lambda h/2}\right)^{i+1}
+& \DS
 \frac{1}{\lambda - 0.1} \left( \left(\frac{1- h/20}{1+ h/20}\right)^{i+1}
 - \left(\frac{1-\lambda h/2}{1+\lambda h/2}\right)^{i+1}\right)
 \\
-0 & \left(\displaystyle \frac{1- h/20}{1+ h/20}\right)^{i+1}
+0 & \left(\DS \frac{1- h/20}{1+ h/20}\right)^{i+1}
 \end{pmatrix} \VEC{w}_0 \ , \\
 &\hspace{30em} 0 \leq i < N \ .
 \end{align*}
 Independently of the choice of $h$, we have that
 $\VEC{w}_i \rightarrow \VEC{0}$ as $i \rightarrow \infty$ because
-$\displaystyle \bigg| \frac{1-\lambda h/2}{1+\lambda h/2} \bigg| < 1$
+$\DS \bigg| \frac{1-\lambda h/2}{1+\lambda h/2} \bigg| < 1$
 and
-$\displaystyle \bigg| \frac{1-h/20}{1+h/20} \bigg| < 1$
+$\DS \bigg| \frac{1-h/20}{1+h/20} \bigg| < 1$
 for all $h$.
 
 So there is no constraints on $h$ other than the one that we may
@@ -7416,17 +7416,17 @@ Show that the following initial value problems are well posed.
 \begin{center}
 \begin{tabular}{*{1}{l@{\hspace{0.4em}}l@{\hspace{2em}}}l@{\hspace{0.4em}}l}
 \subQ{a} &
-$\displaystyle \begin{array}{rl}
+$\DS \begin{array}{rl}
 y'(t) &= 2y(t)+2 \ , \ 0 \leq t \leq 1 \\
 y(0) &= 1
 \end{array}$ &
 \subQ{b} &
-$\displaystyle \begin{array}{rl}
+$\DS \begin{array}{rl}
 y'(t) &= t^2 y(t) + 1 \ , \ 0 \leq t \leq 1 \\
 y(0) &= 1
 \end{array}$  \\[1em]
 \subQ{c} &
-$\displaystyle \begin{array}{rl}
+$\DS \begin{array}{rl}
 y'(t) &= t^2 \sin(y(t)) + y(t) \ , \ 0 \leq t \leq 1 \\
 y(0) &= 1
 \end{array}$ & &
@@ -7436,7 +7436,7 @@ y(0) &= 1
 
 \sol{\SOL}{
 \subQ{a}
-Let $\displaystyle f(t,y) = t^2 \sin(y) + y$.  The function $f$ is
+Let $\DS f(t,y) = t^2 \sin(y) + y$.  The function $f$ is
 obviously continuous.
 
 According to the Mean Value Theorem, given any $y_1,y_2 \in \RR$, 
@@ -7445,7 +7445,7 @@ there exists $\xi$ between $y_1$ and $y_2$ such that
   f(t,y_1)-f(t,y_2) = \pdydx{f}{y}(t,\xi)\, (y_1 - y_2)
   = (t^2 \cos(\xi) + 1)\,(y_1-y_2) \ .
 \]
-Since $\displaystyle |t^2 \cos(y) + 1| \leq 2$ for all
+Since $\DS |t^2 \cos(y) + 1| \leq 2$ for all
 $(t,y)\in D = \{ (t,y) : 0\leq t \leq 1 \ \text{and} \ y \in \RR\}$, we get
 \[
 |f(t,y_1)-f(t,y_2)| \leq 2 |y_1-y_2|
@@ -7465,7 +7465,7 @@ y(0) &= 0
 \end{align*}
 \subQ{a} Estimate the value of $h$ (the step size) that minimize the
 error bound for the Euler's method.  Assume that all rounding errors
-have magnitude less than $\displaystyle 10^{-8}$. \\
+have magnitude less than $\DS 10^{-8}$. \\
 \subQ{b} With the value of $h$ found in (a), compute the error bound
 on the interval $[0,1]$.
 \end{question}
@@ -7479,7 +7479,7 @@ y(1) &= 0
 \subQ{a} Show that this initial value problem is well posed.\\
 \subQ{b} Estimate the value of the step size $h$ that minimizes the error
 bound for the Euler's method.  Assume that all rounding errors have
-magnitude less than $\displaystyle 10^{-8}$.\\
+magnitude less than $\DS 10^{-8}$.\\
 \subQ{c} Use the Euler's method with the value of $h$ found in (b)
 (after a slight adjustment if needed) to find an approximation of the
 solution to the initial value problem above.\\
@@ -7513,7 +7513,7 @@ e^{t_i-t_0} - 1 \right) + 10^{-8}\,e^{t_i-t_0} \ ,
 \]
 where $M \geq |y''(t)|$ for $1\leq t \leq 2$.  To minimize the right
 side of this inequality with respect to $h$, we have to minimize
-$\displaystyle g(h) = \frac{Mh}{2} + \frac{10^{-8}}{h}$.
+$\DS g(h) = \frac{Mh}{2} + \frac{10^{-8}}{h}$.
 
 In general, it is not easy to find a possible value for $M$.
 Fortunately, for the present problem, we can.
@@ -7533,9 +7533,9 @@ $y(t) = t \ln(t)$.  For $1 \leq t \leq 2$, we have
 $|y''(t)| = |1/t| \leq 1$.  Thus, we may take $M=1$.
 
 We have to minimize
-$\displaystyle g(h) = \frac{h}{2} + \frac{10^{-8}}{h}$
+$\DS g(h) = \frac{h}{2} + \frac{10^{-8}}{h}$
 for $h>0$.  We deduce from the following information about $g$ that it
-has a global minimum for $h>0$ at $\displaystyle h=\sqrt{2}/10^4$.
+has a global minimum for $h>0$ at $\DS h=\sqrt{2}/10^4$.
 \[
 \begin{array}{c|c|c|c}
 h & 0<h< \sqrt{2}/10^4 & \sqrt{2}/10^4 & \sqrt{2}/10^4 < h \\    
@@ -7544,12 +7544,12 @@ g'(h) & - & 0 & + \\
  & \text{decreases} & \text{global min.} & \text{increases}
 \end{array}
 \]
-Thus, $\displaystyle h = \sqrt{2}/10^4$ minimizes the error bound for the Euler
+Thus, $\DS h = \sqrt{2}/10^4$ minimizes the error bound for the Euler
 Method.
 
 \subQ{c} We use the Euler Method with $t_0=1$, $t_f= 2$,
 $y_0 = 0$ and $f(t,y) = 1 + y/t$.  Since
-$\displaystyle (t_f-t_0)/h = 10^4/\sqrt{2} \approx 7071.0678$
+$\DS (t_f-t_0)/h = 10^4/\sqrt{2} \approx 7071.0678$
 is an irrational number, we round up to the next integer to get
 $N = 7072$.   Hence, $h = 1/7072$ and $t_i = t_0 + ih$ for
 $0\leq i \leq 7072$.  The approximation $w_i$ of $y_i = y(t_i)$ is
@@ -7579,7 +7579,7 @@ with $i=7072$ and $h=1/7072$.  Hence $t_i = t_{7072} = 2$, $t_0=1$ and
 
 Since $u_{7072} \approx 1.3862237$ and
 $y_{7072} = y(2) \approx 1.3862944$, the actual error is
-$\displaystyle |e_{7072}| = |u_{7072} - y_{7072}| \approx 0.707 \times 10^{-4}$.
+$\DS |e_{7072}| = |u_{7072} - y_{7072}| \approx 0.707 \times 10^{-4}$.
 Our predicted error bound is fairly conservative.
 }
 
@@ -7605,23 +7605,23 @@ u' &= - u^2    \quad , \quad  2 \leq t \leq 3 \\
 u(2) &= 1
 \end{align*}
 This is a separable equation whose solution is
-$\displaystyle u(t) = \frac{1}{t-1}$ for $t\neq 1$.  Thus, the
+$\DS u(t) = \frac{1}{t-1}$ for $t\neq 1$.  Thus, the
 solution of (\ref{rgktquest1}) is
-$\displaystyle y(t) = t - \frac{1}{t-1}$ for $t\neq 1$.
+$\DS y(t) = t - \frac{1}{t-1}$ for $t\neq 1$.
 
 We have $t_0=2$, $t_f= t_{10} =3$, $y_0=1$ and
-$\displaystyle f(t,y) = 1 +(t-y)^2$.
+$\DS f(t,y) = 1 +(t-y)^2$.
 Since $h = (t_f-t_0)/N = 1/N = 0.1$, we get $N=10$.
 Thus $t_j = t_0 + h i =1 + 0.1 i$ for $0\leq i \leq 10$.  The
 approximations $w_i$ of $y_i = y(t_i)$ are given by
-$\displaystyle
+$\DS
 w_{i+1} = w_i + \frac{h}{6}(K_1 + 2\,K_2+2\,K_3 + K_4)$ for
 $i\geq 0$ with  $w_0  = 1$,
 where
-$\displaystyle K_1 = 1 +(t_i-w_i)^2$,
-$\displaystyle K_2 = 1 +\big((t_i+0.05) - (w_i +0.05 K_1)\big)^2$,
-$\displaystyle K_3 = 1 +\big((t_i + 0.05) - (w_i+ 0.05 K_2)\big)^2$ and
-$\displaystyle K_4 = 1 +\big(t_{i+1}- (w_i + 0.1 K_3) \big)^2$.
+$\DS K_1 = 1 +(t_i-w_i)^2$,
+$\DS K_2 = 1 +\big((t_i+0.05) - (w_i +0.05 K_1)\big)^2$,
+$\DS K_3 = 1 +\big((t_i + 0.05) - (w_i+ 0.05 K_2)\big)^2$ and
+$\DS K_4 = 1 +\big(t_{i+1}- (w_i + 0.1 K_3) \big)^2$.
 
 The results are listed in the table below.
 {
@@ -7721,7 +7721,7 @@ where $R$ is a rational function.
 \end{picture}
 
 $\gamma(\tau) = 1$ and
-$\displaystyle \Psi(\tau) = \sum_{j=1}^2 \gamma_j = 1$.  So
+$\DS \Psi(\tau) = \sum_{j=1}^2 \gamma_j = 1$.  So
 $\Psi(\tau) = 1/\gamma(\tau)$.
 
 \item Tree of order two: $\tau =$
@@ -7732,7 +7732,7 @@ $\Psi(\tau) = 1/\gamma(\tau)$.
 \end{picture}
 
 $\gamma(\tau) = 2$ and
-$\displaystyle \Psi(\tau) = \sum_{j=1}^2 \gamma_j \alpha_j =
+$\DS \Psi(\tau) = \sum_{j=1}^2 \gamma_j \alpha_j =
 \left(\beta + \frac{1}{2}\right)\beta + \left(-\beta +\frac{1}{2}\right)
 (1+\beta) = \frac{1}{2}$.
 So $\Psi(\tau) = 1/\gamma(\tau)$.
@@ -7748,12 +7748,12 @@ $\tau_1=$
 \end{picture}
 
 $\gamma(\tau_1) = 3$ and
-$\displaystyle \Psi(\tau_1) = \sum_{j=1}^2 \gamma_j \alpha_j^2 =
+$\DS \Psi(\tau_1) = \sum_{j=1}^2 \gamma_j \alpha_j^2 =
 \left(\beta + \frac{1}{2}\right)\beta^2 + \left(-\beta +\frac{1}{2}\right)
 (1+\beta)^2 = \frac{1}{2} - \beta^2$.
 So $\Psi(\tau_1) = 1/\gamma(\tau_1)$ only if
-$\displaystyle \frac{1}{2} - \beta^2 = \frac{1}{3}$; namely, only if
-$\displaystyle \beta = \pm \frac{1}{\sqrt{6}}$.
+$\DS \frac{1}{2} - \beta^2 = \frac{1}{3}$; namely, only if
+$\DS \beta = \pm \frac{1}{\sqrt{6}}$.
 
 $\tau_2 = $
 \begin{picture}(2,2)
@@ -7773,8 +7773,8 @@ $\gamma(\tau_2) = 6$ and
 = \beta - \beta^2 \ .
 \end{align*}
 So $\Psi(\tau_2) = 1/\gamma(\tau_2)$ only if
-$\displaystyle \beta - \beta^2 = \frac{1}{6}$; namely, only if
-$\displaystyle \beta = \frac{1}{2} \left(1 \pm \frac{1}{\sqrt{3}}\right)$.
+$\DS \beta - \beta^2 = \frac{1}{6}$; namely, only if
+$\DS \beta = \frac{1}{2} \left(1 \pm \frac{1}{\sqrt{3}}\right)$.
 \end{enumerate}
 }
 
@@ -7802,7 +7802,7 @@ the local truncation error is now
   \left(1  - 6 (\beta - \beta^2)\right)\{\{f\}\} +O(h^3) \ .
 \]
 It suffices to take one of the two possibles value for
-$\displaystyle \beta = \frac{1}{2} \left(1 \pm \frac{1}{\sqrt{3}}\right)$
+$\DS \beta = \frac{1}{2} \left(1 \pm \frac{1}{\sqrt{3}}\right)$
 to get a method of order (at least) three for this initial value problem.
 
 \subQ{e} We have
@@ -7824,7 +7824,7 @@ and
 + h A^2 (\Id - \beta h A)^{-1}\right) \VEC{w}_i
 \end{align*}
 because
-$\displaystyle (\Id - \beta h A)^{-1} A = A (\Id - \beta h A)^{-1}$.
+$\DS (\Id - \beta h A)^{-1} A = A (\Id - \beta h A)^{-1}$.
 Thus
 \begin{align*}
 \VEC{w}_{i+1} &= \VEC{w}_i + h\left(\frac{1}{2} + \beta\right)
@@ -7859,10 +7859,10 @@ $y'''(t)$ is continuous.  The local truncation error is given by
 \left( f(t_i,y(t_i)) + f(t_{i+1},y(t_{i+1})) \right) \ .
 \]
 Since
-$\displaystyle y(t_{i+1}) = y(t_i) + y'(t_i)\,h + y''(t_i)\,\frac{h^2}{2} +
+$\DS y(t_{i+1}) = y(t_i) + y'(t_i)\,h + y''(t_i)\,\frac{h^2}{2} +
 y'''(\xi_i) \, \frac{h^3}{3!}$, $f(t_i,y(t_i)) = y'(t_i)$
 and
-$\displaystyle f(t_{i+1},y(t_{i+1})) = y'(t_{i+1})
+$\DS f(t_{i+1},y(t_{i+1})) = y'(t_{i+1})
 = y'(t_i) + y''(t_i) h + y'''(\eta_i)\,\frac{h^2}{2}$
 for some $\xi_i$ and $\eta_i$, we get
 \begin{align*}
@@ -7873,14 +7873,14 @@ y'''(\xi_i)\,\frac{h^3}{3!}  - y(t_i) \right) \\
 \left(y'(t_i) + y'(t_i) + y''(t_i)\,h +y'''(\eta_i)\,\frac{h^2}{2}\right)
 = y'''(\xi_i)\,\frac{h^2}{3!} - y'''(\eta_i)\,\frac{h^2}{4} \ .
 \end{align*}
-If $\displaystyle M= \max_{t_0 \leq t \leq t_f} | y'''(t) |$, we get
+If $\DS M= \max_{t_0 \leq t \leq t_f} | y'''(t) |$, we get
 \[
 | \tau_{i+1}(h) | \leq
 |y'''(\xi_i)| \frac{h^2}{3!}  + |y'''(\eta_i)| \frac{h^2}{4}
 \leq \frac{5}{12} M h^2
 \]
 for $0 \leq i \leq N = (t_f-t_0)/h$.  The method is of order $2$ because
-$\displaystyle \tau_{i+1}(h) = O(h^2)$.  The method is consistent because
+$\DS \tau_{i+1}(h) = O(h^2)$.  The method is consistent because
 \[
 \max_{0\leq i \leq N} | \tau_{i+1}(h) | \leq \frac{5}{12} M h^2
 \rightarrow 0
@@ -7972,11 +7972,11 @@ equation becomes
 = O(h^2) \ ,
 \]
 where
-$\displaystyle \tilde{K}_1 = f(\tilde{t}_i,\tilde{y}_i)$,
-$\displaystyle \tilde{K}_2 = f(t_{2i+1},y_{2i+1})
+$\DS \tilde{K}_1 = f(\tilde{t}_i,\tilde{y}_i)$,
+$\DS \tilde{K}_2 = f(t_{2i+1},y_{2i+1})
 = f\left(\tilde{t}_i+ \frac{\tilde{h}}{2}, \tilde{y}_1
 + \frac{\tilde{h}}{4} ( \tilde{K}_1 + \tilde{K}_2) \right)$ and \\
-$\displaystyle \tilde{K}_3 = f(t_{2i+2},y_{2i+2})
+$\DS \tilde{K}_3 = f(t_{2i+2},y_{2i+2})
 = f\left( \tilde{t}_i + \tilde{h} , \tilde{y}_i + \frac{\tilde{h}}{4}
 (\tilde{K}_1 + 2 \tilde{K}_2 + \tilde{K}_3)\right)$.  This is
 (\ref{traptrapRK}) where $\tilde{w}_i$ has been replaced by
@@ -8038,7 +8038,7 @@ it follows from Theorem~\ref{RKcollOrder} that the Runge-Kutta Method
 given by the Butcher array above is of order two.
 
 If $\alpha_1$ and $\alpha_2$ are the roots of the Legendre polynomial
-$\displaystyle t^2 - t + 1/6$, then the $2$-stage Runge-Kutta Method
+$\DS t^2 - t + 1/6$, then the $2$-stage Runge-Kutta Method
 given by the collocation method is of order $4$.  More details are given in
 Examples~\ref{Gauss_Leg_RK} and \ref{Gauss_Leg_RKcontinued}.
 }
@@ -8075,7 +8075,7 @@ method.  It follows from Remark~\ref{RKcolInterpol} that
 \int_0^1 q(t) \dx{t} = \sum_{j=1}^k \gamma_j\, q(a_j)
 \end{equation}
 for all polynomial of degree less than $k$ and $1\leq i \leq k$.
-If $\displaystyle q(t) = t^{n-1}$ with $1 \leq n \leq k$, then
+If $\DS q(t) = t^{n-1}$ with $1 \leq n \leq k$, then
 (\ref{GradQ7A}) yields
 \[
 \sum_{j=1}^k \beta_{i,j}\, a_j^{n-1} = \int_0^{\alpha_i} t^{n-1} \dx{t} = 
@@ -8087,7 +8087,7 @@ If $\displaystyle q(t) = t^{n-1}$ with $1 \leq n \leq k$, then
 for $1\leq i \leq k$.  Thus, we get (\ref{GradQ7}).
 
 \stage{ii} Let's suppose that (\ref{GradQ7}) is satisfied.  If
-$\displaystyle q(t) = \sum_{m=0}^{k-1} a_m t^m$, then
+$\DS q(t) = \sum_{m=0}^{k-1} a_m t^m$, then
 \begin{align*}
 \int_0^{\alpha_i} q(t) \dx{t} &= \sum_{m=0}^{k-1} a_m \int_0^{\alpha_i}
 t^m \dx{t}
@@ -8108,7 +8108,7 @@ Thus, (\ref{GradQ7A}) is satisfied.
 
 Since $\alpha_i \neq \alpha_j$ for $i \neq j$, any polynomial $q$ of
 degree less than $k$ has a unique representation of the form
-$\displaystyle q(t) = \sum_{j=1}^k q(\alpha_j)\, \ell_j(t)$, where
+$\DS q(t) = \sum_{j=1}^k q(\alpha_j)\, \ell_j(t)$, where
 $\ell_j(t)$ is defined in Theorem~\ref{entries_Butcher}.
 Hence,
 \begin{equation} \label{GradQ7B}
@@ -8132,22 +8132,22 @@ Combining (\ref{GradQ7A}) and (\ref{GradQ7B}), we get
 for all polynomial of degree less than $k$.
 
 Let $A$ be the \nm{k}{k} matrix with the components
-$\displaystyle a_{n+1,j} = \alpha_j^n$ for $0 \leq n < k$ and
+$\DS a_{n+1,j} = \alpha_j^n$ for $0 \leq n < k$ and
 $1 \leq j \leq k$.  Since the $\alpha_j$ are distinct, $A$ is a
 non-singular matrix.  In fact, $A$ is a invertible Vandermonde matrix.
-For $1 \leq i \leq k$, Let $\displaystyle \VEC{w}^{[i]}$ be
+For $1 \leq i \leq k$, Let $\DS \VEC{w}^{[i]}$ be
 the vector with components
-$\displaystyle w^{[i]}_j = \beta_{i,j} - \int_0^{\alpha_i} \ell_j(t) \dx{t}$
-for $1 \leq j \leq k$.  Moreover, let $\displaystyle \VEC{w}^{[k+1]}$
+$\DS w^{[i]}_j = \beta_{i,j} - \int_0^{\alpha_i} \ell_j(t) \dx{t}$
+for $1 \leq j \leq k$.  Moreover, let $\DS \VEC{w}^{[k+1]}$
 be the vector with the components 
-$\displaystyle w^{[k+1]}_j = \gamma_j - \int_0^1 \ell_j(t) \dx{t}$
+$\DS w^{[k+1]}_j = \gamma_j - \int_0^1 \ell_j(t) \dx{t}$
 for $1 \leq j \leq k$.
 
-We have that (\ref{GradQ7C}) with $\displaystyle q(t) = t^n$ for $0 \leq n < k$
-yields the linear equations $\displaystyle A \VEC{w}^{[i]}  = \VEC{0}$ for
+We have that (\ref{GradQ7C}) with $\DS q(t) = t^n$ for $0 \leq n < k$
+yields the linear equations $\DS A \VEC{w}^{[i]}  = \VEC{0}$ for
 $0 \leq i \leq k$.  Similarly, (\ref{GradQ7D}) with
-$\displaystyle q(t) = t^n$ for $0 \leq n < k$ yields the
-linear equations $\displaystyle A \VEC{w}^{[k+1]}  = \VEC{0}$.  Since $A$ is
+$\DS q(t) = t^n$ for $0 \leq n < k$ yields the
+linear equations $\DS A \VEC{w}^{[k+1]}  = \VEC{0}$.  Since $A$ is
 non-singular, the only solution of $A \VEC{w} = \VEC{0}$ is
 $\VEC{w} = \VEC{0}$.  Thus, we get
 \[
@@ -8192,12 +8192,12 @@ Since
 \[
 (\Id-zB)^{-1} = \frac{1}{\det(\Id-zB)}\,\text{adj}(\Id-zB) \ ,
 \]
-we have that $\displaystyle \VEC{c}^\top(\Id-zA)^{-1}\VEC{u}$ is the quotient
+we have that $\DS \VEC{c}^\top(\Id-zA)^{-1}\VEC{u}$ is the quotient
 of two polynomials.  The numerator is a polynomial of degree $k-1$ given
 by a linear combination of the components of $\text{adj}(\Id-zB)$.
 The denominator is $\det(\Id-zB)$, a polynomial of degree $k$.  Since $B$
 is lower-triangular, we have that
-$\displaystyle \det(\Id-zB) = \prod_{j=1}^k (1- z \beta_{j,j})$.
+$\DS \det(\Id-zB) = \prod_{j=1}^k (1- z \beta_{j,j})$.
 }
 
 \begin{question}
@@ -8219,7 +8219,7 @@ is A-stable?
 The Runge-Kutta method of this question is given by the collocation
 method associated to the nodes $\alpha_1 = (3- \sqrt{3})/6$ and
 $\alpha_2 = (3 + \sqrt{3})/6$ which are the roots of the Legendre
-polynomial $\displaystyle q(t) = t^2 -t + 1/6$.  See
+polynomial $\DS q(t) = t^2 -t + 1/6$.  See
 Example~\ref{Gauss_Leg_RK}.  It follows from
 Theorem~\ref{RKcolAstable} that the method is A-stable.
 
@@ -8228,7 +8228,7 @@ to Corollary~\ref{RKstabReg}, we have to prove that
 \[
   \{ z \in \CC : |r(z)| <1 \} \supset \{ z \in \CC : \IM z < 0 \} \ ,
 \]
-where $\displaystyle r(z) = 1 + z\VEC{c}^\top (\Id - zB)^{-1} \VEC{u}$ with
+where $\DS r(z) = 1 + z\VEC{c}^\top (\Id - zB)^{-1} \VEC{u}$ with
 \[
 B = \begin{pmatrix} 1/4 & (3-2\sqrt{3})/12 \\
 (3+2\sqrt{3})/12 & 1/4  
@@ -8261,7 +8261,7 @@ z(3+2\sqrt{3})/12 & 1 - z/4
 \end{align*}
 
 The poles of $r(z)$ are the roots of the denominator
-$\displaystyle 12 - 6z + z^2$; namely,
+$\DS 12 - 6z + z^2$; namely,
 $z_{\pm} = 3 \pm \sqrt{3} \, i$.  Thus, there is
 no pole in the region $\{ z \in \CC : \RE z \leq 0 \}$.  Moreover,
 if $z = s i$, we get
@@ -8366,7 +8366,7 @@ for $1\leq i <N$ with $t_i = i h$ and $h = 5/N$\\
 \subQ{a} Write the difference equation associated to (\ref{GradQ2}).\\
 \subQ{b} Find the general solution of the difference equation
 in (a).  A particular solution of this equation is of the form
-$\displaystyle w_i = A i^2 + B i$ for some constants $A$ and $B$.\\
+$\DS w_i = A i^2 + B i$ for some constants $A$ and $B$.\\
 \subQ{c} Find the solution of the difference equation in (a)
 with $w_0 = 0$.\\
 \subQ{d} Does the solution that you have found in (c) converge to the
@@ -8385,34 +8385,34 @@ for $i \in \NN$.
 
 \subQ{b} First, we find the general solution of the linear difference
 equation $w_{i+1} = w_i$ for $i \in \NN$.  If we substitute
-$\displaystyle w_i = r^i$, we get $\displaystyle r^{i+1} = r^i$.  The
+$\DS w_i = r^i$, we get $\DS r^{i+1} = r^i$.  The
 nontrivial solution is $r = 1$.  Thus, the general solution of the
 linear difference equation is $w_i = C$, a constant, for all $i$.
 
 We now seek a particular solution of the form
-$\displaystyle w_i = Ai^2 + Bi$ for
+$\DS w_i = Ai^2 + Bi$ for
 the difference equation in (a).  We get
 \[
 A(i+1)^2 + B(i+1) = Ai^2 + Bi + \frac{h^2}{12}\left( 12 i + 5\right)
 \Rightarrow (2A - h^2)i + \left( A + B - \frac{5h^2}{12}\right) = 0
 \]
-for all $i$.  Thus, $\displaystyle 2A-h^2 = 0$ and
-$\displaystyle A + B - 5h^2/12 = 0$.  Solving for $A$ and $B$,
-we find $\displaystyle A = h^2/2$ and $\displaystyle B = -h^2/12$.  Hence,
-$\displaystyle w_i = \frac{h^2 i^2}{2} - \frac{h^2i}{12}$ for all $i$.
+for all $i$.  Thus, $\DS 2A-h^2 = 0$ and
+$\DS A + B - 5h^2/12 = 0$.  Solving for $A$ and $B$,
+we find $\DS A = h^2/2$ and $\DS B = -h^2/12$.  Hence,
+$\DS w_i = \frac{h^2 i^2}{2} - \frac{h^2i}{12}$ for all $i$.
 
 The general solution of (a) is
-$\displaystyle w_i = \frac{h^2 i^2}{2} - \frac{h^2i}{12} + C$ for all $i$.
+$\DS w_i = \frac{h^2 i^2}{2} - \frac{h^2i}{12} + C$ for all $i$.
 
-\subQ{c} With $w_0=0$, we get $\displaystyle C = 0$.
-Thus, $\displaystyle w_i = \frac{h^2 i^2}{2} - \frac{h^2i}{12}$ for
+\subQ{c} With $w_0=0$, we get $\DS C = 0$.
+Thus, $\DS w_i = \frac{h^2 i^2}{2} - \frac{h^2i}{12}$ for
 all $i$.
 
 \subQ{d} Since $t_i = hi$, we find
-$\displaystyle w_i = \frac{t_i^2}{2} - \frac{h t_i}{12}$.
+$\DS w_i = \frac{t_i^2}{2} - \frac{h t_i}{12}$.
 
 The solution of the initial value problem (\ref{GradQ2}) is
-$\displaystyle y(t) = t^2/2$.  Hence,
+$\DS y(t) = t^2/2$.  Hence,
 \[
 \lim_{h\to 0}\, \max_{0\leq i \leq N} |y_i - w_i|
 = \lim_{h\to 0}\, \max_{0\leq i \leq N} |y(t_)) - w_i |
@@ -8425,7 +8425,7 @@ $w_i$ instead of $u_i$, but it is the definition of convergence
 as given in Remark~\ref{ConvAltern}.  See also (f) below.
 
 \subQ{e} The characteristic polynomial is
-$\displaystyle p(w) = \lambda^2 - \lambda$.  It has two roots, $\lambda = 0$ and
+$\DS p(w) = \lambda^2 - \lambda$.  It has two roots, $\lambda = 0$ and
 $\lambda =1$ with the root $\lambda =1$ being simple.  So, the root
 condition is satisfied.
   
@@ -8450,7 +8450,7 @@ for some $\xi_i$, $\eta_i$ and $\nu_i$, we get
 & = \left( \frac{y''(\xi_i)}{2}
 - \frac{y''(\eta_i)}{3} - \frac{y''(\nu_i)}{12}\right)h \ .
 \end{align*}
-If $\displaystyle M= \max_{0 \leq t \leq 5} | y''(t) |$, we get
+If $\DS M= \max_{0 \leq t \leq 5} | y''(t) |$, we get
 \[
 | \tau_{i+1}(h) | \leq \frac{1}{12} M h \ .
 \]
@@ -8490,7 +8490,7 @@ w_i &= y_i \quad , \quad 0 \leq i \leq m
 We use the method presented in Section~\ref{AAMM} to answer
 this question.
 
-\subQ{a} We consider $\displaystyle p(w) = w^3-1$ and set $m=3$.  Using the
+\subQ{a} We consider $\DS p(w) = w^3-1$ and set $m=3$.  Using the
 substitution $w=v+1$, we get
 \begin{align*}
 \frac{p(w)}{\ln(w)} &= \frac{w^3-1}{\ln(w)}
@@ -8500,7 +8500,7 @@ substitution $w=v+1$, we get
 = 3 + \frac{9v}{2} + \frac{9v^2}{4} + O(v^3) \\
 &= \frac{3}{4} + \frac{9w^2}{4} + O((w-1)^3) \ .
 \end{align*}
-Thus $\displaystyle q(w) = \frac{3}{4} + \frac{9w^2}{4}$.  The
+Thus $\DS q(w) = \frac{3}{4} + \frac{9w^2}{4}$.  The
 multistep method is
 \begin{align*}
 w_{i+1} &= w_{i-2} + h\left(\frac{3}{4}\, f(t_{i-2},w_{i-2}) +
@@ -8509,7 +8509,7 @@ w_{i+1} &= w_{i-2} + h\left(\frac{3}{4}\, f(t_{i-2},w_{i-2}) +
 w_i &= y_i \quad \text{for} \quad i=0,1,2
 \end{align*}
 
-\subQ{b} We consider $\displaystyle p(w) = w^3-1$ and set $m=3$.  Using the
+\subQ{b} We consider $\DS p(w) = w^3-1$ and set $m=3$.  Using the
 substitution $w=v+1$, we get
 \begin{align*}
 \frac{p(w)}{\ln(w)} &= \frac{w^3-1}{\ln(w)}
@@ -8521,7 +8521,7 @@ substitution $w=v+1$, we get
 &= \frac{3}{8} + \frac{9w}{8} + \frac{9w^2}{8} + \frac{3w^3}{8} + O((w-1)^3)
 \ .
 \end{align*}
-Thus $\displaystyle q(w) = \frac{3}{8} + \frac{9w}{8} + \frac{9w^2}{8}
+Thus $\DS q(w) = \frac{3}{8} + \frac{9w}{8} + \frac{9w^2}{8}
 + \frac{3w^3}{8}$.  The multistep method is
 \begin{align*}
 w_{i+1} &= w_{i-2} + h\left(\frac{3}{8}\, f(t_{i-2},w_{i-2}) +
@@ -8610,12 +8610,12 @@ of highest order.\\
 \big( b_0 f(t_i,y(t_i)) + b_1 f(t_{i-1},y(t_{i-1})) \big) \ .
 \]
 Since there exist $\xi_i$, $\eta_i$ and $\nu_i$ such that
-$\displaystyle y(t_{i+1}) = \sum_{k=0}^5 \frac{1}{k!}\, y^{(k)}(t_i)\,h^k
+$\DS y(t_{i+1}) = \sum_{k=0}^5 \frac{1}{k!}\, y^{(k)}(t_i)\,h^k
 + \frac{1}{6!}\,y^{(6)}(\xi_i)\,h^6$,\\
-$\displaystyle y(t_{i-1}) = \sum_{k=0}^5 \frac{(-1)^k}{k!}\, y^{(k)}(t_i)\,h^k
+$\DS y(t_{i-1}) = \sum_{k=0}^5 \frac{(-1)^k}{k!}\, y^{(k)}(t_i)\,h^k
 + \frac{1}{6!}\,y^{(6)}(\eta_i)\, h^6$,
 $f(t_i,y(t_i)) = y'(t_i)$ and\\
-$\displaystyle f(t_{i-1},y(t_{i-1})) = y'(t_{i-1})
+$\DS f(t_{i-1},y(t_{i-1})) = y'(t_{i-1})
 = \sum_{k=0}^4 \frac{(-1)^k}{k!}\, y^{(k+1)}(t_i)\,h^k
 - \frac{1}{5!}\,y^{(6)}(\mu_i)\,h^5$, we get
 \begin{align*}
@@ -8636,19 +8636,19 @@ interval $[t_0,t_N]$.
 We get $a_0 = 1 - a_1$ from $1 - a_0-a_1 = 0$ (we set the coefficient of
 $y(t_i) h^{-1}$ to $0$).  We get $b_0 = 1 + a_1 - b_1$ from
 $1 + a_1 - b_0 - b_1=0$ (we set the coefficient of $y(t_i)$ to $0$).  We get
-$\displaystyle b_1 = \frac{a_1}{2} - \frac{1}{2}$ from
-$\displaystyle \frac{1}{2} - \frac{a_1}{2} + b_1 = 0$
+$\DS b_1 = \frac{a_1}{2} - \frac{1}{2}$ from
+$\DS \frac{1}{2} - \frac{a_1}{2} + b_1 = 0$
 (we set the coefficient of $y''(t_i)h$ to $0$).
 If we substitute this expression for $b_1$ in
-$\displaystyle \frac{1}{6} + \frac{a_1}{6} - \frac{b_1}{2} = 0$
-(we set the coefficient of $\displaystyle y^{(3)}(t_i) h^2$ to $0$), we
-get that $\displaystyle a_1 = 5$.
+$\DS \frac{1}{6} + \frac{a_1}{6} - \frac{b_1}{2} = 0$
+(we set the coefficient of $\DS y^{(3)}(t_i) h^2$ to $0$), we
+get that $\DS a_1 = 5$.
 
-We have found that all the terms in $\displaystyle h^{k}$ for $k<3$ vanish if
+We have found that all the terms in $\DS h^{k}$ for $k<3$ vanish if
 $a_0 = -4$, $a_1 = 5$. $b_0 = 4$ and $b_1 = 2$.
 With these values of $a_1$ and $b_1$, we have that
-$\displaystyle \frac{1}{24} - \frac{a_1}{24} + \frac{b_1}{6}
-= \frac{1}{6} \neq 0$ (the coefficient of $\displaystyle y^{(4)}h^3$).  Hence,
+$\DS \frac{1}{24} - \frac{a_1}{24} + \frac{b_1}{6}
+= \frac{1}{6} \neq 0$ (the coefficient of $\DS y^{(4)}h^3$).  Hence,
 \begin{equation}\label{TroncQuest21}
   \tau_{i+1}(h) = \frac{1}{6}\, y^{(4)}(t_i)\, h^3 + O(h^4) \ .
 \end{equation}
@@ -8659,7 +8659,7 @@ w_{i+1} = -4 w_i + 5 w_{i-1} + h \left(
 \]
 
 \subQ{b} We have from (\ref{TroncQuest21}) that
-$\displaystyle \tau_{i+1}(h) = O(h^3)$.  So, the method is of order $3$.
+$\DS \tau_{i+1}(h) = O(h^3)$.  So, the method is of order $3$.
 
 \subQ{c} It follows from Dahlquist Second Barrier,
 Theorem~\ref{Dahl2ndB}, that this method cannot be A-stable.
@@ -8677,9 +8677,9 @@ absolute stability for this method.
 \sol{\SOL}{
 The stability polynomial for this multistep method is
 $p(\lambda) - z\, q(\lambda)$, where
-$\displaystyle p(\lambda) =  -\lambda^{m+1} + \sum_{j=0}^m\,a_j\,\lambda^{m-j}$
+$\DS p(\lambda) =  -\lambda^{m+1} + \sum_{j=0}^m\,a_j\,\lambda^{m-j}$
 is the characteristic polynomial
-and $\displaystyle q(\lambda) = \sum_{j=-1}^m\,b_j\,\lambda^{m-j}$.
+and $\DS q(\lambda) = \sum_{j=-1}^m\,b_j\,\lambda^{m-j}$.
 
 Since the method is convergent, it satisfies the root condition
 according to Proposition~\ref{SimpliesRC}; namely, all the roots of
